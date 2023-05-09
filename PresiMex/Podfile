@@ -1,0 +1,28 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'PresiMex' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+#  pod 'SSZipArchive','~>2.4.3' #zip压缩
+  pod 'Masonry' #OC布局类
+  pod 'JKCategories','~> 1.9.3' #系统类扩展
+  pod 'MBProgressHUD','~> 1.2.0'
+  pod 'SDWebImage', '~> 5.9.5'
+  pod 'AFNetworking','~>4.0.0'
+  pod 'MJRefresh', '~> 3.7.5'
+  pod 'MJExtension'
+#  pod 'IQKeyboardManager', '~>6.5.11'
+  # Pods for PresiMex
+
+  target 'PresiMexTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'PresiMexUITests' do
+    # Pods for testing
+  end
+
+end

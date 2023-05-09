@@ -1,0 +1,6 @@
+framework module Pods_PresiMex {
+  umbrella header "Pods-PresiMex-umbrella.h"
+
+  export *
+  module * { export * }
+}

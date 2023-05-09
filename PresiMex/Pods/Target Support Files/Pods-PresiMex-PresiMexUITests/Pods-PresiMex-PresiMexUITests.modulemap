@@ -1,0 +1,6 @@
+framework module Pods_PresiMex_PresiMexUITests {
+  umbrella header "Pods-PresiMex-PresiMexUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
