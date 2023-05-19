@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -431,7 +431,7 @@
 				};
 			};
 			buildConfigurationList = FB976D302A05124500B1C0A3 /* Build configuration list for PBXProject "PresiMex" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -765,7 +765,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = B95DT69446;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
@@ -794,7 +794,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = B95DT69446;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;

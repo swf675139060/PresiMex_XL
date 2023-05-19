@@ -13,6 +13,14 @@ target 'PresiMex' do
   pod 'AFNetworking','~>4.0.0'
   pod 'MJRefresh', '~> 3.7.5'
   pod 'MJExtension'
+
+  pod 'AppsFlyerFramework'
+
+  pod 'FirebaseCore'
+
+  pod 'Firebase/Messaging'
+  pod 'Bugly'
+
 #  pod 'IQKeyboardManager', '~>6.5.11'
   # Pods for PresiMex
 
