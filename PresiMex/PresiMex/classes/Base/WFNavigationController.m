@@ -19,11 +19,19 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear: animated];
+    
+    self.navigationBar.translucent = NO;
+    self.navigationBar.backgroundColor = [UIColor redColor];
+    self.navigationBar.barTintColor = [UIColor redColor];
+}
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.childViewControllers.count > 0) { // 非根控制器
         // 设置返回按钮
-        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"cancel"] style:UIBarButtonItemStylePlain target:self action:@selector(WFNvigationBarLeftButtonItemClick)];
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回"] style:UIBarButtonItemStylePlain target:self action:@selector(WFNvigationBarLeftButtonItemClick)];
         viewController.navigationItem.leftBarButtonItem.tag = 1;
     }
     

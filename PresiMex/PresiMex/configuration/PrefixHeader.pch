@@ -37,6 +37,12 @@
 #define WF_STRONGSELF(strongself, weakself) __strong typeof(weakself) strongself = weakself; \
 if (strongself == nil) return;
 
+
+#pragma mark - 默认头像
+#define DefaultAvatar [UIImage imageNamed:@"DefaultAvatar"]
+
+
+
 #ifdef __OBJC__
 
 #import "WFNavigationController.h"
@@ -45,8 +51,12 @@ if (strongself == nil) return;
 
 #import "UILabel+SLFLineSpace.h"
 #import "UIView+SLFExtension.h"
-#import <JKCategories/JKCategories.h>
+#import "UIView+LinearGradient.h"
 
+#import <JKCategories/JKCategories.h>
+#import <Masonry/Masonry.h>
+//#import <IQk>
+//#import <IQKeyboardManager/IQKeyboardManager.h>
 
 #endif
 

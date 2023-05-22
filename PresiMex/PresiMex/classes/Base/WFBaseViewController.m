@@ -1,24 +1,30 @@
 //
-//  BaseViewController.m
+//  WFBaseViewController.m
 //  PresiMex
 //
 //  Created by shenWenFeng on 2023/5/8.
 //
 
-#import "BaseViewController.h"
+#import "WFBaseViewController.h"
 
-@interface BaseViewController ()
+@interface WFBaseViewController ()
 
 @end
 
-@implementation BaseViewController
+@implementation WFBaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view.
+    
 }
+
+// 在你的 UIViewController 子类中，重写 preferredStatusBarStyle 方法，以指定状态栏的样式
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 
 /*
 #pragma mark - Navigation

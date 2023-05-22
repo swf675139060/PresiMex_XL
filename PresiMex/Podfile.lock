@@ -64,6 +64,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.10.0):
     - GoogleUtilities/Logger
+  - IQKeyboardManager (6.5.11)
   - JKCategories (1.9.3):
     - JKCategories/CoreData (= 1.9.3)
     - JKCategories/CoreLocation (= 1.9.3)
@@ -215,6 +216,7 @@ PODS:
   - SDWebImage (5.9.5):
     - SDWebImage/Core (= 5.9.5)
   - SDWebImage/Core (5.9.5)
+  - ZZCircleProgress (0.3.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0.0)
@@ -222,12 +224,14 @@ DEPENDENCIES:
   - Bugly
   - Firebase/Messaging
   - FirebaseCore
+  - IQKeyboardManager
   - JKCategories (~> 1.9.3)
   - Masonry
   - MBProgressHUD (~> 1.2.0)
   - MJExtension
   - MJRefresh (~> 3.7.5)
   - SDWebImage (~> 5.9.5)
+  - ZZCircleProgress
 
 SPEC REPOS:
   trunk:
@@ -241,6 +245,7 @@ SPEC REPOS:
     - FirebaseMessaging
     - GoogleDataTransport
     - GoogleUtilities
+    - IQKeyboardManager
     - JKCategories
     - Masonry
     - MBProgressHUD
@@ -249,9 +254,10 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SDWebImage
+    - ZZCircleProgress
 
 SPEC CHECKSUMS:
-  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   AppsFlyerFramework: dc9aa675faa8e1a2ed40fb295d3c5408ee2b972a
   Bugly: b8715e6ec4004b7f7fbffab0643ba80545aee3da
   Firebase: f92fc551ead69c94168d36c2b26188263860acd9
@@ -261,6 +267,7 @@ SPEC CHECKSUMS:
   FirebaseMessaging: e345b219fd15d325f0cf2fef28cb8ce00d851b3f
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
+  IQKeyboardManager: ef43ce1ba1e5aaf4adf222c0a46f39761f246879
   JKCategories: c995567f04ff98680313f56544e6cb62d3152733
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -269,7 +276,8 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
+  ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: d1731249c9b47ae133409330e6bfc8fede192eaf
+PODFILE CHECKSUM: 0c626abb877806c3990d4b67177683ad31315ce8
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

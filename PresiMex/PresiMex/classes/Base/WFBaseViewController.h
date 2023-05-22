@@ -1,5 +1,5 @@
 //
-//  BaseViewController.h
+//  WFBaseViewController.h
 //  PresiMex
 //
 //  Created by shenWenFeng on 2023/5/8.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BaseViewController : UIViewController
+@interface WFBaseViewController : UIViewController
 
 @end
 
