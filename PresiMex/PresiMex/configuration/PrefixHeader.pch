@@ -49,6 +49,14 @@ if (strongself == nil) return;
 #define B_FONT_MEDIUM(size)  [UIFont systemFontOfSize:size weight:UIFontWeightSemibold]
 #define B_FONT_BOLD(size)    [UIFont boldSystemFontOfSize:size]
 
+
+#define weakify(var) __weak typeof(var) XYWeak_##var = var;
+#define strongify(var) \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wshadow\"") \
+__strong typeof(var) var = XYWeak_##var; \
+_Pragma("clang diagnostic pop")
+
 #ifdef __OBJC__
 
 #import "WFNavigationController.h"
@@ -64,7 +72,7 @@ if (strongself == nil) return;
 #import <Masonry/Masonry.h>
 
 #import "PMUrl.h"
-
+#import "PMBaseHttp.h"
 //#import <IQk>
 //#import <IQKeyboardManager/IQKeyboardManager.h>
 

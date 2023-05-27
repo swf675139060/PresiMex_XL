@@ -23,6 +23,7 @@
 		A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E5E2A21FFE400451413 /* CRLineView.m */; };
 		A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */; };
 		A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */; };
+		A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
 		FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */; };
 		FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F52A088AC5006C5887 /* SLFLoadingHub.m */; };
@@ -112,6 +113,8 @@
 		A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPhoneNumberView.m; sourceTree = "<group>"; };
 		A4DD5E6C2A22064300451413 /* PMVeriCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMVeriCodeView.h; sourceTree = "<group>"; };
 		A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMVeriCodeView.m; sourceTree = "<group>"; };
+		A4DD5E6F2A22209600451413 /* PMVeriCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMVeriCodeViewController.h; sourceTree = "<group>"; };
+		A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMVeriCodeViewController.m; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB26CFEA2A1A3A0E000DB383 /* SelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectImageCell.h; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 			children = (
 				A4DD5E2D2A21E8A400451413 /* PMLoginViewController.h */,
 				A4DD5E2E2A21E8A400451413 /* PMLoginViewController.m */,
+				A4DD5E6F2A22209600451413 /* PMVeriCodeViewController.h */,
+				A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -416,8 +421,8 @@
 		FB8AF32B2A088C78006C5887 /* UILabel */ = {
 			isa = PBXGroup;
 			children = (
-				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
 				FB8AF32D2A088C78006C5887 /* UILabel+SLFLineSpace.h */,
+				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
 			);
 			path = UILabel;
 			sourceTree = "<group>";
@@ -892,6 +897,7 @@
 				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */,
 				A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */,
+				A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,

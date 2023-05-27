@@ -7,7 +7,7 @@
 
 
 #import "PMLoginHeaderView.h"
-#import "CRBoxInputView.h"
+
 @interface PMLoginHeaderView()
 
 @property(strong, nonatomic) UIView * topBgView;
@@ -58,34 +58,7 @@
 //        make.width.equalTo(@(WF_ScreenWidth - 40));
 //        make.height.equalTo(@60);
 //    }];
-    CRBoxInputCellProperty *cellProperty = [CRBoxInputCellProperty new];
-    cellProperty.cellBgColorNormal = BColor_Hex(@"#FFA402", 0.1);
-    cellProperty.cellBgColorSelected = BColor_Hex(@"#FFA402", 0.3);
-    cellProperty.cellCursorColor = BColor_Hex(@"#1B1200", 1);
-    cellProperty.cellCursorWidth = 2;
-    cellProperty.cellCursorHeight = 30;
-    cellProperty.cornerRadius = 4;
-    cellProperty.borderWidth = 0;
-    cellProperty.cellFont = [UIFont boldSystemFontOfSize:24];
-    cellProperty.cellTextColor = BColor_Hex(@"#1B1200", 1);
-    cellProperty.configCellShadowBlock = ^(CALayer * _Nonnull layer) {
-        layer.shadowColor = BColor_Hex(@"#FFA402", 0.2).CGColor;
-        layer.shadowOpacity = 1;
-        layer.shadowOffset = CGSizeMake(4, 4);
-        layer.shadowRadius = 4;
-    };
-
-    CRBoxInputView *boxInputView = [[CRBoxInputView alloc] initWithCodeLength:4];
-    boxInputView.boxFlowLayout.itemSize = CGSizeMake(50, 50);
-    boxInputView.customCellProperty = cellProperty;
-    [boxInputView loadAndPrepareViewWithBeginEdit:YES];
-    [self addSubview:boxInputView];
-    [boxInputView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.mas_left).offset(20);
-            make.top.equalTo(_logoIcon.mas_bottom).offset(34);
-            make.width.equalTo(@(WF_ScreenWidth - 40));
-            make.height.equalTo(@60);
-    }];
+  
 }
 -(void)setSubViewsPosition{
 //    [self.topBgView mas_makeConstraints:^(MASConstraintMaker *make) {

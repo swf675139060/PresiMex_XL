@@ -170,14 +170,17 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/plain"];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    //[manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
+   // [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"LOAN_HEAD_APP_ID" password:@"81f39018d78533c158665aa7945c6a95"];
     [manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
-    //    [manager.requestSerializer setValue:@"app" forHTTPHeaderField:@"client_secret"];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    
-    
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    //LOAN_HEAD_VERSION
     //    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"opeso" ofType:@"cer"];
     //    NSData *certData=[NSData dataWithContentsOfFile:cerPath];
     //    AFSecurityPolicy *securityPolicy =[AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
