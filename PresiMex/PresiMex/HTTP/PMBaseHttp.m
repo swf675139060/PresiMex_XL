@@ -34,132 +34,132 @@
  */
 + (NSURLSessionDataTask*)get:(NSString *)urlString parameters:(id)parameter success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
-
-   if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
-       NSError *error = [NSError errorWithDomain:@"CustomeErrorDomain" code:0001 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"网络连接失败，请检查网络设置", NSLocalizedDescriptionKey, nil]];
-       if (failure) {
-           failure(error);
-       }
-       return nil;
-   }
-
-   AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-   manager.responseSerializer = [AFJSONResponseSerializer serializer];
-   manager.requestSerializer = [AFJSONRequestSerializer serializer];
-   [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-   manager.requestSerializer.timeoutInterval = 60;//30.0;
-   [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-   [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-   [manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
-
+    
+    if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+        NSError *error = [NSError errorWithDomain:@"CustomeErrorDomain" code:0001 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"网络连接失败，请检查网络设置", NSLocalizedDescriptionKey, nil]];
+        if (failure) {
+            failure(error);
+        }
+        return nil;
+    }
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 60;//30.0;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
+    
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
     manager.securityPolicy = securityPolicy;
-
+    
     NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,urlString];
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
     
     //参数加密
-
-   
-        NSMutableDictionary*par=[NSMutableDictionary new];
-//        if ([parameter isKindOfClass:[NSDictionary class]] ) {
-//            NSDictionary*dict=parameter;
-//            NSArray*keyArr=dict.allKeys;
-//            for (NSString *key in keyArr) {
-//                if ([key isEqual:@"arch_id"]) {
-//                    par[key]=dict[key];
-//                }else{
-//                    NSString *values=dict[key];
-//                    NSString *enCodeValues=[self encodeString:values];
-//                    par[key]=enCodeValues;
-//                }
-//
-//            }
-//        }
-        NSMutableDictionary *parms = [NSMutableDictionary dictionaryWithDictionary:par];
-//        NSString *ras=HTTPKEY_RAS_RELEES;
-//        parms[@"akeys"]=[PSBase64 encodeBase64:[RSA encryptString:HTTP_KEY publicKey:ras]];
-//        if ([PSAccountTool account]) {
-//            parms[@"token"]=[PSAccountTool account].token;
-//        }
-        NSLog(@"url===%@\n parms==%@",url,parms);
-   
-//   NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
-
+    
+    
+    NSMutableDictionary*par=[NSMutableDictionary new];
+    //        if ([parameter isKindOfClass:[NSDictionary class]] ) {
+    //            NSDictionary*dict=parameter;
+    //            NSArray*keyArr=dict.allKeys;
+    //            for (NSString *key in keyArr) {
+    //                if ([key isEqual:@"arch_id"]) {
+    //                    par[key]=dict[key];
+    //                }else{
+    //                    NSString *values=dict[key];
+    //                    NSString *enCodeValues=[self encodeString:values];
+    //                    par[key]=enCodeValues;
+    //                }
+    //
+    //            }
+    //        }
+    NSMutableDictionary *parms = [NSMutableDictionary dictionaryWithDictionary:par];
+    //        NSString *ras=HTTPKEY_RAS_RELEES;
+    //        parms[@"akeys"]=[PSBase64 encodeBase64:[RSA encryptString:HTTP_KEY publicKey:ras]];
+    //        if ([PSAccountTool account]) {
+    //            parms[@"token"]=[PSAccountTool account].token;
+    //        }
+    NSLog(@"url===%@\n parms==%@",url,parms);
+    
+    //   NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
+    
     //NSString*josn=[parms toJSONString];
-   return [manager GET:url parameters:parms headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-       NSLog(@"url===%@\nget_responseObject=%@",url,responseObject);
-//       if (!IsEmpty(responseObject) &&[responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
-//           [PSAccountTool logOut];
-//       }else if([responseObject[@"error"] isEqual:@"Please login"]&&!([responseObject[@"code"] intValue]==202)){
-//           [PSAccountTool logOut];
-//       }
-       
-       if (success) {
-           success(responseObject);
-       }
-            // 测试代码
-//       if ([responseObject[@"code"] intValue] == 0) {
-//           if (success) {
-//               success(responseObject[@"data"]);
-//           }
-//       }else {
-//           // 这里统一把code 改成了-1 用作判断 来区分真正的failure
-//           NSError *error;
-//           if([responseObject[@"code"] intValue] == 510) {
-//               error = [NSError errorWithDomain:@"CustomeErrorDomain" code:-1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"服务器异常", NSLocalizedDescriptionKey, nil]];
-//           }else {
-//               error = [NSError errorWithDomain:@"CustomeErrorDomain" code:-1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:responseObject[@"msg"], NSLocalizedDescriptionKey, nil]];
-//           }
-//           if (failure) {
-//               failure(error);
-//           }
-//       }
-   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-       if (failure) {
-           NSString *msg = @"";
-           if ([error.domain isEqualToString:AFURLResponseSerializationErrorDomain]) {
-               id response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:nil];
-               NSLog(@"%@",response);
-               msg = [NSString stringWithFormat:@"%@",response[@"msg"]] ?: @"";
-               if ([msg containsString:@"Invalid access"]) {
-                   NSLog(@"token失效");
-                   [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenError" object:nil userInfo:nil];
-                   failure(nil);
-                   return;
-               }else {
-                   failure(error);
-                   return;
-               }
-           }
-
-           NSString *errDes = @"网络或服务器异常";
-           switch (error.code) {
-               case -1001:
-                   errDes = @"请求超时";
-                   break;
-               case 404:
-                   errDes = @"没有数据";
-                   break;
-               case 500:
-                   errDes = @"服务器错误";
-                   break;
-               case -1017:
-                   errDes = @"数据解析错误";
-                   break;
-               case 401:
-                   errDes = msg;
-                   break;
-               default:
-                   break;
-           }
-           error = [NSError errorWithDomain:@"CustomeErrorDomain" code:error.code userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@ (%@)", errDes, @(error.code)], NSLocalizedDescriptionKey, nil]];
-           failure(error);
-       }
-   }];
-
+    return [manager GET:url parameters:parms headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"url===%@\nget_responseObject=%@",url,responseObject);
+        //       if (!IsEmpty(responseObject) &&[responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
+        //           [PSAccountTool logOut];
+        //       }else if([responseObject[@"error"] isEqual:@"Please login"]&&!([responseObject[@"code"] intValue]==202)){
+        //           [PSAccountTool logOut];
+        //       }
+        
+        if (success) {
+            success(responseObject);
+        }
+        // 测试代码
+        //       if ([responseObject[@"code"] intValue] == 0) {
+        //           if (success) {
+        //               success(responseObject[@"data"]);
+        //           }
+        //       }else {
+        //           // 这里统一把code 改成了-1 用作判断 来区分真正的failure
+        //           NSError *error;
+        //           if([responseObject[@"code"] intValue] == 510) {
+        //               error = [NSError errorWithDomain:@"CustomeErrorDomain" code:-1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"服务器异常", NSLocalizedDescriptionKey, nil]];
+        //           }else {
+        //               error = [NSError errorWithDomain:@"CustomeErrorDomain" code:-1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:responseObject[@"msg"], NSLocalizedDescriptionKey, nil]];
+        //           }
+        //           if (failure) {
+        //               failure(error);
+        //           }
+        //       }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            NSString *msg = @"";
+            if ([error.domain isEqualToString:AFURLResponseSerializationErrorDomain]) {
+                id response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:nil];
+                NSLog(@"%@",response);
+                msg = [NSString stringWithFormat:@"%@",response[@"msg"]] ?: @"";
+                if ([msg containsString:@"Invalid access"]) {
+                    NSLog(@"token失效");
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenError" object:nil userInfo:nil];
+                    failure(nil);
+                    return;
+                }else {
+                    failure(error);
+                    return;
+                }
+            }
+            
+            NSString *errDes = @"网络或服务器异常";
+            switch (error.code) {
+                case -1001:
+                    errDes = @"请求超时";
+                    break;
+                case 404:
+                    errDes = @"没有数据";
+                    break;
+                case 500:
+                    errDes = @"服务器错误";
+                    break;
+                case -1017:
+                    errDes = @"数据解析错误";
+                    break;
+                case 401:
+                    errDes = msg;
+                    break;
+                default:
+                    break;
+            }
+            error = [NSError errorWithDomain:@"CustomeErrorDomain" code:error.code userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@ (%@)", errDes, @(error.code)], NSLocalizedDescriptionKey, nil]];
+            failure(error);
+        }
+    }];
+    
 }
 
 
@@ -174,20 +174,20 @@
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
-//    [manager.requestSerializer setValue:@"app" forHTTPHeaderField:@"client_secret"];
+    //    [manager.requestSerializer setValue:@"app" forHTTPHeaderField:@"client_secret"];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     
-      
-//    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"opeso" ofType:@"cer"];
-//    NSData *certData=[NSData dataWithContentsOfFile:cerPath];
-//    AFSecurityPolicy *securityPolicy =[AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
-//    [securityPolicy setAllowInvalidCertificates:NO];
-//    [securityPolicy setPinnedCertificates:@[certData]];
-//    securityPolicy.allowInvalidCertificates = NO;
-//    [securityPolicy setValidatesDomainName:NO];
-//
-//    manager.securityPolicy = securityPolicy;
-   
+    
+    //    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"opeso" ofType:@"cer"];
+    //    NSData *certData=[NSData dataWithContentsOfFile:cerPath];
+    //    AFSecurityPolicy *securityPolicy =[AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    //    [securityPolicy setAllowInvalidCertificates:NO];
+    //    [securityPolicy setPinnedCertificates:@[certData]];
+    //    securityPolicy.allowInvalidCertificates = NO;
+    //    [securityPolicy setValidatesDomainName:NO];
+    //
+    //    manager.securityPolicy = securityPolicy;
+    
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
@@ -198,46 +198,51 @@
         NSDictionary*dict=parameters;
         NSArray*keyArr=dict.allKeys;
         for (NSString *key in keyArr) {
-//            if ([URLString isEqual:Post_Ask_Add_PS]&&[key isEqual:@"img_data"]) {
-//                NSString *values=dict[key];
-//                par[key]=values;
-//            }else{
-//                NSString *values=dict[key];
-//                NSString *enCodeValues=[self encodeString:values];
-//                par[key]=enCodeValues;
-//            }
+            NSString *values=dict[key];
+            par[key]=values;
+            //            if ([URLString isEqual:Post_Ask_Add_PS]&&[key isEqual:@"img_data"]) {
+            //                NSString *values=dict[key];
+            //                par[key]=values;
+            //            }else{
+            //                NSString *values=dict[key];
+            //                NSString *enCodeValues=[self encodeString:values];
+            //                par[key]=enCodeValues;
+            //            }
         }
     }
- 
+    
     
     NSMutableDictionary *parms = [NSMutableDictionary dictionaryWithDictionary:par];
     NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,URLString];
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
-//    NSString *ras=HTTPKEY_RAS_RELEES;
-//    parms[@"akeys"]=[PSBase64 encodeBase64:[RSA encryptString:HTTP_KEY publicKey:ras]];
+    //    NSString *ras=HTTPKEY_RAS_RELEES;
+    //    parms[@"akeys"]=[PSBase64 encodeBase64:[RSA encryptString:HTTP_KEY publicKey:ras]];
     
-//    if ([PSAccountTool account]) {
-//        parms[@"token"]=[PSAccountTool account].token;
-//    }
-   //NSString*josn=[parms toJSONString];
+    //    if ([PSAccountTool account]) {
+    //        parms[@"token"]=[PSAccountTool account].token;
+    //    }
+    //NSString*josn=[parms toJSONString];
     // 发送请求
     
     NSLog(@"url===%@\n parms==%@",url,parms);
-//    [self debugLogWith:parms withPostUrl:url];
+    //    [self debugLogWith:parms withPostUrl:url];
     return  [manager POST:url parameters:parms headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //NSLog(@"url===%@\nPost_responseObject=%@",url,responseObject);
-//        if(!IsEmpty(responseObject)){
-////            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//////                if ([responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
-//////                    [PSAccountTool logOut];
-//////                }
-////            }
-//            if (responseObject) {
-//                success(responseObject);
-//            }
-//        }
-
-       
+        if (responseObject) {
+            success(responseObject);
+        }
+        //        if(!IsEmpty(responseObject)){
+        ////            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+        //////                if ([responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
+        //////                    [PSAccountTool logOut];
+        //////                }
+        ////            }
+        //            if (responseObject) {
+        //                success(responseObject);
+        //            }
+        //        }
+        
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         if (failure) {
@@ -322,5 +327,56 @@
 //}
 
 
-
++ (NSURLSessionDataTask*)postJson:(NSString *)URLString
+                       parameters:(id)parameters
+                          success:(void (^)(id responseObject))success
+                          failure:(void (^)(NSError *error))failure{
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 60;//30.0;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    manager.securityPolicy = securityPolicy;
+    
+    NSMutableDictionary*par=[NSMutableDictionary new];
+    if ([parameters isKindOfClass:[NSDictionary class]] ) {
+        NSDictionary*dict=parameters;
+        NSArray*keyArr=dict.allKeys;
+        for (NSString *key in keyArr) {
+            
+            NSString *values=dict[key];
+            par[key]=values;
+            //            if ([URLString isEqual:Post_Ask_Add_PS]&&[key isEqual:@"img_data"]) {
+            //                NSString *values=dict[key];
+            //                par[key]=values;
+            //            }else{
+            //                NSString *values=dict[key];
+            //                NSString *enCodeValues=[self encodeString:values];
+            //                par[key]=enCodeValues;
+            //            }
+        }
+    }
+    NSMutableDictionary *parms = [NSMutableDictionary dictionaryWithDictionary:par];
+    NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,URLString];
+    NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
+    
+    return  [manager POST:url parameters:parms headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject) {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+    
+}
 @end

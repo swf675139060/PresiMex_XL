@@ -46,6 +46,11 @@ NS_ASSUME_NONNULL_BEGIN
     failure:(void (^)(NSError *error))failure;
 
 
++ (NSURLSessionDataTask*)postJson:(NSString *)URLString
+ parameters:(id)parameters
+    success:(void (^)(id responseObject))success
+    failure:(void (^)(NSError *error))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,5 +7,16 @@
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 	</dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>PesoOnline  Use user location information for loan approval</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>PesoOnline  Use user location information for loan approval</string>
+	<key>NSCameraUsageDescription</key>
+	<string>PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services</string>
 </dict>
 </plist>
