@@ -19,13 +19,13 @@
     // Do any additional setup after loading the view.
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear: animated];
-    
-    self.navigationBar.translucent = NO;
-    self.navigationBar.backgroundColor = [UIColor redColor];
-    self.navigationBar.barTintColor = [UIColor redColor];
-}
+//-(void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear: animated];
+//    
+////    self.navigationBar.translucent = NO;
+////    self.navigationBar.backgroundColor = [UIColor redColor];
+////    self.navigationBar.barTintColor = [UIColor redColor];
+//}
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
