@@ -14,8 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
+
+@property(strong, nonatomic) UIView * BGView;
+
 @property(copy, nonatomic)void(^selectImageBlock)(void);
-@property(copy, nonatomic)void(^imageChangeBlock)(NSArray * images);
+@property(copy, nonatomic)void(^imageDeleteBlock)(NSInteger deleteIndx);
 
 -(void)updataWithImages:(NSArray *)Images;
 

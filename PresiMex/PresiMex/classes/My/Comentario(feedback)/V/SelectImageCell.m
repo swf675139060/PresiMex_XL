@@ -7,6 +7,11 @@
 
 #import "SelectImageCell.h"
 
+@interface SelectImageCell()
+@property(strong,nonatomic) NSMutableArray * Images;
+
+@end
+
 @implementation SelectImageCell
 
 
@@ -16,6 +21,7 @@
     SelectImageCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
         cell = [[SelectImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        [cell creatSubView];
         
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -24,7 +30,31 @@
 }
 
 
+-(void)creatSubView{
+    [self.contentView addSubview:self.BGView];
+    UIEdgeInsets padding = UIEdgeInsetsMake(10, 15, 0, 15);
+    [self.BGView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).with.insets(padding);
+        
+    }];
+    
+}
+
+-(UIView *)BGView{
+    if(_BGView == nil){
+        _BGView = [[UIView alloc] init];
+    }
+    return _BGView;
+}
+
+
 -(void)updataWithImages:(NSArray *)Images{
+    // 删除上次创建的
+    for (UIView *subview in self.BGView.subviews) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            [subview removeFromSuperview];
+        }
+    }
     NSMutableArray * ImagesDicArr = [NSMutableArray array];
     for (int i = 0; i < Images.count; i++) {
         [ImagesDicArr addObject:@{@"type":@"1",@"image":Images[i]}];
@@ -44,26 +74,20 @@
     CGFloat x = 9;
     CGFloat y = 15;
     for (NSInteger i = 0; i < ImagesDicArr.count; i++) {
-        // 删除上次创建的
-        for (UIView *subview in self.contentView.subviews) {
-            if ([subview isKindOfClass:[UIButton class]]) {
-                [subview removeFromSuperview];
-            }
-        }
+
         
         
         // 创建Label
         UIButton *btn = [[UIButton alloc] init];
-//        [btn setBackgroundImage:ImagesDicArr[i][@"image"] forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"addImage"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:ImagesDicArr[i][@"image"] forState:UIControlStateNormal];
         
         btn.layer.cornerRadius = 5;
         btn.layer.masksToBounds = YES;
         btn.tag = i;
-        btn.backgroundColor = [UIColor redColor];
+        btn.backgroundColor = [UIColor whiteColor];
         
         // 添加到父视图
-        [self.contentView addSubview:btn];
+        [self.BGView addSubview:btn];
         
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@(x));
@@ -91,25 +115,25 @@
         
         
         //添加删除按钮
-//        if([ImagesDicArr[i][@"type"] integerValue] == 1){
-//
-//            // 创建Label
-////            UIButton *deleteBtn = [[UIButton alloc] init];
-////            [deleteBtn setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
-////            deleteBtn.tag = i;
-////
-////            [btn addSubview:deleteBtn];
-////
-////            [deleteBtn addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
-////
-////            [deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-////                make.centerX.equalTo(btn.mas_right);
-////                make.centerY.equalTo(btn.mas_top);
-////                make.width.equalTo(@(20));
-////                make.height.equalTo(@(20));
-////
-////            }];
-//        }
+        if([ImagesDicArr[i][@"type"] integerValue] == 1){
+
+            // 创建Label
+            UIButton *deleteBtn = [[UIButton alloc] init];
+            [deleteBtn setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
+            deleteBtn.tag = i;
+
+            [self.BGView addSubview:deleteBtn];
+
+            [deleteBtn addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
+
+            [deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(btn.mas_right);
+                make.centerY.equalTo(btn.mas_top);
+                make.width.equalTo(@(20));
+                make.height.equalTo(@(20));
+
+            }];
+        }
         
         
         
@@ -125,12 +149,17 @@
     
 }
 -(void)clickItem:(UIButton *)btn{
-    if(self.imageChangeBlock){
-        self.imageChangeBlock(@[]);
+    if(self.imageDeleteBlock){
+        self.imageDeleteBlock(btn.tag);
     }
 }
 
 
+-(void)upBGFrameWithInsets:(UIEdgeInsets )padding{
+    [self.BGView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).with.insets(padding);
+    }];
+}
 
 
 @end

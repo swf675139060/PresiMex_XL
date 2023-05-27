@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
--(void)updateFrameWithEdgeInsets:(UIEdgeInsets )padding;
+-(void)updateFrameWithEdgeInsets:(UIEdgeInsets )padding height:(CGFloat)height;
 
 
 @end

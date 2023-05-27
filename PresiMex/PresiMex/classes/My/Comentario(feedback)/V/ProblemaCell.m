@@ -31,6 +31,12 @@
 
 
 -(void)updataWithProblems:(NSArray *)Problems selectIndx:(NSInteger)indx{
+    // 删除上次创建的
+       for (UIView *subview in self.contentView.subviews) {
+           if ([subview isKindOfClass:[UIButton class]]) {
+               [subview removeFromSuperview];
+           }
+       }
     
     // 创建2列btn
     NSInteger columnCount = 2;
@@ -43,13 +49,7 @@
     CGFloat x = horizontalSpacing;
     CGFloat y = 7.5;
     for (NSInteger i = 0; i < Problems.count; i++) {
-        // 删除上次创建的
-           for (UIView *subview in self.contentView.subviews) {
-               if ([subview isKindOfClass:[UIButton class]]) {
-                   [subview removeFromSuperview];
-               }
-           }
-        
+      
         // 创建Label
         UIButton *btn = [[UIButton alloc] init];
         [btn setTitle:Problems[i] forState:UIControlStateNormal];
@@ -62,7 +62,9 @@
         [btn addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
 
         if(indx == i){
+            
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
             [btn addLinearGradientwithSize:CGSizeMake(labelWidth, labelHeight) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor,(id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:20];
         }else{
             [btn setTitleColor:[UIColor jk_colorWithHexString:@"#999999"] forState:UIControlStateNormal];
@@ -96,14 +98,16 @@
             x += labelWidth + horizontalSpacing;
         }
     }
-    
+
 }
     
-    
-    -(void)clickItem:(UIButton *)btn{
-        if(self.clickBlock){
-            self.clickBlock(btn.tag);
-        }
+
+-(void)clickItem:(UIButton *)btn{
+    if(self.clickBlock){
+        self.clickBlock(btn.tag);
     }
+}
+
+
 
 @end
