@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tempView addSubview:self.tableView];
+    self.navTitleLabel.text = @"Comentario";
     
 }
 

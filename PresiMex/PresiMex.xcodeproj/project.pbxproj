@@ -23,6 +23,8 @@
 		FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF3342A091FCA006C5887 /* WFBaseViewController.m */; };
 		FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF3372A092010006C5887 /* WFTabBarController.m */; };
 		FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF33B2A092107006C5887 /* DKGuideViewController.m */; };
+		FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F162A21BC1A00599A86 /* SobreVC.m */; };
+		FB939F1A2A21C0BC00599A86 /* WFCornerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F192A21C0BC00599A86 /* WFCornerCell.m */; };
 		FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D392A05124600B1C0A3 /* AppDelegate.m */; };
 		FB976D402A05124600B1C0A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D3F2A05124600B1C0A3 /* ViewController.m */; };
 		FB976D452A05124900B1C0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB976D442A05124900B1C0A3 /* Assets.xcassets */; };
@@ -100,6 +102,10 @@
 		FB8AF3372A092010006C5887 /* WFTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFTabBarController.m; sourceTree = "<group>"; };
 		FB8AF33A2A092107006C5887 /* DKGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKGuideViewController.h; sourceTree = "<group>"; };
 		FB8AF33B2A092107006C5887 /* DKGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKGuideViewController.m; sourceTree = "<group>"; };
+		FB939F152A21BC1A00599A86 /* SobreVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SobreVC.h; sourceTree = "<group>"; };
+		FB939F162A21BC1A00599A86 /* SobreVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SobreVC.m; sourceTree = "<group>"; };
+		FB939F182A21C0BC00599A86 /* WFCornerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFCornerCell.h; sourceTree = "<group>"; };
+		FB939F192A21C0BC00599A86 /* WFCornerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFCornerCell.m; sourceTree = "<group>"; };
 		FB976D352A05124600B1C0A3 /* PresiMex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresiMex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB976D382A05124600B1C0A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FB976D392A05124600B1C0A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -324,6 +330,39 @@
 			path = Guide;
 			sourceTree = "<group>";
 		};
+		FB939F112A21BBD100599A86 /* Sobre(关于我们) */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F132A21BBD100599A86 /* C */,
+				FB939F122A21BBD100599A86 /* M */,
+				FB939F142A21BBD100599A86 /* V */,
+			);
+			path = "Sobre(关于我们)";
+			sourceTree = "<group>";
+		};
+		FB939F122A21BBD100599A86 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FB939F132A21BBD100599A86 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F152A21BC1A00599A86 /* SobreVC.h */,
+				FB939F162A21BC1A00599A86 /* SobreVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FB939F142A21BBD100599A86 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		FB976D2C2A05124500B1C0A3 = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +436,8 @@
 				FBC2A8642A19C96D0010D7F8 /* WFLabelCell.m */,
 				FBC2A8752A1A22530010D7F8 /* WFTextViewCell.h */,
 				FBC2A8762A1A22530010D7F8 /* WFTextViewCell.m */,
+				FB939F182A21C0BC00599A86 /* WFCornerCell.h */,
+				FB939F192A21C0BC00599A86 /* WFCornerCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -470,6 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				FBC2A85B2A19C95A0010D7F8 /* cell */,
+				FB939F112A21BBD100599A86 /* Sobre(关于我们) */,
 				FBC2A86B2A19CA8B0010D7F8 /* Comentario(feedback) */,
 				FBC5290C2A18644E004B7721 /* MyVC */,
 			);
@@ -717,10 +759,12 @@
 				FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */,
 				FBCA72392A0A6B8600A10D4E /* MyViewController.m in Sources */,
 				FBC2A86A2A19C96D0010D7F8 /* WFImageCell.m in Sources */,
+				FB939F1A2A21C0BC00599A86 /* WFCornerCell.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
+				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				FB976D402A05124600B1C0A3 /* ViewController.m in Sources */,
 				FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */,
 				FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */,
