@@ -142,4 +142,19 @@
     return self.layer.cornerRadius;
 }
 
+
+/**
+ *  当前view的controller
+ *
+ *  @return UIViewController
+ */
+-(UIViewController *)viewController
+{
+    UIResponder *responder = self;
+    while ((responder = [responder nextResponder]))
+        if ([responder isKindOfClass:[UIViewController class]])
+            return (UIViewController *)responder;
+    
+    return nil;
+}
 @end

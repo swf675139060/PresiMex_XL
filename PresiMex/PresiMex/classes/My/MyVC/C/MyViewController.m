@@ -10,6 +10,8 @@
 
 #import "ComentarioVC.h"
 
+#import "PMLoginViewController.h"
+
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, copy) NSArray<NSString *> *titles; /**< 标题*/
@@ -82,7 +84,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [self pushLoginVc];
     if(indexPath.row == 0){
         
     }else if (indexPath.row == 1){
@@ -168,5 +170,9 @@
     
     return _CellImages;
 }
-
+-(void)pushLoginVc{
+    
+    PMLoginViewController*Vc=[PMLoginViewController new];
+    [self.navigationController pushViewController:Vc animated:YES];
+}
 @end

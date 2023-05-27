@@ -30,5 +30,10 @@
 @property (nonatomic, assign) CGFloat slf_cornerRadius ;
 
 
-
+/**
+ *  当前view的controller
+ *
+ *  @return UIViewController
+ */
+- (UIViewController *)viewController;
 @end
