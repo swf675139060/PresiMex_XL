@@ -428,7 +428,6 @@
 		FBC5290C2A18644E004B7721 /* MyVC */ = {
 			isa = PBXGroup;
 			children = (
-				FBC5290F2A186473004B7721 /* M */,
 				FBC5290E2A18646C004B7721 /* V */,
 				FBC5290D2A18645B004B7721 /* C */,
 			);
@@ -451,13 +450,6 @@
 				FBC529112A186494004B7721 /* MyHeaderView.m */,
 			);
 			path = V;
-			sourceTree = "<group>";
-		};
-		FBC5290F2A186473004B7721 /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
 			sourceTree = "<group>";
 		};
 		FBCA72322A0A69DE00A10D4E /* Home */ = {
