@@ -11,6 +11,7 @@
 		270A261DD59BA1810A7E8F9C /* Pods_PresiMex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A4827404A572A6581BBF4C /* Pods_PresiMex.framework */; };
 		56B288E235E119C8BDE40A0C /* Pods_PresiMexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */; };
 		A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */; };
+		A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E252A21BB4300451413 /* PMBaseHttp.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
 		FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */; };
 		FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F52A088AC5006C5887 /* SLFLoadingHub.m */; };
@@ -75,6 +76,9 @@
 		9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		A4DD5E1E2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
+		A4DD5E242A21BB4300451413 /* PMBaseHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBaseHttp.h; sourceTree = "<group>"; };
+		A4DD5E252A21BB4300451413 /* PMBaseHttp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMBaseHttp.m; sourceTree = "<group>"; };
+		A4DD5E282A21BC1100451413 /* PMUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMUrl.h; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB26CFEA2A1A3A0E000DB383 /* SelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectImageCell.h; sourceTree = "<group>"; };
@@ -196,6 +200,16 @@
 				A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */,
 			);
 			path = Nav_Bar;
+			sourceTree = "<group>";
+		};
+		A4DD5E232A21BAD600451413 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				A4DD5E242A21BB4300451413 /* PMBaseHttp.h */,
+				A4DD5E252A21BB4300451413 /* PMBaseHttp.m */,
+				A4DD5E282A21BC1100451413 /* PMUrl.h */,
+			);
+			path = HTTP;
 			sourceTree = "<group>";
 		};
 		CAA89AF56AFF80302B4105DA /* Frameworks */ = {
@@ -388,6 +402,7 @@
 		FB976D372A05124600B1C0A3 /* PresiMex */ = {
 			isa = PBXGroup;
 			children = (
+				A4DD5E232A21BAD600451413 /* HTTP */,
 				FB8AF3242A088C2F006C5887 /* Category */,
 				FB8AF2F12A088AC4006C5887 /* UIComponents */,
 				FB8AF2EF2A088383006C5887 /* configuration */,
@@ -586,6 +601,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = PM;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					FB976D342A05124600B1C0A3 = {
@@ -786,6 +802,7 @@
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,
 				FB8AF32E2A088C78006C5887 /* UILabel+SLFLineSpace.m in Sources */,
 				FB8AF31E2A088AC5006C5887 /* SLFFailedHub.m in Sources */,
+				A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,9 +967,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
@@ -981,9 +998,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
