@@ -9,6 +9,7 @@
 #import "MyHeaderView.h"
 
 #import "ComentarioVC.h"
+#import "SobreVC.h"
 
 #import "PMLoginViewController.h"
 
@@ -96,6 +97,8 @@
     }else if (indexPath.row == 3){
         
     }else if (indexPath.row == 4){
+        SobreVC * vc = [SobreVC new];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.row == 5){
         
