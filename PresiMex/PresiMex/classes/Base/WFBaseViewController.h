@@ -11,6 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WFBaseViewController : UIViewController
 
+@property(strong,nonatomic)UIView *navBarView;
+@property(strong,nonatomic)UIButton *backBtn;
+@property(strong,nonatomic)UILabel *navTitleLabel;
+@property(strong,nonatomic)UIView *tempView;
+
+-(void)setBackBarButtonWithTheme:(NSInteger)type;
+-(void)hiddenLeftItem;
 @end
 
 NS_ASSUME_NONNULL_END

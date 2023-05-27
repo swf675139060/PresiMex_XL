@@ -42,6 +42,12 @@ if (strongself == nil) return;
 #define DefaultAvatar [UIImage imageNamed:@"DefaultAvatar"]
 
 
+#define BColor_Hex(_STR_,a) ([UIColor colorWithRed:[[NSString stringWithFormat:@"%lu", strtoul([[_STR_ substringWithRange:NSMakeRange(1, 2)] UTF8String], 0, 16)] intValue] / 255.0 green:[[NSString stringWithFormat:@"%lu", strtoul([[_STR_ substringWithRange:NSMakeRange(3, 2)] UTF8String], 0, 16)] intValue] / 255.0 blue:[[NSString stringWithFormat:@"%lu", strtoul([[_STR_ substringWithRange:NSMakeRange(5, 2)] UTF8String], 0, 16)] intValue] / 255.0 alpha:a])
+
+/*常用宏(字体)*/
+#define B_FONT_REGULAR(size) [UIFont systemFontOfSize:size]
+#define B_FONT_MEDIUM(size)  [UIFont systemFontOfSize:size weight:UIFontWeightSemibold]
+#define B_FONT_BOLD(size)    [UIFont boldSystemFontOfSize:size]
 
 #ifdef __OBJC__
 
@@ -52,6 +58,7 @@ if (strongself == nil) return;
 #import "UILabel+SLFLineSpace.h"
 #import "UIView+SLFExtension.h"
 #import "UIView+LinearGradient.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 #import <JKCategories/JKCategories.h>
 #import <Masonry/Masonry.h>

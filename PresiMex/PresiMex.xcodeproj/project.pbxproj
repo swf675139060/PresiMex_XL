@@ -10,6 +10,7 @@
 		0DD8A011437AFA3BD010EC3B /* Pods_PresiMex_PresiMexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */; };
 		270A261DD59BA1810A7E8F9C /* Pods_PresiMex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A4827404A572A6581BBF4C /* Pods_PresiMex.framework */; };
 		56B288E235E119C8BDE40A0C /* Pods_PresiMexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */; };
+		A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
 		FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */; };
 		FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F52A088AC5006C5887 /* SLFLoadingHub.m */; };
@@ -70,6 +71,8 @@
 		7BBC813EC55337913FF95F63 /* Pods-PresiMex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex.release.xcconfig"; path = "Target Support Files/Pods-PresiMex/Pods-PresiMex.release.xcconfig"; sourceTree = "<group>"; };
 		7CAC44E67EDCCD5EC40D6886 /* Pods-PresiMexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMexTests.release.xcconfig"; path = "Target Support Files/Pods-PresiMexTests/Pods-PresiMexTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		A4DD5E1E2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB26CFEA2A1A3A0E000DB383 /* SelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectImageCell.h; sourceTree = "<group>"; };
@@ -180,6 +183,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A4DD5E1C2A21A9D400451413 /* Nav_Bar */ = {
+			isa = PBXGroup;
+			children = (
+				A4DD5E1E2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.h */,
+				A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */,
+			);
+			path = Nav_Bar;
+			sourceTree = "<group>";
+		};
 		CAA89AF56AFF80302B4105DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +273,7 @@
 		FB8AF3242A088C2F006C5887 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A4DD5E1C2A21A9D400451413 /* Nav_Bar */,
 				FB8AF32B2A088C78006C5887 /* UILabel */,
 				FB8AF3252A088C6F006C5887 /* UIView */,
 			);
@@ -392,7 +405,6 @@
 			isa = PBXGroup;
 			children = (
 				FBC2A86E2A19CABB0010D7F8 /* C */,
-				FBC2A86D2A19CAB30010D7F8 /* M */,
 				FBC2A86C2A19CAAE0010D7F8 /* V */,
 			);
 			path = "Comentario(feedback)";
@@ -407,13 +419,6 @@
 				FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */,
 			);
 			path = V;
-			sourceTree = "<group>";
-		};
-		FBC2A86D2A19CAB30010D7F8 /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
 			sourceTree = "<group>";
 		};
 		FBC2A86E2A19CABB0010D7F8 /* C */ = {
@@ -729,6 +734,7 @@
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
+				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
