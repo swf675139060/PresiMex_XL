@@ -22,6 +22,7 @@
 		A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E5C2A21FFE400451413 /* CRBoxInputCellProperty.m */; };
 		A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E5E2A21FFE400451413 /* CRLineView.m */; };
 		A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */; };
+		A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
 		FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */; };
 		FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F52A088AC5006C5887 /* SLFLoadingHub.m */; };
@@ -109,6 +110,8 @@
 		A4DD5E612A21FFE400451413 /* CRBoxTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxTextView.h; sourceTree = "<group>"; };
 		A4DD5E692A22040100451413 /* PMPhoneNumberView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPhoneNumberView.h; sourceTree = "<group>"; };
 		A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPhoneNumberView.m; sourceTree = "<group>"; };
+		A4DD5E6C2A22064300451413 /* PMVeriCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMVeriCodeView.h; sourceTree = "<group>"; };
+		A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMVeriCodeView.m; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB26CFEA2A1A3A0E000DB383 /* SelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectImageCell.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				A4DD5E342A21EA0600451413 /* PMLoginHeaderView.m */,
 				A4DD5E692A22040100451413 /* PMPhoneNumberView.h */,
 				A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */,
+				A4DD5E6C2A22064300451413 /* PMVeriCodeView.h */,
+				A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -445,17 +450,8 @@
 			isa = PBXGroup;
 			children = (
 				FB939F132A21BBD100599A86 /* C */,
-				FB939F122A21BBD100599A86 /* M */,
-				FB939F142A21BBD100599A86 /* V */,
 			);
 			path = "Sobre(关于我们)";
-			sourceTree = "<group>";
-		};
-		FB939F122A21BBD100599A86 /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
 			sourceTree = "<group>";
 		};
 		FB939F132A21BBD100599A86 /* C */ = {
@@ -465,13 +461,6 @@
 				FB939F162A21BC1A00599A86 /* SobreVC.m */,
 			);
 			path = C;
-			sourceTree = "<group>";
-		};
-		FB939F142A21BBD100599A86 /* V */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = V;
 			sourceTree = "<group>";
 		};
 		FB976D2C2A05124500B1C0A3 = {
@@ -879,6 +868,7 @@
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
+				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				FB976D402A05124600B1C0A3 /* ViewController.m in Sources */,
 				FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */,

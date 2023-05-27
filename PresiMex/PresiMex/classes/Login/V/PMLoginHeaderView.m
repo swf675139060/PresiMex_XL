@@ -25,13 +25,13 @@
     UIButton* button = [[UIButton alloc]init];
     button.titleLabel.font = B_FONT_REGULAR(16);
     [button addTarget:self action:@selector(leftItemAction) forControlEvents:(UIControlEventTouchUpInside)];
-    button.frame = CGRectMake(15, WF_StatusBarHeight+7, 32, 32);
+    button.frame = CGRectMake(15, WF_StatusBarHeight+6, 32, 32);
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeading;
     [button setImage:[UIImage imageNamed: @"back_Icon"] forState:(UIControlStateNormal)];
     [self.topBgView addSubview:button];
     
     [self.topBgView addSubview:self.logoIcon];
-    _logoIcon.frame=CGRectMake((WF_ScreenWidth-76)/2,button.slf_bottom+10, 76, 76);
+    _logoIcon.frame=CGRectMake((WF_ScreenWidth-76)/2,button.swf_bottom+10, 76, 76);
     
 //    CRBoxInputCellProperty *cellProperty = [CRBoxInputCellProperty new];
 //    cellProperty.cellBgColorNormal = [UIColor whiteColor];
