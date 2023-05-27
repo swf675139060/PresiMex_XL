@@ -10,6 +10,7 @@
 #import "ProblemaCell.h"
 #import "WFTextViewCell.h"
 #import "SelectImageCell.h"
+#import "WFBtnCell.h"
 
 @interface ComentarioVC ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -97,18 +98,32 @@
         return cell;
     }else if (indexPath.row == 4){
         SelectImageCell * cell = [SelectImageCell cellWithTableView:tableView];
+        cell.BGView.layer.cornerRadius = 10;
+        cell.BGView.layer.masksToBounds = YES;
+        cell.BGView.layer.borderWidth = 0.5;
+        cell.BGView.layer.borderColor = [UIColor jk_colorWithHexString:@"#7C7C7C"].CGColor;
         [cell updataWithImages:self.images];
         WF_WEAKSELF(weakself);
         cell.selectImageBlock = ^{
             [weakself selectImage];
         };
-        cell.imageChangeBlock = ^(NSArray * _Nonnull images) {
-            weakself.images = images;
+        cell.imageDeleteBlock = ^(NSInteger deleteIndx) {
+            [weakself.images removeObjectAtIndex:deleteIndx];
+            [weakself.tableView reloadData];
         };
+        return cell;
+    }else{
+        WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
+        [cell.btn setTitle:@"Próximo paso" forState:UIControlStateNormal];
+        cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
+        [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor,(id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
+    
+        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(39, 15, 25, 15) height:50];
         return cell;
     }
     
-    return [UITableViewCell new];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -127,11 +142,12 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight - WF_NavigationHeight)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor  = [UIColor whiteColor];
         _tableView.tableFooterView = [[UIView alloc] init];
+        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     

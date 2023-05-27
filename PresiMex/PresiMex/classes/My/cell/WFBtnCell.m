@@ -48,12 +48,13 @@
     }];
 }
 
--(void)updateFrameWithEdgeInsets:(UIEdgeInsets )padding{
+-(void)updateFrameWithEdgeInsets:(UIEdgeInsets )padding height:(CGFloat)height{
     __weak typeof(self)weakSelf = self;
-    [self.btn mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.btn mas_remakeConstraints:^(MASConstraintMaker *make) {
 
         make.edges.equalTo(weakSelf.contentView).with.insets(padding);
         
+        make.height.equalTo(@(height));
 
     }];
 }

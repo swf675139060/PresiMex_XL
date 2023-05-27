@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(copy, nonatomic)void(^clickBlock)(NSInteger indx);
 
 -(void)updataWithProblems:(NSArray *)Problems selectIndx:(NSInteger)indx;
+
+
+-(void)upBGFrameWithInsets:(UIEdgeInsets )padding;
+
 @end
 
 NS_ASSUME_NONNULL_END
