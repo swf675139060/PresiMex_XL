@@ -88,7 +88,7 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight - WF_NavigationHeight - 70)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, WF_ScreenWidth, WF_ScreenHeight - WF_NavigationHeight - 70)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor  = [UIColor whiteColor];
@@ -103,6 +103,7 @@
 -(PMOrderTopView *)topView{
     if(_topView == nil){
         _topView = [[PMOrderTopView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 70)];
+        [_topView selectIndx:0];
     }
     return _topView;
 }

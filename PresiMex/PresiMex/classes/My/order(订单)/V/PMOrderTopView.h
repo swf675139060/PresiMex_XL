@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(strong, nonatomic) void(^clickRightBtnBlock)(void);
 
+-(void)selectIndx:(NSInteger)indx;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -13,6 +13,9 @@
 
 @property(strong, nonatomic) UIButton * rightBtn;
 
+
+@property(assign, nonatomic) NSInteger indx;
+
 @end
 
 @implementation PMOrderTopView
@@ -26,14 +29,14 @@
         make.left.equalTo(@(15));
         make.top.equalTo(@(15.5));
         make.height.equalTo(@(44));
-        make.width.equalTo(@(WF_ScreenWidth - 30 -20));
+        make.width.equalTo(@((WF_ScreenWidth - 30 -20)/2));
     }];
     
     [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@(15));
-        make.right.equalTo(@(-15.5));
+        make.right.equalTo(@(-15));
+        make.top.equalTo(@(15.5));
         make.height.equalTo(@(44));
-        make.width.equalTo(@(WF_ScreenWidth - 30 -20));
+        make.width.equalTo(@((WF_ScreenWidth - 30 -20)/2));
     }];
     
 }
@@ -63,17 +66,46 @@
 }
 
 -(void)clickLeftBtn{
-    if(self.clickLeftBtnBlock){
-        self.clickLeftBtnBlock();
+    if(self.indx != 0){
+        
+        [self selectIndx:0];
+        if(self.clickLeftBtnBlock){
+            self.clickLeftBtnBlock();
+        }
     }
     
 }
 -(void)clickRightBtn{
-    if(self.clickRightBtnBlock){
-        self.clickRightBtnBlock();
+    if(self.indx != 1){
+        
+        if(self.clickRightBtnBlock){
+            self.clickRightBtnBlock();
+        }
+        
+        [self selectIndx:1];
     }
 }
 
+
+-(void)selectIndx:(NSInteger)indx{
+    self.indx = indx;
+    if(indx == 0){
+        [self.leftBtn jk_cornerRadius:5 strokeSize:0.5 color:[UIColor jk_colorWithHexString:@"#FC7500"]];
+        [self.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#FC7500"] forState:UIControlStateNormal];
+        
+        [self.rightBtn jk_cornerRadius:5 strokeSize:0.5 color:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [self.rightBtn setTitleColor:[UIColor jk_colorWithHexString:@"#999999"] forState:UIControlStateNormal];
+        
+        
+    }else{
+        [self.leftBtn jk_cornerRadius:5 strokeSize:0.5 color:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [self.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#999999"] forState:UIControlStateNormal];
+        
+        
+        [self.rightBtn jk_cornerRadius:5 strokeSize:0.5 color:[UIColor jk_colorWithHexString:@"#FC7500"]];
+        [self.rightBtn setTitleColor:[UIColor jk_colorWithHexString:@"#FC7500"] forState:UIControlStateNormal];
+    }
+}
 
 
 
