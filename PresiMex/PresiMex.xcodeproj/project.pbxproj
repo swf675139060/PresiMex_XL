@@ -24,6 +24,8 @@
 		A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */; };
 		A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */; };
 		A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */; };
+		FB1C73A72A23247800194925 /* PMNotiView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C73A62A23247800194925 /* PMNotiView.m */; };
+		FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C73A92A23417900194925 /* WFLeftRightBtnCell.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
 		FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */; };
 		FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F52A088AC5006C5887 /* SLFLoadingHub.m */; };
@@ -46,7 +48,6 @@
 		FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F3D2A2211F700599A86 /* OrderVC.m */; };
 		FB939F412A2213AD00599A86 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F402A2213AD00599A86 /* OrderCell.m */; };
 		FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D392A05124600B1C0A3 /* AppDelegate.m */; };
-		FB976D402A05124600B1C0A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D3F2A05124600B1C0A3 /* ViewController.m */; };
 		FB976D452A05124900B1C0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB976D442A05124900B1C0A3 /* Assets.xcassets */; };
 		FB976D482A05124900B1C0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB976D462A05124900B1C0A3 /* LaunchScreen.storyboard */; };
 		FB976D4B2A05124900B1C0A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D4A2A05124900B1C0A3 /* main.m */; };
@@ -125,6 +126,10 @@
 		A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMVeriCodeViewController.m; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB1C73A52A23247800194925 /* PMNotiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMNotiView.h; sourceTree = "<group>"; };
+		FB1C73A62A23247800194925 /* PMNotiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMNotiView.m; sourceTree = "<group>"; };
+		FB1C73A82A23417900194925 /* WFLeftRightBtnCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftRightBtnCell.h; sourceTree = "<group>"; };
+		FB1C73A92A23417900194925 /* WFLeftRightBtnCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftRightBtnCell.m; sourceTree = "<group>"; };
 		FB26CFEA2A1A3A0E000DB383 /* SelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectImageCell.h; sourceTree = "<group>"; };
 		FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectImageCell.m; sourceTree = "<group>"; };
 		FB8AF2F02A088433006C5887 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -171,8 +176,6 @@
 		FB976D352A05124600B1C0A3 /* PresiMex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresiMex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB976D382A05124600B1C0A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FB976D392A05124600B1C0A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FB976D3E2A05124600B1C0A3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FB976D3F2A05124600B1C0A3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FB976D442A05124900B1C0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB976D472A05124900B1C0A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB976D492A05124900B1C0A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -352,6 +355,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FB1C739E2A23232A00194925 /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				FB1C739F2A23232A00194925 /* M */,
+				FB1C73A02A23232A00194925 /* C */,
+				FB1C73A12A23232A00194925 /* V */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		FB1C739F2A23232A00194925 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FB1C73A02A23232A00194925 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FBCA72342A0A6B7B00A10D4E /* HomeViewController.h */,
+				FBCA72352A0A6B7B00A10D4E /* HomeViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FB1C73A12A23232A00194925 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				FB1C73A52A23247800194925 /* PMNotiView.h */,
+				FB1C73A62A23247800194925 /* PMNotiView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		FB8AF2EE2A0882F2006C5887 /* classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,7 +484,6 @@
 			isa = PBXGroup;
 			children = (
 				FB8AF32D2A088C78006C5887 /* UILabel+SLFLineSpace.h */,
-
 				FB939F282A21EA8900599A86 /* UILabel+WFTextSizeColor.h */,
 				FB939F292A21EA8900599A86 /* UILabel+WFTextSizeColor.m */,
 				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
@@ -493,13 +530,6 @@
 				FB939F162A21BC1A00599A86 /* SobreVC.m */,
 			);
 			path = C;
-			sourceTree = "<group>";
-		};
-		FB939F142A21BBD100599A86 /* V */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = V;
 			sourceTree = "<group>";
 		};
 		FB939F1B2A21E25500599A86 /* Ajustes(设置) */ = {
@@ -641,8 +671,6 @@
 				FB8AF2EE2A0882F2006C5887 /* classes */,
 				FB976D382A05124600B1C0A3 /* AppDelegate.h */,
 				FB976D392A05124600B1C0A3 /* AppDelegate.m */,
-				FB976D3E2A05124600B1C0A3 /* ViewController.h */,
-				FB976D3F2A05124600B1C0A3 /* ViewController.m */,
 				FB976D442A05124900B1C0A3 /* Assets.xcassets */,
 				FB976D462A05124900B1C0A3 /* LaunchScreen.storyboard */,
 				FB976D492A05124900B1C0A3 /* Info.plist */,
@@ -687,6 +715,8 @@
 				FB939F192A21C0BC00599A86 /* WFCornerCell.m */,
 				FB939F222A21E4D500599A86 /* WFSetCell.h */,
 				FB939F232A21E4D500599A86 /* WFSetCell.m */,
+				FB1C73A82A23417900194925 /* WFLeftRightBtnCell.h */,
+				FB1C73A92A23417900194925 /* WFLeftRightBtnCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -750,8 +780,7 @@
 		FBCA72322A0A69DE00A10D4E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				FBCA72342A0A6B7B00A10D4E /* HomeViewController.h */,
-				FBCA72352A0A6B7B00A10D4E /* HomeViewController.m */,
+				FB1C739E2A23232A00194925 /* HomeVC */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1016,12 +1045,12 @@
 				FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
+				FB1C73A72A23247800194925 /* PMNotiView.m in Sources */,
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
 				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
-				FB976D402A05124600B1C0A3 /* ViewController.m in Sources */,
 				FB939F372A21F6A700599A86 /* CuponCell.m in Sources */,
 				FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */,
 				FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */,
@@ -1033,6 +1062,7 @@
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */,
+				FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */,
 				FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */,
 				FBC2A8742A1A16550010D7F8 /* ProblemaCell.m in Sources */,
 				A4DD5E652A21FFE400451413 /* CRSecrectImageView.m in Sources */,
