@@ -7,6 +7,7 @@
 //
 
 #import "WFBaseView.h"
+#import "SLFToast.h"
 
 @interface WFBaseView ()
 
@@ -55,5 +56,8 @@
 {
     
 }
-
+-(void)showTip:(NSString*)text{
+    
+    [SLFToast showContent:text];
+}
 @end

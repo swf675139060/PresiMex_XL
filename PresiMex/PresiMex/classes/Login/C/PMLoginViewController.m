@@ -8,6 +8,7 @@
 #import "PMLoginViewController.h"
 #import "PMLoginHeaderView.h"
 #import "PMPhoneNumberView.h"
+#import "PMProblemViewController.h"
 @interface PMLoginViewController ()
 
 @property (nonatomic,strong) UIScrollView *scrollViewView;

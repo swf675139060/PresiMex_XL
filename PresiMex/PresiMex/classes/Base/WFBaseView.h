@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setSubViewsPosition;
 
+@property (nonatomic , copy) void(^click)(void);
+@property (nonatomic , copy) void(^clickTag)(NSInteger tag);
+-(void)showTip:(NSString*)text;
 
 @end
 
