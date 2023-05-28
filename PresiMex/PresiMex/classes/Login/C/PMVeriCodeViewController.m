@@ -8,6 +8,8 @@
 #import "PMVeriCodeViewController.h"
 #import "PMLoginHeaderView.h"
 #import "PMVeriCodeView.h"
+#import "PMProblemViewController.h"
+
 @interface PMVeriCodeViewController ()
 
 @property (nonatomic,strong) UIScrollView *scrollViewView;
@@ -19,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSubviews];
+    [self requestGetVeriCode:1];
 }
 
 -(void)setupSubviews{
@@ -37,6 +40,15 @@
    
     PMVeriCodeView*phoneView=[[PMVeriCodeView alloc]initWithFrame:CGRectMake(15, WF_NavigationHeight+10+76+25, WF_ScreenWidth-30, 325)];
     [_scrollViewView addSubview:phoneView];
+    weakify(self)
+    phoneView.codeTag = ^(NSString * _Nonnull code) {
+        strongify(self)
+        [self requestLoginWithCode:code];
+    };
+    phoneView.click = ^{
+        strongify(self)
+        [self requestGetVeriCode:2];
+    };
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame=CGRectMake(15, phoneView.swf_bottom+25, WF_ScreenWidth-30, 50);
@@ -53,8 +65,47 @@
     pLabel.textColor=BColor_Hex(@"#FC7500", 1);
     pLabel.font=B_FONT_REGULAR(12);
     pLabel.textAlignment = NSTextAlignmentRight;
+    pLabel.userInteractionEnabled=YES;
     [_scrollViewView addSubview:pLabel];
-    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickProduct)];
+    [pLabel addGestureRecognizer:tap];
+}
+-(void)requestGetVeriCode:(NSInteger)type{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+    pars[@"schedules"]=self.phone;//手机号
+    if (type==2) {//null或者1:短信验证码2:语音验证码
+        pars[@"monroe"]=@"2";
+    } else {
+        pars[@"monroe"]=@"1";
+    }
+    [PMBaseHttp post:Post_Sms_Code parameters:pars success:^(id  _Nonnull responseObject) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
+-(void)clickProduct{
+    
+    PMProblemViewController* vc = [[PMProblemViewController alloc]init];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self.navigationController  presentViewController:vc animated:NO completion:nil];
+}
+//验证码登录
+-(void)requestLoginWithCode:(NSString*)code{
+
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+    pars[@"schedules"]=self.phone;//手机号
+    pars[@"myanmar"]=code;//验证码
+    [PMBaseHttp postJson:Post_Sms_Code_Ver parameters:pars success:^(id  _Nonnull responseObject) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+//    [PMBaseHttp post:Post_Sms_Code_Ver parameters:pars success:^(id  _Nonnull responseObject) {
+//
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
+}
 @end

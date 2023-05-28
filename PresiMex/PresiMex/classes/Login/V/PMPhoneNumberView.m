@@ -7,6 +7,8 @@
 
 #import "PMPhoneNumberView.h"
 #import "PMVeriCodeViewController.h"
+#import "PMProblemViewController.h"
+
 @interface PMPhoneNumberView ()<UITextFieldDelegate>
 @property (nonatomic ,strong)UITextField *phoneTextField;
 @end
@@ -89,8 +91,10 @@
     pLabel.textColor=BColor_Hex(@"#FC7500", 1);
     pLabel.font=B_FONT_REGULAR(12);
     pLabel.textAlignment = NSTextAlignmentRight;
+    pLabel.userInteractionEnabled=YES;
     [self addSubview:pLabel];
-
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickProduct)];
+    [pLabel addGestureRecognizer:tap];
    
 
     
@@ -99,34 +103,24 @@
 
 -(void)textFieldTextChange:(UITextField *)textField{
     
-        if ([_phoneTextField.text hasPrefix:@"0"]&([_phoneTextField.text length] >=11)) {
-            _phoneTextField.text = [_phoneTextField.text substringToIndex:11];
-            [self pushVerVc];
-        }else if ([_phoneTextField.text length] >=10) {
-               _phoneTextField.text = [_phoneTextField.text substringToIndex:10];
-            [self pushVerVc];
-           
-        }
+    if ([_phoneTextField.text length] >=10) {
+       _phoneTextField.text = [_phoneTextField.text substringToIndex:10];
+        [self pushVerVc];
+    }
       
-       
   
 }
 -(void)pushVerVc{
-    if (_phoneTextField.text.length>=10) {
-        [self requestGetVeriCode];
-       // PMVeriCodeViewController *Vc=[PMVeriCodeViewController new];
-        //[self.viewController.navigationController pushViewController:Vc animated:YES];
+    if (_phoneTextField.text.length==10) {
+        PMVeriCodeViewController *Vc=[PMVeriCodeViewController new];
+        Vc.phone=_phoneTextField.text;
+        [self.viewController.navigationController pushViewController:Vc animated:YES];
     }
 }
--(void)requestGetVeriCode{
-    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
-    pars[@"schedules"]=@"9999999993";//手机号
-    //pars[@"monroe"]=@"1";//null或者1:短信验证码 2:语音验证码
+-(void)clickProduct{
     
-    [PMBaseHttp post:Post_Sms_Code parameters:pars success:^(id  _Nonnull responseObject) {
-        
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
+    PMProblemViewController* vc = [[PMProblemViewController alloc]init];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self.viewController.navigationController  presentViewController:vc animated:NO completion:nil];
 }
 @end

@@ -6,8 +6,18 @@
 //
 
 #import "PMBaseHttp.h"
+#import "MD5Utils.h"
 
 @implementation PMBaseHttp
+
+static inline BOOL IsEmpty(id thing){
+   return thing == nil || [thing isEqual:[NSNull null]]
+        || ([thing respondsToSelector:@selector(length)]
+            && [(NSData *)thing length] == 0)
+        || ([thing respondsToSelector:@selector(count)]
+            && [(NSArray *)thing count] == 0);
+}
+
 
 + (void)startNetWorkingMonitoring
 {
@@ -50,7 +60,7 @@
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
+    [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
@@ -166,87 +176,34 @@
 + (NSURLSessionDataTask*)post:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
     // 获取请求管理者
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",@"application/octet-stream",nil];
-
-
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    //[manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
-   // [manager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"LOAN_HEAD_APP_ID" password:@"81f39018d78533c158665aa7945c6a95"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    //[manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    //LOAN_HEAD_VERSION
-    //    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"opeso" ofType:@"cer"];
-    //    NSData *certData=[NSData dataWithContentsOfFile:cerPath];
-    //    AFSecurityPolicy *securityPolicy =[AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
-    //    [securityPolicy setAllowInvalidCertificates:NO];
-    //    [securityPolicy setPinnedCertificates:@[certData]];
-    //    securityPolicy.allowInvalidCertificates = NO;
-    //    [securityPolicy setValidatesDomainName:NO];
-    //
-    //    manager.securityPolicy = securityPolicy;
-    
+    NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
+    deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
+//    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bear %@", token] forHTTPHeaderField:@"Authentication"];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
     manager.securityPolicy = securityPolicy;
-    //参数加密
-    NSMutableDictionary*par=[NSMutableDictionary new];
-    if ([parameters isKindOfClass:[NSDictionary class]] ) {
-        NSDictionary*dict=parameters;
-        NSArray*keyArr=dict.allKeys;
-        for (NSString *key in keyArr) {
-            NSString *values=dict[key];
-            par[key]=values;
-            //            if ([URLString isEqual:Post_Ask_Add_PS]&&[key isEqual:@"img_data"]) {
-            //                NSString *values=dict[key];
-            //                par[key]=values;
-            //            }else{
-            //                NSString *values=dict[key];
-            //                NSString *enCodeValues=[self encodeString:values];
-            //                par[key]=enCodeValues;
-            //            }
-        }
-    }
-    
-    
-    NSMutableDictionary *parms = [NSMutableDictionary dictionaryWithDictionary:par];
     NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,URLString];
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
-    //    NSString *ras=HTTPKEY_RAS_RELEES;
-    //    parms[@"akeys"]=[PSBase64 encodeBase64:[RSA encryptString:HTTP_KEY publicKey:ras]];
-    
-    //    if ([PSAccountTool account]) {
-    //        parms[@"token"]=[PSAccountTool account].token;
-    //    }
-    //NSString*josn=[parms toJSONString];
-    // 发送请求
-    
-    NSLog(@"url===%@\n parms==%@",url,parms);
-    //    [self debugLogWith:parms withPostUrl:url];
-    return  [manager POST:url parameters:parms headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        //NSLog(@"url===%@\nPost_responseObject=%@",url,responseObject);
-        if (responseObject) {
-            success(responseObject);
-        }
-        //        if(!IsEmpty(responseObject)){
-        ////            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-        //////                if ([responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
-        //////                    [PSAccountTool logOut];
-        //////                }
-        ////            }
-        //            if (responseObject) {
-        //                success(responseObject);
-        //            }
-        //        }
+    return  [manager POST:url parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
+        if(!IsEmpty(responseObject)){
+            if (responseObject) {
+                success(responseObject);
+            }
+        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -290,52 +247,12 @@
     
 }
 
-//+(NSString*)encodeString:(NSString*)string{
-//
-////    NSString * cryptedText=[NSString encryptAESWithPlainText:string];
-////    return  [PSBase64 encodeBase64:cryptedText];
-//}
-
-//- (NSString *)dicToJsonStr:(NSArray *)dic
-//{
-//    NSError *parseError = nil;
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
-//    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//}
-
-//+(void)debugLogWith:(NSDictionary*)dict withPostUrl:(NSString*)url{
-//    if (!IsEmpty(dict)) {
-//        NSArray *keys = [dict allKeys];
-//        NSArray *sortKeys = [keys sortedArrayUsingSelector:@selector(compare:)];
-//        NSMutableString *paramsString=[[NSMutableString alloc]init];
-//        for (NSString *key in sortKeys) {
-//            NSString *value = [dict objectForKey:key];
-//            [paramsString appendFormat: @"%@=%@&",key,value];
-//        }
-//        NSString *str3 = [paramsString substringToIndex:paramsString.length-1];
-//        NSString * logUrlParams=[NSString stringWithFormat:@"curl --data  \"%@\"      \"\%@\"",str3,url];
-//        /*
-//         带时间
-//        NSString *rigtTime=[NSString stringWithFormat:@"curl  --verbose --write-out %@ ",@"\"连接时间==%{time_connect}||总耗时==%{time_total}\""];
-//        NSString * logUrlParam=[NSString stringWithFormat:@"--data \"%@\"      \"\%@\"",str3,url];
-//        NSString *logUrl=[NSString stringWithFormat:@"%@%@",rigtTime,logUrlParam];
-//         */
-//        //VCLog(@"rigtTime==%@",logUrl)
-//       // --verbose --write-out "%{time_connect}::%{time_total}\n"
-//        //    NSString * curlString=[NSString stringWithFormat:@" curl --verbose --write-out %@   %@",timeString,logUrlParams];json.dumps-s | python -m json.tool
-//        //    NSLog(@"%@",curlString);
-//        NSLog(@"curl命令==%@ -s | python -m json.tool",logUrlParams);
-//        //NSLog(@"请求路径==%@",url);
-//        //NSLog(@"请求参数===%@",dict);
-//    }
-//
-//}
 
 
 + (NSURLSessionDataTask*)postJson:(NSString *)URLString
-                       parameters:(id)parameters
-                          success:(void (^)(id responseObject))success
-                          failure:(void (^)(NSError *error))failure{
+            parameters:(id)parameters
+            success:(void (^)(id responseObject))success
+            failure:(void (^)(NSError *error))failure{
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -343,38 +260,25 @@
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer setValue:@"LOAN_HEAD_APP_ID" forHTTPHeaderField:@"81f39018d78533c158665aa7945c6a95"];
+    [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
+    NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
+    deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
+//    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bear %@", token] forHTTPHeaderField:@"Authentication"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
     manager.securityPolicy = securityPolicy;
-    
-    NSMutableDictionary*par=[NSMutableDictionary new];
-    if ([parameters isKindOfClass:[NSDictionary class]] ) {
-        NSDictionary*dict=parameters;
-        NSArray*keyArr=dict.allKeys;
-        for (NSString *key in keyArr) {
-            
-            NSString *values=dict[key];
-            par[key]=values;
-            //            if ([URLString isEqual:Post_Ask_Add_PS]&&[key isEqual:@"img_data"]) {
-            //                NSString *values=dict[key];
-            //                par[key]=values;
-            //            }else{
-            //                NSString *values=dict[key];
-            //                NSString *enCodeValues=[self encodeString:values];
-            //                par[key]=enCodeValues;
-            //            }
-        }
-    }
-    NSMutableDictionary *parms = [NSMutableDictionary dictionaryWithDictionary:par];
     NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,URLString];
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
-    
-    return  [manager POST:url parameters:parms headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (responseObject) {
-            success(responseObject);
+    return  [manager POST:url parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         if(!IsEmpty(responseObject)){
+            if (responseObject) {
+                success(responseObject);
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {

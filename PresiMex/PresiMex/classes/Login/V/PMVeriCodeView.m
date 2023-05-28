@@ -11,6 +11,8 @@
 
 @interface PMVeriCodeView ()
 @property (nonatomic ,strong)UILabel *timeLabel;
+@property (nonatomic ,assign) int index;
+@property (nonatomic ,strong) NSTimer *timeTimer;
 @end
 
 @implementation PMVeriCodeView
@@ -67,9 +69,6 @@
             
     }];
 
-    
-
-   
 
 
     UILabel *timeLabel = [[UILabel alloc] init];
@@ -77,7 +76,6 @@
     timeLabel.font=B_FONT_MEDIUM(13);
     timeLabel.textColor=BColor_Hex(@"#7C7C7C", 1);
     timeLabel.textAlignment = NSTextAlignmentRight;
-    timeLabel.text=@"57S";
     _timeLabel=timeLabel;
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(verLabel.mas_right).offset(0);
@@ -128,29 +126,60 @@
     NSRange range=[[attStr string]rangeOfString:@"Intente con un código de voz."];
     [attStr addAttributes:@{NSForegroundColorAttributeName: BColor_Hex(@"#FC7909", 1)} range:range];
     desLabel2.attributedText = attStr;
-
+    desLabel2.userInteractionEnabled=YES;
     [desLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(10);
             make.right.equalTo(self).offset(-10);
             make.top.equalTo(boxInputView.mas_bottom).offset(20);
             make.height.equalTo(@15);
     }];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resendVioceCode)];
+    [desLabel2 addGestureRecognizer:tap];
 
     weakify(self)
     boxInputView.textDidChangeblock = ^(NSString *text, BOOL isFinished) {
         strongify(self);
         NSLog(@"text:%@", text);
-//        if (text.length == 4) {
-//            self.landBtn.enabled = YES;
-//        }else{
-//            self.landBtn.enabled = NO;
-//        }
-        //self.vCode = text;
+        if (text.length == 4) {
+            if( self.codeTag){
+                self.codeTag(text);
+            }
+        }
+
+       
     };
+    
+    self.index = 60;
+    _timeTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timeTimer forMode:NSDefaultRunLoopMode];
+    [_timeTimer fire];
     
 }
 
 
+- (void)updateTime:(NSTimer *)time
+{
+    
+    
+    self.index--;
+    if (self.index>0) {
+        _timeLabel.text=[NSString stringWithFormat:@"%dS",self.index];
+    }else{
+        [self.timeTimer invalidate];
+        self.timeTimer = nil;
+        _timeLabel.text=@"";
+    }
+    
+}
 
-
+-(void)resendVioceCode{
+    self.index = 60;
+    _timeTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timeTimer forMode:NSDefaultRunLoopMode];
+    [_timeTimer fire];
+    
+    if (self.click) {
+        self.click();
+    }
+}
 @end

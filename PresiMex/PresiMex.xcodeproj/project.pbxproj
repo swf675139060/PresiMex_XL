@@ -10,6 +10,9 @@
 		0DD8A011437AFA3BD010EC3B /* Pods_PresiMex_PresiMexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */; };
 		270A261DD59BA1810A7E8F9C /* Pods_PresiMex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A4827404A572A6581BBF4C /* Pods_PresiMex.framework */; };
 		56B288E235E119C8BDE40A0C /* Pods_PresiMexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */; };
+		A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */; };
+		A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD42A2332C200F5BED7 /* MD5Utils.m */; };
+		A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */; };
 		A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E252A21BB4300451413 /* PMBaseHttp.m */; };
 		A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E2E2A21E8A400451413 /* PMLoginViewController.m */; };
@@ -94,6 +97,13 @@
 		7BBC813EC55337913FF95F63 /* Pods-PresiMex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex.release.xcconfig"; path = "Target Support Files/Pods-PresiMex/Pods-PresiMex.release.xcconfig"; sourceTree = "<group>"; };
 		7CAC44E67EDCCD5EC40D6886 /* Pods-PresiMexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMexTests.release.xcconfig"; path = "Target Support Files/Pods-PresiMexTests/Pods-PresiMexTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4B60AD02A2332C200F5BED7 /* YKGTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGTMDefines.h; sourceTree = "<group>"; };
+		A4B60AD12A2332C200F5BED7 /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
+		A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGTMBase64.m; sourceTree = "<group>"; };
+		A4B60AD32A2332C200F5BED7 /* YKGTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGTMBase64.h; sourceTree = "<group>"; };
+		A4B60AD42A2332C200F5BED7 /* MD5Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Utils.m; sourceTree = "<group>"; };
+		A4B60AD72A233C6500F5BED7 /* PMProblemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMProblemViewController.h; sourceTree = "<group>"; };
+		A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMProblemViewController.m; sourceTree = "<group>"; };
 		A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		A4DD5E1E2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		A4DD5E242A21BB4300451413 /* PMBaseHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBaseHttp.h; sourceTree = "<group>"; };
@@ -253,6 +263,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A4B60ACF2A2332C200F5BED7 /* Md5 */ = {
+			isa = PBXGroup;
+			children = (
+				A4B60AD02A2332C200F5BED7 /* YKGTMDefines.h */,
+				A4B60AD12A2332C200F5BED7 /* MD5Utils.h */,
+				A4B60AD42A2332C200F5BED7 /* MD5Utils.m */,
+				A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */,
+				A4B60AD32A2332C200F5BED7 /* YKGTMBase64.h */,
+			);
+			path = Md5;
+			sourceTree = "<group>";
+		};
 		A4DD5E1C2A21A9D400451413 /* Nav_Bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,7 +297,6 @@
 		A4DD5E292A21E85300451413 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				A4DD5E2C2A21E87000451413 /* M */,
 				A4DD5E2B2A21E86900451413 /* V */,
 				A4DD5E2A2A21E86200451413 /* C */,
 			);
@@ -289,6 +310,8 @@
 				A4DD5E2E2A21E8A400451413 /* PMLoginViewController.m */,
 				A4DD5E6F2A22209600451413 /* PMVeriCodeViewController.h */,
 				A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */,
+				A4B60AD72A233C6500F5BED7 /* PMProblemViewController.h */,
+				A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -306,16 +329,10 @@
 			path = V;
 			sourceTree = "<group>";
 		};
-		A4DD5E2C2A21E87000451413 /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
-			sourceTree = "<group>";
-		};
 		A4DD5E362A21FF7B00451413 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				A4B60ACF2A2332C200F5BED7 /* Md5 */,
 				A4DD5E532A21FFE400451413 /* CRBoxInput */,
 			);
 			path = Lib;
@@ -446,7 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				FB8AF32D2A088C78006C5887 /* UILabel+SLFLineSpace.h */,
-
 				FB939F282A21EA8900599A86 /* UILabel+WFTextSizeColor.h */,
 				FB939F292A21EA8900599A86 /* UILabel+WFTextSizeColor.m */,
 				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
@@ -493,13 +509,6 @@
 				FB939F162A21BC1A00599A86 /* SobreVC.m */,
 			);
 			path = C;
-			sourceTree = "<group>";
-		};
-		FB939F142A21BBD100599A86 /* V */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = V;
 			sourceTree = "<group>";
 		};
 		FB939F1B2A21E25500599A86 /* Ajustes(设置) */ = {
@@ -1030,6 +1039,7 @@
 				A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */,
 				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
 				FB8AF31F2A088AC5006C5887 /* SLFToast.m in Sources */,
+				A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */,
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */,
@@ -1040,6 +1050,7 @@
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
 				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
+				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
@@ -1053,6 +1064,7 @@
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
+				A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */,
 				FB939F212A21E28400599A86 /* AjustesVC.m in Sources */,
 				FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */,
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,

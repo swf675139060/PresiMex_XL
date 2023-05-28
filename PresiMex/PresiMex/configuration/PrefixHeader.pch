@@ -57,6 +57,25 @@ _Pragma("clang diagnostic ignored \"-Wshadow\"") \
 __strong typeof(var) var = XYWeak_##var; \
 _Pragma("clang diagnostic pop")
 
+//static inline BOOL IsEmpty(id thing){
+//   return thing == nil || [thing isEqual:[NSNull null]]
+//        || ([thing respondsToSelector:@selector(length)]
+//            && [(NSData *)thing length] == 0)
+//        || ([thing respondsToSelector:@selector(count)]
+//            && [(NSArray *)thing count] == 0);
+//}
+
+
+//判断是空字符串吗
+#define wfIsEmptyStr(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
+//判断是空数组吗
+#define wfIsEmptyArr(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
+//判断是空字典吗
+#define wfIsEmptyDic(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0)
+//是空对象或空指都返回@""
+#define wfNoNullStr(str) B_IsEmptyStr(str)?@"":str
+
+
 #ifdef __OBJC__
 
 #import "WFNavigationController.h"

@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMVeriCodeView : WFBaseView
 
+@property (nonatomic , copy) void(^codeTag)(NSString *code);
 @end
 
 NS_ASSUME_NONNULL_END
