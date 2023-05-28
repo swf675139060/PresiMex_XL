@@ -8,8 +8,11 @@
 #import "MyViewController.h"
 #import "MyHeaderView.h"
 
-#import "ComentarioVC.h"
-#import "SobreVC.h"
+#import "ComentarioVC.h"//反馈
+#import "SobreVC.h"//关于我们
+#import "AjustesVC.h"//设置
+#import "CuponVC.h"//优惠卷
+#import "OrderVC.h"//  订单
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -33,7 +36,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
-    [self.headerView updataHeaderViewWithType:1];
+    
+    
+    [self.headerView updataHeaderViewWithType:2];
+    WF_WEAKSELF(weakself);
+    self.headerView.clickLeftBtnBlock = ^{
+        OrderVC *vc = [[OrderVC alloc] init];
+        [weakself.navigationController pushViewController:vc animated:YES];
+    };
+    self.headerView.clickRightBtnBlock = ^{
+        
+        CuponVC *vc = [[CuponVC alloc] init];
+        [weakself.navigationController pushViewController:vc animated:YES];
+    };
     
 }
 
@@ -75,6 +90,7 @@
     cell.imageView.image = [UIImage imageNamed:self.CellImages[indexPath.row]];
 //    let arrowImageView = UIImageView(image: UIImage(named: "custom_arrow"))
     cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"more"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
  
     
     return cell;
@@ -100,6 +116,8 @@
         
     }else if (indexPath.row == 5){
         
+        AjustesVC * vc = [AjustesVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 
     

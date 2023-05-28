@@ -375,6 +375,8 @@
     if(_LoginLeftBtn == nil){
         _LoginLeftBtn = [UIButton new];
         [_LoginLeftBtn setBackgroundImage:[UIImage imageNamed:@"Factura"] forState:UIControlStateNormal];
+        
+        [_LoginLeftBtn addTarget:self action:@selector(ClickLeftBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _LoginLeftBtn;
 }
@@ -382,6 +384,8 @@
     if(_LoginRightBtn == nil){
         _LoginRightBtn = [UIButton new];
         [_LoginRightBtn setBackgroundImage:[UIImage imageNamed:@"cupon"] forState:UIControlStateNormal];
+        
+        [_LoginRightBtn addTarget:self action:@selector(ClickRightBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _LoginRightBtn;
 }
@@ -402,6 +406,17 @@
         _LoginRightBtnTitle.font = [UIFont boldSystemFontOfSize:15];
     }
     return _LoginRightBtnTitle;
+}
+
+-(void)ClickLeftBtn{
+    if(self.clickLeftBtnBlock){
+        self.clickLeftBtnBlock();
+    }
+}
+-(void)ClickRightBtn{
+    if(self.clickRightBtnBlock){
+        self.clickRightBtnBlock();
+    }
 }
 
 

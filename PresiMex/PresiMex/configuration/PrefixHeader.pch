@@ -54,6 +54,7 @@ if (strongself == nil) return;
 #import "WFNavigationController.h"
 
 #import "UILabel+SLFLineSpace.h"
+#import "UILabel+WFTextSizeColor.h"
 
 #import "UILabel+SLFLineSpace.h"
 #import "UIView+SLFExtension.h"

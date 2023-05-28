@@ -26,6 +26,13 @@
 		FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF33B2A092107006C5887 /* DKGuideViewController.m */; };
 		FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F162A21BC1A00599A86 /* SobreVC.m */; };
 		FB939F1A2A21C0BC00599A86 /* WFCornerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F192A21C0BC00599A86 /* WFCornerCell.m */; };
+		FB939F212A21E28400599A86 /* AjustesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F202A21E28400599A86 /* AjustesVC.m */; };
+		FB939F242A21E4D500599A86 /* WFSetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F232A21E4D500599A86 /* WFSetCell.m */; };
+		FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F292A21EA8900599A86 /* UILabel+WFTextSizeColor.m */; };
+		FB939F342A21F65500599A86 /* CuponVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F332A21F65500599A86 /* CuponVC.m */; };
+		FB939F372A21F6A700599A86 /* CuponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F362A21F6A700599A86 /* CuponCell.m */; };
+		FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F3D2A2211F700599A86 /* OrderVC.m */; };
+		FB939F412A2213AD00599A86 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F402A2213AD00599A86 /* OrderCell.m */; };
 		FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D392A05124600B1C0A3 /* AppDelegate.m */; };
 		FB976D402A05124600B1C0A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D3F2A05124600B1C0A3 /* ViewController.m */; };
 		FB976D452A05124900B1C0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB976D442A05124900B1C0A3 /* Assets.xcassets */; };
@@ -47,6 +54,7 @@
 		FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC529142A18FD0B004B7721 /* UIView+LinearGradient.m */; };
 		FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA72352A0A6B7B00A10D4E /* HomeViewController.m */; };
 		FBCA72392A0A6B8600A10D4E /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA72382A0A6B8600A10D4E /* MyViewController.m */; };
+		FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +118,20 @@
 		FB939F162A21BC1A00599A86 /* SobreVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SobreVC.m; sourceTree = "<group>"; };
 		FB939F182A21C0BC00599A86 /* WFCornerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFCornerCell.h; sourceTree = "<group>"; };
 		FB939F192A21C0BC00599A86 /* WFCornerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFCornerCell.m; sourceTree = "<group>"; };
+		FB939F1F2A21E28400599A86 /* AjustesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AjustesVC.h; sourceTree = "<group>"; };
+		FB939F202A21E28400599A86 /* AjustesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AjustesVC.m; sourceTree = "<group>"; };
+		FB939F222A21E4D500599A86 /* WFSetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFSetCell.h; sourceTree = "<group>"; };
+		FB939F232A21E4D500599A86 /* WFSetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFSetCell.m; sourceTree = "<group>"; };
+		FB939F282A21EA8900599A86 /* UILabel+WFTextSizeColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+WFTextSizeColor.h"; sourceTree = "<group>"; };
+		FB939F292A21EA8900599A86 /* UILabel+WFTextSizeColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WFTextSizeColor.m"; sourceTree = "<group>"; };
+		FB939F322A21F65500599A86 /* CuponVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CuponVC.h; sourceTree = "<group>"; };
+		FB939F332A21F65500599A86 /* CuponVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CuponVC.m; sourceTree = "<group>"; };
+		FB939F352A21F6A700599A86 /* CuponCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CuponCell.h; sourceTree = "<group>"; };
+		FB939F362A21F6A700599A86 /* CuponCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CuponCell.m; sourceTree = "<group>"; };
+		FB939F3C2A2211F700599A86 /* OrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderVC.h; sourceTree = "<group>"; };
+		FB939F3D2A2211F700599A86 /* OrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderVC.m; sourceTree = "<group>"; };
+		FB939F3F2A2213AD00599A86 /* OrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
+		FB939F402A2213AD00599A86 /* OrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
 		FB976D352A05124600B1C0A3 /* PresiMex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresiMex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB976D382A05124600B1C0A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FB976D392A05124600B1C0A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -150,6 +172,8 @@
 		FBCA72352A0A6B7B00A10D4E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		FBCA72372A0A6B8600A10D4E /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		FBCA72382A0A6B8600A10D4E /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		FBDE5EE22A22DC29007834AB /* PMOrderTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMOrderTopView.h; sourceTree = "<group>"; };
+		FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMOrderTopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +340,8 @@
 			children = (
 				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
 				FB8AF32D2A088C78006C5887 /* UILabel+SLFLineSpace.h */,
+				FB939F282A21EA8900599A86 /* UILabel+WFTextSizeColor.h */,
+				FB939F292A21EA8900599A86 /* UILabel+WFTextSizeColor.m */,
 			);
 			path = UILabel;
 			sourceTree = "<group>";
@@ -373,6 +399,112 @@
 		FB939F142A21BBD100599A86 /* V */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		FB939F1B2A21E25500599A86 /* Ajustes(设置) */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F1C2A21E25500599A86 /* M */,
+				FB939F1D2A21E25500599A86 /* C */,
+				FB939F1E2A21E25500599A86 /* V */,
+			);
+			path = "Ajustes(设置)";
+			sourceTree = "<group>";
+		};
+		FB939F1C2A21E25500599A86 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FB939F1D2A21E25500599A86 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F1F2A21E28400599A86 /* AjustesVC.h */,
+				FB939F202A21E28400599A86 /* AjustesVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FB939F1E2A21E25500599A86 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		FB939F2B2A21F5C100599A86 /* Cupón(优惠卷) */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F2C2A21F5C100599A86 /* M */,
+				FB939F2D2A21F5C100599A86 /* C */,
+				FB939F2E2A21F5C100599A86 /* V */,
+			);
+			name = "Cupón(优惠卷)";
+			path = "Cupón(优惠卷)";
+			sourceTree = "<group>";
+		};
+		FB939F2C2A21F5C100599A86 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FB939F2D2A21F5C100599A86 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F322A21F65500599A86 /* CuponVC.h */,
+				FB939F332A21F65500599A86 /* CuponVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FB939F2E2A21F5C100599A86 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F352A21F6A700599A86 /* CuponCell.h */,
+				FB939F362A21F6A700599A86 /* CuponCell.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		FB939F382A22118C00599A86 /* order(订单) */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F392A22118C00599A86 /* M */,
+				FB939F3A2A22118C00599A86 /* C */,
+				FB939F3B2A22118C00599A86 /* V */,
+			);
+			path = "order(订单)";
+			sourceTree = "<group>";
+		};
+		FB939F392A22118C00599A86 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FB939F3A2A22118C00599A86 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F3C2A2211F700599A86 /* OrderVC.h */,
+				FB939F3D2A2211F700599A86 /* OrderVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FB939F3B2A22118C00599A86 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				FB939F3F2A2213AD00599A86 /* OrderCell.h */,
+				FB939F402A2213AD00599A86 /* OrderCell.m */,
+				FBDE5EE22A22DC29007834AB /* PMOrderTopView.h */,
+				FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -453,6 +585,8 @@
 				FBC2A8762A1A22530010D7F8 /* WFTextViewCell.m */,
 				FB939F182A21C0BC00599A86 /* WFCornerCell.h */,
 				FB939F192A21C0BC00599A86 /* WFCornerCell.m */,
+				FB939F222A21E4D500599A86 /* WFSetCell.h */,
+				FB939F232A21E4D500599A86 /* WFSetCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -525,6 +659,9 @@
 		FBCA72332A0A6A0500A10D4E /* My */ = {
 			isa = PBXGroup;
 			children = (
+				FB939F382A22118C00599A86 /* order(订单) */,
+				FB939F2B2A21F5C100599A86 /* Cupón(优惠卷) */,
+				FB939F1B2A21E25500599A86 /* Ajustes(设置) */,
 				FBC2A85B2A19C95A0010D7F8 /* cell */,
 				FB939F112A21BBD100599A86 /* Sobre(关于我们) */,
 				FBC2A86B2A19CA8B0010D7F8 /* Comentario(feedback) */,
@@ -776,14 +913,17 @@
 				FBCA72392A0A6B8600A10D4E /* MyViewController.m in Sources */,
 				FBC2A86A2A19C96D0010D7F8 /* WFImageCell.m in Sources */,
 				FB939F1A2A21C0BC00599A86 /* WFCornerCell.m in Sources */,
+				FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				FB976D402A05124600B1C0A3 /* ViewController.m in Sources */,
+				FB939F372A21F6A700599A86 /* CuponCell.m in Sources */,
 				FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */,
 				FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */,
+				FB939F242A21E4D500599A86 /* WFSetCell.m in Sources */,
 				FB8AF31F2A088AC5006C5887 /* SLFToast.m in Sources */,
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
@@ -793,15 +933,20 @@
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
+				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
+				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
+				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
 				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
+				FB939F212A21E28400599A86 /* AjustesVC.m in Sources */,
 				FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */,
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,
 				FB8AF32E2A088C78006C5887 /* UILabel+SLFLineSpace.m in Sources */,
 				FB8AF31E2A088AC5006C5887 /* SLFFailedHub.m in Sources */,
+				FB939F342A21F65500599A86 /* CuponVC.m in Sources */,
 				A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,9 +1112,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 53Q62TM72V;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
@@ -998,9 +1143,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 53Q62TM72V;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
