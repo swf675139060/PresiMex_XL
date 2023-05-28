@@ -12,6 +12,18 @@
 		56B288E235E119C8BDE40A0C /* Pods_PresiMexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */; };
 		A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E252A21BB4300451413 /* PMBaseHttp.m */; };
+		A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E2E2A21E8A400451413 /* PMLoginViewController.m */; };
+		A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E342A21EA0600451413 /* PMLoginHeaderView.m */; };
+		A4DD5E622A21FFE400451413 /* CRBoxInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E552A21FFE400451413 /* CRBoxInputCell.m */; };
+		A4DD5E632A21FFE400451413 /* CRBoxInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E562A21FFE400451413 /* CRBoxInputView.m */; };
+		A4DD5E642A21FFE400451413 /* CRBoxFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E572A21FFE400451413 /* CRBoxFlowLayout.m */; };
+		A4DD5E652A21FFE400451413 /* CRSecrectImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E582A21FFE400451413 /* CRSecrectImageView.m */; };
+		A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E5A2A21FFE400451413 /* CRBoxTextView.m */; };
+		A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E5C2A21FFE400451413 /* CRBoxInputCellProperty.m */; };
+		A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E5E2A21FFE400451413 /* CRLineView.m */; };
+		A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */; };
+		A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */; };
+		A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
 		FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */; };
 		FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F52A088AC5006C5887 /* SLFLoadingHub.m */; };
@@ -87,6 +99,30 @@
 		A4DD5E242A21BB4300451413 /* PMBaseHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBaseHttp.h; sourceTree = "<group>"; };
 		A4DD5E252A21BB4300451413 /* PMBaseHttp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMBaseHttp.m; sourceTree = "<group>"; };
 		A4DD5E282A21BC1100451413 /* PMUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMUrl.h; sourceTree = "<group>"; };
+		A4DD5E2D2A21E8A400451413 /* PMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMLoginViewController.h; sourceTree = "<group>"; };
+		A4DD5E2E2A21E8A400451413 /* PMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMLoginViewController.m; sourceTree = "<group>"; };
+		A4DD5E332A21EA0600451413 /* PMLoginHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMLoginHeaderView.h; sourceTree = "<group>"; };
+		A4DD5E342A21EA0600451413 /* PMLoginHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMLoginHeaderView.m; sourceTree = "<group>"; };
+		A4DD5E542A21FFE400451413 /* CRBoxInputCellProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxInputCellProperty.h; sourceTree = "<group>"; };
+		A4DD5E552A21FFE400451413 /* CRBoxInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxInputCell.m; sourceTree = "<group>"; };
+		A4DD5E562A21FFE400451413 /* CRBoxInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxInputView.m; sourceTree = "<group>"; };
+		A4DD5E572A21FFE400451413 /* CRBoxFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxFlowLayout.m; sourceTree = "<group>"; };
+		A4DD5E582A21FFE400451413 /* CRSecrectImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRSecrectImageView.m; sourceTree = "<group>"; };
+		A4DD5E592A21FFE400451413 /* CRLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRLineView.h; sourceTree = "<group>"; };
+		A4DD5E5A2A21FFE400451413 /* CRBoxTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxTextView.m; sourceTree = "<group>"; };
+		A4DD5E5B2A21FFE400451413 /* CRBoxInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxInputCell.h; sourceTree = "<group>"; };
+		A4DD5E5C2A21FFE400451413 /* CRBoxInputCellProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRBoxInputCellProperty.m; sourceTree = "<group>"; };
+		A4DD5E5D2A21FFE400451413 /* CRBoxInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxInputView.h; sourceTree = "<group>"; };
+		A4DD5E5E2A21FFE400451413 /* CRLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRLineView.m; sourceTree = "<group>"; };
+		A4DD5E5F2A21FFE400451413 /* CRSecrectImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRSecrectImageView.h; sourceTree = "<group>"; };
+		A4DD5E602A21FFE400451413 /* CRBoxFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxFlowLayout.h; sourceTree = "<group>"; };
+		A4DD5E612A21FFE400451413 /* CRBoxTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRBoxTextView.h; sourceTree = "<group>"; };
+		A4DD5E692A22040100451413 /* PMPhoneNumberView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPhoneNumberView.h; sourceTree = "<group>"; };
+		A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPhoneNumberView.m; sourceTree = "<group>"; };
+		A4DD5E6C2A22064300451413 /* PMVeriCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMVeriCodeView.h; sourceTree = "<group>"; };
+		A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMVeriCodeView.m; sourceTree = "<group>"; };
+		A4DD5E6F2A22209600451413 /* PMVeriCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMVeriCodeViewController.h; sourceTree = "<group>"; };
+		A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMVeriCodeViewController.m; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB26CFEA2A1A3A0E000DB383 /* SelectImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectImageCell.h; sourceTree = "<group>"; };
@@ -236,6 +272,76 @@
 			path = HTTP;
 			sourceTree = "<group>";
 		};
+		A4DD5E292A21E85300451413 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A4DD5E2C2A21E87000451413 /* M */,
+				A4DD5E2B2A21E86900451413 /* V */,
+				A4DD5E2A2A21E86200451413 /* C */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A4DD5E2A2A21E86200451413 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A4DD5E2D2A21E8A400451413 /* PMLoginViewController.h */,
+				A4DD5E2E2A21E8A400451413 /* PMLoginViewController.m */,
+				A4DD5E6F2A22209600451413 /* PMVeriCodeViewController.h */,
+				A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A4DD5E2B2A21E86900451413 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				A4DD5E332A21EA0600451413 /* PMLoginHeaderView.h */,
+				A4DD5E342A21EA0600451413 /* PMLoginHeaderView.m */,
+				A4DD5E692A22040100451413 /* PMPhoneNumberView.h */,
+				A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */,
+				A4DD5E6C2A22064300451413 /* PMVeriCodeView.h */,
+				A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A4DD5E2C2A21E87000451413 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		A4DD5E362A21FF7B00451413 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				A4DD5E532A21FFE400451413 /* CRBoxInput */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		A4DD5E532A21FFE400451413 /* CRBoxInput */ = {
+			isa = PBXGroup;
+			children = (
+				A4DD5E542A21FFE400451413 /* CRBoxInputCellProperty.h */,
+				A4DD5E5C2A21FFE400451413 /* CRBoxInputCellProperty.m */,
+				A4DD5E5B2A21FFE400451413 /* CRBoxInputCell.h */,
+				A4DD5E552A21FFE400451413 /* CRBoxInputCell.m */,
+				A4DD5E5D2A21FFE400451413 /* CRBoxInputView.h */,
+				A4DD5E562A21FFE400451413 /* CRBoxInputView.m */,
+				A4DD5E572A21FFE400451413 /* CRBoxFlowLayout.m */,
+				A4DD5E5F2A21FFE400451413 /* CRSecrectImageView.h */,
+				A4DD5E582A21FFE400451413 /* CRSecrectImageView.m */,
+				A4DD5E592A21FFE400451413 /* CRLineView.h */,
+				A4DD5E5E2A21FFE400451413 /* CRLineView.m */,
+				A4DD5E5A2A21FFE400451413 /* CRBoxTextView.m */,
+				A4DD5E602A21FFE400451413 /* CRBoxFlowLayout.h */,
+				A4DD5E612A21FFE400451413 /* CRBoxTextView.h */,
+			);
+			path = CRBoxInput;
+			sourceTree = "<group>";
+		};
 		CAA89AF56AFF80302B4105DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +355,7 @@
 		FB8AF2EE2A0882F2006C5887 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				A4DD5E292A21E85300451413 /* Login */,
 				FBCA72332A0A6A0500A10D4E /* My */,
 				FBCA72322A0A69DE00A10D4E /* Home */,
 				FB8AF3392A092107006C5887 /* Guide */,
@@ -338,10 +445,11 @@
 		FB8AF32B2A088C78006C5887 /* UILabel */ = {
 			isa = PBXGroup;
 			children = (
-				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
 				FB8AF32D2A088C78006C5887 /* UILabel+SLFLineSpace.h */,
+
 				FB939F282A21EA8900599A86 /* UILabel+WFTextSizeColor.h */,
 				FB939F292A21EA8900599A86 /* UILabel+WFTextSizeColor.m */,
+				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
 			);
 			path = UILabel;
 			sourceTree = "<group>";
@@ -374,17 +482,8 @@
 			isa = PBXGroup;
 			children = (
 				FB939F132A21BBD100599A86 /* C */,
-				FB939F122A21BBD100599A86 /* M */,
-				FB939F142A21BBD100599A86 /* V */,
 			);
 			path = "Sobre(关于我们)";
-			sourceTree = "<group>";
-		};
-		FB939F122A21BBD100599A86 /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
 			sourceTree = "<group>";
 		};
 		FB939F132A21BBD100599A86 /* C */ = {
@@ -534,6 +633,7 @@
 		FB976D372A05124600B1C0A3 /* PresiMex */ = {
 			isa = PBXGroup;
 			children = (
+				A4DD5E362A21FF7B00451413 /* Lib */,
 				A4DD5E232A21BAD600451413 /* HTTP */,
 				FB8AF3242A088C2F006C5887 /* Category */,
 				FB8AF2F12A088AC4006C5887 /* UIComponents */,
@@ -916,20 +1016,26 @@
 				FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
+				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
+				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				FB976D402A05124600B1C0A3 /* ViewController.m in Sources */,
 				FB939F372A21F6A700599A86 /* CuponCell.m in Sources */,
 				FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */,
 				FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */,
 				FB939F242A21E4D500599A86 /* WFSetCell.m in Sources */,
+				A4DD5E642A21FFE400451413 /* CRBoxFlowLayout.m in Sources */,
+				A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */,
+				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
 				FB8AF31F2A088AC5006C5887 /* SLFToast.m in Sources */,
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */,
 				FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */,
 				FBC2A8742A1A16550010D7F8 /* ProblemaCell.m in Sources */,
+				A4DD5E652A21FFE400451413 /* CRSecrectImageView.m in Sources */,
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
@@ -937,7 +1043,13 @@
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
+				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,
+				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
+				A4DD5E622A21FFE400451413 /* CRBoxInputCell.m in Sources */,
 				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */,
+				A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */,
+				A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
@@ -947,6 +1059,7 @@
 				FB8AF32E2A088C78006C5887 /* UILabel+SLFLineSpace.m in Sources */,
 				FB8AF31E2A088AC5006C5887 /* SLFFailedHub.m in Sources */,
 				FB939F342A21F65500599A86 /* CuponVC.m in Sources */,
+				A4DD5E632A21FFE400451413 /* CRBoxInputView.m in Sources */,
 				A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

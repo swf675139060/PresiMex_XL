@@ -24,6 +24,9 @@ target 'PresiMex' do
   pod 'Bugly'
 
 #  pod 'IQKeyboardManager', '~>6.5.11'
+ 
+  
+
   # Pods for PresiMex
 
   target 'PresiMexTests' do

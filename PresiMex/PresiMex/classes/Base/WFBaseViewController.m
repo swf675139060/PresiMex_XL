@@ -40,10 +40,10 @@
     [self.view addSubview:self.tempView];
     self.tempView.backgroundColor=[UIColor whiteColor];
     [self setBackBarButtonWithTheme:1];
-    self.navTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(_backBtn.slf_right, WF_StatusBarHeight+12, WF_ScreenWidth-100, 20)];
+    self.navTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(_backBtn.swf_right, WF_StatusBarHeight+12, WF_ScreenWidth-100, 20)];
     self.navTitleLabel.textColor=[UIColor whiteColor];
     self.navTitleLabel.font=B_FONT_MEDIUM(18);
-    self.navTitleLabel.slf_centerX=WF_ScreenWidth/2;
+    self.navTitleLabel.swf_centerX=WF_ScreenWidth/2;
     self.navTitleLabel.textAlignment=NSTextAlignmentCenter;
     [_navBarView addSubview:self.navTitleLabel];
 }

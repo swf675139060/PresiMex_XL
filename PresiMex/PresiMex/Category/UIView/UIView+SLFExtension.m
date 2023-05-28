@@ -11,135 +11,150 @@
 
 @implementation UIView (SLFExtension)
 
-- (void)setSlf_x:(CGFloat)slf_x
+- (void)setSwf_x:(CGFloat)swf_x
 {
     CGRect frame = self.frame;
-    frame.origin.x = slf_x;
+    frame.origin.x = swf_x;
     self.frame = frame;
 }
 
-- (CGFloat)slf_x
+- (CGFloat)swf_x
 {
     return self.frame.origin.x;
 }
 
-- (void)setSlf_y:(CGFloat)slf_y
+- (void)setSwf_y:(CGFloat)swf_y
 {
     CGRect frame = self.frame;
-    frame.origin.y = slf_y;
+    frame.origin.y = swf_y;
     self.frame = frame;
 }
 
-- (CGFloat)slf_y
+- (CGFloat)swf_y
 {
     return self.frame.origin.y;
 }
 
-- (void)setSlf_w:(CGFloat)slf_w
-{
+-(void)setSwf_w:(CGFloat)swf_w{
     CGRect frame = self.frame;
-    frame.size.width = slf_w;
+    frame.size.width = swf_w;
     self.frame = frame;
 }
 
-- (CGFloat)slf_w
+
+- (CGFloat)swf_w
 {
     return self.frame.size.width;
 }
 
-- (void)setSlf_h:(CGFloat)slf_h
+- (void)setSwf_h:(CGFloat)swf_h
 {
     CGRect frame = self.frame;
-    frame.size.height = slf_h;
+    frame.size.height = swf_h;
     self.frame = frame;
 }
 
-- (CGFloat)slf_h
+- (CGFloat)swf_h
 {
     return self.frame.size.height;
 }
 
-- (void)setSlf_size:(CGSize)slf_size
+- (void)setSwf_size:(CGSize)swf_size
 {
     CGRect frame = self.frame;
-    frame.size = slf_size;
+    frame.size = swf_size;
     self.frame = frame;
 }
 
-- (CGSize)slf_size
+- (CGSize)swf_size
 {
     return self.frame.size;
 }
 
-- (void)setSlf_origin:(CGPoint)slf_origin
+- (void)setSwf_origin:(CGPoint)swf_origin
 {
     CGRect frame = self.frame;
-    frame.origin = slf_origin;
+    frame.origin = swf_origin;
     self.frame = frame;
 }
 
-- (CGPoint)slf_origin
+- (CGPoint)swf_origin
 {
     return self.frame.origin;
 }
 
-- (void)setSlf_centerX:(CGFloat)slf_centerX
+- (void)setSwf_centerX:(CGFloat)swf_centerX
 {
     CGPoint center = self.center;
-    center.x = slf_centerX;
+    center.x = swf_centerX;
     self.center = center;
 }
-- (CGFloat)slf_centerX
+- (CGFloat)swf_centerX
 {
     return self.center.x;
 }
 
-- (void)setSlf_centerY:(CGFloat)slf_centerY
+- (void)setSwf_centerY:(CGFloat)swf_centerY
 {
     CGPoint center = self.center;
-    center.y = slf_centerY;
+    center.y = swf_centerY;
     self.center = center;
 }
-- (CGFloat)slf_centerY
+- (CGFloat)swf_centerY
 {
     return self.center.y;
 }
 
-- (CGFloat)slf_right
+- (CGFloat)swf_right
 {
-    return self.slf_x + self.slf_w;
+    return self.swf_x + self.swf_w;
 }
-- (CGFloat)slf_bottom
+- (CGFloat)swf_bottom
 {
-    return self.slf_y + self.slf_h;
+    return self.swf_y + self.swf_h;
 }
-- (void)setSlf_borderWidth:(CGFloat)slf_borderWidth
+
+- (void)setSwf_borderWidth:(CGFloat)swf_borderWidth
 {
-    self.layer.borderWidth = slf_borderWidth;
+    self.layer.borderWidth = swf_borderWidth;
 }
-- (CGFloat)slf_borderWidth
+- (CGFloat)swf_borderWidth
 {
     return self.layer.borderWidth;
 }
-
-- (void)setSlf_borderColor:(UIColor *)slf_borderColor
-{
-    self.layer.borderColor = slf_borderColor.CGColor;
+-(void)setSwf_borderColor:(UIColor *)swf_borderColor{
+    self.layer.borderColor = swf_borderColor.CGColor;
 }
 
-- (UIColor *)slf_borderColor
+
+- (UIColor *)swf_borderColor
 {
     return [UIColor colorWithCGColor:self.layer.borderColor];
 }
 
-- (void)setSlf_cornerRadius:(CGFloat)slf_cornerRadius
+- (void)setSwf_cornerRadius:(CGFloat)swf_cornerRadius
 {
-    self.layer.cornerRadius = slf_cornerRadius;
+    self.layer.cornerRadius = swf_cornerRadius;
     [self.layer setMasksToBounds:YES];
 }
-- (CGFloat)slf_cornerRadius
+- (CGFloat)swf_cornerRadius
 {
     return self.layer.cornerRadius;
 }
 
+
+/**
+ *  当前view的controller
+ *
+ *  @return UIViewController
+ */
+-(UIViewController *)viewController
+{
+    UIResponder *responder = self;
+    while ((responder = [responder nextResponder]))
+        if ([responder isKindOfClass:[UIViewController class]])
+            return (UIViewController *)responder;
+    
+    return nil;
+}
 @end
