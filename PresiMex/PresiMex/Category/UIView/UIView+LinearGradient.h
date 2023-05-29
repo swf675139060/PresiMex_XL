@@ -11,7 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (LinearGradient)
 
+
+
 - (void)addLinearGradientwithSize:(CGSize )Size withColors:(NSArray *)colors startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint maskedCorners:(CACornerMask)maskedCorners cornerRadius:(CGFloat)cornerRadius;
+
+
+- (void)addLinearGradientwithSize:(CGSize )Size maskedCorners:(CACornerMask)maskedCorners cornerRadius:(CGFloat)cornerRadius;
 @end
 
 NS_ASSUME_NONNULL_END

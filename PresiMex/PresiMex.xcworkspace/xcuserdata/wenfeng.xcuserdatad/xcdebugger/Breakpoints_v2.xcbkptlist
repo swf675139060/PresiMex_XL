@@ -35,46 +35,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ADF06C16-63D8-48BE-8857-3E01B286AD6E"
+            uuid = "0BA37927-1287-4C3C-A0CA-6DC0970979D2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Login/V/PMPhoneNumberView.m"
+            filePath = "PresiMex/classes/Login/C/PMVeriCodeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-requestGetVeriCode"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-requestLoginWithCode:"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "ADF06C16-63D8-48BE-8857-3E01B286AD6E - 85385b6ca01b3ec2"
+                  uuid = "0BA37927-1287-4C3C-A0CA-6DC0970979D2 - 7f48b0a9fd123381"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__39-[PMPhoneNumberView requestGetVeriCode]_block_invoke"
+                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
                   moduleName = "PresiMex"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/V/PMPhoneNumberView.m"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
                   offsetFromSymbolStart = "41">
                </Location>
                <Location
-                  uuid = "ADF06C16-63D8-48BE-8857-3E01B286AD6E - 1373fd999df034b9"
+                  uuid = "0BA37927-1287-4C3C-A0CA-6DC0970979D2 - e7c5c7c015cd28d6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__39-[PMPhoneNumberView requestGetVeriCode]_block_invoke_2"
+                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke_2"
                   moduleName = "PresiMex"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/V/PMPhoneNumberView.m"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
                   offsetFromSymbolStart = "41">
                </Location>
             </Locations>
@@ -83,17 +83,81 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FC779DD7-A699-45E8-9345-DC03AEA348B1"
+            uuid = "172B5440-AD28-49B7-A5FE-D344501472D0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-requestLoginWithCode:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5830E6FD-A31C-4D47-AD1A-881BC343FE42"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PresiMex/HTTP/PMBaseHttp.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "+post:parameters:success:failure:"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "+postJson:parameters:success:failure:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87135676-ADFF-4823-A16C-855EB398F07A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-requestLoginWithCode:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "87135676-ADFF-4823-A16C-855EB398F07A - a3fb43a510f80c16"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMVeriCodeViewController requestLoginWithCode:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "170">
+               </Location>
+               <Location
+                  uuid = "87135676-ADFF-4823-A16C-855EB398F07A - 7f48b0a9fd123381"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "41">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

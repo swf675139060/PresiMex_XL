@@ -65,6 +65,9 @@
 		FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8702A19CB230010D7F8 /* ComentarioVC.m */; };
 		FBC2A8742A1A16550010D7F8 /* ProblemaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8732A1A16550010D7F8 /* ProblemaCell.m */; };
 		FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8762A1A22530010D7F8 /* WFTextViewCell.m */; };
+		FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC4CBA32A24E5D00050C47F /* WFSliderCell.m */; };
+		FBC4CBA72A24EA200050C47F /* WFThreeBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC4CBA52A24EA1F0050C47F /* WFThreeBtnCell.m */; };
+		FBC4CBAE2A24ED510050C47F /* UIButton+WFTextSizeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC4CBAD2A24ED510050C47F /* UIButton+WFTextSizeColor.m */; };
 		FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC529092A1863E1004B7721 /* WFBaseView.m */; };
 		FBC529122A186494004B7721 /* MyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC529112A186494004B7721 /* MyHeaderView.m */; };
 		FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC529142A18FD0B004B7721 /* UIView+LinearGradient.m */; };
@@ -211,6 +214,12 @@
 		FBC2A8732A1A16550010D7F8 /* ProblemaCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProblemaCell.m; sourceTree = "<group>"; };
 		FBC2A8752A1A22530010D7F8 /* WFTextViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFTextViewCell.h; sourceTree = "<group>"; };
 		FBC2A8762A1A22530010D7F8 /* WFTextViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFTextViewCell.m; sourceTree = "<group>"; };
+		FBC4CBA22A24E5D00050C47F /* WFSliderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFSliderCell.h; sourceTree = "<group>"; };
+		FBC4CBA32A24E5D00050C47F /* WFSliderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFSliderCell.m; sourceTree = "<group>"; };
+		FBC4CBA52A24EA1F0050C47F /* WFThreeBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFThreeBtnCell.m; sourceTree = "<group>"; };
+		FBC4CBA62A24EA1F0050C47F /* WFThreeBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFThreeBtnCell.h; sourceTree = "<group>"; };
+		FBC4CBAC2A24ED510050C47F /* UIButton+WFTextSizeColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+WFTextSizeColor.h"; sourceTree = "<group>"; };
+		FBC4CBAD2A24ED510050C47F /* UIButton+WFTextSizeColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WFTextSizeColor.m"; sourceTree = "<group>"; };
 		FBC529092A1863E1004B7721 /* WFBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFBaseView.m; sourceTree = "<group>"; };
 		FBC5290A2A1863E1004B7721 /* WFBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFBaseView.h; sourceTree = "<group>"; };
 		FBC529102A186494004B7721 /* MyHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHeaderView.h; sourceTree = "<group>"; };
@@ -479,6 +488,7 @@
 		FB8AF3242A088C2F006C5887 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				FBC4CBA82A24ECEE0050C47F /* UIButton */,
 				A4DD5E1C2A21A9D400451413 /* Nav_Bar */,
 				FB8AF32B2A088C78006C5887 /* UILabel */,
 				FB8AF3252A088C6F006C5887 /* UIView */,
@@ -734,6 +744,10 @@
 				FB939F232A21E4D500599A86 /* WFSetCell.m */,
 				FB1C73A82A23417900194925 /* WFLeftRightBtnCell.h */,
 				FB1C73A92A23417900194925 /* WFLeftRightBtnCell.m */,
+				FBC4CBA22A24E5D00050C47F /* WFSliderCell.h */,
+				FBC4CBA32A24E5D00050C47F /* WFSliderCell.m */,
+				FBC4CBA62A24EA1F0050C47F /* WFThreeBtnCell.h */,
+				FBC4CBA52A24EA1F0050C47F /* WFThreeBtnCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -765,6 +779,15 @@
 				FBC2A8702A19CB230010D7F8 /* ComentarioVC.m */,
 			);
 			path = C;
+			sourceTree = "<group>";
+		};
+		FBC4CBA82A24ECEE0050C47F /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				FBC4CBAC2A24ED510050C47F /* UIButton+WFTextSizeColor.h */,
+				FBC4CBAD2A24ED510050C47F /* UIButton+WFTextSizeColor.m */,
+			);
+			path = UIButton;
 			sourceTree = "<group>";
 		};
 		FBC5290C2A18644E004B7721 /* MyVC */ = {
@@ -1077,6 +1100,7 @@
 				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
 				FB8AF31F2A088AC5006C5887 /* SLFToast.m in Sources */,
 				A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */,
+				FBC4CBA72A24EA200050C47F /* WFThreeBtnCell.m in Sources */,
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */,
@@ -1089,6 +1113,7 @@
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
 				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
 				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
+				FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */,
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
@@ -1106,6 +1131,7 @@
 				FB939F212A21E28400599A86 /* AjustesVC.m in Sources */,
 				FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */,
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,
+				FBC4CBAE2A24ED510050C47F /* UIButton+WFTextSizeColor.m in Sources */,
 				FB8AF32E2A088C78006C5887 /* UILabel+SLFLineSpace.m in Sources */,
 				FB8AF31E2A088AC5006C5887 /* SLFFailedHub.m in Sources */,
 				FB939F342A21F65500599A86 /* CuponVC.m in Sources */,

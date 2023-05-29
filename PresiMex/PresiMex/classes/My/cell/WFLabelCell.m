@@ -29,6 +29,20 @@
 }
 
 
++(instancetype)cornerCellWithTableView:(UITableView *)tableView{
+    NSString *ID = @"WFLabelCell_corner";
+    
+    WFLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[WFLabelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        [cell creatSubView];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+
 -(void)creatSubView{
     [self.contentView addSubview:self.BGView];
     
@@ -75,6 +89,17 @@
 -(void)upLabelFrameWithInsets:(UIEdgeInsets )padding{
     [self.label mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.BGView).with.insets(padding);
+    }];
+}
+
+-(void)upBGFrameWithInsets:(UIEdgeInsets )padding maskedCorners:(CACornerMask)maskedCorners cornerRadius:(CGFloat)cornerRadius{
+    self.BGView.layer.maskedCorners = maskedCorners;
+    self.BGView.layer.masksToBounds = YES;
+    self.BGView.layer.cornerRadius = cornerRadius;
+    
+    [self.BGView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).with.insets(padding);
+        
     }];
 }
 

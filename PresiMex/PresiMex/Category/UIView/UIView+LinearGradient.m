@@ -39,4 +39,12 @@
     }
 }
 
+- (void)addLinearGradientwithSize:(CGSize )Size maskedCorners:(CACornerMask)maskedCorners cornerRadius:(CGFloat)cornerRadius{
+    
+    
+    NSArray *colors = @[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor, (id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor];
+    [self addLinearGradientwithSize:Size withColors:colors startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:maskedCorners cornerRadius:cornerRadius];
+    
+}
+
 @end

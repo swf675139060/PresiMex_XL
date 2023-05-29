@@ -17,11 +17,21 @@ NS_ASSUME_NONNULL_BEGIN
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
 
+
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding;
 
 -(void)upLabelFrameWithInsets:(UIEdgeInsets )padding;
 
 -(void)setLabelText:(NSString *)text;
+
+
+
+
+
+//创建有圆角的cell
++(instancetype)cornerCellWithTableView:(UITableView *)tableView;
+
+-(void)upBGFrameWithInsets:(UIEdgeInsets )padding maskedCorners:(CACornerMask)maskedCorners cornerRadius:(CGFloat)cornerRadius;
 @end
 
 NS_ASSUME_NONNULL_END
