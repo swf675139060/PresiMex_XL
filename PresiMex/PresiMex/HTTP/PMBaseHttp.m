@@ -54,14 +54,23 @@ static inline BOOL IsEmpty(id thing){
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
-    
+    if ([PMAccountTool isLogin]) {
+        NSLog(@"token= %@",[PMAccountTool account].token);
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
+    }
+    NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
+    deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
@@ -73,7 +82,7 @@ static inline BOOL IsEmpty(id thing){
     //参数加密
     
     
-    NSMutableDictionary*par=[NSMutableDictionary new];
+   // NSMutableDictionary*par=[NSMutableDictionary new];
     //        if ([parameter isKindOfClass:[NSDictionary class]] ) {
     //            NSDictionary*dict=parameter;
     //            NSArray*keyArr=dict.allKeys;
@@ -88,18 +97,18 @@ static inline BOOL IsEmpty(id thing){
     //
     //            }
     //        }
-    NSMutableDictionary *parms = [NSMutableDictionary dictionaryWithDictionary:par];
+   // NSMutableDictionary *parms = [NSMutableDictionary dictionaryWithDictionary:par];
     //        NSString *ras=HTTPKEY_RAS_RELEES;
     //        parms[@"akeys"]=[PSBase64 encodeBase64:[RSA encryptString:HTTP_KEY publicKey:ras]];
     //        if ([PSAccountTool account]) {
     //            parms[@"token"]=[PSAccountTool account].token;
     //        }
-    NSLog(@"url===%@\n parms==%@",url,parms);
+    NSLog(@"url===%@\n parms==%@",url,parameter);
     
     //   NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
     
     //NSString*josn=[parms toJSONString];
-    return [manager GET:url parameters:parms headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    return [manager GET:url parameters:parameter headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"url===%@\nget_responseObject=%@",url,responseObject);
         //       if (!IsEmpty(responseObject) &&[responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
         //           [PSAccountTool logOut];
@@ -179,7 +188,7 @@ static inline BOOL IsEmpty(id thing){
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",@"application/octet-stream",nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -189,8 +198,11 @@ static inline BOOL IsEmpty(id thing){
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
-//    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bear %@", token] forHTTPHeaderField:@"Authentication"];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    if ([PMAccountTool isLogin]) {
+        NSLog(@"token= %@",[PMAccountTool account].token);
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
+    }
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
@@ -198,7 +210,7 @@ static inline BOOL IsEmpty(id thing){
     NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,URLString];
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
     return  [manager POST:url parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+        NSLog(@"%@",responseObject);
         if(!IsEmpty(responseObject)){
             if (responseObject) {
                 success(responseObject);
@@ -255,8 +267,9 @@ static inline BOOL IsEmpty(id thing){
             failure:(void (^)(NSError *error))failure{
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -266,21 +279,27 @@ static inline BOOL IsEmpty(id thing){
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
-//    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bear %@", token] forHTTPHeaderField:@"Authentication"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+   [manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
+    if ([PMAccountTool isLogin]) {
+        NSLog(@"token= %@",[PMAccountTool account].token);
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
+    }
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
     manager.securityPolicy = securityPolicy;
     NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,URLString];
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
+    NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameters);
     return  [manager POST:url parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
          if(!IsEmpty(responseObject)){
             if (responseObject) {
                 success(responseObject);
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error==%@",error);
         if (failure) {
             failure(error);
         }

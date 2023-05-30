@@ -92,20 +92,29 @@
     [self.navigationController  presentViewController:vc animated:NO completion:nil];
 }
 //验证码登录
+
 -(void)requestLoginWithCode:(NSString*)code{
 
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
     pars[@"schedules"]=self.phone;//手机号
     pars[@"myanmar"]=code;//验证码
+    pars[@"witch"]=@"fireBase";
+    pars[@"lp"]=@1;
+
     [PMBaseHttp postJson:Post_Sms_Code_Ver parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSMutableDictionary*dict=[NSMutableDictionary dictionaryWithDictionary:responseObject[@"shame"]];
+            dict[@"phone"]=self.phone;
+            PMUser *user =[PMUser accountWithDict:dict];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            NSLog(@"user==%@",user.token);
+        }
         
     } failure:^(NSError * _Nonnull error) {
         
     }];
-//    [PMBaseHttp post:Post_Sms_Code_Ver parameters:pars success:^(id  _Nonnull responseObject) {
-//
-//    } failure:^(NSError * _Nonnull error) {
-//
-//    }];
+
 }
+
 @end

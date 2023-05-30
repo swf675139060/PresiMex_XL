@@ -13,6 +13,8 @@
 		A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */; };
 		A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD42A2332C200F5BED7 /* MD5Utils.m */; };
 		A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */; };
+		A4D6F1182A259974006B4BA6 /* PMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6F1142A259973006B4BA6 /* PMUser.m */; };
+		A4D6F1192A259974006B4BA6 /* PMAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6F1152A259973006B4BA6 /* PMAccountTool.m */; };
 		A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E252A21BB4300451413 /* PMBaseHttp.m */; };
 		A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E2E2A21E8A400451413 /* PMLoginViewController.m */; };
@@ -108,6 +110,10 @@
 		A4B60AD42A2332C200F5BED7 /* MD5Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5Utils.m; sourceTree = "<group>"; };
 		A4B60AD72A233C6500F5BED7 /* PMProblemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMProblemViewController.h; sourceTree = "<group>"; };
 		A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMProblemViewController.m; sourceTree = "<group>"; };
+		A4D6F1142A259973006B4BA6 /* PMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUser.m; sourceTree = "<group>"; };
+		A4D6F1152A259973006B4BA6 /* PMAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAccountTool.m; sourceTree = "<group>"; };
+		A4D6F1162A259974006B4BA6 /* PMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUser.h; sourceTree = "<group>"; };
+		A4D6F1172A259974006B4BA6 /* PMAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAccountTool.h; sourceTree = "<group>"; };
 		A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		A4DD5E1E2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		A4DD5E242A21BB4300451413 /* PMBaseHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBaseHttp.h; sourceTree = "<group>"; };
@@ -287,6 +293,17 @@
 			path = Md5;
 			sourceTree = "<group>";
 		};
+		A4D6F1132A259973006B4BA6 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A4D6F1162A259974006B4BA6 /* PMUser.h */,
+				A4D6F1142A259973006B4BA6 /* PMUser.m */,
+				A4D6F1152A259973006B4BA6 /* PMAccountTool.m */,
+				A4D6F1172A259974006B4BA6 /* PMAccountTool.h */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		A4DD5E1C2A21A9D400451413 /* Nav_Bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +326,7 @@
 		A4DD5E292A21E85300451413 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A4D6F1132A259973006B4BA6 /* User */,
 				A4DD5E2B2A21E86900451413 /* V */,
 				A4DD5E2A2A21E86200451413 /* C */,
 			);
@@ -384,18 +402,10 @@
 		FB1C739E2A23232A00194925 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
-				FB1C739F2A23232A00194925 /* M */,
 				FB1C73A02A23232A00194925 /* C */,
 				FB1C73A12A23232A00194925 /* V */,
 			);
 			path = HomeVC;
-			sourceTree = "<group>";
-		};
-		FB1C739F2A23232A00194925 /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
 			sourceTree = "<group>";
 		};
 		FB1C73A02A23232A00194925 /* C */ = {
@@ -1089,6 +1099,7 @@
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
+				A4D6F1192A259974006B4BA6 /* PMAccountTool.m in Sources */,
 				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				FB939F372A21F6A700599A86 /* CuponCell.m in Sources */,
@@ -1127,6 +1138,7 @@
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
+				A4D6F1182A259974006B4BA6 /* PMUser.m in Sources */,
 				A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */,
 				FB939F212A21E28400599A86 /* AjustesVC.m in Sources */,
 				FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */,
