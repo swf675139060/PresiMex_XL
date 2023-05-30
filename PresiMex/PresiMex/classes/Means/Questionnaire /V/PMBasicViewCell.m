@@ -1,15 +1,15 @@
 //
-//  PMQuestionViewCell.m
+//  PMBasicViewCell.m
 //  PresiMex
 //
 //  Created by 白翔龙 on 2023/5/30.
 //
 
-#import "PMQuestionViewCell.h"
+#import "PMBasicViewCell.h"
 
 
 
-@interface PMQuestionViewCell ()<UITextFieldDelegate>
+@interface PMBasicViewCell ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UILabel   *titleLabel;
 @property (nonatomic, strong) UITextField *contentTF;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation PMQuestionViewCell
+@implementation PMBasicViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -29,11 +29,11 @@
 }
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
-    static NSString *ID = @"PMQuestionViewCell";
+    static NSString *ID = @"PMBasicViewCell";
     
-    PMQuestionViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    PMBasicViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
-        cell = [[PMQuestionViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        cell = [[PMBasicViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
     }
     return cell;
 }

@@ -10,6 +10,11 @@
 		0DD8A011437AFA3BD010EC3B /* Pods_PresiMex_PresiMexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */; };
 		270A261DD59BA1810A7E8F9C /* Pods_PresiMex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A4827404A572A6581BBF4C /* Pods_PresiMex.framework */; };
 		56B288E235E119C8BDE40A0C /* Pods_PresiMexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */; };
+		A400BCEA2A25EE89006CABB2 /* PMBasicViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A400BCE92A25EE89006CABB2 /* PMBasicViewCell.m */; };
+		A400BCEE2A25F0C1006CABB2 /* PMIDAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A400BCED2A25F0C1006CABB2 /* PMIDAuthViewController.m */; };
+		A400BCF42A25F11E006CABB2 /* PMIDAuthViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A400BCF32A25F11E006CABB2 /* PMIDAuthViewCell.m */; };
+		A400BCF72A25F169006CABB2 /* PMIDAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A400BCF62A25F169006CABB2 /* PMIDAuthModel.m */; };
+		A400BCFA2A25F404006CABB2 /* PMIDAuthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A400BCF92A25F404006CABB2 /* PMIDAuthHeaderView.m */; };
 		A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */; };
 		A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD42A2332C200F5BED7 /* MD5Utils.m */; };
 		A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */; };
@@ -108,6 +113,16 @@
 		7BBC813EC55337913FF95F63 /* Pods-PresiMex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex.release.xcconfig"; path = "Target Support Files/Pods-PresiMex/Pods-PresiMex.release.xcconfig"; sourceTree = "<group>"; };
 		7CAC44E67EDCCD5EC40D6886 /* Pods-PresiMexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMexTests.release.xcconfig"; path = "Target Support Files/Pods-PresiMexTests/Pods-PresiMexTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A400BCE82A25EE89006CABB2 /* PMBasicViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBasicViewCell.h; sourceTree = "<group>"; };
+		A400BCE92A25EE89006CABB2 /* PMBasicViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMBasicViewCell.m; sourceTree = "<group>"; };
+		A400BCEC2A25F0C1006CABB2 /* PMIDAuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMIDAuthViewController.h; sourceTree = "<group>"; };
+		A400BCED2A25F0C1006CABB2 /* PMIDAuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMIDAuthViewController.m; sourceTree = "<group>"; };
+		A400BCF22A25F11E006CABB2 /* PMIDAuthViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMIDAuthViewCell.h; sourceTree = "<group>"; };
+		A400BCF32A25F11E006CABB2 /* PMIDAuthViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMIDAuthViewCell.m; sourceTree = "<group>"; };
+		A400BCF52A25F169006CABB2 /* PMIDAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMIDAuthModel.h; sourceTree = "<group>"; };
+		A400BCF62A25F169006CABB2 /* PMIDAuthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMIDAuthModel.m; sourceTree = "<group>"; };
+		A400BCF82A25F404006CABB2 /* PMIDAuthHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMIDAuthHeaderView.h; sourceTree = "<group>"; };
+		A400BCF92A25F404006CABB2 /* PMIDAuthHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMIDAuthHeaderView.m; sourceTree = "<group>"; };
 		A4B60AD02A2332C200F5BED7 /* YKGTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGTMDefines.h; sourceTree = "<group>"; };
 		A4B60AD12A2332C200F5BED7 /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
 		A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGTMBase64.m; sourceTree = "<group>"; };
@@ -296,6 +311,42 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A400BCEB2A25F01E006CABB2 /* Cer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cer;
+			sourceTree = "<group>";
+		};
+		A400BCEF2A25F0C7006CABB2 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A400BCEC2A25F0C1006CABB2 /* PMIDAuthViewController.h */,
+				A400BCED2A25F0C1006CABB2 /* PMIDAuthViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A400BCF02A25F0D9006CABB2 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				A400BCF52A25F169006CABB2 /* PMIDAuthModel.h */,
+				A400BCF62A25F169006CABB2 /* PMIDAuthModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		A400BCF12A25F0E3006CABB2 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				A400BCF22A25F11E006CABB2 /* PMIDAuthViewCell.h */,
+				A400BCF32A25F11E006CABB2 /* PMIDAuthViewCell.m */,
+				A400BCF82A25F404006CABB2 /* PMIDAuthHeaderView.h */,
+				A400BCF92A25F404006CABB2 /* PMIDAuthHeaderView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		A4B60ACF2A2332C200F5BED7 /* Md5 */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +373,7 @@
 		A4D6F11A2A25ADEF006B4BA6 /* Means */ = {
 			isa = PBXGroup;
 			children = (
+				A400BCEB2A25F01E006CABB2 /* Cer */,
 				A4D6F11F2A25AE9C006B4BA6 /* Bank_u */,
 				A4D6F11E2A25AE87006B4BA6 /* Emer */,
 				A4D6F11D2A25AE64006B4BA6 /* Basic */,
@@ -334,6 +386,9 @@
 		A4D6F11B2A25AE3B006B4BA6 /* IDAuth */ = {
 			isa = PBXGroup;
 			children = (
+				A400BCF12A25F0E3006CABB2 /* V */,
+				A400BCF02A25F0D9006CABB2 /* M */,
+				A400BCEF2A25F0C7006CABB2 /* C */,
 			);
 			path = IDAuth;
 			sourceTree = "<group>";
@@ -383,6 +438,8 @@
 			children = (
 				A4D6F1282A25B1DE006B4BA6 /* PMQuestionViewCell.h */,
 				A4D6F1292A25B1DE006B4BA6 /* PMQuestionViewCell.m */,
+				A400BCE82A25EE89006CABB2 /* PMBasicViewCell.h */,
+				A400BCE92A25EE89006CABB2 /* PMBasicViewCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1194,6 +1251,7 @@
 				A4D6F1232A25B081006B4BA6 /* PMQuestionnaireViewController.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
+				A400BCF72A25F169006CABB2 /* PMIDAuthModel.m in Sources */,
 				FB1C73A72A23247800194925 /* PMNotiView.m in Sources */,
 				A4D6F12A2A25B1DE006B4BA6 /* PMQuestionViewCell.m in Sources */,
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
@@ -1203,6 +1261,7 @@
 				A4D6F1192A259974006B4BA6 /* PMAccountTool.m in Sources */,
 				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
+				A400BCEE2A25F0C1006CABB2 /* PMIDAuthViewController.m in Sources */,
 				FB939F372A21F6A700599A86 /* CuponCell.m in Sources */,
 				FB976D3A2A05124600B1C0A3 /* AppDelegate.m in Sources */,
 				FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */,
@@ -1211,7 +1270,9 @@
 				A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */,
 				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
 				FB8AF31F2A088AC5006C5887 /* SLFToast.m in Sources */,
+				A400BCFA2A25F404006CABB2 /* PMIDAuthHeaderView.m in Sources */,
 				A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */,
+				A400BCEA2A25EE89006CABB2 /* PMBasicViewCell.m in Sources */,
 				FBC4CBA72A24EA200050C47F /* WFThreeBtnCell.m in Sources */,
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
@@ -1228,6 +1289,7 @@
 				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
 				FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */,
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
+				A400BCF42A25F11E006CABB2 /* PMIDAuthViewCell.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
 				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,

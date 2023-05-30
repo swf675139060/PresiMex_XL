@@ -1,65 +1,31 @@
 //
-//  PMQuestionnaireViewController.m
+//  PMIDAuthViewController.m
 //  PresiMex
 //
 //  Created by 白翔龙 on 2023/5/30.
 //
 
-#import "PMQuestionnaireViewController.h"
 #import "PMIDAuthViewController.h"
-#import "PMQuestionModel.h"
-#import "PMQuestionViewCell.h"
+#import "PMIDAuthModel.h"
+#import "PMIDAuthViewCell.h"
+#import "PMIDAuthHeaderView.h"
 
-@interface PMQuestionnaireViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface PMIDAuthViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
 @end
 
-@implementation PMQuestionnaireViewController
-
-- (NSMutableArray *)dataArray {
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
-}
-- (void)modelWithData{
-
-    PMQuestionModel *model1 = [[PMQuestionModel alloc] init];
-    model1.title     = @"1. ¿Hay algún pago vencido dentro de medio año?";
-    model1.type=0;
-    [self.dataArray addObject:model1];
-    
-    PMQuestionModel *model2 = [[PMQuestionModel alloc] init];
-    model2.title     = @"2. ¿Cuál es el número máximo de días de mora?";
-    model2.type=1;
-    [self.dataArray addObject:model2];
-    
-    PMQuestionModel *model3 = [[PMQuestionModel alloc] init];
-    model3.title     = @"3. ¿Cuál es el préstamo total actual de Internet?";
-    model3.type=2;
-    [self.dataArray addObject:model3];
-    
-    PMQuestionModel *model4 = [[PMQuestionModel alloc] init];
-    model4.title     =@"4. ¿Cuántas veces has pedido prestado en total?";
-    model4.type=3;
-    [self.dataArray addObject:model4];
-    
-    PMQuestionModel *model5 = [[PMQuestionModel alloc] init];
-    model5.title     =@"5. ¿Cuál es el número de préstamos de Internet actualmente en préstamo?";
-    model5.type=4;
-    [self.dataArray addObject:model5];
-  
-    [self.tableView reloadData];
-}
+@implementation PMIDAuthViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLabel.text=@"Cuestionario";
+    self.navTitleLabel.text=@"Autenticación de identidad";
     [self addRightBarButtonWithImag:@"bai_kefu"];
-    [self modelWithData];
-    
+    [self tableView];
 }
+
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, WF_ScreenWidth, WF_ScreenHeight-WF_StatusBarHeight-WF_BottomSafeAreaHeight)];
@@ -88,28 +54,29 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
+    return 3;
     return self.dataArray.count;
-   
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PMQuestionModel *model=self.dataArray[indexPath.row];
-    PMQuestionViewCell *cell=[PMQuestionViewCell cellWithTableView:tableView];
+    PMIDAuthModel *model=self.dataArray[indexPath.row];
+    PMIDAuthViewCell *cell=[PMIDAuthViewCell cellWithTableView:tableView];
     [cell setCellWithModel:model];
-      return cell;
-
+    return cell;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PMQuestionModel *model=self.dataArray[indexPath.row];
-    return [PMQuestionViewCell cellWithHight:model];
+    
+    return 200;
     
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-   
-
+    
+    
 }
 
 
@@ -121,27 +88,29 @@
 }
 -(void)setupHeadView{
     
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 60)];
-    header.backgroundColor=BColor_Hex(@"#FFB602", 0.06);
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 165)];
+    headerView.backgroundColor=[UIColor whiteColor];
+    PMIDAuthHeaderView *header = [[PMIDAuthHeaderView alloc] initViewWithType:1];
     
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
     tipLabel.numberOfLines = 0;
-    tipLabel.text=@"Por favor, complete el cuestionario con información veraz. Esto aumentará la cantidad que podrá obtener.";
+    tipLabel.text=@"Consejo: asegúrese de que todas las imágenes de los documentos se tomen con claridad y sean las más recientes para obtener el préstamo al instante.";
     [header addSubview:tipLabel];
     tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
     tipLabel.textAlignment = NSTextAlignmentLeft;
     tipLabel.font=B_FONT_REGULAR(11);
     CGSize size=[UILabel sizeWithText:tipLabel.text fontSize:11 andMaxsize:WF_ScreenWidth-30];
-    tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth-30,size.height);
+    tipLabel.frame = CGRectMake(15,header.swf_bottom+12,WF_ScreenWidth-30,size.height);
     
     self.tableView.tableHeaderView=header;
+    
 }
 -(void)setupFootView{
     
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 110)];
     footer.backgroundColor=[UIColor whiteColor];
-   
+    
     UIButton* submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     submitBtn.tag=1;
     submitBtn.frame = CGRectMake(15,30,WF_ScreenWidth-30,50);
