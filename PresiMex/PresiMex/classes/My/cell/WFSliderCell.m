@@ -54,32 +54,15 @@
         _slider = [[UISlider alloc] init];
         _slider.minimumValue = 0;
         _slider.maximumValue = 100;
+        _slider.thumbTintColor = [UIColor jk_colorWithHexString:@"#FFB602"];
+        _slider.minimumTrackTintColor = [UIColor whiteColor];
+        [_slider setThumbImage:[UIImage imageNamed:@"Track"] forState:UIControlStateNormal];
+        [_slider setThumbImage:[UIImage imageNamed:@"Track"] forState:UIControlStateHighlighted];
+        [_slider addTarget:self action:@selector(sliderEventValueChanged:) forControlEvents:UIControlEventValueChanged];
+        
     }
     return _slider;
 }
-
-//// 设置最大值
-//- (CGRect)maximumValueImageRectForBounds:(CGRect)bounds
-//{
-//    return CGRectMake(0, 0, CGRectGetWidth(self.frame)/ 2, CGRectGetHeight(self.frame) / 2);
-//}
-//// 设置最小值
-//- (CGRect)minimumValueImageRectForBounds:(CGRect)bounds
-//{
-//    return CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
-//}
-//
-//// 控制slider的宽和高，这个方法才是真正的改变slider滑道的高的
-//- (CGRect)trackRectForBounds:(CGRect)bounds
-//{
-//    return CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
-//}
- 
-//// 改变滑块的触摸范围
-//- (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value
-//{
-//    return CGRectInset([super thumbRectForBounds:bounds trackRect:rect value:value], 10, 10);
-//}
 
 
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding{
@@ -94,6 +77,12 @@
         make.edges.equalTo(self.BGView).with.insets(padding);
         make.height.equalTo(@(height));
     }];
+}
+
+-(void)sliderEventValueChanged:(UISlider *)slider{
+    if(self.sliderChangeBlock){
+        self.sliderChangeBlock(slider.value);
+    }
 }
 
 -(void)setSliderValue:(CGFloat )sliderValue{

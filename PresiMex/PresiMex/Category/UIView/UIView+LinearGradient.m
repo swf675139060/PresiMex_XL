@@ -47,4 +47,13 @@
     
 }
 
+- (void)deletaLinearGradient{
+    for (CALayer *layer in self.layer.sublayers) {
+        if ([layer isKindOfClass:[CAGradientLayer class]]) {
+            [layer removeFromSuperlayer];
+            break;
+        }
+    }
+}
+
 @end

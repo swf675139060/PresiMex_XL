@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)addLinearGradientwithSize:(CGSize )Size maskedCorners:(CACornerMask)maskedCorners cornerRadius:(CGFloat)cornerRadius;
+
+- (void)deletaLinearGradient;
 @end
 
 NS_ASSUME_NONNULL_END
