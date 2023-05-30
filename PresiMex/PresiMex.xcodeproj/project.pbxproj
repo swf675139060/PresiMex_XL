@@ -15,6 +15,10 @@
 		A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */; };
 		A4D6F1182A259974006B4BA6 /* PMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6F1142A259973006B4BA6 /* PMUser.m */; };
 		A4D6F1192A259974006B4BA6 /* PMAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6F1152A259973006B4BA6 /* PMAccountTool.m */; };
+		A4D6F1232A25B081006B4BA6 /* PMQuestionnaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6F1222A25B081006B4BA6 /* PMQuestionnaireViewController.m */; };
+		A4D6F1272A25B0FE006B4BA6 /* WFBaseViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6F1262A25B0FE006B4BA6 /* WFBaseViewCell.m */; };
+		A4D6F12A2A25B1DE006B4BA6 /* PMQuestionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6F1292A25B1DE006B4BA6 /* PMQuestionViewCell.m */; };
+		A4D6F12E2A25B364006B4BA6 /* PMQuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6F12D2A25B364006B4BA6 /* PMQuestionModel.m */; };
 		A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */; };
 		A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E252A21BB4300451413 /* PMBaseHttp.m */; };
 		A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E2E2A21E8A400451413 /* PMLoginViewController.m */; };
@@ -114,6 +118,14 @@
 		A4D6F1152A259973006B4BA6 /* PMAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAccountTool.m; sourceTree = "<group>"; };
 		A4D6F1162A259974006B4BA6 /* PMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUser.h; sourceTree = "<group>"; };
 		A4D6F1172A259974006B4BA6 /* PMAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAccountTool.h; sourceTree = "<group>"; };
+		A4D6F1212A25B081006B4BA6 /* PMQuestionnaireViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMQuestionnaireViewController.h; sourceTree = "<group>"; };
+		A4D6F1222A25B081006B4BA6 /* PMQuestionnaireViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMQuestionnaireViewController.m; sourceTree = "<group>"; };
+		A4D6F1252A25B0FE006B4BA6 /* WFBaseViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFBaseViewCell.h; sourceTree = "<group>"; };
+		A4D6F1262A25B0FE006B4BA6 /* WFBaseViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFBaseViewCell.m; sourceTree = "<group>"; };
+		A4D6F1282A25B1DE006B4BA6 /* PMQuestionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMQuestionViewCell.h; sourceTree = "<group>"; };
+		A4D6F1292A25B1DE006B4BA6 /* PMQuestionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMQuestionViewCell.m; sourceTree = "<group>"; };
+		A4D6F12C2A25B364006B4BA6 /* PMQuestionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMQuestionModel.h; sourceTree = "<group>"; };
+		A4D6F12D2A25B364006B4BA6 /* PMQuestionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMQuestionModel.m; sourceTree = "<group>"; };
 		A4DD5E1D2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		A4DD5E1E2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		A4DD5E242A21BB4300451413 /* PMBaseHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBaseHttp.h; sourceTree = "<group>"; };
@@ -304,6 +316,83 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		A4D6F11A2A25ADEF006B4BA6 /* Means */ = {
+			isa = PBXGroup;
+			children = (
+				A4D6F11F2A25AE9C006B4BA6 /* Bank_u */,
+				A4D6F11E2A25AE87006B4BA6 /* Emer */,
+				A4D6F11D2A25AE64006B4BA6 /* Basic */,
+				A4D6F11C2A25AE4A006B4BA6 /* Questionnaire  */,
+				A4D6F11B2A25AE3B006B4BA6 /* IDAuth */,
+			);
+			path = Means;
+			sourceTree = "<group>";
+		};
+		A4D6F11B2A25AE3B006B4BA6 /* IDAuth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IDAuth;
+			sourceTree = "<group>";
+		};
+		A4D6F11C2A25AE4A006B4BA6 /* Questionnaire  */ = {
+			isa = PBXGroup;
+			children = (
+				A4D6F12B2A25B33F006B4BA6 /* M */,
+				A4D6F1242A25B0CD006B4BA6 /* V */,
+				A4D6F1202A25B030006B4BA6 /* C */,
+			);
+			path = "Questionnaire ";
+			sourceTree = "<group>";
+		};
+		A4D6F11D2A25AE64006B4BA6 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		A4D6F11E2A25AE87006B4BA6 /* Emer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Emer;
+			sourceTree = "<group>";
+		};
+		A4D6F11F2A25AE9C006B4BA6 /* Bank_u */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bank_u;
+			sourceTree = "<group>";
+		};
+		A4D6F1202A25B030006B4BA6 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A4D6F1212A25B081006B4BA6 /* PMQuestionnaireViewController.h */,
+				A4D6F1222A25B081006B4BA6 /* PMQuestionnaireViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A4D6F1242A25B0CD006B4BA6 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				A4D6F1282A25B1DE006B4BA6 /* PMQuestionViewCell.h */,
+				A4D6F1292A25B1DE006B4BA6 /* PMQuestionViewCell.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A4D6F12B2A25B33F006B4BA6 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				A4D6F12C2A25B364006B4BA6 /* PMQuestionModel.h */,
+				A4D6F12D2A25B364006B4BA6 /* PMQuestionModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
 		A4DD5E1C2A21A9D400451413 /* Nav_Bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +518,7 @@
 		FB8AF2EE2A0882F2006C5887 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				A4D6F11A2A25ADEF006B4BA6 /* Means */,
 				A4DD5E292A21E85300451413 /* Login */,
 				FBCA72332A0A6A0500A10D4E /* My */,
 				FBCA72322A0A69DE00A10D4E /* Home */,
@@ -521,9 +611,9 @@
 			isa = PBXGroup;
 			children = (
 				FB8AF32D2A088C78006C5887 /* UILabel+SLFLineSpace.h */,
+				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
 				FB939F282A21EA8900599A86 /* UILabel+WFTextSizeColor.h */,
 				FB939F292A21EA8900599A86 /* UILabel+WFTextSizeColor.m */,
-				FB8AF32C2A088C78006C5887 /* UILabel+SLFLineSpace.m */,
 			);
 			path = UILabel;
 			sourceTree = "<group>";
@@ -539,6 +629,8 @@
 				FB8AF3342A091FCA006C5887 /* WFBaseViewController.m */,
 				FB8AF3362A092010006C5887 /* WFTabBarController.h */,
 				FB8AF3372A092010006C5887 /* WFTabBarController.m */,
+				A4D6F1252A25B0FE006B4BA6 /* WFBaseViewCell.h */,
+				A4D6F1262A25B0FE006B4BA6 /* WFBaseViewCell.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1093,10 +1185,13 @@
 				FBC2A86A2A19C96D0010D7F8 /* WFImageCell.m in Sources */,
 				FB939F1A2A21C0BC00599A86 /* WFCornerCell.m in Sources */,
 				FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */,
+				A4D6F1232A25B081006B4BA6 /* PMQuestionnaireViewController.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
 				FB1C73A72A23247800194925 /* PMNotiView.m in Sources */,
+				A4D6F12A2A25B1DE006B4BA6 /* PMQuestionViewCell.m in Sources */,
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
+				A4D6F12E2A25B364006B4BA6 /* PMQuestionModel.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
 				A4D6F1192A259974006B4BA6 /* PMAccountTool.m in Sources */,
@@ -1116,6 +1211,7 @@
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */,
 				FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */,
+				A4D6F1272A25B0FE006B4BA6 /* WFBaseViewCell.m in Sources */,
 				FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */,
 				FBC2A8742A1A16550010D7F8 /* ProblemaCell.m in Sources */,
 				A4DD5E652A21FFE400451413 /* CRSecrectImageView.m in Sources */,
@@ -1313,9 +1409,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
@@ -1347,9 +1443,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;

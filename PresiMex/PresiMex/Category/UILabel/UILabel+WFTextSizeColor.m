@@ -14,5 +14,17 @@
     self.textColor = textColor;
     self.font = font;
 }
-
++ (CGSize)sizeWithText:(NSString *)text fontSize:(CGFloat)size andMaxsize: (CGFloat)maxWidth {
+    
+    NSDictionary *arrts = @{NSFontAttributeName: [UIFont systemFontOfSize:size]};
+    CGSize biggestSize = CGSizeMake(maxWidth, MAXFLOAT);
+    
+    return [text boundingRectWithSize:biggestSize options:NSStringDrawingUsesLineFragmentOrigin attributes:arrts context:nil].size;
+}
++ (CGSize)sizeWithText:(NSString *)text fontSize:(UIFont*)font{
+    
+    NSMutableDictionary *arrts = [NSMutableDictionary dictionary];
+    arrts[NSFontAttributeName] =font;
+    return [text sizeWithAttributes:arrts];
+}
 @end

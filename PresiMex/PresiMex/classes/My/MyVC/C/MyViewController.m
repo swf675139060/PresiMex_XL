@@ -14,7 +14,8 @@
 #import "CuponVC.h"//优惠卷
 #import "OrderVC.h"//  订单
 
-#import "PMLoginViewController.h"
+#import "PMLoginViewController.h" //登录页面
+#import "PMQuestionnaireViewController.h"//调查问卷
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -193,7 +194,7 @@
 }
 -(void)pushLoginVc{
     
-    PMLoginViewController*Vc=[PMLoginViewController new];
+    PMQuestionnaireViewController*Vc=[PMQuestionnaireViewController new];
     [self.navigationController pushViewController:Vc animated:YES];
 }
 @end

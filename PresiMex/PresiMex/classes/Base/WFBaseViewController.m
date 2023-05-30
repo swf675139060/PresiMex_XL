@@ -71,6 +71,16 @@
     temporaryBarButtonItem.title = @"";
     self.navigationItem.leftBarButtonItem = temporaryBarButtonItem;
 }
-
-
+-(void)addRightBarButtonWithImag:(NSString*)imgName{
+    
+    UIButton* button = [[UIButton alloc]init];
+    [button addTarget:self action:@selector(rightItemAction) forControlEvents:(UIControlEventTouchUpInside)];
+    button.frame = CGRectMake(WF_ScreenWidth-32-15, WF_StatusBarHeight+7, 32, 32);
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentTrailing;
+    [button setImage:[UIImage imageNamed:imgName] forState:(UIControlStateNormal)];
+    [_navBarView addSubview:button];
+}
+-(void)rightItemAction{
+    
+}
 @end
