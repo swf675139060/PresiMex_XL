@@ -1,0 +1,157 @@
+//
+//  WFFourLabelCell.m
+//  PresiMex
+//
+//  Created by shenWenFeng on 2023/5/30.
+//
+
+#import "WFFourLabelCell.h"
+
+@implementation WFFourLabelCell
+
++(instancetype)cellWithTableView:(UITableView *)tableView{
+    NSString *ID = @"WFFourLabelCell";
+    
+    WFFourLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[WFFourLabelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        [cell creatSubView];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+
+-(void)creatSubView{
+    [self.contentView addSubview:self.BGView];
+    
+    [self.BGView addSubview:self.label1];
+    [self.BGView addSubview:self.label2];
+    [self.BGView addSubview:self.label3];
+    [self.BGView addSubview:self.label4];
+    UIEdgeInsets padding = UIEdgeInsetsMake(0, 0, 0, 0);
+    [self.BGView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).with.insets(padding);
+        
+    }];
+    
+    
+    [self.label1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.BGView).multipliedBy(0.5);
+        make.top.equalTo(@(10));
+        make.left.equalTo(@(0));
+        
+    }];
+    
+    [self.label2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.BGView.mas_right).multipliedBy(0.5);
+        make.top.equalTo(self.label1);
+        make.right.equalTo(@(0));
+        
+    }];
+    
+    [self.label3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.label1);
+        make.top.equalTo(self.label1.mas_bottom).offset(7.5);
+        make.left.equalTo(self.label1);
+        make.bottom.equalTo(@(10));
+        
+    }];
+    
+    [self.label4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.label2);
+        make.top.equalTo(self.label3);
+        make.right.equalTo(self.label2);
+        
+    }];
+    
+}
+
+-(UIView *)BGView{
+    if(_BGView == nil){
+        _BGView = [[UIView alloc] init];
+    }
+    return _BGView;
+}
+
+-(UILabel *)label1{
+    if(_label1 == nil){
+        _label1 = [[UILabel alloc] init];
+        _label1.numberOfLines = 0;
+        _label1.textAlignment = NSTextAlignmentCenter;
+    }
+    return _label1;
+}
+
+-(UILabel *)label2{
+    if(_label2 == nil){
+        _label2 = [[UILabel alloc] init];
+        _label2.numberOfLines = 0;
+        _label2.textAlignment = NSTextAlignmentCenter;
+    }
+    return _label2;
+}
+
+
+-(UILabel *)label3{
+    if(_label3 == nil){
+        _label3 = [[UILabel alloc] init];
+        _label3.numberOfLines = 0;
+        _label3.textAlignment = NSTextAlignmentCenter;
+    }
+    return _label3;
+}
+
+-(UILabel *)label4{
+    if(_label4 == nil){
+        _label4 = [[UILabel alloc] init];
+        _label4.numberOfLines = 0;
+        _label4.textAlignment = NSTextAlignmentCenter;
+    }
+    return _label4;
+}
+
+
+-(void)upBGFrameWithInsets:(UIEdgeInsets )padding{
+    [self.BGView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).with.insets(padding);
+    }];
+}
+
+
+-(void)upLabelsFrameWithInsets:(UIEdgeInsets )padding spacing:(CGFloat)spacing{
+    
+    [self.label1 mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.BGView).multipliedBy(0.5).offset(-padding.left);
+        make.top.equalTo(@(padding.top));
+        make.left.equalTo(@(padding.left));
+        
+    }];
+    
+    [self.label2 mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.BGView.mas_right).multipliedBy(0.5).offset(padding.right);
+        make.top.equalTo(self.label1);
+        make.right.equalTo(@(-padding.right));
+        
+    }];
+    
+    [self.label3 mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.label1);
+        make.top.equalTo(self.label1.mas_bottom).offset(spacing);
+        make.left.equalTo(self.label1);
+        make.bottom.equalTo(@(-padding.bottom));
+        
+    }];
+    
+}
+
+-(void)upDataWithModel:(id)model{
+    self.label1.text = @"1";
+    self.label2.text = @"label2";
+    self.label3.text = @"label3";
+    self.label4.text = @"label4";
+}
+
+
+@end

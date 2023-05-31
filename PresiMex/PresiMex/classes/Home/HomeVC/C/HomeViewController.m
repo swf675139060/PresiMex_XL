@@ -14,6 +14,8 @@
 #import "HomeSectionView.h"
 #import "WFBtnCell.h"
 #import "WFImageCell.h"
+
+#import "HomeDetailsVC.h"
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -326,7 +328,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [self.navigationController pushViewController:[HomeDetailsVC new] animated:YES];
 }
 
 
