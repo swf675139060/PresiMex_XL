@@ -17,7 +17,6 @@
 				9F7CDC42BB167B7CFC61BC7C53CF7976 /* PBXTargetDependency */,
 			);
 			name = Firebase;
-			productName = Firebase;
 		};
 		4A68CFD979D413A619DF631BB121D98F /* Bugly */ = {
 			isa = PBXAggregateTarget;
@@ -27,7 +26,6 @@
 			dependencies = (
 			);
 			name = Bugly;
-			productName = Bugly;
 		};
 		B0B23938B1EBCBAD2419AB6E9D222A0B /* AppsFlyerFramework */ = {
 			isa = PBXAggregateTarget;
@@ -38,7 +36,6 @@
 			dependencies = (
 			);
 			name = AppsFlyerFramework;
-			productName = AppsFlyerFramework;
 		};
 /* End PBXAggregateTarget section */
 
@@ -1893,7 +1890,7 @@
 		3DFFF98259197E75F30264724E066278 /* SDWebImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.release.xcconfig; sourceTree = "<group>"; };
 		3E29C19DCD7093FF6025728349F4727F /* Pods-PresiMex */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-PresiMex"; path = Pods_PresiMex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5B546A6A0A01EF5C5D6A8CB2170E6F /* SDImageLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageLoader.m; path = SDWebImage/Core/SDImageLoader.m; sourceTree = "<group>"; };
-		3E862A121B5E16869DBF9434401FCA31 /* cct.nanopb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cct.nanopb.c; path = GoogleDataTransport/GDTCCTLibrary/Protogen/nanopb/cct.nanopb.c; sourceTree = "<group>"; };
+		3E862A121B5E16869DBF9434401FCA31 /* cct.nanopb.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cct.nanopb.c; path = GoogleDataTransport/GDTCCTLibrary/Protogen/nanopb/cct.nanopb.c; sourceTree = "<group>"; };
 		3EC4DCE784A98425AFF9908A132BAAFD /* FIRMessagingPersistentSyncMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRMessagingPersistentSyncMessage.h; path = FirebaseMessaging/Sources/FIRMessagingPersistentSyncMessage.h; sourceTree = "<group>"; };
 		3EF2C1DD2E5B8D6804E267E9DB82F16D /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		3EFC015DFCF09BBDC40B01C1F8C2874F /* SDWebImageCacheSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCacheSerializer.h; path = SDWebImage/Core/SDWebImageCacheSerializer.h; sourceTree = "<group>"; };
@@ -2118,7 +2115,7 @@
 		6EDCF0EB677C6F66CAD350B37A843451 /* NSString+JKContains.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+JKContains.h"; path = "JKCategories/Foundation/NSString/NSString+JKContains.h"; sourceTree = "<group>"; };
 		6F3502189F0EC6ABFDBAE3D0E9D1EDEA /* FIRAnalyticsConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAnalyticsConfiguration.m; path = FirebaseCore/Sources/FIRAnalyticsConfiguration.m; sourceTree = "<group>"; };
 		6F53547950AF6F1715B538ADED0F567D /* NSString+JKEncrypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+JKEncrypt.h"; path = "JKCategories/Foundation/NSString/NSString+JKEncrypt.h"; sourceTree = "<group>"; };
-		6F68368F7BC62FE9B7BA11A32E5D4066 /* me.nanopb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = me.nanopb.c; path = FirebaseMessaging/Sources/Protogen/nanopb/me.nanopb.c; sourceTree = "<group>"; };
+		6F68368F7BC62FE9B7BA11A32E5D4066 /* me.nanopb.c */ = {isa = PBXFileReference; includeInIndex = 1; name = me.nanopb.c; path = FirebaseMessaging/Sources/Protogen/nanopb/me.nanopb.c; sourceTree = "<group>"; };
 		6F7BCD607DB0E630730A1D3A59CDD73D /* PromisesObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromisesObjC.release.xcconfig; sourceTree = "<group>"; };
 		6F8B0B80891EE1555EE5215BA5D7680E /* FIRLoggerLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRLoggerLevel.h; path = FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h; sourceTree = "<group>"; };
 		6F8E92F3E86D6A6763E16B42D93A90DF /* NSURL+JKParam.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURL+JKParam.m"; path = "JKCategories/Foundation/NSURL/NSURL+JKParam.m"; sourceTree = "<group>"; };
@@ -2263,7 +2260,7 @@
 		8CB0BDF7F178CD2935BA625B0E513693 /* FIRMessagingSyncMessageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRMessagingSyncMessageManager.m; path = FirebaseMessaging/Sources/FIRMessagingSyncMessageManager.m; sourceTree = "<group>"; };
 		8CFA798AE12451390664E881E57D8223 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
 		8D0F3CE056C046B0295DE505792591A0 /* FirebaseCoreInternal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseCoreInternal.release.xcconfig; sourceTree = "<group>"; };
-		8D48C6CA2D8DD11A7D0025FA4BEFF4AD /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_encode.c; sourceTree = "<group>"; };
+		8D48C6CA2D8DD11A7D0025FA4BEFF4AD /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_encode.c; sourceTree = "<group>"; };
 		8D4F16A3F8A82303EC10FA7AA5CDF695 /* GULNetworkConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkConstants.m; path = GoogleUtilities/Network/GULNetworkConstants.m; sourceTree = "<group>"; };
 		8DBB11CF3FC9DE27E5CC25F9C89F5263 /* NSObject+MJProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJProperty.m"; path = "MJExtension/NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		8DC90B392F78EC70584376B68C3FF4CB /* UIImage+MemoryCacheCost.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MemoryCacheCost.m"; path = "SDWebImage/Core/UIImage+MemoryCacheCost.m"; sourceTree = "<group>"; };
@@ -2352,7 +2349,7 @@
 		9D2F53BE67DA24335B1C5955A9762510 /* UIViewController+JKStoreKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+JKStoreKit.h"; path = "JKCategories/UIKit/UIViewController/UIViewController+JKStoreKit.h"; sourceTree = "<group>"; };
 		9D3AC6FA033AF2AC1BD599B14579B1C1 /* FIRMessaging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRMessaging.m; path = FirebaseMessaging/Sources/FIRMessaging.m; sourceTree = "<group>"; };
 		9D7A3032E0FF11EFE9E2ACE5E889E8F0 /* UITextField+JKHistory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+JKHistory.h"; path = "JKCategories/UIKit/UITextField/UITextField+JKHistory.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DCE575328A3E2D1F55C57255BEDFE5E /* FIROptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIROptions.m; path = FirebaseCore/Sources/FIROptions.m; sourceTree = "<group>"; };
 		9E165199328E61931DCECB42665DBB44 /* GoogleUtilities-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-umbrella.h"; sourceTree = "<group>"; };
 		9E1958852B4FC07E3964110486863B79 /* FBLPromise+Any.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Any.h"; path = "Sources/FBLPromises/include/FBLPromise+Any.h"; sourceTree = "<group>"; };
@@ -2388,7 +2385,7 @@
 		A46E731322827E21C30AB6F93AE447AB /* SDImageFrame.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageFrame.m; path = SDWebImage/Core/SDImageFrame.m; sourceTree = "<group>"; };
 		A4BA9CBA92DFA28E4334E6B9763F73F8 /* NSString+JKSize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+JKSize.h"; path = "JKCategories/Foundation/NSString/NSString+JKSize.h"; sourceTree = "<group>"; };
 		A4EDB7ECB1AE33933550B42B84DB108F /* MJExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJExtension-dummy.m"; sourceTree = "<group>"; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50FE6BB6FD12DE20570EF9C19A56DB8 /* HeartbeatController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeartbeatController.swift; path = FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatController.swift; sourceTree = "<group>"; };
 		A517F7EBA1EDF15FD3258F2AE3FAAADB /* NSNumber+JKCGFloat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+JKCGFloat.m"; path = "JKCategories/Foundation/NSNumber/NSNumber+JKCGFloat.m"; sourceTree = "<group>"; };
 		A59271A9A50454AC62840455D53F92BE /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
@@ -2430,7 +2427,7 @@
 		AC45F7799F4A05FAE148A654E3F86238 /* NSManagedObjectContext+JKFetchRequestsConstructors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+JKFetchRequestsConstructors.h"; path = "JKCategories/CoreData/NSManagedObjectContext/NSManagedObjectContext+JKFetchRequestsConstructors.h"; sourceTree = "<group>"; };
 		AC4A4B85D11BA484CB43FBC6BB9151E1 /* GDTCORLogSourceMetrics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORLogSourceMetrics.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORLogSourceMetrics.h; sourceTree = "<group>"; };
 		AC94C476F387DD1130D2AE60AAC7B339 /* SDWebImageCacheSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCacheSerializer.m; path = SDWebImage/Core/SDWebImageCacheSerializer.m; sourceTree = "<group>"; };
-		ACBB87B213EEFED7E71BF55F9910AE4E /* client_metrics.nanopb.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = client_metrics.nanopb.c; path = GoogleDataTransport/GDTCCTLibrary/Protogen/nanopb/client_metrics.nanopb.c; sourceTree = "<group>"; };
+		ACBB87B213EEFED7E71BF55F9910AE4E /* client_metrics.nanopb.c */ = {isa = PBXFileReference; includeInIndex = 1; name = client_metrics.nanopb.c; path = GoogleDataTransport/GDTCCTLibrary/Protogen/nanopb/client_metrics.nanopb.c; sourceTree = "<group>"; };
 		AD3BFC29148F67472317B3CEEC19BC04 /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardReturnKeyHandler.h; path = IQKeyboardManager/IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
 		AD4C979FE1DD4F97A81334354F8715EF /* ZZCircleProgress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZZCircleProgress.release.xcconfig; sourceTree = "<group>"; };
 		AD55BC5FC54573DE1F4F30C3179A7FE7 /* FIRComponentContainer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRComponentContainer.m; path = FirebaseCore/Sources/FIRComponentContainer.m; sourceTree = "<group>"; };
@@ -2443,7 +2440,7 @@
 		AF004A4079BC39ACF3EBB2AFBD10BDB5 /* NSDate+JKInternetDateTime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+JKInternetDateTime.h"; path = "JKCategories/Foundation/NSDate/NSDate+JKInternetDateTime.h"; sourceTree = "<group>"; };
 		AF0990B16E5AEBD6C1AEEE5E3D0A2002 /* FIRMessagingDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRMessagingDefines.h; path = FirebaseMessaging/Sources/FIRMessagingDefines.h; sourceTree = "<group>"; };
 		AF3429D6277245ABBB30BF3887CF7284 /* CALayer+JKBorderColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer+JKBorderColor.m"; path = "JKCategories/QuartzCore/CALayer/CALayer+JKBorderColor.m"; sourceTree = "<group>"; };
-		AF3C4D76FAFF49A33CCB0C9D2F13E4A9 /* AppsFlyerLib.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; path = AppsFlyerLib.xcframework; sourceTree = "<group>"; };
+		AF3C4D76FAFF49A33CCB0C9D2F13E4A9 /* AppsFlyerLib.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = AppsFlyerLib.xcframework; sourceTree = "<group>"; };
 		AFD8666067C9BD16E025B58C53EE637E /* UIColor+JKModify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+JKModify.h"; path = "JKCategories/UIKit/UIColor/UIColor+JKModify.h"; sourceTree = "<group>"; };
 		AFE7DD3719204AEF81A85D3CEC96FC11 /* CAAnimation+JKEasingEquations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CAAnimation+JKEasingEquations.h"; path = "JKCategories/QuartzCore/CAAnimation/CAAnimation+JKEasingEquations.h"; sourceTree = "<group>"; };
 		B051EF273B14D5D783CAF480D3A50D1B /* IQKeyboardManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardManager.m; path = IQKeyboardManager/IQKeyboardManager.m; sourceTree = "<group>"; };
@@ -2624,7 +2621,7 @@
 		D75B92E9779EC2B018F94452671BAB45 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		D75BDD9B72B54CC7D88FD4C0C5543DE2 /* Pods-PresiMex-PresiMexUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PresiMex-PresiMexUITests-frameworks.sh"; sourceTree = "<group>"; };
 		D782F7F4E7D91EC5AA693A1BDB50E77C /* UIImage+JKOrientation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+JKOrientation.h"; path = "JKCategories/UIKit/UIImage/UIImage+JKOrientation.h"; sourceTree = "<group>"; };
-		D7C572D559422406C5FBD9EE094FA678 /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_common.c; sourceTree = "<group>"; };
+		D7C572D559422406C5FBD9EE094FA678 /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_common.c; sourceTree = "<group>"; };
 		D7E682AB278F8D46E48596A3F17EBA6D /* Firebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.release.xcconfig; sourceTree = "<group>"; };
 		D7E7B63DDE7D6145E94F2AACA2EC35DF /* AppsFlyerFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppsFlyerFramework.debug.xcconfig; sourceTree = "<group>"; };
 		D82A9FE2414F0F775C90C9F01E84BB5F /* NSManagedObjectContext+JKFetching.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+JKFetching.h"; path = "JKCategories/CoreData/NSManagedObjectContext/NSManagedObjectContext+JKFetching.h"; sourceTree = "<group>"; };
@@ -2708,7 +2705,7 @@
 		E533B7EC475B6556B6BA168DA32C3EAD /* NSManagedObjectContext+JKObjectClear.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+JKObjectClear.m"; path = "JKCategories/CoreData/NSManagedObjectContext/NSManagedObjectContext+JKObjectClear.m"; sourceTree = "<group>"; };
 		E597B3A4AA358AF51BBD6AA14B273B9D /* SDImageGIFCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageGIFCoder.m; path = SDWebImage/Core/SDImageGIFCoder.m; sourceTree = "<group>"; };
 		E5B3865659B189AD5AE1CB5DB6E56CC5 /* UISplitViewController+JKQuickAccess.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UISplitViewController+JKQuickAccess.m"; path = "JKCategories/UIKit/UISplitViewController/UISplitViewController+JKQuickAccess.m"; sourceTree = "<group>"; };
-		E5E342604F0921A33EF9D20861320360 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_decode.c; sourceTree = "<group>"; };
+		E5E342604F0921A33EF9D20861320360 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_decode.c; sourceTree = "<group>"; };
 		E603D4282A19DCE78FF7BEF442AD437B /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
 		E68109C44601288C80ABDAADC270CBA9 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		E69E4019FEA6A120644D36DB9B2FF260 /* UIImage+JKMerge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+JKMerge.m"; path = "JKCategories/UIKit/UIImage/UIImage+JKMerge.m"; sourceTree = "<group>"; };
@@ -3119,6 +3116,7 @@
 				9858288D91DC1DAC3AD3DFECB450495D /* GoogleDataTransport.h */,
 				2E9EF6CCFC583C372D5B2A514F300EB4 /* Support Files */,
 			);
+			name = GoogleDataTransport;
 			path = GoogleDataTransport;
 			sourceTree = "<group>";
 		};
@@ -3184,6 +3182,7 @@
 				E768D252212ED3A9955DF25E7082F55E /* MBProgressHUD.m */,
 				6BB1A2D2DF19D187AFE954B646D20887 /* Support Files */,
 			);
+			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -3208,6 +3207,7 @@
 				265ACE59F80CEA23B30D466E50C14B5E /* Support Files */,
 				99DD8A83E410F387DFB7384BAF18BFC1 /* UIKit */,
 			);
+			name = JKCategories;
 			path = JKCategories;
 			sourceTree = "<group>";
 		};
@@ -3217,6 +3217,7 @@
 				77AB01898F51396596252EC231F956E6 /* Main */,
 				0C5D7A7D518C837AEE5B9B74AF3E3878 /* Support Files */,
 			);
+			name = AppsFlyerFramework;
 			path = AppsFlyerFramework;
 			sourceTree = "<group>";
 		};
@@ -3269,6 +3270,7 @@
 				B01FAD463073483D1010E470246802D6 /* Frameworks */,
 				C30664D8BBEC97C04C63AB1F259DCFD2 /* Support Files */,
 			);
+			name = Bugly;
 			path = Bugly;
 			sourceTree = "<group>";
 		};
@@ -3642,6 +3644,7 @@
 				8ACC7C1C85CC749BC0EB8BCD5C8D2500 /* FIRVersion.m */,
 				66AC09DB4C59DE30A46DED1C3273CCED /* Support Files */,
 			);
+			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -3735,13 +3738,14 @@
 				28BB1C203A8600725573670F33B898FF /* NSString+MJExtension.m */,
 				B8108FFDFC09A1D2616A171FC66FBC1C /* Support Files */,
 			);
+			name = MJExtension;
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
 		517B7B864550EACBF6A0146E1C262BC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */,
+				A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking */,
 				E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore */,
 				148D0F9E8C7373FEAF40D800FC5F1BAA /* FirebaseCoreInternal */,
 				13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations */,
@@ -3830,6 +3834,7 @@
 				804B944B4E5B578F08C057B2CF578936 /* Core */,
 				A1EF4BC4ECEFBF1489E8EF98D7E32DD9 /* Support Files */,
 			);
+			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -3868,6 +3873,7 @@
 				6B6FEEE4DED5F9676093233AD4E65E9F /* CoreOnly */,
 				CB46E46EC045392A17AB19EEEC948359 /* Support Files */,
 			);
+			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -3986,6 +3992,7 @@
 				F88D7B86F75E5DBD5149A9F721318F37 /* Resources */,
 				83D9762BC9079932C9748B14D3A59AA7 /* Support Files */,
 			);
+			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -4040,6 +4047,7 @@
 				A59271A9A50454AC62840455D53F92BE /* ViewController+MASAdditions.m */,
 				E47AA8C9B3328E6EB2350A540FD50499 /* Support Files */,
 			);
+			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -4177,6 +4185,7 @@
 				61F0E533016B32087A19F3728496F2AC /* NSError+FIRMessaging.m */,
 				D61A208B11CD774711360B926C76AD7B /* Support Files */,
 			);
+			name = FirebaseMessaging;
 			path = FirebaseMessaging;
 			sourceTree = "<group>";
 		};
@@ -4355,6 +4364,7 @@
 				738D5C740985B32CE5A99F86491857DA /* Resources */,
 				E80CDC38E5BEB544B562A49FB30D0B04 /* Support Files */,
 			);
+			name = ZZCircleProgress;
 			path = ZZCircleProgress;
 			sourceTree = "<group>";
 		};
@@ -4392,6 +4402,7 @@
 				53F6AFF64AE626692D4FD68818CBF8F3 /* Support Files */,
 				FFBA5113FE82B4CC580C4439210A0E9A /* UIKit */,
 			);
+			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -4623,6 +4634,7 @@
 				969AC6927E7F1EFBE459042C744F7ED5 /* encode */,
 				3EB4AAA71395EE7C54233CA07EA1E56A /* Support Files */,
 			);
+			name = nanopb;
 			path = nanopb;
 			sourceTree = "<group>";
 		};
@@ -4638,6 +4650,7 @@
 				25884D302A06DC93CBD859DBD5BD62C0 /* Support Files */,
 				A44C8E7897F7CFB53D02EE2E19D6260E /* UserDefaults */,
 			);
+			name = GoogleUtilities;
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
@@ -4793,6 +4806,7 @@
 				66BBA88402525DD2632BD928DB99D6AB /* IQUIViewController+Additions.m */,
 				2D3144645756922BB6D0E4C48D8EF01C /* Support Files */,
 			);
+			name = IQKeyboardManager;
 			path = IQKeyboardManager;
 			sourceTree = "<group>";
 		};
@@ -4812,6 +4826,7 @@
 				4463916955FB25B47378073DEEF332BC /* WeakContainer.swift */,
 				66525E79B23FB67E5A9DF4F618762864 /* Support Files */,
 			);
+			name = FirebaseCoreInternal;
 			path = FirebaseCoreInternal;
 			sourceTree = "<group>";
 		};
@@ -4978,6 +4993,7 @@
 				7338499741365ED2AE33FB9AF381B5CD /* FIROptionsInternal.h */,
 				19C1272036F05632E57CAE818B54E54C /* Support Files */,
 			);
+			name = FirebaseInstallations;
 			path = FirebaseInstallations;
 			sourceTree = "<group>";
 		};
@@ -5115,6 +5131,7 @@
 				672E8D8EE318C5CDEF20F14CD2866FDE /* FBLPromises.h */,
 				278D4B481ACC8D60D181974EEFC396C0 /* Support Files */,
 			);
+			name = PromisesObjC;
 			path = PromisesObjC;
 			sourceTree = "<group>";
 		};
@@ -6126,7 +6143,7 @@
 			);
 			name = AFNetworking;
 			productName = AFNetworking;
-			productReference = A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */;
+			productReference = A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking */;
 			productType = "com.apple.product-type.framework";
 		};
 		25E9E9A17BC3F670357D7385C521E48E /* FirebaseCoreInternal */ = {
@@ -6533,8 +6550,8 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -8504,11 +8521,8 @@
 				PRODUCT_NAME = AFNetworking;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -8976,11 +8990,8 @@
 				PRODUCT_NAME = AFNetworking;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) UIView * BGView;
 @property(strong, nonatomic) UISlider * slider;
 
+
+@property(copy, nonatomic)void(^sliderChangeBlock)(NSInteger number);
+
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
 

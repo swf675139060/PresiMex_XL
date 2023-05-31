@@ -84,6 +84,7 @@
 		FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC529142A18FD0B004B7721 /* UIView+LinearGradient.m */; };
 		FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA72352A0A6B7B00A10D4E /* HomeViewController.m */; };
 		FBCA72392A0A6B8600A10D4E /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA72382A0A6B8600A10D4E /* MyViewController.m */; };
+		FBD58C1F2A26016D00644C77 /* HomeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD58C1E2A26016D00644C77 /* HomeSectionView.m */; };
 		FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +264,8 @@
 		FBCA72352A0A6B7B00A10D4E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		FBCA72372A0A6B8600A10D4E /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		FBCA72382A0A6B8600A10D4E /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		FBD58C1D2A26016D00644C77 /* HomeSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSectionView.h; sourceTree = "<group>"; };
+		FBD58C1E2A26016D00644C77 /* HomeSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSectionView.m; sourceTree = "<group>"; };
 		FBDE5EE22A22DC29007834AB /* PMOrderTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMOrderTopView.h; sourceTree = "<group>"; };
 		FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMOrderTopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -568,6 +571,8 @@
 			children = (
 				FB1C73A52A23247800194925 /* PMNotiView.h */,
 				FB1C73A62A23247800194925 /* PMNotiView.m */,
+				FBD58C1D2A26016D00644C77 /* HomeSectionView.h */,
+				FBD58C1E2A26016D00644C77 /* HomeSectionView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1236,6 +1241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD58C1F2A26016D00644C77 /* HomeSectionView.m in Sources */,
 				FB8AF32A2A088C6F006C5887 /* UIView+SLFExtension.m in Sources */,
 				FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */,
 				FBCA72392A0A6B8600A10D4E /* MyViewController.m in Sources */,

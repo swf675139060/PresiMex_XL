@@ -46,38 +46,6 @@
             endingLineNumber = "101"
             landmarkName = "-requestLoginWithCode:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0BA37927-1287-4C3C-A0CA-6DC0970979D2 - 7f48b0a9fd123381"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "41">
-               </Location>
-               <Location
-                  uuid = "0BA37927-1287-4C3C-A0CA-6DC0970979D2 - e7c5c7c015cd28d6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke_2"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "41">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,6 +62,38 @@
             endingLineNumber = "103"
             landmarkName = "-requestLoginWithCode:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "172B5440-AD28-49B7-A5FE-D344501472D0 - a3fb43a510f80d9a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMVeriCodeViewController requestLoginWithCode:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "278">
+               </Location>
+               <Location
+                  uuid = "172B5440-AD28-49B7-A5FE-D344501472D0 - 7f48b0a9fd12330d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "41">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,38 +126,6 @@
             endingLineNumber = "100"
             landmarkName = "-requestLoginWithCode:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "87135676-ADFF-4823-A16C-855EB398F07A - a3fb43a510f80c16"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PMVeriCodeViewController requestLoginWithCode:]"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "170">
-               </Location>
-               <Location
-                  uuid = "87135676-ADFF-4823-A16C-855EB398F07A - 7f48b0a9fd123381"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "41">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
