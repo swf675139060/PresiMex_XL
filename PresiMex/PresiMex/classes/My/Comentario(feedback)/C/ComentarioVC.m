@@ -125,15 +125,11 @@
         [cell.btn setTitle:@"Próximo paso" forState:UIControlStateNormal];
         cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        WF_WEAKSELF(weakself);
         [cell setClickBtnBlock:^{
-            FeedBackAlert * alert = [[FeedBackAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 200) withType:1];
             
-            WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
-            [AlertView show];
+            [weakself POSTFeedbackInfo];
             
-            [alert setClickBtnBlock:^{
-                [AlertView dismiss];
-            }];
         }];
         [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor,(id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
     
@@ -257,6 +253,22 @@
 
 //反馈信息提交
 -(void)POSTFeedbackInfo{
+    if(self.images.count){
+        WF_WEAKSELF(weakself);
+        [self uploadImage:^(BOOL sucess) {
+            if (sucess) {
+                
+                [weakself POSTFeedbackInfo11];
+            } else {
+                [weakself showAlertWidth:sucess];
+            }
+        }];
+    }
+    
+    
+}
+
+-(void)POSTFeedbackInfo11{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
     pars[@"monroe"] = self.types[self.clickIndx];
     pars[@"tion"] = self.textContent;
@@ -264,19 +276,47 @@
     WF_WEAKSELF(weakself);
     [PMBaseHttp post:GET_Feedback_Type parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
-            NSDictionary * shame = responseObject[@"shame"];
-            
-            [weakself.tableView reloadData];
+            [weakself showAlertWidth:YES];
             
         }else{
-            [weakself.tableView reloadData];
+            [weakself showAlertWidth:NO];
         }
         
         
         
     } failure:^(NSError * _Nonnull error) {
-        
+        [weakself showAlertWidth:NO];
     }];
+}
+
+
+-(void)showAlertWidth:(BOOL)sucess{
+    FeedBackAlert * alert = [[FeedBackAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 200) withType:sucess];
+    
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+        
+        if(sucess){
+            [weakself.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+}
+
+-(void)uploadImage:(void (^)(BOOL sucess)) upimageBlcok{
+//    for
+        [PMBaseHttp uploadImg:self.images[0] parameter:nil success:^(id  _Nonnull responseObject) {
+            if(upimageBlcok){
+                upimageBlcok(YES);
+            }
+            
+        } failure:^(NSError * _Nonnull error) {
+            if(upimageBlcok){
+                upimageBlcok(NO);
+            }
+        }];
 }
 
 @end

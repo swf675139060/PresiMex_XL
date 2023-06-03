@@ -74,8 +74,8 @@
             filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "-GETFeedbackType"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,8 +90,8 @@
             filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "-GETFeedbackType"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,25 +106,9 @@
             filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-GETFeedbackType"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A561BBD1-8B79-452F-A14C-E7D45736A493"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,10 +122,10 @@
             filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "ComentarioVC"
-            landmarkType = "3">
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "-GETFeedbackType"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -221,6 +205,101 @@
             startingLineNumber = "151"
             endingLineNumber = "151"
             landmarkName = "-GETUserOder"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1673F67-B778-4070-9313-70E2A60777A0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-uploadImage:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E1673F67-B778-4070-9313-70E2A60777A0 - 52c0c4f3441c7853"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ComentarioVC uploadImage:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "315"
+                  endingLineNumber = "315"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "E1673F67-B778-4070-9313-70E2A60777A0 - 12fea5bc3356b1c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__28-[ComentarioVC uploadImage:]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "315"
+                  endingLineNumber = "315"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "E1673F67-B778-4070-9313-70E2A60777A0 - 894c9a91de366583"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__28-[ComentarioVC uploadImage:]_block_invoke.68"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "316"
+                  endingLineNumber = "316"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C7085AE-8A51-4F84-95D8-3BF517285517"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
+            landmarkName = "-uploadImage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B630A399-1470-44A7-BA9C-4E767F415ADF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
+            landmarkName = "-uploadImage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
