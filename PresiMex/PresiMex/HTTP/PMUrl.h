@@ -36,10 +36,10 @@
 #define  Get_User_LogOut  @"/api/user/repeated/cultures"
 
 //登录注册短信(发送)
-#define  Post_Sms_Code @"/api/user/repeated/malaysia"
+#define  Post_Sms_Code @"/api/user/repeated/malaysia" //w
 
 //登录注册短信(验证)
-#define  Post_Sms_Code_Ver  @"/api/user/repeated/fears"
+#define  Post_Sms_Code_Ver  @"/api/user/repeated/fears" //w
 
 
 /*
