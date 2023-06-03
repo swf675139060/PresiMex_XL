@@ -107,8 +107,9 @@
             NSMutableDictionary*dict=[NSMutableDictionary dictionaryWithDictionary:responseObject[@"shame"]];
             dict[@"phone"]=self.phone;
             PMUser *user =[PMUser accountWithDict:dict];
+            [PMAccountTool saveAccount:user];
             [self.navigationController popToRootViewControllerAnimated:YES];
-            NSLog(@"user==%@",user.token);
+            NSLog(@"user==%@",[PMAccountTool account].token);
         }
         
     } failure:^(NSError * _Nonnull error) {

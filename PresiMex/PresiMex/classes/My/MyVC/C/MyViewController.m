@@ -67,6 +67,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    NSLog(@"%@",[PMAccountTool account].token);
     if([PMAccountTool isLogin]){
         [self.headerView updataHeaderViewWithType:1];
         [self requestUserState];
@@ -114,7 +115,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if(indexPath.row == 0){
-        
+        PMQuestionnaireViewController*vc=[PMQuestionnaireViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1){
         
     }else if (indexPath.row == 2){

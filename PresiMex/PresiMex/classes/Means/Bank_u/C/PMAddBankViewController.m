@@ -1,59 +1,32 @@
 //
-//  PMEmergencyContactViewController.m
+//  PMAddBankViewController.m
 //  PresiMex
 //
 //  Created by 白翔龙 on 2023/6/3.
 //
 
-#import "PMEmergencyContactViewController.h"
-
-#import "PMEmergencyContactModel.h"
-#import "PMEmergencyContactCell.h"
-#import "PMIDAuthHeaderView.h"
-
 #import "PMAddBankViewController.h"
 
+#import "PMIDAuthHeaderView.h"
+#import "PMBasicViewCell.h"
+#import "PMQuestionModel.h"
 
-@interface PMEmergencyContactViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface PMAddBankViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
-@implementation PMEmergencyContactViewController
+@implementation PMAddBankViewController
 
-
-
--(void)modelWithData{
-    
-    _dataArray = [NSMutableArray array];
-    PMEmergencyContactModel *relationModel = [[PMEmergencyContactModel alloc] init];
-    relationModel.title=@"Contacto de emergencia 1";
-    //relationModel.relation     =[self setInitStringWithKey:PS_EmContact_Relation1]; ;
-    relationModel.type  =@"0";
-    //relationModel.name   = [self setInitStringWithKey:PS_EmContact_Relation_Name1];
-    //relationModel.telephone= [self setInitStringWithKey:PS_EmContact_Relation_Number1];
-    
-    [_dataArray addObject:relationModel];
-    
-    
-    PMEmergencyContactModel *relationModel1 = [[PMEmergencyContactModel alloc] init];
-    relationModel1.title=@"Contacto de emergencia 2";
-    //relationModel1.relation =[self setInitStringWithKey:PS_EmContact_Relation2]; ;
-    relationModel1.type  =@"1";
-    //relationModel1.name   = [self setInitStringWithKey:PS_EmContact_Relation_Name2];
-   // relationModel1.telephone= [self setInitStringWithKey:PS_EmContact_Relation_Number2];
-    [_dataArray addObject:relationModel1];
-    [self.tableView reloadData];
-}
-   
+ 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLabel.text=@"Información del personal";
+    self.navTitleLabel.text=@"Cuenta bancaria";
     [self addRightBarButtonWithImag:@"bai_kefu"];
-    [self modelWithData];
+   
 }
 
 - (UITableView *)tableView{
@@ -90,8 +63,8 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PMEmergencyContactModel *model=self.dataArray[indexPath.row];
-    PMEmergencyContactCell *cell=[PMEmergencyContactCell cellWithTableView:tableView];
+    PMQuestionModel *model=self.dataArray[indexPath.row];
+    PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
     [cell setCellWithModel:model];
     return cell;
     
@@ -120,7 +93,7 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 165)];
     headerView.backgroundColor=[UIColor whiteColor];
-    PMIDAuthHeaderView *header = [[PMIDAuthHeaderView alloc] initViewWithType:3];
+    PMIDAuthHeaderView *header = [[PMIDAuthHeaderView alloc] initViewWithType:4];
     [headerView addSubview:header];
     
     UILabel *tipLabel = [[UILabel alloc] init];
@@ -156,8 +129,8 @@
 
 -(void)clickSubmitBtn{
     
-    PMAddBankViewController*vc=[PMAddBankViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+    //PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
+    //[self.navigationController pushViewController:vc animated:YES];
     
 }
 @end
