@@ -55,11 +55,13 @@ static inline BOOL IsEmpty(id thing){
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
@@ -70,7 +72,7 @@ static inline BOOL IsEmpty(id thing){
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
@@ -109,7 +111,9 @@ static inline BOOL IsEmpty(id thing){
     
     //NSString*josn=[parms toJSONString];
     return [manager GET:url parameters:parameter headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"url===%@\nget_responseObject=%@",url,responseObject);
+        
+       NSDictionary*dict=[self dictionaryForJsonData:responseObject];
+        NSLog(@"url===%@\nget_responseObject=%@",url,dict);
         //       if (!IsEmpty(responseObject) &&[responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
         //           [PSAccountTool logOut];
         //       }else if([responseObject[@"error"] isEqual:@"Please login"]&&!([responseObject[@"code"] intValue]==202)){
@@ -117,7 +121,7 @@ static inline BOOL IsEmpty(id thing){
         //       }
         
         if (success) {
-            success(responseObject);
+            success(dict);
         }
         // 测试代码
         //       if ([responseObject[@"code"] intValue] == 0) {
@@ -315,7 +319,8 @@ static inline BOOL IsEmpty(id thing){
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -381,5 +386,44 @@ static inline BOOL IsEmpty(id thing){
 }
 
 
+//data 转 json 字符串
++ (NSDictionary *)dictionaryForJsonData:(NSData *)jsonData
 
+{
+
+    if (![jsonData isKindOfClass:[NSData class]] || jsonData.length < 1) {
+
+        return nil;
+
+    }
+   
+    //服务器返回的responseObject是gbk编码的字符串，通过gbk编码转码就行了，转码方法如下：
+   NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+   NSString*gbkStr = [[NSString alloc]initWithData:jsonData encoding:gbkEncoding];
+    NSData *jsonDa=[gbkStr dataUsingEncoding:NSUTF8StringEncoding];
+   //转码之后再转utf8解析
+   NSDictionary *requestDic = [NSJSONSerialization JSONObjectWithData:jsonDa options:NSJSONReadingMutableContainers error:nil];
+
+    if (![requestDic isKindOfClass:[NSDictionary class]]) {
+
+        return nil;
+
+    }
+
+    return [NSDictionary dictionaryWithDictionary:(NSDictionary *)requestDic];
+
+}
+
+//UTF-8转码
+
+//NSData 转字典:
+ // NSData转dictonary
++(NSDictionary*)dictionaryWithData:(NSData*)data
+ {
+     //  NSData* data = [[NSMutableData alloc]initWithContentsOfFile:path]; 拿路径文件
+     NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+     NSDictionary* myDictionary = [unarchiver decodeObjectForKey:@"talkData"];
+     [unarchiver finishDecoding];
+     return myDictionary;
+ }
 @end

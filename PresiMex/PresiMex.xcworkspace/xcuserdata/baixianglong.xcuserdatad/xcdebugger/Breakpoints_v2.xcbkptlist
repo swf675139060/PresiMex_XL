@@ -19,47 +19,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "44B8F471-E0D2-4C28-9BF5-93BA1738BDAE"
+            uuid = "2010A881-B4D9-45B8-9470-E751AE931F50"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+            filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "-requestLoginWithCode:"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "-POSTFeedbackInfo"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "44B8F471-E0D2-4C28-9BF5-93BA1738BDAE - 86f48ec90cc02a0d"
+                  uuid = "2010A881-B4D9-45B8-9470-E751AE931F50 - e302b0f7303746a0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
+                  symbolName = "__32-[ComentarioVC POSTFeedbackInfo]_block_invoke"
                   moduleName = "PresiMex"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "390">
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "41">
                </Location>
                <Location
-                  uuid = "44B8F471-E0D2-4C28-9BF5-93BA1738BDAE - 86f48ec90cc02a0d"
+                  uuid = "2010A881-B4D9-45B8-9470-E751AE931F50 - e302b0f7303746a0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
+                  symbolName = "__32-[ComentarioVC POSTFeedbackInfo]_block_invoke"
                   moduleName = "PresiMex"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "343">
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -67,63 +67,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "891B4BB0-C822-4006-838F-940005D3DB4B"
+            uuid = "7DC00D1D-E6A9-4815-A0DA-4C273C446FE2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Login/User/PMUser.m"
+            filePath = "PresiMex/HTTP/PMBaseHttp.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "-encodeWithCoder:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E987873D-92D2-42A9-93F1-F67CA598096F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Login/C/PMVeriCodeViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-requestLoginWithCode:"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "+get:parameters:success:failure:"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E987873D-92D2-42A9-93F1-F67CA598096F - 86f48ec90cc02a2a"
+                  uuid = "7DC00D1D-E6A9-4815-A0DA-4C273C446FE2 - 273f47d3128d8ba4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
+                  symbolName = "__45+[PMBaseHttp get:parameters:success:failure:]_block_invoke.127"
                   moduleName = "PresiMex"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/HTTP/PMBaseHttp.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "446">
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "69">
                </Location>
                <Location
-                  uuid = "E987873D-92D2-42A9-93F1-F67CA598096F - 86f48ec90cc02a2a"
+                  uuid = "7DC00D1D-E6A9-4815-A0DA-4C273C446FE2 - 8828d2875e1e1333"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__49-[PMVeriCodeViewController requestLoginWithCode:]_block_invoke"
+                  symbolName = "__45+[PMBaseHttp get:parameters:success:failure:]_block_invoke.53"
                   moduleName = "PresiMex"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/classes/Login/C/PMVeriCodeViewController.m"
+                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/HTTP/PMBaseHttp.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "411">
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "68">
                </Location>
             </Locations>
          </BreakpointContent>

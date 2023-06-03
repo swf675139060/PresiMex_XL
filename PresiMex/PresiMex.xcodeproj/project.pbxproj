@@ -1671,7 +1671,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = B95DT69446;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
@@ -1705,7 +1705,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = B95DT69446;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
