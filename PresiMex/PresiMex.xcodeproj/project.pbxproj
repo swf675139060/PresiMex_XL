@@ -44,6 +44,7 @@
 		FB7BC86A2A2AE576000BB3ED /* UIView+WhenTappedBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7BC8682A2AE575000BB3ED /* UIView+WhenTappedBlocks.m */; };
 		FB7BC86D2A2AE6D5000BB3ED /* UIView+DashedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7BC86C2A2AE6D5000BB3ED /* UIView+DashedLine.m */; };
 		FB7BC8702A2AED7B000BB3ED /* WFCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7BC86F2A2AED7B000BB3ED /* WFCustomAlertView.m */; };
+		FB7BC8752A2AF380000BB3ED /* FeedBackAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7BC8742A2AF380000BB3ED /* FeedBackAlert.m */; };
 		FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */; };
 		FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF2F52A088AC5006C5887 /* SLFLoadingHub.m */; };
 		FB8AF31E2A088AC5006C5887 /* SLFFailedHub.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF3052A088AC5006C5887 /* SLFFailedHub.m */; };
@@ -191,6 +192,8 @@
 		FB7BC86C2A2AE6D5000BB3ED /* UIView+DashedLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+DashedLine.m"; sourceTree = "<group>"; };
 		FB7BC86E2A2AED7A000BB3ED /* WFCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFCustomAlertView.h; sourceTree = "<group>"; };
 		FB7BC86F2A2AED7B000BB3ED /* WFCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFCustomAlertView.m; sourceTree = "<group>"; };
+		FB7BC8732A2AF380000BB3ED /* FeedBackAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBackAlert.h; sourceTree = "<group>"; };
+		FB7BC8742A2AF380000BB3ED /* FeedBackAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackAlert.m; sourceTree = "<group>"; };
 		FB8AF2F02A088433006C5887 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		FB8AF2F32A088AC4006C5887 /* SLFLoadingHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFLoadingHub.h; sourceTree = "<group>"; };
 		FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFLoadingView.m; sourceTree = "<group>"; };
@@ -603,6 +606,15 @@
 				FB7BC86F2A2AED7B000BB3ED /* WFCustomAlertView.m */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		FB7BC8722A2AF336000BB3ED /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				FB7BC8732A2AF380000BB3ED /* FeedBackAlert.h */,
+				FB7BC8742A2AF380000BB3ED /* FeedBackAlert.m */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 		FB8AF2EE2A0882F2006C5887 /* classes */ = {
@@ -1062,6 +1074,7 @@
 		FBCA72332A0A6A0500A10D4E /* My */ = {
 			isa = PBXGroup;
 			children = (
+				FB7BC8722A2AF336000BB3ED /* AlertView */,
 				FB939F382A22118C00599A86 /* order(订单) */,
 				FB939F2B2A21F5C100599A86 /* Cupón(优惠卷) */,
 				FB939F1B2A21E25500599A86 /* Ajustes(设置) */,
@@ -1332,6 +1345,7 @@
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
 				A4D6F1192A259974006B4BA6 /* PMAccountTool.m in Sources */,
 				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
+				FB7BC8752A2AF380000BB3ED /* FeedBackAlert.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				A400BCEE2A25F0C1006CABB2 /* PMIDAuthViewController.m in Sources */,
 				FB939F372A21F6A700599A86 /* CuponCell.m in Sources */,

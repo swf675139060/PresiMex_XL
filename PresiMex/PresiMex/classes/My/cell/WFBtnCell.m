@@ -35,8 +35,8 @@
     
 //    //点击按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [btn setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:btn];
     self.btn = btn;
 
@@ -57,6 +57,12 @@
         make.height.equalTo(@(height));
 
     }];
+}
+
+-(void)clickBtn{
+    if(self.clickBtnBlock){
+        self.clickBtnBlock();
+    }
 }
 
 @end

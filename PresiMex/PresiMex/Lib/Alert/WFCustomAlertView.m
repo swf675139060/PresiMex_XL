@@ -19,6 +19,8 @@
     if (self = [super init]) {
         
         self.contentView = contentView;
+        self.contentView.layer.cornerRadius = 15;
+        self.contentView.layer.masksToBounds = YES;
         [self sutUpView];
     }
     return self;
@@ -28,6 +30,7 @@
     
     self.frame = [UIScreen mainScreen].bounds;
     self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.85];
+    self.contentView.center = self.center;
     [UIView animateWithDuration:0.5 animations:^{
         self.alpha = 1;
     }];

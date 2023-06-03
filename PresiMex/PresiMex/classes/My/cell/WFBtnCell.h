@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic)UIButton * btn;
 
+
+@property (copy, nonatomic)void(^clickBtnBlock)(void);
+
+
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
 -(void)updateFrameWithEdgeInsets:(UIEdgeInsets )padding height:(CGFloat)height;

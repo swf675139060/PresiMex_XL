@@ -336,6 +336,7 @@
         _noLoginBtn = [UIButton new];
         [_noLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _noLoginBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        [_noLoginBtn addTarget:self action:@selector(clicknoLoginBtn) forControlEvents:UIControlEventTouchUpInside];
         [_noLoginBtn addLinearGradientwithSize:CGSizeMake(65, 34) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor, (id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner |kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:17];
     }
     return _noLoginBtn;
@@ -408,6 +409,12 @@
     return _LoginRightBtnTitle;
 }
 
+
+-(void)clicknoLoginBtn{
+    if(self.clickLoginBlock){
+        self.clickLoginBlock();
+    }
+}
 -(void)ClickLeftBtn{
     if(self.clickLeftBtnBlock){
         self.clickLeftBtnBlock();
