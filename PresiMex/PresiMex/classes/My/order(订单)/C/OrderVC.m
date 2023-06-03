@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.tempView addSubview:self.topView];
     WF_WEAKSELF(weakself);
     [self.topView setClickLeftBtnBlock:^{
@@ -44,6 +45,8 @@
     }];
     [self.tempView addSubview:self.tableView];
     self.navTitleLabel.text = @"Lista de facturas";
+    
+    [self GETUserOder];
     
 }
 
@@ -120,5 +123,32 @@
         _rightArr = [NSMutableArray array];
     }
     return _rightArr;
+}
+
+
+//获取用户订单接口
+-(void)GETUserOder{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    if (self.indx) {
+        pars[@"cos"] = @"0";
+    } else {
+        pars[@"cos"] = @"1";
+    }
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_User_Oder parameters:pars success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            
+        }else{
+            
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 @end

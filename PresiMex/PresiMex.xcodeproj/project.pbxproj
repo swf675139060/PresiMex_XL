@@ -80,6 +80,7 @@
 		FB976D5F2A05124A00B1C0A3 /* PresiMexUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D5E2A05124A00B1C0A3 /* PresiMexUITests.m */; };
 		FB976D612A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */; };
 		FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039592A2B431900E5CD80 /* DemoCell2.m */; };
+		FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */; };
 		FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238802A2646090079FBF2 /* HomeDetailsVC.m */; };
 		FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */; };
 		FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A85F2A19C96C0010D7F8 /* WFEmptyCell.m */; };
@@ -271,6 +272,8 @@
 		FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresiMexUITestsLaunchTests.m; sourceTree = "<group>"; };
 		FBB039582A2B431900E5CD80 /* DemoCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell2.h; sourceTree = "<group>"; };
 		FBB039592A2B431900E5CD80 /* DemoCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell2.m; sourceTree = "<group>"; };
+		FBB0395D2A2B50C900E5CD80 /* PMAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMAuthModel.h; sourceTree = "<group>"; };
+		FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMAuthModel.m; sourceTree = "<group>"; };
 		FBC2387F2A2646090079FBF2 /* HomeDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailsVC.h; sourceTree = "<group>"; };
 		FBC238802A2646090079FBF2 /* HomeDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailsVC.m; sourceTree = "<group>"; };
 		FBC238822A2646E00079FBF2 /* WFFourLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFFourLabelCell.h; sourceTree = "<group>"; };
@@ -1011,6 +1014,15 @@
 			path = PresiMexUITests;
 			sourceTree = "<group>";
 		};
+		FBB0395C2A2B509C00E5CD80 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				FBB0395D2A2B50C900E5CD80 /* PMAuthModel.h */,
+				FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
 		FBC2387B2A2645C50079FBF2 /* homeDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -1118,6 +1130,7 @@
 		FBC5290C2A18644E004B7721 /* MyVC */ = {
 			isa = PBXGroup;
 			children = (
+				FBB0395C2A2B509C00E5CD80 /* M */,
 				FBC5290E2A18646C004B7721 /* V */,
 				FBC5290D2A18645B004B7721 /* C */,
 			);
@@ -1436,6 +1449,7 @@
 				FB939F242A21E4D500599A86 /* WFSetCell.m in Sources */,
 				A4DD5E642A21FFE400451413 /* CRBoxFlowLayout.m in Sources */,
 				A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */,
+				FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */,
 				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
 				FB8AF31F2A088AC5006C5887 /* SLFToast.m in Sources */,
 				A400BCFA2A25F404006CABB2 /* PMIDAuthHeaderView.m in Sources */,

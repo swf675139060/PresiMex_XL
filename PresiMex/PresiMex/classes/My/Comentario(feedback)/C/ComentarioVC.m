@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
+@property (nonatomic, strong) NSArray * types;  //提交反馈类型
 
 @property (nonatomic, assign) NSInteger clickIndx;
 
@@ -26,6 +27,9 @@
 
 
 @property (nonatomic, strong) NSMutableArray * images;
+
+
+@property (nonatomic, strong) NSMutableArray * imagesUrl;
 
 
 @end
@@ -37,6 +41,7 @@
     [super viewDidLoad];
     [self.tempView addSubview:self.tableView];
     self.navTitleLabel.text = @"Comentario";
+    [self GETFeedbackType];
     
 }
 
@@ -219,4 +224,59 @@
     }
     return _images;
 }
+
+-(NSMutableArray *)imagesUrl{
+    if(_imagesUrl == nil){
+        _imagesUrl = [NSMutableArray array];
+    }
+    return _imagesUrl;
+}
+
+
+//获取提交反馈类型
+-(void)GETFeedbackType{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_Feedback_Type parameters:pars success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            [weakself.tableView reloadData];
+            
+        }else{
+            [weakself.tableView reloadData];
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+//反馈信息提交
+-(void)POSTFeedbackInfo{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+    pars[@"monroe"] = self.types[self.clickIndx];
+    pars[@"tion"] = self.textContent;
+    pars[@"restaurants"] = [self.imagesUrl componentsJoinedByString:@","];
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp post:GET_Feedback_Type parameters:pars success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            [weakself.tableView reloadData];
+            
+        }else{
+            [weakself.tableView reloadData];
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 @end

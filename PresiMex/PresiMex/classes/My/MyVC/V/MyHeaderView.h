@@ -6,6 +6,7 @@
 //
 
 #import "WFBaseView.h"
+#import "PMAuthModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,8 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(copy, nonatomic) void (^clickLoginBlock)(void);
 ///更新数据
-/// - Parameter type: 0: 未登录， 1:登录未授信，2:登录已授信
--(void)updataHeaderViewWithType:(int)type;
+-(void)updataHeaderViewWithModel:(PMAuthModel *)model;
 
 
 @end

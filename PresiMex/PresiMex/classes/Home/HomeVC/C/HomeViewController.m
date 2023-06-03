@@ -341,13 +341,16 @@
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_App_Banner parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
-            
+            [weakself.notiView setNotList:responseObject[@"trackback"]];
+        }else{
+            [weakself.notiView setNotList:@[]];
         }
         
         
         
     } failure:^(NSError * _Nonnull error) {
         
+            [weakself.notiView setNotList:@[]];
     }];
 }
 
