@@ -87,6 +87,8 @@ _Pragma("clang diagnostic pop")
 #import "UILabel+SLFLineSpace.h"
 #import "UIView+SLFExtension.h"
 #import "UIView+LinearGradient.h"
+#import "UIView+WhenTappedBlocks.h"
+#import "UIView+DashedLine.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
 
 #import <JKCategories/JKCategories.h>

@@ -30,6 +30,8 @@
     [self.BGView addSubview:self.label2];
     [self.BGView addSubview:self.label3];
     [self.BGView addSubview:self.label4];
+    [self.BGView addSubview:self.centerLine];
+    [self.BGView addSubview:self.bottomLine];
     UIEdgeInsets padding = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.BGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).with.insets(padding);
@@ -63,6 +65,21 @@
         make.left.equalTo(self.label2);
         make.top.equalTo(self.label3);
         make.right.equalTo(self.label2);
+        
+    }];
+    
+    [self.centerLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.BGView);
+        make.top.equalTo(self.label1);
+        make.bottom.equalTo(self.label3);
+        make.width.equalTo(@(0.5));
+        
+    }];
+    [self.bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@(20));
+        make.right.equalTo(@(-20));
+        make.bottom.equalTo(@(0));
+        make.height.equalTo(@(0.5));
         
     }];
     
@@ -113,6 +130,24 @@
 }
 
 
+-(UIView *)centerLine{
+    if(_centerLine == nil){
+        _centerLine = [[UIView alloc] init];
+        _centerLine.backgroundColor = BColor_Hex(@"#DDDDDD", 1);
+    }
+    return _centerLine;
+}
+
+-(UIView *)bottomLine{
+    if(_bottomLine == nil){
+        _bottomLine = [[UIView alloc] init];
+        _bottomLine.backgroundColor = BColor_Hex(@"#DDDDDD", 1);
+    }
+    return _bottomLine;
+}
+
+
+
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding{
     [self.BGView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).with.insets(padding);
@@ -147,10 +182,10 @@
 }
 
 -(void)upDataWithModel:(id)model{
-    self.label1.text = @"1";
-    self.label2.text = @"label2";
-    self.label3.text = @"label3";
-    self.label4.text = @"label4";
+    [self.label1 setText:@"1" TextColor:BColor_Hex(@"#999999", 1) Font:[UIFont systemFontOfSize:12]];
+    [self.label2 setText:@"2" TextColor:BColor_Hex(@"#999999", 1) Font:[UIFont systemFontOfSize:12]];
+    [self.label3 setText:@"3" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:20]];
+    [self.label4 setText:@"4" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:20]];
 }
 
 

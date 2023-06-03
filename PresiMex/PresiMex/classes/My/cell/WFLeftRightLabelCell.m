@@ -10,20 +10,19 @@
 @implementation WFLeftRightLabelCell
 
 +(instancetype)cellWithTableView:(UITableView *)tableView{
-    NSString *ID = @"WFLeftRightLabelCell";
     
-    WFLeftRightLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[WFLeftRightLabelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        [cell creatSubView];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = [UIColor clearColor];
-    return cell;
+    return [WFLeftRightLabelCell cellWithTableView:tableView identifier:@""];
 }
 
 +(instancetype)bottomLineCellWithTableView:(UITableView *)tableView{
-    NSString *ID = @"WFLeftRightLabelCell_bottomLine";
+    return [WFLeftRightLabelCell cellWithTableView:tableView identifier:@"bottomLine"];
+}
+
++(instancetype)cellWithTableView:(UITableView *)tableView identifier:(NSString *)identifier{
+    NSString * ID = @"WFLeftRightLabelCell";
+    if (identifier && identifier.length) {
+        ID = [NSString stringWithFormat:@"WFLeftRightLabelCell_%@",identifier];
+    }
     
     WFLeftRightLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
