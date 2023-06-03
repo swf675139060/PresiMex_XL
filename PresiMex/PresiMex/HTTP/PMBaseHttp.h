@@ -51,6 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
     success:(void (^)(id responseObject))success
     failure:(void (^)(NSError *error))failure;
 
++ (void)uploadImg:(UIImage *)image parameter:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

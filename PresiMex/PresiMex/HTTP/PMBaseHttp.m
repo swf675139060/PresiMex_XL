@@ -308,4 +308,78 @@ static inline BOOL IsEmpty(id thing){
     
     
 }
+
+
+#pragma mark - 上传照片
++ (void)uploadImg:(UIImage *)image parameter:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 60;//15.0;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
+    NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
+    deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    if ([PMAccountTool isLogin]) {
+        NSLog(@"token= %@",[PMAccountTool account].token);
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
+    }
+   
+    manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    [manager.securityPolicy setValidatesDomainName:NO];
+    NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,POST_Image_File];
+    NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
+        
+    [manager POST:url parameters:nil headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+//         UIImage *image = [UIImage imageNamed:@"test"];
+        
+        //UIImage* uploadImg = [image scaleToMaxSideLength:1920 andMaxSize:1024*1024*3];
+        
+        NSData *imageData = UIImageJPEGRepresentation(image, 1);//进行图片压缩
+        
+         // 使用日期生成图片名称
+         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+         formatter.dateFormat = @"yyyyMMddHHmmss";
+         NSString *fileName = [NSString stringWithFormat:@"%@.png",[formatter stringFromDate:[NSDate date]]];
+         // 任意的二进制数据MIMEType application/octet-stream
+         [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"img/png"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+
+        NSLog(@"上传进度  %lf",1.0 *uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+//        NSLog(@"resultInfo is %@",responseObject);
+//        NSString *imgUrl =  responseObject[@"data"][@"url"];
+//        NSLog(@"%@",imgUrl);
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"resultInfo is %@",error);
+        if ([error.domain isEqualToString:AFURLResponseSerializationErrorDomain]) {
+            id response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:nil];
+            NSLog(@"%@",response);
+            NSString *msg = [NSString stringWithFormat:@"%@",response[@"msg"]] ?: @"";
+            if ([msg containsString:@"Invalid access"]) {
+                NSLog(@"token失效");
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenError" object:nil userInfo:nil];
+                failure(nil);
+                return;
+            }
+        }
+        failure(error);
+    }];
+
+
+}
+
+
+
 @end
