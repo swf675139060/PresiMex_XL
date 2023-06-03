@@ -2,7 +2,7 @@
 //  UILabel+SLFLineSpace.h
 //  JKCategories
 //
-//  Created by wyzeww on 2022/12/19.
+//  Created by swf on 2022/12/19.
 //
 
 #import <UIKit/UIKit.h>

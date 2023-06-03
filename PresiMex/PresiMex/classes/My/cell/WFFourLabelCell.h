@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) UILabel * label3;
 @property(strong, nonatomic) UILabel * label4;
 
+@property(strong, nonatomic) UIView * centerLine;
+
+@property(strong, nonatomic) UIView * bottomLine;
+
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
 

@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
++(instancetype)cellWithTableView:(UITableView *)tableView identifier:(NSString *)identifier;
+
 +(instancetype)bottomLineCellWithTableView:(UITableView *)tableView;
 
 

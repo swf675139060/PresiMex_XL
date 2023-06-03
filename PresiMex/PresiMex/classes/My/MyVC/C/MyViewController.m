@@ -41,8 +41,12 @@
     [self.view addSubview:self.tableView];
     
     
-    [self.headerView updataHeaderViewWithType:2];
+    
     WF_WEAKSELF(weakself);
+    self.headerView.clickLoginBlock = ^{
+        [weakself pushLoginVc];
+    };
+    
     self.headerView.clickLeftBtnBlock = ^{
         OrderVC *vc = [[OrderVC alloc] init];
         [weakself.navigationController pushViewController:vc animated:YES];
@@ -63,6 +67,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    if([PMAccountTool isLogin]){
+        [self.headerView updataHeaderViewWithType:1];
+        [self requestUserState];
+    }else{
+        [self.headerView updataHeaderViewWithType:0];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -102,7 +112,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self pushLoginVc];
+    
     if(indexPath.row == 0){
         
     }else if (indexPath.row == 1){
@@ -194,7 +204,27 @@
 }
 -(void)pushLoginVc{
     
-    PMQuestionnaireViewController*Vc=[PMQuestionnaireViewController new];
+    PMLoginViewController*Vc=[PMLoginViewController new];
     [self.navigationController pushViewController:Vc animated:YES];
 }
+
+//获取用户当前状态
+-(void)requestUserState{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    [PMBaseHttp get:Get_User_Status parameters:pars success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSInteger fare = [responseObject[@"fare"] integerValue];
+            
+            
+        }
+        
+//        用户当前状态 10:注册完成, 20:问卷调查完成 30:kyc完成, 40:基本信息完成, 50:联系人完成,60:账户完成, 70:授信中, 71:授信通过, 72:授信拒绝 80:交易验证, 81:交易验证部分通过, 82:交易验证拒绝 83:交易验证通过, 84:放款失败需要处理'
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 @end
