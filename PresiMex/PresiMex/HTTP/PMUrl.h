@@ -9,7 +9,7 @@
 #define PMUrl_h
 
 
-#define API_URL  @"https://test-api.cashimex.mx"
+#define API_URL  @"https://test-api.presimex.mx"
 
 
 
