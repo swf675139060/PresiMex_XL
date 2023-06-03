@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMNotiView : WFBaseView
 
--(void)setNotiContent:(NSString *)content;
+-(void)setNotList:(NSArray *)list;
 
 @end
 

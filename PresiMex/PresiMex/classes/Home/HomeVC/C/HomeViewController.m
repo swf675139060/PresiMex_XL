@@ -16,6 +16,7 @@
 #import "WFImageCell.h"
 
 #import "HomeDetailsVC.h"
+
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -47,7 +48,7 @@
     
     self.navBarView.hidden = YES;
     [self.view addSubview:self.notiView];
-    [self.notiView setNotiContent:@"xxxxxxxxxxx"];
+    [self.notiView setNotList:@[@"123456789",@"09876543234567898765456"]];
     [self.view addSubview:self.tableView];
     
     
@@ -56,6 +57,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self GETAppBanner];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
@@ -330,6 +332,25 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.navigationController pushViewController:[HomeDetailsVC new] animated:YES];
 }
+
+#pragma mark --网络请求
+
+-(void)GETAppBanner{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_App_Banner parameters:pars success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"retail"] intValue]==200) {
+           
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 
 
 #pragma mark -- init

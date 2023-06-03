@@ -6,41 +6,81 @@
 //
 
 #import "PMNotiView.h"
+#import "DemoCell2.h"
 
-@interface PMNotiView()
-@property(nonatomic, strong) UIButton * notBtn;
+#import <RollingNotice/GYRollingNoticeView.h>
+
+@interface PMNotiView()<GYRollingNoticeViewDataSource, GYRollingNoticeViewDelegate>
+//@property(nonatomic, strong) UIButton * notBtn;
+
+
+@property(nonatomic, strong) NSArray * Arrlist;
+
+@property(nonatomic, strong) GYRollingNoticeView *noticeView;
 
 @end
 
 @implementation PMNotiView
 
 -(void)buildSubViews{
-    [self addSubview:self.notBtn];
     self.backgroundColor = [UIColor jk_colorWithHexString:@"#FC7500"];
-    [self.notBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@(15));
-        make.centerY.equalTo(self);
-        
-        make.right.equalTo(@(-15));
-    }];
+
+    [self creatRollingView];
+}
+
+
+
+- (void)creatRollingView
+{
+    CGRect frame = CGRectMake(0, 0, WF_ScreenWidth, 33);
+ 
+    
+    self.noticeView = [[GYRollingNoticeView alloc]initWithFrame:frame];
+    self.noticeView.dataSource = self;
+    self.noticeView.delegate = self;
+    [self addSubview:self.noticeView];
+    [self.noticeView registerClass:[DemoCell2 class] forCellReuseIdentifier:@"DemoCell2"];
+    
+    
+    [self.noticeView reloadDataAndStartRoll];
+}
+
+
+
+- (NSInteger)numberOfRowsForRollingNoticeView:(GYRollingNoticeView *)rollingView
+{
+    
+    
+    return self.Arrlist.count;
+}
+- (__kindof GYNoticeViewCell *)rollingNoticeView:(GYRollingNoticeView *)rollingView cellAtIndex:(NSUInteger)index
+{
+    DemoCell2 *cell = [rollingView dequeueReusableCellWithIdentifier:@"DemoCell2"];
+    cell.customLab.text = self.Arrlist[index];
+   
+    return cell;
+
     
 }
 
--(UIButton *)notBtn{
-    if(_notBtn == nil){
-        _notBtn = [UIButton new];
-        [_notBtn setImage:[UIImage imageNamed:@"tongzhi"] forState:UIControlStateNormal];
-        _notBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-        _notBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [_notBtn setTitleColor:[UIColor jk_colorWithHexString:@"#FFFFFF"] forState:UIControlStateNormal];
-        _notBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-        
-    }
-    return _notBtn;
+- (void)didClickRollingNoticeView:(GYRollingNoticeView *)rollingView forIndex:(NSUInteger)index
+{
+    NSLog(@"点击的index: %lu", (unsigned long)index);
 }
 
 
--(void)setNotiContent:(NSString *)content{
-    [self.notBtn setTitle:content forState:UIControlStateNormal];
+
+
+
+
+-(void)setNotList:(NSArray *)list{
+    self.Arrlist  = list;
+    if(list.count){
+        
+        [self.noticeView reloadDataAndStartRoll];
+    }else{
+        [self.noticeView stopRoll];
+    }
+    
 }
 @end
