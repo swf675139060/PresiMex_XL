@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *desTitle;
 @property (nonatomic,assign) NSInteger type;
 @property (nonatomic, copy) NSString *cardNumbber;
-
+@property (nonatomic, copy) NSString *imgUrl;
+@property (nonatomic, copy) NSString *placeHold;
+@property (nonatomic, copy) NSString *content;
 @end
 
 NS_ASSUME_NONNULL_END
