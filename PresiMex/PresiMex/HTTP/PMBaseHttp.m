@@ -209,6 +209,7 @@ static inline BOOL IsEmpty(id thing){
     manager.securityPolicy = securityPolicy;
     NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,URLString];
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
+    NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameters);
     return  [manager POST:url parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
         if(!IsEmpty(responseObject)){

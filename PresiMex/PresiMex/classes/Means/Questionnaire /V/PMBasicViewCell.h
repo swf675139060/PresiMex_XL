@@ -10,17 +10,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^inputBlock)(NSString *  content);
-typedef void(^endInputBlock)(NSString * content);
+
+
 
 @interface PMBasicViewCell : WFBaseViewCell
 
+
+
 -(void)setCellWithModel:(PMQuestionModel*)model;
 
-+(CGFloat)cellWithHight:(PMQuestionModel*)model;
 
-@property (nonatomic, copy)   inputBlock  input;
-@property (nonatomic, copy)   endInputBlock  endinput;
+
+
+@property (nonatomic, copy) void(^endInputBlock) (NSString *title, NSString *text);
 
 @end
 

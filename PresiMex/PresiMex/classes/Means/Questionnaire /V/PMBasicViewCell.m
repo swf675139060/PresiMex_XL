@@ -7,14 +7,15 @@
 
 #import "PMBasicViewCell.h"
 
-
+#import "PMTextField.h"
 
 @interface PMBasicViewCell ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UILabel   *titleLabel;
-@property (nonatomic, strong) UITextField *contentTF;
+@property (nonatomic, strong) PMTextField *contentTF;
 @property (nonatomic, strong) UIView *bgView;
-
+@property (nonatomic, strong) UIImageView *arrowImageView;
+@property (nonatomic, strong) PMQuestionModel*model;
 @end
 
 @implementation PMBasicViewCell
@@ -54,13 +55,19 @@
     bgView.frame=CGRectMake(15,_titleLabel.swf_bottom+10, WF_ScreenWidth-30, 45);
     _bgView=bgView;
     
-    _contentTF = [[UITextField alloc] init];
+    _contentTF = [[PMTextField alloc] init];
     [bgView addSubview:_contentTF];
     _contentTF.font = [UIFont systemFontOfSize:14];
     _contentTF.textColor =BColor_Hex(@"#333333",1);
     _contentTF.textAlignment = NSTextAlignmentLeft;
     _contentTF.frame=CGRectMake(20, 1,WF_ScreenWidth-30-20-39, 43);
-    _contentTF.delegate=self;
+    weakify(self)
+    _contentTF.endEditingHandler = ^(NSString * _Nonnull text) {
+        strongify(self)
+        if (self.endInputBlock) {
+            self.endInputBlock(self.titleLabel.text, text);
+        }
+    };
     
     UIImageView*arrowImageView = [[UIImageView alloc] init];
     arrowImageView.contentMode=UIViewContentModeScaleAspectFit;
@@ -68,38 +75,22 @@
     arrowImageView.frame=CGRectMake(WF_ScreenWidth-30-14-15,18.5, 14,8);
     arrowImageView.backgroundColor=[UIColor whiteColor];
     arrowImageView.image=[UIImage imageNamed:@"xiaJian"];
-
-   
+    _arrowImageView=arrowImageView;
 
 }
 
 -(void)setCellWithModel:(PMQuestionModel*)model{
-    
+    _model=model;
     _titleLabel.text=model.title;
     _contentTF.text=model.content;
-    CGSize size=[UILabel sizeWithText:model.title fontSize:12 andMaxsize:WF_ScreenWidth-30];
-    if (model.type==4) {
-        _titleLabel.frame=CGRectMake(15, 15, WF_ScreenWidth-30, size.height);
-        _bgView.frame=CGRectMake(15,_titleLabel.swf_bottom+10, WF_ScreenWidth-30, 45);
+    if (model.isHave) {
+        _arrowImageView.hidden=NO;
+    } else {
+        _arrowImageView.hidden=YES;
     }
+   
    
 }
 
 
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
-    return NO;
-
-}
-
-+(CGFloat)cellWithHight:(PMQuestionModel*)model{
-    
-    if (model.type==4) {
-      CGSize size=[UILabel sizeWithText:model.title fontSize:12 andMaxsize:WF_ScreenWidth-30];
-        return 70+size.height;
-    } else {
-        return 90;
-    }
-}
 @end

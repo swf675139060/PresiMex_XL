@@ -1,76 +1,59 @@
 //
-//  PMIDAuthViewController.m
+//  PMEmergencyContactViewController.m
 //  PresiMex
 //
-//  Created by 白翔龙 on 2023/5/30.
+//  Created by 白翔龙 on 2023/6/3.
 //
 
-#import "PMIDAuthViewController.h"
-#import "PMIDAuthModel.h"
-#import "PMIDAuthViewCell.h"
-#import "PMIDAuthTextViewCell.h"
+#import "PMEmergencyContactViewController.h"
+
+#import "PMEmergencyContactModel.h"
+#import "PMEmergencyContactCell.h"
 #import "PMIDAuthHeaderView.h"
-#import "PMBasicViewController.h"
-@interface PMIDAuthViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@interface PMEmergencyContactViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
-@implementation PMIDAuthViewController
+@implementation PMEmergencyContactViewController
 
-- (NSMutableArray *)dataArray {
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
+
+
+-(void)modelWithData{
+    
+    _dataArray = [NSMutableArray array];
+    PMEmergencyContactModel *relationModel = [[PMEmergencyContactModel alloc] init];
+    //relationModel.relation     =[self setInitStringWithKey:PS_EmContact_Relation1]; ;
+    relationModel.type  =@"0";
+    //relationModel.name   = [self setInitStringWithKey:PS_EmContact_Relation_Name1];
+    //relationModel.telephone= [self setInitStringWithKey:PS_EmContact_Relation_Number1];
+    
+    [_dataArray addObject:relationModel];
+    
+    
+    PMEmergencyContactModel *relationModel1 = [[PMEmergencyContactModel alloc] init];
+    //relationModel1.relation =[self setInitStringWithKey:PS_EmContact_Relation2]; ;
+    relationModel1.type  =@"1";
+    //relationModel1.name   = [self setInitStringWithKey:PS_EmContact_Relation_Name2];
+   // relationModel1.telephone= [self setInitStringWithKey:PS_EmContact_Relation_Number2];
+    [_dataArray addObject:relationModel1];
+    [self.tableView reloadData];
 }
+   
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLabel.text=@"Autenticación de identidad";
+    self.navTitleLabel.text=@"Información del personal";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
-    //[self tableView];
-}
-- (void)modelWithData{
-
-    PMIDAuthModel *model1 = [[PMIDAuthModel alloc] init];
-    model1.title     = @"Foto del frente de la tarjeta de identificación";
-    model1.desTitle    = @"Haga clic para tomar la foto";
-    model1.type=0;
-    [self.dataArray addObject:model1];
-    
-    PMIDAuthModel *model2 = [[PMIDAuthModel alloc] init];
-    model2.title     = @"Foto del dorso de la tarjeta de identificación";
-    model2.desTitle    = @"Haga clic para tomar la foto";
-    model2.type=1;
-    [self.dataArray addObject:model2];
-    
-    PMIDAuthModel *model3 = [[PMIDAuthModel alloc] init];
-    model3.title     = @"Autenticación biométrica";
-    model3.desTitle    = @"Haga clic para la autenticación biométrica";
-    model3.type=2;
-    [self.dataArray addObject:model3];
-    
-    PMIDAuthModel *model4 = [[PMIDAuthModel alloc] init];
-    model4.title     =@"Nombre";
-    model4.type=3;
-    model4.placeHold=@"Por favor llénelo";
-    [self.dataArray addObject:model4];
-    
-    PMIDAuthModel *model5 = [[PMIDAuthModel alloc] init];
-    model5.title     =@"Número de identificación";
-    model5.type=4;
-    model5.placeHold=@"Por favor llénelo";
-    [self.dataArray addObject:model5];
-  
-    [self.tableView reloadData];
 }
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, WF_ScreenWidth, WF_ScreenHeight-WF_StatusBarHeight-WF_NavigationHeight-WF_BottomSafeAreaHeight)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, WF_ScreenWidth,WF_ScreenHeight-WF_StatusBarHeight-WF_NavigationHeight-WF_BottomSafeAreaHeight)];
         [self.tempView addSubview:_tableView];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -83,9 +66,8 @@
         if (@available(iOS 15.0, *)) {
             self.tableView.sectionHeaderTopPadding = 0;
         }
-        [self setupHeadView];
         [self setupFootView];
-        
+        [self setupHeadView];
     }
     return _tableView;
 }
@@ -97,35 +79,22 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
+   
     return self.dataArray.count;
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PMIDAuthModel *model=self.dataArray[indexPath.row];
-    
-    if (indexPath.row<3) {
-        PMIDAuthViewCell *cell=[PMIDAuthViewCell cellWithTableView:tableView];
-        [cell setCellWithModel:model];
-        return cell;
-    } else {
-        PMIDAuthTextViewCell *cell=[PMIDAuthTextViewCell cellWithTableView:tableView];
-        [cell setCellWithModel:model];
-        return cell;
-    }
-   
-    
+    PMEmergencyContactModel *model=self.dataArray[indexPath.row];
+    PMEmergencyContactCell *cell=[PMEmergencyContactCell cellWithTableView:tableView];
+    [cell setCellWithModel:model];
+    return cell;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row<3) {
-        return 208;
-    } else {
-        return 64;
-    }
-    
+    return 200;
     
 }
 
@@ -146,10 +115,11 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 165)];
     headerView.backgroundColor=[UIColor whiteColor];
-    PMIDAuthHeaderView *header = [[PMIDAuthHeaderView alloc] initViewWithType:1];
+    PMIDAuthHeaderView *header = [[PMIDAuthHeaderView alloc] initViewWithType:3];
     [headerView addSubview:header];
     
     UILabel *tipLabel = [[UILabel alloc] init];
+    tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
     tipLabel.numberOfLines = 0;
     tipLabel.text=@"Consejo: asegúrese de que todas las imágenes de los documentos se tomen con claridad y sean las más recientes para obtener el préstamo al instante.";
     [headerView addSubview:tipLabel];
@@ -158,7 +128,6 @@
     tipLabel.font=B_FONT_REGULAR(11);
     CGSize size=[UILabel sizeWithText:tipLabel.text fontSize:11 andMaxsize:WF_ScreenWidth-30];
     tipLabel.frame = CGRectMake(15,header.swf_bottom+12,WF_ScreenWidth-30,size.height);
-    
     self.tableView.tableHeaderView=headerView;
     
 }
@@ -181,9 +150,9 @@
 }
 
 -(void)clickSubmitBtn{
-    PMBasicViewController*Vc=[PMBasicViewController new];
-    [self.navigationController pushViewController:Vc animated:YES];
+    
+    //PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
+    //[self.navigationController pushViewController:vc animated:YES];
+    
 }
-
-
 @end

@@ -35,7 +35,7 @@
     [pgBgV addSubview:gress];
     
     UILabel *typeLabel = [[UILabel alloc] init];
-    typeLabel.frame = CGRectMake(15,pgBgV.swf_bottom+16,21,15);
+    typeLabel.frame = CGRectMake(15,pgBgV.swf_bottom+16,22,15);
     typeLabel.font=B_FONT_MEDIUM(13);
     typeLabel.textColor=BColor_Hex(@"#1B1200", 1);
     typeLabel.textAlignment = NSTextAlignmentLeft;

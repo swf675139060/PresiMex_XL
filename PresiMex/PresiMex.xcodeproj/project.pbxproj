@@ -15,6 +15,12 @@
 		A400BCF42A25F11E006CABB2 /* PMIDAuthViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A400BCF32A25F11E006CABB2 /* PMIDAuthViewCell.m */; };
 		A400BCF72A25F169006CABB2 /* PMIDAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A400BCF62A25F169006CABB2 /* PMIDAuthModel.m */; };
 		A400BCFA2A25F404006CABB2 /* PMIDAuthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A400BCF92A25F404006CABB2 /* PMIDAuthHeaderView.m */; };
+		A40B4C8D2A2AE506001B11F0 /* PMBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4C8C2A2AE506001B11F0 /* PMBasicViewController.m */; };
+		A40B4C902A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4C8F2A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m */; };
+		A40B4C932A2B0E5F001B11F0 /* PMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4C922A2B0E5F001B11F0 /* PMTextField.m */; };
+		A40B4C992A2B1FF9001B11F0 /* PMEmergencyContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4C982A2B1FF9001B11F0 /* PMEmergencyContactModel.m */; };
+		A40B4C9C2A2B2154001B11F0 /* PMEmergencyContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4C9B2A2B2154001B11F0 /* PMEmergencyContactCell.m */; };
+		A40B4C9F2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4C9E2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m */; };
 		A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */; };
 		A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD42A2332C200F5BED7 /* MD5Utils.m */; };
 		A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */; };
@@ -131,6 +137,18 @@
 		A400BCF62A25F169006CABB2 /* PMIDAuthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMIDAuthModel.m; sourceTree = "<group>"; };
 		A400BCF82A25F404006CABB2 /* PMIDAuthHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMIDAuthHeaderView.h; sourceTree = "<group>"; };
 		A400BCF92A25F404006CABB2 /* PMIDAuthHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMIDAuthHeaderView.m; sourceTree = "<group>"; };
+		A40B4C8B2A2AE506001B11F0 /* PMBasicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBasicViewController.h; sourceTree = "<group>"; };
+		A40B4C8C2A2AE506001B11F0 /* PMBasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMBasicViewController.m; sourceTree = "<group>"; };
+		A40B4C8E2A2B0CE9001B11F0 /* PMIDAuthTextViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMIDAuthTextViewCell.h; sourceTree = "<group>"; };
+		A40B4C8F2A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMIDAuthTextViewCell.m; sourceTree = "<group>"; };
+		A40B4C912A2B0E5F001B11F0 /* PMTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMTextField.h; sourceTree = "<group>"; };
+		A40B4C922A2B0E5F001B11F0 /* PMTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMTextField.m; sourceTree = "<group>"; };
+		A40B4C972A2B1FF9001B11F0 /* PMEmergencyContactModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMEmergencyContactModel.h; sourceTree = "<group>"; };
+		A40B4C982A2B1FF9001B11F0 /* PMEmergencyContactModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMEmergencyContactModel.m; sourceTree = "<group>"; };
+		A40B4C9A2A2B2154001B11F0 /* PMEmergencyContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMEmergencyContactCell.h; sourceTree = "<group>"; };
+		A40B4C9B2A2B2154001B11F0 /* PMEmergencyContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMEmergencyContactCell.m; sourceTree = "<group>"; };
+		A40B4C9D2A2B2CEC001B11F0 /* PMEmergencyContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMEmergencyContactViewController.h; sourceTree = "<group>"; };
+		A40B4C9E2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMEmergencyContactViewController.m; sourceTree = "<group>"; };
 		A4B60AD02A2332C200F5BED7 /* YKGTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGTMDefines.h; sourceTree = "<group>"; };
 		A4B60AD12A2332C200F5BED7 /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
 		A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGTMBase64.m; sourceTree = "<group>"; };
@@ -367,8 +385,48 @@
 				A400BCF32A25F11E006CABB2 /* PMIDAuthViewCell.m */,
 				A400BCF82A25F404006CABB2 /* PMIDAuthHeaderView.h */,
 				A400BCF92A25F404006CABB2 /* PMIDAuthHeaderView.m */,
+				A40B4C8E2A2B0CE9001B11F0 /* PMIDAuthTextViewCell.h */,
+				A40B4C8F2A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m */,
+				A40B4C912A2B0E5F001B11F0 /* PMTextField.h */,
+				A40B4C922A2B0E5F001B11F0 /* PMTextField.m */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		A40B4C8A2A2AE4E7001B11F0 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A40B4C8B2A2AE506001B11F0 /* PMBasicViewController.h */,
+				A40B4C8C2A2AE506001B11F0 /* PMBasicViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A40B4C942A2B1FB5001B11F0 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A40B4C9D2A2B2CEC001B11F0 /* PMEmergencyContactViewController.h */,
+				A40B4C9E2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A40B4C952A2B1FBF001B11F0 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				A40B4C9A2A2B2154001B11F0 /* PMEmergencyContactCell.h */,
+				A40B4C9B2A2B2154001B11F0 /* PMEmergencyContactCell.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A40B4C962A2B1FC6001B11F0 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				A40B4C972A2B1FF9001B11F0 /* PMEmergencyContactModel.h */,
+				A40B4C982A2B1FF9001B11F0 /* PMEmergencyContactModel.m */,
+			);
+			path = M;
 			sourceTree = "<group>";
 		};
 		A4B60ACF2A2332C200F5BED7 /* Md5 */ = {
@@ -430,6 +488,7 @@
 		A4D6F11D2A25AE64006B4BA6 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				A40B4C8A2A2AE4E7001B11F0 /* C */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -437,6 +496,9 @@
 		A4D6F11E2A25AE87006B4BA6 /* Emer */ = {
 			isa = PBXGroup;
 			children = (
+				A40B4C962A2B1FC6001B11F0 /* M */,
+				A40B4C952A2B1FBF001B11F0 /* V */,
+				A40B4C942A2B1FB5001B11F0 /* C */,
 			);
 			path = Emer;
 			sourceTree = "<group>";
@@ -1342,6 +1404,7 @@
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
 				A400BCF72A25F169006CABB2 /* PMIDAuthModel.m in Sources */,
 				FB1C73A72A23247800194925 /* PMNotiView.m in Sources */,
+				A40B4C9F2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m in Sources */,
 				A4D6F12A2A25B1DE006B4BA6 /* PMQuestionViewCell.m in Sources */,
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
 				A4D6F12E2A25B364006B4BA6 /* PMQuestionModel.m in Sources */,
@@ -1363,6 +1426,7 @@
 				FB8AF31F2A088AC5006C5887 /* SLFToast.m in Sources */,
 				A400BCFA2A25F404006CABB2 /* PMIDAuthHeaderView.m in Sources */,
 				A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */,
+				A40B4C8D2A2AE506001B11F0 /* PMBasicViewController.m in Sources */,
 				A400BCEA2A25EE89006CABB2 /* PMBasicViewCell.m in Sources */,
 				FBC4CBA72A24EA200050C47F /* WFThreeBtnCell.m in Sources */,
 				FB7BC86D2A2AE6D5000BB3ED /* UIView+DashedLine.m in Sources */,
@@ -1373,12 +1437,15 @@
 				A4D6F1272A25B0FE006B4BA6 /* WFBaseViewCell.m in Sources */,
 				FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */,
 				FBC2A8742A1A16550010D7F8 /* ProblemaCell.m in Sources */,
+				A40B4C932A2B0E5F001B11F0 /* PMTextField.m in Sources */,
 				A4DD5E652A21FFE400451413 /* CRSecrectImageView.m in Sources */,
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
 				FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */,
+				A40B4C992A2B1FF9001B11F0 /* PMEmergencyContactModel.m in Sources */,
 				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
+				A40B4C902A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m in Sources */,
 				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
 				FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */,
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
@@ -1388,6 +1455,7 @@
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
 				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
+				A40B4C9C2A2B2154001B11F0 /* PMEmergencyContactCell.m in Sources */,
 				A4DD5E622A21FFE400451413 /* CRBoxInputCell.m in Sources */,
 				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */,
