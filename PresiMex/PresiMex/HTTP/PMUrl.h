@@ -116,7 +116,7 @@
 #define  POST_Feedback_Info  @"/api/user/won/robots"
 
 //获取所有反馈类型
-#define  GET_Feedback_Tyoe @"/api/user/won/emacs"
+#define  GET_Feedback_Type @"/api/user/won/emacs"
 
 
 /*
@@ -160,7 +160,7 @@
  */
 
 //获取用户授信信息
-#define  GET_User_Auth_Info  @"/api/user/hampton/hanging"
+#define  GET_User_Auth_Info  @"/api/user/hampton/hanging" //W
 
 //重新发送授信队列
 #define  POST_AUTH_RESEND  @"/api/user/hampton/brisbane"

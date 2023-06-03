@@ -293,7 +293,6 @@
 -(ZZCircleProgress *)circularView{
     if(_circularView == nil){
         _circularView = [[ZZCircleProgress alloc] initWithFrame:CGRectMake(0, 0, 192, 192) pathBackColor:[UIColor jk_colorWithHexString:@"#FDB14C"] pathFillColor:[UIColor whiteColor] startAngle:180 strokeWidth:10];
-        _circularView.progress = 0.3;
         _circularView.showPoint = NO;
         _circularView.reduceAngle = 180;
         _circularView.showProgressText = NO;
@@ -428,12 +427,12 @@
 
 
 
-/// - Parameter type: 0: 未登录， 1:登录未授信，2:登录已授信
--(void)updataHeaderViewWithType:(int)type{
+-(void)updataHeaderViewWithModel:(PMAuthModel *)model{
     
-    if(type == 0){
+    if([PMAccountTool isLogin] == NO || !model){
         self.jk_height = WF_StatusBarHeight + 270;
 
+        self.circularView.progress = 0;
         NSArray *colors = @[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor, (id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor];
         [self.topBgView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth, self.jk_height - 40) withColors:colors startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:50];
         
@@ -461,41 +460,12 @@
         self.LoginLeftBtn.hidden = YES;
         self.LoginRightBtn.hidden = YES;
         
+        return;
+    }
+   
+    
+    if([model.shop integerValue] == 20) {
         
-    }else if(type == 1){
-        PMUser * userModel = [PMAccountTool account];
-        
-        self.jk_height = WF_StatusBarHeight + 270;
-
-        NSArray *colors = @[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor, (id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor];
-        [self.topBgView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth, self.jk_height - 40) withColors:colors startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:50];
-        
-        self.userIcon.image = DefaultAvatar;
-        self.userName.text = @"PresiMex . ";
-        self.cartera.text = @"su propia cartera";
-        self.SubNubmer.text = userModel.tel;
-        
-        [self.moneyLB mas_updateConstraints:^(MASConstraintMaker *make) {
-            
-            make.centerX.equalTo(self);
-            make.top.equalTo(self.topBgView).offset(131 + WF_StatusBarHeight);
-        }];
-        self.moneyBottonLB.hidden = NO;
-        self.moneyLB.text = @"$30,000";
-        self.moneyTOPLB.text = @"Hasta";
-        self.moneyBottonLB.text = @"Sin monto";
-        
-        self.noLoginBG.hidden = NO;
-        self.noLoginTitleLB.text = @"Autenticación";
-        self.noLoginSubLB.text = @"Proceda a autenticar su identidad para obtenerel monto máximo.";
-        [self.noLoginBtn setTitle:@"Ir" forState:UIControlStateNormal];
-        
-        self.LoginTOPBG.hidden = YES;
-        self.LoginLeftBtn.hidden = YES;
-        self.LoginRightBtn.hidden = YES;
-        
-        
-    }else if(type == 2){
         
         PMUser * userModel = [PMAccountTool account];
         
@@ -515,7 +485,7 @@
             make.top.equalTo(self.topBgView).offset(145 + WF_StatusBarHeight);
         }];
         self.moneyBottonLB.hidden = YES;
-        self.moneyLB.text = @"$30,000";
+        self.moneyLB.text = [NSString stringWithFormat:@"$%@",model.researcher];
         self.moneyTOPLB.text = @"Crédito disponible";
         
         self.noLoginBG.hidden = YES;
@@ -523,11 +493,47 @@
         self.LoginTOPBG.hidden = NO;
         self.LoginLeftBtn.hidden = NO;
         self.LoginRightBtn.hidden = NO;
-        self.LoginTOPLeftLB.text = [NSString stringWithFormat:@"Límite de créditol: %@",@"0000"];
-        self.LoginTOPRightLB.text = [NSString stringWithFormat:@"Crédito utilizado: %@",@"0000"];
+        self.LoginTOPLeftLB.text = [NSString stringWithFormat:@"Límite de créditol: %@",model.foto];
+        self.LoginTOPRightLB.text = [NSString stringWithFormat:@"Crédito utilizado: %@",model.antibody];
         
+        
+        
+        self.circularView.progress = [model.researcher doubleValue]/[model.foto doubleValue];
         self.LoginLeftBtnTitle.text = @"Factura";
         self.LoginRightBtnTitle.text = @"Cupón";
+        
+        
+    }else{
+        PMUser * userModel = [PMAccountTool account];
+        
+        self.jk_height = WF_StatusBarHeight + 270;
+
+        NSArray *colors = @[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor, (id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor];
+        [self.topBgView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth, self.jk_height - 40) withColors:colors startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:50];
+        
+        self.userIcon.image = DefaultAvatar;
+        self.userName.text = @"PresiMex . ";
+        self.cartera.text = @"su propia cartera";
+        self.SubNubmer.text = userModel.tel;
+        
+        [self.moneyLB mas_updateConstraints:^(MASConstraintMaker *make) {
+            
+            make.centerX.equalTo(self);
+            make.top.equalTo(self.topBgView).offset(131 + WF_StatusBarHeight);
+        }];
+        self.moneyBottonLB.hidden = NO;
+        self.moneyLB.text = [NSString stringWithFormat:@"$%@",model.researcher];
+        self.moneyTOPLB.text = @"Hasta";
+        self.moneyBottonLB.text = @"Sin monto";
+        
+        self.noLoginBG.hidden = NO;
+        self.noLoginTitleLB.text = @"Autenticación";
+        self.noLoginSubLB.text = @"Proceda a autenticar su identidad para obtenerel monto máximo.";
+        [self.noLoginBtn setTitle:@"Ir" forState:UIControlStateNormal];
+        
+        self.LoginTOPBG.hidden = YES;
+        self.LoginLeftBtn.hidden = YES;
+        self.LoginRightBtn.hidden = YES;
         
         
     }

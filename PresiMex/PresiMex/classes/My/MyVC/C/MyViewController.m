@@ -17,6 +17,8 @@
 #import "PMLoginViewController.h" //登录页面
 #import "PMQuestionnaireViewController.h"//调查问卷
 
+#import "PMAuthModel.h"
+
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, copy) NSArray<NSString *> *titles; /**< 标题*/
@@ -31,7 +33,7 @@
 @property (nonatomic, assign) BOOL UserStatePass;//授信是否通过
 
 @property (nonatomic, assign) BOOL isShowDelete; /**< 是否显示注销账号按钮*/
-
+@property (nonatomic,strong) PMAuthModel * model;//用户信息
 @end
 
 
@@ -71,10 +73,10 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     NSLog(@"%@",[PMAccountTool account].token);
     if([PMAccountTool isLogin]){
-        [self.headerView updataHeaderViewWithType:1];
         [self GETUserAuthInfo];
     }else{
-        [self.headerView updataHeaderViewWithType:0];
+        [self.headerView updataHeaderViewWithModel:self.model];
+        [self.tableView reloadData];
     }
 }
 
@@ -169,6 +171,8 @@
     if (!_headerView) {
         
         _headerView = [[MyHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+        
+        [_headerView updataHeaderViewWithModel:self.model];
     }
     
     return _headerView;
@@ -246,16 +250,19 @@
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_User_Auth_Info parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
-            NSInteger fare = [responseObject[@"fare"] integerValue];
-            if(fare == 71 || fare > 72){
-                //授信通过
-                weakself.UserStatePass = YES;
-                [weakself.headerView updataHeaderViewWithType:2];
-            }else{
-                weakself.UserStatePass = NO;
-                [weakself.headerView updataHeaderViewWithType:1];
-            }
+            NSDictionary * shame = responseObject[@"shame"];
             
+            PMAuthModel * model = [PMAuthModel mj_objectWithKeyValues:shame];
+            
+            weakself.model = model;
+            [weakself.headerView updataHeaderViewWithModel:weakself.model];
+            [weakself.tableView reloadData];
+            
+        }else{
+            
+            weakself.model = nil;
+            [weakself.headerView updataHeaderViewWithModel:weakself.model];
+            [weakself.tableView reloadData];
         }
         
         
