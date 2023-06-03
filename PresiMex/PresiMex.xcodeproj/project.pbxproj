@@ -653,9 +653,9 @@
 			isa = PBXGroup;
 			children = (
 				FB8AF2F32A088AC4006C5887 /* SLFLoadingHub.h */,
-				FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */,
 				FB8AF2F52A088AC5006C5887 /* SLFLoadingHub.m */,
 				FB8AF2F62A088AC5006C5887 /* SLFLoadingView.h */,
+				FB8AF2F42A088AC5006C5887 /* SLFLoadingView.m */,
 			);
 			path = LoadingView;
 			sourceTree = "<group>";
