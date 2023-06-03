@@ -68,6 +68,8 @@
 		FB976D552A05124A00B1C0A3 /* PresiMexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D542A05124A00B1C0A3 /* PresiMexTests.m */; };
 		FB976D5F2A05124A00B1C0A3 /* PresiMexUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D5E2A05124A00B1C0A3 /* PresiMexUITests.m */; };
 		FB976D612A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */; };
+		FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238802A2646090079FBF2 /* HomeDetailsVC.m */; };
+		FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */; };
 		FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A85F2A19C96C0010D7F8 /* WFEmptyCell.m */; };
 		FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8602A19C96C0010D7F8 /* WFFieldCell.m */; };
 		FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8632A19C96D0010D7F8 /* WFBtnCell.m */; };
@@ -85,6 +87,7 @@
 		FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA72352A0A6B7B00A10D4E /* HomeViewController.m */; };
 		FBCA72392A0A6B8600A10D4E /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA72382A0A6B8600A10D4E /* MyViewController.m */; };
 		FBD58C1F2A26016D00644C77 /* HomeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD58C1E2A26016D00644C77 /* HomeSectionView.m */; };
+		FBD6913A2A279B8500460621 /* WFLeftRightLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD691392A279B8500460621 /* WFLeftRightLabelCell.m */; };
 		FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */; };
 /* End PBXBuildFile section */
 
@@ -232,6 +235,10 @@
 		FB976D5A2A05124A00B1C0A3 /* PresiMexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresiMexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB976D5E2A05124A00B1C0A3 /* PresiMexUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresiMexUITests.m; sourceTree = "<group>"; };
 		FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresiMexUITestsLaunchTests.m; sourceTree = "<group>"; };
+		FBC2387F2A2646090079FBF2 /* HomeDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailsVC.h; sourceTree = "<group>"; };
+		FBC238802A2646090079FBF2 /* HomeDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailsVC.m; sourceTree = "<group>"; };
+		FBC238822A2646E00079FBF2 /* WFFourLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFFourLabelCell.h; sourceTree = "<group>"; };
+		FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFFourLabelCell.m; sourceTree = "<group>"; };
 		FBC2A85C2A19C96C0010D7F8 /* WFFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFFieldCell.h; sourceTree = "<group>"; };
 		FBC2A85D2A19C96C0010D7F8 /* WFLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFLabelCell.h; sourceTree = "<group>"; };
 		FBC2A85E2A19C96C0010D7F8 /* WFEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFEmptyCell.h; sourceTree = "<group>"; };
@@ -266,6 +273,8 @@
 		FBCA72382A0A6B8600A10D4E /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		FBD58C1D2A26016D00644C77 /* HomeSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSectionView.h; sourceTree = "<group>"; };
 		FBD58C1E2A26016D00644C77 /* HomeSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSectionView.m; sourceTree = "<group>"; };
+		FBD691382A279B8500460621 /* WFLeftRightLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftRightLabelCell.h; sourceTree = "<group>"; };
+		FBD691392A279B8500460621 /* WFLeftRightLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftRightLabelCell.m; sourceTree = "<group>"; };
 		FBDE5EE22A22DC29007834AB /* PMOrderTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMOrderTopView.h; sourceTree = "<group>"; };
 		FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMOrderTopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -887,6 +896,39 @@
 			path = PresiMexUITests;
 			sourceTree = "<group>";
 		};
+		FBC2387B2A2645C50079FBF2 /* homeDetails */ = {
+			isa = PBXGroup;
+			children = (
+				FBC2387C2A2645C50079FBF2 /* M */,
+				FBC2387D2A2645C50079FBF2 /* C */,
+				FBC2387E2A2645C50079FBF2 /* V */,
+			);
+			path = homeDetails;
+			sourceTree = "<group>";
+		};
+		FBC2387C2A2645C50079FBF2 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FBC2387D2A2645C50079FBF2 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FBC2387F2A2646090079FBF2 /* HomeDetailsVC.h */,
+				FBC238802A2646090079FBF2 /* HomeDetailsVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FBC2387E2A2645C50079FBF2 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		FBC2A85B2A19C95A0010D7F8 /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -900,6 +942,8 @@
 				FBC2A8652A19C96D0010D7F8 /* WFImageCell.m */,
 				FBC2A85D2A19C96C0010D7F8 /* WFLabelCell.h */,
 				FBC2A8642A19C96D0010D7F8 /* WFLabelCell.m */,
+				FBD691382A279B8500460621 /* WFLeftRightLabelCell.h */,
+				FBD691392A279B8500460621 /* WFLeftRightLabelCell.m */,
 				FBC2A8752A1A22530010D7F8 /* WFTextViewCell.h */,
 				FBC2A8762A1A22530010D7F8 /* WFTextViewCell.m */,
 				FB939F182A21C0BC00599A86 /* WFCornerCell.h */,
@@ -912,6 +956,8 @@
 				FBC4CBA32A24E5D00050C47F /* WFSliderCell.m */,
 				FBC4CBA62A24EA1F0050C47F /* WFThreeBtnCell.h */,
 				FBC4CBA52A24EA1F0050C47F /* WFThreeBtnCell.m */,
+				FBC238822A2646E00079FBF2 /* WFFourLabelCell.h */,
+				FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -984,6 +1030,7 @@
 		FBCA72322A0A69DE00A10D4E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				FBC2387B2A2645C50079FBF2 /* homeDetails */,
 				FB1C739E2A23232A00194925 /* HomeVC */,
 			);
 			path = Home;
@@ -1250,6 +1297,7 @@
 				FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */,
 				A4D6F1232A25B081006B4BA6 /* PMQuestionnaireViewController.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
+				FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
 				A400BCF72A25F169006CABB2 /* PMIDAuthModel.m in Sources */,
 				FB1C73A72A23247800194925 /* PMNotiView.m in Sources */,
@@ -1285,6 +1333,7 @@
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
+				FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */,
 				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
 				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
 				FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */,
@@ -1309,6 +1358,7 @@
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,
 				FBC4CBAE2A24ED510050C47F /* UIButton+WFTextSizeColor.m in Sources */,
 				FB8AF32E2A088C78006C5887 /* UILabel+SLFLineSpace.m in Sources */,
+				FBD6913A2A279B8500460621 /* WFLeftRightLabelCell.m in Sources */,
 				FB8AF31E2A088AC5006C5887 /* SLFFailedHub.m in Sources */,
 				FB939F342A21F65500599A86 /* CuponVC.m in Sources */,
 				A4DD5E632A21FFE400451413 /* CRBoxInputView.m in Sources */,
