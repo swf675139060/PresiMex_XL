@@ -463,6 +463,8 @@
         
         
     }else if(type == 1){
+        PMUser * userModel = [PMAccountTool account];
+        
         self.jk_height = WF_StatusBarHeight + 270;
 
         NSArray *colors = @[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor, (id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor];
@@ -471,7 +473,7 @@
         self.userIcon.image = DefaultAvatar;
         self.userName.text = @"PresiMex . ";
         self.cartera.text = @"su propia cartera";
-        self.SubNubmer.text = @"XXXXXXXXXX";
+        self.SubNubmer.text = userModel.tel;
         
         [self.moneyLB mas_updateConstraints:^(MASConstraintMaker *make) {
             
@@ -495,6 +497,8 @@
         
     }else if(type == 2){
         
+        PMUser * userModel = [PMAccountTool account];
+        
         self.jk_height = WF_StatusBarHeight + 291;
 
         NSArray *colors = @[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor, (id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor];
@@ -503,7 +507,7 @@
         self.userIcon.image = DefaultAvatar;
         self.userName.text = @"PresiMex . ";
         self.cartera.text = @"su propia cartera";
-        self.SubNubmer.text = @"XXXXXXXXXX";
+        self.SubNubmer.text = userModel.tel;
         
         [self.moneyLB mas_updateConstraints:^(MASConstraintMaker *make) {
             

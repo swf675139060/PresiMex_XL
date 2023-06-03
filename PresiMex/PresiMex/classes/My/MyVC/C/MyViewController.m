@@ -28,6 +28,8 @@
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 @property (nonatomic,strong) MyHeaderView *headerView; /**< 头*/
 
+@property (nonatomic, assign) BOOL UserStatePass;//授信是否通过
+
 @property (nonatomic, assign) BOOL isShowDelete; /**< 是否显示注销账号按钮*/
 
 @end
@@ -70,7 +72,7 @@
     NSLog(@"%@",[PMAccountTool account].token);
     if([PMAccountTool isLogin]){
         [self.headerView updataHeaderViewWithType:1];
-        [self requestUserState];
+        [self GETUserAuthInfo];
     }else{
         [self.headerView updataHeaderViewWithType:0];
     }
@@ -211,17 +213,51 @@
 }
 
 //获取用户当前状态
--(void)requestUserState{
+//-(void)requestUserState{
+//    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+//
+//    WF_WEAKSELF(weakself);
+//    [PMBaseHttp get:Get_User_Status parameters:pars success:^(id  _Nonnull responseObject) {
+//        if ([responseObject[@"retail"] intValue]==200) {
+//            NSInteger fare = [responseObject[@"fare"] integerValue];
+//            if(fare == 71 || fare > 72){
+//                //授信通过
+//                weakself.UserStatePass = YES;
+//                [weakself.headerView updataHeaderViewWithType:2];
+//            }else{
+//                weakself.UserStatePass = NO;
+//                [weakself.headerView updataHeaderViewWithType:1];
+//            }
+//
+//        }
+//
+////        用户当前状态 10:注册完成, 20:问卷调查完成 30:kyc完成, 40:基本信息完成, 50:联系人完成,60:账户完成, 70:授信中, 71:授信通过, 72:授信拒绝 80:交易验证, 81:交易验证部分通过, 82:交易验证拒绝 83:交易验证通过, 84:放款失败需要处理'
+//
+//
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
+//}
+
+//获取用户授信信息
+-(void)GETUserAuthInfo{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
-    [PMBaseHttp get:Get_User_Status parameters:pars success:^(id  _Nonnull responseObject) {
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_User_Auth_Info parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
             NSInteger fare = [responseObject[@"fare"] integerValue];
-            
+            if(fare == 71 || fare > 72){
+                //授信通过
+                weakself.UserStatePass = YES;
+                [weakself.headerView updataHeaderViewWithType:2];
+            }else{
+                weakself.UserStatePass = NO;
+                [weakself.headerView updataHeaderViewWithType:1];
+            }
             
         }
         
-//        用户当前状态 10:注册完成, 20:问卷调查完成 30:kyc完成, 40:基本信息完成, 50:联系人完成,60:账户完成, 70:授信中, 71:授信通过, 72:授信拒绝 80:交易验证, 81:交易验证部分通过, 82:交易验证拒绝 83:交易验证通过, 84:放款失败需要处理'
         
         
     } failure:^(NSError * _Nonnull error) {

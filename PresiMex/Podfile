@@ -15,6 +15,7 @@ target 'PresiMex' do
   pod 'MJExtension'
   pod 'ZZCircleProgress'
   pod 'IQKeyboardManager'
+  pod 'RollingNotice' #轮播广告
 
   pod 'AppsFlyerFramework'
 
