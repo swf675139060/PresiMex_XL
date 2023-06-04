@@ -25,6 +25,7 @@
 		A40B4CA72A2C4773001B11F0 /* PMBankcardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CA62A2C4773001B11F0 /* PMBankcardModel.m */; };
 		A40B4CAB2A2C499C001B11F0 /* PMBankSelectViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CAA2A2C499C001B11F0 /* PMBankSelectViewCell.m */; };
 		A40B4CAE2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CAD2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m */; };
+		A40B4CB42A2C6F07001B11F0 /* PMCertificationCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB32A2C6F07001B11F0 /* PMCertificationCoreViewController.m */; };
 		A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */; };
 		A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD42A2332C200F5BED7 /* MD5Utils.m */; };
 		A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */; };
@@ -164,6 +165,8 @@
 		A40B4CAA2A2C499C001B11F0 /* PMBankSelectViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMBankSelectViewCell.m; sourceTree = "<group>"; };
 		A40B4CAC2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
 		A40B4CAD2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
+		A40B4CB22A2C6F07001B11F0 /* PMCertificationCoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMCertificationCoreViewController.h; sourceTree = "<group>"; };
+		A40B4CB32A2C6F07001B11F0 /* PMCertificationCoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCertificationCoreViewController.m; sourceTree = "<group>"; };
 		A4B60AD02A2332C200F5BED7 /* YKGTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGTMDefines.h; sourceTree = "<group>"; };
 		A4B60AD12A2332C200F5BED7 /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
 		A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGTMBase64.m; sourceTree = "<group>"; };
@@ -377,6 +380,9 @@
 		A400BCEB2A25F01E006CABB2 /* Cer */ = {
 			isa = PBXGroup;
 			children = (
+				A40B4CB12A2C6ED4001B11F0 /* M */,
+				A40B4CB02A2C6ECD001B11F0 /* V */,
+				A40B4CAF2A2C6EBE001B11F0 /* C */,
 			);
 			path = Cer;
 			sourceTree = "<group>";
@@ -475,6 +481,29 @@
 				A40B4CAA2A2C499C001B11F0 /* PMBankSelectViewCell.m */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		A40B4CAF2A2C6EBE001B11F0 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A40B4CB22A2C6F07001B11F0 /* PMCertificationCoreViewController.h */,
+				A40B4CB32A2C6F07001B11F0 /* PMCertificationCoreViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A40B4CB02A2C6ECD001B11F0 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A40B4CB12A2C6ED4001B11F0 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
 			sourceTree = "<group>";
 		};
 		A4B60ACF2A2332C200F5BED7 /* Md5 */ = {
@@ -1467,6 +1496,7 @@
 				FBC2A86A2A19C96D0010D7F8 /* WFImageCell.m in Sources */,
 				FB939F1A2A21C0BC00599A86 /* WFCornerCell.m in Sources */,
 				FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */,
+				A40B4CB42A2C6F07001B11F0 /* PMCertificationCoreViewController.m in Sources */,
 				A4D6F1232A25B081006B4BA6 /* PMQuestionnaireViewController.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
 				FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */,
