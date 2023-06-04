@@ -257,6 +257,7 @@
   
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_User_Auth_Info parameters:pars success:^(id  _Nonnull responseObject) {
+        
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             

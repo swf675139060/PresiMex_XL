@@ -258,7 +258,7 @@
         [self uploadImage:^(BOOL sucess) {
             if (sucess) {
                 
-                [weakself POSTFeedbackInfo11];
+               // [weakself POSTFeedbackInfo11];
             } else {
                 [weakself showAlertWidth:sucess];
             }
@@ -307,11 +307,14 @@
 
 -(void)uploadImage:(void (^)(BOOL sucess)) upimageBlcok{
 //    for
-        [PMBaseHttp uploadImg:self.images[0] parameter:nil success:^(id  _Nonnull responseObject) {
+    NSMutableDictionary*dict=[NSMutableDictionary new];
+    //dict[@"supposed"]=@"feedback";
+    
+    [PMBaseHttp uploadImg:self.images[0] parameter:dict success:^(id  _Nonnull responseObject) {
             if(upimageBlcok){
                 upimageBlcok(YES);
             }
-            
+            NSLog(@"image===%@",responseObject);
         } failure:^(NSError * _Nonnull error) {
             if(upimageBlcok){
                 upimageBlcok(NO);

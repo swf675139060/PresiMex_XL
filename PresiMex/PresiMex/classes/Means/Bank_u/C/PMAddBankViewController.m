@@ -26,7 +26,7 @@
     [super viewDidLoad];
     self.navTitleLabel.text=@"Cuenta bancaria";
     [self addRightBarButtonWithImag:@"bai_kefu"];
-   
+    [self tableView];
 }
 
 - (UITableView *)tableView{
@@ -58,7 +58,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
    
-    return self.dataArray.count;
+    return 3;
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

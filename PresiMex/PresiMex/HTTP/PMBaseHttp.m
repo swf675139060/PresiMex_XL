@@ -55,11 +55,13 @@ static inline BOOL IsEmpty(id thing){
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
@@ -70,7 +72,7 @@ static inline BOOL IsEmpty(id thing){
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     securityPolicy.allowInvalidCertificates = YES;
     securityPolicy.validatesDomainName = NO;
@@ -109,7 +111,9 @@ static inline BOOL IsEmpty(id thing){
     
     //NSString*josn=[parms toJSONString];
     return [manager GET:url parameters:parameter headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"url===%@\nget_responseObject=%@",url,responseObject);
+        
+       NSDictionary*dict=[self dictionaryForJsonData:responseObject];
+        NSLog(@"url===%@\nget_responseObject=%@",url,dict);
         //       if (!IsEmpty(responseObject) &&[responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
         //           [PSAccountTool logOut];
         //       }else if([responseObject[@"error"] isEqual:@"Please login"]&&!([responseObject[@"code"] intValue]==202)){
@@ -117,7 +121,7 @@ static inline BOOL IsEmpty(id thing){
         //       }
         
         if (success) {
-            success(responseObject);
+            success(dict);
         }
         // 测试代码
         //       if ([responseObject[@"code"] intValue] == 0) {
@@ -315,7 +319,12 @@ static inline BOOL IsEmpty(id thing){
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
+    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -325,7 +334,8 @@ static inline BOOL IsEmpty(id thing){
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
@@ -334,33 +344,33 @@ static inline BOOL IsEmpty(id thing){
     manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     manager.securityPolicy.allowInvalidCertificates = YES;
     [manager.securityPolicy setValidatesDomainName:NO];
-    NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,POST_Image_File];
+    NSString *urlEpt=[NSString stringWithFormat:@"%@%@?supposed=feedback",API_URL,POST_Image_File];
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
-        
+   NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
     [manager POST:url parameters:nil headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
 //         UIImage *image = [UIImage imageNamed:@"test"];
         
         //UIImage* uploadImg = [image scaleToMaxSideLength:1920 andMaxSize:1024*1024*3];
         
-        NSData *imageData = UIImageJPEGRepresentation(image, 1);//进行图片压缩
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.3);//进行图片压缩
         
          // 使用日期生成图片名称
          NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
          formatter.dateFormat = @"yyyyMMddHHmmss";
          NSString *fileName = [NSString stringWithFormat:@"%@.png",[formatter stringFromDate:[NSDate date]]];
          // 任意的二进制数据MIMEType application/octet-stream
-         [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"img/png"];
+         [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"img"];
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
 
         NSLog(@"上传进度  %lf",1.0 *uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-
+        NSDictionary*dict=[self dictionaryForJsonData:responseObject];
 //        NSLog(@"resultInfo is %@",responseObject);
 //        NSString *imgUrl =  responseObject[@"data"][@"url"];
 //        NSLog(@"%@",imgUrl);
-        success(responseObject);
+        success(dict);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"resultInfo is %@",error);
         if ([error.domain isEqualToString:AFURLResponseSerializationErrorDomain]) {
@@ -381,5 +391,107 @@ static inline BOOL IsEmpty(id thing){
 }
 
 
+//data 转 json 字符串
++ (NSDictionary *)dictionaryForJsonData:(NSData *)jsonData
 
+{
+
+    if (![jsonData isKindOfClass:[NSData class]] || jsonData.length < 1) {
+
+        return nil;
+
+    }
+   
+    //服务器返回的responseObject是gbk编码的字符串，通过gbk编码转码就行了，转码方法如下：
+   NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+   NSString*gbkStr = [[NSString alloc]initWithData:jsonData encoding:gbkEncoding];
+    NSData *jsonDa=[gbkStr dataUsingEncoding:NSUTF8StringEncoding];
+   //转码之后再转utf8解析
+   NSDictionary *requestDic = [NSJSONSerialization JSONObjectWithData:jsonDa options:NSJSONReadingMutableContainers error:nil];
+
+    if (![requestDic isKindOfClass:[NSDictionary class]]) {
+
+        return nil;
+
+    }
+
+    return [NSDictionary dictionaryWithDictionary:(NSDictionary *)requestDic];
+
+}
+
+//UTF-8转码
+
+//NSData 转字典:
+ // NSData转dictonary
++(NSDictionary*)dictionaryWithData:(NSData*)data
+ {
+     //  NSData* data = [[NSMutableData alloc]initWithContentsOfFile:path]; 拿路径文件
+     NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+     NSDictionary* myDictionary = [unarchiver decodeObjectForKey:@"talkData"];
+     [unarchiver finishDecoding];
+     return myDictionary;
+ }
+
+/// 上传文件
+/// @param filePath 文件路径
+/// @param parameters 参数
+/// @param progress 进度
+/// @param success 成功回调
+/// @param failure 失败回调
++ (NSURLSessionDataTask *)uploadTask:(NSURL *)filePath
+            parameters:(id _Nullable)parameters
+            progress:(void (^ _Nullable)(CGFloat progress))progress
+            success:(void (^ _Nullable)(NSURLSessionDataTask *task, id responseObject))success
+            failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
+{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 60;//15.0;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
+    NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
+    deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
+    [manager.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+    if ([PMAccountTool isLogin]) {
+        NSLog(@"token= %@",[PMAccountTool account].token);
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
+    }
+   
+    manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    [manager.securityPolicy setValidatesDomainName:NO];
+    NSString *urlEpt=[NSString stringWithFormat:@"%@%@?supposed=feedback",API_URL,POST_Image_File];
+    NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
+    
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data", nil];
+    
+    return [manager POST:url parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        [formData appendPartWithFileURL:filePath name:@"img" error:nil];
+
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        if (progress) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                progress(uploadProgress.fractionCompleted);
+            });
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary*dict=[self dictionaryForJsonData:responseObject];
+       NSLog(@"imge== %@",responseObject);
+
+        success(task,dict);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //删除文件
+        
+      
+    }];
+}
 @end
