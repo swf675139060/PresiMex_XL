@@ -18,7 +18,8 @@
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
-@property (nonatomic, strong) NSArray * types;  //提交反馈类型
+//提交反馈类型 greene = "Problemas de uso"; salvador = 1;
+@property (nonatomic, strong) NSArray * typesArr;
 
 @property (nonatomic, assign) NSInteger clickIndx;
 
@@ -28,7 +29,7 @@
 
 @property (nonatomic, strong) NSMutableArray * images;
 
-
+//converted = "https://sst-apk.cashimex.mx/81f39018d78533c158665aa7945c6a95/feedback/20230603/81f39018d78533c158665aa7945c6a957778903_20230603213746362.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230604T033746Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=AKIARRN2AWT5RDG4YK44%2F20230604%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Signature=b1e9e69f76fb6b5b5ca26eeb90ee8e721ce7747c66efc29c859d015b8eec869a";//rooms = 181;
 @property (nonatomic, strong) NSMutableArray * imagesUrl;
 
 
@@ -72,7 +73,7 @@
             weakself.clickIndx = indx;
             [weakself.tableView reloadData];
         };
-        [cell updataWithProblems:@[@"11",@"11",@"11",@"11",@"11",@"11",@"11",@"11"] selectIndx:self.clickIndx];
+        [cell updataWithProblems:self.typesArr selectIndx:self.clickIndx];
         return  cell;
     }else if (indexPath.row == 2){
         WFTextViewCell * cell  = [WFTextViewCell cellWithTableView:tableView];
@@ -236,7 +237,8 @@
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_Feedback_Type parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
-            NSDictionary * shame = responseObject[@"shame"];
+            NSArray * shame = responseObject[@"shame"][@"labor"];
+            weakself.typesArr = shame;
             
             [weakself.tableView reloadData];
             
@@ -253,28 +255,35 @@
 
 //反馈信息提交
 -(void)POSTFeedbackInfo{
+    
+    SLFLoadingHub * LoadingHub = [SLFLoadingHub showLoading];
     if(self.images.count){
         WF_WEAKSELF(weakself);
-        [self uploadImage:^(BOOL sucess) {
+        [self uploadImage:self.images[0] block:^(BOOL sucess) {
             if (sucess) {
                 
-               // [weakself POSTFeedbackInfo11];
+                [weakself POSTFeedbackInfo11:LoadingHub];
             } else {
+                [LoadingHub hideAnimated:YES];
                 [weakself showAlertWidth:sucess];
             }
         }];
+    }else{
+        
+        [self POSTFeedbackInfo11:LoadingHub];
     }
     
     
 }
 
--(void)POSTFeedbackInfo11{
+-(void)POSTFeedbackInfo11:(SLFLoadingHub * )LoadingHub{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
-    pars[@"monroe"] = self.types[self.clickIndx];
+    pars[@"monroe"] = self.typesArr[self.clickIndx][@"salvador"];
     pars[@"tion"] = self.textContent;
     pars[@"restaurants"] = [self.imagesUrl componentsJoinedByString:@","];
     WF_WEAKSELF(weakself);
-    [PMBaseHttp post:GET_Feedback_Type parameters:pars success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp postJson:POST_Feedback_Info parameters:pars success:^(id  _Nonnull responseObject) {
+        [LoadingHub hideAnimated:YES];
         if ([responseObject[@"retail"] intValue]==200) {
             [weakself showAlertWidth:YES];
             
@@ -285,6 +294,7 @@
         
         
     } failure:^(NSError * _Nonnull error) {
+        [LoadingHub hideAnimated:YES];
         [weakself showAlertWidth:NO];
     }];
 }
@@ -305,21 +315,37 @@
     }];
 }
 
--(void)uploadImage:(void (^)(BOOL sucess)) upimageBlcok{
-//    for
+-(void)uploadImage:(UIImage *)image block:(void (^)(BOOL sucess)) upimageBlcok{
     NSMutableDictionary*dict=[NSMutableDictionary new];
-    //dict[@"supposed"]=@"feedback";
-    
-    [PMBaseHttp uploadImg:self.images[0] parameter:dict success:^(id  _Nonnull responseObject) {
-            if(upimageBlcok){
-                upimageBlcok(YES);
+
+        WF_WEAKSELF(weakself);
+        [PMBaseHttp uploadImg:image parameter:dict success:^(id  _Nonnull responseObject) {
+            if ([responseObject[@"retail"] intValue]==200) {
+                
+                NSDictionary * shame = responseObject[@"shame"];
+                [weakself.imagesUrl addObject:shame[@"rooms"]];
+                
+                
+                if(weakself.imagesUrl.count == weakself.images.count){
+                    if(upimageBlcok){
+                        upimageBlcok(YES);
+                    }
+                }else{
+                    [weakself uploadImage:weakself.images[weakself.imagesUrl.count] block:upimageBlcok];
+                }
+                
+            }else{
+                if(upimageBlcok){
+                    upimageBlcok(NO);
+                }
             }
-            NSLog(@"image===%@",responseObject);
+            
         } failure:^(NSError * _Nonnull error) {
             if(upimageBlcok){
                 upimageBlcok(NO);
             }
         }];
+    
 }
 
 @end

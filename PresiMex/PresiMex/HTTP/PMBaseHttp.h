@@ -53,6 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)uploadImg:(UIImage *)image parameter:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
+#pragma mark - 上传照片
+//+ (void)uploadImgs:(NSArray *)images parameter:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
 
 @end
 

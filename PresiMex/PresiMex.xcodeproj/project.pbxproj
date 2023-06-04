@@ -83,6 +83,7 @@
 		FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */; };
 		FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039612A2B800100E5CD80 /* KeFuAlert.m */; };
 		FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */; };
+		FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC09FD82A2C686C00259622 /* PMHomeModel.m */; };
 		FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238802A2646090079FBF2 /* HomeDetailsVC.m */; };
 		FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */; };
 		FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A85F2A19C96C0010D7F8 /* WFEmptyCell.m */; };
@@ -280,6 +281,8 @@
 		FBB039612A2B800100E5CD80 /* KeFuAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeFuAlert.m; sourceTree = "<group>"; };
 		FBB039632A2B822400E5CD80 /* WFLeftImageTwolabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftImageTwolabelCell.h; sourceTree = "<group>"; };
 		FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftImageTwolabelCell.m; sourceTree = "<group>"; };
+		FBC09FD72A2C686C00259622 /* PMHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMHomeModel.h; sourceTree = "<group>"; };
+		FBC09FD82A2C686C00259622 /* PMHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMHomeModel.m; sourceTree = "<group>"; };
 		FBC2387F2A2646090079FBF2 /* HomeDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailsVC.h; sourceTree = "<group>"; };
 		FBC238802A2646090079FBF2 /* HomeDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailsVC.m; sourceTree = "<group>"; };
 		FBC238822A2646E00079FBF2 /* WFFourLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFFourLabelCell.h; sourceTree = "<group>"; };
@@ -660,6 +663,7 @@
 		FB1C739E2A23232A00194925 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				FBC09FD62A2C683F00259622 /* M */,
 				FB1C73A02A23232A00194925 /* C */,
 				FB1C73A12A23232A00194925 /* V */,
 			);
@@ -1027,6 +1031,15 @@
 			children = (
 				FBB0395D2A2B50C900E5CD80 /* PMAuthModel.h */,
 				FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FBC09FD62A2C683F00259622 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				FBC09FD72A2C686C00259622 /* PMHomeModel.h */,
+				FBC09FD82A2C686C00259622 /* PMHomeModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1501,6 +1514,7 @@
 				A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */,
 				FB7BC86A2A2AE576000BB3ED /* UIView+WhenTappedBlocks.m in Sources */,
 				A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */,
+				FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */,
 				A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
@@ -1683,7 +1697,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B95DT69446;
+				DEVELOPMENT_TEAM = 53Q62TM72V;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
@@ -1717,7 +1731,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B95DT69446;
+				DEVELOPMENT_TEAM = 53Q62TM72V;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;

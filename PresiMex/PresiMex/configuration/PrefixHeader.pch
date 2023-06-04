@@ -95,6 +95,7 @@ _Pragma("clang diagnostic pop")
 #import <JKCategories/JKCategories.h>
 #import <Masonry/Masonry.h>
 #import <MJExtension/MJExtension.h>
+#import <SDWebImage/SDWebImage.h>
 
 #import "PMUrl.h"
 #import "PMBaseHttp.h"

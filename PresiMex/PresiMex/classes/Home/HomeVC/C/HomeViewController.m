@@ -17,11 +17,11 @@
 
 #import "HomeDetailsVC.h"
 #import "OrderVC.h"
+#import "PMAuthModel.h"
+#import "PMHomeModel.h"
 
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-
-@property (nonatomic, strong) NSMutableArray *dataList;
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
@@ -30,6 +30,8 @@
 
 @property (nonatomic, assign) NSInteger selectIndx;// 点击的section
 @property (nonatomic, assign) NSInteger changeValue;
+@property (nonatomic,strong) PMAuthModel * authModel;//用户信息
+@property (nonatomic,strong) PMHomeModel * homeModel;//产品信息
 
 
 @end
@@ -39,14 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-#warning 临时添加数据
-    self.selectIndx = 1;
-    [self.dataList addObject:@""];
-    [self.dataList addObject:@""];
-    [self.dataList addObject:@""];
-    [self.dataList addObject:@""];
-    
-    
+    self.selectIndx = 0;
     self.navBarView.hidden = YES;
     [self.view addSubview:self.notiView];
     [self.notiView setNotList:@[@"123456789",@"09876543234567898765456"]];
@@ -59,6 +54,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self GETAppBanner];
+    
+    if([PMAccountTool isLogin]){
+        [self GETUserAuthInfo];
+    }
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
@@ -76,8 +75,8 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    if (self.dataList.count) {
-        return 2 + self.dataList.count;
+    if (self.homeModel.pledge.count) {
+        return 2 + self.homeModel.pledge.count;
     } else {
         return 1;
     }
@@ -85,12 +84,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0){
-        if (self.dataList.count) {
+        if (self.homeModel.pledge.count) {
             return 6;
         } else {
             return 10;
         }
-    }else if(section > 0 && section < self.dataList.count+1){
+    }else if(section > 0 && section < self.homeModel.pledge.count+1){
         if(self.selectIndx == section){
             return 6;
         }else{
@@ -105,7 +104,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section == 0){
         return 0.1;
-    }else if(section > 0 && section < self.dataList.count + 1){
+    }else if(section > 0 && section < self.homeModel.pledge.count + 1){
         return 80;
     }else{
         return 0.1;
@@ -117,15 +116,25 @@
     if(section == 0){
         
         return [UIView new];
-    }else if(section > 0 && section < self.dataList.count + 1){
+    }else if(section > 0 && section < self.homeModel.pledge.count + 1){
         HomeSectionView * headerView = [[HomeSectionView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 80)];
         if(self.selectIndx == section){
             
-            [headerView upDataWithModel:@"" select:YES];
+            [headerView upDataWithModel:self.homeModel.pledge[section - 1] select:YES];
         }else{
-            [headerView upDataWithModel:@"" select:NO];
+            [headerView upDataWithModel:self.homeModel.pledge[section - 1] select:NO];
         }
-        //        [headerView ]
+        
+        WF_WEAKSELF(weakself);
+        [headerView whenTapped:^{
+            if (weakself.selectIndx != section) {
+                weakself.selectIndx = section;
+            } else {
+                weakself.selectIndx = 0;
+            }
+            [weakself.tableView reloadData];
+            
+        }];
         
         return headerView;
     }else{
@@ -167,7 +176,7 @@
             
             
         }else if (indexPath.row == 2){
-            WFLabelCell * cell  = [WFLabelCell cellWithTableView:tableView];
+            WFLabelCell * cell  = [WFLabelCell cellWithTableView:tableView identifier:@"22"];
             cell.label.textAlignment = NSTextAlignmentCenter;
             [cell.label setText:[NSString stringWithFormat:@"%ld",self.changeValue] TextColor:[UIColor whiteColor] Font:[UIFont boldSystemFontOfSize:25]];
             
@@ -271,7 +280,7 @@
         
         
         
-    }else if (indexPath.section > 0 && indexPath.section < self.dataList.count + 1){
+    }else if (indexPath.section > 0 && indexPath.section < self.homeModel.pledge.count + 1){
         
         WFLeftRightBtnCell * cell = [WFLeftRightBtnCell cellWithTableView:tableView];
         cell.BGView.backgroundColor = [UIColor jk_colorWithHexString:@"#F7F7F7"];
@@ -280,29 +289,31 @@
         
         [cell.leftBtn setText:@"" TextColor:BColor_Hex(@"#666666", 1) Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
         [cell.rightBtn setText:@"" TextColor:BColor_Hex(@"#666666", 1) Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+        
+        PMHomeProductModel * productModel = self.homeModel.pledge[indexPath.section-1];
         if(indexPath.row == 0){
             [cell.leftBtn setTitle:@"Producto:" forState:UIControlStateNormal];
-            [cell.rightBtn setTitle:@"xxxxxxxxxxxxxxxxxxxxxxxx:" forState:UIControlStateNormal];
+            [cell.rightBtn setTitle:productModel.nu forState:UIControlStateNormal];
         }else if (indexPath.row == 1){
             
             [cell.leftBtn setTitle:@"Monto del préstamo:" forState:UIControlStateNormal];
-            [cell.rightBtn setTitle:@"1,000" forState:UIControlStateNormal];
+            [cell.rightBtn setTitle:productModel.readers forState:UIControlStateNormal];
         }else if (indexPath.row == 2){
             
             [cell.leftBtn setTitle:@"Cargo por servicio:" forState:UIControlStateNormal];
-            [cell.rightBtn setTitle:@"300" forState:UIControlStateNormal];
+            [cell.rightBtn setTitle:productModel.trademark forState:UIControlStateNormal];
         }else if (indexPath.row == 3){
             
             [cell.leftBtn setTitle:@"IVA:" forState:UIControlStateNormal];
-            [cell.rightBtn setTitle:@"50" forState:UIControlStateNormal];
+            [cell.rightBtn setTitle:productModel.see forState:UIControlStateNormal];
         }else if (indexPath.row == 4){
             
             [cell.leftBtn setTitle:@"Deuda de Reembolso:" forState:UIControlStateNormal];
-            [cell.rightBtn setTitle:@"10" forState:UIControlStateNormal];
+            [cell.rightBtn setTitle:productModel.tt forState:UIControlStateNormal];
         }else if (indexPath.row == 5){
             
             [cell.leftBtn setTitle:@"Tiempo de reembolso:" forState:UIControlStateNormal];
-            [cell.rightBtn setTitle:@"28 - 03 - 2023" forState:UIControlStateNormal];
+            [cell.rightBtn setTitle:productModel.Short forState:UIControlStateNormal];
         }
         return cell;
     }else{
@@ -313,7 +324,10 @@
             [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             WF_WEAKSELF(weakself);
             [cell setClickBtnBlock:^{
-                [weakself.navigationController pushViewController:[HomeDetailsVC new] animated:YES];
+                HomeDetailsVC * vc = [HomeDetailsVC new];
+                vc.homeModel = weakself.homeModel;
+                
+                [weakself.navigationController pushViewController:vc animated:YES];
             }];
             [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
         
@@ -347,27 +361,6 @@
     
 }
 
-#pragma mark --网络请求
-
--(void)GETAppBanner{
-    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
-  
-    WF_WEAKSELF(weakself);
-    [PMBaseHttp get:GET_App_Banner parameters:pars success:^(id  _Nonnull responseObject) {
-//        if ([responseObject[@"retail"] intValue]==200) {
-//            [weakself.notiView setNotList:responseObject[@"trackback"]];
-//        }else{
-//            [weakself.notiView setNotList:@[]];
-//        }
-        
-        
-        
-    } failure:^(NSError * _Nonnull error) {
-        
-            [weakself.notiView setNotList:@[]];
-    }];
-}
-
 
 
 #pragma mark -- init
@@ -393,10 +386,82 @@
     return _notiView;
 }
 
--(NSMutableArray *)dataList{
-    if(_dataList == nil){
-        _dataList = [NSMutableArray array];
-    }
-    return _dataList;
+
+#pragma mark --网络请求
+
+-(void)GETAppBanner{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_App_Banner parameters:pars success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"retail"] intValue]==200) {
+            [weakself.notiView setNotList:responseObject[@"trackback"]];
+        }else{
+            [weakself.notiView setNotList:@[]];
+        }
+    } failure:^(NSError * _Nonnull error) {
+        [weakself.notiView setNotList:@[]];
+    }];
 }
+
+
+//获取用户授信信息
+-(void)GETUserAuthInfo{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_User_Auth_Info parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            PMAuthModel * model = [PMAuthModel mj_objectWithKeyValues:shame];
+            
+            weakself.authModel = model;
+            [weakself.tableView reloadData];
+            [weakself GETProductList];
+            
+        }else{
+            
+            weakself.authModel = nil;
+            [weakself.tableView reloadData];
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+//获取产品列表
+-(void)GETProductList{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:[NSString stringWithFormat:GET_Product_List,@"3000"] parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            PMHomeModel * model = [PMHomeModel mj_objectWithKeyValues:shame];
+            
+            weakself.homeModel = model;
+            [weakself.tableView reloadData];
+            
+        }else{
+            
+            weakself.homeModel = nil;
+            [weakself.tableView reloadData];
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+
+
 @end
