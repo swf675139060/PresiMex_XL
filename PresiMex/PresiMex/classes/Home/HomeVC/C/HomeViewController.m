@@ -35,7 +35,7 @@
 @property (nonatomic,strong) PMAuthModel * authModel;//用户信息
 @property (nonatomic,strong) PMHomeModel * homeModel;//产品信息
 
-
+@property (nonatomic,strong) NSMutableArray * dataList;
 @end
 
 @implementation HomeViewController
