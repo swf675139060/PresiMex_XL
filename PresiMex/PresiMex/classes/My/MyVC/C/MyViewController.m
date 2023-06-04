@@ -18,7 +18,7 @@
 #import "PMQuestionnaireViewController.h"//调查问卷
 
 #import "PMAuthModel.h"
-
+#import "PMCertificationCoreViewController.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, copy) NSArray<NSString *> *titles; /**< 标题*/
@@ -50,12 +50,20 @@
     self.headerView.clickLoginBlock = ^{
         
         if([weakself.model.shop integerValue] == 20){
-            
-            [weakself pushLoginVc];
+            if (![PMAccountTool isLogin]) {
+                [weakself pushLoginVc];
+            } else {
+                [weakself pushCerVc];
+            }
+           
         }else{
-            
-            PMQuestionnaireViewController*vc=[PMQuestionnaireViewController new];
-            [weakself.navigationController pushViewController:vc animated:YES];
+            if (![PMAccountTool isLogin]) {
+                [weakself pushLoginVc];
+            } else {
+                [weakself pushCerVc];
+            }
+//            PMQuestionnaireViewController*vc=[PMQuestionnaireViewController new];
+//            [weakself.navigationController pushViewController:vc animated:YES];
         }
     };
     
@@ -280,5 +288,8 @@
         
     }];
 }
-
+-(void)pushCerVc{
+    PMCertificationCoreViewController*vc=[PMCertificationCoreViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end

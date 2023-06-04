@@ -18,6 +18,8 @@
 #import "HomeDetailsVC.h"
 #import "OrderVC.h"
 
+#import "PMCertificationCoreViewController.h"
+
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -398,5 +400,10 @@
         _dataList = [NSMutableArray array];
     }
     return _dataList;
+}
+//认证中心
+-(void)pushCerVc{
+    PMCertificationCoreViewController*vc=[PMCertificationCoreViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end
