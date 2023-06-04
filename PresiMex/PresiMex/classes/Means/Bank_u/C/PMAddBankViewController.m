@@ -10,6 +10,7 @@
 #import "PMIDAuthHeaderView.h"
 #import "PMBasicViewCell.h"
 #import "PMQuestionModel.h"
+#import "PMBankSelectViewCell.h"
 
 @interface PMAddBankViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -20,15 +21,35 @@
 
 @implementation PMAddBankViewController
 
- 
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navTitleLabel.text=@"Cuenta bancaria";
     [self addRightBarButtonWithImag:@"bai_kefu"];
-    [self tableView];
+    [self modelWithData];
 }
-
+- (void)modelWithData{
+    
+    _dataArray = [NSMutableArray array];
+    PMQuestionModel *model1 = [[PMQuestionModel alloc] init];
+    [self.dataArray addObject:model1];
+    
+    PMQuestionModel *model2 = [[PMQuestionModel alloc] init];
+    model2.title     = @"Banco";
+    model2.type=1;
+    model2.isHave=YES;
+    model2.isColor=NO;
+    [self.dataArray addObject:model2];
+    
+    PMQuestionModel *model3 = [[PMQuestionModel alloc] init];
+    model3.title     = @"Cuenta (Tarjeta de débito de 16 dígitos)";
+    model3.type=2;
+    model3.isHave=NO;
+    model3.isColor=NO;
+    [self.dataArray addObject:model3];
+    [self.tableView reloadData];
+}
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, WF_ScreenWidth,WF_ScreenHeight-WF_StatusBarHeight-WF_NavigationHeight-WF_BottomSafeAreaHeight)];
@@ -57,22 +78,31 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-   
     return 3;
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PMQuestionModel *model=self.dataArray[indexPath.row];
-    PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
-    [cell setCellWithModel:model];
-    return cell;
+    if (indexPath.row==0) {
+        PMBankSelectViewCell*cell=[PMBankSelectViewCell cellWithTableView:tableView];
+        return cell;
+    } else {
+        PMQuestionModel *model=self.dataArray[indexPath.row];
+        PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
+        [cell setCellWithModel:model];
+        return cell;
+    }
+
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row==0) {
+        return 60;
+    } else {
+        return 90;
+    }
     
-    return 235;
     
 }
 
@@ -116,7 +146,7 @@
     
     UIButton* submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     submitBtn.tag=1;
-    submitBtn.frame = CGRectMake(15,30,WF_ScreenWidth-30,50);
+    submitBtn.frame = CGRectMake(15,40,WF_ScreenWidth-30,50);
     [submitBtn setTitle:@"Próximo paso" forState:UIControlStateNormal];
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [submitBtn addTarget:self action:@selector(clickSubmitBtn) forControlEvents:UIControlEventTouchUpInside];

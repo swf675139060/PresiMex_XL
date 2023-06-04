@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)setBackBarButtonWithTheme:(NSInteger)type;
 -(void)hiddenLeftItem;
 -(void)addRightBarButtonWithImag:(NSString*)imgName;
+-(void)show;
+-(void)dismiss;
 @end
 
 NS_ASSUME_NONNULL_END
