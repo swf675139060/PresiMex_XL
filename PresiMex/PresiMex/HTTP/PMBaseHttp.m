@@ -439,7 +439,6 @@ static inline BOOL IsEmpty(id thing){
 /// @param success 成功回调
 /// @param failure 失败回调
 + (NSURLSessionDataTask *)uploadTask:(NSURL *)filePath
-            urlString:(NSString*)url
             parameters:(id _Nullable)parameters
             progress:(void (^ _Nullable)(CGFloat progress))progress
             success:(void (^ _Nullable)(NSURLSessionDataTask *task, id responseObject))success
