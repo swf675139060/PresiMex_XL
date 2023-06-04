@@ -22,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , copy) void(^click)(void);
 @property (nonatomic , copy) void(^clickTag)(NSInteger tag);
 -(void)showTip:(NSString*)text;
-
+-(void)show;
+-(void)dismiss;
 @end
 
 NS_ASSUME_NONNULL_END
