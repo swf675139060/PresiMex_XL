@@ -43,8 +43,7 @@
 {
     if(indexPath.row == 0){
         WFImageCell * cell = [WFImageCell cellWithTableView:tableView];
-        cell.imgV.image = [UIImage imageNamed:@"PresiMex"];
-        cell.imgV.backgroundColor = [UIColor jk_colorWithHexString:@"#D8D8D8"];
+        cell.imgV.image = [UIImage imageNamed:@"PPPP"];
         CGFloat imgVWidth = 75;
         [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(36, (WF_ScreenWidth - imgVWidth)/2, 19, (WF_ScreenWidth - imgVWidth)/2) height:75];
         return cell;

@@ -16,6 +16,7 @@
 #import "WFImageCell.h"
 
 #import "HomeDetailsVC.h"
+#import "OrderVC.h"
 
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -75,16 +76,20 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 1;// 被拒绝
-    return 2 + self.dataList.count;//正常展示
+    if (self.dataList.count) {
+        return 2 + self.dataList.count;
+    } else {
+        return 1;
+    }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0){
-        
-//        return 6;
-        
-        return 10;
+        if (self.dataList.count) {
+            return 6;
+        } else {
+            return 10;
+        }
     }else if(section > 0 && section < self.dataList.count+1){
         if(self.selectIndx == section){
             return 6;
@@ -238,6 +243,11 @@
             [cell.btn setTitle:@"Ver mis pedidos" forState:UIControlStateNormal];
             cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
             [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            WF_WEAKSELF(weakself);
+            [cell setClickBtnBlock:^{
+                OrderVC *vc = [[OrderVC alloc] init];
+                [weakself.navigationController pushViewController:vc animated:YES];
+            }];
             [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
             [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(10, 15, 15, 15) height:50];
             return cell;
@@ -301,6 +311,10 @@
             [cell.btn setTitle:@"Presentar la solicitud" forState:UIControlStateNormal];
             cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
             [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            WF_WEAKSELF(weakself);
+            [cell setClickBtnBlock:^{
+                [weakself.navigationController pushViewController:[HomeDetailsVC new] animated:YES];
+            }];
             [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
         
             [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(10, 15, 15, 15) height:50];
@@ -330,7 +344,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.navigationController pushViewController:[HomeDetailsVC new] animated:YES];
+    
 }
 
 #pragma mark --网络请求
