@@ -439,7 +439,7 @@ static inline BOOL IsEmpty(id thing){
 /// @param success 成功回调
 /// @param failure 失败回调
 + (NSURLSessionDataTask *)uploadTask:(NSURL *)filePath
-            urlString:(NSString*)urlstr
+            urlString:(NSString*)url
             parameters:(id _Nullable)parameters
             progress:(void (^ _Nullable)(CGFloat progress))progress
             success:(void (^ _Nullable)(NSURLSessionDataTask *task, id responseObject))success
@@ -486,8 +486,7 @@ static inline BOOL IsEmpty(id thing){
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary*dict=[self dictionaryForJsonData:responseObject];
        NSLog(@"imge== %@",responseObject);
-//        NSString *imgUrl =  responseObject[@"data"][@"url"];
-//        NSLog(@"%@",imgUrl);
+
         success(task,dict);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
