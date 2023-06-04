@@ -48,7 +48,15 @@
     
     WF_WEAKSELF(weakself);
     self.headerView.clickLoginBlock = ^{
-        [weakself pushLoginVc];
+        
+        if([weakself.model.shop integerValue] == 20){
+            
+            [weakself pushLoginVc];
+        }else{
+            
+            PMQuestionnaireViewController*vc=[PMQuestionnaireViewController new];
+            [weakself.navigationController pushViewController:vc animated:YES];
+        }
     };
     
     self.headerView.clickLeftBtnBlock = ^{

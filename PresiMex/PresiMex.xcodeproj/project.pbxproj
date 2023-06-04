@@ -81,6 +81,8 @@
 		FB976D612A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */; };
 		FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039592A2B431900E5CD80 /* DemoCell2.m */; };
 		FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */; };
+		FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039612A2B800100E5CD80 /* KeFuAlert.m */; };
+		FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */; };
 		FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238802A2646090079FBF2 /* HomeDetailsVC.m */; };
 		FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */; };
 		FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A85F2A19C96C0010D7F8 /* WFEmptyCell.m */; };
@@ -274,6 +276,10 @@
 		FBB039592A2B431900E5CD80 /* DemoCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell2.m; sourceTree = "<group>"; };
 		FBB0395D2A2B50C900E5CD80 /* PMAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMAuthModel.h; sourceTree = "<group>"; };
 		FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMAuthModel.m; sourceTree = "<group>"; };
+		FBB039602A2B800100E5CD80 /* KeFuAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeFuAlert.h; sourceTree = "<group>"; };
+		FBB039612A2B800100E5CD80 /* KeFuAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeFuAlert.m; sourceTree = "<group>"; };
+		FBB039632A2B822400E5CD80 /* WFLeftImageTwolabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftImageTwolabelCell.h; sourceTree = "<group>"; };
+		FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftImageTwolabelCell.m; sourceTree = "<group>"; };
 		FBC2387F2A2646090079FBF2 /* HomeDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailsVC.h; sourceTree = "<group>"; };
 		FBC238802A2646090079FBF2 /* HomeDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailsVC.m; sourceTree = "<group>"; };
 		FBC238822A2646E00079FBF2 /* WFFourLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFFourLabelCell.h; sourceTree = "<group>"; };
@@ -696,6 +702,8 @@
 			children = (
 				FB7BC8732A2AF380000BB3ED /* FeedBackAlert.h */,
 				FB7BC8742A2AF380000BB3ED /* FeedBackAlert.m */,
+				FBB039602A2B800100E5CD80 /* KeFuAlert.h */,
+				FBB039612A2B800100E5CD80 /* KeFuAlert.m */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -1085,6 +1093,8 @@
 				FBC4CBA52A24EA1F0050C47F /* WFThreeBtnCell.m */,
 				FBC238822A2646E00079FBF2 /* WFFourLabelCell.h */,
 				FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */,
+				FBB039632A2B822400E5CD80 /* WFLeftImageTwolabelCell.h */,
+				FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1462,6 +1472,7 @@
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */,
 				FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */,
+				FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */,
 				A4D6F1272A25B0FE006B4BA6 /* WFBaseViewCell.m in Sources */,
 				FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */,
 				FBC2A8742A1A16550010D7F8 /* ProblemaCell.m in Sources */,
@@ -1481,6 +1492,7 @@
 				FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
+				FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */,
 				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,
 				FB8AF3152A088AC5006C5887 /* SLFLoadingView.m in Sources */,
 				A40B4C9C2A2B2154001B11F0 /* PMEmergencyContactCell.m in Sources */,
