@@ -52,12 +52,14 @@
       
         // 创建Label
         UIButton *btn = [[UIButton alloc] init];
-        [btn setTitle:Problems[i] forState:UIControlStateNormal];
+        [btn setTitle:Problems[i][@"greene"] forState:UIControlStateNormal];
         btn.layer.cornerRadius = 20;
         btn.layer.masksToBounds = YES;
         btn.layer.borderWidth = 0.5;
         btn.layer.borderColor = [UIColor jk_colorWithHexString:@"#7C7C7C"].CGColor;
         btn.tag = i;
+        btn.titleLabel.adjustsFontSizeToFitWidth = YES;
+        btn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
         
         [btn addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
 

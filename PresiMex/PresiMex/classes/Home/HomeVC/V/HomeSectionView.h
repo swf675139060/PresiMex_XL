@@ -6,12 +6,13 @@
 //
 
 #import "WFBaseView.h"
+#import "PMHomeModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeSectionView : WFBaseView
 
--(void)upDataWithModel:(id)Model select:(BOOL)select;
+-(void)upDataWithModel:(PMHomeProductModel *)Model select:(BOOL)select;
 
 @end
 

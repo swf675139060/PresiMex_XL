@@ -57,9 +57,11 @@
 }
 
 
--(void)upDataWithModel:(id)Model select:(BOOL)select{
+-(void)upDataWithModel:(PMHomeProductModel *)Model select:(BOOL)select{
     self.userIcon.backgroundColor = [UIColor grayColor];
-    self.userName.text = @"1111";
+    [self.userIcon sd_setImageWithURL:[NSURL URLWithString:Model.engage] completed:nil];
+    self.userName.text = Model.nu;
+    self.moneyLB.text = [NSString stringWithFormat:@"$ %@",Model.readers];
     if(select == YES){
         _arrowImage.image = [UIImage imageNamed:@"shangJian"];
     }else{

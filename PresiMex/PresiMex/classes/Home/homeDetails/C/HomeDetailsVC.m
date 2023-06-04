@@ -14,8 +14,6 @@
 
 @interface HomeDetailsVC ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray *dataList;
-
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
@@ -34,14 +32,12 @@
     [super viewDidLoad];
     
     
-    [self.dataList addObject:@""];
-    [self.dataList addObject:@""];
-    [self.dataList addObject:@""];
-    [self.dataList addObject:@""];
     
     [self.tempView addSubview:self.tableView];
     [self.tempView addSubview:self.tableViewBottom];
     self.navTitleLabel.text = @"Detalles de préstamo";
+    
+    [self GETBindUserAccount];
     
 }
 
@@ -51,7 +47,7 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
     if (tableView.tag == 0) {
-        return 2 + self.dataList.count;
+        return 1 + self.homeModel.pledge.count;
     } else {
         
         return 1;
@@ -78,7 +74,7 @@
     if (tableView.tag == 0) {
         if(section == 0){
             return 0.1;
-        }else if(section > 0 && section < self.dataList.count + 1){
+        }else if(section > 0 && section < self.homeModel.pledge.count + 1){
             return 80;
         }else{
             return 0.1;
@@ -97,13 +93,13 @@
         if(section == 0){
             
             return [UIView new];
-        }else if(section > 0 && section < self.dataList.count + 1){
+        }else if(section > 0 && section < self.homeModel.pledge.count + 1){
             HomeSectionView * headerView = [[HomeSectionView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 80)];
             if(self.selectIndx == section){
                 
-                [headerView upDataWithModel:@"" select:YES];
+                [headerView upDataWithModel:self.homeModel.pledge[section -1] select:YES];
             }else{
-                [headerView upDataWithModel:@"" select:NO];
+                [headerView upDataWithModel:self.homeModel.pledge[section -1] select:NO];
             }
             return headerView;
         }else{
@@ -140,45 +136,48 @@
             if(indexPath.row == 0){
                 WFFourLabelCell * cell = [WFFourLabelCell cellWithTableView:tableView];
                 [cell upLabelsFrameWithInsets:UIEdgeInsetsMake(14.5, 0, 14, 0) spacing:5.5];
-                [cell upDataWithModel:@""];
+                [cell.label1 setText:@"Monto de préstamos" TextColor:BColor_Hex(@"#999999", 1) Font:[UIFont systemFontOfSize:12]];
+                [cell.label2 setText:@"Plazo de préstamo" TextColor:BColor_Hex(@"#999999", 1) Font:[UIFont systemFontOfSize:12]];
+                [cell.label3 setText:self.homeModel.starsmerchant.years TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:20]];
+                [cell.label4 setText:[NSString stringWithFormat:@"%@días",self.homeModel.starsmerchant.caused] TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:20]];
                 
                 return cell;;
             }else if(indexPath.row == 1){
                 WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
                 [cell upLabelFrameWithInsets:UIEdgeInsetsMake(14, 25, 7.5, 25)];
                 [cell.leftLabel setText:@"Cargo por servicio:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:@"$ 900" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.homeModel.starsmerchant.comparing TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
                 return cell;
             }else if(indexPath.row == 2){
                 WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
                 [cell upLabelFrameWithInsets:UIEdgeInsetsMake(14, 25, 7.5, 25)];
                 [cell.leftLabel setText:@"IVA:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:@"$ 900" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.homeModel.starsmerchant.military TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
                 return cell;
             }else if(indexPath.row == 3){
                 WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
                 [cell upLabelFrameWithInsets:UIEdgeInsetsMake(14, 25, 7.5, 25)];
                 [cell.leftLabel setText:@"Importe del recibo:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:@"$ 900" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.homeModel.starsmerchant.adam TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
                 return cell;
             }else if(indexPath.row == 4){
                 WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
                 [cell upLabelFrameWithInsets:UIEdgeInsetsMake(14, 25, 7.5, 25)];
                 [cell.leftLabel setText:@"Deuda de Reembolso:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:@"$ 900" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.homeModel.starsmerchant.equality TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
                 return cell;
             }else if(indexPath.row == 5){
                 WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
                 [cell upLabelFrameWithInsets:UIEdgeInsetsMake(14, 25, 7.5, 25)];
                 [cell.leftLabel setText:@"Tiempo de reembolso:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:@"29/04/2023" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.homeModel.starsmerchant.Short TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
                 return cell;
             }else{
                 WFLeftRightLabelCell * cell = [WFLeftRightLabelCell bottomLineCellWithTableView:tableView];
                 [cell upLabelFrameWithInsets:UIEdgeInsetsMake(14, 25, 19.5, 25)];
                 [cell.leftLabel setText:@"Número de productos:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
                 cell.bottomLine.hidden = NO;
-                [cell.rightLabel setText:@"3" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.homeModel.starsmerchant.apparatus TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
                 return cell;
             }
         }
@@ -202,7 +201,10 @@
             [cell.btn setTitle:@"Confirmar" forState:UIControlStateNormal];
             cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
             [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [cell.btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+            WF_WEAKSELF(weakself);
+            [cell setClickBtnBlock:^{
+                [weakself POSTLoanApply];
+            }];
             
             [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor,(id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
         
@@ -263,12 +265,66 @@
 }
 
 
--(NSMutableArray *)dataList{
-    if(_dataList == nil){
-        _dataList = [NSMutableArray array];
-    }
-    return _dataList;
+//获取用户当前绑定账户信息
+-(void)GETBindUserAccount{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_Bind_User_Account parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+//            PMHomeModel * model = [PMHomeModel mj_objectWithKeyValues:shame];
+//
+//            weakself.homeModel = model;
+            [weakself.tableViewBottom reloadData];
+            
+        }else{
+            [weakself.tableViewBottom reloadData];
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
+
+//借款申请
+-(void)POSTLoanApply{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    pars[@"detailed"] = self.homeModel.building;
+    
+    NSMutableArray * duringArr = [NSMutableArray array];
+    for (PMHomeProductModel * model in self.homeModel.pledge) {
+        
+        NSMutableDictionary * duringDic = [NSMutableDictionary dictionary];
+        duringDic[@"demanding"] = model.demanding;
+        duringDic[@"madison"] = model.flip;
+        [duringArr addObject:duringDic];
+    }
+    pars[@"during"] = duringArr;
+    
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp postJson:POST_Loan_Apply parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            
+        }else{
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+
 
 
 @end

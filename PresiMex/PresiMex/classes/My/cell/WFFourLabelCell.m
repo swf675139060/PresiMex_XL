@@ -182,10 +182,7 @@
 }
 
 -(void)upDataWithModel:(id)model{
-    [self.label1 setText:@"1" TextColor:BColor_Hex(@"#999999", 1) Font:[UIFont systemFontOfSize:12]];
-    [self.label2 setText:@"2" TextColor:BColor_Hex(@"#999999", 1) Font:[UIFont systemFontOfSize:12]];
-    [self.label3 setText:@"3" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:20]];
-    [self.label4 setText:@"4" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:20]];
+  
 }
 
 

@@ -28,6 +28,22 @@
     return cell;
 }
 
++(instancetype)cellWithTableView:(UITableView *)tableView identifier:(NSString *)identifier{
+    NSString *ID = @"WFLabelCell";
+    if(identifier){
+        ID = [NSString stringWithFormat:@"%@_%@",ID,identifier];
+    }
+    
+    WFLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[WFLabelCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        [cell creatSubView];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
 
 +(instancetype)cornerCellWithTableView:(UITableView *)tableView{
     NSString *ID = @"WFLabelCell_corner";

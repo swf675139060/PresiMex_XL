@@ -49,7 +49,7 @@
     self.loadingLayer             = [CAShapeLayer layer];
     self.loadingLayer.lineWidth   = self.lineW;
     self.loadingLayer.fillColor   = [UIColor clearColor].CGColor;
-//    self.loadingLayer.strokeColor = [self colorWithRGBA:0x00D0B9].CGColor;
+//    self.loadingLayer.strokeColor = BColor_Hex(@"#00D0B9", 1).CGColor;
     self.loadingLayer.strokeColor = self.strokeColor.CGColor;
     [self.layer addSublayer:self.loadingLayer];
     self.loadingLayer.lineCap     = kCALineCapRound;
