@@ -142,7 +142,7 @@
             
             
         }else{
-            
+//            [SLFToast showWithContent:responseObject[@"entire"] afterDelay:2];
         }
         
         

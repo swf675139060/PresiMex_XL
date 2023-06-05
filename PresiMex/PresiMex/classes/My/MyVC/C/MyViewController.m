@@ -18,6 +18,7 @@
 #import "PMQuestionnaireViewController.h"//调查问卷
 
 #import "PMAuthModel.h"
+#import "PMCertificationCoreViewController.h"
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -48,15 +49,15 @@
     
     WF_WEAKSELF(weakself);
     self.headerView.clickLoginBlock = ^{
-        
-        if([weakself.model.shop integerValue] == 20){
+        if([PMAccountTool isLogin]){
             
-            [weakself pushLoginVc];
+            PMCertificationCoreViewController*vc=[PMCertificationCoreViewController new];
+            [weakself.navigationController pushViewController:vc animated:YES];
         }else{
             
-            PMQuestionnaireViewController*vc=[PMQuestionnaireViewController new];
-            [weakself.navigationController pushViewController:vc animated:YES];
+            [weakself pushLoginVc];
         }
+       
     };
     
     self.headerView.clickLeftBtnBlock = ^{
@@ -269,6 +270,7 @@
             
         }else{
             
+//            [SLFToast showWithContent:responseObject[@"entire"] afterDelay:2];
             weakself.model = nil;
             [weakself.headerView updataHeaderViewWithModel:weakself.model];
             [weakself.tableView reloadData];

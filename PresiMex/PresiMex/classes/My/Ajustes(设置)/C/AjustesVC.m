@@ -50,7 +50,10 @@
         [cell.btn setTitle:@"Próximo paso" forState:UIControlStateNormal];
         cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [cell.btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+        WF_WEAKSELF(weakself);
+        [cell setClickBtnBlock:^{
+            [weakself GetUserLogOut];
+        }];
         
         [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor,(id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
     
@@ -87,5 +90,27 @@
     }
     
     return _tableView;
+}
+
+// 退出登录
+-(void)GetUserLogOut{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:Get_User_LogOut parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            [PMAccountTool saveAccount:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }else{
+//            [SLFToast showWithContent:responseObject[@"msg"] afterDelay:2];
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 @end
