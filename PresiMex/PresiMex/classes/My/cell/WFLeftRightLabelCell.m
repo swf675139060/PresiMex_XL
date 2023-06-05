@@ -154,5 +154,16 @@
 }
 
 
+-(void)upLineFrameWithInsets:(UIEdgeInsets )padding{
+    [self.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@(padding.left));
+        make.right.equalTo(@(-padding.right));
+        make.bottom.equalTo(@(-padding.bottom));
+        make.height.equalTo(@(0.5));
+    }];
+}
+
+
+
 
 @end

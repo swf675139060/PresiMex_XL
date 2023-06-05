@@ -20,6 +20,8 @@
 #import "PMAuthModel.h"
 #import "PMHomeModel.h"
 
+#import "PMCertificationCoreViewController.h"
+
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -33,7 +35,7 @@
 @property (nonatomic,strong) PMAuthModel * authModel;//用户信息
 @property (nonatomic,strong) PMHomeModel * homeModel;//产品信息
 
-
+@property (nonatomic,strong) NSMutableArray * dataList;
 @end
 
 @implementation HomeViewController
@@ -490,4 +492,15 @@
 
 
 
+-(NSMutableArray *)dataList{
+    if(_dataList == nil){
+        _dataList = [NSMutableArray array];
+    }
+    return _dataList;
+}
+//认证中心
+-(void)pushCerVc{
+    PMCertificationCoreViewController*vc=[PMCertificationCoreViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end

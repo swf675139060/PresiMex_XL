@@ -49,14 +49,17 @@
     
     WF_WEAKSELF(weakself);
     self.headerView.clickLoginBlock = ^{
-        if([PMAccountTool isLogin]){
-            
-            PMCertificationCoreViewController*vc=[PMCertificationCoreViewController new];
-            [weakself.navigationController pushViewController:vc animated:YES];
-        }else{
-            
+
+        if (![PMAccountTool isLogin]) {
             [weakself pushLoginVc];
+            
+        }else{
+//            if([weakself.model.shop integerValue] == 20){
+//
+//            }
+            [weakself pushCerVc];
         }
+       
        
     };
     
@@ -282,5 +285,8 @@
         
     }];
 }
-
+-(void)pushCerVc{
+    PMCertificationCoreViewController*vc=[PMCertificationCoreViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end

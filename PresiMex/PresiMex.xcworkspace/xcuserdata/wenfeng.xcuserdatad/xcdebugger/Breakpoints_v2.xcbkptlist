@@ -42,90 +42,10 @@
             filePath = "PresiMex/classes/My/MyVC/C/MyViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "MyViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "38384F75-7064-487B-BE7E-179D0BCB462B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/C/OrderVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-GETUserOder"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "38384F75-7064-487B-BE7E-179D0BCB462B - 9af58113dd0a9aeb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__22-[OrderVC GETUserOder]_block_invoke"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/order(%E8%AE%A2%E5%8D%95)/C/OrderVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "156">
-               </Location>
-               <Location
-                  uuid = "38384F75-7064-487B-BE7E-179D0BCB462B - 9af58113dd0a9aeb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__22-[OrderVC GETUserOder]_block_invoke"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/order(%E8%AE%A2%E5%8D%95)/C/OrderVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "169">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02DF0E7C-2183-43C9-804A-22BD3642EA4B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/C/OrderVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "-GETUserOder"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9CB384C8-A11D-422A-B8FA-2A4281E5315A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/MyVC/C/MyViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -173,38 +93,6 @@
             startingLineNumber = "273"
             endingLineNumber = "273"
             landmarkName = "-POSTFeedbackInfo"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1987E1E9-AD4D-4C75-B4EF-6C8F16163C55"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Home/HomeVC/C/HomeViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
-            landmarkName = "-GETProductList"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7F5FA20B-8B84-427D-A17E-F73032CA51FD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Home/HomeVC/C/HomeViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
-            landmarkName = "-GETProductList"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

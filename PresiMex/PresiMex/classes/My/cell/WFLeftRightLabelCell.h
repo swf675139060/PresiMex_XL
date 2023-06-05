@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding height:(CGFloat)height;
 
 -(void)upLabelFrameWithInsets:(UIEdgeInsets )padding;
-
+-(void)upLineFrameWithInsets:(UIEdgeInsets )padding;
 
 
 @end
