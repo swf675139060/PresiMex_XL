@@ -8,6 +8,7 @@
 #import "OrderVC.h"
 #import "PMOrderTopView.h"
 #import "OrderCell.h"
+#import "OrderDetailsVC.h"
 
 @interface OrderVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -81,7 +82,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    [tableView deselectRowAtIndexPath:indexPath animated:true];
-    
+    OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -142,7 +144,7 @@
             
             
         }else{
-            
+//            [SLFToast showWithContent:responseObject[@"entire"] afterDelay:2];
         }
         
         

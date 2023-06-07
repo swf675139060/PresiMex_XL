@@ -19,6 +19,7 @@
 
 #import "PMAuthModel.h"
 #import "PMCertificationCoreViewController.h"
+
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, copy) NSArray<NSString *> *titles; /**< 标题*/
@@ -48,23 +49,18 @@
     
     WF_WEAKSELF(weakself);
     self.headerView.clickLoginBlock = ^{
-        
-        if([weakself.model.shop integerValue] == 20){
-            if (![PMAccountTool isLogin]) {
-                [weakself pushLoginVc];
-            } else {
-                [weakself pushCerVc];
-            }
-           
+
+        if (![PMAccountTool isLogin]) {
+            [weakself pushLoginVc];
+            
         }else{
-            if (![PMAccountTool isLogin]) {
-                [weakself pushLoginVc];
-            } else {
-                [weakself pushCerVc];
-            }
-//            PMQuestionnaireViewController*vc=[PMQuestionnaireViewController new];
-//            [weakself.navigationController pushViewController:vc animated:YES];
+//            if([weakself.model.shop integerValue] == 20){
+//
+//            }
+            [weakself pushCerVc];
         }
+       
+       
     };
     
     self.headerView.clickLeftBtnBlock = ^{
@@ -277,6 +273,7 @@
             
         }else{
             
+//            [SLFToast showWithContent:responseObject[@"entire"] afterDelay:2];
             weakself.model = nil;
             [weakself.headerView updataHeaderViewWithModel:weakself.model];
             [weakself.tableView reloadData];

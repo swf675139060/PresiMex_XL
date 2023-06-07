@@ -193,7 +193,22 @@
             
         }else if (indexPath.row == 3){
             WFSliderCell * cell  = [WFSliderCell cellWithTableView:tableView];
-            cell.slider.maximumValue = 3000;
+            
+            
+            if(self.homeModel){
+                //剩余额度大于最小额度
+                if([self.authModel.monster doubleValue] >= [self.authModel.clear doubleValue]){
+                    cell.slider.userInteractionEnabled = YES;
+                    cell.slider.value = [self.authModel.monster doubleValue];
+                    cell.slider.maximumValue = [self.authModel.monster doubleValue];
+                    cell.slider.minimumValue = [self.authModel.clear doubleValue];
+                }else{
+                    cell.slider.userInteractionEnabled = NO;
+                }
+                
+            }else{
+                cell.slider.userInteractionEnabled = NO;
+            }
             [cell.slider trackRectForBounds:CGRectMake(0, 0, WF_ScreenWidth - 30, 8)];
             [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
             [cell upSliderFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) height:21];
@@ -214,9 +229,19 @@
             [cell upBtnsFrameWithInsets:UIEdgeInsetsMake(10, 15, 0, 15)];
             [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 25) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
             
-            [cell.leftBtn setText:@"$500" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
             [cell.centerBtn setText:@"Plazo de validez del límite" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
-            [cell.rightBtn setText:@"$30,000" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+           
+            
+            if([self.authModel.monster doubleValue] >= [self.authModel.clear doubleValue]){
+                
+                [cell.leftBtn setText:self.authModel.biodiversity TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+                [cell.rightBtn setText:self.authModel.researcher TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+            }else{
+                
+                [cell.leftBtn setText:@"0" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+                [cell.rightBtn setText:@"0" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+                
+            }
             
             
             
@@ -441,7 +466,7 @@
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
     WF_WEAKSELF(weakself);
-    [PMBaseHttp get:[NSString stringWithFormat:GET_Product_List,@"3000"] parameters:pars success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp get:[NSString stringWithFormat:GET_Product_List,self.changeValue] parameters:pars success:^(id  _Nonnull responseObject) {
         
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
@@ -453,6 +478,7 @@
             
         }else{
             
+//            [SLFToast showWithContent:responseObject[@"entire"] afterDelay:2];
             weakself.homeModel = nil;
             [weakself.tableView reloadData];
         }

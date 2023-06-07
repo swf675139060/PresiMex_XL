@@ -85,6 +85,7 @@
 		FB976D552A05124A00B1C0A3 /* PresiMexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D542A05124A00B1C0A3 /* PresiMexTests.m */; };
 		FB976D5F2A05124A00B1C0A3 /* PresiMexUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D5E2A05124A00B1C0A3 /* PresiMexUITests.m */; };
 		FB976D612A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */; };
+		FBAAA7742A2E258800BCBA57 /* OrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAAA7732A2E258800BCBA57 /* OrderDetailsVC.m */; };
 		FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039592A2B431900E5CD80 /* DemoCell2.m */; };
 		FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */; };
 		FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039612A2B800100E5CD80 /* KeFuAlert.m */; };
@@ -291,6 +292,8 @@
 		FB976D5A2A05124A00B1C0A3 /* PresiMexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresiMexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB976D5E2A05124A00B1C0A3 /* PresiMexUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresiMexUITests.m; sourceTree = "<group>"; };
 		FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresiMexUITestsLaunchTests.m; sourceTree = "<group>"; };
+		FBAAA7722A2E258800BCBA57 /* OrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailsVC.h; sourceTree = "<group>"; };
+		FBAAA7732A2E258800BCBA57 /* OrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsVC.m; sourceTree = "<group>"; };
 		FBB039582A2B431900E5CD80 /* DemoCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell2.h; sourceTree = "<group>"; };
 		FBB039592A2B431900E5CD80 /* DemoCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell2.m; sourceTree = "<group>"; };
 		FBB0395D2A2B50C900E5CD80 /* PMAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMAuthModel.h; sourceTree = "<group>"; };
@@ -783,6 +786,7 @@
 		FB8AF2EE2A0882F2006C5887 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				FBAAA76E2A2E251A00BCBA57 /* Repayment(还款详情) */,
 				A4D6F11A2A25ADEF006B4BA6 /* Means */,
 				A4DD5E292A21E85300451413 /* Login */,
 				FBCA72332A0A6A0500A10D4E /* My */,
@@ -1092,6 +1096,39 @@
 				FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */,
 			);
 			path = PresiMexUITests;
+			sourceTree = "<group>";
+		};
+		FBAAA76E2A2E251A00BCBA57 /* Repayment(还款详情) */ = {
+			isa = PBXGroup;
+			children = (
+				FBAAA76F2A2E251A00BCBA57 /* M */,
+				FBAAA7702A2E251A00BCBA57 /* C */,
+				FBAAA7712A2E251A00BCBA57 /* V */,
+			);
+			path = "Repayment(还款详情)";
+			sourceTree = "<group>";
+		};
+		FBAAA76F2A2E251A00BCBA57 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FBAAA7702A2E251A00BCBA57 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FBAAA7722A2E258800BCBA57 /* OrderDetailsVC.h */,
+				FBAAA7732A2E258800BCBA57 /* OrderDetailsVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FBAAA7712A2E251A00BCBA57 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
 			sourceTree = "<group>";
 		};
 		FBB0395C2A2B509C00E5CD80 /* M */ = {
@@ -1530,6 +1567,7 @@
 				A40B4C9F2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m in Sources */,
 				A4D6F12A2A25B1DE006B4BA6 /* PMQuestionViewCell.m in Sources */,
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
+				FBAAA7742A2E258800BCBA57 /* OrderDetailsVC.m in Sources */,
 				A4D6F12E2A25B364006B4BA6 /* PMQuestionModel.m in Sources */,
 				FB7BC8702A2AED7B000BB3ED /* WFCustomAlertView.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,

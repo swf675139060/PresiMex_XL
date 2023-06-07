@@ -201,7 +201,7 @@
  */
 
 //产品列表
-#define  GET_Product_List  @"/api/user/earl/suggesting/%@"
+#define  GET_Product_List  @"/api/user/earl/suggesting/%ld"
 
 //借款申请
 #define  POST_Loan_Apply @"/api/user/earl/tions"
