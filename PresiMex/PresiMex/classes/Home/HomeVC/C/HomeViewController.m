@@ -49,7 +49,7 @@
     self.navBarView.hidden = YES;
     [self.view addSubview:self.notiView];
     [self.notiView setNotList:@[@"123456789",@"09876543234567898765456"]];
-    [self.view addSubview:self.tableView];
+//    [self.view addSubview:self.tableView];
     
     
 }
