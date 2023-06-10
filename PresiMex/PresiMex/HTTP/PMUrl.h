@@ -251,6 +251,16 @@
 
 
 
+/*
+ 调查问卷提交
+ */
+
+//调查问卷提交
+#define  POST_Investigate_Info   @"/api/user/fighter"
+
+
+//调查问卷提交
+#define  GET_Investigate_Info   @"/api/user/fighter"
 
 
 
