@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)show;
 
 - (void)dismiss;
+
+-(void)setClickBGDismiss:(BOOL)miss;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -99,6 +99,12 @@
 		FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC09FD82A2C686C00259622 /* PMHomeModel.m */; };
 		FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238802A2646090079FBF2 /* HomeDetailsVC.m */; };
 		FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */; };
+		FBC27ACD2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27ACC2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m */; };
+		FBC27AD02A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27ACF2A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m */; };
+		FBC27AD42A341CE9001D04F1 /* ThreeLabelAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27AD32A341CE9001D04F1 /* ThreeLabelAlert.m */; };
+		FBC27AD72A342BB3001D04F1 /* HomeNoAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27AD62A342BB3001D04F1 /* HomeNoAuthView.m */; };
+		FBC27ADA2A3435A2001D04F1 /* HomeDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27AD92A3435A2001D04F1 /* HomeDayCell.m */; };
+		FBC27ADD2A3443A2001D04F1 /* FlowPathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27ADC2A3443A2001D04F1 /* FlowPathCell.m */; };
 		FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A85F2A19C96C0010D7F8 /* WFEmptyCell.m */; };
 		FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8602A19C96C0010D7F8 /* WFFieldCell.m */; };
 		FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8632A19C96D0010D7F8 /* WFBtnCell.m */; };
@@ -117,6 +123,8 @@
 		FBCA72392A0A6B8600A10D4E /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCA72382A0A6B8600A10D4E /* MyViewController.m */; };
 		FBD58C1F2A26016D00644C77 /* HomeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD58C1E2A26016D00644C77 /* HomeSectionView.m */; };
 		FBD6913A2A279B8500460621 /* WFLeftRightLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD691392A279B8500460621 /* WFLeftRightLabelCell.m */; };
+		FBDD1AC52A2F7A1700845101 /* PayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDD1AC42A2F7A1700845101 /* PayVC.m */; };
+		FBDD1AC82A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDD1AC72A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.m */; };
 		FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */; };
 /* End PBXBuildFile section */
 
@@ -326,6 +334,18 @@
 		FBC238802A2646090079FBF2 /* HomeDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailsVC.m; sourceTree = "<group>"; };
 		FBC238822A2646E00079FBF2 /* WFFourLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFFourLabelCell.h; sourceTree = "<group>"; };
 		FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFFourLabelCell.m; sourceTree = "<group>"; };
+		FBC27ACB2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFTopImageBottomTwoLabelCell.h; sourceTree = "<group>"; };
+		FBC27ACC2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFTopImageBottomTwoLabelCell.m; sourceTree = "<group>"; };
+		FBC27ACE2A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFTopBtnBottomTwoLabelCell.h; sourceTree = "<group>"; };
+		FBC27ACF2A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFTopBtnBottomTwoLabelCell.m; sourceTree = "<group>"; };
+		FBC27AD22A341CE9001D04F1 /* ThreeLabelAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreeLabelAlert.h; sourceTree = "<group>"; };
+		FBC27AD32A341CE9001D04F1 /* ThreeLabelAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreeLabelAlert.m; sourceTree = "<group>"; };
+		FBC27AD52A342BB3001D04F1 /* HomeNoAuthView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNoAuthView.h; sourceTree = "<group>"; };
+		FBC27AD62A342BB3001D04F1 /* HomeNoAuthView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNoAuthView.m; sourceTree = "<group>"; };
+		FBC27AD82A3435A2001D04F1 /* HomeDayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDayCell.h; sourceTree = "<group>"; };
+		FBC27AD92A3435A2001D04F1 /* HomeDayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDayCell.m; sourceTree = "<group>"; };
+		FBC27ADB2A3443A2001D04F1 /* FlowPathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlowPathCell.h; sourceTree = "<group>"; };
+		FBC27ADC2A3443A2001D04F1 /* FlowPathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlowPathCell.m; sourceTree = "<group>"; };
 		FBC2A85C2A19C96C0010D7F8 /* WFFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFFieldCell.h; sourceTree = "<group>"; };
 		FBC2A85D2A19C96C0010D7F8 /* WFLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFLabelCell.h; sourceTree = "<group>"; };
 		FBC2A85E2A19C96C0010D7F8 /* WFEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFEmptyCell.h; sourceTree = "<group>"; };
@@ -362,6 +382,10 @@
 		FBD58C1E2A26016D00644C77 /* HomeSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSectionView.m; sourceTree = "<group>"; };
 		FBD691382A279B8500460621 /* WFLeftRightLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftRightLabelCell.h; sourceTree = "<group>"; };
 		FBD691392A279B8500460621 /* WFLeftRightLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftRightLabelCell.m; sourceTree = "<group>"; };
+		FBDD1AC32A2F7A1700845101 /* PayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayVC.h; sourceTree = "<group>"; };
+		FBDD1AC42A2F7A1700845101 /* PayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayVC.m; sourceTree = "<group>"; };
+		FBDD1AC62A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftTBLbaelRightBtnCell.h; sourceTree = "<group>"; };
+		FBDD1AC72A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftTBLbaelRightBtnCell.m; sourceTree = "<group>"; };
 		FBDE5EE22A22DC29007834AB /* PMOrderTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMOrderTopView.h; sourceTree = "<group>"; };
 		FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMOrderTopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -806,12 +830,18 @@
 		FB1C73A12A23232A00194925 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				FBC27AD52A342BB3001D04F1 /* HomeNoAuthView.h */,
+				FBC27AD62A342BB3001D04F1 /* HomeNoAuthView.m */,
 				FB1C73A52A23247800194925 /* PMNotiView.h */,
 				FB1C73A62A23247800194925 /* PMNotiView.m */,
 				FBB039582A2B431900E5CD80 /* DemoCell2.h */,
 				FBB039592A2B431900E5CD80 /* DemoCell2.m */,
 				FBD58C1D2A26016D00644C77 /* HomeSectionView.h */,
 				FBD58C1E2A26016D00644C77 /* HomeSectionView.m */,
+				FBC27AD82A3435A2001D04F1 /* HomeDayCell.h */,
+				FBC27AD92A3435A2001D04F1 /* HomeDayCell.m */,
+				FBC27ADB2A3443A2001D04F1 /* FlowPathCell.h */,
+				FBC27ADC2A3443A2001D04F1 /* FlowPathCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -832,6 +862,8 @@
 				FB7BC8742A2AF380000BB3ED /* FeedBackAlert.m */,
 				FBB039602A2B800100E5CD80 /* KeFuAlert.h */,
 				FBB039612A2B800100E5CD80 /* KeFuAlert.m */,
+				FBC27AD22A341CE9001D04F1 /* ThreeLabelAlert.h */,
+				FBC27AD32A341CE9001D04F1 /* ThreeLabelAlert.m */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -1267,6 +1299,12 @@
 				FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */,
 				FBB039632A2B822400E5CD80 /* WFLeftImageTwolabelCell.h */,
 				FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */,
+				FBDD1AC62A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.h */,
+				FBDD1AC72A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.m */,
+				FBC27ACB2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.h */,
+				FBC27ACC2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m */,
+				FBC27ACE2A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.h */,
+				FBC27ACF2A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1351,6 +1389,7 @@
 		FBCA72332A0A6A0500A10D4E /* My */ = {
 			isa = PBXGroup;
 			children = (
+				FBDD1ABF2A2F799800845101 /* pay */,
 				FB7BC8722A2AF336000BB3ED /* AlertView */,
 				FB939F382A22118C00599A86 /* order(订单) */,
 				FB939F2B2A21F5C100599A86 /* Cupón(优惠卷) */,
@@ -1361,6 +1400,39 @@
 				FBC5290C2A18644E004B7721 /* MyVC */,
 			);
 			path = My;
+			sourceTree = "<group>";
+		};
+		FBDD1ABF2A2F799800845101 /* pay */ = {
+			isa = PBXGroup;
+			children = (
+				FBDD1AC02A2F799800845101 /* M */,
+				FBDD1AC12A2F799800845101 /* C */,
+				FBDD1AC22A2F799800845101 /* V */,
+			);
+			path = pay;
+			sourceTree = "<group>";
+		};
+		FBDD1AC02A2F799800845101 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FBDD1AC12A2F799800845101 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FBDD1AC32A2F7A1700845101 /* PayVC.h */,
+				FBDD1AC42A2F7A1700845101 /* PayVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FBDD1AC22A2F799800845101 /* V */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = V;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1604,6 +1676,7 @@
 			files = (
 				FBD58C1F2A26016D00644C77 /* HomeSectionView.m in Sources */,
 				FB8AF32A2A088C6F006C5887 /* UIView+SLFExtension.m in Sources */,
+				FBDD1AC82A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.m in Sources */,
 				FB8AF3162A088AC5006C5887 /* SLFLoadingHub.m in Sources */,
 				A40B4CA32A2B476C001B11F0 /* PMAddBankViewController.m in Sources */,
 				FBCA72392A0A6B8600A10D4E /* MyViewController.m in Sources */,
@@ -1612,8 +1685,10 @@
 				FB939F1A2A21C0BC00599A86 /* WFCornerCell.m in Sources */,
 				FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */,
 				A40B4CB42A2C6F07001B11F0 /* PMCertificationCoreViewController.m in Sources */,
+				FBC27AD42A341CE9001D04F1 /* ThreeLabelAlert.m in Sources */,
 				A4D6F1232A25B081006B4BA6 /* PMQuestionnaireViewController.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
+				FBDD1AC52A2F7A1700845101 /* PayVC.m in Sources */,
 				FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
 				A400BCF72A25F169006CABB2 /* PMIDAuthModel.m in Sources */,
@@ -1625,9 +1700,11 @@
 				FBAAA7742A2E258800BCBA57 /* OrderDetailsVC.m in Sources */,
 				A4D6F12E2A25B364006B4BA6 /* PMQuestionModel.m in Sources */,
 				FB7BC8702A2AED7B000BB3ED /* WFCustomAlertView.m in Sources */,
+				FBC27ADD2A3443A2001D04F1 /* FlowPathCell.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
 				FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */,
 				A4D6F1192A259974006B4BA6 /* PMAccountTool.m in Sources */,
+				FBC27ADA2A3435A2001D04F1 /* HomeDayCell.m in Sources */,
 				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
 				FB7BC8752A2AF380000BB3ED /* FeedBackAlert.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
@@ -1668,8 +1745,10 @@
 				A40B4CA72A2C4773001B11F0 /* PMBankcardModel.m in Sources */,
 				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
 				A40B4C902A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m in Sources */,
+				FBC27AD02A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m in Sources */,
 				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
 				FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */,
+				FBC27AD72A342BB3001D04F1 /* HomeNoAuthView.m in Sources */,
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				A400BCF42A25F11E006CABB2 /* PMIDAuthViewCell.m in Sources */,
 				FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */,
@@ -1686,6 +1765,7 @@
 				A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */,
 				A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */,
 				FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */,
+				FBC27ACD2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m in Sources */,
 				A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */,
 				A40B4CAE2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,

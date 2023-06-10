@@ -27,6 +27,7 @@
 }
 
 - (void)sutUpView{
+   
     
     self.frame = [UIScreen mainScreen].bounds;
     self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.85];
@@ -52,6 +53,19 @@
     [self removeFromSuperview];
 }
 
+
+
+-(void)setClickBGDismiss:(BOOL)miss{
+    WF_WEAKSELF(weakself);
+    [self whenTapped:^{
+        if (miss) {
+            [weakself dismiss];
+        } else {
+            
+        }
+    }];
+    
+}
 
 
 @end
