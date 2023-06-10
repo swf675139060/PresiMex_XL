@@ -102,6 +102,7 @@
 		FBC27ADA2A3435A2001D04F1 /* HomeDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27AD92A3435A2001D04F1 /* HomeDayCell.m */; };
 		FBC27ADD2A3443A2001D04F1 /* FlowPathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27ADC2A3443A2001D04F1 /* FlowPathCell.m */; };
 		FBC27AE02A349178001D04F1 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27ADF2A349178001D04F1 /* UIView+Loading.m */; };
+		FBC27AE32A3494BA001D04F1 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC27AE22A3494BA001D04F1 /* OrderModel.m */; };
 		FBC2A8662A19C96D0010D7F8 /* WFEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A85F2A19C96C0010D7F8 /* WFEmptyCell.m */; };
 		FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8602A19C96C0010D7F8 /* WFFieldCell.m */; };
 		FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC2A8632A19C96D0010D7F8 /* WFBtnCell.m */; };
@@ -337,6 +338,8 @@
 		FBC27ADC2A3443A2001D04F1 /* FlowPathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlowPathCell.m; sourceTree = "<group>"; };
 		FBC27ADE2A349178001D04F1 /* UIView+Loading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
 		FBC27ADF2A349178001D04F1 /* UIView+Loading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
+		FBC27AE12A3494BA001D04F1 /* OrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		FBC27AE22A3494BA001D04F1 /* OrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		FBC2A85C2A19C96C0010D7F8 /* WFFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFFieldCell.h; sourceTree = "<group>"; };
 		FBC2A85D2A19C96C0010D7F8 /* WFLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFLabelCell.h; sourceTree = "<group>"; };
 		FBC2A85E2A19C96C0010D7F8 /* WFEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFEmptyCell.h; sourceTree = "<group>"; };
@@ -1062,6 +1065,8 @@
 		FB939F392A22118C00599A86 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				FBC27AE12A3494BA001D04F1 /* OrderModel.h */,
+				FBC27AE22A3494BA001D04F1 /* OrderModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1667,6 +1672,7 @@
 				A4D6F1192A259974006B4BA6 /* PMAccountTool.m in Sources */,
 				FBC27ADA2A3435A2001D04F1 /* HomeDayCell.m in Sources */,
 				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
+				FBC27AE32A3494BA001D04F1 /* OrderModel.m in Sources */,
 				FB7BC8752A2AF380000BB3ED /* FeedBackAlert.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				A400BCEE2A25F0C1006CABB2 /* PMIDAuthViewController.m in Sources */,

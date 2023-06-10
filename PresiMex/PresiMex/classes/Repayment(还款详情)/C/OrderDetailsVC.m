@@ -370,7 +370,7 @@
             
             
         }else{
-//            [SLFToast showWithContent:responseObject[@"entire"] afterDelay:2];
+            [weakself.view showTip:responseObject[@"entire"]];
         }
         
         

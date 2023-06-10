@@ -289,26 +289,20 @@
     }
 }
 
--(void)updataWithModel:(id)model indx:(NSInteger)indx;{
+-(void)updataWithModel:(OrderModel *)model indx:(NSInteger)indx;{
     self.indx = indx;
     
-    [_userName setText:@"" TextColor:[UIColor jk_colorWithHexString:@"#D74257"] Font:[UIFont systemFontOfSize:25]];
+    [_userName setText:model.nu TextColor:[UIColor jk_colorWithHexString:@"#D74257"] Font:[UIFont systemFontOfSize:13]];
+    [_userIcon sd_setImageWithURL:[NSURL URLWithString:model.engage] placeholderImage:nil];
     [_PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#FF0000"]];
+    
     [_moneyStr setText:@"Monto del préstamo" TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont systemFontOfSize:11]];
-    [_moneynumber setText:@"" TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont boldSystemFontOfSize:20]];
+    [_moneynumber setText:model.barbie TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont boldSystemFontOfSize:20]];
     [_dateSre setText:@"Monto del préstamo" TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont systemFontOfSize:11]];
-    [_dateNumber setText:@"" TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont boldSystemFontOfSize:20]];
+    [_dateNumber setText:model.cook TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont boldSystemFontOfSize:20]];
     [self.stateLB setText:@"" TextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"] Font:[UIFont systemFontOfSize:11]];
     
     
-    
-    
-    self.userIcon.backgroundColor = [UIColor jk_colorWithHexString:@"#CECECE"];
-    self.userName.text = @"XXXXXXX";
-    
-    self.moneynumber.text = @"XXXXXXX";
-    
-    self.dateNumber.text = @"23-12-2022";
     
   
     int type = 3;

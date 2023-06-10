@@ -20,6 +20,8 @@
     // 添加hud
     UIView * hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight)];
     [hudView setBackgroundColor:[UIColor colorWithWhite:0.2 alpha:0.2]];
+    
+    hudView.tag = 20230610;
     [window addSubview:hudView];
     
     UIView *bg=[UIView new];
@@ -27,7 +29,6 @@
     bg.frame=CGRectMake((WF_ScreenWidth-80)/2,WF_ScreenHeight/2, 80, 80);
     bg.backgroundColor=[UIColor colorWithWhite:0 alpha:0.8];
     bg.layer.cornerRadius=10;
-    bg.tag = 20230610;
     bg.layer.masksToBounds=YES;
     
     UIImageView *animationImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"peso_loading_img"]];
@@ -59,11 +60,14 @@
 
 -(void)dismiss{
     // 遍历keyWindow上的CQHudView，一一移除
-    for (UIView * view in [UIApplication sharedApplication].keyWindow.subviews) {
-        if (view.tag  == 20230610) {
-            [view removeFromSuperview];
-        }
-    }
+//    for (UIView * view in [UIApplication sharedApplication].keyWindow.subviews) {
+//        if (view.tag  == 2023) {
+//            [view removeFromSuperview];
+//        }
+//    }
+    UIView * view = [[UIApplication sharedApplication].keyWindow viewWithTag:20230610];
+    [view removeFromSuperview];
+    
 }
 
 @end

@@ -17,6 +17,7 @@ target 'PresiMex' do
   pod 'IQKeyboardManager'
   pod 'RollingNotice' #轮播广告
 
+  pod 'DZNEmptyDataSet'  
   pod 'AppsFlyerFramework'
 
   pod 'FirebaseCore'
