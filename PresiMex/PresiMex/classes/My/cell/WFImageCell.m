@@ -28,6 +28,7 @@
 -(void)creatSubView {
     
     [self.contentView addSubview:self.imgV];
+    [self.contentView addSubview:self.bottomLine];
     
     //设置距离父视图边界距离
     UIEdgeInsets padding = UIEdgeInsetsMake(4, 0, 8, 0);
@@ -35,6 +36,13 @@
     [self.imgV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakSelf.contentView).with.insets(padding);
     }];
+    
+    [self.bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.left.equalTo(@(0));
+        make.bottom.equalTo(@(0));
+        make.height.equalTo(@(0.5));
+    }];
+    
 }
 
 -(void)updateFrameWithEdgeInsets:(UIEdgeInsets )padding height:(CGFloat)height{
@@ -58,4 +66,12 @@
     return _imgV;
 }
 
+-(UIView *)bottomLine{
+    if(_bottomLine == nil){
+        _bottomLine = [[UIView alloc] init];
+        _bottomLine.backgroundColor = [UIColor jk_colorWithHexString:@"#DDDDDD"];
+        _bottomLine.hidden = YES;
+    }
+    return _bottomLine;
+}
 @end

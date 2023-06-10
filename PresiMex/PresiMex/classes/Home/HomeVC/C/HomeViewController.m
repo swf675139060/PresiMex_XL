@@ -19,6 +19,7 @@
 #import "OrderVC.h"
 #import "PMAuthModel.h"
 #import "PMHomeModel.h"
+#import "HomeNoAuthView.h"
 
 #import "PMCertificationCoreViewController.h"
 
@@ -26,6 +27,7 @@
 
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
+@property (nonatomic, strong) HomeNoAuthView *NoAuthView; /**< 列表*/
 
 
 @property (nonatomic, strong) PMNotiView *notiView;
@@ -406,6 +408,15 @@
     return _tableView;
 }
 
+-(HomeNoAuthView *)NoAuthView{
+    
+    if (!_NoAuthView) {
+        _NoAuthView = [[HomeNoAuthView alloc] initWithFrame:CGRectMake(0, self.notiView.swf_bottom, WF_ScreenWidth, WF_ScreenHeight - self.notiView.swf_bottom - WF_TabBarHeight)];
+    }
+    
+    return _NoAuthView;
+}
+
 -(PMNotiView *)notiView{
     if(_notiView == nil){
         _notiView = [[PMNotiView alloc] initWithFrame:CGRectMake(0, WF_StatusBarHeight + 15, WF_ScreenWidth, 33)];
@@ -445,8 +456,8 @@
             PMAuthModel * model = [PMAuthModel mj_objectWithKeyValues:shame];
             
             weakself.authModel = model;
-            [weakself.tableView reloadData];
-            [weakself GETProductList];
+            
+            [weakself upDataSubview];
             
         }else{
             
@@ -454,12 +465,25 @@
             [weakself.tableView reloadData];
         }
         
-        
-        
     } failure:^(NSError * _Nonnull error) {
         
     }];
 }
+
+-(void)upDataSubview{
+    
+    if ([self.authModel.shop integerValue] == 20) {
+        [self.view addSubview:self.tableView];
+        [self.NoAuthView removeFromSuperview];
+        [self.tableView reloadData];
+        [self GETProductList];
+    } else {
+        
+        [self.view addSubview:self.NoAuthView];
+        [self.tableView removeFromSuperview];
+    }
+}
+
 
 //获取产品列表
 -(void)GETProductList{

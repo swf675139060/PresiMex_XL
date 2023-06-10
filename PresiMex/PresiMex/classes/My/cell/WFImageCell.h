@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WFImageCell : UITableViewCell
 
 @property (strong, nonatomic)UIImageView * imgV;
+@property(strong, nonatomic) UIView * bottomLine;
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
