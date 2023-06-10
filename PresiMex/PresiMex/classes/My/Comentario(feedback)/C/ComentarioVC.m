@@ -256,34 +256,32 @@
 //反馈信息提交
 -(void)POSTFeedbackInfo{
     
-    SLFLoadingHub * LoadingHub = [SLFLoadingHub showLoading];
     if(self.images.count){
         WF_WEAKSELF(weakself);
         [self uploadImage:self.images[0] block:^(BOOL sucess) {
             if (sucess) {
                 
-                [weakself POSTFeedbackInfo11:LoadingHub];
+                [weakself POSTFeedbackInfo11];
             } else {
-                [LoadingHub hideAnimated:YES];
                 [weakself showAlertWidth:sucess];
             }
         }];
     }else{
         
-        [self POSTFeedbackInfo11:LoadingHub];
+        [self POSTFeedbackInfo11];
     }
     
     
 }
 
--(void)POSTFeedbackInfo11:(SLFLoadingHub * )LoadingHub{
+-(void)POSTFeedbackInfo11{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
     pars[@"monroe"] = self.typesArr[self.clickIndx][@"salvador"];
     pars[@"tion"] = self.textContent;
     pars[@"restaurants"] = [self.imagesUrl componentsJoinedByString:@","];
     WF_WEAKSELF(weakself);
     [PMBaseHttp postJson:POST_Feedback_Info parameters:pars success:^(id  _Nonnull responseObject) {
-        [LoadingHub hideAnimated:YES];
+        
         if ([responseObject[@"retail"] intValue]==200) {
             [weakself showAlertWidth:YES];
             
@@ -294,7 +292,7 @@
         
         
     } failure:^(NSError * _Nonnull error) {
-        [LoadingHub hideAnimated:YES];
+//        [LoadingHub hideAnimated:YES];
         [weakself showAlertWidth:NO];
     }];
 }

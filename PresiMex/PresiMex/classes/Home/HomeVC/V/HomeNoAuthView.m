@@ -16,6 +16,8 @@
 #import "HomeDayCell.h"
 #import "FlowPathCell.h"
 
+#import "PMCertificationCoreViewController.h"
+
 @interface HomeNoAuthView ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -162,6 +164,9 @@
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         WF_WEAKSELF(weakself);
         [cell setClickBtnBlock:^{
+            if(weakself.clickBock){
+                weakself.clickBock();
+            }
         }];
         [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
         [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(0, 15, 35, 15) height:50];
