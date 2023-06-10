@@ -147,16 +147,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D45D8824-00C2-4AB7-B5EE-BCEADBCDD98B"
+            uuid = "947240D6-552F-4330-9B12-6E3F3A28ED47"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Means/Questionnaire /C/PMQuestionnaireViewController.m"
+            filePath = "PresiMex/HTTP/PMBaseHttp.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
+            landmarkName = "+dictionaryForJsonData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "931D9BD4-3626-43C1-B8CD-280D7BC0DD05"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/HTTP/PMBaseHttp.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
+            landmarkName = "+dictionaryForJsonData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -50,8 +50,7 @@
     }];
     
     [self.centerV1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.leftBtn.mas_right).offset(20);
-        make.right.equalTo(self.centerBtn.mas_left).offset(-20);
+        make.centerX.equalTo(@(-(WF_ScreenWidth -65)/4));
         make.top.equalTo(@(16));
         make.height.equalTo(@(7.8));
     }];
@@ -62,13 +61,12 @@
         make.bottom.equalTo(@(13));
         make.centerX.equalTo(@(0));
         make.height.equalTo(@(63));
-        make.width.equalTo(@(110));
     }];
     
     [self.centerV2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.centerBtn.mas_right).offset(20);
-        make.right.equalTo(self.rightBtn.mas_left).offset(-20);
         make.top.equalTo(@(16));
+        
+        make.centerX.equalTo(@((WF_ScreenWidth -87)/4));
         make.height.equalTo(@(7.8));
     }];
     
@@ -76,7 +74,7 @@
         make.top.equalTo(@(13));
         make.bottom.equalTo(@(13));
         make.height.equalTo(@(63));
-        make.centerX.equalTo(self.BGView.mas_right).offset(-52.5);
+        make.centerX.equalTo(self.BGView.mas_right).offset(-63.5);
     }];
     
     
@@ -124,7 +122,7 @@
         [_rightBtn setImage:[UIImage imageNamed:@"zhuce2"] forState:UIControlStateNormal];
         [_rightBtn setText:@"Conseguir un préstamo" TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:10] forState:UIControlStateNormal];
         [_rightBtn jk_setImagePosition:LXMImagePositionTop spacing:10];
-        _rightBtn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//        _rightBtn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         _rightBtn.tag = 2;
 //        [_rightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     }
