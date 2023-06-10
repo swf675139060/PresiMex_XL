@@ -54,8 +54,8 @@ static inline BOOL IsEmpty(id thing){
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -480,7 +480,7 @@ static inline BOOL IsEmpty(id thing){
         return nil;
 
     }
-   
+    
     //服务器返回的responseObject是gbk编码的字符串，通过gbk编码转码就行了，转码方法如下：
    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
    NSString*gbkStr = [[NSString alloc]initWithData:jsonData encoding:gbkEncoding];

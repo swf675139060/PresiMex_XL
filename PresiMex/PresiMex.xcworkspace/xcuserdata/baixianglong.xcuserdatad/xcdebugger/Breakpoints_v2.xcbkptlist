@@ -19,49 +19,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7DC00D1D-E6A9-4815-A0DA-4C273C446FE2"
+            uuid = "771C137C-68C5-44AF-BC14-40DDA550B731"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PresiMex/HTTP/PMBaseHttp.m"
+            filePath = "PresiMex/classes/Means/Questionnaire /C/PMQuestionnaireViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "+get:parameters:success:failure:"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-requestQuestInfo"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7DC00D1D-E6A9-4815-A0DA-4C273C446FE2 - 273f47d3128d8ba4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45+[PMBaseHttp get:parameters:success:failure:]_block_invoke.127"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/HTTP/PMBaseHttp.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "69">
-               </Location>
-               <Location
-                  uuid = "7DC00D1D-E6A9-4815-A0DA-4C273C446FE2 - 8828d2875e1e1333"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45+[PMBaseHttp get:parameters:success:failure:]_block_invoke.53"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/baixianglong/Documents/%E5%8D%B3%E5%88%BB%E9%A1%B9%E7%9B%AE/PresiMex_XL/PresiMex/PresiMex/HTTP/PMBaseHttp.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "68">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F99DC264-E7C0-4671-9645-0A7CF987A719"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Questionnaire /C/PMQuestionnaireViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "-requestQuestInfo"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

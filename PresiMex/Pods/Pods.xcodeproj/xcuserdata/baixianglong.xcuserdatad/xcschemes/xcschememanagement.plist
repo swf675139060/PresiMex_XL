@@ -89,7 +89,7 @@
 		<key>IQKeyboardManager.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>23</integer>
 		</dict>
 		<key>JKCategories.xcscheme</key>
 		<dict>
@@ -157,7 +157,7 @@
 		<key>RollingNotice.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>23</integer>
+			<integer>22</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
@@ -176,7 +176,7 @@
 		<key>ZZCircleProgress.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>21</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>

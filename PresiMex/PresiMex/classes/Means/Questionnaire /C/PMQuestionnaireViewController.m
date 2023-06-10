@@ -9,6 +9,7 @@
 #import "PMIDAuthViewController.h"
 #import "PMQuestionModel.h"
 #import "PMQuestionViewCell.h"
+#import "JKPickerViewAppearance.h"
 
 @interface PMQuestionnaireViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView  *tableView;
@@ -58,7 +59,7 @@
     self.navTitleLabel.text=@"Cuestionario";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
-    
+    [self requestQuestInfo];
 }
 - (UITableView *)tableView{
     if (!_tableView) {
@@ -108,7 +109,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-   
+    PMQuestionModel *model=self.dataArray[indexPath.row];
+    [self didTableViewRowWithModel:model];
 
 }
 
@@ -160,5 +162,93 @@
     [self.navigationController pushViewController:Vc animated:YES];
 }
 
+-(void)didTableViewRowWithModel:(PMQuestionModel*)model{
+    
+    NSInteger type=model.type;
+    
+    switch (type) {
+        case 0://借款用途
+        {
+//            [self sutupAlertView:model.title withArr:];
+            
+            break;
+        }
+        case 5://职业
+        {
+//            [self sutupAlertView:model.title withData:dict[@"branch"]];
+           
+            break;
+        }
+        case 6://宗教信仰
+        {
+//            [self sutupAlertView:model.title withData:dict[@"religion"]];
+            
+            break;
+        }
+        case 7://婚姻状态
+        {
+//            [self sutupAlertView:model.title withData:dict[@"merry"]];
+            
+            break;
+        }
+        case 8://有几个孩子
+        {
+//            [self sutupAlertView:model.title withData:dict[@"kids"]];
+            
+            break;
+        }
+        case 9://受教育成功度
+        {
+//            [self sutupAlertView:model.title withData:dict[@"edu"]];
+            
+            break;
+        }
 
+        default:
+            break;
+    }
+    
+}
+
+-(void)sutupAlertView:(NSString*)title withArr:(NSArray*)arr{
+    [self.view endEditing:YES];
+    weakify(self)
+    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSString*ID) {
+        strongify(self);
+        NSString*content=responseObjct;
+        [self resetDataWithTitle:title withContent:content];
+        
+    }];
+    [self.view endEditing:YES];
+    [alert show] ;
+}
+-(void)resetDataWithTitle:(NSString*)title withContent:(NSString*)cont{
+    
+//    [self.dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        EZBasicModel*model=obj;
+//        if ([model.title isEqual:title]) {
+//            *stop = YES;
+//            if (*stop == YES) {
+//                model.content=cont;
+//                [self.dataArray replaceObjectAtIndex:idx withObject:model];
+//            }
+//        }
+//        [self setUserInfoValue:model.content withKey:model.title];
+//
+//        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
+//        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//
+//    }];
+}
+
+-(void)requestQuestInfo{
+    
+    [self show];
+    NSMutableDictionary*param=[NSMutableDictionary new];
+    [PMBaseHttp get:GET_Investigate_Info parameters:param success:^(id  _Nonnull responseObject) {
+        [self dismiss];
+    } failure:^(NSError * _Nonnull error) {
+        [self dismiss];
+    }];
+}
 @end

@@ -51,6 +51,12 @@
 		A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6A2A22040100451413 /* PMPhoneNumberView.m */; };
 		A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */; };
 		A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */; };
+		A4F49D1D2A30703800389B67 /* means.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F49D1C2A30703800389B67 /* means.plist */; };
+		A4F49D232A30763C00389B67 /* JKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D202A30763C00389B67 /* JKPickerView.m */; };
+		A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */; };
+		A4F49D272A30767A00389B67 /* PMPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D262A30767A00389B67 /* PMPickerModel.m */; };
+		A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */; };
+		A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2D2A3085C500389B67 /* YYClassInfo.m */; };
 		FB1C73A72A23247800194925 /* PMNotiView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C73A62A23247800194925 /* PMNotiView.m */; };
 		FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C73A92A23417900194925 /* WFLeftRightBtnCell.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
@@ -223,6 +229,18 @@
 		A4DD5E6D2A22064300451413 /* PMVeriCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMVeriCodeView.m; sourceTree = "<group>"; };
 		A4DD5E6F2A22209600451413 /* PMVeriCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMVeriCodeViewController.h; sourceTree = "<group>"; };
 		A4DD5E702A22209600451413 /* PMVeriCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMVeriCodeViewController.m; sourceTree = "<group>"; };
+		A4F49D1C2A30703800389B67 /* means.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = means.plist; sourceTree = "<group>"; };
+		A4F49D1F2A30763C00389B67 /* JKPickerViewAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPickerViewAppearance.h; sourceTree = "<group>"; };
+		A4F49D202A30763C00389B67 /* JKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPickerView.m; sourceTree = "<group>"; };
+		A4F49D212A30763C00389B67 /* JKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPickerView.h; sourceTree = "<group>"; };
+		A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPickerViewAppearance.m; sourceTree = "<group>"; };
+		A4F49D252A30767A00389B67 /* PMPickerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPickerModel.h; sourceTree = "<group>"; };
+		A4F49D262A30767A00389B67 /* PMPickerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPickerModel.m; sourceTree = "<group>"; };
+		A4F49D2A2A3085C500389B67 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
+		A4F49D2B2A3085C500389B67 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
+		A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
+		A4F49D2D2A3085C500389B67 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
+		A4F49D2E2A3085C500389B67 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1C73A52A23247800194925 /* PMNotiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMNotiView.h; sourceTree = "<group>"; };
@@ -693,6 +711,8 @@
 		A4DD5E362A21FF7B00451413 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				A4F49D282A3085C500389B67 /* YYModel */,
+				A4F49D1E2A30763C00389B67 /* PickerView */,
 				FB7BC8712A2AEFE9000BB3ED /* Alert */,
 				A4B60ACF2A2332C200F5BED7 /* Md5 */,
 				A4DD5E532A21FFE400451413 /* CRBoxInput */,
@@ -719,6 +739,39 @@
 				A4DD5E612A21FFE400451413 /* CRBoxTextView.h */,
 			);
 			path = CRBoxInput;
+			sourceTree = "<group>";
+		};
+		A4F49D1E2A30763C00389B67 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				A4F49D1F2A30763C00389B67 /* JKPickerViewAppearance.h */,
+				A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */,
+				A4F49D212A30763C00389B67 /* JKPickerView.h */,
+				A4F49D202A30763C00389B67 /* JKPickerView.m */,
+				A4F49D252A30767A00389B67 /* PMPickerModel.h */,
+				A4F49D262A30767A00389B67 /* PMPickerModel.m */,
+			);
+			path = PickerView;
+			sourceTree = "<group>";
+		};
+		A4F49D282A3085C500389B67 /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				A4F49D292A3085C500389B67 /* YYModel */,
+			);
+			path = YYModel;
+			sourceTree = "<group>";
+		};
+		A4F49D292A3085C500389B67 /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				A4F49D2A2A3085C500389B67 /* YYClassInfo.h */,
+				A4F49D2B2A3085C500389B67 /* YYModel.h */,
+				A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */,
+				A4F49D2D2A3085C500389B67 /* YYClassInfo.m */,
+				A4F49D2E2A3085C500389B67 /* NSObject+YYModel.h */,
+			);
+			path = YYModel;
 			sourceTree = "<group>";
 		};
 		CAA89AF56AFF80302B4105DA /* Frameworks */ = {
@@ -1076,6 +1129,7 @@
 				FB976D442A05124900B1C0A3 /* Assets.xcassets */,
 				FB976D462A05124900B1C0A3 /* LaunchScreen.storyboard */,
 				FB976D492A05124900B1C0A3 /* Info.plist */,
+				A4F49D1C2A30703800389B67 /* means.plist */,
 				FB976D4A2A05124900B1C0A3 /* main.m */,
 			);
 			path = PresiMex;
@@ -1418,6 +1472,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4F49D1D2A30703800389B67 /* means.plist in Resources */,
 				FB976D482A05124900B1C0A3 /* LaunchScreen.storyboard in Resources */,
 				FB976D452A05124900B1C0A3 /* Assets.xcassets in Resources */,
 			);
@@ -1584,9 +1639,11 @@
 				A4DD5E642A21FFE400451413 /* CRBoxFlowLayout.m in Sources */,
 				A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */,
 				FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */,
+				A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */,
 				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
 				FB8AF31F2A088AC5006C5887 /* SLFToast.m in Sources */,
 				A400BCFA2A25F404006CABB2 /* PMIDAuthHeaderView.m in Sources */,
+				A4F49D232A30763C00389B67 /* JKPickerView.m in Sources */,
 				A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */,
 				A40B4C8D2A2AE506001B11F0 /* PMBasicViewController.m in Sources */,
 				A400BCEA2A25EE89006CABB2 /* PMBasicViewCell.m in Sources */,
@@ -1627,14 +1684,17 @@
 				A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */,
 				FB7BC86A2A2AE576000BB3ED /* UIView+WhenTappedBlocks.m in Sources */,
 				A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */,
+				A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */,
 				FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */,
 				A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */,
 				A40B4CAE2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
+				A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */,
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
 				A4D6F1182A259974006B4BA6 /* PMUser.m in Sources */,
 				A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */,
+				A4F49D272A30767A00389B67 /* PMPickerModel.m in Sources */,
 				FB939F212A21E28400599A86 /* AjustesVC.m in Sources */,
 				FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */,
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,
