@@ -8,7 +8,7 @@
 #import "WFBaseViewCell.h"
 
 #import "PMQuestionModel.h"
-
+#import "PMQuesModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 
@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(CGFloat)cellWithHight:(PMQuestionModel*)model;
 
-
-
+-(void)setCellWithModel1:(PMQuesModel*)model;
++(CGFloat)cellWithHight1:(PMQuesModel*)model;
 @end
 
 NS_ASSUME_NONNULL_END

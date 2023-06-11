@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)addRightBarButtonWithImag:(NSString*)imgName;
 -(void)show;
 -(void)dismiss;
+-(void)showTip:(NSString*)text;
 @end
 
 NS_ASSUME_NONNULL_END

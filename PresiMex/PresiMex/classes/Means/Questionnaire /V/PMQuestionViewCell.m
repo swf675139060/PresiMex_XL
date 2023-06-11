@@ -102,4 +102,20 @@
         return 90;
     }
 }
+
+-(void)setCellWithModel1:(PMQuesModel*)model{
+    _titleLabel.text=model.title;
+    _contentTF.text=model.content;
+    CGSize size=[UILabel sizeWithText:model.title fontSize:12 andMaxsize:WF_ScreenWidth-30];
+    _titleLabel.frame=CGRectMake(15, 15, WF_ScreenWidth-30, size.height);
+    _bgView.frame=CGRectMake(15,_titleLabel.swf_bottom+10, WF_ScreenWidth-30, 45);
+    
+}
+
++(CGFloat)cellWithHight1:(PMQuesModel*)model{
+    
+    CGSize size=[UILabel sizeWithText:model.title fontSize:12 andMaxsize:WF_ScreenWidth-30];
+    return 70+size.height;
+    
+}
 @end

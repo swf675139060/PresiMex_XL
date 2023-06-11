@@ -10,10 +10,12 @@
 #import "PMQuestionModel.h"
 #import "PMQuestionViewCell.h"
 #import "JKPickerViewAppearance.h"
-
+#import "PMQuesModel.h"
 @interface PMQuestionnaireViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
+@property (nonatomic, strong)PMQuesModel*model;
 @end
 
 @implementation PMQuestionnaireViewController
@@ -58,7 +60,7 @@
     [super viewDidLoad];
     self.navTitleLabel.text=@"Cuestionario";
     [self addRightBarButtonWithImag:@"bai_kefu"];
-    [self modelWithData];
+    //[self modelWithData];
     [self requestQuestInfo];
 }
 - (UITableView *)tableView{
@@ -94,23 +96,24 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PMQuestionModel *model=self.dataArray[indexPath.row];
+    PMQuesModel *model=self.dataArray[indexPath.row];
     PMQuestionViewCell *cell=[PMQuestionViewCell cellWithTableView:tableView];
-    [cell setCellWithModel:model];
+   
+    [cell setCellWithModel1:model];
       return cell;
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PMQuestionModel *model=self.dataArray[indexPath.row];
-    return [PMQuestionViewCell cellWithHight:model];
+    PMQuesModel *model=self.dataArray[indexPath.row];
+    return [PMQuestionViewCell cellWithHight1:model];
     
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PMQuestionModel *model=self.dataArray[indexPath.row];
-    [self didTableViewRowWithModel:model];
+    PMQuesModel *model=self.dataArray[indexPath.row];
+    [self didTableViewRowWithModel:model withIndex:indexPath.row];
 
 }
 
@@ -162,83 +165,42 @@
     [self.navigationController pushViewController:Vc animated:YES];
 }
 
--(void)didTableViewRowWithModel:(PMQuestionModel*)model{
-    
-    NSInteger type=model.type;
-    
-    switch (type) {
-        case 0://借款用途
-        {
-//            [self sutupAlertView:model.title withArr:];
-            
-            break;
-        }
-        case 5://职业
-        {
-//            [self sutupAlertView:model.title withData:dict[@"branch"]];
-           
-            break;
-        }
-        case 6://宗教信仰
-        {
-//            [self sutupAlertView:model.title withData:dict[@"religion"]];
-            
-            break;
-        }
-        case 7://婚姻状态
-        {
-//            [self sutupAlertView:model.title withData:dict[@"merry"]];
-            
-            break;
-        }
-        case 8://有几个孩子
-        {
-//            [self sutupAlertView:model.title withData:dict[@"kids"]];
-            
-            break;
-        }
-        case 9://受教育成功度
-        {
-//            [self sutupAlertView:model.title withData:dict[@"edu"]];
-            
-            break;
-        }
-
-        default:
-            break;
-    }
-    
-}
-
--(void)sutupAlertView:(NSString*)title withArr:(NSArray*)arr{
+-(void)didTableViewRowWithModel:(PMQuesModel*)model withIndex:(NSInteger)row{
+    model.type=row;
     [self.view endEditing:YES];
     weakify(self)
+<<<<<<< HEAD
     JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+=======
+    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:model.datas pickerCompleteBlock:^(id  _Nonnull responseObjct,NSString*ID) {
+>>>>>>> 06b9e59e40b5feb65d9f4639c485557e36f4f3c0
         strongify(self);
         NSString*content=responseObjct;
-        [self resetDataWithTitle:title withContent:content];
+        [self resetDataWithID:ID withContent:content withKey:model.ID];
         
     }];
-    [self.view endEditing:YES];
     [alert show] ;
-}
--(void)resetDataWithTitle:(NSString*)title withContent:(NSString*)cont{
+  
     
-//    [self.dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        EZBasicModel*model=obj;
-//        if ([model.title isEqual:title]) {
-//            *stop = YES;
-//            if (*stop == YES) {
-//                model.content=cont;
-//                [self.dataArray replaceObjectAtIndex:idx withObject:model];
-//            }
-//        }
-//        [self setUserInfoValue:model.content withKey:model.title];
-//
-//        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
-//        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-//
-//    }];
+}
+
+
+-(void)resetDataWithID:(NSString*)ID withContent:(NSString*)cont withKey:(NSString*)key{
+  
+    [self.dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        PMQuesModel *model=(PMQuesModel *)obj;
+        if ([model.ID isEqual:key]) {
+            *stop = YES;
+            if (*stop == YES) {
+                model.content=cont;
+                [self.dataArray replaceObjectAtIndex:idx withObject:model];
+            }
+        }
+        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
+        [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    }];
+    [self submitQuest:cont];
 }
 
 -(void)requestQuestInfo{
@@ -247,8 +209,31 @@
     NSMutableDictionary*param=[NSMutableDictionary new];
     [PMBaseHttp get:GET_Investigate_Info parameters:param success:^(id  _Nonnull responseObject) {
         [self dismiss];
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSArray*arr=responseObject[@"shame"][@"pledge"];
+            NSArray *datas =[NSArray yy_modelArrayWithClass:[PMQuesModel class] json:arr];
+            [self.dataArray addObjectsFromArray:datas];
+        } else {
+            [self showTip:responseObject[@" entire"]];
+        }
+        [self.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {
         [self dismiss];
+    }];
+    
+
+}
+
+
+-(void)submitQuest:(NSString*)key{
+    
+    NSMutableDictionary*dict=[NSMutableDictionary new];
+    dict[@"broken"]=key;
+    [PMBaseHttp postJson:POST_Investigate_Info parameters:dict success:^(id  _Nonnull responseObject) {
+
+    } failure:^(NSError * _Nonnull error) {
+
     }];
 }
 @end
