@@ -8,9 +8,10 @@
 #import "OrderVC.h"
 #import "PMOrderTopView.h"
 #import "OrderCell.h"
+#import "OrderModel.h"
 #import "OrderDetailsVC.h"
 
-@interface OrderVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface OrderVC ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
@@ -21,8 +22,9 @@
 
 @property (nonatomic, strong) NSMutableArray *rightArr;
 
-
 @property (nonatomic, assign) NSInteger indx;
+
+@property (nonatomic, assign) NSInteger requestCount;
 
 @end
 
@@ -42,20 +44,27 @@
     [self.topView setClickRightBtnBlock:^{
         weakself.indx = 1;
         [weakself.tableView reloadData];
-        
     }];
     [self.tempView addSubview:self.tableView];
     self.navTitleLabel.text = @"Lista de facturas";
     
-    [self GETUserOder];
     
+    [self.view show];
+    [self GETUserOder:0];
+    
+    
+    [self GETUserOder:1];
 }
 
 
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    if (self.indx == 0) {
+        return  self.leftArr.count;
+    } else {
+        return  self.rightArr.count;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -66,8 +75,13 @@
 {
     
     OrderCell * cell = [OrderCell cellWithTableView:tableView];
-    
-    [cell updataWithModel:@"" indx:indexPath.row];
+    OrderModel * model;
+    if (self.indx == 0) {
+        model = self.leftArr[indexPath.row];
+    } else {
+        model = self.rightArr[indexPath.row];
+    }
+    [cell updataWithModel:model indx:indexPath.row];
 
     cell.clickUseBlock = ^(NSInteger indx) {
 
@@ -82,11 +96,76 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    [tableView deselectRowAtIndexPath:indexPath animated:true];
-    OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (self.indx  == 0) {
+        
+        OrderModel * model = self.leftArr[indexPath.row];
+        OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
+        vc.repayId = model.prairie;
+        if([model.lexus integerValue] == 50){
+            vc.beOverdue = NO;
+        }else if ([model.lexus integerValue] == 90){
+            vc.beOverdue = YES;
+        }
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
 }
 
+
+#pragma mark - DZNEmptyDataSetSource
+// 返回图片
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
+    return [UIImage imageNamed:@"beiju"];
+}
+
+// 返回标题文字
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"Oportunidades";
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:14.0f], NSForegroundColorAttributeName: BColor_Hex(@"#1B1200", 1)};
+    return [[NSAttributedString alloc] initWithString:text attributes:attribute];
+}
+
+// 返回详情文字
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView { NSString *text = @"Todavía no tiene ninguna factura para procesar. Vaya a la página de préstamo y elija su producto.";
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:12.0f], NSForegroundColorAttributeName: BColor_Hex(@"#7C7C7C", 1), NSParagraphStyleAttributeName: paragraph};
+    return [[NSAttributedString alloc] initWithString:text attributes:attribute];
+}
+
+// 返回可以点击的按钮 上面带文字
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f], NSForegroundColorAttributeName: BColor_Hex(@"#FFFFFF", 1)};
+    return [[NSAttributedString alloc] initWithString:@"DE ACUERDO" attributes:attribute];
+}
+
+- (UIImage *)buttonBackgroundImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+
+    return [UIView gradientImageWithSize:CGSizeMake(WF_ScreenWidth - 30, 50) startColor:BColor_Hex(@"#FFB602", 1) endColor:BColor_Hex(@"#FC7500", 1) cornerRadius:13];
+}
+
+
+//#pragma mark - DZNEmptyDataSetDelegate
+// 处理按钮的点击事件
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
+   
+}
+
+// 标题文字与详情文字的距离
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 15;
+}
+
+// 返回空白区域的颜色自定义
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIColor whiteColor];
+}
+
+// 标题文字与详情文字同时调整垂直偏移量
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView {
+    return -50;
+}
 
 
 #pragma mark -- init
@@ -100,6 +179,10 @@
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        _tableView.emptyDataSetSource= self;
+
+        _tableView.emptyDataSetDelegate= self;
     }
     
     return _tableView;
@@ -129,28 +212,43 @@
 
 
 //获取用户订单接口
--(void)GETUserOder{
+-(void)GETUserOder:(NSInteger)indx{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
-    if (self.indx) {
+    if (indx == 0) {
         pars[@"cos"] = @"0";
     } else {
         pars[@"cos"] = @"1";
     }
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_User_Oder parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        weakself.requestCount += 1;
+        if(self.requestCount >= 2){
+            [weakself.view dismiss];
+        }
         if ([responseObject[@"retail"] intValue]==200) {
-            NSDictionary * shame = responseObject[@"shame"];
+            NSArray * pledge = responseObject[@"shame"][@"pledge"];
+            NSArray *modelArr = [OrderModel mj_objectArrayWithKeyValuesArray:pledge];
+            if (weakself.indx == 0) {
+                weakself.leftArr = [NSMutableArray arrayWithArray:modelArr];
+                
+            } else {
+                weakself.leftArr = [NSMutableArray arrayWithArray:modelArr];
+            }
+            
+            [weakself.tableView reloadData];
             
             
         }else{
-//            [SLFToast showWithContent:responseObject[@"entire"] afterDelay:2];
+            [weakself.view showTip:responseObject[@"entire"]];
         }
         
         
         
     } failure:^(NSError * _Nonnull error) {
         
+        [weakself.view dismiss];
     }];
 }
 @end

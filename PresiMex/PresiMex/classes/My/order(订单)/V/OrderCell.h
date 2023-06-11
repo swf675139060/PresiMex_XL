@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy, nonatomic) void(^clickUseBlock)(NSInteger indx);
 
--(void)updataWithModel:(id)model indx:(NSInteger)indx;
+-(void)updataWithModel:(OrderModel *)model indx:(NSInteger)indx;
 
 @end
 

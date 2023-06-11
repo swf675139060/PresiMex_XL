@@ -56,4 +56,29 @@
     }
 }
 
+
++ (UIImage *)gradientImageWithSize:(CGSize)size startColor:(UIColor *)startColor endColor:(UIColor *)endColor cornerRadius:(CGFloat)cornerRadius {
+    // 创建一个图形上下文，并设置大小
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    
+    // 创建一个渐变层，并设置其位置和颜色
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, size.width, size.height);
+    gradientLayer.colors = @[(__bridge id)startColor.CGColor, (__bridge id)endColor.CGColor];
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1, 0);
+    gradientLayer.cornerRadius = cornerRadius;
+    
+    // 将渐变层绘制到图形上下文中
+    [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    // 获取绘制后的图像
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 结束图形上下文
+    UIGraphicsEndImageContext();
+    
+    // 返回生成的图片
+    return image;
+}
 @end

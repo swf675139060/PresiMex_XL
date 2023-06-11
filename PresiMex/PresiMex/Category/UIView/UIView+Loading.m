@@ -1,61 +1,14 @@
 //
-//  WFBaseView.m
-//  HLUIKit
+//  UIView+Loading.m
+//  PresiMex
 //
-//  Created by panxin on 2019/9/19.
-//  Copyright © 2019 panxin. All rights reserved.
+//  Created by shenWenFeng on 2023/6/10.
 //
 
-#import "WFBaseView.h"
+#import "UIView+Loading.h"
 
-@interface WFBaseView ()
-@property (nonatomic, strong)UIView *hudView;
+@implementation UIView (Loading)
 
-@property (nonatomic, assign) BOOL haveBuildSubViews;
-
-@end
-
-@implementation WFBaseView
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self buildSubViews];
-        self.haveBuildSubViews = YES;
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self buildSubViews];
-        self.haveBuildSubViews = YES;
-        [self setSubViewsPosition];
-    }
-    return self;
-}
-
-
-- (void)buildSubViews
-{
-    
-}
-
-- (void)setSubViewsPosition
-{
-    
-}
 -(void)showTip:(NSString*)text{
     
 }
@@ -65,12 +18,14 @@
     // 获取keyWindow
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
     // 添加hud
-    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight)];
-    [_hudView setBackgroundColor:[UIColor colorWithWhite:0.2 alpha:0.2]];
-    [window addSubview:_hudView];
+    UIView * hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight)];
+    [hudView setBackgroundColor:[UIColor colorWithWhite:0.2 alpha:0.2]];
+    
+    hudView.tag = 20230610;
+    [window addSubview:hudView];
     
     UIView *bg=[UIView new];
-    [_hudView addSubview:bg];
+    [hudView addSubview:bg];
     bg.frame=CGRectMake((WF_ScreenWidth-80)/2,WF_ScreenHeight/2, 80, 80);
     bg.backgroundColor=[UIColor colorWithWhite:0 alpha:0.8];
     bg.layer.cornerRadius=10;
@@ -105,11 +60,14 @@
 
 -(void)dismiss{
     // 遍历keyWindow上的CQHudView，一一移除
-    for (UIView * view in [UIApplication sharedApplication].keyWindow.subviews) {
-        if ([view isEqual:_hudView]) {
-            [view removeFromSuperview];
-        }
-    }
+//    for (UIView * view in [UIApplication sharedApplication].keyWindow.subviews) {
+//        if (view.tag  == 2023) {
+//            [view removeFromSuperview];
+//        }
+//    }
+    UIView * view = [[UIApplication sharedApplication].keyWindow viewWithTag:20230610];
+    [view removeFromSuperview];
+    
 }
 
 @end

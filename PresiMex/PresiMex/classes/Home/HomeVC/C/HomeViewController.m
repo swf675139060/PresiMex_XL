@@ -412,6 +412,10 @@
     
     if (!_NoAuthView) {
         _NoAuthView = [[HomeNoAuthView alloc] initWithFrame:CGRectMake(0, self.notiView.swf_bottom, WF_ScreenWidth, WF_ScreenHeight - self.notiView.swf_bottom - WF_TabBarHeight)];
+        WF_WEAKSELF(weakself);
+        _NoAuthView.clickBock = ^{
+            [weakself pushCerVc];
+        };
     }
     
     return _NoAuthView;

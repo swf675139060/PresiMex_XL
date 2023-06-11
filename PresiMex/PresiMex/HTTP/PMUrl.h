@@ -184,13 +184,13 @@
 #define  GET_Repay_Bill  @"/api/user/defines/velocity/{repayId}"
 
 //获取借款详情
-#define  GET_Loan_Detail  @"/api/user/defines/labor/grenada/{repayId}"
+#define  GET_Loan_Detail  @"/api/user/defines/labor/grenada/%@"
 
 //获取商户对应支持通道
 #define  GET_Merchant_Pass  @"/api/user/defines/subcommittee"
 
 //获取展期详情
-#define  GET_Repay_Bill_Detail @"/api/user/defines/package/grenada/{repayId}"
+#define  GET_Repay_Bill_Detail @"/api/user/defines/package/grenada/%@"
 
 //获取还款页面信息
 #define  GET_Repay_Vc_Info  @"/api/user/defines/lecture/{repayId}/{repaymentType}"

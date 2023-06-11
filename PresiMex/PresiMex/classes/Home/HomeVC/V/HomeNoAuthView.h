@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeNoAuthView : WFBaseView
 
+@property(copy, nonatomic) void(^clickBock)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END
