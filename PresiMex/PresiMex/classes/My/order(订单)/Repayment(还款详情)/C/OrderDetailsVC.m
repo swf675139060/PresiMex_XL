@@ -388,13 +388,12 @@
 -(void)GETLoanDetail{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
-    pars[@"repayId"] = self.repayId;
     if(self.rated && self.rated.length){
         pars[@"rated"] = self.rated;
     }
 
     WF_WEAKSELF(weakself);
-    [PMBaseHttp get:GET_Loan_Detail parameters:pars success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp get:[NSString stringWithFormat:GET_Loan_Detail,self.repayId] parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             
@@ -402,8 +401,6 @@
         }else{
             [weakself.view showTip:responseObject[@"msg"]];
         }
-        
-        
         
     } failure:^(NSError * _Nonnull error) {
         
@@ -414,10 +411,9 @@
 -(void)GETRepayBillDetail{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
-    pars[@"repayId"] = self.repayId;
 
     WF_WEAKSELF(weakself);
-    [PMBaseHttp get:GET_Repay_Bill_Detail parameters:pars success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp get:[NSString stringWithFormat:GET_Repay_Bill_Detail,self.repayId] parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             

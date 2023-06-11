@@ -97,6 +97,7 @@ _Pragma("clang diagnostic pop")
 #import <Masonry/Masonry.h>
 #import <MJExtension/MJExtension.h>
 #import <SDWebImage/SDWebImage.h>
+#import <MJRefresh/MJRefresh.h>
 #import "UIScrollView+EmptyDataSet.h"
 
 #import "PMUrl.h"

@@ -11,7 +11,7 @@ target 'PresiMex' do
   pod 'MBProgressHUD','~> 1.2.0'
   pod 'SDWebImage', '~> 5.9.5'
   pod 'AFNetworking','~>4.0.0'
-  pod 'MJRefresh', '~> 3.7.5'
+  pod 'MJRefresh'
   pod 'MJExtension'
   pod 'ZZCircleProgress'
   pod 'IQKeyboardManager'

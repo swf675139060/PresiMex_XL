@@ -186,8 +186,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/C/OrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-GETUserOder:"
             landmarkType = "7">
          </BreakpointContent>
@@ -214,8 +214,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/C/OrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-emptyDataSet:didTapButton:"
             landmarkType = "7">
          </BreakpointContent>
@@ -230,8 +230,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "-GETLoanDetail"
             landmarkType = "7">
          </BreakpointContent>
@@ -246,8 +246,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
             landmarkName = "-GETLoanDetail"
             landmarkType = "7">
          </BreakpointContent>
@@ -262,8 +262,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "-GETLoanDetail"
             landmarkType = "7">
          </BreakpointContent>
@@ -278,8 +278,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "-GETRepayBillDetail"
             landmarkType = "7">
          </BreakpointContent>
@@ -294,8 +294,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
             landmarkName = "-GETRepayBillDetail"
             landmarkType = "7">
          </BreakpointContent>
@@ -367,49 +367,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "76CF1991-BD1E-4F6E-87AB-95DCA6D94FAD"
+            uuid = "50BBE067-D4C7-4504-B9FD-BD5D1EC2811A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
+            filePath = "PresiMex/classes/My/Cupo&#x301;n(&#x4f18;&#x60e0;&#x5377;)/C/CuponVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
-            landmarkName = "-GETLoanDetail"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-GETCouponUrl"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "76CF1991-BD1E-4F6E-87AB-95DCA6D94FAD - 1f8dc543ab77c7ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[OrderDetailsVC GETLoanDetail]"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/order(%E8%AE%A2%E5%8D%95)/Repayment(%E8%BF%98%E6%AC%BE%E8%AF%A6%E6%83%85)/C/OrderDetailsVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "397"
-                  endingLineNumber = "397"
-                  offsetFromSymbolStart = "383">
-               </Location>
-               <Location
-                  uuid = "76CF1991-BD1E-4F6E-87AB-95DCA6D94FAD - ba8c510fe5edfb15"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__31-[OrderDetailsVC GETLoanDetail]_block_invoke"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/order(%E8%AE%A2%E5%8D%95)/Repayment(%E8%BF%98%E6%AC%BE%E8%AF%A6%E6%83%85)/C/OrderDetailsVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "398"
-                  endingLineNumber = "398"
-                  offsetFromSymbolStart = "41">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82CB6DEE-71D7-4DDB-A21A-DBBEF19E9591"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/My/Cupo&#x301;n(&#x4f18;&#x60e0;&#x5377;)/C/CuponVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-GETCouponUrl"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4580BB4-95C8-4742-9788-967D4B6162F0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/My/Cupo&#x301;n(&#x4f18;&#x60e0;&#x5377;)/C/CuponVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-GETCouponUrl"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

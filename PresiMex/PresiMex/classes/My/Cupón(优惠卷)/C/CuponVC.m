@@ -12,6 +12,9 @@
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
+
+@property (nonatomic, assign) NSInteger eg; //页
+
 @end
 
 @implementation CuponVC
@@ -21,7 +24,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tempView addSubview:self.tableView];
+    self.eg = 1;
+    
+    WF_WEAKSELF(weakself);
+    self.tableView.mj_footer =  [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        weakself.eg += 1;
+        [weakself GETCouponUrl];
+    }];
     self.navTitleLabel.text = @"Cupón";
+    
+    [self GETCouponUrl];
     
 }
 
@@ -80,4 +92,31 @@
     
     return _tableView;
 }
+
+
+//获取优惠卷
+-(void)GETCouponUrl{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+    pars[@"eg"] = [NSString stringWithFormat:@"%ld",self.eg];
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            
+        }else{
+            
+        }
+        
+        [weakself.tableView.mj_footer endRefreshing];
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+        [weakself.tableView.mj_footer endRefreshing];
+        
+    }];
+}
+
 @end
