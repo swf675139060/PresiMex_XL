@@ -11,8 +11,8 @@
 
 +(NSDictionary *)modelCustomPropertyMapper{
     return @{
-             @"ID":@[@"id"],
-             @"title":@[@"name",@"title"]
+             @"ID":@[@"id",@"broken"],
+             @"title":@[@"name",@"title",@"bulgaria"]
              };
 }
 

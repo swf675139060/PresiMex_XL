@@ -6,7 +6,7 @@
 //
 
 #import "WFBaseViewController.h"
-
+#import "Toast+UIView.h"
 @interface WFBaseViewController ()
 @property (nonatomic, strong)UIView *hudView;
 @end
@@ -134,5 +134,14 @@
             [view removeFromSuperview];
         }
     }
+}
+
+-(void)showTip:(NSString *)strMsg
+{
+    if (strMsg.length==0) {
+        return;
+    }
+ [self.view makeToast: strMsg duration:1.5 position:@"center"];
+    
 }
 @end

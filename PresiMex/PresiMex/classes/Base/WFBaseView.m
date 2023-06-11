@@ -7,7 +7,7 @@
 //
 
 #import "WFBaseView.h"
-
+#import "Toast+UIView.h"
 @interface WFBaseView ()
 @property (nonatomic, strong)UIView *hudView;
 
@@ -56,9 +56,7 @@
 {
     
 }
--(void)showTip:(NSString*)text{
-    
-}
+
 -(void)show{
     
     [self dismiss];
@@ -111,5 +109,12 @@
         }
     }
 }
-
+-(void)showTip:(NSString *)strMsg
+{
+    if (strMsg.length==0) {
+        return;
+    }
+ [self makeToast: strMsg duration:1.5 position:@"center"];
+    
+}
 @end
