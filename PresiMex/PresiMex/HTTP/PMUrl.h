@@ -184,7 +184,7 @@
 #define  GET_Repay_Bill  @"/api/user/defines/velocity/{repayId}"
 
 //获取借款详情
-#define  GET_Loan_Detail  @"/api/user/defines/labor/grenada/%@"
+#define  GET_Loan_Detail  @"/api/user/defines/labor/grenada/"
 
 //获取商户对应支持通道
 #define  GET_Merchant_Pass  @"/api/user/defines/subcommittee"

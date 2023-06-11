@@ -392,9 +392,9 @@
     if(self.rated && self.rated.length){
         pars[@"rated"] = self.rated;
     }
-
+    NSString *url=[NSString stringWithFormat:@"%@%@",GET_Loan_Detail,self.repayId];
     WF_WEAKSELF(weakself);
-    [PMBaseHttp get:GET_Loan_Detail parameters:pars success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp get:url parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             

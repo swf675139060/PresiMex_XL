@@ -474,27 +474,14 @@ static inline BOOL IsEmpty(id thing){
 + (NSDictionary *)dictionaryForJsonData:(NSData *)jsonData
 
 {
-//    NSError *error;
-//    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
-//    if (error) {
-//        NSLog(@"Failed to serialize data to dictionary: %@", error);
-//        return nil;
-//    }
-//
-//
-//    NSLog(@"Dictionary: %@", dictionary);
-//
-//    return dictionary;
+
 
     if (![jsonData isKindOfClass:[NSData class]] || jsonData.length < 1) {
 
         return nil;
 
     }
-
-    //服务器返回的responseObject是gbk编码的字符串，通过gbk编码转码就行了，转码方法如下：
-   NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-   NSString*gbkStr = [[NSString alloc]initWithData:jsonData encoding:gbkEncoding];
+    NSString* gbkStr = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
     NSData *jsonDa=[gbkStr dataUsingEncoding:NSUTF8StringEncoding];
    //转码之后再转utf8解析
    NSDictionary *requestDic = [NSJSONSerialization JSONObjectWithData:jsonDa options:NSJSONReadingMutableContainers error:nil];
