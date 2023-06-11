@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JKPickerViewAppearance : UIView
 
-- (instancetype)initWithPickerViewTilte:(NSString*)tilte withData:(NSArray*)data pickerCompleteBlock:(void (^)(id responseObjct,NSString*ID))completeBlock;
+- (instancetype)initWithPickerViewTilte:(NSString*)tilte withData:(NSArray*)data pickerCompleteBlock:(void (^)(id responseObjct,NSInteger indx))completeBlock;
+
 @property (nonatomic , copy) void(^click)(NSInteger tag);
 
 - (void)show;

@@ -10,7 +10,6 @@
 @interface JKPickerView ()
 
 @property(strong ,nonatomic) NSArray *dataArr;
-@property(strong ,nonatomic) PMPickerModel *model;
 @end
 
 
@@ -57,8 +56,8 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    PMPickerModel*model=[self.dataArr objectAtIndex:row];
-    return model.title;
+    NSString*title=[self.dataArr objectAtIndex:row];
+    return title;
   
     
 }
@@ -66,8 +65,8 @@
 {
     
    
-    if ([self.dvDelegate respondsToSelector:@selector(datePicker:didSelectedDate:)]) {
-        [self.dvDelegate datePicker:self didSelectedDate:self.dataArr[row]];
+    if ([self.dvDelegate respondsToSelector:@selector(datePicker:didSelectedDate:row:)]) {
+        [self.dvDelegate datePicker:self didSelectedDate:self.dataArr[row] row:row];
         
     }
     

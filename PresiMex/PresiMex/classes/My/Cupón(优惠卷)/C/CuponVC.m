@@ -27,10 +27,10 @@
     self.eg = 1;
     
     WF_WEAKSELF(weakself);
-    self.tableView.mj_footer =  [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        weakself.eg += 1;
-        [weakself GETCouponUrl];
-    }];
+//    self.tableView.mj_footer =  [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        weakself.eg += 1;
+//        [weakself GETCouponUrl];
+//    }];
     self.navTitleLabel.text = @"Cupón";
     
     [self GETCouponUrl];
@@ -98,6 +98,7 @@
 -(void)GETCouponUrl{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
     pars[@"eg"] = [NSString stringWithFormat:@"%ld",self.eg];
+    pars[@"patricia"] = @"100";
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
         

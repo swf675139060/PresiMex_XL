@@ -92,6 +92,7 @@ _Pragma("clang diagnostic pop")
 #import "UIView+Loading.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import "WFCustomAlertView.h"
+#import "JKPickerViewAppearance.h"
 
 #import <JKCategories/JKCategories.h>
 #import <Masonry/Masonry.h>

@@ -213,7 +213,7 @@
 -(void)sutupAlertView:(NSString*)title withArr:(NSArray*)arr{
     [self.view endEditing:YES];
     weakify(self)
-    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSString*ID) {
+    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
         strongify(self);
         NSString*content=responseObjct;
         [self resetDataWithTitle:title withContent:content];
