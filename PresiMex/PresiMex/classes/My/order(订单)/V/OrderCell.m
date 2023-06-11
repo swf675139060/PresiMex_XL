@@ -300,34 +300,73 @@
     [_moneynumber setText:model.barbie TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont boldSystemFontOfSize:20]];
     [_dateSre setText:@"Monto del préstamo" TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont systemFontOfSize:11]];
     [_dateNumber setText:model.cook TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont boldSystemFontOfSize:20]];
+    [self.PagarBtn setTitle:@"Reembolsado" forState:UIControlStateNormal];
     [self.stateLB setText:@"" TextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"] Font:[UIFont systemFontOfSize:11]];
     
     
     
   
     int type = 3;
-    
-    if(type == 0){
+    //订单状态 0-待审核 10-审核中 20-审核通过 40-放款中 50-待还款 60-放款失败 70-已还款 80-展期中 90-已逾期 100取消贷款
+    if([model.lexus integerValue] == 90){
         //过期，红色
         self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#FF0000"] colorWithAlphaComponent:0.1];
         [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#FF0000"]];
         self.stateLB.textColor = [UIColor jk_colorWithHexString:@"#FF0000"];
         
+        [self.PagarBtn setTitle:@"Reembolsado" forState:UIControlStateNormal];
         self.stateLB.text = @"5 días de mora";
-    }else if (type == 1){
-        // 绿色
+    }else if ([model.lexus integerValue] == 50){
+        // 绿色  :等待付款
         self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#00CB69"] colorWithAlphaComponent:0.1];
         [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#00D36D"]];
         self.stateLB.textColor = [UIColor jk_colorWithHexString:@"#00CB69"];
+        
+        [self.PagarBtn setTitle:@"Reembolsado" forState:UIControlStateNormal];
         self.stateLB.text = @"Esperando pago";
-    }else if (type == 2){
-        //橘黄色
+    }else if ([model.lexus integerValue] == 60){
+        //橘黄色:银行帐户错误，请修改并重试
         self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#FC7500"] colorWithAlphaComponent:0.1];
         [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#FC7500"]];
         self.stateLB.textColor = [UIColor jk_colorWithHexString:@"#FC7500"];
+        
+        [self.PagarBtn setTitle:@"Retirar de nuevo" forState:UIControlStateNormal];
         self.stateLB.text = @"Error de cuenta bancaria, modifíquelo e inténtelo de nuevo";
-    }else{
-        //灰色
+    }else if ([model.lexus integerValue] == 30 || [model.lexus integerValue] == 40){
+        //橘黄色:耐心等待/支付中
+        self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#FC7500"] colorWithAlphaComponent:0.1];
+        [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#FC7500"]];
+        self.stateLB.textColor = [UIColor jk_colorWithHexString:@"#FC7500"];
+        
+        [self.PagarBtn setTitle:@"Desembolso" forState:UIControlStateNormal];
+        self.stateLB.text = @"Espere pacientemente";
+    }else if ([model.lexus integerValue] == 0 || [model.lexus integerValue] == 10){
+        //橘黄色:耐心等待/正在审查中
+        self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#FC7500"] colorWithAlphaComponent:0.1];
+        [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#FC7500"]];
+        self.stateLB.textColor = [UIColor jk_colorWithHexString:@"#FC7500"];
+        
+        [self.PagarBtn setTitle:@"Bajo revisión" forState:UIControlStateNormal];
+        self.stateLB.text = @"Espere pacientemente";
+    }else if ([model.lexus integerValue] == 100){
+        //灰色:取消
+        [_userName setTextColor:[UIColor jk_colorWithHexString:@"#1B1200"]];
+    
+        [_PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#CCCCCC"]];
+
+        [_moneyStr setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [_moneynumber setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [_dateSre setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [_dateNumber setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [self.stateLB setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        
+        self.topBGview.backgroundColor = [UIColor jk_colorWithHexString:@"#F5F5F5"];
+        
+        [self.PagarBtn setTitle:@"Cancelado" forState:UIControlStateNormal];
+        self.stateLB.text = @"El pedido se ha cancelado debido a problemas bancarios. Por favor, inténtelo de nuevo.";
+        
+    }else if ([model.lexus integerValue] == 80){
+        //灰色:取消
         [_userName setTextColor:[UIColor jk_colorWithHexString:@"#1B1200"]];
     
         [_PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#CCCCCC"]];
@@ -339,7 +378,26 @@
         [self.stateLB setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
         
         self.topBGview.backgroundColor = [UIColor jk_colorWithHexString:@"##F5F5F5"];
-        self.stateLB.text = @"La cuota diaria para el producto que solicitó ya se ha agotado. Por favor, inténtelo más tarde. ";
+        
+        [self.PagarBtn setTitle:@"Extendido" forState:UIControlStateNormal];
+        self.stateLB.text = [NSString stringWithFormat:@"Tiempo pagado %@",model.resorts];
+        
+    }else if ([model.lexus integerValue] == 70){
+        //灰色:取消
+        [_userName setTextColor:[UIColor jk_colorWithHexString:@"#1B1200"]];
+    
+        [_PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#CCCCCC"]];
+
+        [_moneyStr setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [_moneynumber setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [_dateSre setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [_dateNumber setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        [self.stateLB setTextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"]];
+        
+        self.topBGview.backgroundColor = [UIColor jk_colorWithHexString:@"##F5F5F5"];
+        
+        [self.PagarBtn setTitle:@"Reembolsado" forState:UIControlStateNormal];
+        self.stateLB.text = [NSString stringWithFormat:@"Tiempo pagado %@",model.resorts];
         
     }
     

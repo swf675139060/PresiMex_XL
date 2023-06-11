@@ -18,7 +18,6 @@ PODS:
     - AppsFlyerFramework/Main (= 6.9.1)
   - AppsFlyerFramework/Main (6.9.1)
   - Bugly (2.5.93)
-  - DZNEmptyDataSet (1.8.1)
   - Firebase/CoreOnly (10.3.0):
     - FirebaseCore (= 10.3.0)
   - Firebase/Messaging (10.3.0):
@@ -224,7 +223,6 @@ DEPENDENCIES:
   - AFNetworking (~> 4.0.0)
   - AppsFlyerFramework
   - Bugly
-  - DZNEmptyDataSet
   - Firebase/Messaging
   - FirebaseCore
   - IQKeyboardManager
@@ -242,7 +240,6 @@ SPEC REPOS:
     - AFNetworking
     - AppsFlyerFramework
     - Bugly
-    - DZNEmptyDataSet
     - Firebase
     - FirebaseCore
     - FirebaseCoreInternal
@@ -266,7 +263,6 @@ SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   AppsFlyerFramework: dc9aa675faa8e1a2ed40fb295d3c5408ee2b972a
   Bugly: b8715e6ec4004b7f7fbffab0643ba80545aee3da
-  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Firebase: f92fc551ead69c94168d36c2b26188263860acd9
   FirebaseCore: 988754646ab3bd4bdcb740f1bfe26b9f6c0d5f2a
   FirebaseCoreInternal: 29b76f784d607df8b2a1259d73c3f04f1210137b
@@ -286,6 +282,6 @@ SPEC CHECKSUMS:
   SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: b14d71ed274933def2cd8d9e7274b50da37787ed
+PODFILE CHECKSUM: 41a9fe0b8fc57d26dafb2f9cecd0ea1fe105e6d2
 
 COCOAPODS: 1.12.1

@@ -24,14 +24,16 @@
 
 @property (nonatomic, strong) PMOrderTopView *topView;
 
-
-@property (nonatomic, strong) NSMutableArray *leftArr;
-
-@property (nonatomic, strong) NSMutableArray *rightArr;
-
-@property (nonatomic, assign) BOOL beOverdue;//是否逾期
-
 @property (nonatomic, assign) NSInteger indx;
+
+@property(strong, nonatomic) RepayModel * leftModel;
+
+@property(strong, nonatomic) RepayModel * rightModel;
+
+
+@property (nonatomic, strong) NSString *rated;//优惠卷id
+
+
 
 @end
 
@@ -40,24 +42,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navTitleLabel.text = @"Reembolso";
+   
     [self.tempView addSubview:self.topView];
     WF_WEAKSELF(weakself);
     [self.topView setClickLeftBtnBlock:^{
         weakself.indx = 0;
-        [weakself.tableView reloadData];
+        if (!weakself.leftModel) {
+           [weakself GETLoanDetail];
+        } else {
+            
+            [weakself.tableView reloadData];
+        }
         
         
     }];
     [self.topView setClickRightBtnBlock:^{
         weakself.indx = 1;
-        [weakself.tableView reloadData];
-        
+        if (!weakself.rightModel) {
+            [weakself GETRepayBillDetail];
+        } else {
+            
+            [weakself.tableView reloadData];
+        }
     }];
+        
     [self.tempView addSubview:self.tableView];
-    self.navTitleLabel.text = @"Lista de facturas";
     
-    [self GETUserOder];
+    [self GETLoanDetail];
     
 }
 
@@ -78,34 +90,57 @@
         WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 7.5, 15)];
         [cell.leftLabel setText:@"Producto:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-        [cell.rightLabel setText:@"Producto" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        if (self.indx == 0) {
+            [cell.rightLabel setText:self.leftModel.nu TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        } else {
+            [cell.rightLabel setText:self.rightModel.nu TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        }
         return cell;
     }else if (indexPath.row == 1) {
         WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 7.5, 15)];
         [cell.leftLabel setText:@"Principal:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-        [cell.rightLabel setText:@"Principal:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        if (self.indx == 0) {
+            [cell.rightLabel setText:self.leftModel.lower TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        } else {
+            [cell.rightLabel setText:self.rightModel.lower TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        }
         return cell;
     }else if (indexPath.row == 2) {
         WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 7.5, 15)];
         [cell.leftLabel setText:@"Fecha de vencimiento:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-        [cell.rightLabel setText:@"Fecha de vencimiento:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        if (self.indx == 0) {
+            [cell.rightLabel setText:self.leftModel.cook TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        } else {
+            [cell.rightLabel setText:self.rightModel.cook TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        }
         return cell;
     }else if (indexPath.row == 3) {
+        //逾期天数：
         WFLeftRightLabelCell * cell = [WFLeftRightLabelCell bottomLineCellWithTableView:tableView];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
         cell.bottomLine.hidden = NO;
         [cell.leftLabel setText:@"Días de mora:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-        [cell.rightLabel setText:@"Días de mora:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        if (self.indx == 0) {
+            [cell.rightLabel setText:self.leftModel.luis TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        } else {
+            [cell.rightLabel setText:self.rightModel.luis TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+        }
         [cell upLineFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
         return cell;
     }else if (indexPath.row == 4) {
+        //逾期费
         WFThreeBtnCell * cell = [WFThreeBtnCell cellWithTableView:tableView];
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) height:46.5-7.5];
 
         [cell.leftBtn setText:@"Cargo por mora:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
-        [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",@"000"] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+        
+        if (self.indx == 0) {
+            [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",self.leftModel.fifteen] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+        } else {
+            [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",self.rightModel.fifteen] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+        }
         [cell.rightBtn setImage:[UIImage imageNamed:@"tixingtishi"] forState:UIControlStateNormal];
         [cell.rightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
         UIEdgeInsets  padding  = UIEdgeInsetsMake(14.5, 15, 7.5, 0);
@@ -147,11 +182,12 @@
         
         
         if(self.indx == 0){
+            //优惠券
             WFThreeBtnCell * cell = [WFThreeBtnCell cellWithTableView:tableView];
             [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) height:46.5-7.5];
 
             [cell.leftBtn setText:@"cupón:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
-            [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",@"000"] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+            [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",self.leftModel.shortly] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
             [cell.rightBtn setImage:[UIImage imageNamed:@"tixingtishi"] forState:UIControlStateNormal];
             [cell.rightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
             UIEdgeInsets  padding  = UIEdgeInsetsMake(14.5, 15, 7.5, 0);
@@ -183,10 +219,11 @@
         }
     }else if (indexPath.row == 6) {
         if(self.indx == 0){
+            //已支付
             WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
             [cell.leftLabel setText:@"Pagado:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-            [cell.rightLabel setText:@"Pagado:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            [cell.rightLabel setText:self.leftModel.gang TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
             return cell;
         }else{
             WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
@@ -200,19 +237,21 @@
                 WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
                 return cell;
             } else {
+                //减免金额
                 WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
                 [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
                 [cell.leftLabel setText:@"Cantidad reducida:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:@"Cantidad reducida:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.leftModel.shortly TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
                 [cell upLineFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
                 return cell;
             }
         }else{
+            //展期订单应还日期：
             WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView identifier:@"2Line"];
             UIEdgeInsets padding = UIEdgeInsetsMake(10, 15, 14.5, 15);
             [cell upLabelFrameWithInsets:padding];
             [cell.leftLabel setText:@"Fecha de vencimiento después de la extensión" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-            [cell.rightLabel setText:@"10-03-2023" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            [cell.rightLabel setText:self.rightModel.talk TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
             cell.leftLabel.numberOfLines = 2;
             [cell.leftLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(@(padding.left));
@@ -228,23 +267,24 @@
         
     }else if (indexPath.row == 8) {
         if (self.indx == 0) {
+            //本次需支付账单
             WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
             [cell.leftLabel setText:@"Pago en total:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-            [cell.rightLabel setText:@"$ 1,300" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            [cell.rightLabel setText:self.leftModel.tt TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
             return cell;
         } else {
-            
+            //展期需支付账单
             WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
             if(self.beOverdue == YES){
                 
                 [cell.leftLabel setText:@"Cuentas pendientes durante la prórroga:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:@"$ 1,300" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.rightModel.qty TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
             }else{
                 
                 [cell.leftLabel setText:@"Pago en total:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:@"$ 1,300" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                [cell.rightLabel setText:self.rightModel.qty TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
             }
             return cell;
         }
@@ -252,6 +292,7 @@
         
         
     }else if (indexPath.row == 9) {
+        //分割线
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView identifier:@"line"];
         cell.label.text = @"";
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -259,6 +300,7 @@
         cell.BGView.backgroundColor = BColor_Hex(@"#F1F1F1", 1);
         return cell;
     }else if (indexPath.row == 10) {
+        //展示：请选择您的还款方式
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
         cell.label.text = @"Por favor seleccione su método de pago";
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
@@ -269,6 +311,7 @@
         return cell;
     }else if (indexPath.row == 11) {
 
+        //展示：还款方式
         WFLeftRightBtnCell * cell = [WFLeftRightBtnCell cellWithTableView:tableView];
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) height:50];
         [cell upBtnsFrameWithEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 15)];
@@ -287,6 +330,7 @@
         return cell;
         
     }else {
+        //去还款按钮
         WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
         [cell.btn setTitle:@"Pagar" forState:UIControlStateNormal];
         cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
@@ -339,32 +383,41 @@
     return _topView;
 }
 
--(NSMutableArray *)leftArr{
-    if(_leftArr == nil){
-        _leftArr = [NSMutableArray array];
-    }
-    return _leftArr;
-}
 
--(NSMutableArray *)rightArr{
-    if(_rightArr == nil){
-        _rightArr = [NSMutableArray array];
-    }
-    return _rightArr;
-}
-
-
-//获取用户订单接口
--(void)GETUserOder{
+//获取借款详情
+-(void)GETLoanDetail{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
-    if (self.indx) {
-        pars[@"cos"] = @"0";
-    } else {
-        pars[@"cos"] = @"1";
+    pars[@"repayId"] = self.repayId;
+    if(self.rated && self.rated.length){
+        pars[@"rated"] = self.rated;
     }
+
     WF_WEAKSELF(weakself);
-    [PMBaseHttp get:GET_User_Oder parameters:pars success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp get:GET_Loan_Detail parameters:pars success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            
+        }else{
+            [weakself.view showTip:responseObject[@"msg"]];
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+//获取展期详情
+-(void)GETRepayBillDetail{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    pars[@"repayId"] = self.repayId;
+
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_Repay_Bill_Detail parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             
@@ -379,5 +432,7 @@
         
     }];
 }
+
+
 
 @end
