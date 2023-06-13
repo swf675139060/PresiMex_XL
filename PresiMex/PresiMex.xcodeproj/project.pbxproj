@@ -58,13 +58,14 @@
 		A4F49D1D2A30703800389B67 /* means.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4F49D1C2A30703800389B67 /* means.plist */; };
 		A4F49D232A30763C00389B67 /* JKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D202A30763C00389B67 /* JKPickerView.m */; };
 		A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */; };
-		A4F49D272A30767A00389B67 /* PMPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D262A30767A00389B67 /* PMPickerModel.m */; };
 		A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */; };
 		A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2D2A3085C500389B67 /* YYClassInfo.m */; };
 		FB1C73A72A23247800194925 /* PMNotiView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C73A62A23247800194925 /* PMNotiView.m */; };
 		FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C73A92A23417900194925 /* WFLeftRightBtnCell.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
 		FB2ABD502A356DAD00B7073D /* RepayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABD4F2A356DAD00B7073D /* RepayModel.m */; };
+		FB2ABD532A358E1D00B7073D /* PayTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABD522A358E1D00B7073D /* PayTypeModel.m */; };
+		FB2ABD562A35D00E00B7073D /* PayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABD552A35D00E00B7073D /* PayModel.m */; };
 		FB7BC86A2A2AE576000BB3ED /* UIView+WhenTappedBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7BC8682A2AE575000BB3ED /* UIView+WhenTappedBlocks.m */; };
 		FB7BC86D2A2AE6D5000BB3ED /* UIView+DashedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7BC86C2A2AE6D5000BB3ED /* UIView+DashedLine.m */; };
 		FB7BC8702A2AED7B000BB3ED /* WFCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7BC86F2A2AED7B000BB3ED /* WFCustomAlertView.m */; };
@@ -254,8 +255,6 @@
 		A4F49D202A30763C00389B67 /* JKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPickerView.m; sourceTree = "<group>"; };
 		A4F49D212A30763C00389B67 /* JKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPickerView.h; sourceTree = "<group>"; };
 		A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPickerViewAppearance.m; sourceTree = "<group>"; };
-		A4F49D252A30767A00389B67 /* PMPickerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPickerModel.h; sourceTree = "<group>"; };
-		A4F49D262A30767A00389B67 /* PMPickerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPickerModel.m; sourceTree = "<group>"; };
 		A4F49D2A2A3085C500389B67 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
 		A4F49D2B2A3085C500389B67 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
 		A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
@@ -271,6 +270,10 @@
 		FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectImageCell.m; sourceTree = "<group>"; };
 		FB2ABD4E2A356DAD00B7073D /* RepayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepayModel.h; sourceTree = "<group>"; };
 		FB2ABD4F2A356DAD00B7073D /* RepayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepayModel.m; sourceTree = "<group>"; };
+		FB2ABD512A358E1D00B7073D /* PayTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayTypeModel.h; sourceTree = "<group>"; };
+		FB2ABD522A358E1D00B7073D /* PayTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayTypeModel.m; sourceTree = "<group>"; };
+		FB2ABD542A35D00E00B7073D /* PayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayModel.h; sourceTree = "<group>"; };
+		FB2ABD552A35D00E00B7073D /* PayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayModel.m; sourceTree = "<group>"; };
 		FB7BC8682A2AE575000BB3ED /* UIView+WhenTappedBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WhenTappedBlocks.m"; sourceTree = "<group>"; };
 		FB7BC8692A2AE576000BB3ED /* UIView+WhenTappedBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WhenTappedBlocks.h"; sourceTree = "<group>"; };
 		FB7BC86B2A2AE6D5000BB3ED /* UIView+DashedLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+DashedLine.h"; sourceTree = "<group>"; };
@@ -809,8 +812,6 @@
 				A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */,
 				A4F49D212A30763C00389B67 /* JKPickerView.h */,
 				A4F49D202A30763C00389B67 /* JKPickerView.m */,
-				A4F49D252A30767A00389B67 /* PMPickerModel.h */,
-				A4F49D262A30767A00389B67 /* PMPickerModel.m */,
 			);
 			path = PickerView;
 			sourceTree = "<group>";
@@ -1097,6 +1098,7 @@
 		FB939F382A22118C00599A86 /* order(订单) */ = {
 			isa = PBXGroup;
 			children = (
+				FBDD1ABF2A2F799800845101 /* pay */,
 				FBAAA76E2A2E251A00BCBA57 /* Repayment(还款详情) */,
 				FB939F392A22118C00599A86 /* M */,
 				FB939F3A2A22118C00599A86 /* C */,
@@ -1208,6 +1210,8 @@
 			children = (
 				FB2ABD4E2A356DAD00B7073D /* RepayModel.h */,
 				FB2ABD4F2A356DAD00B7073D /* RepayModel.m */,
+				FB2ABD512A358E1D00B7073D /* PayTypeModel.h */,
+				FB2ABD522A358E1D00B7073D /* PayTypeModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1409,7 +1413,6 @@
 		FBCA72332A0A6A0500A10D4E /* My */ = {
 			isa = PBXGroup;
 			children = (
-				FBDD1ABF2A2F799800845101 /* pay */,
 				FB7BC8722A2AF336000BB3ED /* AlertView */,
 				FB939F382A22118C00599A86 /* order(订单) */,
 				FB939F2B2A21F5C100599A86 /* Cupón(优惠卷) */,
@@ -1425,8 +1428,8 @@
 		FBDD1ABF2A2F799800845101 /* pay */ = {
 			isa = PBXGroup;
 			children = (
-				FBDD1AC02A2F799800845101 /* M */,
 				FBDD1AC12A2F799800845101 /* C */,
+				FBDD1AC02A2F799800845101 /* M */,
 				FBDD1AC22A2F799800845101 /* V */,
 			);
 			path = pay;
@@ -1435,6 +1438,8 @@
 		FBDD1AC02A2F799800845101 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				FB2ABD542A35D00E00B7073D /* PayModel.h */,
+				FB2ABD552A35D00E00B7073D /* PayModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1729,6 +1734,7 @@
 				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
 				FBC27AE32A3494BA001D04F1 /* OrderModel.m in Sources */,
 				FB7BC8752A2AF380000BB3ED /* FeedBackAlert.m in Sources */,
+				FB2ABD562A35D00E00B7073D /* PayModel.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				A400BCEE2A25F0C1006CABB2 /* PMIDAuthViewController.m in Sources */,
 				FB939F372A21F6A700599A86 /* CuponCell.m in Sources */,
@@ -1763,6 +1769,7 @@
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
+				FB2ABD532A358E1D00B7073D /* PayTypeModel.m in Sources */,
 				A40B4CB72A2C706B001B11F0 /* PMCerViewCell.m in Sources */,
 				FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */,
 				A40B4C992A2B1FF9001B11F0 /* PMEmergencyContactModel.m in Sources */,
@@ -1797,7 +1804,6 @@
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
 				A4D6F1182A259974006B4BA6 /* PMUser.m in Sources */,
 				A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */,
-				A4F49D272A30767A00389B67 /* PMPickerModel.m in Sources */,
 				FB939F212A21E28400599A86 /* AjustesVC.m in Sources */,
 				FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */,
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,

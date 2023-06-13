@@ -169,7 +169,11 @@
     model.type=row;
     [self.view endEditing:YES];
     weakify(self)
+<<<<<<< HEAD
+    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+=======
     JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:model.datas pickerCompleteBlock:^(id  _Nonnull responseObjct,NSString*ID) {
+>>>>>>> 06b9e59e40b5feb65d9f4639c485557e36f4f3c0
         strongify(self);
         NSString*content=responseObjct;
         [self resetDataWithID:ID withContent:content withKey:model.ID];

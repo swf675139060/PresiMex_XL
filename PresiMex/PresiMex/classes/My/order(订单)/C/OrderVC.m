@@ -99,14 +99,19 @@
     if (self.indx  == 0) {
         
         OrderModel * model = self.leftArr[indexPath.row];
-        OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
-        vc.repayId = model.prairie;
+        
         if([model.lexus integerValue] == 50){
+            OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
+            vc.repayId = model.prairie;
             vc.beOverdue = NO;
+            
+            [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.lexus integerValue] == 90){
+            OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
+            vc.repayId = model.prairie;
             vc.beOverdue = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
-        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }

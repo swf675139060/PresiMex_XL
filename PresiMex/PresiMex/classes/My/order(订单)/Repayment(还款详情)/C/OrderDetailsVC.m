@@ -18,6 +18,8 @@
 #import "ThreeLabelAlert.h"
 #import "PayVC.h"
 
+#import "RepayModel.h"
+#import "PayTypeModel.h"
 @interface OrderDetailsVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
@@ -29,6 +31,10 @@
 @property(strong, nonatomic) RepayModel * leftModel;
 
 @property(strong, nonatomic) RepayModel * rightModel;
+
+@property(strong, nonatomic) NSArray<PayTypeModel *> * payModelArr;
+
+@property (nonatomic, assign) NSInteger PayIndx;//支付方式索引
 
 
 @property (nonatomic, strong) NSString *rated;//优惠卷id
@@ -191,6 +197,15 @@
             [cell.rightBtn setImage:[UIImage imageNamed:@"tixingtishi"] forState:UIControlStateNormal];
             [cell.rightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
             UIEdgeInsets  padding  = UIEdgeInsetsMake(14.5, 15, 7.5, 0);
+            
+            WF_WEAKSELF(weakself);
+            [cell setClickBtnBlock:^(NSInteger index) {
+                if(index == 2){
+                   //跳转优惠卷列表
+                    [weakself GETCouponUrl];
+                 
+                }
+            }];
             [cell.leftBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(@(padding.left));
                 make.top.equalTo(@(padding.top));
@@ -315,7 +330,9 @@
         WFLeftRightBtnCell * cell = [WFLeftRightBtnCell cellWithTableView:tableView];
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) height:50];
         [cell upBtnsFrameWithEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 15)];
-        [cell.leftBtn setTitle:@"VA" forState:UIControlStateNormal];
+        
+        PayTypeModel * model = self.payModelArr[self.PayIndx];
+        [cell.leftBtn setTitle:model.merchandise forState:UIControlStateNormal];
         [cell.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#1B1200"]  forState:UIControlStateNormal];
         cell.leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
         [cell.rightBtn setImage:[UIImage imageNamed:@"xiaJian"] forState:UIControlStateNormal];
@@ -338,6 +355,19 @@
         WF_WEAKSELF(weakself);
         [cell setClickBtnBlock:^{
             PayVC * vc = [[PayVC alloc] init];
+            
+            PayTypeModel * payModel = weakself.payModelArr[weakself.PayIndx];
+            vc.fraction = payModel.fraction;
+            if (weakself.indx == 0) {
+                
+                vc.repayId = weakself.leftModel.prairie;
+                vc.repaymentType = @"1";
+            } else {
+                vc.repayId = weakself.rightModel.prairie;
+                vc.repaymentType = @"2";
+            }
+            vc.rated = weakself.rated;
+            
             [weakself.navigationController pushViewController:vc animated:YES];
         }];
         [cell.btn addLinearGradientwithSize:CGSizeMake(self.view.jk_width - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
@@ -353,7 +383,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    [tableView deselectRowAtIndexPath:indexPath animated:true];
-    
+    if(indexPath.row == 11){
+        NSMutableArray * titleArr = [NSMutableArray array];
+        for (PayTypeModel * model in self.payModelArr) {
+//            PMPickerModel * PickerModel = [PMPickerModel new];
+//            PickerModel.title = model.merchandise;
+//            PickerModel.ID = model.fraction;
+            [titleArr addObject:model.merchandise];
+        }
+        
+        [self sutupAlertView:@"" withArr:titleArr];
+    }
     
 }
 
@@ -383,21 +423,65 @@
     return _topView;
 }
 
+-(void)sutupAlertView:(NSString*)title withArr:(NSArray*)arr{
+    [self.view endEditing:YES];
+    weakify(self)
+    
+    
+    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+        strongify(self);
+        self.PayIndx = indx;
+        [self.tableView reloadData];
+
+    }];
+    [self.view endEditing:YES];
+    [alert show] ;
+}
+
 
 //获取借款详情
 -(void)GETLoanDetail{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
-    pars[@"repayId"] = self.repayId;
     if(self.rated && self.rated.length){
         pars[@"rated"] = self.rated;
     }
     NSString *url=[NSString stringWithFormat:@"%@%@",GET_Loan_Detail,self.repayId];
     WF_WEAKSELF(weakself);
+
     [PMBaseHttp get:url parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
+            weakself.leftModel = [RepayModel mj_objectWithKeyValues:shame];
+            if(!weakself.payModelArr){
+                
+                [weakself GETMerchantPass:weakself.leftModel.demanding];
+            }
+            [weakself.tableView reloadData];
+        }else{
+            [weakself.view showTip:responseObject[@"msg"]];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+//获取展期详情
+-(void)GETRepayBillDetail{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:[NSString stringWithFormat:GET_Repay_Bill_Detail,self.repayId] parameters:pars success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            weakself.rightModel = [RepayModel mj_objectWithKeyValues:shame];
             
+            if(!weakself.payModelArr){
+                [weakself GETMerchantPass:weakself.rightModel.demanding];
+            }
+            [weakself.tableView reloadData];
             
         }else{
             [weakself.view showTip:responseObject[@"msg"]];
@@ -410,25 +494,58 @@
     }];
 }
 
-//获取展期详情
--(void)GETRepayBillDetail{
+
+
+//获取商户对应支持通道
+-(void)GETMerchantPass:(NSString *)demanding{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
-    pars[@"repayId"] = self.repayId;
 
     WF_WEAKSELF(weakself);
-    [PMBaseHttp get:GET_Repay_Bill_Detail parameters:pars success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp get:GET_Merchant_Pass parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
-            NSDictionary * shame = responseObject[@"shame"];
-            
+            NSArray * sports = responseObject[@"shame"][@"sports"];
+            weakself.payModelArr = [PayTypeModel mj_objectArrayWithKeyValuesArray:sports];
+            [weakself.tableView reloadData];
             
         }else{
-            [weakself.view showTip:responseObject[@"entire"]];
+            [weakself.view showTip:responseObject[@"msg"]];
         }
         
         
         
     } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+
+
+
+//获取优惠卷
+-(void)GETCouponUrl{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+    pars[@"eg"] = @"1";
+    pars[@"patricia"] = @"30";
+    pars[@"prairie"] = self.leftModel.prairie;
+    
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"][@"approaches"];
+            
+            
+        }else{
+            
+        }
+        
+        [weakself.tableView.mj_footer endRefreshing];
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+        [weakself.tableView.mj_footer endRefreshing];
         
     }];
 }

@@ -307,7 +307,7 @@
     
   
     int type = 3;
-    //订单状态 0-待审核 10-审核中 20-审核通过 40-放款中 50-待还款 60-放款失败 70-已还款 80-展期中 90-已逾期 100取消贷款
+    //订单状态 0-待审核 10-审核中 20-审核通过 30-审核失败 40-放款中 50-待还款 60-放款失败 70-已还款 80-展期中 90-已逾期 100取消贷款
     if([model.lexus integerValue] == 90){
         //过期，红色
         self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#FF0000"] colorWithAlphaComponent:0.1];
@@ -324,7 +324,7 @@
         
         [self.PagarBtn setTitle:@"Reembolsado" forState:UIControlStateNormal];
         self.stateLB.text = @"Esperando pago";
-    }else if ([model.lexus integerValue] == 60){
+    }else if ([model.lexus integerValue] == 60 || [model.lexus integerValue] == 30){
         //橘黄色:银行帐户错误，请修改并重试
         self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#FC7500"] colorWithAlphaComponent:0.1];
         [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#FC7500"]];
@@ -332,7 +332,7 @@
         
         [self.PagarBtn setTitle:@"Retirar de nuevo" forState:UIControlStateNormal];
         self.stateLB.text = @"Error de cuenta bancaria, modifíquelo e inténtelo de nuevo";
-    }else if ([model.lexus integerValue] == 30 || [model.lexus integerValue] == 40){
+    }else if ([model.lexus integerValue] == 20 || [model.lexus integerValue] == 40){
         //橘黄色:耐心等待/支付中
         self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#FC7500"] colorWithAlphaComponent:0.1];
         [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#FC7500"]];

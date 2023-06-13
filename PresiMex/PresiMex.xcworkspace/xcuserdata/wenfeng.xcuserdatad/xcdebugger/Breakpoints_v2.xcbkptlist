@@ -115,38 +115,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2B76C2EE-ED9C-401D-8138-B7F4C55F5956"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
-            landmarkName = "-GETFeedbackType"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "52330A1D-9FF8-4FC9-AE0E-16D09848048D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/Comentario(feedback)/C/ComentarioVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "-GETFeedbackType"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "87BD8344-8C6B-4BCD-9252-FDC9591AFEB1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -186,8 +154,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/C/OrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-GETUserOder:"
             landmarkType = "7">
          </BreakpointContent>
@@ -214,41 +182,9 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/C/OrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-emptyDataSet:didTapButton:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "164B3356-A7B2-474C-A987-36682B0CE303"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
-            landmarkName = "-GETLoanDetail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C252046B-9E09-40D9-A0C9-2A3508226A77"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
-            landmarkName = "-GETLoanDetail"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -262,73 +198,9 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "462"
+            endingLineNumber = "462"
             landmarkName = "-GETLoanDetail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "43F95510-6B56-4299-93DC-AF4DEC91DAE5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
-            landmarkName = "-GETRepayBillDetail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EEB605E6-69EF-4F94-8892-D3A808B76AD9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
-            landmarkName = "-GETRepayBillDetail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C27BC563-6FFF-4C53-BB90-5CB55E84413F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "408D95F9-7181-4E23-842D-E63EC97E89F1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -342,8 +214,8 @@
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -351,65 +223,81 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C461D558-EDF7-46C7-93E8-BC20BC5AE86B"
+            uuid = "50BBE067-D4C7-4504-B9FD-BD5D1EC2811A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
+            filePath = "PresiMex/classes/My/Cupo&#x301;n(&#x4f18;&#x60e0;&#x5377;)/C/CuponVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-GETCouponUrl"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "76CF1991-BD1E-4F6E-87AB-95DCA6D94FAD"
+            uuid = "82CB6DEE-71D7-4DDB-A21A-DBBEF19E9591"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/My/Cupo&#x301;n(&#x4f18;&#x60e0;&#x5377;)/C/CuponVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-GETCouponUrl"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4580BB4-95C8-4742-9788-967D4B6162F0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/My/Cupo&#x301;n(&#x4f18;&#x60e0;&#x5377;)/C/CuponVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-GETCouponUrl"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDA7C74F-0F83-44C8-B111-B0C4D61CF137"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
-            landmarkName = "-GETLoanDetail"
+            startingLineNumber = "512"
+            endingLineNumber = "512"
+            landmarkName = "-GETMerchantPass:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "76CF1991-BD1E-4F6E-87AB-95DCA6D94FAD - 1f8dc543ab77c7ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[OrderDetailsVC GETLoanDetail]"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/order(%E8%AE%A2%E5%8D%95)/Repayment(%E8%BF%98%E6%AC%BE%E8%AF%A6%E6%83%85)/C/OrderDetailsVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "397"
-                  endingLineNumber = "397"
-                  offsetFromSymbolStart = "383">
-               </Location>
-               <Location
-                  uuid = "76CF1991-BD1E-4F6E-87AB-95DCA6D94FAD - ba8c510fe5edfb15"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__31-[OrderDetailsVC GETLoanDetail]_block_invoke"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/My/order(%E8%AE%A2%E5%8D%95)/Repayment(%E8%BF%98%E6%AC%BE%E8%AF%A6%E6%83%85)/C/OrderDetailsVC.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "398"
-                  endingLineNumber = "398"
-                  offsetFromSymbolStart = "41">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75C0AD49-015E-44CF-9DB3-828C1E5AC84A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/My/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "518"
+            endingLineNumber = "518"
+            landmarkName = "-GETMerchantPass:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -11,10 +11,15 @@
 #import "WFLeftTBLbaelRightBtnCell.h"
 #import "WFImageCell.h"
 #import "WFTopBtnBottomTwoLabelCell.h"
+#import "WFEmptyCell.h"
+
+#import "PayModel.h"
 
 @interface PayVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
+
+@property (nonatomic, strong) PayModel * model;
 
 @end
 
@@ -25,8 +30,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tempView addSubview:self.tableView];
-    self.navTitleLabel.text = @"OXXO Cash";
     
+    if ([self.fraction isEqualToString:@"va"]) {
+        self.navTitleLabel.text = @"STP（Cuenta virtual）";
+    } else if ([self.fraction isEqualToString:@"store"]) {
+        self.navTitleLabel.text = @"Store（Tiendas)";
+    }
+//    else if ([self.fraction isEqualToString:@"Cash"]) {
+//        self.navTitleLabel.text = @"OXXO Cash";
+//    }
+    [self GETRepayVcInfo];
 }
 
 
@@ -47,13 +60,34 @@
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(15.5, 15, 15.5, 15)];
         cell.bottomLine.hidden = NO;
         [cell.leftLabel setText:@"Total de la factura：" TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:13]];
-        [cell.rightLabel setText:@"$ 2,500" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:15]];
+        [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:15]];
+        if ([self.fraction isEqualToString:@"va"]) {
+            cell.rightLabel.text = self.model.specials.tt;
+        } else if ([self.fraction isEqualToString:@"store"]) {
+            cell.rightLabel.text = self.model.yo.tt;
+        }
+        
         [cell upLineFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
         return cell;
     }else if (indexPath.row == 1) {
+        
+       //还款码
         WFLeftTBLbaelRightBtnCell * cell = [WFLeftTBLbaelRightBtnCell cellWithTableView:tableView];
+        
         [cell.topLabel setText:@"Referencia：" TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:13]];
-        [cell.bottomLabel setText:@"XXXXXXXXXXXXXXXXXXXX" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont systemFontOfSize:15]];
+        if ([self.fraction isEqualToString:@"va"]) {
+            cell.topLabel.text = @"Código de reembolso：";
+        } else if ([self.fraction isEqualToString:@"store"]) {
+            cell.topLabel.text = @"Referencia：";
+        }
+        
+        [cell.bottomLabel setText:@"" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont systemFontOfSize:15]];
+        
+        if ([self.fraction isEqualToString:@"va"]) {
+            cell.bottomLabel.text = self.model.specials.batch;
+        } else if ([self.fraction isEqualToString:@"store"]) {
+            cell.bottomLabel.text = self.model.yo.batch;
+        }
         
         [cell.btn addLinearGradientwithSize:CGSizeMake(85, 33) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:5];
         [cell.btn setText:@"Copiar" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
@@ -69,6 +103,11 @@
         return cell;
         
     }else if (indexPath.row == 2) {
+        if ([self.fraction isEqualToString:@"va"]) {
+            WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
+            return cell;
+        }
+        
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
         cell.label.text = @"código de barras de pago：";
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#7C7C7C"];
@@ -78,19 +117,29 @@
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(16, 15, 20, 15)];
         return cell;
     }else if (indexPath.row == 3) {
+        if ([self.fraction isEqualToString:@"va"]) {
+            WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
+            return cell;
+        }
         WFImageCell * cell = [WFImageCell cellWithTableView:tableView];
         [cell.imgV sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:nil];
         cell.bottomLine.hidden = NO;
-        cell.imgV.backgroundColor = [UIColor redColor];
+//        cell.imgV.backgroundColor = [UIColor redColor];
         [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(0, 0, 24, 0) height:65];
         return cell;
     } else {
         WFTopBtnBottomTwoLabelCell * cell = [WFTopBtnBottomTwoLabelCell cellWithTableView:tableView];
         [cell.btn setImage:[UIImage imageNamed:@"pago"] forState:UIControlStateNormal];
-//        [cell.btn setBackgroundColor:[UIColor redColor]];
         [cell.label1 setText:@"El código de pago es válido durante 6 horas, organice el pago lo antes posible." TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:11]];
         
-        [cell.label2 setText:@"El código de pago \n es válido durante 6 \n horas, organice el pago lo antes posible." TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:12]];
+        [cell.label2 setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:12]];
+        
+        if ([self.fraction isEqualToString:@"va"]) {
+            cell.label2.text = self.model.specials.properly;
+        } else if ([self.fraction isEqualToString:@"store"]) {
+            cell.label2.text = self.model.yo.properly;
+        }
+        
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(40, 16, 30, 16)];
         cell.BGView.layer.cornerRadius = 10;
         cell.btn.backgroundColor = [UIColor whiteColor];
@@ -139,5 +188,31 @@
     }
     
     return _tableView;
+}
+
+//获取还款页面信息
+-(void)GETRepayVcInfo{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+    pars[@"fraction"] = self.fraction;
+    pars[@"rated"] = self.rated;
+    
+    WF_WEAKSELF(weakself);
+    [self.view show];
+    [PMBaseHttp get:[NSString stringWithFormat:GET_Repay_Vc_Info,self.repayId,self.repaymentType] parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself.view dismiss];
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            weakself.model = [PayModel mj_objectWithKeyValues:shame];
+            [weakself.tableView reloadData];
+            
+        }else{
+            
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        [weakself.view dismiss];
+    }];
 }
 @end

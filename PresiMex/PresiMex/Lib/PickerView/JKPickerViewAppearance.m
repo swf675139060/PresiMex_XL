@@ -8,10 +8,10 @@
 #define   BACK_HEIGHT  55.5+180+10+45+15
 
 
-typedef void(^dataBlock)(id responseObjct,NSString*ID);
+typedef void(^dataBlock)(id responseObjct,NSInteger indx);
+
 
 #import "JKPickerViewAppearance.h"
-#import "PMPickerModel.h"
 
 @interface JKPickerViewAppearance ()<JKPickerViewDelegate>
 
@@ -20,19 +20,17 @@ typedef void(^dataBlock)(id responseObjct,NSString*ID);
 @property (nonatomic, strong) JKPickerView *dataPicker;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, assign) NSInteger row;
 @property (nonatomic, strong) NSArray *datas;
-@property (nonatomic, strong) PMPickerModel*model;
 @end
 
 @implementation JKPickerViewAppearance
 
 
 
-- (instancetype)initWithPickerViewTilte:(NSString*)tilte withData:(NSArray*)data pickerCompleteBlock:(void (^)(id responseObjct,NSString*ID))completeBlock{
+- (instancetype)initWithPickerViewTilte:(NSString*)tilte withData:(NSArray*)data pickerCompleteBlock:(void (^)(id responseObjct,NSInteger indx))completeBlock{
     
     self =[super init];
-    
     if (self) {
        
         [self setupUI:tilte withData:data];
@@ -94,14 +92,14 @@ typedef void(^dataBlock)(id responseObjct,NSString*ID);
     UIView *pickerline1=[UIView new];
     pickerline1.backgroundColor=BColor_Hex(@"#E5E6E7",1);
     pickerline1.frame=CGRectMake(40, 110, WF_ScreenWidth-80, 1);
-    NSArray *datas = [NSArray yy_modelArrayWithClass:[PMPickerModel class] json:data];
-    _dataPicker=[[JKPickerView alloc] initWithDataPickerWithArr:datas];
+  
+    _dataPicker=[[JKPickerView alloc] initWithDataPickerWithArr:data];
     _dataPicker.frame = CGRectMake(0, line.swf_bottom, WF_ScreenWidth, 180);
     _dataPicker.dvDelegate=self;
     _dataPicker.backgroundColor=[UIColor whiteColor];
     [_dataPicker addSubview:pickerline];
     [_dataPicker addSubview:pickerline1];
-    _datas=datas;
+    _datas=data;
    
 
     
@@ -112,14 +110,13 @@ typedef void(^dataBlock)(id responseObjct,NSString*ID);
 
 - (void)doneClick:(UIButton*)sender {
     if (self.title.length==0&&self.datas.count) {
-        PMPickerModel*model=self.datas[0];
-        self.title=model.title;
-        self.ID=model.ID;
+        self.title=self.datas[0];
+        self.row=0;
     }
    
     if (sender.tag==1) {
         if (_dataBlock) {
-            _dataBlock(self.title,self.ID);
+            _dataBlock(self.title,self.row);
         }
     }
     [self hide];
@@ -146,10 +143,10 @@ typedef void(^dataBlock)(id responseObjct,NSString*ID);
 }
 
 
+//
+-(void)datePicker:(JKPickerView *)datePicker didSelectedDate:(NSString *)title row:(NSInteger)row{
 
--(void)datePicker:(JKPickerView *)datePicker didSelectedDate:(PMPickerModel *)model{
-
-    self.title=model.title;
-    self.ID=model.ID;
+    self.title=title;
+    self.row=row;
 }
 @end

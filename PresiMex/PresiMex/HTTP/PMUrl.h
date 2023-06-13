@@ -193,7 +193,7 @@
 #define  GET_Repay_Bill_Detail @"/api/user/defines/package/grenada/%@"
 
 //获取还款页面信息
-#define  GET_Repay_Vc_Info  @"/api/user/defines/lecture/{repayId}/{repaymentType}"
+#define  GET_Repay_Vc_Info  @"/api/user/defines/lecture/%@/%@"
 
 
 /*

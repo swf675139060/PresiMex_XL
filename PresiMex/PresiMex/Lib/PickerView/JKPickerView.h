@@ -6,7 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PMPickerModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @class JKPickerView;
@@ -15,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 
-- (void)datePicker:(JKPickerView *)datePicker didSelectedDate:(PMPickerModel *)model;
+- (void)datePicker:(JKPickerView *)datePicker didSelectedDate:(NSString *)title row:(NSInteger)row;
 
 @end
 
