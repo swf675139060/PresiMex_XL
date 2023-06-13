@@ -273,7 +273,8 @@ static inline BOOL IsEmpty(id thing){
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+   // manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
@@ -299,9 +300,12 @@ static inline BOOL IsEmpty(id thing){
     return  [manager POST:url parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
          if(!IsEmpty(responseObject)){
-            if (responseObject) {
-                success(responseObject);
-            }
+//            if (responseObject) {
+//                success(responseObject);
+//            }
+             NSDictionary*dict=[self dictionaryForJsonData:responseObject];
+             success(dict);
+             NSLog(@"%@",dict);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error==%@",error);

@@ -225,7 +225,7 @@
 -(void)submitQuest:(NSString*)key{
     
     NSMutableDictionary*dict=[NSMutableDictionary new];
-    dict[@"broken"]=key;
+    dict[@"broken"]=@{@"loan_num_now":@"10",@"loan_num_history":@"10"};
     [PMBaseHttp postJson:POST_Investigate_Info parameters:dict success:^(id  _Nonnull responseObject) {
 
     } failure:^(NSError * _Nonnull error) {

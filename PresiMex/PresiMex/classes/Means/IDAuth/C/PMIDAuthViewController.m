@@ -11,6 +11,7 @@
 #import "PMIDAuthTextViewCell.h"
 #import "PMIDAuthHeaderView.h"
 #import "PMBasicViewController.h"
+#import "PHImagePickerController.h"
 @interface PMIDAuthViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView  *tableView;
@@ -31,6 +32,7 @@
     self.navTitleLabel.text=@"Autenticación de identidad";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
+    [self getCamearAuthSeletsAlert];
     //[self tableView];
 }
 - (void)modelWithData{
@@ -185,5 +187,47 @@
     [self.navigationController pushViewController:Vc animated:YES];
 }
 
+-(void)selectPhoto{
+    if ([self canUserCamear]) {
+        PHImagePickerController*vc=[PHImagePickerController  new];
+        vc.delegate=self;
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+}
+//#pragma mark - 检查相机权限
+-(BOOL)canUserCamear{
+    
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusDenied) {
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Please open camera permissions" message:@"Settings - Privacy - Camera" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *enAction=[UIAlertAction actionWithTitle:@"Setting" style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * _Nonnull action) {
+            
+        NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if([[UIApplication sharedApplication] canOpenURL:url]) {
+         [[UIApplication sharedApplication] openURL:url];
+        }
+        }];
+        UIAlertAction *action_cancel=[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alert addAction:enAction];
+        [alert addAction:action_cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+        return NO;
+    }
+    else{
+        return YES;
+    }
+    return YES;
+ 
+}
 
+-(void)getCamearAuthSeletsAlert{
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+    }];
+
+}
 @end
