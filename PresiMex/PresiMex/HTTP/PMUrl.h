@@ -181,7 +181,7 @@
  */
 
 //查询还款/展期结果
-#define  GET_Repay_Bill  @"/api/user/defines/velocity/{repayId}"
+#define  GET_Repay_Bill  @"/api/user/defines/velocity/%@"
 
 //获取借款详情
 #define  GET_Loan_Detail  @"/api/user/defines/labor/grenada/"

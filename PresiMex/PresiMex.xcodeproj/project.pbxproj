@@ -91,6 +91,10 @@
 		FB976D552A05124A00B1C0A3 /* PresiMexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D542A05124A00B1C0A3 /* PresiMexTests.m */; };
 		FB976D5F2A05124A00B1C0A3 /* PresiMexUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D5E2A05124A00B1C0A3 /* PresiMexUITests.m */; };
 		FB976D612A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */; };
+		FB9E5AB22A3B4DF000E1D38E /* PayResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E5AB12A3B4DF000E1D38E /* PayResultModel.m */; };
+		FB9E5AB52A3B4F3F00E1D38E /* topLabelBottmBtnAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E5AB42A3B4F3F00E1D38E /* topLabelBottmBtnAlert.m */; };
+		FB9E5AB82A3B512000E1D38E /* RepaymentSuccessfulAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E5AB72A3B512000E1D38E /* RepaymentSuccessfulAlert.m */; };
+		FB9E5ABB2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E5ABA2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m */; };
 		FBAAA7742A2E258800BCBA57 /* OrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAAA7732A2E258800BCBA57 /* OrderDetailsVC.m */; };
 		FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039592A2B431900E5CD80 /* DemoCell2.m */; };
 		FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */; };
@@ -321,6 +325,14 @@
 		FB976D5A2A05124A00B1C0A3 /* PresiMexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresiMexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB976D5E2A05124A00B1C0A3 /* PresiMexUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresiMexUITests.m; sourceTree = "<group>"; };
 		FB976D602A05124A00B1C0A3 /* PresiMexUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresiMexUITestsLaunchTests.m; sourceTree = "<group>"; };
+		FB9E5AB02A3B4DF000E1D38E /* PayResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayResultModel.h; sourceTree = "<group>"; };
+		FB9E5AB12A3B4DF000E1D38E /* PayResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayResultModel.m; sourceTree = "<group>"; };
+		FB9E5AB32A3B4F3F00E1D38E /* topLabelBottmBtnAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = topLabelBottmBtnAlert.h; sourceTree = "<group>"; };
+		FB9E5AB42A3B4F3F00E1D38E /* topLabelBottmBtnAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = topLabelBottmBtnAlert.m; sourceTree = "<group>"; };
+		FB9E5AB62A3B512000E1D38E /* RepaymentSuccessfulAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepaymentSuccessfulAlert.h; sourceTree = "<group>"; };
+		FB9E5AB72A3B512000E1D38E /* RepaymentSuccessfulAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepaymentSuccessfulAlert.m; sourceTree = "<group>"; };
+		FB9E5AB92A3B515E00E1D38E /* ExtendedSuccessfullyAlart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtendedSuccessfullyAlart.h; sourceTree = "<group>"; };
+		FB9E5ABA2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtendedSuccessfullyAlart.m; sourceTree = "<group>"; };
 		FBAAA7722A2E258800BCBA57 /* OrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailsVC.h; sourceTree = "<group>"; };
 		FBAAA7732A2E258800BCBA57 /* OrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsVC.m; sourceTree = "<group>"; };
 		FBB039582A2B431900E5CD80 /* DemoCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell2.h; sourceTree = "<group>"; };
@@ -884,6 +896,12 @@
 				FBB039612A2B800100E5CD80 /* KeFuAlert.m */,
 				FBC27AD22A341CE9001D04F1 /* ThreeLabelAlert.h */,
 				FBC27AD32A341CE9001D04F1 /* ThreeLabelAlert.m */,
+				FB9E5AB32A3B4F3F00E1D38E /* topLabelBottmBtnAlert.h */,
+				FB9E5AB42A3B4F3F00E1D38E /* topLabelBottmBtnAlert.m */,
+				FB9E5AB62A3B512000E1D38E /* RepaymentSuccessfulAlert.h */,
+				FB9E5AB72A3B512000E1D38E /* RepaymentSuccessfulAlert.m */,
+				FB9E5AB92A3B515E00E1D38E /* ExtendedSuccessfullyAlart.h */,
+				FB9E5ABA2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -1422,6 +1440,8 @@
 			children = (
 				FB2ABD542A35D00E00B7073D /* PayModel.h */,
 				FB2ABD552A35D00E00B7073D /* PayModel.m */,
+				FB9E5AB02A3B4DF000E1D38E /* PayResultModel.h */,
+				FB9E5AB12A3B4DF000E1D38E /* PayResultModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1758,10 +1778,12 @@
 				A40B4CA72A2C4773001B11F0 /* PMBankcardModel.m in Sources */,
 				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
 				A40B4C902A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m in Sources */,
+				FB9E5AB22A3B4DF000E1D38E /* PayResultModel.m in Sources */,
 				FBC27AD02A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m in Sources */,
 				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
 				FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */,
 				FBC27AD72A342BB3001D04F1 /* HomeNoAuthView.m in Sources */,
+				FB9E5AB82A3B512000E1D38E /* RepaymentSuccessfulAlert.m in Sources */,
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				A400BCF42A25F11E006CABB2 /* PMIDAuthViewCell.m in Sources */,
 				FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */,
@@ -1773,6 +1795,7 @@
 				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */,
 				FB7BC86A2A2AE576000BB3ED /* UIView+WhenTappedBlocks.m in Sources */,
+				FB9E5AB52A3B4F3F00E1D38E /* topLabelBottmBtnAlert.m in Sources */,
 				A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */,
 				A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */,
 				FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */,
@@ -1785,6 +1808,7 @@
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
 				A4D6F1182A259974006B4BA6 /* PMUser.m in Sources */,
 				A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */,
+				FB9E5ABB2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m in Sources */,
 				FB939F212A21E28400599A86 /* AjustesVC.m in Sources */,
 				FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */,
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,
