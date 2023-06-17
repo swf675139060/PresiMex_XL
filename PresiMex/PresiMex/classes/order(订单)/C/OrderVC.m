@@ -246,7 +246,7 @@
             
             
         }else{
-            [weakself.view showTip:responseObject[@"entire"]];
+            [weakself.view showTipC:responseObject[@"entire"]];
         }
         
         

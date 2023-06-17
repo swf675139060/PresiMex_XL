@@ -264,5 +264,31 @@
 
 
 
+//测试环境域名: test-h5-ios.presimex.mx
+//正式环境域名: h5-ios.presimex.mx
+
+
+#define  H5_weAre @"https://test-h5-ios.presimex.mx/"//关于我们
+#define  H5_permission @"https://test-h5-ios.presimex.mx/permission.html"//权限披露
+#define  H5_privacy @"https://test-h5-ios.presimex.mx/privacy.html"//隐私协议
+#define  H5_loan @"https://test-h5-ios.presimex.mx/loan.html"//借款协议
+#define  H5_help @"https://test-h5-ios.presimex.mx/help.html"//QA
+#define  H5_STP @"https://test-h5-ios.presimex.mx/STP.html"//VA还款引导
+#define  H5_store @"https://test-h5-ios.presimex.mx/store.html"//STORE还款引导
+#define  H5_OXXO @"https://test-h5-ios.presimex.mx/OXXO.html"//OXXO还款引导
+#define  H5_bank @"https://test-h5-ios.presimex.mx/bank.html"//BANK还款引导
+
+
+//#define  H5_weAre @"https://h5-ios.presimex.mx/"
+//#define  H5_permission @"https://h5-ios.presimex.mx/permission.html"
+//#define  H5_privacy @"https://h5-ios.presimex.mx/privacy.html"
+//#define  H5_loan @"https://h5-ios.presimex.mx/loan.html"
+//#define  H5_help @"https://h5-ios.presimex.mx/help.html"
+//#define  H5_STP @"https://h5-ios.presimex.mx/STP.html"
+//#define  H5_store @"https://h5-ios.presimex.mx/store.html"
+//#define  H5_OXXO @"https://h5-ios.presimex.mx/OXXO.html"
+//#define  H5_bank @"https://h5-ios.presimex.mx/bank.html"
+
+
 
 #endif /* PMUrl_h */

@@ -6,11 +6,16 @@
 //
 
 #import "UIView+Loading.h"
+#import "Toast+UIView.h"
 
 @implementation UIView (Loading)
 
--(void)showTip:(NSString*)text{
+-(void)showTipC:(NSString*)text{
     
+    if (text.length==0) {
+        return;
+    }
+   [self makeToast: text duration:1.5 position:@"center"];
 }
 -(void)show{
     

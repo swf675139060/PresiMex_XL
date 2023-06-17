@@ -61,6 +61,14 @@
   
     
 }
+
+- (nullable NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    NSString*title=[self.dataArr objectAtIndex:row];
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:title];
+
+    [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, title.length)];
+    return attributedText;
+}
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     

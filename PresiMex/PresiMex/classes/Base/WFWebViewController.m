@@ -26,10 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
         
-    [self.view addSubview:self.webView];
+    [self.tempView addSubview:self.webView];
     
     //进度条
-    [self.view addSubview:self.progressView];
+    [self.tempView addSubview:self.progressView];
     
     //加载
     [self loadRequest];
@@ -39,13 +39,13 @@
 {
     [super viewWillLayoutSubviews];
     
-    _webView.frame = self.view.bounds;
+    _webView.frame = self.tempView.bounds;
     
     //计算y 轴坐标
     CGFloat originY = 0;
     //如果状态栏没有隐藏
     if (![UIApplication sharedApplication].statusBarHidden) {
-        originY = WF_StatusBarHeight;
+        originY = 0;
     }
     //如果navigationBar 没有隐藏
     if (!self.navigationController.navigationBarHidden) {
@@ -243,8 +243,8 @@
     //title
     if ([keyPath isEqualToString:@"title"]) {
         NSString *title = change[NSKeyValueChangeNewKey];
-        if (!self.navigationItem.title) {
-            self.navigationItem.title = title;
+        if (!self.navTitleLabel.text) {
+            self.navTitleLabel.text = title;
         }
         
         return;

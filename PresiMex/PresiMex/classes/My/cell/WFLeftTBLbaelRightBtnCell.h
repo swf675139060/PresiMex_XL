@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) UIView * bottomLine;
 
 
+@property(copy, nonatomic)void(^clickbtnBlock)(UIButton *btn);
+
+
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 

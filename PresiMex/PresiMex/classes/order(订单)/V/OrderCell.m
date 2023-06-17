@@ -218,6 +218,7 @@
         [_PagarBtn setTitle:@"Usar" forState:UIControlStateNormal];
         _PagarBtn.layer.cornerRadius = 12.5;
         _PagarBtn.layer.masksToBounds = YES;
+        _PagarBtn.userInteractionEnabled = NO;
         
         [_PagarBtn addTarget:self action:@selector(clickUseBtn) forControlEvents:UIControlEventTouchUpInside];
         

@@ -131,22 +131,36 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if(indexPath.row == 0){
+        //评分
         PMQuestionnaireViewController*vc=[PMQuestionnaireViewController new];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 1){
+        // 隐私协议
+        WFWebViewController * vc = [[WFWebViewController alloc] init];
+        vc.urlString = H5_privacy;
+        [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.row == 2){
+        //反馈
         ComentarioVC * vc = [[ComentarioVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.row == 3){
-        
+        //客服
+            WFWebViewController * vc = [[WFWebViewController alloc] init];
+            vc.urlString = H5_help;
+            [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 4){
-        SobreVC * vc = [SobreVC new];
-        [self.navigationController pushViewController:vc animated:YES];
+        //关于我们
+        
+            WFWebViewController * vc = [[WFWebViewController alloc] init];
+            vc.urlString = H5_weAre;
+            [self.navigationController pushViewController:vc animated:YES];
+//        SobreVC * vc = [SobreVC new];
+//        [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.row == 5){
-        
+        //设置
         AjustesVC * vc = [AjustesVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }

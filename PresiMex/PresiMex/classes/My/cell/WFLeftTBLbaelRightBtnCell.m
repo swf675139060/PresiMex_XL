@@ -93,6 +93,7 @@
 -(UIButton *)btn{
     if(_btn== nil){
         _btn = [[UIButton alloc]init];
+        [_btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btn;
 }
@@ -168,4 +169,10 @@
     }];
 }
 
+
+-(void)clickBtn{
+    if(self.clickbtnBlock){
+        self.clickbtnBlock(self.btn);
+    }
+}
 @end

@@ -89,12 +89,14 @@
         }
         
         [cell.bottomLabel setText:@"" TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont systemFontOfSize:15]];
-        
+        NSString * batch = @"";
         if ([self.fraction isEqualToString:@"va"]) {
-            cell.bottomLabel.text = self.model.specials.batch;
+            batch = self.model.specials.batch;
         } else if ([self.fraction isEqualToString:@"store"]) {
-            cell.bottomLabel.text = self.model.yo.batch;
+            batch = self.model.yo.batch;
         }
+        
+        cell.bottomLabel.text = batch;
         
         [cell.btn addLinearGradientwithSize:CGSizeMake(85, 33) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:5];
         [cell.btn setText:@"Copiar" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
@@ -106,6 +108,12 @@
         
         [cell upBtnFrameWithInsets:UIEdgeInsetsMake(16, 0, 34, 15) size:CGSizeMake(85, 33)];
         [cell upLineFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
+        WF_WEAKSELF(weakself);
+        [cell setClickbtnBlock:^(UIButton * _Nonnull btn) {
+            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+            pasteboard.string = batch;
+            [weakself.view showTipC:@"Copia exitosa"];
+        }];
         
         return cell;
         
@@ -148,9 +156,9 @@
         
         NSURL *url;
         if ([self.fraction isEqualToString:@"va"]) {
-            url = [NSURL URLWithString:@"https://test-h5-ios.presimex.mx/STP.html"];
+            url = [NSURL URLWithString:H5_STP];
         } else if ([self.fraction isEqualToString:@"store"]) {
-            url = [NSURL URLWithString:@"https://test-h5-ios.presimex.mx/store.html"];
+            url = [NSURL URLWithString:H5_store];
         }
         
         [cell.label2 loadRequest:[NSURLRequest requestWithURL:url]];

@@ -115,11 +115,13 @@ static inline BOOL IsEmpty(id thing){
       
        NSDictionary*dict=[self dictionaryForJsonData:responseObject];
         NSLog(@"url===%@\nget_responseObject=%@",url,dict);
-        //       if (!IsEmpty(responseObject) &&[responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
-        //           [PSAccountTool logOut];
-        //       }else if([responseObject[@"error"] isEqual:@"Please login"]&&!([responseObject[@"code"] intValue]==202)){
-        //           [PSAccountTool logOut];
-        //       }
+        if (!IsEmpty(responseObject)) {
+            if(dict[@"code"] && [dict[@"code"] intValue]==401)
+            [PMAccountTool logOut];
+        }
+//        else if([responseObject[@"error"] isEqual:@"Please login"]&&!([responseObject[@"code"] intValue]==202)){
+//            [PSAccountTool logOut];
+//        }
         
         if (success) {
             success(dict);
@@ -217,11 +219,15 @@ static inline BOOL IsEmpty(id thing){
     NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameters);
     return  [manager POST:url parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
+        
+        
         if(!IsEmpty(responseObject)){
             if (responseObject) {
                 success(responseObject);
             }
         }
+        
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -300,11 +306,16 @@ static inline BOOL IsEmpty(id thing){
     NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameters);
     return  [manager POST:url parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
+        
          if(!IsEmpty(responseObject)){
 //            if (responseObject) {
 //                success(responseObject);
 //            }
              NSDictionary*dict=[self dictionaryForJsonData:responseObject];
+             
+             if ([dict[@"code"] intValue]==401) {
+                 [PMAccountTool logOut];
+             }
              success(dict);
              NSLog(@"%@",dict);
         }

@@ -382,7 +382,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [tableView deselectRowAtIndexPath:indexPath animated:true];
     if(indexPath.row == 11){
         NSMutableArray * titleArr = [NSMutableArray array];
         for (PayTypeModel * model in self.payModelArr) {
@@ -449,6 +448,7 @@
     NSString *url=[NSString stringWithFormat:@"%@%@",GET_Loan_Detail,self.repayId];
     WF_WEAKSELF(weakself);
 
+    [self show];
     [PMBaseHttp get:url parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
@@ -456,14 +456,18 @@
             if(!weakself.payModelArr){
                 
                 [weakself GETMerchantPass:weakself.leftModel.demanding];
+            }else{
+                [weakself dismiss];
             }
+            
             [weakself.tableView reloadData];
         }else{
-            [weakself.view showTip:responseObject[@"msg"]];
+            [weakself dismiss];
+            [weakself.view showTipC:responseObject[@"msg"]];
         }
         
     } failure:^(NSError * _Nonnull error) {
-        
+        [weakself dismiss];
     }];
 }
 
@@ -472,8 +476,10 @@
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
 
+    [self show];
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:[NSString stringWithFormat:GET_Repay_Bill_Detail,self.repayId] parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             weakself.rightModel = [RepayModel mj_objectWithKeyValues:shame];
@@ -484,13 +490,13 @@
             [weakself.tableView reloadData];
             
         }else{
-            [weakself.view showTip:responseObject[@"msg"]];
+            [weakself.view showTipC:responseObject[@"msg"]];
         }
         
         
         
     } failure:^(NSError * _Nonnull error) {
-        
+        [weakself dismiss];
     }];
 }
 
@@ -503,19 +509,20 @@
 
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_Merchant_Pass parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             NSArray * sports = responseObject[@"shame"][@"sports"];
             weakself.payModelArr = [PayTypeModel mj_objectArrayWithKeyValuesArray:sports];
             [weakself.tableView reloadData];
             
         }else{
-            [weakself.view showTip:responseObject[@"msg"]];
+            [weakself.view showTipC:responseObject[@"msg"]];
         }
         
         
         
     } failure:^(NSError * _Nonnull error) {
-        
+        [weakself dismiss];
     }];
 }
 

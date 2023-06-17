@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIView (Loading)
 
 
--(void)showTip:(NSString*)text;
+-(void)showTipC:(NSString*)text;
 -(void)show;
 -(void)dismiss;
 @end
