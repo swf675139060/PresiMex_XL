@@ -63,6 +63,8 @@
     if(_leftBtn == nil){
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _leftBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        _leftBtn.tag = 0;
+        [_leftBtn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftBtn;
 }
@@ -71,6 +73,8 @@
     if(_rightBtn == nil){
         _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _rightBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        _rightBtn.tag = 1;
+        [_rightBtn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
 }
@@ -98,6 +102,12 @@
         make.centerY.equalTo(self.leftBtn);
 
     }];
+}
+
+-(void)clickBtn:(UIButton *)btn{
+    if(self.clickBtnBlock){
+        self.clickBtnBlock(btn.tag);
+    }
 }
 
 @end

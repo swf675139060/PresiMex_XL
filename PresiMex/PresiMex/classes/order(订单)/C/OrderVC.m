@@ -235,11 +235,11 @@
         if ([responseObject[@"retail"] intValue]==200) {
             NSArray * pledge = responseObject[@"shame"][@"pledge"];
             NSArray *modelArr = [OrderModel mj_objectArrayWithKeyValuesArray:pledge];
-            if (weakself.indx == 0) {
+            if (indx == 0) {
                 weakself.leftArr = [NSMutableArray arrayWithArray:modelArr];
                 
             } else {
-                weakself.leftArr = [NSMutableArray arrayWithArray:modelArr];
+                weakself.rightArr = [NSMutableArray arrayWithArray:modelArr];
             }
             
             [weakself.tableView reloadData];

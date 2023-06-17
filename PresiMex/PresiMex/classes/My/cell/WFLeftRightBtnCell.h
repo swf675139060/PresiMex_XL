@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic)UIButton * rightBtn;
 
+@property (copy, nonatomic)void(^clickBtnBlock)(NSInteger indx);
+
+
+
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
 

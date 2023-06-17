@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSString * batch;//支付码
 @property(strong, nonatomic) NSString * properly;//支付指引
 
+@property(strong, nonatomic) UIImage * batchImage;//支付码 图片
+
 @end
 
 //银行支付方式
@@ -46,6 +48,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSString * site;//clabe账号
 @property(strong, nonatomic) NSString * troy;//    Concepto de pago
 @property(strong, nonatomic) NSString * drops;//订单序列号
+
+@property(strong, nonatomic) UIImage * batchImage;//支付码 图片
 @end
 
 //OXXO支付方式
@@ -56,6 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSString * tt;//还款金额，用于展示，带千分位符
 @property(strong, nonatomic) NSString * batch;//支付码
 @property(strong, nonatomic) NSString * properly;//支付指引
+
+@property(strong, nonatomic) UIImage * batchImage;//支付码 图片
 @end
 
 //Store支付方式
@@ -66,6 +72,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSString * tt;//还款金额，用于展示，带千分位符
 @property(strong, nonatomic) NSString * batch;//支付码
 @property(strong, nonatomic) NSString * properly;//支付指引
+
+@property(strong, nonatomic) UIImage * batchImage;//支付码 图片
 @end
 
 

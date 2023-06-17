@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle;
 
-@property (copy, nonatomic)void(^clickBtnBlock)(void);
+@property (copy, nonatomic)void(^clickBtnBlock)(NSInteger indx);
 @end
 
 NS_ASSUME_NONNULL_END

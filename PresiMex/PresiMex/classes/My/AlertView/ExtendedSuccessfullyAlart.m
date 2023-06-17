@@ -27,7 +27,8 @@
 - (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle{
     self = [super initWithFrame:frame];
     if (self) {
-        self.Conttent = @"Felicitaciones, en  ********* su solicitud se ha extendido con éxito,  Puede ir a Mis préstamos para ver los detalles del nuevo pedido.";
+        self.Conttent = [NSString stringWithFormat:@"Felicitaciones, en  %@ su solicitud se ha extendido con éxito,  Puede ir a Mis préstamos para ver los detalles del nuevo pedido.",Conttent] ;
+        
         self.btnTitle = @"OK";
         [self buildSubViews1];
     }
@@ -74,13 +75,14 @@
 {
     
     if (indexPath.row == 0) {
-        WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
+        WFLabelCell * cell = [WFLabelCell cornerCellWithTableView:tableView];
         cell.label.text = self.Conttent;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
-        cell.label.font = [UIFont boldSystemFontOfSize:20];
-        cell.label.textAlignment = NSTextAlignmentCenter;
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(39.5, 25, 33, 25)];
+        cell.label.font = [UIFont boldSystemFontOfSize:11];
+        cell.label.textAlignment = NSTextAlignmentLeft;
+        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        
+        [cell upBGFrameWithInsets:UIEdgeInsetsMake(39.5, 25, 33, 25) maskedCorners: kCALayerMinXMinYCorner| kCALayerMaxXMinYCorner cornerRadius:0.1];
         return cell;
     }else{
         WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
@@ -125,6 +127,8 @@
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.layer.cornerRadius = 15;
+        _tableView.layer.masksToBounds = YES;
     }
     
     return _tableView;

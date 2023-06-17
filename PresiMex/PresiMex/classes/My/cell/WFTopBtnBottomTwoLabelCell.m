@@ -57,9 +57,6 @@
         make.left.equalTo(self.contentView).offset(padding.left);
         make.right.equalTo(self.contentView).offset(-padding.right);
         make.height.equalTo(@(10));
-        
-       
- 
     }];
     
     [self.label1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,6 +66,7 @@
     [self.label2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.BGView);
         make.top.equalTo(self.label1.mas_bottom).offset(10);
+        make.height.equalTo(@(300));
     }];
     
 }
@@ -94,13 +92,32 @@
     return _label1;
 }
 
--(UILabel *)label2{
+-(WKWebView *)label2{
     if(_label2 == nil){
-        _label2 = [[UILabel alloc] init];
-        _label2.numberOfLines = 0;
+        _label2 = [[WKWebView alloc] init];
+        _label2.scrollView.scrollEnabled = NO;
+        [_label2.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+        
     }
     return _label2;
 }
+#pragma mark  - KVO回调
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    
+    CGFloat newHeight = _label2.scrollView.contentSize.height + 30;
+    
+    if(self.label2.jk_height < newHeight){
+        [self.label2 mas_updateConstraints:^(MASConstraintMaker *make) {
+            
+            make.left.equalTo(self.BGView).offset(13);
+            make.right.equalTo(self.BGView).offset(-13);
+            make.bottom.equalTo(self.BGView).offset(-21);
+            make.top.equalTo(self.label1.mas_bottom).offset(14);
+            make.height.equalTo(@(newHeight));
+        }];
+    }
+}
+
 
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding{
     [self.BGView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -141,16 +158,12 @@
         
     }];
     
-    [self.label2 mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.BGView).offset(padding.left);
-        make.right.equalTo(self.BGView).offset(-padding.right);
-        make.bottom.equalTo(self.BGView).offset(-padding.bottom);
-        make.top.equalTo(self.label1.mas_bottom).offset(spacing);
-    }];
 }
 
 
 
-
+-(void)dealloc{
+    [self.label2.scrollView removeObserver:self forKeyPath:@"contentSize"];
+}
 
 @end

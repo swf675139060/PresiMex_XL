@@ -15,12 +15,18 @@
 
 #import "PayModel.h"
 #import "PayResultModel.h"
+#import "ExtendedSuccessfullyAlart.h"
+#import "RepaymentSuccessfulAlert.h"
+#import "HomeDetailsVC.h"
 
 @interface PayVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
 @property (nonatomic, strong) PayModel * model;
+
+@property (nonatomic, strong) NSTimer *timer;
+
 
 @end
 
@@ -41,7 +47,6 @@
 //        self.navTitleLabel.text = @"OXXO Cash";
 //    }
     [self GETRepayVcInfo];
-    [self GETRepayBill];
 }
 
 
@@ -116,7 +121,7 @@
         cell.label.font = [UIFont boldSystemFontOfSize:13];
         cell.label.textAlignment = NSTextAlignmentLeft;
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(16, 15, 20, 15)];
+        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(16, 15, 0, 15)];
         return cell;
     }else if (indexPath.row == 3) {
         if ([self.fraction isEqualToString:@"va"]) {
@@ -126,21 +131,27 @@
         WFImageCell * cell = [WFImageCell cellWithTableView:tableView];
         [cell.imgV sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:nil];
         cell.bottomLine.hidden = NO;
-//        cell.imgV.backgroundColor = [UIColor redColor];
-        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(0, 0, 24, 0) height:65];
+        if ([self.fraction isEqualToString:@"va"]) {
+            cell.imgV.image = self.model.specials.batchImage;
+        } else if ([self.fraction isEqualToString:@"store"]) {
+            cell.imgV.image = self.model.yo.batchImage;
+        }
+        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0) height:109];
         return cell;
     } else {
         WFTopBtnBottomTwoLabelCell * cell = [WFTopBtnBottomTwoLabelCell cellWithTableView:tableView];
         [cell.btn setImage:[UIImage imageNamed:@"pago"] forState:UIControlStateNormal];
         [cell.label1 setText:@"El código de pago es válido durante 6 horas, organice el pago lo antes posible." TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:11]];
         
-        [cell.label2 setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:12]];
-        
+        NSURL *url;
         if ([self.fraction isEqualToString:@"va"]) {
-            cell.label2.text = self.model.specials.properly;
+            url = [NSURL URLWithString:@"https://test-h5-ios.presimex.mx/STP.html"];
         } else if ([self.fraction isEqualToString:@"store"]) {
-            cell.label2.text = self.model.yo.properly;
+            url = [NSURL URLWithString:@"https://test-h5-ios.presimex.mx/store.html"];
         }
+        
+        [cell.label2 loadRequest:[NSURLRequest requestWithURL:url]];
+        
         
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(40, 16, 30, 16)];
         cell.BGView.layer.cornerRadius = 10;
@@ -176,6 +187,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)initNSTimer{
+    // 创建定时器，时间间隔为12秒，重复执行
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:12.0 target:self selector:@selector(GETRepayBill) userInfo:nil repeats:YES];
+}
+
 #pragma mark -- init
 - (UITableView *)tableView
 {
@@ -206,6 +222,8 @@
             NSDictionary * shame = responseObject[@"shame"];
             weakself.model = [PayModel mj_objectWithKeyValues:shame];
             [weakself.tableView reloadData];
+            [weakself GETRepayBill];
+            [weakself initNSTimer];
             
         }else{
             
@@ -224,12 +242,84 @@
     
     
     WF_WEAKSELF(weakself);
-    [self.view show];
     [PMBaseHttp get:[NSString stringWithFormat:GET_Repay_Bill,self.repayId] parameters:pars success:^(id  _Nonnull responseObject) {
-        [weakself.view dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             PayResultModel * model = [PayResultModel mj_objectWithKeyValues:shame];
+            
+            if ([model.small integerValue] == 20) {
+                
+                [weakself.timer invalidate];
+                weakself.timer = nil;
+                //已还款
+                if ([weakself.repaymentType integerValue] == 1) {
+                    //全款
+                    
+                    RepaymentSuccessfulAlert * alert = [[RepaymentSuccessfulAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.model.hang btnTitel:@""];
+                    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+                    [AlertView show];
+                    WF_WEAKSELF(weakself);
+                    [alert setClickBtnBlock:^(NSInteger indx) {
+                        [AlertView dismiss];
+                        if (indx == 0) {
+                            //返回
+                            [weakself.navigationController popViewControllerAnimated:YES];
+                        } else {
+                            //重新借
+                            
+                            // 更新 UI
+                            HomeDetailsVC * vc = [[HomeDetailsVC alloc] init];
+                            [weakself.navigationController pushViewController:vc animated:YES];
+                            NSMutableArray *vcArray = weakself.navigationController.childViewControllers.mutableCopy;
+                            
+                            NSInteger coordinateVCIndex = [vcArray indexOfObject:weakself];
+                            if (coordinateVCIndex == NSNotFound || vcArray.count <= 2) {
+                                return;
+                            }
+                            for (NSInteger i = vcArray.count - 2; i > 0; i--) {
+                                [vcArray removeObjectAtIndex:i];
+                            }
+                            
+                            [weakself.navigationController setViewControllers:vcArray];
+                            
+                        }
+                    }];
+                    
+                } else {
+                    //展期
+                    
+                    ExtendedSuccessfullyAlart * alert = [[ExtendedSuccessfullyAlart alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.model.hang btnTitel:@""];
+                    
+                    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+                    [AlertView show];
+                    WF_WEAKSELF(weakself);
+                    [alert setClickBtnBlock:^{
+                        [AlertView dismiss];
+                        
+                        //展期：重新借
+                        
+                        // 更新 UI
+                        HomeDetailsVC * vc = [[HomeDetailsVC alloc] init];
+                        [weakself.navigationController pushViewController:vc animated:YES];
+                        NSMutableArray *vcArray = weakself.navigationController.childViewControllers.mutableCopy;
+                        
+                        NSInteger coordinateVCIndex = [vcArray indexOfObject:weakself];
+                        if (coordinateVCIndex == NSNotFound || vcArray.count <= 2) {
+                            return;
+                        }
+                        for (NSInteger i = vcArray.count - 2; i > 0; i--) {
+                            [vcArray removeObjectAtIndex:i];
+                        }
+                        
+                        [weakself.navigationController setViewControllers:vcArray];
+                        
+                    }];
+                    
+                }
+                
+            } else {
+                
+            }
             
         }else{
             

@@ -58,6 +58,11 @@
 		A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */; };
 		A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */; };
 		A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2D2A3085C500389B67 /* YYClassInfo.m */; };
+		FB107B542A3D8A370099C52B /* ConfirmAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB107B532A3D8A370099C52B /* ConfirmAccountVC.m */; };
+		FB107B572A3D8BA10099C52B /* bankcardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB107B562A3D8BA10099C52B /* bankcardCell.m */; };
+		FB107B5A2A3DA0C40099C52B /* bankcardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB107B592A3DA0C40099C52B /* bankcardModel.m */; };
+		FB107B5D2A3DAA520099C52B /* NSString+BarCode.m in Sources */ = {isa = PBXBuildFile; fileRef = FB107B5C2A3DAA520099C52B /* NSString+BarCode.m */; };
+		FB107B602A3DB1B00099C52B /* WFWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB107B5F2A3DB1B00099C52B /* WFWebViewController.m */; };
 		FB1C73A72A23247800194925 /* PMNotiView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C73A62A23247800194925 /* PMNotiView.m */; };
 		FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C73A92A23417900194925 /* WFLeftRightBtnCell.m */; };
 		FB26CFEC2A1A3A0E000DB383 /* SelectImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB26CFEB2A1A3A0E000DB383 /* SelectImageCell.m */; };
@@ -260,6 +265,16 @@
 		A4F49D2E2A3085C500389B67 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB107B522A3D8A370099C52B /* ConfirmAccountVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmAccountVC.h; sourceTree = "<group>"; };
+		FB107B532A3D8A370099C52B /* ConfirmAccountVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmAccountVC.m; sourceTree = "<group>"; };
+		FB107B552A3D8BA10099C52B /* bankcardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bankcardCell.h; sourceTree = "<group>"; };
+		FB107B562A3D8BA10099C52B /* bankcardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bankcardCell.m; sourceTree = "<group>"; };
+		FB107B582A3DA0C40099C52B /* bankcardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bankcardModel.h; sourceTree = "<group>"; };
+		FB107B592A3DA0C40099C52B /* bankcardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bankcardModel.m; sourceTree = "<group>"; };
+		FB107B5B2A3DAA520099C52B /* NSString+BarCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+BarCode.h"; sourceTree = "<group>"; };
+		FB107B5C2A3DAA520099C52B /* NSString+BarCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+BarCode.m"; sourceTree = "<group>"; };
+		FB107B5E2A3DB1B00099C52B /* WFWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFWebViewController.h; sourceTree = "<group>"; };
+		FB107B5F2A3DB1B00099C52B /* WFWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFWebViewController.m; sourceTree = "<group>"; };
 		FB1C73A52A23247800194925 /* PMNotiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMNotiView.h; sourceTree = "<group>"; };
 		FB1C73A62A23247800194925 /* PMNotiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMNotiView.m; sourceTree = "<group>"; };
 		FB1C73A82A23417900194925 /* WFLeftRightBtnCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftRightBtnCell.h; sourceTree = "<group>"; };
@@ -840,6 +855,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FB107B4E2A3D89030099C52B /* bankcord(银行卡) */ = {
+			isa = PBXGroup;
+			children = (
+				FB107B502A3D89030099C52B /* C */,
+				FB107B4F2A3D89030099C52B /* M */,
+				FB107B512A3D89030099C52B /* V */,
+			);
+			path = "bankcord(银行卡)";
+			sourceTree = "<group>";
+		};
+		FB107B4F2A3D89030099C52B /* M */ = {
+			isa = PBXGroup;
+			children = (
+				FB107B582A3DA0C40099C52B /* bankcardModel.h */,
+				FB107B592A3DA0C40099C52B /* bankcardModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		FB107B502A3D89030099C52B /* C */ = {
+			isa = PBXGroup;
+			children = (
+				FB107B522A3D8A370099C52B /* ConfirmAccountVC.h */,
+				FB107B532A3D8A370099C52B /* ConfirmAccountVC.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		FB107B512A3D89030099C52B /* V */ = {
+			isa = PBXGroup;
+			children = (
+				FB107B552A3D8BA10099C52B /* bankcardCell.h */,
+				FB107B562A3D8BA10099C52B /* bankcardCell.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		FB1C739E2A23232A00194925 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -909,6 +961,8 @@
 		FB8AF2EE2A0882F2006C5887 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				FB939F382A22118C00599A86 /* order(订单) */,
+				FB107B4E2A3D89030099C52B /* bankcord(银行卡) */,
 				A4D6F11A2A25ADEF006B4BA6 /* Means */,
 				A4DD5E292A21E85300451413 /* Login */,
 				FBCA72332A0A6A0500A10D4E /* My */,
@@ -947,6 +1001,8 @@
 		FB8AF3242A088C2F006C5887 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				FB107B5B2A3DAA520099C52B /* NSString+BarCode.h */,
+				FB107B5C2A3DAA520099C52B /* NSString+BarCode.m */,
 				FBC4CBA82A24ECEE0050C47F /* UIButton */,
 				A4DD5E1C2A21A9D400451413 /* Nav_Bar */,
 				FB8AF32B2A088C78006C5887 /* UILabel */,
@@ -986,6 +1042,8 @@
 		FB8AF32F2A091EC6006C5887 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				FB107B5E2A3DB1B00099C52B /* WFWebViewController.h */,
+				FB107B5F2A3DB1B00099C52B /* WFWebViewController.m */,
 				FBC5290A2A1863E1004B7721 /* WFBaseView.h */,
 				FBC529092A1863E1004B7721 /* WFBaseView.m */,
 				FB8AF3302A091F34006C5887 /* WFNavigationController.h */,
@@ -1414,7 +1472,6 @@
 			isa = PBXGroup;
 			children = (
 				FB7BC8722A2AF336000BB3ED /* AlertView */,
-				FB939F382A22118C00599A86 /* order(订单) */,
 				FB939F2B2A21F5C100599A86 /* Cupón(优惠卷) */,
 				FB939F1B2A21E25500599A86 /* Ajustes(设置) */,
 				FBC2A85B2A19C95A0010D7F8 /* cell */,
@@ -1747,6 +1804,7 @@
 				A4DD5E642A21FFE400451413 /* CRBoxFlowLayout.m in Sources */,
 				A4DD5E2F2A21E8A400451413 /* PMLoginViewController.m in Sources */,
 				FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */,
+				FB107B602A3DB1B00099C52B /* WFWebViewController.m in Sources */,
 				FBC27AED2A34AD20001D04F1 /* UIScrollView+EmptyDataSet.m in Sources */,
 				A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */,
 				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
@@ -1771,6 +1829,7 @@
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
+				FB107B572A3D8BA10099C52B /* bankcardCell.m in Sources */,
 				FB2ABD532A358E1D00B7073D /* PayTypeModel.m in Sources */,
 				A40B4CB72A2C706B001B11F0 /* PMCerViewCell.m in Sources */,
 				FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */,
@@ -1781,12 +1840,14 @@
 				FB9E5AB22A3B4DF000E1D38E /* PayResultModel.m in Sources */,
 				FBC27AD02A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m in Sources */,
 				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
+				FB107B5A2A3DA0C40099C52B /* bankcardModel.m in Sources */,
 				FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */,
 				FBC27AD72A342BB3001D04F1 /* HomeNoAuthView.m in Sources */,
 				FB9E5AB82A3B512000E1D38E /* RepaymentSuccessfulAlert.m in Sources */,
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				A400BCF42A25F11E006CABB2 /* PMIDAuthViewCell.m in Sources */,
 				FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */,
+				FB107B5D2A3DAA520099C52B /* NSString+BarCode.m in Sources */,
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
 				FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */,
 				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,
@@ -1804,6 +1865,7 @@
 				A40B4CAE2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
 				FB8AF3322A091F34006C5887 /* WFNavigationController.m in Sources */,
+				FB107B542A3D8A370099C52B /* ConfirmAccountVC.m in Sources */,
 				A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */,
 				FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */,
 				A4D6F1182A259974006B4BA6 /* PMUser.m in Sources */,

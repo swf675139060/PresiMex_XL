@@ -430,7 +430,7 @@
 
 
 #pragma mark --网络请求
-
+//轮播信息
 -(void)GETAppBanner{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
@@ -491,6 +491,7 @@
 
 //获取产品列表
 -(void)GETProductList{
+    self.changeValue = 3000;
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
     WF_WEAKSELF(weakself);
@@ -512,7 +513,7 @@
         }
         
         
-        
+
     } failure:^(NSError * _Nonnull error) {
         
     }];

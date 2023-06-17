@@ -93,6 +93,8 @@ _Pragma("clang diagnostic pop")
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import "WFCustomAlertView.h"
 #import "JKPickerViewAppearance.h"
+#import "NSString+BarCode.h"
+#import "WFWebViewController.h"
 
 #import <JKCategories/JKCategories.h>
 #import <Masonry/Masonry.h>
@@ -100,6 +102,7 @@ _Pragma("clang diagnostic pop")
 #import <SDWebImage/SDWebImage.h>
 #import <MJRefresh/MJRefresh.h>
 #import "UIScrollView+EmptyDataSet.h"
+
 
 #import "PMUrl.h"
 #import "PMBaseHttp.h"

@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WFTopBtnBottomTwoLabelCell : UITableViewCell
@@ -14,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic)UIButton * btn;
 @property(strong, nonatomic) UILabel * label1;
-@property(strong, nonatomic) UILabel * label2;
+@property(strong, nonatomic) WKWebView * label2;
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 

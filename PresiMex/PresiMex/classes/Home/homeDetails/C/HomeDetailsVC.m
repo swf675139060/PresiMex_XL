@@ -11,6 +11,9 @@
 #import "WFLeftRightLabelCell.h"
 #import "WFLeftRightBtnCell.h"
 #import "WFBtnCell.h"
+#import "PMAuthModel.h"
+#import "bankcardModel.h"
+#import "ConfirmAccountVC.h"
 
 @interface HomeDetailsVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -21,6 +24,9 @@
 
 @property (nonatomic, assign) NSInteger selectIndx;// 点击的section
 
+@property (nonatomic, strong) bankcardModel * bankModel;// 点击的section
+
+
 
 @end
 
@@ -30,7 +36,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if (self.homeModel == nil) {
+        [self GETUserAuthInfo];
+    }
     
     
     [self.tempView addSubview:self.tableView];
@@ -185,16 +193,35 @@
         if (indexPath.row == 0) {
             WFLeftRightBtnCell * cell = [WFLeftRightBtnCell cellWithTableView:tableView];
             [cell upBtnsFrameWithEdgeInsets:UIEdgeInsetsMake(12.5, 15, 0, 15)];
-            [cell.leftBtn setTitle:@"CLABE" forState:UIControlStateNormal];
+            if(self.bankModel){
+                if ([self.bankModel.diameter integerValue] == 1) {
+                    [cell.leftBtn setTitle:@"BANK" forState:UIControlStateNormal];
+                } else {
+                    [cell.leftBtn setTitle:@"CLABE" forState:UIControlStateNormal];
+                }
+            }
+            
             [cell.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#1B1200"]  forState:UIControlStateNormal];
             cell.leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:18];
             [cell.rightBtn setText:@"Modificar cuenta" TextColor:BColor_Hex(@"#FC7500", 1) Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+            WF_WEAKSELF(weakself);
+            [cell setClickBtnBlock:^(NSInteger indx) {
+                if (indx == 1) {
+                    ConfirmAccountVC * VC = [[ConfirmAccountVC alloc] init];
+                    VC.bankModel = weakself.bankModel;
+                    [weakself.navigationController pushViewController:VC animated:YES];
+                }
+            }];
+            
             return cell;
         } else if (indexPath.row == 1)  {
             WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView identifier:@"1"];
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(14, 15, 20, 15)];
-            [cell.leftLabel setText:@"00000000000" TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:12]];
-            [cell.rightLabel setText:@"BANK ABC" TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont boldSystemFontOfSize:12]];
+            if(self.bankModel){
+                
+                [cell.leftLabel setText:self.bankModel.diploma TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:12]];
+                [cell.rightLabel setText:[NSString stringWithFormat:@"BANK %@",self.bankModel.marshall] TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont boldSystemFontOfSize:12]];
+            }
             return cell;
         }else{
             WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
@@ -275,9 +302,9 @@
         if ([responseObject[@"retail"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             
-//            PMHomeModel * model = [PMHomeModel mj_objectWithKeyValues:shame];
+            bankcardModel * model = [bankcardModel mj_objectWithKeyValues:shame];
 //
-//            weakself.homeModel = model;
+            weakself.bankModel = model;
             [weakself.tableViewBottom reloadData];
             
         }else{
@@ -325,6 +352,61 @@
 }
 
 
+
+//获取用户授信信息
+-(void)GETUserAuthInfo{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    [self.view show];
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_User_Auth_Info parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            PMAuthModel * model = [PMAuthModel mj_objectWithKeyValues:shame];
+            [weakself GETProductList:[model.monster integerValue]];
+            
+        }else{
+            
+            [weakself.view dismiss];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+        [weakself.view dismiss];
+    }];
+}
+
+
+//获取产品列表
+-(void)GETProductList:(NSInteger )changeValue{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:[NSString stringWithFormat:GET_Product_List,changeValue] parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        [weakself.view dismiss];
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            
+            PMHomeModel * model = [PMHomeModel mj_objectWithKeyValues:shame];
+            
+            weakself.homeModel = model;
+            [weakself.tableView reloadData];
+            
+        }else{
+            weakself.homeModel = nil;
+            [weakself.tableView reloadData];
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+        [weakself.view dismiss];
+    }];
+}
 
 
 @end
