@@ -347,7 +347,9 @@ static inline BOOL IsEmpty(id thing){
     [manager.securityPolicy setValidatesDomainName:NO];
     NSString *urlEpt;NSString*file;
     if (parameter.allKeys.count) {
-        urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,POST_Orc_Image_File];
+        //urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,POST_Orc_Image_File];
+        urlEpt= @"https://test-api.presimex.mx/api/user/often/aggressive/britannica?monroe=1&router=1";
+    
         file=@"file";
     } else {//反馈上传图
         urlEpt=[NSString stringWithFormat:@"%@%@?supposed=feedback",API_URL,POST_Image_File];
@@ -367,7 +369,7 @@ static inline BOOL IsEmpty(id thing){
          NSString *fileName = [NSString stringWithFormat:@"%@.png",[formatter stringFromDate:[NSDate date]]];
          // 任意的二进制数据MIMEType application/octet-stream
 //         [formData appendPartWithFileData:imageData name:file fileName:fileName mimeType:@"image/png"];
-        [formData appendPartWithFileData:imageData name:file fileName:fileName mimeType:@"image/jpg"];
+        [formData appendPartWithFileData:imageData name:file fileName:fileName mimeType:@"image/png"];
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
 
