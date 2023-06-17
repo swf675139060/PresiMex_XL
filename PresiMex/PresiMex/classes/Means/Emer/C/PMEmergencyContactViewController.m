@@ -13,8 +13,10 @@
 
 #import "PMAddBankViewController.h"
 
+#import <ContactsUI/ContactsUI.h>
 
-@interface PMEmergencyContactViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@interface PMEmergencyContactViewController ()<UITableViewDelegate,UITableViewDataSource,CNContactPickerDelegate>
 
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -105,7 +107,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+    [self selectPersonContactPickerVc];
     
 }
 
@@ -158,6 +160,37 @@
     
     PMAddBankViewController*vc=[PMAddBankViewController new];
     [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+#pragma mark - 先弹出联系人控制器
+-(void)selectPersonContactPickerVc{
+    
+    // 1. 创建控制器
+    CNContactPickerViewController * picker = [CNContactPickerViewController new];
+    picker.delegate = self;
+    picker.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController: picker  animated:YES completion:nil];
+}
+
+// 1.选择联系人时使用（不展开详情）
+- (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact{
+    
+    NSString *name = [CNContactFormatter stringFromContact:contact style:CNContactFormatterStyleFullName];
+    NSArray * phoneNums = contact.phoneNumbers;
+    CNLabeledValue *labelValue = phoneNums.firstObject;
+    NSString *phoneValue = [labelValue.value stringValue];
+    NSString *phoneStr = [phoneValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"+63" withString:@""];
+    phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@")" withString:@""];
+    if(([phoneStr hasPrefix:@"9"]|[phoneStr hasPrefix:@"09"]|[phoneStr hasPrefix:@"639"]|[phoneStr hasPrefix:@"0639"]|[phoneStr hasPrefix:@"8"]|[phoneStr hasPrefix:@"08"]|[phoneStr hasPrefix:@"638"]|[phoneStr hasPrefix:@"0638"])){
+        //[self setupContactWithName:name withPhone:phoneStr withType:self.secetion];
+    }else{
+        [self showTip:@"Please fill in the valid emergency contact information,we will contact them randomly for verification !"];
+        return;
+    }
     
 }
 @end
