@@ -3,7 +3,7 @@
 //  PresiMex
 //
 //  Created by shenWenFeng on 2023/6/3.
-//
+//  连个label一个按钮
 
 #import "WFBaseView.h"
 

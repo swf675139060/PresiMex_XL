@@ -1,47 +1,40 @@
 //
-//  FeedBackAlert.m
+//  topLabelBottmBtnAlert.m
 //  PresiMex
 //
-//  Created by shenWenFeng on 2023/6/3.
+//  Created by shenWenFeng on 2023/6/15.
 //
 
-#import "FeedBackAlert.h"
+#import "topLabelBottmBtnAlert.h"
 #import "WFBtnCell.h"
 #import "WFLabelCell.h"
 
-@interface FeedBackAlert()<UITableViewDelegate,UITableViewDataSource>
+@interface topLabelBottmBtnAlert()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
+@property (nonatomic, strong) NSString *Conttent;
+@property (nonatomic, strong) NSString *btnTitle;
 
-@property (nonatomic, assign) NSInteger type;
-
-@property (nonatomic, strong) NSArray * titleArr;
 
 
 @end
-
-
-@implementation FeedBackAlert
+@implementation topLabelBottmBtnAlert
 
 
 //type 1: 成功 0 失败
-- (instancetype)initWithFrame:(CGRect)frame withType:(NSInteger)type{
+- (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle{
     self = [super initWithFrame:frame];
     if (self) {
-        self.type = type;
+        self.Conttent = Conttent;
+        self.btnTitle = btnTitle;
         [self buildSubViews1];
     }
     return self;
 }
 
 -(void)buildSubViews1{
-    
-    if (self.type == 1) {
-        self.titleArr = @[@"Envio exitoso",@"Comentarios recibidosnos pondremos en contacto consigo pronto.",@"OK"];
-    } else {
-        self.titleArr = @[@"Envio fallido",@"Error al enviar comentarios, intentelo de nuevo.",@"OK"];
-    }
+   
     [self addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -56,7 +49,7 @@
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -68,24 +61,16 @@
     
     if (indexPath.row == 0) {
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = self.titleArr[indexPath.row];
+        cell.label.text = self.Conttent;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
         cell.label.font = [UIFont boldSystemFontOfSize:20];
         cell.label.textAlignment = NSTextAlignmentCenter;
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(20, 29, 20, 29)];
-        return cell;
-    }else if (indexPath.row == 1){
-        WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = self.titleArr[indexPath.row];
-        cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
-        cell.label.font = [UIFont systemFontOfSize:13];
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(0, 25, 0, 25)];
+        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(39.5, 25, 33, 25)];
         return cell;
     }else{
         WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
-        [cell.btn setTitle:self.titleArr[indexPath.row] forState:UIControlStateNormal];
+        [cell.btn setTitle:self.btnTitle forState:UIControlStateNormal];
         cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         WF_WEAKSELF(weakself);
@@ -95,7 +80,7 @@
             }
         }];
         [cell.btn addLinearGradientwithSize:CGSizeMake(self.jk_width - 50, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
-        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(30, 25, 20, 25) height:50];
+        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(0, 25, 20, 25) height:50];
         return cell;
     }
     
@@ -141,4 +126,5 @@
 }
     
     
+
 @end

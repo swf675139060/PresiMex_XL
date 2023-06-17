@@ -14,6 +14,7 @@
 #import "WFEmptyCell.h"
 
 #import "PayModel.h"
+#import "PayResultModel.h"
 
 @interface PayVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -40,6 +41,7 @@
 //        self.navTitleLabel.text = @"OXXO Cash";
 //    }
     [self GETRepayVcInfo];
+    [self GETRepayBill];
 }
 
 
@@ -215,4 +217,29 @@
         [weakself.view dismiss];
     }];
 }
+
+//查询还款/展期结果
+-(void)GETRepayBill{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+    
+    
+    WF_WEAKSELF(weakself);
+    [self.view show];
+    [PMBaseHttp get:[NSString stringWithFormat:GET_Repay_Bill,self.repayId] parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself.view dismiss];
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            PayResultModel * model = [PayResultModel mj_objectWithKeyValues:shame];
+            
+        }else{
+            
+        }
+        
+        
+        
+    } failure:^(NSError * _Nonnull error) {
+        [weakself.view dismiss];
+    }];
+}
+
 @end
