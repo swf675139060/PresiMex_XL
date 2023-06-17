@@ -14,8 +14,8 @@
 @interface PMQuestionnaireViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
-@property (nonatomic, strong)PMQuesModel*model;
+@property (nonatomic, strong) PMQuesModel*model;
+@property (nonatomic, strong) NSMutableDictionary *parma;
 @end
 
 @implementation PMQuestionnaireViewController
@@ -62,6 +62,7 @@
     [self addRightBarButtonWithImag:@"bai_kefu"];
     //[self modelWithData];
     [self requestQuestInfo];
+    self.parma=[NSMutableDictionary new];
 }
 - (UITableView *)tableView{
     if (!_tableView) {
@@ -161,31 +162,38 @@
 }
 
 -(void)clickSubmitBtn{
-    PMIDAuthViewController*Vc=[PMIDAuthViewController new];
-    [self.navigationController pushViewController:Vc animated:YES];
+    
+    [self  submitQuest];
+    
 }
 
 -(void)didTableViewRowWithModel:(PMQuesModel*)model withIndex:(NSInteger)row{
     model.type=row;
     [self.view endEditing:YES];
-    weakify(self)
-<<<<<<< HEAD
-    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
-=======
-    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:model.datas pickerCompleteBlock:^(id  _Nonnull responseObjct,NSString*ID) {
->>>>>>> 06b9e59e40b5feb65d9f4639c485557e36f4f3c0
+    NSMutableArray*arr=[NSMutableArray new];
+    for (NSDictionary *dict in model.datas) {
+        NSString *title=dict[@"bulgaria"];
+        [arr addObject:title];
+    }
+    if (!arr.count) {
+        return;
+    }
+    weakify(self) __block id weakself=self;
+    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct, NSInteger indx) {
         strongify(self);
         NSString*content=responseObjct;
-        [self resetDataWithID:ID withContent:content withKey:model.ID];
+        [self resetDataWithContent:content withKey:model.ID];
+        self.parma[model.ID]=model.datas[indx][@"broken"];
         
     }];
+   
     [alert show] ;
   
     
 }
 
 
--(void)resetDataWithID:(NSString*)ID withContent:(NSString*)cont withKey:(NSString*)key{
+-(void)resetDataWithContent:(NSString*)cont withKey:(NSString*)key{
   
     [self.dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         PMQuesModel *model=(PMQuesModel *)obj;
@@ -200,7 +208,7 @@
         [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
         
     }];
-    [self submitQuest:cont];
+   
 }
 
 -(void)requestQuestInfo{
@@ -226,14 +234,23 @@
 }
 
 
--(void)submitQuest:(NSString*)key{
+-(void)submitQuest{
     
-    NSMutableDictionary*dict=[NSMutableDictionary new];
-    dict[@"broken"]=@{@"loan_num_now":@"10",@"loan_num_history":@"10"};
-    [PMBaseHttp postJson:POST_Investigate_Info parameters:dict success:^(id  _Nonnull responseObject) {
+    
 
+    [self show];
+    [PMBaseHttp postJson:POST_Investigate_Info parameters:self.parma success:^(id  _Nonnull responseObject) {
+        [self dismiss];
+        if ([responseObject[@"retail"] intValue]==200) {
+            [self pushIdVc];
+        }
     } failure:^(NSError * _Nonnull error) {
-
+        [self dismiss];
     }];
+}
+-(void)pushIdVc{
+    
+    PMIDAuthViewController*Vc=[PMIDAuthViewController new];
+    [self.navigationController pushViewController:Vc animated:YES];
 }
 @end

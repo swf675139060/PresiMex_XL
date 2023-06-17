@@ -28,6 +28,7 @@
 		A40B4CB42A2C6F07001B11F0 /* PMCertificationCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB32A2C6F07001B11F0 /* PMCertificationCoreViewController.m */; };
 		A40B4CB72A2C706B001B11F0 /* PMCerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB62A2C706B001B11F0 /* PMCerViewCell.m */; };
 		A40B4CBA2A2C70FC001B11F0 /* PMCerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB92A2C70FC001B11F0 /* PMCerModel.m */; };
+		A43475D52A3D664B002A4E17 /* JKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A43475D32A3D664B002A4E17 /* JKHelpers.m */; };
 		A4B36C7E2A35A30D00A18C80 /* PMQuesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C7D2A35A30D00A18C80 /* PMQuesModel.m */; };
 		A4B36C822A35A6AB00A18C80 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C802A35A6AB00A18C80 /* Toast+UIView.m */; };
 		A4B36C892A35EF1D00A18C80 /* PHImageFacePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C852A35EF1D00A18C80 /* PHImageFacePickerController.m */; };
@@ -194,6 +195,8 @@
 		A40B4CB62A2C706B001B11F0 /* PMCerViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCerViewCell.m; sourceTree = "<group>"; };
 		A40B4CB82A2C70FC001B11F0 /* PMCerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMCerModel.h; sourceTree = "<group>"; };
 		A40B4CB92A2C70FC001B11F0 /* PMCerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCerModel.m; sourceTree = "<group>"; };
+		A43475D32A3D664B002A4E17 /* JKHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKHelpers.m; sourceTree = "<group>"; };
+		A43475D42A3D664B002A4E17 /* JKHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKHelpers.h; sourceTree = "<group>"; };
 		A4B36C7C2A35A30D00A18C80 /* PMQuesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMQuesModel.h; sourceTree = "<group>"; };
 		A4B36C7D2A35A30D00A18C80 /* PMQuesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMQuesModel.m; sourceTree = "<group>"; };
 		A4B36C802A35A6AB00A18C80 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
@@ -726,6 +729,8 @@
 		A4DD5E232A21BAD600451413 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
+				A43475D42A3D664B002A4E17 /* JKHelpers.h */,
+				A43475D32A3D664B002A4E17 /* JKHelpers.m */,
 				A4DD5E242A21BB4300451413 /* PMBaseHttp.h */,
 				A4DD5E252A21BB4300451413 /* PMBaseHttp.m */,
 				A4DD5E282A21BC1100451413 /* PMUrl.h */,
@@ -1813,6 +1818,7 @@
 				FB939F342A21F65500599A86 /* CuponVC.m in Sources */,
 				A4B36C8A2A35EF1D00A18C80 /* PHImagePickerController.m in Sources */,
 				A4DD5E632A21FFE400451413 /* CRBoxInputView.m in Sources */,
+				A43475D52A3D664B002A4E17 /* JKHelpers.m in Sources */,
 				A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -54,7 +54,6 @@ static inline BOOL IsEmpty(id thing){
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -112,6 +111,7 @@ static inline BOOL IsEmpty(id thing){
     //NSString*josn=[parms toJSONString];
     return [manager GET:url parameters:parameter headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
+      
        NSDictionary*dict=[self dictionaryForJsonData:responseObject];
         NSLog(@"url===%@\nget_responseObject=%@",url,dict);
         //       if (!IsEmpty(responseObject) &&[responseObject[@"code"] intValue]==2003&& [responseObject[@"msg"] isEqual:@"Token Non-existent"]) {
@@ -485,8 +485,16 @@ static inline BOOL IsEmpty(id thing){
         return nil;
 
     }
-    NSString* gbkStr = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
-    NSData *jsonDa=[gbkStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSString* decodeStr = [[NSString alloc] initWithData:jsonData encoding:gbkEncoding];
+    if (!decodeStr)
+    {
+       
+        decodeStr = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
+       
+    }
+
+   NSData *jsonDa=[decodeStr dataUsingEncoding:NSUTF8StringEncoding];
    //转码之后再转utf8解析
    NSDictionary *requestDic = [NSJSONSerialization JSONObjectWithData:jsonDa options:NSJSONReadingMutableContainers error:nil];
 
@@ -581,5 +589,20 @@ static inline BOOL IsEmpty(id thing){
     }];
 }
 
++(NSString *)HexStringWithData:(NSData *)data{
+    Byte *bytes = (Byte *)[data bytes];
+    NSString *hexStr=@"";
+    for(int i=0;i<[data length];i++) {
+        NSString *newHexStr = [NSString stringWithFormat:@"%x",bytes[i]&0xff];///16进制数
+        if([newHexStr length]==1){
+            hexStr = [NSString stringWithFormat:@"%@0%@",hexStr,newHexStr];
+        }
+        else{
+            hexStr = [NSString stringWithFormat:@"%@%@",hexStr,newHexStr];
+        }
+    }
+    hexStr = [hexStr uppercaseString];
+    return hexStr;
+}
 
 @end
