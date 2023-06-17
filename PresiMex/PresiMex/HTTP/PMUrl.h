@@ -33,7 +33,7 @@
  */
 
 //用户退出
-#define  Get_User_LogOut  @"/api/user/repeated/cultures"
+#define  Get_User_LogOut  @"/api/user/repeated/cultures"//w
 
 //登录注册短信(发送)
 #define  Post_Sms_Code @"/api/user/repeated/malaysia" //w

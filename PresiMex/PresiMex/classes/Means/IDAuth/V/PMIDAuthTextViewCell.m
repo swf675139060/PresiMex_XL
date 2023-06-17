@@ -78,9 +78,9 @@
 -(void)setCellWithModel:(PMIDAuthModel*)model{
     
     _titleLabel.text=model.title;
-    _contentTF.text=model.content;
+    _contentTF.text=model.cartoon;
     _contentTF.placeholder=model.placeHold;
-   
+    
 }
 
 

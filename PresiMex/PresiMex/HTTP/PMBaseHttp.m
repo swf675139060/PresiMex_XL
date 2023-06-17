@@ -60,7 +60,8 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+//    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
@@ -323,12 +324,8 @@ static inline BOOL IsEmpty(id thing){
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
-    //manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    //manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 60;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -338,8 +335,8 @@ static inline BOOL IsEmpty(id thing){
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
-    //[manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [manager.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"multipart/form-data;application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
@@ -348,14 +345,19 @@ static inline BOOL IsEmpty(id thing){
     manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     manager.securityPolicy.allowInvalidCertificates = YES;
     [manager.securityPolicy setValidatesDomainName:NO];
-    NSString *urlEpt=[NSString stringWithFormat:@"%@%@?supposed=feedback",API_URL,POST_Image_File];
+    NSString *urlEpt;NSString*file;
+    if (parameter.allKeys.count) {
+        urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,POST_Orc_Image_File];
+        file=@"file";
+    } else {//反馈上传图
+        urlEpt=[NSString stringWithFormat:@"%@%@?supposed=feedback",API_URL,POST_Image_File];
+        file=@"img";
+    }
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
    NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
     [manager POST:url parameters:nil headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-//         UIImage *image = [UIImage imageNamed:@"test"];
-        
-        //UIImage* uploadImg = [image scaleToMaxSideLength:1920 andMaxSize:1024*1024*3];
+
         
         NSData *imageData = UIImageJPEGRepresentation(image, 0.3);//进行图片压缩
         
@@ -364,7 +366,8 @@ static inline BOOL IsEmpty(id thing){
          formatter.dateFormat = @"yyyyMMddHHmmss";
          NSString *fileName = [NSString stringWithFormat:@"%@.png",[formatter stringFromDate:[NSDate date]]];
          // 任意的二进制数据MIMEType application/octet-stream
-         [formData appendPartWithFileData:imageData name:@"img" fileName:fileName mimeType:@"image/png"];
+//         [formData appendPartWithFileData:imageData name:file fileName:fileName mimeType:@"image/png"];
+        [formData appendPartWithFileData:imageData name:file fileName:fileName mimeType:@"image/jpg"];
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
 

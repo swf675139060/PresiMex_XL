@@ -67,13 +67,13 @@
     
  
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    closeButton.frame = CGRectMake(WF_ScreenHeight-50,WF_StatusBarHeight, 40, 40);
+    closeButton.frame = CGRectMake(WF_ScreenWidth-50,WF_StatusBarHeight, 40, 40);
     [closeButton setImage:[UIImage imageNamed:@"icon_close_white"] forState: UIControlStateNormal];
     closeButton.imageView.contentMode=UIViewContentModeScaleAspectFit;
     [closeButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
     [img addSubview:closeButton];
     
-    CGFloat space=(WF_ScreenHeight-214)/2;
+    CGFloat space=(WF_ScreenWidth-214)/2;
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame = CGRectMake(space,WF_ScreenHeight-55 ,92, 40);
     [leftButton setImage:[UIImage imageNamed:@"icon_photo_cancel"] forState: UIControlStateNormal];
@@ -81,9 +81,11 @@
     [leftButton addTarget:self action:@selector(reTakePhoto) forControlEvents:UIControlEventTouchUpInside];
     [img addSubview:leftButton];
     _leftButton=leftButton;
+   
     
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.frame = CGRectMake(leftButton.swf_right+30,WF_ScreenHeight-55, 92, 40);
+   
     [rightButton setImage:[UIImage imageNamed:@"icon_photo_confirm"] forState: UIControlStateNormal];
     rightButton.imageView.contentMode=UIViewContentModeScaleAspectFit;
     [rightButton addTarget:self action:@selector(finishPicking) forControlEvents:UIControlEventTouchUpInside];
@@ -93,11 +95,11 @@
     _leftButton.hidden=YES;
     
     _tipsLabel = [[UILabel alloc] init];
-    _tipsLabel.frame = CGRectMake(400, 50, 300, 30);
+    _tipsLabel.frame = CGRectMake(400, 50,400, 30);
     CGPoint center = self.view.center;
     center.x += 170;
     _tipsLabel.center = center;
-    _tipsLabel.text = @"Take shot your own defined ID card properly";
+    _tipsLabel.text = @"Tome una foto de su indentificacion dentro del marco";
     _tipsLabel.textColor = [UIColor whiteColor];
     _tipsLabel.textAlignment = NSTextAlignmentCenter;
     _tipsLabel.font = [UIFont systemFontOfSize:13.0f];

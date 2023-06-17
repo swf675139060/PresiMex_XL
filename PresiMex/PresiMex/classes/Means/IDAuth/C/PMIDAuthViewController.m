@@ -12,7 +12,8 @@
 #import "PMIDAuthHeaderView.h"
 #import "PMBasicViewController.h"
 #import "PHImagePickerController.h"
-@interface PMIDAuthViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@interface PMIDAuthViewController ()<UITableViewDelegate,UITableViewDataSource,PHImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -34,6 +35,7 @@
     [self modelWithData];
     [self getCamearAuthSeletsAlert];
     //[self tableView];
+    [self requestImagPic];
 }
 - (void)modelWithData{
 
@@ -133,7 +135,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+    if (indexPath.row==0) {
+        [self selectPhoto];
+    } else {
+        
+    }
     
 }
 
@@ -229,5 +235,74 @@
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
     }];
 
+}
+
+//点击拍证件照片
+-(void)clickIDCardCamera{
+    
+    if ([self canUserCamear]) {
+        PHImagePickerController*vc=[PHImagePickerController  new];
+        vc.delegate=self;
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+}
+//点击证件照片的拍照回调
+-(void)customImagePickerController:(PHImagePickerController *)picker didFinishPickingImage:(UIImage *)image{
+    image = [UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationUp];
+    
+    if (image!=nil) {
+        [self submitPhoto:image withType:@"1" withSelType:@"1"];
+    }
+   
+}
+
+-(void)requestImagPic{
+    
+    [self show];
+    NSMutableDictionary*dict=[NSMutableDictionary new];
+    [PMBaseHttp get:GET_OCR_USER_INFO parameters:dict success:^(id  _Nonnull responseObject) {
+        [self dismiss];
+        if ([responseObject[@"retail"]intValue]==200) {
+            PMIDAuthModel*model=[PMIDAuthModel yy_modelWithDictionary:responseObject[@"shame"]];
+            PMIDAuthModel*model1=self.dataArray[0];
+            model1.held=model.held;
+            [self.dataArray replaceObjectAtIndex:0 withObject:model1];
+            PMIDAuthModel*model2=self.dataArray[1];
+            model2.silent=model.silent;
+            [self.dataArray replaceObjectAtIndex:1 withObject:model2];
+            PMIDAuthModel*model3=self.dataArray[2];
+            model3.acoustic=model.acoustic;
+            [self.dataArray replaceObjectAtIndex:2 withObject:model3];
+            PMIDAuthModel*model4=self.dataArray[3];
+            model4.cartoon=model.cartoon;
+            [self.dataArray replaceObjectAtIndex:3 withObject:model4];
+            PMIDAuthModel*model5=self.dataArray[4];
+            model5.cartoon=model.cartoon;
+            [self.dataArray replaceObjectAtIndex:4 withObject:model4];
+            [self.tableView reloadData];
+        } else {
+            
+        }
+        NSLog(@"%@",responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        [self dismiss];
+        NSLog(@"%@",error);
+    }];
+}
+
+-(void)submitPhoto:(UIImage*)img withType:(NSString*)type withSelType:(NSString*)selType{
+    
+    [self show];
+    NSMutableDictionary*dict=[NSMutableDictionary new];
+    dict[@"monroe"]=type;//类型 1:正面 2:反面
+    dict[@"router"]=selType;//1:拍照,2:相册上传
+    [PMBaseHttp uploadImg:img parameter:dict success:^(id  _Nonnull responseObject) {
+        NSLog(@"证件照==%@",responseObject);
+        [self dismiss];
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"证件照==%@",error);
+        
+    }];
 }
 @end
