@@ -30,6 +30,8 @@
 		A40B4CBA2A2C70FC001B11F0 /* PMCerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB92A2C70FC001B11F0 /* PMCerModel.m */; };
 		A43475D52A3D664B002A4E17 /* JKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A43475D32A3D664B002A4E17 /* JKHelpers.m */; };
 		A43475D92A3DD9A9002A4E17 /* moxi1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A43475D82A3DD9A9002A4E17 /* moxi1.jpg */; };
+		A43475DE2A3DE254002A4E17 /* CustomAlertImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A43475DC2A3DE254002A4E17 /* CustomAlertImage.bundle */; };
+		A43475DF2A3DE254002A4E17 /* TRCustomAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = A43475DD2A3DE254002A4E17 /* TRCustomAlert.m */; };
 		A4B36C7E2A35A30D00A18C80 /* PMQuesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C7D2A35A30D00A18C80 /* PMQuesModel.m */; };
 		A4B36C822A35A6AB00A18C80 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C802A35A6AB00A18C80 /* Toast+UIView.m */; };
 		A4B36C892A35EF1D00A18C80 /* PHImageFacePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C852A35EF1D00A18C80 /* PHImageFacePickerController.m */; };
@@ -208,6 +210,9 @@
 		A43475D32A3D664B002A4E17 /* JKHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKHelpers.m; sourceTree = "<group>"; };
 		A43475D42A3D664B002A4E17 /* JKHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKHelpers.h; sourceTree = "<group>"; };
 		A43475D82A3DD9A9002A4E17 /* moxi1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moxi1.jpg; sourceTree = "<group>"; };
+		A43475DB2A3DE254002A4E17 /* TRCustomAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRCustomAlert.h; sourceTree = "<group>"; };
+		A43475DC2A3DE254002A4E17 /* CustomAlertImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CustomAlertImage.bundle; sourceTree = "<group>"; };
+		A43475DD2A3DE254002A4E17 /* TRCustomAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRCustomAlert.m; sourceTree = "<group>"; };
 		A4B36C7C2A35A30D00A18C80 /* PMQuesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMQuesModel.h; sourceTree = "<group>"; };
 		A4B36C7D2A35A30D00A18C80 /* PMQuesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMQuesModel.m; sourceTree = "<group>"; };
 		A4B36C802A35A6AB00A18C80 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
@@ -611,6 +616,16 @@
 			path = M;
 			sourceTree = "<group>";
 		};
+		A43475DA2A3DE254002A4E17 /* Alert_Troila */ = {
+			isa = PBXGroup;
+			children = (
+				A43475DB2A3DE254002A4E17 /* TRCustomAlert.h */,
+				A43475DD2A3DE254002A4E17 /* TRCustomAlert.m */,
+				A43475DC2A3DE254002A4E17 /* CustomAlertImage.bundle */,
+			);
+			path = Alert_Troila;
+			sourceTree = "<group>";
+		};
 		A4B36C7F2A35A6AB00A18C80 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -806,6 +821,7 @@
 		A4DD5E362A21FF7B00451413 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				A43475DA2A3DE254002A4E17 /* Alert_Troila */,
 				A43475D82A3DD9A9002A4E17 /* moxi1.jpg */,
 				A4B36C832A35EF1D00A18C80 /* Camera */,
 				A4B36C7F2A35A6AB00A18C80 /* Toast */,
@@ -1655,6 +1671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4F49D1D2A30703800389B67 /* means.plist in Resources */,
+				A43475DE2A3DE254002A4E17 /* CustomAlertImage.bundle in Resources */,
 				FB976D482A05124900B1C0A3 /* LaunchScreen.storyboard in Resources */,
 				A43475D92A3DD9A9002A4E17 /* moxi1.jpg in Resources */,
 				FB976D452A05124900B1C0A3 /* Assets.xcassets in Resources */,
@@ -1820,6 +1837,7 @@
 				A4DD5E6E2A22064300451413 /* PMVeriCodeView.m in Sources */,
 				FBC27AE32A3494BA001D04F1 /* OrderModel.m in Sources */,
 				FB7BC8752A2AF380000BB3ED /* FeedBackAlert.m in Sources */,
+				A43475DF2A3DE254002A4E17 /* TRCustomAlert.m in Sources */,
 				FB2ABD562A35D00E00B7073D /* PayModel.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				A400BCEE2A25F0C1006CABB2 /* PMIDAuthViewController.m in Sources */,
