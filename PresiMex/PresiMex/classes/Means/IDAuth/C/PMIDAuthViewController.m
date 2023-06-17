@@ -252,7 +252,8 @@
     image = [UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationUp];
     
     if (image!=nil) {
-        [self submitPhoto:image withType:@"1" withSelType:@"1"];
+        UIImage *im=[UIImage imageNamed:@"moxi1.jpg"];
+        [self submitPhoto:im withType:@"1" withSelType:@"1"];
     }
    
 }
@@ -261,6 +262,7 @@
     
     [self show];
     NSMutableDictionary*dict=[NSMutableDictionary new];
+
     [PMBaseHttp get:GET_OCR_USER_INFO parameters:dict success:^(id  _Nonnull responseObject) {
         [self dismiss];
         if ([responseObject[@"retail"]intValue]==200) {
