@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) UILabel * label1;
 @property(strong, nonatomic) WKWebView * label2;
 
+
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
 

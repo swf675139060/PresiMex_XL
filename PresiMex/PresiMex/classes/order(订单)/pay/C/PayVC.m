@@ -140,7 +140,10 @@
         return cell;
     } else {
         WFTopBtnBottomTwoLabelCell * cell = [WFTopBtnBottomTwoLabelCell cellWithTableView:tableView];
-        [cell.btn setImage:[UIImage imageNamed:@"pago"] forState:UIControlStateNormal];
+        [cell.btn setBackgroundImage:[UIImage imageNamed:@"pago"] forState:UIControlStateNormal];
+        [cell.btn setTitle:@"Directrices de pago" forState:UIControlStateNormal];
+        cell.btn.backgroundColor = [UIColor whiteColor];
+        [cell.btn setTitleColor:BColor_Hex(@"#FC7500", 1) forState:UIControlStateNormal];
         [cell.label1 setText:@"El código de pago es válido durante 6 horas, organice el pago lo antes posible." TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:11]];
         
         NSURL *url;
@@ -155,13 +158,13 @@
         
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(40, 16, 30, 16)];
         cell.BGView.layer.cornerRadius = 10;
-        cell.btn.backgroundColor = [UIColor whiteColor];
     
         cell.BGView.layer.masksToBounds = YES;
         cell.BGView.layer.borderWidth = 0.5;
         cell.BGView.layer.borderColor = BColor_Hex(@"#DDDDDD", 1).CGColor;
         
         [cell upBtnFrameWithEdgeInsets:UIEdgeInsetsMake(25, (WF_ScreenWidth - 257)/2, 0, (WF_ScreenWidth - 257)/2) height:33];
+        
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(14, 13, 21, 13) spacing:14];
         
         

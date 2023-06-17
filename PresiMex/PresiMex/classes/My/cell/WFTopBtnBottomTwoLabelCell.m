@@ -46,6 +46,9 @@
     [self.contentView addSubview:self.btn];
     [self.BGView addSubview:self.label1];
     [self.BGView addSubview:self.label2];
+    
+    
+    [self.label2 addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     UIEdgeInsets padding = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.BGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).with.insets(padding);
@@ -66,7 +69,7 @@
     [self.label2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.BGView);
         make.top.equalTo(self.label1.mas_bottom).offset(10);
-        make.height.equalTo(@(300));
+        make.height.equalTo(@(10));
     }];
     
 }
@@ -95,28 +98,51 @@
 -(WKWebView *)label2{
     if(_label2 == nil){
         _label2 = [[WKWebView alloc] init];
-        _label2.scrollView.scrollEnabled = NO;
-        [_label2.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+//        _label2.scrollView.scrollEnabled = NO;
         
     }
     return _label2;
 }
 #pragma mark  - KVO回调
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    
-    CGFloat newHeight = _label2.scrollView.contentSize.height + 30;
-    
-    if(self.label2.jk_height < newHeight){
-        [self.label2 mas_updateConstraints:^(MASConstraintMaker *make) {
-            
-            make.left.equalTo(self.BGView).offset(13);
-            make.right.equalTo(self.BGView).offset(-13);
-            make.bottom.equalTo(self.BGView).offset(-21);
-            make.top.equalTo(self.label1.mas_bottom).offset(14);
-            make.height.equalTo(@(newHeight));
-        }];
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"estimatedProgress"]) {
+        WKWebView *webView = (WKWebView *)object;
+        if (webView.estimatedProgress == 1.0) {
+            CGFloat contentHeight = webView.scrollView.contentSize.height;
+            // Do something with the content height
+            [self.label2 mas_updateConstraints:^(MASConstraintMaker *make) {
+                
+                make.left.equalTo(self.BGView).offset(13);
+                make.right.equalTo(self.BGView).offset(-13);
+                make.bottom.equalTo(self.BGView).offset(-21);
+                make.top.equalTo(self.label1.mas_bottom).offset(14);
+                make.height.equalTo(@(contentHeight));
+            }];
+        }
     }
 }
+
+//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+//    [self layoutIfNeeded];
+//    NSInteger newHeight = _label2.scrollView.contentSize.height;
+//    NSLog(@"newHeight:%ld",newHeight);
+//    if(newHeight > self.label2.jk_height){
+//        //通知主线程刷新
+//           dispatch_async(dispatch_get_main_queue(), ^{
+//               //回调或者说是通知主线程刷新，
+//               [self.label2 mas_updateConstraints:^(MASConstraintMaker *make) {
+//
+//                   make.left.equalTo(self.BGView).offset(13);
+//                   make.right.equalTo(self.BGView).offset(-13);
+//                   make.bottom.equalTo(self.BGView).offset(-21);
+//                   make.top.equalTo(self.label1.mas_bottom).offset(14);
+//                   make.height.equalTo(@(newHeight));
+//               }];
+//           });
+//
+//
+//    }
+//}
 
 
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding{
@@ -156,6 +182,15 @@
         make.left.equalTo(self.BGView).offset(padding.left);
         make.right.equalTo(self.BGView).offset(-padding.right);
         
+    }];
+    
+    [self.label2 mas_updateConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(self.BGView).offset(13);
+        make.right.equalTo(self.BGView).offset(-13);
+        make.bottom.equalTo(self.BGView).offset(-21);
+        make.top.equalTo(self.label1.mas_bottom).offset(14);
+        make.height.equalTo(@(300));
     }];
     
 }
