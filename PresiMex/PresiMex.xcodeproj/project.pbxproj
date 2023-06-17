@@ -28,8 +28,11 @@
 		A40B4CB42A2C6F07001B11F0 /* PMCertificationCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB32A2C6F07001B11F0 /* PMCertificationCoreViewController.m */; };
 		A40B4CB72A2C706B001B11F0 /* PMCerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB62A2C706B001B11F0 /* PMCerViewCell.m */; };
 		A40B4CBA2A2C70FC001B11F0 /* PMCerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB92A2C70FC001B11F0 /* PMCerModel.m */; };
+		A43475D52A3D664B002A4E17 /* JKHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A43475D32A3D664B002A4E17 /* JKHelpers.m */; };
 		A4B36C7E2A35A30D00A18C80 /* PMQuesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C7D2A35A30D00A18C80 /* PMQuesModel.m */; };
 		A4B36C822A35A6AB00A18C80 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C802A35A6AB00A18C80 /* Toast+UIView.m */; };
+		A4B36C892A35EF1D00A18C80 /* PHImageFacePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C852A35EF1D00A18C80 /* PHImageFacePickerController.m */; };
+		A4B36C8A2A35EF1D00A18C80 /* PHImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B36C862A35EF1D00A18C80 /* PHImagePickerController.m */; };
 		A4B60AD52A2332C200F5BED7 /* YKGTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */; };
 		A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD42A2332C200F5BED7 /* MD5Utils.m */; };
 		A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60AD82A233C6500F5BED7 /* PMProblemViewController.m */; };
@@ -201,10 +204,16 @@
 		A40B4CB62A2C706B001B11F0 /* PMCerViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCerViewCell.m; sourceTree = "<group>"; };
 		A40B4CB82A2C70FC001B11F0 /* PMCerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMCerModel.h; sourceTree = "<group>"; };
 		A40B4CB92A2C70FC001B11F0 /* PMCerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCerModel.m; sourceTree = "<group>"; };
+		A43475D32A3D664B002A4E17 /* JKHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKHelpers.m; sourceTree = "<group>"; };
+		A43475D42A3D664B002A4E17 /* JKHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKHelpers.h; sourceTree = "<group>"; };
 		A4B36C7C2A35A30D00A18C80 /* PMQuesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMQuesModel.h; sourceTree = "<group>"; };
 		A4B36C7D2A35A30D00A18C80 /* PMQuesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMQuesModel.m; sourceTree = "<group>"; };
 		A4B36C802A35A6AB00A18C80 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		A4B36C812A35A6AB00A18C80 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		A4B36C852A35EF1D00A18C80 /* PHImageFacePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHImageFacePickerController.m; sourceTree = "<group>"; };
+		A4B36C862A35EF1D00A18C80 /* PHImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHImagePickerController.m; sourceTree = "<group>"; };
+		A4B36C872A35EF1D00A18C80 /* PHImageFacePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHImageFacePickerController.h; sourceTree = "<group>"; };
+		A4B36C882A35EF1D00A18C80 /* PHImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHImagePickerController.h; sourceTree = "<group>"; };
 		A4B60AD02A2332C200F5BED7 /* YKGTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGTMDefines.h; sourceTree = "<group>"; };
 		A4B60AD12A2332C200F5BED7 /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
 		A4B60AD22A2332C200F5BED7 /* YKGTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGTMBase64.m; sourceTree = "<group>"; };
@@ -609,6 +618,17 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		A4B36C832A35EF1D00A18C80 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				A4B36C872A35EF1D00A18C80 /* PHImageFacePickerController.h */,
+				A4B36C852A35EF1D00A18C80 /* PHImageFacePickerController.m */,
+				A4B36C882A35EF1D00A18C80 /* PHImagePickerController.h */,
+				A4B36C862A35EF1D00A18C80 /* PHImagePickerController.m */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		A4B60ACF2A2332C200F5BED7 /* Md5 */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,6 +756,8 @@
 		A4DD5E232A21BAD600451413 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
+				A43475D42A3D664B002A4E17 /* JKHelpers.h */,
+				A43475D32A3D664B002A4E17 /* JKHelpers.m */,
 				A4DD5E242A21BB4300451413 /* PMBaseHttp.h */,
 				A4DD5E252A21BB4300451413 /* PMBaseHttp.m */,
 				A4DD5E282A21BC1100451413 /* PMUrl.h */,
@@ -782,6 +804,7 @@
 		A4DD5E362A21FF7B00451413 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				A4B36C832A35EF1D00A18C80 /* Camera */,
 				A4B36C7F2A35A6AB00A18C80 /* Toast */,
 				FBC27AEA2A34AD20001D04F1 /* EmptyDataSet */,
 				A4F49D282A3085C500389B67 /* YYModel */,
@@ -1847,7 +1870,11 @@
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				A400BCF42A25F11E006CABB2 /* PMIDAuthViewCell.m in Sources */,
 				FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */,
+
 				FB107B5D2A3DAA520099C52B /* NSString+BarCode.m in Sources */,
+
+				A4B36C892A35EF1D00A18C80 /* PHImageFacePickerController.m in Sources */,
+
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
 				FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */,
 				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,
@@ -1878,7 +1905,9 @@
 				FB8AF32E2A088C78006C5887 /* UILabel+SLFLineSpace.m in Sources */,
 				FBD6913A2A279B8500460621 /* WFLeftRightLabelCell.m in Sources */,
 				FB939F342A21F65500599A86 /* CuponVC.m in Sources */,
+				A4B36C8A2A35EF1D00A18C80 /* PHImagePickerController.m in Sources */,
 				A4DD5E632A21FFE400451413 /* CRBoxInputView.m in Sources */,
+				A43475D52A3D664B002A4E17 /* JKHelpers.m in Sources */,
 				A4DD5E262A21BB4300451413 /* PMBaseHttp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

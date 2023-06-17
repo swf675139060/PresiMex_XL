@@ -77,12 +77,29 @@
 -(void)setCellWithModel:(PMIDAuthModel*)model{
     _titleLabel.text=model.title;
     _desTitleLabel.text=model.desTitle;
+    
     if (model.type==0) {
-        [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"ID_Auth_Default_1"]];
+        [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.held] placeholderImage:[UIImage imageNamed:@"ID_Auth_Default_1"]];
+        if (model.held.length!=0) {
+            _desTitleLabel.hidden=YES;
+        } else {
+            _desTitleLabel.hidden=NO;
+        }
+        
     }else if (model.type==1){
-        [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"ID_Auth_Default_2"]];
+        [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.silent] placeholderImage:[UIImage imageNamed:@"ID_Auth_Default_2"]];
+        if (model.silent.length!=0) {
+            _desTitleLabel.hidden=YES;
+        } else {
+            _desTitleLabel.hidden=NO;
+        }
     }else if (model.type==2){
-        [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"ID_Auth_Default_3"]];
+        [self.imgView sd_setImageWithURL:[NSURL URLWithString:model.acoustic] placeholderImage:[UIImage imageNamed:@"ID_Auth_Default_3"]];
+        if (model.acoustic.length!=0) {
+            _desTitleLabel.hidden=YES;
+        } else {
+            _desTitleLabel.hidden=NO;
+        }
     }
   
 
