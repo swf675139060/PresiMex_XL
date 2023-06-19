@@ -8,6 +8,8 @@
 #import "AppDelegate.h"
 #import "WFTabBarController.h"
 #import "DKGuideViewController.h"
+
+#import "LNDetector.h"
 @interface AppDelegate ()
 
 @end
@@ -27,9 +29,15 @@
 //    }else {
 //        self.window.rootViewController = [[DKGuideViewController alloc] init];
 //    }
-    
+    [self initLiveSDK];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(void)initLiveSDK{
+    
+//    [LNDetector setAppName:@"sdkTest_App" partnerCode:@"sdkTest" partnerKey:@"iGTtb2nkljVR08lYbEkv"];
+
 }
 
 

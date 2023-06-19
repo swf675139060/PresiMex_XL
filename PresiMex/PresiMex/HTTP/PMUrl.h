@@ -87,6 +87,10 @@
 //开始进行活体(调用生成记录即可不需要参数)
 #define  POST_ORC_AUTH  @"/api/user/often/hammer"
 
+
+//15006 - 活体配置选择
+#define  GET_often_charged  @"/api/user/often/charged"
+
 //活体照上传,提交KYC
 #define  POST_Ocr_KYC  @"/api/user/often/slot"
 

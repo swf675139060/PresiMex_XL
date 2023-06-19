@@ -358,8 +358,8 @@ static inline BOOL IsEmpty(id thing){
     [manager.securityPolicy setValidatesDomainName:NO];
     NSString *urlEpt;NSString*file;
     if (parameter.allKeys.count) {
-        //urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,POST_Orc_Image_File];
-        urlEpt= @"https://test-api.presimex.mx/api/user/often/aggressive/britannica?monroe=1&router=1";
+        urlEpt=[NSString stringWithFormat:@"%@%@?monroe=%@&router=%@",API_URL,POST_Orc_Image_File,parameter[@"monroe"],parameter[@"router"]];
+//        urlEpt= @"https://test-api.presimex.mx/api/user/often/aggressive/britannica?monroe=1&router=1";
     
         file=@"file";
     } else {//反馈上传图

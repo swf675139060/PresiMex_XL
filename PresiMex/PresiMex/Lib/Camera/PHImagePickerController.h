@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PHImagePickerController :UIViewController
 
+@property (assign ,nonatomic) NSInteger type;//0 正面 1背面
+
 @property (weak ,nonatomic) id <PHImagePickerControllerDelegate> delegate;
 
 
