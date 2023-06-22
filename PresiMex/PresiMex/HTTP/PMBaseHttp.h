@@ -51,7 +51,13 @@ NS_ASSUME_NONNULL_BEGIN
     success:(void (^)(id responseObject))success
     failure:(void (^)(NSError *error))failure;
 
-+ (void)uploadImg:(UIImage *)image parameter:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
+///  上传图片
+/// - Parameters:
+///   - image: 图片
+///   - parameter: 参数
+///   - type: 0：反馈图片 1:身份证图片 2:活体结果查询
++ (void)uploadImg:(UIImage *)image parameter:(NSDictionary *)parameter type:(NSUInteger)type success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
 + (void)uploadImages:(NSArray *)images
             parameters:(id _Nullable)parameters

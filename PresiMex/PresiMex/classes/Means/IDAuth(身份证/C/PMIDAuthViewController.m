@@ -26,10 +26,14 @@
 @property (nonatomic, strong) liveSetModel *LiveSetModel;
 
 @property (nonatomic, strong) LiveStartModel *LiveSTModel;
-
+//
 @property (nonatomic, strong) NSString *userName;
 
 @property (nonatomic, strong) NSString *userID;
+
+@property (nonatomic, strong) UIImage *livenessBitmap;//活体认证照片
+
+
 
 
 
@@ -314,7 +318,8 @@
     //TODO
     //验证活体
     
-    [self POSTLIFEQuery:result->livenessId];
+    self.livenessBitmap = result->livenessBitmap;
+    [self POSTLIFEQuery:result->livenessId img:result->livenessBitmap];
 //    PMIDAuthModel * model = self.dataArray[2];
 //    model.acousticImage = result->livenessBitmap;
 //    model.livenessId = result->livenessId;
@@ -344,10 +349,12 @@
             model3.acoustic=model.acoustic;
             [self.dataArray replaceObjectAtIndex:2 withObject:model3];
             PMIDAuthModel*model4=self.dataArray[3];
-            model4.cartoon=model.cartoon;
+            model4.davis=model.davis;
+            self.userName = model.davis;
             [self.dataArray replaceObjectAtIndex:3 withObject:model4];
             PMIDAuthModel*model5=self.dataArray[4];
             model5.cartoon=model.cartoon;
+            self.userID = model.cartoon;
             [self.dataArray replaceObjectAtIndex:4 withObject:model5];
             [self.tableView reloadData];
         } else {
@@ -368,20 +375,39 @@
     dict[@"monroe"]=type;//类型 1:正面 2:反面
     dict[@"router"]=selType;//1:拍照,2:相册上传
     WF_WEAKSELF(weakself);
-    [PMBaseHttp uploadImg:img parameter:dict success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp uploadImg:img parameter:dict type:1 success:^(id  _Nonnull responseObject) {
         
         [weakself dismiss];
         NSLog(@"证件照==%@",responseObject);
         
         if ([responseObject[@"retail"] intValue] == 200) {
+            
+            PMIDAuthModel*model=[PMIDAuthModel yy_modelWithDictionary:responseObject[@"shame"]];
+            
+//            PMIDAuthModel*model3=self.dataArray[2];
+//            model3.acoustic=model.acoustic;
+//            [self.dataArray replaceObjectAtIndex:2 withObject:model3];
+            
             if ([type integerValue] == 1) {
                 
-                PMIDAuthModel *model=weakself.dataArray[0];
-                model.heldImage = img;
-            } else {
+                PMIDAuthModel*model1=weakself.dataArray[0];
+                model1.heldImage = img;
+                model1.held=model.held;
+                [weakself.dataArray replaceObjectAtIndex:0 withObject:model1];
                 
-                PMIDAuthModel *model=weakself.dataArray[1];
-                model.silentImage = img;
+                PMIDAuthModel*model4=self.dataArray[3];
+                model4.davis=model.davis;
+                self.userName = model.davis;
+                [self.dataArray replaceObjectAtIndex:3 withObject:model4];
+                PMIDAuthModel*model5=self.dataArray[4];
+                model5.cartoon=model.cartoon;
+                self.userID = model.cartoon;
+                [self.dataArray replaceObjectAtIndex:4 withObject:model5];
+            } else {
+                PMIDAuthModel*model2=weakself.dataArray[1];
+                model2.silent=model.silent;
+                model2.silentImage = img;
+                [weakself.dataArray replaceObjectAtIndex:1 withObject:model2];
             }
             [weakself.tableView reloadData];
         }
@@ -424,27 +450,29 @@
 
 //15004 - 活体照上传,提交KYC
 -(void)POSTOcrKYC{
-//    if (<#condition#>) {
-//        <#statements#>
-//    } else
-        if(!self.userName && self.userName.length == 0){
+    if (!self.LiveSTModel.shaw || self.LiveSTModel.shaw.length == 0) {
+        [self showTip:@"Tome la foto primero"];
         return;
-    } else if(!self.userID && self.userID.length == 0){
+    } else
+        if(!self.userName || self.userName.length == 0){
+        [self showTip:@"Verifique los campos obligatorios."];
+        return;
+    } else if(!self.userID || self.userID.length == 0){
+        [self showTip:@"Verifique los campos obligatorios."];
         return;
     }
     
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
     pars[@"perspective"]= self.userName;//用户名字
     pars[@"cartoon"]= self.userID;//身份证号
-    pars[@"expiration"]= self.LiveSetModel.copies;//活体照片
+    pars[@"expiration"]= self.LiveSTModel.shaw;//活体照片
     
     [self show];
     WF_WEAKSELF(weakself);
     [PMBaseHttp postJson:POST_Ocr_KYC parameters:pars success:^(id  _Nonnull responseObject) {
         [weakself dismiss];
-        [weakself clickNextBtn];
         if ([responseObject[@"retail"] intValue]==200) {
-            
+            [weakself clickNextBtn];
         }else{
             
         }
@@ -458,33 +486,61 @@
 }
 
 //15005 - 活体结果查询
--(void)POSTLIFEQuery:(NSString *)passion{
+-(void)POSTLIFEQuery:(NSString *)passion img:(UIImage *)img{
   
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
     pars[@"passion"]= passion;//
     pars[@"versions"]= self.LiveSTModel.versions;//
     
-    [self show];
     WF_WEAKSELF(weakself);
-    [PMBaseHttp postJson:POST_Ocr_KYC parameters:pars success:^(id  _Nonnull responseObject) {
+    [PMBaseHttp uploadImg:img parameter:pars type:2 success:^(id  _Nonnull responseObject) {
         [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
-            PMIDAuthModel * model = self.dataArray[2];
-//            model.acousticImage = result->livenessBitmap;
+            NSDictionary * shame = responseObject[@"shame"];
+            weakself.LiveSTModel = [LiveStartModel mj_objectWithKeyValues:shame];
+            
+            
+            PMIDAuthModel * model = weakself.dataArray[2];
+            model.acousticImage = weakself.livenessBitmap;
+            model.acoustic = weakself.LiveSTModel.shaw;
 //            model.livenessId = result->livenessId;
 //            model.livenessBitmapBase64Str = result->livenessBitmapBase64Str;
             
             
-            [self.tableView reloadData];
+            [weakself.tableView reloadData];
         }else{
             
         }
         
     } failure:^(NSError * _Nonnull error) {
-        
-        [weakself dismiss];
+        NSLog(@"证件照==%@",error);
         
     }];
+    
+//
+//    [self show];
+//    WF_WEAKSELF(weakself);
+//    [PMBaseHttp postJson:POST_Ocr_KYC parameters:pars success:^(id  _Nonnull responseObject) {
+//        [weakself dismiss];
+//        if ([responseObject[@"retail"] intValue]==200) {
+//            PMIDAuthModel * model = self.dataArray[2];
+////            model.acousticImage = result->livenessBitmap;
+////            model.livenessId = result->livenessId;
+////            model.livenessBitmapBase64Str = result->livenessBitmapBase64Str;
+//
+//
+//            [self.tableView reloadData];
+//        }else{
+//
+//        }
+//
+//    } failure:^(NSError * _Nonnull error) {
+//
+//        [weakself dismiss];
+//
+//    }];
+    
+ 
     
 }
 

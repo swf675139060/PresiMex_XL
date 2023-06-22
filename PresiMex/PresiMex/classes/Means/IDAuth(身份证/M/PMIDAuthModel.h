@@ -37,8 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImage *heldImage;
 @property (nonatomic, strong) UIImage *silentImage;
 @property (nonatomic, strong) UIImage *acousticImage;//活体认证图片
-@property (nonatomic, strong) NSString *livenessId;//活体认证ID
-@property (nonatomic, strong) NSString *livenessBitmapBase64Str;//活体认证图片Base64Str
+//@property (nonatomic, strong) NSString *livenessId;//活体认证ID
+//@property (nonatomic, strong) NSString *livenessBitmapBase64Str;//活体认证图片Base64Str
 
 
 @end

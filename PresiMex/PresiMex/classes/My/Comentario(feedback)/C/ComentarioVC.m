@@ -317,7 +317,7 @@
     NSMutableDictionary*dict=[NSMutableDictionary new];
 
         WF_WEAKSELF(weakself);
-        [PMBaseHttp uploadImg:image parameter:dict success:^(id  _Nonnull responseObject) {
+        [PMBaseHttp uploadImg:image parameter:dict type:0 success:^(id  _Nonnull responseObject) {
             if ([responseObject[@"retail"] intValue]==200) {
                 
                 NSDictionary * shame = responseObject[@"shame"];

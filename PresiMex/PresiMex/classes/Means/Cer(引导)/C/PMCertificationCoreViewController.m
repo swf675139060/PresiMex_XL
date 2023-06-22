@@ -11,6 +11,8 @@
 
 #import "PMQuestionnaireViewController.h"
 #import "PMIDAuthViewController.h"
+#import "PMBasicViewController.h"
+#import "PMEmergencyContactViewController.h"
 
 
 @interface PMCertificationCoreViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -186,9 +188,15 @@
         [self.navigationController pushViewController:Vc animated:YES];
 
     }else if(self.currentState == 30) {
-        
+//        PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
+//        [self.navigationController pushViewController:vc animated:YES];
+       
+        PMBasicViewController*Vc=[PMBasicViewController new];
+        [self.navigationController pushViewController:Vc animated:YES];
     }else if(self.currentState == 40) {
-        
+        PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
     }else if(self.currentState == 50) {
         
     }else if(self.currentState == 60 ) {
@@ -207,8 +215,10 @@
 -(void)requestUserState{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
 
+    [self show];
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:Get_User_Status parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             NSInteger fare = [responseObject[@"shame"][@"fare"] integerValue];
             weakself.currentState = fare;
@@ -219,7 +229,7 @@
 
 
     } failure:^(NSError * _Nonnull error) {
-
+        [weakself dismiss];
     }];
 }
 @end

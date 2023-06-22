@@ -18,6 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *ID;
 @property (nonatomic,assign) BOOL isHave;//有无界头
 @property (nonatomic,assign) BOOL isColor;//是否显示红色
+
+@property (nonatomic,assign) NSInteger indx;
+@property (nonatomic, copy) NSArray *contentArr;
+
+
+@property (nonatomic, assign) BOOL REQUIRED;//必填
 @end
 
 NS_ASSUME_NONNULL_END

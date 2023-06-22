@@ -12,11 +12,19 @@
 #import "PMIDAuthHeaderView.h"
 #import "PMEmergencyContactViewController.h"
 #import "JKPickerViewAppearance.h"
+#import "BasicDataModel.h"
+#import "CXDatePickerView.h"
+
+
+#import "PMIDAuthModel.h"
 
 @interface PMBasicViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSDate *date;
+
+
 
 @end
 
@@ -34,15 +42,24 @@
     self.navTitleLabel.text=@"Información del personal";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
+    
+    if(!self.userID){
+        [self requestImagPic];
+    }
    
 }
 - (void)modelWithData{
 
+    BasicData * dataModel =[BasicData new];
+    [dataModel initData];
+    
+    
     PMQuestionModel *model1 = [[PMQuestionModel alloc] init];
     model1.title     = @"Género";
     model1.type=0;
     model1.isHave=YES;
     model1.isColor=NO;
+    model1.contentArr =  dataModel.Género;
     [self.dataArray addObject:model1];
     
     PMQuestionModel *model2 = [[PMQuestionModel alloc] init];
@@ -50,6 +67,9 @@
     model2.type=1;
     model2.isHave=NO;
     model2.isColor=NO;
+    if(self.userID){
+        model2.content=self.userID;
+    }
     [self.dataArray addObject:model2];
     
     PMQuestionModel *model3 = [[PMQuestionModel alloc] init];
@@ -64,6 +84,7 @@
     model4.type=3;
     model4.isHave=YES;
     model4.isColor=NO;
+    model4.contentArr =  dataModel.EstadoCivil;
     [self.dataArray addObject:model4];
     
     PMQuestionModel *model5 = [[PMQuestionModel alloc] init];
@@ -71,6 +92,7 @@
     model5.type=4;
     model5.isHave=YES;
     model5.isColor=NO;
+    model5.contentArr =  dataModel.NumeroDeNiños;
     [self.dataArray addObject:model5];
     
     PMQuestionModel *model6 = [[PMQuestionModel alloc] init];
@@ -78,6 +100,7 @@
     model6.type=5;
     model6.isHave=YES;
     model6.isColor=NO;
+    model6.contentArr =  dataModel.AntecedenteEducacionales;
     [self.dataArray addObject:model6];
     
     PMQuestionModel *model7= [[PMQuestionModel alloc] init];
@@ -85,6 +108,7 @@
     model7.type=6;
     model7.isHave=YES;
     model7.isColor=NO;
+//    model7.contentArr =  dataModel.Fec;
     [self.dataArray addObject:model7];
     
     PMQuestionModel *model8 = [[PMQuestionModel alloc] init];
@@ -92,6 +116,7 @@
     model8.type=7;
     model8.isHave=YES;
     model8.isColor=NO;
+    model8.contentArr =  dataModel.EstadoDeTrabajo;
     [self.dataArray addObject:model8];
     
     PMQuestionModel *model9 = [[PMQuestionModel alloc] init];
@@ -99,20 +124,23 @@
     model9.type=8;
     model9.isHave=YES;
     model9.isColor=NO;
+    model9.contentArr =  dataModel.Industria;
     [self.dataArray addObject:model9];
     
     PMQuestionModel *model10 = [[PMQuestionModel alloc] init];
     model10.title     =@"Ingreso mensual";
     model10.type=9;
-    model10.isHave=NO;
+    model10.isHave=YES;
     model10.isColor=NO;
+    model10.contentArr =  dataModel.IngresoMensual;
     [self.dataArray addObject:model10];
     
     PMQuestionModel *model11 = [[PMQuestionModel alloc] init];
     model11.title     =@"Tipo de salario";
     model11.type=10;
-    model11.isHave=NO;
+    model11.isHave=YES;
     model11.isColor=NO;
+    model11.contentArr =  dataModel.TipoDeSalario;
     [self.dataArray addObject:model11];
     
     PMQuestionModel *model12 = [[PMQuestionModel alloc] init];
@@ -120,6 +148,7 @@
     model12.type=11;
     model12.isHave=YES;
     model12.isColor=NO;
+    model12.contentArr =  dataModel.DíaDePago1;
     [self.dataArray addObject:model12];
     
     PMQuestionModel *model13 = [[PMQuestionModel alloc] init];
@@ -127,6 +156,8 @@
     model13.type=12;
     model13.isHave=YES;
     model13.isColor=NO;
+    model13.REQUIRED = NO;
+    model13.contentArr =  dataModel.DíaDePago2;
     [self.dataArray addObject:model13];
     
     PMQuestionModel *model14 = [[PMQuestionModel alloc] init];
@@ -134,6 +165,7 @@
     model14.type=13;
     model14.isHave=NO;
     model14.isColor=NO;
+    model14.REQUIRED = NO;
     [self.dataArray addObject:model14];
     
     PMQuestionModel *model15 = [[PMQuestionModel alloc] init];
@@ -141,6 +173,7 @@
     model15.type=14;
     model15.isHave=NO;
     model15.isColor=NO;
+    model15.REQUIRED = NO;
     [self.dataArray addObject:model15];
     
     PMQuestionModel *model16 = [[PMQuestionModel alloc] init];
@@ -148,6 +181,7 @@
     model16.type=15;
     model16.isHave=YES;
     model16.isColor=NO;
+    model16.contentArr =  dataModel.EstadoDeTrabajo;
     [self.dataArray addObject:model16];
     
     PMQuestionModel *model17 = [[PMQuestionModel alloc] init];
@@ -203,6 +237,10 @@
     PMQuestionModel *model=self.dataArray[indexPath.row];
     PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
     [cell setCellWithModel:model];
+    
+    [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text) {
+        model.content = text;
+    }];
     return cell;
     
 }
@@ -215,24 +253,52 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        
+        [self sutupAlertViewWithIndx:indexPath.row];
     } else if (indexPath.row == 1) {
         
     } else if (indexPath.row == 2) {
         
     } else if (indexPath.row == 3) {
+        [self sutupAlertViewWithIndx:indexPath.row];
         
     } else if (indexPath.row == 4) {
+        [self sutupAlertViewWithIndx:indexPath.row];
         
     } else if (indexPath.row == 5) {
+        [self sutupAlertViewWithIndx:indexPath.row];
         
     } else if (indexPath.row == 6) {
+        [self showYearMonth];
+//        [self sutupAlertViewWithIndx:indexPath.row];
         
     } else if (indexPath.row == 7) {
+        [self sutupAlertViewWithIndx:indexPath.row];
         
     } else if (indexPath.row == 8) {
+        [self sutupAlertViewWithIndx:indexPath.row];
         
     } else if (indexPath.row == 9) {
+        [self sutupAlertViewWithIndx:indexPath.row];
+        
+    } else if (indexPath.row == 10) {
+        [self sutupAlertViewWithIndx:indexPath.row];
+        
+    } else if (indexPath.row == 11) {
+        [self sutupAlertViewWithIndx:indexPath.row];
+        
+    } else if (indexPath.row == 12) {
+        [self sutupAlertViewWithIndx:indexPath.row];
+        
+    } else if (indexPath.row == 13) {
+        
+    } else if (indexPath.row == 14) {
+        
+    } else if (indexPath.row == 15) {
+        [self sutupAlertViewWithIndx:indexPath.row];
+        
+    } else if (indexPath.row == 16) {
+        
+    } else if (indexPath.row == 17) {
         
     }
     
@@ -284,12 +350,219 @@
     self.tableView.tableFooterView=footer;
 }
 
+
+-(void)sutupAlertViewWithIndx:(NSInteger)indxP{
+    [self.view endEditing:YES];
+    
+    
+    NSMutableArray * arr = [NSMutableArray array];
+    PMQuestionModel * model = self.dataArray[indxP];
+    
+    for (BasicDataModel * dataModel in model.contentArr) {
+        [arr addObject:dataModel.title];
+    }
+    
+    weakify(self);
+    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:model.title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+        strongify(self);
+        PMQuestionModel * model = self.dataArray[indxP];
+        model.indx = indx;
+       
+        
+        [self.tableView reloadData];
+
+    }];
+    [alert show] ;
+}
+#pragma mark - 年-月
+- (void)showYearMonth{
+    //年-月
+    WF_WEAKSELF(weakself);
+    CXDatePickerView *datepicker = [[CXDatePickerView alloc] initWithDateStyle:CXDateYearMonthDay scrollToDate:self.date completeBlock:^(NSDate *selectDate) {
+        weakself.date = selectDate;
+       
+        NSString *dateString = [selectDate cx_stringWithFormat:@"dd-MM-yyyy"];
+        PMQuestionModel * model = self.dataArray[6];
+        model.content = dateString;
+        [weakself.tableView reloadData];
+    }];
+    datepicker.datePickerFont = [UIFont systemFontOfSize:15];
+    datepicker.datePickerColor = BColor_Hex(@"#999999", 1);//滚轮日期颜色
+    datepicker.datePickerSelectColor = BColor_Hex(@"#333333", 1);//滚轮日期颜色
+    datepicker.doneButtonColor = [UIColor whiteColor];//确定按钮的颜色
+    datepicker.cancelButtonColor = BColor_Hex(@"#333333", 1);
+    [datepicker show];
+}
+
+
 -(void)clickSubmitBtn{
     
-    PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    for (PMQuestionModel *model in self.dataArray) {
+        if (model.REQUIRED) {
+            if (model.isHave) {
+                if (model.indx >= 0) {
+                    continue;
+                }else if (model.content && model.content.length){
+                    continue;
+                }else{
+                    [self showTip:@"Verifique los campos obligatorios."];
+                    return;
+                }
+            } else {
+                if (model.content && model.content.length) {
+                    continue;
+                } else {
+                    [self showTip:@"Verifique los campos obligatorios."];
+                    return;
+                }
+            }
+        } else {
+            continue;
+        }
+        
+    }
+    
+    
+    [self POSTUserBaseMeans];
+    
+   
+}
+
+
+-(void)POSTUserBaseMeans{
+
+    
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+    PMQuestionModel * model1 = self.dataArray[0];
+    BasicDataModel * dataModel1 = model1.contentArr[model1.indx];
+    pars[@"rental"] = [NSNumber numberWithLong:dataModel1.ID];//性别:
+    
+    PMQuestionModel * model2 = self.dataArray[1];
+    pars[@"cartoon"] = model2.content;//身份证号
+    
+    PMQuestionModel * model3 = self.dataArray[2];
+    pars[@"kenny"] = model3.content;//身份证号
+    
+    PMQuestionModel * model4 = self.dataArray[3];
+    BasicDataModel * dataModel4 = model4.contentArr[model4.indx];
+    pars[@"profits"] = [NSNumber numberWithLong:dataModel4.ID];//婚姻状况
+    
+    
+    PMQuestionModel * model5 = self.dataArray[4];
+    BasicDataModel * dataModel5 = model5.contentArr[model5.indx];
+    pars[@"payable"] = [NSNumber numberWithLong:dataModel5.ID];//孩子数量
+    
+    PMQuestionModel * model6 = self.dataArray[5];
+    BasicDataModel * dataModel6 = model6.contentArr[model6.indx];
+    pars[@"emerging"] = [NSNumber numberWithLong:dataModel6.ID];//学历
+    
+    PMQuestionModel * model7 = self.dataArray[6];
+    pars[@"pod"] = model7.content;//出生日期(dd-MM-YYYY)
+    
+    PMQuestionModel * model8 = self.dataArray[7];
+    BasicDataModel * dataModel8 = model8.contentArr[model8.indx];
+    pars[@"browsers"] = [NSNumber numberWithLong:dataModel8.ID];//工作状态
+    
+    PMQuestionModel * model9 = self.dataArray[8];
+    BasicDataModel * dataModel9 = model9.contentArr[model9.indx];
+    pars[@"pays"] = [NSNumber numberWithLong:dataModel9.ID];//行业
+    
+    PMQuestionModel * model10 = self.dataArray[9];
+    BasicDataModel * dataModel10 = model10.contentArr[model10.indx];
+    pars[@"transcription"] = [NSNumber numberWithLong:dataModel10.ID];//月收入(比索)
+    
+    
+    PMQuestionModel * model11 = self.dataArray[10];
+    BasicDataModel * dataModel11 = model11.contentArr[model11.indx];
+    pars[@"fda"] = [NSNumber numberWithLong:dataModel11.ID];//工资类型:
+    
+    PMQuestionModel * model12 = self.dataArray[11];
+    BasicDataModel * dataModel12 = model12.contentArr[model12.indx];
+    pars[@"today"] = [NSNumber numberWithLong:dataModel12.ID];//    发薪日1
+    
+    PMQuestionModel * model13 = self.dataArray[12];
+    if (model13.indx >= 0) {
+        BasicDataModel * dataModel13 = model13.contentArr[model13.indx];
+        pars[@"wires"] = [NSNumber numberWithLong:dataModel13.ID];//    发薪日2
+    }
+    
+    PMQuestionModel * model14 = self.dataArray[13];
+    if (model14.content && model14.content >= 0) {
+        pars[@"speaker"] = model14.content;//    公司名称,选填
+    }
+    
+    PMQuestionModel * model15 = self.dataArray[14];
+    if (model15.content && model15.content >= 0) {
+        pars[@"airline"] = model15.content;//     公司电话,选填
+    }
+    
+    
+    PMQuestionModel * model16 = self.dataArray[15];
+    BasicDataModel * dataModel16 = model16.contentArr[model16.indx];
+    pars[@"head"] = [NSNumber numberWithLong:dataModel16.ID];//公司所在的城市
+    
+    
+    PMQuestionModel * model17 = self.dataArray[16];
+    if (model17.content && model17.content >= 0) {
+        pars[@"dosage"] = model17.content;// 公司所在的区
+    }
+    
+    PMQuestionModel * model18 = self.dataArray[17];
+    if (model18.content && model18.content >= 0) {
+        pars[@"lies"] = model18.content;// 公司详细地址
+    }
+    
+    
+    [self show];
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp postJson:POST_User_Base_Means parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself dismiss];
+        if ([responseObject[@"retail"] intValue]==200) {
+            PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
+            [weakself.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+            [weakself showTip:responseObject[@"entire"]];//（对）
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        [weakself dismiss];
+        
+    }];
     
 }
 
+
+//15002 - Ocr回显接口(类型合并+活体照+字段)
+-(void)requestImagPic{
+    
+    [self show];
+    NSMutableDictionary*dict=[NSMutableDictionary new];
+    
+    [PMBaseHttp get:GET_OCR_USER_INFO parameters:dict success:^(id  _Nonnull responseObject) {
+        [self dismiss];
+        if ([responseObject[@"retail"]intValue]==200) {
+            PMIDAuthModel*model=[PMIDAuthModel yy_modelWithDictionary:responseObject[@"shame"]];
+           
+            
+            
+            PMQuestionModel *model2 = self.dataArray[1];
+            
+            self.userID = model.cartoon;
+            if(self.userID){
+                model2.content=self.userID;
+            }
+            [self.tableView reloadData];
+        } else {
+            
+        }
+        NSLog(@"%@",responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        [self dismiss];
+        NSLog(@"%@",error);
+    }];
+}
 
 @end

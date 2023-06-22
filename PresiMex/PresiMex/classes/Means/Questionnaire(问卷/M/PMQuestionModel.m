@@ -8,5 +8,13 @@
 #import "PMQuestionModel.h"
 
 @implementation PMQuestionModel
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        self.indx = -1;
+        self.REQUIRED = YES;
+    }
+    return self;
+}
 
 @end

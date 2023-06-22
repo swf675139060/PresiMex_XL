@@ -80,6 +80,11 @@
     
     _titleLabel.text=model.title;
     _contentTF.text=model.cartoon;
+    if (model.type == 3) {
+        _contentTF.text=model.davis;
+    } else {
+        _contentTF.text=model.cartoon;
+    }
     
     NSDictionary *attributes = @{NSForegroundColorAttributeName: BColor_Hex(@"#CCCCCC", 1), NSFontAttributeName: [UIFont systemFontOfSize:14]};
     NSAttributedString *attributedPlaceholder = [[NSAttributedString alloc] initWithString:model.placeHold attributes:attributes];

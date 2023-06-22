@@ -68,7 +68,7 @@ static inline BOOL IsEmpty(id thing){
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
     }
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    [manager.requestSerializer setValue:@"10" forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
@@ -201,7 +201,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    [manager.requestSerializer setValue:@"10" forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
@@ -288,7 +288,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    [manager.requestSerializer setValue:@"10" forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
@@ -331,7 +331,7 @@ static inline BOOL IsEmpty(id thing){
 
 
 #pragma mark - 上传照片
-+ (void)uploadImg:(UIImage *)image parameter:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
++ (void)uploadImg:(UIImage *)image parameter:(NSDictionary *)parameter type:(NSUInteger)type success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -342,7 +342,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    [manager.requestSerializer setValue:@"10" forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];
@@ -357,14 +357,19 @@ static inline BOOL IsEmpty(id thing){
     manager.securityPolicy.allowInvalidCertificates = YES;
     [manager.securityPolicy setValidatesDomainName:NO];
     NSString *urlEpt;NSString*file;
-    if (parameter.allKeys.count) {
-        urlEpt=[NSString stringWithFormat:@"%@%@?monroe=%@&router=%@",API_URL,POST_Orc_Image_File,parameter[@"monroe"],parameter[@"router"]];
-//        urlEpt= @"https://test-api.presimex.mx/api/user/often/aggressive/britannica?monroe=1&router=1";
     
-        file=@"file";
-    } else {//反馈上传图
+    if (type == 0) {
+        //反馈上传图
         urlEpt=[NSString stringWithFormat:@"%@%@?supposed=feedback",API_URL,POST_Image_File];
         file=@"img";
+    } else if (type == 1) {
+        urlEpt=[NSString stringWithFormat:@"%@%@?monroe=%@&router=%@",API_URL,POST_Orc_Image_File,parameter[@"monroe"],parameter[@"router"]];
+    
+        file=@"file";
+    }else if (type == 2) {
+        urlEpt=[NSString stringWithFormat:@"%@%@?passion=%@&versions=%@",API_URL,POST_LIFE_Query,parameter[@"passion"],parameter[@"versions"]];
+    
+        file=@"file";
     }
     NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
    NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
@@ -543,7 +548,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
+    [manager.requestSerializer setValue:@"10" forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
     NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"LOAN_HEAD_DEVICE_ID"];

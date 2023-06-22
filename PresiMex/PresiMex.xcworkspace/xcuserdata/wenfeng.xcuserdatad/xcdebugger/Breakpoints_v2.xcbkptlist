@@ -326,8 +326,8 @@
             filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "-submitPhoto:withType:withSelType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -335,23 +335,199 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "86E2EB3B-873C-4D07-BDF4-937C9CCFDBF5"
+            uuid = "691E5F97-AAD0-4C8C-A001-66C715454C2B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
-            landmarkName = "-detectSuccess:"
+            startingLineNumber = "512"
+            endingLineNumber = "512"
+            landmarkName = "-POSTLIFEQuery:img:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D7C46850-331E-4376-A3A8-C7F690DE3AA8"
+            uuid = "3F3649A6-56FA-4C4A-9B87-A545D084081D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
+            landmarkName = "-POSTLIFEQuery:img:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BFBF8462-62A5-4B10-AB66-F28239D98528"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "-POSTOcrKYC"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "637830C7-9C57-432F-B4A5-FDC97191C6FC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
+            landmarkName = "-POSTLIFEQuery:img:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EB7B532-9DB1-4CB3-9252-D6A18292E76C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
+            landmarkName = "-POSTOcrKYC"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9EB7B532-9DB1-4CB3-9252-D6A18292E76C - b282ff2571197b15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMIDAuthViewController POSTOcrKYC]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Means/IDAuth(%E8%BA%AB%E4%BB%BD%E8%AF%81/C/PMIDAuthViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "480"
+                  endingLineNumber = "480"
+                  offsetFromSymbolStart = "1200">
+               </Location>
+               <Location
+                  uuid = "9EB7B532-9DB1-4CB3-9252-D6A18292E76C - 6cb2ed4e775dddd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[PMIDAuthViewController POSTOcrKYC]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Means/IDAuth(%E8%BA%AB%E4%BB%BD%E8%AF%81/C/PMIDAuthViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "480"
+                  endingLineNumber = "480"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "474949AF-B404-4B40-9D77-E1544F9305A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
+            landmarkName = "-POSTOcrKYC"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66ED845F-6947-44A0-8EDE-436FA91CD182"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
+            landmarkName = "-POSTOcrKYC"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "66ED845F-6947-44A0-8EDE-436FA91CD182 - b282ff257119782d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMIDAuthViewController POSTOcrKYC]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Means/IDAuth(%E8%BA%AB%E4%BB%BD%E8%AF%81/C/PMIDAuthViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "472"
+                  endingLineNumber = "472"
+                  offsetFromSymbolStart = "1088">
+               </Location>
+               <Location
+                  uuid = "66ED845F-6947-44A0-8EDE-436FA91CD182 - 6cb2ed4e775ddec9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[PMIDAuthViewController POSTOcrKYC]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Means/IDAuth(%E8%BA%AB%E4%BB%BD%E8%AF%81/C/PMIDAuthViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "473"
+                  endingLineNumber = "473"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D499E214-B6ED-4434-9C4F-F2AFF504BF2B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Basic(&#x4fe1;&#x606f;/C/PMBasicViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
+            landmarkName = "-POSTUserBaseMeans"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A7919C04-8705-49DA-9489-A0AF3A070299"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -360,56 +536,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "473"
             endingLineNumber = "473"
-            landmarkName = "-POSTLIFEQuery:"
+            landmarkName = "-POSTOcrKYC"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E08A9687-F256-4BC3-9BA3-4CE26FE2FD8A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "469"
-            endingLineNumber = "469"
-            landmarkName = "-POSTLIFEQuery:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E08A9687-F256-4BC3-9BA3-4CE26FE2FD8A - 3b898557f9573b91"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PMIDAuthViewController POSTLIFEQuery:]"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Means/IDAuth(%E8%BA%AB%E4%BB%BD%E8%AF%81/C/PMIDAuthViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "469"
-                  endingLineNumber = "469"
-                  offsetFromSymbolStart = "236">
-               </Location>
-               <Location
-                  uuid = "E08A9687-F256-4BC3-9BA3-4CE26FE2FD8A - 5d1211b10cff42c8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[PMIDAuthViewController POSTLIFEQuery:]_block_invoke"
-                  moduleName = "PresiMex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Means/IDAuth(%E8%BA%AB%E4%BB%BD%E8%AF%81/C/PMIDAuthViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "470"
-                  endingLineNumber = "470"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

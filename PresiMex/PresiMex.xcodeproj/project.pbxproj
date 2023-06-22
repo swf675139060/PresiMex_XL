@@ -86,6 +86,7 @@
 		FB8AF3352A091FCA006C5887 /* WFBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF3342A091FCA006C5887 /* WFBaseViewController.m */; };
 		FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF3372A092010006C5887 /* WFTabBarController.m */; };
 		FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8AF33B2A092107006C5887 /* DKGuideViewController.m */; };
+		FB8E58C52A409FA400ABF355 /* BasicDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8E58C42A409FA400ABF355 /* BasicDataModel.m */; };
 		FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F162A21BC1A00599A86 /* SobreVC.m */; };
 		FB939F1A2A21C0BC00599A86 /* WFCornerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F192A21C0BC00599A86 /* WFCornerCell.m */; };
 		FB939F212A21E28400599A86 /* AjustesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB939F202A21E28400599A86 /* AjustesVC.m */; };
@@ -111,6 +112,9 @@
 		FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */; };
 		FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039612A2B800100E5CD80 /* KeFuAlert.m */; };
 		FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */; };
+		FBBE46662A41E7CE0049C6F6 /* CXDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE465E2A41E7CE0049C6F6 /* CXDatePickerView.m */; };
+		FBBE46672A41E7CE0049C6F6 /* NSDate+CXCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE46642A41E7CE0049C6F6 /* NSDate+CXCategory.m */; };
+		FBBE46682A41E7CE0049C6F6 /* CXDatePickerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE46652A41E7CE0049C6F6 /* CXDatePickerViewManager.m */; };
 		FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC09FD82A2C686C00259622 /* PMHomeModel.m */; };
 		FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238802A2646090079FBF2 /* HomeDetailsVC.m */; };
 		FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC238832A2646E00079FBF2 /* WFFourLabelCell.m */; };
@@ -375,6 +379,8 @@
 		FB8AF3372A092010006C5887 /* WFTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFTabBarController.m; sourceTree = "<group>"; };
 		FB8AF33A2A092107006C5887 /* DKGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKGuideViewController.h; sourceTree = "<group>"; };
 		FB8AF33B2A092107006C5887 /* DKGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKGuideViewController.m; sourceTree = "<group>"; };
+		FB8E58C32A409FA400ABF355 /* BasicDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDataModel.h; sourceTree = "<group>"; };
+		FB8E58C42A409FA400ABF355 /* BasicDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicDataModel.m; sourceTree = "<group>"; };
 		FB939F152A21BC1A00599A86 /* SobreVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SobreVC.h; sourceTree = "<group>"; };
 		FB939F162A21BC1A00599A86 /* SobreVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SobreVC.m; sourceTree = "<group>"; };
 		FB939F182A21C0BC00599A86 /* WFCornerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFCornerCell.h; sourceTree = "<group>"; };
@@ -423,6 +429,14 @@
 		FBB039612A2B800100E5CD80 /* KeFuAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeFuAlert.m; sourceTree = "<group>"; };
 		FBB039632A2B822400E5CD80 /* WFLeftImageTwolabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftImageTwolabelCell.h; sourceTree = "<group>"; };
 		FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftImageTwolabelCell.m; sourceTree = "<group>"; };
+		FBBE465E2A41E7CE0049C6F6 /* CXDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXDatePickerView.m; sourceTree = "<group>"; };
+		FBBE465F2A41E7CE0049C6F6 /* CXDatePickerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXDatePickerConfig.h; sourceTree = "<group>"; };
+		FBBE46602A41E7CE0049C6F6 /* NSDate+CXCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CXCategory.h"; sourceTree = "<group>"; };
+		FBBE46612A41E7CE0049C6F6 /* CXDatePickerViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXDatePickerViewManager.h; sourceTree = "<group>"; };
+		FBBE46622A41E7CE0049C6F6 /* CXDatePickerStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXDatePickerStyle.h; sourceTree = "<group>"; };
+		FBBE46632A41E7CE0049C6F6 /* CXDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXDatePickerView.h; sourceTree = "<group>"; };
+		FBBE46642A41E7CE0049C6F6 /* NSDate+CXCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CXCategory.m"; sourceTree = "<group>"; };
+		FBBE46652A41E7CE0049C6F6 /* CXDatePickerViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXDatePickerViewManager.m; sourceTree = "<group>"; };
 		FBC09FD72A2C686C00259622 /* PMHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMHomeModel.h; sourceTree = "<group>"; };
 		FBC09FD82A2C686C00259622 /* PMHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMHomeModel.m; sourceTree = "<group>"; };
 		FBC2387F2A2646090079FBF2 /* HomeDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailsVC.h; sourceTree = "<group>"; };
@@ -807,7 +821,7 @@
 			children = (
 				A400BCEB2A25F01E006CABB2 /* Cer(引导) */,
 				A4D6F11F2A25AE9C006B4BA6 /* Bank_u */,
-				A4D6F11E2A25AE87006B4BA6 /* Emer */,
+				A4D6F11E2A25AE87006B4BA6 /* Emer(联系人） */,
 				A4D6F11D2A25AE64006B4BA6 /* Basic(信息 */,
 				A4D6F11C2A25AE4A006B4BA6 /* Questionnaire(问卷 */,
 				A4D6F11B2A25AE3B006B4BA6 /* IDAuth(身份证 */,
@@ -838,19 +852,20 @@
 		A4D6F11D2A25AE64006B4BA6 /* Basic(信息 */ = {
 			isa = PBXGroup;
 			children = (
+				FB8E58C22A409F8C00ABF355 /* M */,
 				A40B4C8A2A2AE4E7001B11F0 /* C */,
 			);
 			path = "Basic(信息";
 			sourceTree = "<group>";
 		};
-		A4D6F11E2A25AE87006B4BA6 /* Emer */ = {
+		A4D6F11E2A25AE87006B4BA6 /* Emer(联系人） */ = {
 			isa = PBXGroup;
 			children = (
 				A40B4C962A2B1FC6001B11F0 /* M */,
 				A40B4C952A2B1FBF001B11F0 /* V */,
 				A40B4C942A2B1FB5001B11F0 /* C */,
 			);
-			path = Emer;
+			path = "Emer(联系人）";
 			sourceTree = "<group>";
 		};
 		A4D6F11F2A25AE9C006B4BA6 /* Bank_u */ = {
@@ -954,6 +969,7 @@
 		A4DD5E362A21FF7B00451413 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				FBBE465D2A41E7CE0049C6F6 /* CXDatePickerView */,
 				FBD4B2622A3EDD5800E136D5 /* liveSDK */,
 				A43475DA2A3DE254002A4E17 /* Alert_Troila */,
 				A43475D82A3DD9A9002A4E17 /* moxi1.jpg */,
@@ -1243,6 +1259,15 @@
 			path = Guide;
 			sourceTree = "<group>";
 		};
+		FB8E58C22A409F8C00ABF355 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				FB8E58C32A409FA400ABF355 /* BasicDataModel.h */,
+				FB8E58C42A409FA400ABF355 /* BasicDataModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
 		FB939F112A21BBD100599A86 /* Sobre(关于我们) */ = {
 			isa = PBXGroup;
 			children = (
@@ -1473,6 +1498,21 @@
 				FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */,
 			);
 			path = M;
+			sourceTree = "<group>";
+		};
+		FBBE465D2A41E7CE0049C6F6 /* CXDatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				FBBE465F2A41E7CE0049C6F6 /* CXDatePickerConfig.h */,
+				FBBE46622A41E7CE0049C6F6 /* CXDatePickerStyle.h */,
+				FBBE46632A41E7CE0049C6F6 /* CXDatePickerView.h */,
+				FBBE465E2A41E7CE0049C6F6 /* CXDatePickerView.m */,
+				FBBE46612A41E7CE0049C6F6 /* CXDatePickerViewManager.h */,
+				FBBE46652A41E7CE0049C6F6 /* CXDatePickerViewManager.m */,
+				FBBE46602A41E7CE0049C6F6 /* NSDate+CXCategory.h */,
+				FBBE46642A41E7CE0049C6F6 /* NSDate+CXCategory.m */,
+			);
+			path = CXDatePickerView;
 			sourceTree = "<group>";
 		};
 		FBC09FD62A2C683F00259622 /* M */ = {
@@ -2167,6 +2207,8 @@
 				FB7BC86D2A2AE6D5000BB3ED /* UIView+DashedLine.m in Sources */,
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
+				FB8E58C52A409FA400ABF355 /* BasicDataModel.m in Sources */,
+				FBBE46672A41E7CE0049C6F6 /* NSDate+CXCategory.m in Sources */,
 				FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */,
 				FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */,
 				FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */,
@@ -2200,7 +2242,9 @@
 				FBD4B2D42A3EDD5800E136D5 /* AFHTTPSessionManager.m in Sources */,
 				FBD4B2D02A3EDD5800E136D5 /* ELCameraBaseCapture.m in Sources */,
 				FB107B5D2A3DAA520099C52B /* NSString+BarCode.m in Sources */,
+				FBBE46662A41E7CE0049C6F6 /* CXDatePickerView.m in Sources */,
 				FBD4B2CD2A3EDD5800E136D5 /* MouthPoints.m in Sources */,
+				FBBE46682A41E7CE0049C6F6 /* CXDatePickerViewManager.m in Sources */,
 				FBD4B2CC2A3EDD5800E136D5 /* UIImage+Animated.m in Sources */,
 				A4B36C892A35EF1D00A18C80 /* PHImageFacePickerController.m in Sources */,
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
@@ -2416,6 +2460,9 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -2426,7 +2473,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wenfeng.shen.PresiMex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wenfeng.shen.PresiMex1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2454,6 +2501,9 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -2464,7 +2514,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wenfeng.shen.PresiMex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wenfeng.shen.PresiMex1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

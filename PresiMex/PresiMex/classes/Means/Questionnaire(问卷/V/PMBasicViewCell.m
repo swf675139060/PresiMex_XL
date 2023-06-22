@@ -8,6 +8,7 @@
 #import "PMBasicViewCell.h"
 
 #import "PMTextField.h"
+#import "BasicDataModel.h"
 
 @interface PMBasicViewCell ()<UITextFieldDelegate>
 
@@ -82,11 +83,19 @@
 -(void)setCellWithModel:(PMQuestionModel*)model{
     _model=model;
     _titleLabel.text=model.title;
-    _contentTF.text=model.content;
     if (model.isHave) {
         _contentTF.userInteractionEnabled = NO;
         _arrowImageView.hidden=NO;
+        if (model.indx >= 0) {
+            BasicDataModel *  DataModel = model.contentArr[model.indx];
+            _contentTF.text = DataModel.title;
+        }else if (model.content && model.content.length){
+            _contentTF.text =model.content;
+        }else{
+            _contentTF.text = @"";
+        }
     } else {
+        _contentTF.text=model.content;
         _contentTF.userInteractionEnabled = YES;
         _arrowImageView.hidden=YES;
     }
