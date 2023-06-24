@@ -310,8 +310,8 @@
             filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "-submitPhoto:withType:withSelType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -326,8 +326,8 @@
             filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "516"
-            endingLineNumber = "516"
+            startingLineNumber = "573"
+            endingLineNumber = "573"
             landmarkName = "-POSTLIFEQuery:img:"
             landmarkType = "7">
          </BreakpointContent>
@@ -342,8 +342,8 @@
             filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "482"
-            endingLineNumber = "482"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "-POSTOcrKYC"
             landmarkType = "7">
          </BreakpointContent>

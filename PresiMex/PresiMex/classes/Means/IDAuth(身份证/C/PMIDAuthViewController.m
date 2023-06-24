@@ -17,6 +17,8 @@
 #import "LiveStartModel.h"
 
 #import "LNDetector.h"
+#import "PhotoTipAlert.h"
+#import "AllFailAlert.h"
 
 @interface PMIDAuthViewController ()<UITableViewDelegate,UITableViewDataSource,PHImagePickerControllerDelegate,DetectViewControllerDelegate>
 
@@ -166,17 +168,57 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row==0) {
-        [self selectPhoto];
-    } else if (indexPath.row==1) {
-        [self selectBackPhoto];
-    }else if (indexPath.row==2) {
-        [self POSTORCAUTH];
+   
+    
+    [self showPhotoTipAlert:indexPath.row];
+    
+}
+
+
+//   显示照片提示弹出框
+-(void)showPhotoTipAlert:(NSInteger)type{
+    PhotoTipAlert * alert = [[PhotoTipAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 331) withType:type] ;
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+        
+        if (type==0) {
+            [weakself selectPhoto];
+        } else if (type==1) {
+            [weakself selectBackPhoto];
+        }else if (type==2) {
+            [weakself POSTORCAUTH];
+        }else{
+            
+        }
+    }];
+}
+
+//   显示照片 失败弹出框
+-(void)showAllFailAlert:(NSInteger)type{
+    
+    NSString *content;
+    if (type==0) {
+        content = @"El sistema no pudo reconocer el frente de la tarjeta de identificación, tome otra foto.";
+    } else if (type==1) {
+        content = @"Falló el reconocimiento del sistema en el reverso de la tarjeta de identificación, tome otra foto.";
+    }else if (type==2) {
+        content = @"La comparación en vivo falló, inténtalo de nuevo.";
     }else{
         
     }
-    
+    AllFailAlert * alert = [[AllFailAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 210) withTitle:@"Asegúrese de tener suficiente luz en el entorno, sin obstrucciones ni sobreexposiciones." content:content];
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+        
+    }];
 }
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -312,6 +354,7 @@
 - (void)detectFailed:(LivenessFailResult*) result {
     //TODO
 //    [self.tableView reloadData];
+    [self showAllFailAlert:2];
 }
 
 - (void)detectSuccess:(LivenessSuccessResult*) result {
@@ -410,10 +453,20 @@
                 [weakself.dataArray replaceObjectAtIndex:1 withObject:model2];
             }
             [weakself.tableView reloadData];
+        }else{
+            
+            if ([type integerValue] == 1) {
+                [weakself showAllFailAlert:0];
+            }else{
+                [weakself showAllFailAlert:1];
+            }
         }
         
         
     } failure:^(NSError * _Nonnull error) {
+        
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        [weakself dismiss];
         NSLog(@"证件照==%@",error);
         
     }];
@@ -437,10 +490,12 @@
             [weakself pushLNDetectViewController:weakself.LiveSTModel.versions];
             
         }else{
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
     } failure:^(NSError * _Nonnull error) {
         
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself dismiss];
         
     }];
@@ -474,11 +529,13 @@
         if ([responseObject[@"retail"] intValue]==200) {
             [weakself clickNextBtn];
         }else{
+            [weakself showTip:responseObject[@"entire"]];//（对）
             
         }
         
     } failure:^(NSError * _Nonnull error) {
         
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself dismiss];
         
     }];
@@ -509,11 +566,13 @@
             
             [weakself.tableView reloadData];
         }else{
-            
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"证件照==%@",error);
+        
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         
     }];
     
@@ -562,9 +621,11 @@
             [LNDetector setAppName:weakself.LiveSetModel.jerry.barely partnerCode:weakself.LiveSetModel.jerry.physicians partnerKey:weakself.LiveSetModel.jerry.persian];
             
         }else{
-            
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
     } failure:^(NSError * _Nonnull error) {
+        
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself dismiss];
     }];
     

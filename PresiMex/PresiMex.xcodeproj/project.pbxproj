@@ -122,6 +122,8 @@
 		FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */; };
 		FBB47BAC2A46E13100B059B5 /* BankConfrimAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB47BAB2A46E13100B059B5 /* BankConfrimAlert.m */; };
 		FBB47BAF2A4703C200B059B5 /* KeFuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB47BAE2A4703C200B059B5 /* KeFuVC.m */; };
+		FBB47BB32A4718E300B059B5 /* PhotoTipAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB47BB22A4718E300B059B5 /* PhotoTipAlert.m */; };
+		FBB47BB62A47223500B059B5 /* AllFailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB47BB52A47223500B059B5 /* AllFailAlert.m */; };
 		FBBE46662A41E7CE0049C6F6 /* CXDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE465E2A41E7CE0049C6F6 /* CXDatePickerView.m */; };
 		FBBE46672A41E7CE0049C6F6 /* NSDate+CXCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE46642A41E7CE0049C6F6 /* NSDate+CXCategory.m */; };
 		FBBE46682A41E7CE0049C6F6 /* CXDatePickerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE46652A41E7CE0049C6F6 /* CXDatePickerViewManager.m */; };
@@ -461,6 +463,10 @@
 		FBB47BAB2A46E13100B059B5 /* BankConfrimAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankConfrimAlert.m; sourceTree = "<group>"; };
 		FBB47BAD2A4703C200B059B5 /* KeFuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeFuVC.h; sourceTree = "<group>"; };
 		FBB47BAE2A4703C200B059B5 /* KeFuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeFuVC.m; sourceTree = "<group>"; };
+		FBB47BB12A4718E300B059B5 /* PhotoTipAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoTipAlert.h; sourceTree = "<group>"; };
+		FBB47BB22A4718E300B059B5 /* PhotoTipAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoTipAlert.m; sourceTree = "<group>"; };
+		FBB47BB42A47223500B059B5 /* AllFailAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllFailAlert.h; sourceTree = "<group>"; };
+		FBB47BB52A47223500B059B5 /* AllFailAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllFailAlert.m; sourceTree = "<group>"; };
 		FBBE465E2A41E7CE0049C6F6 /* CXDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXDatePickerView.m; sourceTree = "<group>"; };
 		FBBE465F2A41E7CE0049C6F6 /* CXDatePickerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXDatePickerConfig.h; sourceTree = "<group>"; };
 		FBBE46602A41E7CE0049C6F6 /* NSDate+CXCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CXCategory.h"; sourceTree = "<group>"; };
@@ -1193,6 +1199,10 @@
 				FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */,
 				FBB47BAA2A46E13100B059B5 /* BankConfrimAlert.h */,
 				FBB47BAB2A46E13100B059B5 /* BankConfrimAlert.m */,
+				FBB47BB12A4718E300B059B5 /* PhotoTipAlert.h */,
+				FBB47BB22A4718E300B059B5 /* PhotoTipAlert.m */,
+				FBB47BB42A47223500B059B5 /* AllFailAlert.h */,
+				FBB47BB52A47223500B059B5 /* AllFailAlert.m */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -2268,6 +2278,7 @@
 				A43475DF2A3DE254002A4E17 /* TRCustomAlert.m in Sources */,
 				FB2ABD562A35D00E00B7073D /* PayModel.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
+				FBB47BB32A4718E300B059B5 /* PhotoTipAlert.m in Sources */,
 				A400BCEE2A25F0C1006CABB2 /* PMIDAuthViewController.m in Sources */,
 				FB939F372A21F6A700599A86 /* CuponCell.m in Sources */,
 				FBD4B2D52A3EDD5800E136D5 /* AFURLSessionManager.m in Sources */,
@@ -2311,6 +2322,7 @@
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
+				FBB47BB62A47223500B059B5 /* AllFailAlert.m in Sources */,
 				FB107B572A3D8BA10099C52B /* bankcardCell.m in Sources */,
 				FB2ABD532A358E1D00B7073D /* PayTypeModel.m in Sources */,
 				A40B4CB72A2C706B001B11F0 /* PMCerViewCell.m in Sources */,
