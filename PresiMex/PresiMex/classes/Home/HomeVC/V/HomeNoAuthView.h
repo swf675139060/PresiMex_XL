@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeNoAuthView : WFBaseView
 
+@property (nonatomic, strong) UITableView *tableView; /**< 列表*/
+
 @property(copy, nonatomic) void(^clickBock)(void);
 
 @end

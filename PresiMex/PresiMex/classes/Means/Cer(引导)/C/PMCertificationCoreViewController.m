@@ -13,6 +13,7 @@
 #import "PMIDAuthViewController.h"
 #import "PMBasicViewController.h"
 #import "PMEmergencyContactViewController.h"
+#import "PMAddBankViewController.h"
 
 
 @interface PMCertificationCoreViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -108,6 +109,46 @@
         [cell setCellWithModel:model isSelect:NO];
     }
     
+    if (self.currentState == 30) {
+        if (indexPath.row == 0) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else{
+            [cell setCellWithModel:model isSelect:NO];
+        }
+    } else  if (self.currentState == 40) {
+        if (indexPath.row == 0) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else if (indexPath.row == 1) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else {
+            [cell setCellWithModel:model isSelect:NO];
+        }
+    }else  if (self.currentState == 50) {
+        if (indexPath.row == 0) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else if (indexPath.row == 1) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else if (indexPath.row == 2) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else {
+            [cell setCellWithModel:model isSelect:NO];
+        }
+    }else  if (self.currentState == 60) {
+        if (indexPath.row == 0) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else if (indexPath.row == 1) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else if (indexPath.row == 2) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else if (indexPath.row == 3) {
+            [cell setCellWithModel:model isSelect:YES];
+        }else {
+            [cell setCellWithModel:model isSelect:NO];
+        }
+    }else{
+        [cell setCellWithModel:model isSelect:NO];
+    }
+    
     
     return cell;
     
@@ -176,6 +217,7 @@
 }
 
 -(void)clickSubmitBtn{
+   
     
     // 用户当前状态 10:注册完成, 20:问卷调查完成 30:kyc完成, 40:基本信息完成, 50:联系人完成,60:账户完成, 70:授信中, 71:授信通过, 72:授信拒绝 80:交易验证, 81:交易验证部分通过, 82:交易验证拒绝 83:交易验证通过, 84:放款失败需要处理'
     if (self.currentState <= 10 ) {
@@ -188,17 +230,17 @@
         [self.navigationController pushViewController:Vc animated:YES];
 
     }else if(self.currentState == 30) {
-//        PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
-//        [self.navigationController pushViewController:vc animated:YES];
-       
+
         PMBasicViewController*Vc=[PMBasicViewController new];
         [self.navigationController pushViewController:Vc animated:YES];
     }else if(self.currentState == 40) {
         PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
         [self.navigationController pushViewController:vc animated:YES];
-        return;
+     
     }else if(self.currentState == 50) {
-        
+        PMAddBankViewController*vc=[PMAddBankViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+     
     }else if(self.currentState == 60 ) {
         
     }else{

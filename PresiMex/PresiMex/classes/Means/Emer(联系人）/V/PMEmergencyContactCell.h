@@ -13,7 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 -(void)setCellWithModel:(PMEmergencyContactModel*)model;
-@property (nonatomic, copy) void(^inputBlock)(NSString *  content);
+
+@property (nonatomic, copy) void(^guanXiClickBlock)(NSInteger type);
+
+
+@property (nonatomic, copy) void(^tongXunLUClickBlock)(NSInteger type);
+
+@property (nonatomic, copy) void(^inputBlock)(NSString *  content,NSInteger type);
 
 @end
 

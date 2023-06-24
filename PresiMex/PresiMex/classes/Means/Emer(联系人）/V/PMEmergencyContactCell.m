@@ -6,6 +6,7 @@
 //
 
 #import "PMEmergencyContactCell.h"
+#import "BasicDataModel.h"
 
 
 
@@ -124,10 +125,13 @@
 
 
     UIImageView *leftNameImag=[[UIImageView alloc]init];
-    leftNameImag.frame=CGRectMake(WF_ScreenWidth-30-15-15,12.5,15,20);
+    leftNameImag.frame=CGRectMake(WF_ScreenWidth-30-45,2.5,45,40);
     [phonebgView addSubview:leftNameImag];
     leftNameImag.image=[UIImage imageNamed:@"icon_contact_small"];
-
+    leftNameImag.tag = 2;
+    leftNameImag.userInteractionEnabled = YES;
+    leftNameImag.contentMode = UIViewContentModeCenter;
+    
     _phoneContentTF = [[UITextField alloc] init];
     [phonebgView addSubview:_phoneContentTF];
     _phoneContentTF.font = B_FONT_BOLD(16);
@@ -137,6 +141,7 @@
     [_phoneContentTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     _phoneContentTF.frame=CGRectMake(_pTitleLabel.swf_right+20, 12.5, WF_ScreenWidth-30-45-20-45, 20);
     _phoneContentTF.tag=2;
+    _phoneContentTF.keyboardType = UIKeyboardTypeNumberPad;
    
     
 
@@ -144,28 +149,35 @@
     UITapGestureRecognizer *relTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [relationBg addGestureRecognizer:relTap];
     
-    UITapGestureRecognizer *phoneTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-    [phoneBg addGestureRecognizer:phoneTap];
+//    UITapGestureRecognizer *phoneTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+//    [phoneBg addGestureRecognizer:phoneTap];
+    
+    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    [leftNameImag addGestureRecognizer:imageTap];
 
 }
 
 -(void)setCellWithModel:(PMEmergencyContactModel*)model{
-   
+    _model = model;
     _titleLabel.text=model.title;
-    _reContentTF.text=model.relation;
+    
+    if (model.indx >= 0) {
+        BasicDataModel *  DataModel = model.contentArr[model.indx];
+        _reContentTF.text = DataModel.title;
+    }else if (model.relation && model.relation.length){
+        _reContentTF.text =model.relation;
+    }else{
+        _reContentTF.text = @"";
+    }
     _phoneContentTF.text=model.telephone;
 
 }
 - (void)textFieldDidChange:(UITextField *)textField {
     
-
+    
     if (self.inputBlock) {
-        if (_reContentTF.tag==0) {
-            self.inputBlock(@"0");
-        }else{
-            self.inputBlock(@"1");
-        }
-       
+        self.inputBlock(textField.text,[self.model.type integerValue]);
+     
     }
 }
 
@@ -174,29 +186,27 @@
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
 
-    if ([textField.placeholder isEqual:NSLocalizedString(@"please_select", nil)]) {
-
-        if (self.inputBlock) {
-            if (textField.tag==0) {
-                self.inputBlock(@"0");
-            }else{
-                self.inputBlock(@"1");
-            }
+    
+    if (self.guanXiClickBlock) {
+        if (textField.tag==0) {
+            self.guanXiClickBlock([self.model.type integerValue]);
+            
+          return NO;
         }
-      return NO;
-
     }
+
     return YES;
 
 }
 -(void)tap:(UITapGestureRecognizer *)relTap{
     if (relTap.view.tag==0) {
-        if (self.inputBlock) {
-            self.inputBlock(@"0");
+        if (self.guanXiClickBlock) {
+            self.guanXiClickBlock([self.model.type integerValue]);
+            
         }
     }else{
-        if (self.inputBlock) {
-            self.inputBlock(@"1");
+        if (self.tongXunLUClickBlock) {
+            self.tongXunLUClickBlock([self.model.type integerValue]);
         }
         
     }

@@ -7,8 +7,13 @@
 
 #import "WFBaseViewController.h"
 #import "Toast+UIView.h"
+#import "KeFuAlert.h"
 @interface WFBaseViewController ()
 @property (nonatomic, strong)UIView *hudView;
+
+@property (nonatomic, strong)NSString *rightImage;
+
+
 @end
 
 @implementation WFBaseViewController
@@ -73,6 +78,8 @@
 }
 -(void)addRightBarButtonWithImag:(NSString*)imgName{
     
+    self.rightImage = imgName;
+    
     UIButton* button = [[UIButton alloc]init];
     [button addTarget:self action:@selector(rightItemAction) forControlEvents:(UIControlEventTouchUpInside)];
     button.frame = CGRectMake(WF_ScreenWidth-32-15, WF_StatusBarHeight+7, 32, 32);
@@ -81,6 +88,16 @@
     [_navBarView addSubview:button];
 }
 -(void)rightItemAction{
+    
+    if ([self.rightImage isEqualToString:@"bai_kefu"]) {
+        KeFuAlert * alert = [[KeFuAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 217)] ;
+        
+        WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+        [AlertView setClickBGDismiss:YES];
+        [AlertView show];
+    } else {
+        
+    }
     
 }
 -(void)show{

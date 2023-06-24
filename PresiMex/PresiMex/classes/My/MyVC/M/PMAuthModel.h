@@ -24,8 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString * social;//额度调整步长
 
 
-@property (strong, nonatomic) NSString * entire;//状态描述，与状态码对应，可用于App端按需展示(自己加的，不知到怎么用)
-
 
 
 @end

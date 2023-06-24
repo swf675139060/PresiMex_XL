@@ -22,7 +22,6 @@
 		A40B4C9C2A2B2154001B11F0 /* PMEmergencyContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4C9B2A2B2154001B11F0 /* PMEmergencyContactCell.m */; };
 		A40B4C9F2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4C9E2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m */; };
 		A40B4CA32A2B476C001B11F0 /* PMAddBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CA22A2B476C001B11F0 /* PMAddBankViewController.m */; };
-		A40B4CA72A2C4773001B11F0 /* PMBankcardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CA62A2C4773001B11F0 /* PMBankcardModel.m */; };
 		A40B4CAB2A2C499C001B11F0 /* PMBankSelectViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CAA2A2C499C001B11F0 /* PMBankSelectViewCell.m */; };
 		A40B4CAE2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CAD2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m */; };
 		A40B4CB42A2C6F07001B11F0 /* PMCertificationCoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B4CB32A2C6F07001B11F0 /* PMCertificationCoreViewController.m */; };
@@ -64,6 +63,10 @@
 		A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */; };
 		A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */; };
 		A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2D2A3085C500389B67 /* YYClassInfo.m */; };
+		FB06D0B12A4574FC00272F5A /* LoanFailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */; };
+		FB06D0B42A4589E900272F5A /* HomeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B32A4589E900272F5A /* HomeDetailView.m */; };
+		FB06D0B72A4593C400272F5A /* PrivacyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B62A4593C400272F5A /* PrivacyVC.m */; };
+		FB06D0BA2A45E44800272F5A /* PMBankVerCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B92A45E44800272F5A /* PMBankVerCodeCell.m */; };
 		FB107B542A3D8A370099C52B /* ConfirmAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB107B532A3D8A370099C52B /* ConfirmAccountVC.m */; };
 		FB107B572A3D8BA10099C52B /* bankcardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB107B562A3D8BA10099C52B /* bankcardCell.m */; };
 		FB107B5A2A3DA0C40099C52B /* bankcardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB107B592A3DA0C40099C52B /* bankcardModel.m */; };
@@ -108,10 +111,17 @@
 		FB9E5AB82A3B512000E1D38E /* RepaymentSuccessfulAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E5AB72A3B512000E1D38E /* RepaymentSuccessfulAlert.m */; };
 		FB9E5ABB2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E5ABA2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m */; };
 		FBAAA7742A2E258800BCBA57 /* OrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAAA7732A2E258800BCBA57 /* OrderDetailsVC.m */; };
+		FBAACBF12A45221900463FC1 /* PMConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAACBF02A45221900463FC1 /* PMConfigManager.m */; };
+		FBAACBF42A45232800463FC1 /* PMConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAACBF32A45232800463FC1 /* PMConfigModel.m */; };
+		FBAACBF82A452E7900463FC1 /* XHStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAACBF62A452E7800463FC1 /* XHStarRateView.m */; };
+		FBAACBFB2A4532B200463FC1 /* LoanWaitingAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAACBFA2A4532B200463FC1 /* LoanWaitingAlert.m */; };
+		FBAACBFE2A4537D800463FC1 /* WFStarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAACBFD2A4537D800463FC1 /* WFStarCell.m */; };
 		FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039592A2B431900E5CD80 /* DemoCell2.m */; };
 		FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */; };
 		FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039612A2B800100E5CD80 /* KeFuAlert.m */; };
 		FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */; };
+		FBB47BAC2A46E13100B059B5 /* BankConfrimAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB47BAB2A46E13100B059B5 /* BankConfrimAlert.m */; };
+		FBB47BAF2A4703C200B059B5 /* KeFuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB47BAE2A4703C200B059B5 /* KeFuVC.m */; };
 		FBBE46662A41E7CE0049C6F6 /* CXDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE465E2A41E7CE0049C6F6 /* CXDatePickerView.m */; };
 		FBBE46672A41E7CE0049C6F6 /* NSDate+CXCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE46642A41E7CE0049C6F6 /* NSDate+CXCategory.m */; };
 		FBBE46682A41E7CE0049C6F6 /* CXDatePickerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBE46652A41E7CE0049C6F6 /* CXDatePickerViewManager.m */; };
@@ -197,6 +207,8 @@
 		FBDD1AC52A2F7A1700845101 /* PayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDD1AC42A2F7A1700845101 /* PayVC.m */; };
 		FBDD1AC82A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDD1AC72A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.m */; };
 		FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */; };
+		FBE0ECBC2A443163005BF303 /* AuthWaitingAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE0ECBB2A443163005BF303 /* AuthWaitingAlert.m */; };
+		FBE0ECBF2A4438C5005BF303 /* AuthSuccessfuiAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE0ECBE2A4438C5005BF303 /* AuthSuccessfuiAlert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,8 +260,6 @@
 		A40B4C9E2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMEmergencyContactViewController.m; sourceTree = "<group>"; };
 		A40B4CA12A2B476C001B11F0 /* PMAddBankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMAddBankViewController.h; sourceTree = "<group>"; };
 		A40B4CA22A2B476C001B11F0 /* PMAddBankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMAddBankViewController.m; sourceTree = "<group>"; };
-		A40B4CA52A2C4773001B11F0 /* PMBankcardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBankcardModel.h; sourceTree = "<group>"; };
-		A40B4CA62A2C4773001B11F0 /* PMBankcardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMBankcardModel.m; sourceTree = "<group>"; };
 		A40B4CA92A2C499C001B11F0 /* PMBankSelectViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBankSelectViewCell.h; sourceTree = "<group>"; };
 		A40B4CAA2A2C499C001B11F0 /* PMBankSelectViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMBankSelectViewCell.m; sourceTree = "<group>"; };
 		A40B4CAC2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
@@ -334,6 +344,14 @@
 		A4F49D2E2A3085C500389B67 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB06D0AF2A4574FC00272F5A /* LoanFailAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanFailAlert.h; sourceTree = "<group>"; };
+		FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanFailAlert.m; sourceTree = "<group>"; };
+		FB06D0B22A4589E900272F5A /* HomeDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailView.h; sourceTree = "<group>"; };
+		FB06D0B32A4589E900272F5A /* HomeDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailView.m; sourceTree = "<group>"; };
+		FB06D0B52A4593C400272F5A /* PrivacyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivacyVC.h; sourceTree = "<group>"; };
+		FB06D0B62A4593C400272F5A /* PrivacyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrivacyVC.m; sourceTree = "<group>"; };
+		FB06D0B82A45E44800272F5A /* PMBankVerCodeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMBankVerCodeCell.h; sourceTree = "<group>"; };
+		FB06D0B92A45E44800272F5A /* PMBankVerCodeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMBankVerCodeCell.m; sourceTree = "<group>"; };
 		FB107B522A3D8A370099C52B /* ConfirmAccountVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmAccountVC.h; sourceTree = "<group>"; };
 		FB107B532A3D8A370099C52B /* ConfirmAccountVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmAccountVC.m; sourceTree = "<group>"; };
 		FB107B552A3D8BA10099C52B /* bankcardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bankcardCell.h; sourceTree = "<group>"; };
@@ -421,6 +439,16 @@
 		FB9E5ABA2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtendedSuccessfullyAlart.m; sourceTree = "<group>"; };
 		FBAAA7722A2E258800BCBA57 /* OrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailsVC.h; sourceTree = "<group>"; };
 		FBAAA7732A2E258800BCBA57 /* OrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsVC.m; sourceTree = "<group>"; };
+		FBAACBEF2A45221900463FC1 /* PMConfigManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMConfigManager.h; sourceTree = "<group>"; };
+		FBAACBF02A45221900463FC1 /* PMConfigManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMConfigManager.m; sourceTree = "<group>"; };
+		FBAACBF22A45232800463FC1 /* PMConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMConfigModel.h; sourceTree = "<group>"; };
+		FBAACBF32A45232800463FC1 /* PMConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMConfigModel.m; sourceTree = "<group>"; };
+		FBAACBF62A452E7800463FC1 /* XHStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHStarRateView.m; sourceTree = "<group>"; };
+		FBAACBF72A452E7900463FC1 /* XHStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHStarRateView.h; sourceTree = "<group>"; };
+		FBAACBF92A4532B200463FC1 /* LoanWaitingAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanWaitingAlert.h; sourceTree = "<group>"; };
+		FBAACBFA2A4532B200463FC1 /* LoanWaitingAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanWaitingAlert.m; sourceTree = "<group>"; };
+		FBAACBFC2A4537D800463FC1 /* WFStarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFStarCell.h; sourceTree = "<group>"; };
+		FBAACBFD2A4537D800463FC1 /* WFStarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFStarCell.m; sourceTree = "<group>"; };
 		FBB039582A2B431900E5CD80 /* DemoCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell2.h; sourceTree = "<group>"; };
 		FBB039592A2B431900E5CD80 /* DemoCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell2.m; sourceTree = "<group>"; };
 		FBB0395D2A2B50C900E5CD80 /* PMAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMAuthModel.h; sourceTree = "<group>"; };
@@ -429,6 +457,10 @@
 		FBB039612A2B800100E5CD80 /* KeFuAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeFuAlert.m; sourceTree = "<group>"; };
 		FBB039632A2B822400E5CD80 /* WFLeftImageTwolabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFLeftImageTwolabelCell.h; sourceTree = "<group>"; };
 		FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftImageTwolabelCell.m; sourceTree = "<group>"; };
+		FBB47BAA2A46E13100B059B5 /* BankConfrimAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankConfrimAlert.h; sourceTree = "<group>"; };
+		FBB47BAB2A46E13100B059B5 /* BankConfrimAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankConfrimAlert.m; sourceTree = "<group>"; };
+		FBB47BAD2A4703C200B059B5 /* KeFuVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeFuVC.h; sourceTree = "<group>"; };
+		FBB47BAE2A4703C200B059B5 /* KeFuVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeFuVC.m; sourceTree = "<group>"; };
 		FBBE465E2A41E7CE0049C6F6 /* CXDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXDatePickerView.m; sourceTree = "<group>"; };
 		FBBE465F2A41E7CE0049C6F6 /* CXDatePickerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXDatePickerConfig.h; sourceTree = "<group>"; };
 		FBBE46602A41E7CE0049C6F6 /* NSDate+CXCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CXCategory.h"; sourceTree = "<group>"; };
@@ -579,6 +611,10 @@
 		FBDD1AC72A2F7C4B00845101 /* WFLeftTBLbaelRightBtnCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFLeftTBLbaelRightBtnCell.m; sourceTree = "<group>"; };
 		FBDE5EE22A22DC29007834AB /* PMOrderTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMOrderTopView.h; sourceTree = "<group>"; };
 		FBDE5EE32A22DC29007834AB /* PMOrderTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMOrderTopView.m; sourceTree = "<group>"; };
+		FBE0ECBA2A443163005BF303 /* AuthWaitingAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthWaitingAlert.h; sourceTree = "<group>"; };
+		FBE0ECBB2A443163005BF303 /* AuthWaitingAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthWaitingAlert.m; sourceTree = "<group>"; };
+		FBE0ECBD2A4438C5005BF303 /* AuthSuccessfuiAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthSuccessfuiAlert.h; sourceTree = "<group>"; };
+		FBE0ECBE2A4438C5005BF303 /* AuthSuccessfuiAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthSuccessfuiAlert.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -721,8 +757,6 @@
 		A40B4CA42A2C475A001B11F0 /* M */ = {
 			isa = PBXGroup;
 			children = (
-				A40B4CA52A2C4773001B11F0 /* PMBankcardModel.h */,
-				A40B4CA62A2C4773001B11F0 /* PMBankcardModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -732,6 +766,8 @@
 			children = (
 				A40B4CA92A2C499C001B11F0 /* PMBankSelectViewCell.h */,
 				A40B4CAA2A2C499C001B11F0 /* PMBankSelectViewCell.m */,
+				FB06D0B82A45E44800272F5A /* PMBankVerCodeCell.h */,
+				FB06D0B92A45E44800272F5A /* PMBankVerCodeCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -969,6 +1005,7 @@
 		A4DD5E362A21FF7B00451413 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				FBAACBF52A452E6700463FC1 /* star */,
 				FBBE465D2A41E7CE0049C6F6 /* CXDatePickerView */,
 				FBD4B2622A3EDD5800E136D5 /* liveSDK */,
 				A43475DA2A3DE254002A4E17 /* Alert_Troila */,
@@ -1146,6 +1183,16 @@
 				FB9E5AB72A3B512000E1D38E /* RepaymentSuccessfulAlert.m */,
 				FB9E5AB92A3B515E00E1D38E /* ExtendedSuccessfullyAlart.h */,
 				FB9E5ABA2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m */,
+				FBE0ECBA2A443163005BF303 /* AuthWaitingAlert.h */,
+				FBE0ECBB2A443163005BF303 /* AuthWaitingAlert.m */,
+				FBE0ECBD2A4438C5005BF303 /* AuthSuccessfuiAlert.h */,
+				FBE0ECBE2A4438C5005BF303 /* AuthSuccessfuiAlert.m */,
+				FBAACBF92A4532B200463FC1 /* LoanWaitingAlert.h */,
+				FBAACBFA2A4532B200463FC1 /* LoanWaitingAlert.m */,
+				FB06D0AF2A4574FC00272F5A /* LoanFailAlert.h */,
+				FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */,
+				FBB47BAA2A46E13100B059B5 /* BankConfrimAlert.h */,
+				FBB47BAB2A46E13100B059B5 /* BankConfrimAlert.m */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -1153,6 +1200,8 @@
 		FB8AF2EE2A0882F2006C5887 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				FB7BC8722A2AF336000BB3ED /* AlertView */,
+				FBAACBEE2A4521E800463FC1 /* 配置信息 */,
 				FB939F382A22118C00599A86 /* order(订单) */,
 				FB107B4E2A3D89030099C52B /* bankcord(银行卡) */,
 				A4D6F11A2A25ADEF006B4BA6 /* Means */,
@@ -1161,6 +1210,8 @@
 				FBCA72322A0A69DE00A10D4E /* Home */,
 				FB8AF3392A092107006C5887 /* Guide */,
 				FB8AF32F2A091EC6006C5887 /* Base */,
+				FB06D0B52A4593C400272F5A /* PrivacyVC.h */,
+				FB06D0B62A4593C400272F5A /* PrivacyVC.m */,
 			);
 			path = classes;
 			sourceTree = "<group>";
@@ -1491,6 +1542,26 @@
 			path = V;
 			sourceTree = "<group>";
 		};
+		FBAACBEE2A4521E800463FC1 /* 配置信息 */ = {
+			isa = PBXGroup;
+			children = (
+				FBAACBEF2A45221900463FC1 /* PMConfigManager.h */,
+				FBAACBF02A45221900463FC1 /* PMConfigManager.m */,
+				FBAACBF22A45232800463FC1 /* PMConfigModel.h */,
+				FBAACBF32A45232800463FC1 /* PMConfigModel.m */,
+			);
+			path = "配置信息";
+			sourceTree = "<group>";
+		};
+		FBAACBF52A452E6700463FC1 /* star */ = {
+			isa = PBXGroup;
+			children = (
+				FBAACBF72A452E7900463FC1 /* XHStarRateView.h */,
+				FBAACBF62A452E7800463FC1 /* XHStarRateView.m */,
+			);
+			path = star;
+			sourceTree = "<group>";
+		};
 		FBB0395C2A2B509C00E5CD80 /* M */ = {
 			isa = PBXGroup;
 			children = (
@@ -1498,6 +1569,15 @@
 				FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */,
 			);
 			path = M;
+			sourceTree = "<group>";
+		};
+		FBB47BB02A47103000B059B5 /* 客服 */ = {
+			isa = PBXGroup;
+			children = (
+				FBB47BAD2A4703C200B059B5 /* KeFuVC.h */,
+				FBB47BAE2A4703C200B059B5 /* KeFuVC.m */,
+			);
+			path = "客服";
 			sourceTree = "<group>";
 		};
 		FBBE465D2A41E7CE0049C6F6 /* CXDatePickerView */ = {
@@ -1553,6 +1633,8 @@
 		FBC2387E2A2645C50079FBF2 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				FB06D0B22A4589E900272F5A /* HomeDetailView.h */,
+				FB06D0B32A4589E900272F5A /* HomeDetailView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1603,6 +1685,8 @@
 				FBC27ACC2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m */,
 				FBC27ACE2A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.h */,
 				FBC27ACF2A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m */,
+				FBAACBFC2A4537D800463FC1 /* WFStarCell.h */,
+				FBAACBFD2A4537D800463FC1 /* WFStarCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1687,7 +1771,7 @@
 		FBCA72332A0A6A0500A10D4E /* My */ = {
 			isa = PBXGroup;
 			children = (
-				FB7BC8722A2AF336000BB3ED /* AlertView */,
+				FBB47BB02A47103000B059B5 /* 客服 */,
 				FB939F2B2A21F5C100599A86 /* Cupón(优惠卷) */,
 				FB939F1B2A21E25500599A86 /* Ajustes(设置) */,
 				FBC2A85B2A19C95A0010D7F8 /* cell */,
@@ -2151,12 +2235,15 @@
 				FB939F3E2A2211F700599A86 /* OrderVC.m in Sources */,
 				A40B4CB42A2C6F07001B11F0 /* PMCertificationCoreViewController.m in Sources */,
 				FBC27AD42A341CE9001D04F1 /* ThreeLabelAlert.m in Sources */,
+				FB06D0B12A4574FC00272F5A /* LoanFailAlert.m in Sources */,
 				A4D6F1232A25B081006B4BA6 /* PMQuestionnaireViewController.m in Sources */,
+				FBB47BAF2A4703C200B059B5 /* KeFuVC.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
 				FBDD1AC52A2F7A1700845101 /* PayVC.m in Sources */,
 				FBC238842A2646E00079FBF2 /* WFFourLabelCell.m in Sources */,
 				FB8AF33C2A092107006C5887 /* DKGuideViewController.m in Sources */,
 				A400BCF72A25F169006CABB2 /* PMIDAuthModel.m in Sources */,
+				FB06D0BA2A45E44800272F5A /* PMBankVerCodeCell.m in Sources */,
 				A40B4CBA2A2C70FC001B11F0 /* PMCerModel.m in Sources */,
 				FB1C73A72A23247800194925 /* PMNotiView.m in Sources */,
 				A40B4C9F2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m in Sources */,
@@ -2198,17 +2285,21 @@
 				A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */,
 				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
 				A400BCFA2A25F404006CABB2 /* PMIDAuthHeaderView.m in Sources */,
+				FBAACBF12A45221900463FC1 /* PMConfigManager.m in Sources */,
 				A4F49D232A30763C00389B67 /* JKPickerView.m in Sources */,
 				A4B60AD62A2332C200F5BED7 /* MD5Utils.m in Sources */,
 				A40B4C8D2A2AE506001B11F0 /* PMBasicViewController.m in Sources */,
 				A400BCEA2A25EE89006CABB2 /* PMBasicViewCell.m in Sources */,
+				FBAACBF42A45232800463FC1 /* PMConfigModel.m in Sources */,
 				FBC4CBA72A24EA200050C47F /* WFThreeBtnCell.m in Sources */,
 				A4B36C7E2A35A30D00A18C80 /* PMQuesModel.m in Sources */,
 				FB7BC86D2A2AE6D5000BB3ED /* UIView+DashedLine.m in Sources */,
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8E58C52A409FA400ABF355 /* BasicDataModel.m in Sources */,
+				FBB47BAC2A46E13100B059B5 /* BankConfrimAlert.m in Sources */,
 				FBBE46672A41E7CE0049C6F6 /* NSDate+CXCategory.m in Sources */,
+				FB06D0B42A4589E900272F5A /* HomeDetailView.m in Sources */,
 				FB8AF3382A092010006C5887 /* WFTabBarController.m in Sources */,
 				FB1C73AA2A23417900194925 /* WFLeftRightBtnCell.m in Sources */,
 				FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */,
@@ -2224,13 +2315,14 @@
 				FB2ABD532A358E1D00B7073D /* PayTypeModel.m in Sources */,
 				A40B4CB72A2C706B001B11F0 /* PMCerViewCell.m in Sources */,
 				FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */,
+				FBAACBF82A452E7900463FC1 /* XHStarRateView.m in Sources */,
 				A40B4C992A2B1FF9001B11F0 /* PMEmergencyContactModel.m in Sources */,
-				A40B4CA72A2C4773001B11F0 /* PMBankcardModel.m in Sources */,
 				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
 				A40B4C902A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m in Sources */,
 				FB9E5AB22A3B4DF000E1D38E /* PayResultModel.m in Sources */,
 				FBC27AD02A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m in Sources */,
 				FBD4B2D12A3EDD5800E136D5 /* ELCameraControlCapture.m in Sources */,
+				FBE0ECBF2A4438C5005BF303 /* AuthSuccessfuiAlert.m in Sources */,
 				A4B60AD92A233C6500F5BED7 /* PMProblemViewController.m in Sources */,
 				FB107B5A2A3DA0C40099C52B /* bankcardModel.m in Sources */,
 				FBC4CBA42A24E5D00050C47F /* WFSliderCell.m in Sources */,
@@ -2251,14 +2343,17 @@
 				FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */,
 				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,
 				A40B4C9C2A2B2154001B11F0 /* PMEmergencyContactCell.m in Sources */,
+				FBAACBFE2A4537D800463FC1 /* WFStarCell.m in Sources */,
 				A4DD5E622A21FFE400451413 /* CRBoxInputCell.m in Sources */,
 				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				FBD4B2D92A3EDD5800E136D5 /* LNLogger.m in Sources */,
+				FB06D0B72A4593C400272F5A /* PrivacyVC.m in Sources */,
 				A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */,
 				FB7BC86A2A2AE576000BB3ED /* UIView+WhenTappedBlocks.m in Sources */,
 				FB9E5AB52A3B4F3F00E1D38E /* topLabelBottmBtnAlert.m in Sources */,
 				A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */,
 				A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */,
+				FBE0ECBC2A443163005BF303 /* AuthWaitingAlert.m in Sources */,
 				FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */,
 				FBC27ACD2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m in Sources */,
 				FBD4B2DA2A3EDD5800E136D5 /* BlinkPoints.m in Sources */,
@@ -2277,6 +2372,7 @@
 				FB9E5ABB2A3B515E00E1D38E /* ExtendedSuccessfullyAlart.m in Sources */,
 				FB939F212A21E28400599A86 /* AjustesVC.m in Sources */,
 				FBC2A8712A19CB230010D7F8 /* ComentarioVC.m in Sources */,
+				FBAACBFB2A4532B200463FC1 /* LoanWaitingAlert.m in Sources */,
 				FBC529122A186494004B7721 /* MyHeaderView.m in Sources */,
 				FBC4CBAE2A24ED510050C47F /* UIButton+WFTextSizeColor.m in Sources */,
 				FB8AF32E2A088C78006C5887 /* UILabel+SLFLineSpace.m in Sources */,

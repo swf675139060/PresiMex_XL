@@ -71,7 +71,7 @@
 #define  GET_App_Banner  @"/api/user/actor/trackback"
 
 //配置信息合并(获取人工客服信息)
-#define  GET_CS_Info  @" /api/user/actor/pain"
+#define  GET_CS_Info  @"/api/user/actor/pain"
 
 
 

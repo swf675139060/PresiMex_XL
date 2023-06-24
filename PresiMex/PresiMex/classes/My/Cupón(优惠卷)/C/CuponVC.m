@@ -15,6 +15,11 @@
 
 @property (nonatomic, assign) NSInteger eg; //页
 
+
+@property (nonatomic, strong) NSMutableArray *dataArr; /**< 列表*/
+
+
+
 @end
 
 @implementation CuponVC
@@ -102,7 +107,7 @@
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
         
-        if ([responseObject[@"retail"] intValue]==200) {
+        if ([responseObject[@"retaxil"] intValue]==200) {
             NSDictionary * shame = responseObject[@"shame"];
             
             
@@ -120,4 +125,11 @@
     }];
 }
 
+
+-(NSMutableArray *)dataArr{
+    if(_dataArr == nil){
+        _dataArr = [NSMutableArray array];
+    }
+    return _dataArr;
+}
 @end

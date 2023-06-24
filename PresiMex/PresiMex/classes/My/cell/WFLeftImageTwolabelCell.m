@@ -115,13 +115,16 @@
     }];
 }
 
--(void)upImageFrameWithInsets:(UIEdgeInsets )padding height:(CGFloat)height{
+-(void)upImageFrameWithInsets:(UIEdgeInsets )padding size:(CGSize)size{
     [self.imageV mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@(padding.left));
         make.top.equalTo(@(padding.top));
         make.bottom.equalTo(@(-padding.bottom));
-        if (height) {
-            make.height.equalTo(@(height));
+        if (size.height) {
+            make.height.equalTo(@(size.height));
+        }
+        if (size.width) {
+            make.width.equalTo(@(size.width));
         }
 
     }];

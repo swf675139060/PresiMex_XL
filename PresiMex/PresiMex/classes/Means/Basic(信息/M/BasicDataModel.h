@@ -35,6 +35,13 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)initData;
 @end
 
+//联系人
+@interface RelaciónDataModel : NSObject
+
+-(void)initData;
+@property(strong, nonatomic) NSArray * Relación;//关系
+
+@end
 
 @interface BasicDataModel : NSObject
 

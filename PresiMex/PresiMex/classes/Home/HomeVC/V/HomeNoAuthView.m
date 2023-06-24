@@ -21,8 +21,6 @@
 @interface HomeNoAuthView ()<UITableViewDelegate,UITableViewDataSource>
 
 
-@property (nonatomic, strong) UITableView *tableView; /**< 列表*/
-
 @end
 
 @implementation HomeNoAuthView
@@ -159,7 +157,13 @@
         return cell;
     }else if (indexPath.row == 7){
         WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
-        [cell.btn setTitle:@"Ir a autenticación" forState:UIControlStateNormal];
+        
+        
+        if([PMAccountTool isLogin]){
+            [cell.btn setTitle:@"Ir a autenticación" forState:UIControlStateNormal];
+        }else{
+            [cell.btn setTitle:@"Acceder" forState:UIControlStateNormal];
+        }
         cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         WF_WEAKSELF(weakself);

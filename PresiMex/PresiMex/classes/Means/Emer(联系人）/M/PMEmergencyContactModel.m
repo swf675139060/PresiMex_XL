@@ -8,5 +8,11 @@
 #import "PMEmergencyContactModel.h"
 
 @implementation PMEmergencyContactModel
-
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        self.indx = -1;
+    }
+    return self;
+}
 @end

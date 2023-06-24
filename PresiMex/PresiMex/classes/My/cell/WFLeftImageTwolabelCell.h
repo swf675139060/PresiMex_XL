@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 //更新背景的边距
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding;
 
--(void)upImageFrameWithInsets:(UIEdgeInsets )padding  height:(CGFloat)height;
+-(void)upImageFrameWithInsets:(UIEdgeInsets )padding size:(CGSize)size;
 
 -(void)upLabelsFrameWithInsets:(UIEdgeInsets )padding;
 

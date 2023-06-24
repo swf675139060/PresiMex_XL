@@ -58,7 +58,7 @@
         _slider.minimumTrackTintColor = [UIColor whiteColor];
         [_slider setThumbImage:[UIImage imageNamed:@"Track"] forState:UIControlStateNormal];
         [_slider setThumbImage:[UIImage imageNamed:@"Track"] forState:UIControlStateHighlighted];
-        [_slider addTarget:self action:@selector(sliderEventValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [_slider addTarget:self action:@selector(sliderEventValueChanged:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _slider;

@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *telephone;
 @property (nonatomic, copy) NSString *type;
 
+
+
+@property (nonatomic,assign) NSInteger indx;
+@property (nonatomic, copy) NSArray *contentArr;
+
 @end
 
 NS_ASSUME_NONNULL_END

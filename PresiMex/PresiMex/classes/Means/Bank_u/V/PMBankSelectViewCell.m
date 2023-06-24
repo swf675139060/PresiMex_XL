@@ -97,9 +97,16 @@
     }
 }
 
--(void)setCellWithModel:(PMBankcardModel*)model{
-    _wanitaBtn.selected=NO;
-    _priaBtn.selected=NO;
+-(void)setCellWithModel:(bankcardModel*)model{
+    if ([model.diameter integerValue] == 1) {
+        
+        _priaBtn.selected=YES;
+        _wanitaBtn.selected=NO;
+    } else {
+        
+        _priaBtn.selected=NO;
+        _wanitaBtn.selected=YES;
+    }
 }
 
 

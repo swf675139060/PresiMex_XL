@@ -1,26 +1,39 @@
 //
-//  KeFuAlert.m
+//  topLabelBottmBtnAlert.m
 //  PresiMex
 //
-//  Created by shenWenFeng on 2023/6/3.
+//  Created by shenWenFeng on 2023/6/15.
 //
 
-#import "KeFuAlert.h"
-#import "WFLeftImageTwolabelCell.h"
+#import "topLabelBottmBtnAlert.h"
+#import "WFBtnCell.h"
 #import "WFLabelCell.h"
 
-@interface KeFuAlert()<UITableViewDelegate,UITableViewDataSource>
+@interface topLabelBottmBtnAlert()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
+@property (nonatomic, strong) NSString *Conttent;
+@property (nonatomic, strong) NSString *btnTitle;
+
+
 
 @end
+@implementation topLabelBottmBtnAlert
 
-@implementation KeFuAlert
 
+//type 1: 成功 0 失败
+- (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.Conttent = Conttent;
+        self.btnTitle = btnTitle;
+        [self buildSubViews1];
+    }
+    return self;
+}
 
 -(void)buildSubViews1{
-    
    
     [self addSubview:self.tableView];
     
@@ -36,7 +49,7 @@
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -45,37 +58,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.row == 0) {
-        WFLeftImageTwolabelCell * cell = [WFLeftImageTwolabelCell cellWithTableView:tableView];
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(33.5, 26.5, 20, 0)];
-        [cell upLabelsFrameWithInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
-        cell.imageV.image = [UIImage imageNamed:@"phoneNumber"];
-        [cell.topLabel setText:@"Atención al cliente (whatsapp)" TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:11]];
-        [cell.bottomLabel setText:@"+52 XXXXXXXXX" TextColor:BColor_Hex(@"#008DFC", 1) Font:[UIFont systemFontOfSize:12]];
-        
-        
-        return cell;
-    } else if (indexPath.row == 1) {
-        WFLeftImageTwolabelCell * cell = [WFLeftImageTwolabelCell cellWithTableView:tableView];
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(33.5, 26.5, 20, 0)];
-        [cell upLabelsFrameWithInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
-        cell.imageV.image = [UIImage imageNamed:@"youJian"];
-        [cell.topLabel setText:@"Correo electrónico" TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:11]];
-        [cell.bottomLabel setText:@"XXXXXXXXXXX@gmail.com" TextColor:BColor_Hex(@"#008DFC", 1) Font:[UIFont systemFontOfSize:12]];
+        WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
+        cell.label.text = self.Conttent;
+        cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
+        cell.label.font = [UIFont boldSystemFontOfSize:20];
+        cell.label.textAlignment = NSTextAlignmentCenter;
+        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(39.5, 25, 33, 25)];
         return cell;
     }else{
-        WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = @"Horario de Atención al Cliente: 9:30 - 18:30";
-        cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
-        cell.label.font = [UIFont boldSystemFontOfSize:12];
-        cell.label.textAlignment = NSTextAlignmentCenter;
-        cell.BGView.backgroundColor = BColor_Hex(@"#1B1200", 1);
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(17, 10, 17, 10)];
+        WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
+        [cell.btn setTitle:self.btnTitle forState:UIControlStateNormal];
+        cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
+        [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        WF_WEAKSELF(weakself);
+        [cell setClickBtnBlock:^{
+            if(weakself.clickBtnBlock){
+                weakself.clickBtnBlock();
+            }
+        }];
+        [cell.btn addLinearGradientwithSize:CGSizeMake(self.jk_width - 50, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
+        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(0, 25, 20, 25) height:50];
         return cell;
     }
     
-    return [UITableViewCell new];
     
 }
 
@@ -110,12 +118,13 @@
        
         if (self.jk_height != height){
             self.jk_height = height;
-
             
+
         }
     });
 
 }
+    
     
 
 @end

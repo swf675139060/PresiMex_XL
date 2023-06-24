@@ -8,7 +8,7 @@
 #import "AppDelegate.h"
 #import "WFTabBarController.h"
 #import "DKGuideViewController.h"
-
+#import "PrivacyVC.h"
 #import "LNDetector.h"
 @interface AppDelegate ()
 
@@ -24,11 +24,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isLaunched"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PrivacyVC"]) {
         self.window.rootViewController = [[WFTabBarController alloc] init];
-//    }else {
+    }else {
+        self.window.rootViewController = [[PrivacyVC alloc] init];
 //        self.window.rootViewController = [[DKGuideViewController alloc] init];
-//    }
+    }
     [self initLiveSDK];
     [self.window makeKeyAndVisible];
     return YES;

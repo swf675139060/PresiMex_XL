@@ -1,16 +1,17 @@
 //
-//  topLabelBottmBtnAlert.m
+//  ExtendedSuccessfullyAlart.m
 //  PresiMex
 //
 //  Created by shenWenFeng on 2023/6/15.
-//
+//  展期还款成功
 
-#import "topLabelBottmBtnAlert.h"
+#import "ExtendedSuccessfullyAlart.h"
 #import "WFBtnCell.h"
 #import "WFLabelCell.h"
 
-@interface topLabelBottmBtnAlert()<UITableViewDelegate,UITableViewDataSource>
+@interface ExtendedSuccessfullyAlart()<UITableViewDelegate,UITableViewDataSource>
 
+@property (strong, nonatomic)UIImageView * imgV;
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
 @property (nonatomic, strong) NSString *Conttent;
@@ -19,15 +20,16 @@
 
 
 @end
-@implementation topLabelBottmBtnAlert
+
+@implementation ExtendedSuccessfullyAlart
 
 
-//type 1: 成功 0 失败
 - (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle{
     self = [super initWithFrame:frame];
     if (self) {
-        self.Conttent = Conttent;
-        self.btnTitle = btnTitle;
+        self.Conttent = [NSString stringWithFormat:@"Felicitaciones, en  %@ su solicitud se ha extendido con éxito,  Puede ir a Mis préstamos para ver los detalles del nuevo pedido.",Conttent] ;
+        
+        self.btnTitle = @"OK";
         [self buildSubViews1];
     }
     return self;
@@ -35,10 +37,23 @@
 
 -(void)buildSubViews1{
    
+//
+    
+    [self addSubview:self.imgV];
+   
     [self addSubview:self.tableView];
     
+    
+    __weak typeof(self)weakSelf = self;
+    [self.imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self);
+        make.height.equalTo(@(148));
+    }];
+    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.bottom.right.equalTo(self);
+        
+        make.top.equalTo(self.imgV.mas_bottom).offset(20);
+        make.left.bottom.right.equalTo(self);
     }];
     
     [self upDataFrame];
@@ -60,13 +75,14 @@
 {
     
     if (indexPath.row == 0) {
-        WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
+        WFLabelCell * cell = [WFLabelCell cornerCellWithTableView:tableView];
         cell.label.text = self.Conttent;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
-        cell.label.font = [UIFont boldSystemFontOfSize:20];
-        cell.label.textAlignment = NSTextAlignmentCenter;
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(39.5, 25, 33, 25)];
+        cell.label.font = [UIFont boldSystemFontOfSize:11];
+        cell.label.textAlignment = NSTextAlignmentLeft;
+        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        
+        [cell upBGFrameWithInsets:UIEdgeInsetsMake(39.5, 25, 33, 25) maskedCorners: kCALayerMinXMinYCorner| kCALayerMaxXMinYCorner cornerRadius:0.1];
         return cell;
     }else{
         WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
@@ -90,6 +106,17 @@
 
 
 #pragma mark -- init
+
+-(UIImageView *)imgV{
+    if(_imgV == nil){
+        _imgV = [[UIImageView alloc]init];
+        _imgV.image = [UIImage imageNamed:@"repaymentSuc"];
+        _imgV.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _imgV;
+}
+
+
 - (UITableView *)tableView
 {
     if (!_tableView) {
@@ -100,6 +127,8 @@
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.layer.cornerRadius = 15;
+        _tableView.layer.masksToBounds = YES;
     }
     
     return _tableView;
@@ -114,7 +143,7 @@
 -(void)upDataFrame{
     dispatch_async(dispatch_get_main_queue(), ^{
 
-        CGFloat height = self.tableView.contentSize.height;
+        CGFloat height = self.tableView.contentSize.height + 148 + 20;
        
         if (self.jk_height != height){
             self.jk_height = height;

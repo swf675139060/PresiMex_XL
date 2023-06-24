@@ -272,28 +272,28 @@
                     WF_WEAKSELF(weakself);
                     [alert setClickBtnBlock:^(NSInteger indx) {
                         [AlertView dismiss];
-                        if (indx == 0) {
+//                        if (indx == 0) {
                             //返回
                             [weakself.navigationController popViewControllerAnimated:YES];
-                        } else {
-                            //重新借
-                            
-                            // 更新 UI
-                            HomeDetailsVC * vc = [[HomeDetailsVC alloc] init];
-                            [weakself.navigationController pushViewController:vc animated:YES];
-                            NSMutableArray *vcArray = weakself.navigationController.childViewControllers.mutableCopy;
-                            
-                            NSInteger coordinateVCIndex = [vcArray indexOfObject:weakself];
-                            if (coordinateVCIndex == NSNotFound || vcArray.count <= 2) {
-                                return;
-                            }
-                            for (NSInteger i = vcArray.count - 2; i > 0; i--) {
-                                [vcArray removeObjectAtIndex:i];
-                            }
-                            
-                            [weakself.navigationController setViewControllers:vcArray];
-                            
-                        }
+//                        } else {
+//                            //重新借
+//
+//                            // 更新 UI
+//                            HomeDetailsVC * vc = [[HomeDetailsVC alloc] init];
+//                            [weakself.navigationController pushViewController:vc animated:YES];
+//                            NSMutableArray *vcArray = weakself.navigationController.childViewControllers.mutableCopy;
+//
+//                            NSInteger coordinateVCIndex = [vcArray indexOfObject:weakself];
+//                            if (coordinateVCIndex == NSNotFound || vcArray.count <= 2) {
+//                                return;
+//                            }
+//                            for (NSInteger i = vcArray.count - 2; i > 0; i--) {
+//                                [vcArray removeObjectAtIndex:i];
+//                            }
+//
+//                            [weakself.navigationController setViewControllers:vcArray];
+//
+//                        }
                     }];
                     
                 } else {

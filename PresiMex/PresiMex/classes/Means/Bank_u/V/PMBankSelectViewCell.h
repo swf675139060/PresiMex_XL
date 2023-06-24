@@ -6,12 +6,12 @@
 //
 
 #import "WFBaseViewCell.h"
-#import "PMBankcardModel.h"
+#import "bankcardModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PMBankSelectViewCell : WFBaseViewCell
 
--(void)setCellWithModel:(PMBankcardModel*)model;
+-(void)setCellWithModel:(bankcardModel*)model;
 
 @end
 

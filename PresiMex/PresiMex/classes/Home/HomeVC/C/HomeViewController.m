@@ -20,7 +20,13 @@
 #import "PMAuthModel.h"
 #import "PMHomeModel.h"
 #import "HomeNoAuthView.h"
+#import "LoanWaitingAlert.h"
+#import "LoanFailAlert.h"
+#import "topLabelBottmBtnAlert.h"
 
+#import "HomeDetailView.h"
+#import "PMLoginViewController.h" //登录页面
+#import "ConfirmAccountVC.h"
 #import "PMCertificationCoreViewController.h"
 
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -38,6 +44,8 @@
 @property (nonatomic,strong) PMHomeModel * homeModel;//产品信息
 
 @property (nonatomic,strong) NSMutableArray * dataList;
+
+@property (nonatomic,strong) HomeDetailView * detailView;//付款界面
 @end
 
 @implementation HomeViewController
@@ -48,7 +56,12 @@
     self.selectIndx = 0;
     self.navBarView.hidden = YES;
     [self.view addSubview:self.notiView];
-    [self.notiView setNotList:@[@"123456789",@"09876543234567898765456"]];
+    
+//        [self showTopLabelBottmBtnAlert:@"sdfasdfasdf"];
+//    [self POSTCouponGetUrl];
+//    [self showLoanWaitingAlertType:1];
+//    [self showLoanFailAlert];
+//    [self.notiView setNotList:@[@"123456789",@"09876543234567898765456"]];
 //    [self.view addSubview:self.tableView];
     
     
@@ -60,7 +73,13 @@
     [self GETAppBanner];
     
     if([PMAccountTool isLogin]){
+        //获取授信
         [self GETUserAuthInfo];
+    }else{
+        
+        [self.view addSubview:self.NoAuthView];
+        [self.NoAuthView.tableView reloadData];
+        [self.tableView removeFromSuperview];
     }
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
@@ -201,7 +220,7 @@
                 //剩余额度大于最小额度
                 if([self.authModel.monster doubleValue] >= [self.authModel.clear doubleValue]){
                     cell.slider.userInteractionEnabled = YES;
-                    cell.slider.value = [self.authModel.monster doubleValue];
+//                    cell.slider.value = [self.authModel.monster doubleValue];
                     cell.slider.maximumValue = [self.authModel.monster doubleValue];
                     cell.slider.minimumValue = [self.authModel.clear doubleValue];
                 }else{
@@ -211,6 +230,7 @@
             }else{
                 cell.slider.userInteractionEnabled = NO;
             }
+            cell.slider.value = self.changeValue;
             [cell.slider trackRectForBounds:CGRectMake(0, 0, WF_ScreenWidth - 30, 8)];
             [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
             [cell upSliderFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) height:21];
@@ -221,6 +241,7 @@
                 
                 NSIndexPath * IndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
                 [weakself.tableView reloadRowsAtIndexPaths:@[IndexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [weakself GETProductList];
             };
             return cell;
             
@@ -353,10 +374,27 @@
             [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             WF_WEAKSELF(weakself);
             [cell setClickBtnBlock:^{
-                HomeDetailsVC * vc = [HomeDetailsVC new];
-                vc.homeModel = weakself.homeModel;
-                
-                [weakself.navigationController pushViewController:vc animated:YES];
+//                weakself.view.bounds
+                weakself.detailView = [[HomeDetailView alloc] initWithFrame: CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight - WF_TabBarHeight)];
+//                UIWindow *window = [UIApplication sharedApplication].keyWindow;
+                [self.view addSubview:weakself.detailView ];
+                // 点击修改银行卡
+                [weakself.detailView  setClickBankBlock:^(bankcardModel * _Nonnull bankModel) {
+                    
+                    ConfirmAccountVC * VC = [[ConfirmAccountVC alloc] init];
+                    VC.bankModel = bankModel;
+                    
+                    VC.clickConfirmBlock = ^(bankcardModel * _Nonnull bankModel) {
+                        weakself.detailView.bankModel = bankModel;
+                        [weakself.detailView.tableView reloadData];
+                    };
+                    [weakself.navigationController pushViewController:VC animated:YES];
+                }];
+                // 提交借款
+                [weakself.detailView setClickNextBlock:^(BOOL success) {
+                    [weakself POSTLoanApply];
+                    
+                }];
             }];
             [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
         
@@ -414,7 +452,15 @@
         _NoAuthView = [[HomeNoAuthView alloc] initWithFrame:CGRectMake(0, self.notiView.swf_bottom, WF_ScreenWidth, WF_ScreenHeight - self.notiView.swf_bottom - WF_TabBarHeight)];
         WF_WEAKSELF(weakself);
         _NoAuthView.clickBock = ^{
-            [weakself pushCerVc];
+            
+            if([PMAccountTool isLogin]){
+                
+                [weakself pushCerVc];
+            }else{
+                
+                PMLoginViewController*Vc=[PMLoginViewController new];
+                [weakself.navigationController pushViewController:Vc animated:YES];
+            }
         };
     }
     
@@ -427,6 +473,39 @@
     }
     return _notiView;
 }
+
+-(void)showLoanWaitingAlertType:(NSInteger)type{
+    LoanWaitingAlert * alert = [[LoanWaitingAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withType:type] ;
+    
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+    }];
+}
+
+//借款失败
+-(void)showLoanFailAlert{
+    LoanFailAlert * alert = [[LoanFailAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withType:0] ;
+    
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+    }];
+}
+
+//通用错误弹框
+-(void)showTopLabelBottmBtnAlert:(NSString *)content{
+    topLabelBottmBtnAlert * alert = [[topLabelBottmBtnAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60,190) withConttent:content btnTitel:@"OK"] ;
+    
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+    }];
+}
+
 
 
 #pragma mark --网络请求
@@ -460,8 +539,15 @@
             PMAuthModel * model = [PMAuthModel mj_objectWithKeyValues:shame];
             
             weakself.authModel = model;
-            
+            if (weakself.changeValue == 0) {
+                weakself.changeValue = [model.monster integerValue];
+            }
             [weakself upDataSubview];
+            
+            if ([weakself.authModel.shop integerValue] == 20) {
+                // 授信通过获取订单状态
+                [self GetUserOderStatus];
+            }
             
         }else{
             
@@ -474,16 +560,75 @@
     }];
 }
 
+
+//12001 - 用户当前订单概况
+-(void)GetUserOderStatus{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:Get_User_Oder_Status parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            // 订单状态 订单状态 0-待审核 10-审核中 20-审核通过 40-放款中 50-待还款 60-放款失败 70-已还款 80-展期中 90-已逾期 100取消贷款
+            
+            if(shame){
+                NSInteger  lexus = [shame[@"lexus"] integerValue];
+                
+                if(lexus == 0 || lexus == 10){
+                    //处理中弹窗
+                    [weakself getConfigModel];
+                    
+                }else if (lexus == 60){
+                    //放款失败
+                    [weakself showLoanFailAlert];
+                }
+            }
+        }else if ([responseObject[@"retail"] intValue] >= 300 && [responseObject[@"retail"] intValue] < 400) {
+           // 显示弹框
+            [weakself showTopLabelBottmBtnAlert:responseObject[@"entire"]];
+            
+           
+        }else{
+            [weakself showTip:responseObject[@"entire"]];//（对）
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+    }];
+}
+
+//获取是否显示引导评价-》后弹窗
+-(void)getConfigModel{
+    PMConfigManager * manager = [PMConfigManager sharedInstance];
+    WF_WEAKSELF(weakself);
+    [manager getConfigModelBlock:^(PMConfigModel * _Nonnull model) {
+        if ([model.medline boolValue] == YES){
+            //显示引导页（审核中）
+            [weakself showLoanWaitingAlertType:1];
+        }else{
+            [weakself showLoanWaitingAlertType:0];
+            //不显示引导页（审核中）
+        }
+    }];
+}
+
+
+
 -(void)upDataSubview{
     
     if ([self.authModel.shop integerValue] == 20) {
-        [self.view addSubview:self.tableView];
+        if (!self.tableView.superview) {
+            [self.view addSubview:self.tableView];
+        }
         [self.NoAuthView removeFromSuperview];
         [self.tableView reloadData];
         [self GETProductList];
     } else {
-        
-        [self.view addSubview:self.NoAuthView];
+        if (!self.NoAuthView.superview) {
+            [self.view addSubview:self.NoAuthView];
+        }
+        [self.NoAuthView.tableView reloadData];
         [self.tableView removeFromSuperview];
     }
 }
@@ -491,7 +636,7 @@
 
 //获取产品列表
 -(void)GETProductList{
-    self.changeValue = 3000;
+//    self.changeValue = 3000;
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
     WF_WEAKSELF(weakself);
@@ -519,6 +664,67 @@
     }];
 }
 
+
+//借款申请
+-(void)POSTLoanApply{
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+
+    pars[@"detailed"] = self.homeModel.building;
+
+    NSMutableArray * duringArr = [NSMutableArray array];
+    for (PMHomeProductModel * model in self.homeModel.pledge) {
+
+        NSMutableDictionary * duringDic = [NSMutableDictionary dictionary];
+        duringDic[@"demanding"] = model.demanding;
+        duringDic[@"madison"] = model.flip;
+        [duringArr addObject:duringDic];
+    }
+    pars[@"during"] = duringArr;
+
+    WF_WEAKSELF(weakself);
+    [self show];
+    [PMBaseHttp postJson:POST_Loan_Apply parameters:pars success:^(id  _Nonnull responseObject) {
+
+        [weakself dismiss];
+        if ([responseObject[@"retail"] intValue]==200) {
+//            NSDictionary * shame = responseObject[@"shame"];
+
+            [weakself GetUserOderStatus];
+            
+
+        }else{
+            [weakself showTip:responseObject[@"entire"]];//（对）
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        [weakself dismiss];
+        
+    }];
+}
+
+// 20002- 用户认证完成领取优惠券
+//-(void)POSTCouponGetUrl{
+//
+//NSMutableDictionary *pars1=[NSMutableDictionary dictionary];
+//
+//[self show];
+//WF_WEAKSELF(weakself);
+//[PMBaseHttp postJson:POST_Coupon_Get_Url parameters:pars1 success:^(id  _Nonnull responseObject) {
+//    [weakself dismiss];
+//    if ([responseObject[@"retail"] intValue]==200) {
+//        NSLog(@"获取优惠卷成功");
+//    }else{
+//    }
+//
+//} failure:^(NSError * _Nonnull error) {
+//    [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+//    [weakself dismiss];
+//
+//}];
+//
+//
+//}
 
 
 -(NSMutableArray *)dataList{

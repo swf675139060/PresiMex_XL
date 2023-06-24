@@ -13,7 +13,7 @@
 #import "AjustesVC.h"//设置
 #import "CuponVC.h"//优惠卷
 #import "OrderVC.h"//  订单
-
+#import "KeFuVC.h"
 #import "PMLoginViewController.h" //登录页面
 #import "PMQuestionnaireViewController.h"//调查问卷
 
@@ -130,10 +130,16 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (![PMAccountTool isLogin]) {
+        [self pushLoginVc];
+        return;
+    }
+    
     if(indexPath.row == 0){
         //评分
-        PMQuestionnaireViewController*vc=[PMQuestionnaireViewController new];
-        [self.navigationController pushViewController:vc animated:YES];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APPID&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+
     }else if (indexPath.row == 1){
         // 隐私协议
         WFWebViewController * vc = [[WFWebViewController alloc] init];
@@ -147,7 +153,7 @@
         
     }else if (indexPath.row == 3){
         //客服
-            WFWebViewController * vc = [[WFWebViewController alloc] init];
+        KeFuVC * vc = [[KeFuVC alloc] init];
             vc.urlString = H5_help;
             [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 4){

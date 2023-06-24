@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(strong, nonatomic) NSString * products;//借款单号订单号
 @property(strong, nonatomic) NSString * prairie;//还款订单ID
-@property(strong, nonatomic) NSString * lexus;//订单状态 0-待审核 10-审核中 20-审核通过 40-放款中 50-待还款 60-放款失败 70-已还款 80-展期中 90-已逾期 100取消贷款
+@property(strong, nonatomic) NSString * lexus;//订单状态 0-待审核 10-审核中 20-审核通过  30-审核失败 40-放款中 50-待还款 60-放款失败 70-已还款 80-展期中 90-已逾期 100取消贷款
 @property(strong, nonatomic) NSString * downloading;//    还款计划状态
 @property(strong, nonatomic) NSString * owns;//结清状态
 @property(strong, nonatomic) NSString * demanding;//产品Code

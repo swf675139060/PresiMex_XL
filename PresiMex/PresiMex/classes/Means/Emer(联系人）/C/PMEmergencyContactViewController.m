@@ -6,7 +6,7 @@
 //
 
 #import "PMEmergencyContactViewController.h"
-
+#import "BasicDataModel.h"
 #import "PMEmergencyContactModel.h"
 #import "PMEmergencyContactCell.h"
 #import "PMIDAuthHeaderView.h"
@@ -21,6 +21,9 @@
 @property (nonatomic, strong) UITableView  *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
+
+@property (nonatomic, assign) NSInteger curentIndx;//通讯录
+
 @end
 
 @implementation PMEmergencyContactViewController
@@ -29,13 +32,15 @@
 
 -(void)modelWithData{
     
+    
+    RelaciónDataModel * dataModel = [RelaciónDataModel new];
+    [dataModel initData];
+    
     _dataArray = [NSMutableArray array];
     PMEmergencyContactModel *relationModel = [[PMEmergencyContactModel alloc] init];
     relationModel.title=@"Contacto de emergencia 1";
-    //relationModel.relation     =[self setInitStringWithKey:PS_EmContact_Relation1]; ;
     relationModel.type  =@"0";
-    //relationModel.name   = [self setInitStringWithKey:PS_EmContact_Relation_Name1];
-    //relationModel.telephone= [self setInitStringWithKey:PS_EmContact_Relation_Number1];
+    relationModel.contentArr = dataModel.Relación;
     
     [_dataArray addObject:relationModel];
     
@@ -44,6 +49,7 @@
     relationModel1.title=@"Contacto de emergencia 2";
     //relationModel1.relation =[self setInitStringWithKey:PS_EmContact_Relation2]; ;
     relationModel1.type  =@"1";
+    relationModel1.contentArr = dataModel.Relación;
     //relationModel1.name   = [self setInitStringWithKey:PS_EmContact_Relation_Name2];
    // relationModel1.telephone= [self setInitStringWithKey:PS_EmContact_Relation_Number2];
     [_dataArray addObject:relationModel1];
@@ -95,6 +101,18 @@
     PMEmergencyContactModel *model=self.dataArray[indexPath.row];
     PMEmergencyContactCell *cell=[PMEmergencyContactCell cellWithTableView:tableView];
     [cell setCellWithModel:model];
+    WF_WEAKSELF(weakself);
+    cell.inputBlock = ^(NSString * _Nonnull content,NSInteger type) {
+        model.telephone = content;
+    };
+    
+    cell.guanXiClickBlock = ^(NSInteger type) {
+        [weakself sutupAlertViewWithIndx:type];
+    };
+    cell.tongXunLUClickBlock = ^(NSInteger type) {
+        weakself.curentIndx = type;
+        [weakself selectPersonContactPickerVc];
+    };
     return cell;
     
 }
@@ -107,7 +125,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self selectPersonContactPickerVc];
     
 }
 
@@ -156,18 +173,38 @@
     self.tableView.tableFooterView=footer;
 }
 
--(void)clickSubmitBtn{
+
+-(void)sutupAlertViewWithIndx:(NSInteger)indxP{
+    [self.view endEditing:YES];
     
-    PMAddBankViewController*vc=[PMAddBankViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
     
+    NSMutableArray * arr = [NSMutableArray array];
+    PMEmergencyContactModel * model = self.dataArray[indxP];
+    
+    for (BasicDataModel * dataModel in model.contentArr) {
+        [arr addObject:dataModel.title];
+    }
+    
+    weakify(self);
+    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:model.title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+        strongify(self);
+        PMEmergencyContactModel * model = self.dataArray[indxP];
+        model.indx = indx;
+       
+        [self.tableView reloadData];
+
+    }];
+    [alert show] ;
 }
+
+
 
 #pragma mark - 先弹出联系人控制器
 -(void)selectPersonContactPickerVc{
     
     // 1. 创建控制器
     CNContactPickerViewController * picker = [CNContactPickerViewController new];
+    
     picker.delegate = self;
     picker.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController: picker  animated:YES completion:nil];
@@ -182,15 +219,100 @@
     NSString *phoneValue = [labelValue.value stringValue];
     NSString *phoneStr = [phoneValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
     phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"+63" withString:@""];
+    phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"+52" withString:@""];
     phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"(" withString:@""];
     phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@")" withString:@""];
-    if(([phoneStr hasPrefix:@"9"]|[phoneStr hasPrefix:@"09"]|[phoneStr hasPrefix:@"639"]|[phoneStr hasPrefix:@"0639"]|[phoneStr hasPrefix:@"8"]|[phoneStr hasPrefix:@"08"]|[phoneStr hasPrefix:@"638"]|[phoneStr hasPrefix:@"0638"])){
-        //[self setupContactWithName:name withPhone:phoneStr withType:self.secetion];
+    if(phoneStr && phoneStr.length){
+        
+        PMEmergencyContactModel * model = self.dataArray[self.curentIndx];
+        model.telephone = phoneStr;
     }else{
-        [self showTip:@"Please fill in the valid emergency contact information,we will contact them randomly for verification !"];
+        
+        PMEmergencyContactModel * model = self.dataArray[self.curentIndx];
+        model.telephone = @"";
+    }
+    [self.tableView reloadData];
+    
+    
+    
+//    if(([phoneStr hasPrefix:@"9"]|[phoneStr hasPrefix:@"09"]|[phoneStr hasPrefix:@"639"]|[phoneStr hasPrefix:@"0639"]|[phoneStr hasPrefix:@"8"]|[phoneStr hasPrefix:@"08"]|[phoneStr hasPrefix:@"638"]|[phoneStr hasPrefix:@"0638"])){
+//        //[self setupContactWithName:name withPhone:phoneStr withType:self.secetion];
+//    }else{
+//        [self showTip:@"Please fill in the valid emergency contact information,we will contact them randomly for verification !"];
+//        return;
+//    }
+    
+}
+
+
+-(void)clickSubmitBtn{
+    
+    
+    PMEmergencyContactModel * model0 = self.dataArray[0];
+    if(model0.indx < 0){
+        [self showTip:@"Seleccione la relación con el contacto."];
+        return;
+    }else if( !model0.telephone || model0.telephone.length == 0){
+        [self showTip:@"Seleccione un contacto."];
         return;
     }
+    
+    PMEmergencyContactModel * model1 = self.dataArray[1];
+    
+    if(model1.indx < 0){
+        //请选择联系人关系
+        [self showTip:@"Seleccione la relación con el contacto."];
+        return;
+    }else if( !model1.telephone || model1.telephone.length == 0){
+        //请选择联系人
+        [self showTip:@"Seleccione un contacto."];
+        return;
+    }else if([model1.telephone isEqualToString:model0.telephone]){
+        //紧急联系人不能为同一个
+        [self showTip:@"Los contactos de emergencia no pueden ser los mismos."];
+        return;
+    }
+    
+    [self POSTContactsInfo];
+}
+
+-(void)POSTContactsInfo{
+
+    
+    NSMutableDictionary *pars1=[NSMutableDictionary dictionary];
+    PMEmergencyContactModel * model1 = self.dataArray[0];
+    BasicDataModel * dataModel1 = model1.contentArr[model1.indx];
+    pars1[@"univ"] = [NSNumber numberWithLong:dataModel1.ID];//与用户本人关系
+    pars1[@"schedules"] = model1.telephone;//联系方式
+    
+    
+    NSMutableDictionary *pars2=[NSMutableDictionary dictionary];
+    PMEmergencyContactModel * model2 = self.dataArray[1];
+    BasicDataModel * dataModel2 = model2.contentArr[model2.indx];
+    pars2[@"rental"] = [NSNumber numberWithLong:dataModel2.ID];//性别:
+    pars2[@"schedules"] = model2.telephone;//联系方式
+   
+    
+    [self show];
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp postJson:POST_Contacts_Info parameters:@[pars1,pars2] success:^(id  _Nonnull responseObject) {
+        [weakself dismiss];
+        if ([responseObject[@"retail"] intValue]==200) {
+            
+            
+            PMAddBankViewController*vc=[PMAddBankViewController new];
+            [weakself.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+            [weakself showTip:responseObject[@"entire"]];//（对）
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        [weakself dismiss];
+        
+    }];
     
 }
 @end

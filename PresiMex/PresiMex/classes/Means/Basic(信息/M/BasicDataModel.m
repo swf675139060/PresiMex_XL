@@ -194,6 +194,24 @@
 
 
 @end
+
+//联系人
+@implementation RelaciónDataModel
+
+
+-(void)initData{
+    self.Relación = @[
+        [BasicDataModel createWithTitle:@"Padres" ID:1],
+        [BasicDataModel createWithTitle:@"Pareja" ID:2],
+        [BasicDataModel createWithTitle:@"Hijos" ID:3],
+        [BasicDataModel createWithTitle:@"Hermanos" ID:4],
+        [BasicDataModel createWithTitle:@"Amigos" ID:5],
+        [BasicDataModel createWithTitle:@"Colegas" ID:6],
+        [BasicDataModel createWithTitle:@"Otros" ID:7]
+    ];
+}
+@end
+    
 @implementation BasicDataModel
 
 +(BasicDataModel *)createWithTitle:(NSString *)title ID:(NSInteger)ID{

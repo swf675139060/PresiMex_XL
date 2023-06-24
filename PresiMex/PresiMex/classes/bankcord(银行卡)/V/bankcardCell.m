@@ -39,6 +39,66 @@
     return cell;
 }
 
++(instancetype)alertCellWithTableView:(UITableView *)tableView{
+    NSString *ID = @"alertBankcardCell";
+    
+    bankcardCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[bankcardCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        [cell alertCreatSubView];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+-(void)alertCreatSubView{
+    [self.contentView addSubview:self.BGView];
+    
+    [self.BGView addSubview:self.cardName];
+    [self.BGView addSubview:self.numberLB];
+    [self.BGView addSubview:self.contentLB];
+    [self.BGView addSubview:self.bankCardsub];
+    CGFloat biLi = WF_ScreenWidth/360;
+    
+    [self.BGView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(WF_ScreenWidth - 64));
+        make.height.equalTo(@(177*biLi));
+        make.left.equalTo(@(12));
+        make.top.equalTo(@(20));
+        make.bottom.equalTo(@(0));
+        
+    }];
+    
+    
+    [self.cardName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.BGView).offset(biLi* 16);
+        make.left.equalTo(@(biLi*20));
+        make.right.equalTo(@( -(biLi*18)) );
+        
+    }];
+    
+    [self.numberLB mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.BGView).offset(biLi* 104);
+        make.left.equalTo(@(biLi*20));
+        make.right.equalTo(@( -(biLi*18)) );
+        
+    }];
+    
+    [self.contentLB mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.BGView).offset(-(biLi* 15));
+        make.right.equalTo(@(-biLi*20));
+        
+    }];
+    
+    [self.bankCardsub mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.BGView).offset(-(biLi* 15));
+        make.left.equalTo(@(biLi*20));
+        make.width.equalTo(@(biLi*115));
+        make.height.equalTo(@(biLi*18));
+
+        
+    }];
+}
 
 -(void)creatSubView{
     [self.contentView addSubview:self.BGView];

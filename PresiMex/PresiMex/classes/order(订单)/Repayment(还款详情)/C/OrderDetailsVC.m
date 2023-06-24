@@ -522,6 +522,7 @@
         
         
     } failure:^(NSError * _Nonnull error) {
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself dismiss];
     }];
 }
@@ -552,6 +553,7 @@
         
     } failure:^(NSError * _Nonnull error) {
         
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself.tableView.mj_footer endRefreshing];
         
     }];

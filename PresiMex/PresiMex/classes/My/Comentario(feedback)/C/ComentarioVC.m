@@ -232,10 +232,14 @@
 
 //获取提交反馈类型
 -(void)GETFeedbackType{
+    
+    
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
   
     WF_WEAKSELF(weakself);
+    [self show];
     [PMBaseHttp get:GET_Feedback_Type parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             NSArray * shame = responseObject[@"shame"][@"labor"];
             weakself.typesArr = shame;
@@ -243,12 +247,13 @@
             [weakself.tableView reloadData];
             
         }else{
-            [weakself.tableView reloadData];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-        
-        
     } failure:^(NSError * _Nonnull error) {
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        [weakself dismiss];
+        
         
     }];
 }
@@ -256,8 +261,15 @@
 //反馈信息提交
 -(void)POSTFeedbackInfo{
     
+    if (!self.textContent || self.textContent.length == 0) {
+        [self showTip:@"Describa el problema que está experimentando."];
+        return;
+    }
+    
     if(self.images.count){
         WF_WEAKSELF(weakself);
+        
+        [self show];
         [self uploadImage:self.images[0] block:^(BOOL sucess) {
             if (sucess) {
                 
@@ -281,7 +293,7 @@
     pars[@"restaurants"] = [self.imagesUrl componentsJoinedByString:@","];
     WF_WEAKSELF(weakself);
     [PMBaseHttp postJson:POST_Feedback_Info parameters:pars success:^(id  _Nonnull responseObject) {
-        
+        [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             [weakself showAlertWidth:YES];
             
@@ -292,7 +304,7 @@
         
         
     } failure:^(NSError * _Nonnull error) {
-//        [LoadingHub hideAnimated:YES];
+         [weakself dismiss];
         [weakself showAlertWidth:NO];
     }];
 }
@@ -339,6 +351,7 @@
             }
             
         } failure:^(NSError * _Nonnull error) {
+            [weakself dismiss];
             if(upimageBlcok){
                 upimageBlcok(NO);
             }

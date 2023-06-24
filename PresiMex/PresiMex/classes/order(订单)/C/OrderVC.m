@@ -10,6 +10,7 @@
 #import "OrderCell.h"
 #import "OrderModel.h"
 #import "OrderDetailsVC.h"
+#import "ConfirmAccountVC.h"
 
 @interface OrderVC ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
@@ -48,6 +49,16 @@
     [self.tempView addSubview:self.tableView];
     self.navTitleLabel.text = @"Lista de facturas";
     
+    
+    [self.view show];
+    [self GETUserOder:0];
+    
+    
+    [self GETUserOder:1];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
     [self.view show];
     [self GETUserOder:0];
@@ -111,6 +122,19 @@
             vc.repayId = model.prairie;
             vc.beOverdue = YES;
             [self.navigationController pushViewController:vc animated:YES];
+        }else if ([model.lexus integerValue] == 60 || [model.lexus integerValue] == 30){
+            //橘黄色:银行帐户错误，请修改并重试
+            ConfirmAccountVC * VC = [[ConfirmAccountVC alloc] init];
+//            VC.bankModel = bankModel;
+            VC.orderModel = model;
+            VC.reLoan = YES;
+//            WF_WEAKSELF(weakself);
+//            VC.clickConfirmBlock = ^(bankcardModel * _Nonnull bankModel) {
+//                [weakself GETUserOder:0];
+//                [weakself GETUserOder:1];
+//            };
+            [self.navigationController pushViewController:VC animated:YES];
+            
         }
     }
     

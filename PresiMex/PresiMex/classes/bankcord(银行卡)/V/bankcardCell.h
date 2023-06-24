@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
+// 创建弹出框银行卡cell
++(instancetype)alertCellWithTableView:(UITableView *)tableView;
+
 -(void)updataWithModel:(bankcardModel *)model indx:(NSInteger)indx;
 @end
 

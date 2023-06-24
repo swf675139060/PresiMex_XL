@@ -109,6 +109,7 @@ _Pragma("clang diagnostic pop")
 #import "PMAccountTool.h"
 #import "YYModel.h"
 #import "JKHelpers.h"
+#import "PMConfigManager.h"
 //#import <IQk>
 //#import <IQKeyboardManager/IQKeyboardManager.h>
 

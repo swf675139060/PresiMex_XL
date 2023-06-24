@@ -52,6 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
     failure:(void (^)(NSError *error))failure;
 
 
++ (NSURLSessionDataTask*)PUTJson:(NSString *)URLString
+            parameters:(id)parameters
+            success:(void (^)(id responseObject))success
+                         failure:(void (^)(NSError *error))failure;
+
 ///  上传图片
 /// - Parameters:
 ///   - image: 图片
