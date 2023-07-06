@@ -412,10 +412,10 @@
             if (weakself.indx == 0) {
                 
                 vc.repayId = weakself.leftModel.prairie;
-                vc.repaymentType = @"1";
+                vc.repaymentType = @"10";
             } else {
                 vc.repayId = weakself.rightModel.prairie;
-                vc.repaymentType = @"2";
+                vc.repaymentType = @"20";
             }
             vc.rated = weakself.rated;
             

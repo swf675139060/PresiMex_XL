@@ -11,6 +11,7 @@
 #import "OrderModel.h"
 #import "OrderDetailsVC.h"
 #import "ConfirmAccountVC.h"
+#import "HomeDetailView.h"
 
 @interface OrderVC ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
@@ -26,6 +27,8 @@
 @property (nonatomic, assign) NSInteger indx;
 
 @property (nonatomic, assign) NSInteger requestCount;
+
+@property (nonatomic,strong) HomeDetailView * detailView;//付款界面
 
 @end
 
@@ -181,9 +184,76 @@
 //#pragma mark - DZNEmptyDataSetDelegate
 // 处理按钮的点击事件
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
-   
+    
+        [self.tabBarController setSelectedIndex:0];
+        
+        [self.navigationController popToRootViewControllerAnimated:NO];
+
+    
+    
+//    //                weakself.view.bounds
+//    self.detailView = [[HomeDetailView alloc] initWithFrame: CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight - WF_TabBarHeight)];
+//    //                UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    [self.view addSubview:self.detailView ];
+//    // 点击修改银行卡
+//    WF_WEAKSELF(weakself);
+//    [self.detailView  setClickBankBlock:^(bankcardModel * _Nonnull bankModel) {
+//
+//        ConfirmAccountVC * VC = [[ConfirmAccountVC alloc] init];
+//        VC.bankModel = bankModel;
+//
+//        VC.clickConfirmBlock = ^(bankcardModel * _Nonnull bankModel) {
+//            weakself.detailView.bankModel = bankModel;
+//            [weakself.detailView.tableView reloadData];
+//        };
+//        [weakself.navigationController pushViewController:VC animated:YES];
+//    }];
+//    // 提交借款
+//    [self.detailView setClickNextBlock:^(BOOL success) {
+//        [weakself POSTLoanApply];
+//
+//    }];
 }
 
+//24002 借款申请
+//-(void)POSTLoanApply{
+//    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+//
+//    pars[@"detailed"] = self.homeModel.building;
+//
+//    NSMutableArray * duringArr = [NSMutableArray array];
+//    for (PMHomeProductModel * model in self.homeModel.pledge) {
+//
+//        NSMutableDictionary * duringDic = [NSMutableDictionary dictionary];
+//        duringDic[@"demanding"] = model.demanding;
+//        duringDic[@"madison"] = model.flip;
+//        [duringArr addObject:duringDic];
+//    }
+//    pars[@"during"] = duringArr;
+//
+//    WF_WEAKSELF(weakself);
+//    [self show];
+//    [PMBaseHttp postJson:POST_Loan_Apply parameters:pars success:^(id  _Nonnull responseObject) {
+//
+//        [weakself dismiss];
+//        if ([responseObject[@"retail"] intValue]==200) {
+////            NSDictionary * shame = responseObject[@"shame"];
+//
+////            [weakself GetUserOderStatus];
+//            [weakself getConfigModel];
+//
+//
+//        }else{
+//            [weakself showLoanFailAlert];
+////            [weakself showTip:responseObject[@"entire"]];//（对）
+//        }
+//
+//    } failure:^(NSError * _Nonnull error) {
+//        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+//        [weakself dismiss];
+//
+//    }];
+//}
 // 标题文字与详情文字的距离
 - (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
     return 15;

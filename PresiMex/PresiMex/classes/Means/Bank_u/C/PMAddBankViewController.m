@@ -512,6 +512,7 @@
     [alert setClickBtnBlock:^(NSInteger indx) {
         
         if (weakself.VCType == 0) {
+            //添加银行卡
             [AlertView dismiss];
             //添加银行卡确认弹出
             if (indx == 0) {
@@ -540,6 +541,7 @@
                 }];
             }
         } else {
+            //1:修改
             if (indx == 0) {
                 //返回修改
                 [AlertView dismiss];

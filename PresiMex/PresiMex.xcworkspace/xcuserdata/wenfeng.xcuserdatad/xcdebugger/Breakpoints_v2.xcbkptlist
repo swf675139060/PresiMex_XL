@@ -312,7 +312,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "501"
             endingLineNumber = "501"
-            landmarkName = "-POSTORCAUTH"
+            landmarkName = "-submitPhoto:withType:withSelType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -344,7 +344,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "570"
             endingLineNumber = "570"
-            landmarkName = "-POSTLIFEQuery:img:"
+            landmarkName = "-POSTOcrKYC"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -502,8 +502,8 @@
             filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "522"
-            endingLineNumber = "522"
+            startingLineNumber = "523"
+            endingLineNumber = "523"
             landmarkName = "-showBankConfrimAlert:"
             landmarkType = "7">
          </BreakpointContent>
@@ -550,8 +550,8 @@
             filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "713"
-            endingLineNumber = "713"
+            startingLineNumber = "715"
+            endingLineNumber = "715"
             landmarkName = "-clickSubmitBtn"
             landmarkType = "7">
          </BreakpointContent>
@@ -566,8 +566,8 @@
             filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "716"
-            endingLineNumber = "716"
+            startingLineNumber = "718"
+            endingLineNumber = "718"
             landmarkName = "-clickSubmitBtn"
             landmarkType = "7">
          </BreakpointContent>
@@ -582,8 +582,8 @@
             filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "710"
-            endingLineNumber = "710"
+            startingLineNumber = "712"
+            endingLineNumber = "712"
             landmarkName = "-clickSubmitBtn"
             landmarkType = "7">
          </BreakpointContent>
@@ -598,10 +598,74 @@
             filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "732"
-            endingLineNumber = "732"
+            startingLineNumber = "734"
+            endingLineNumber = "734"
             landmarkName = "-clickSubmitBtn"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA461596-227B-4BEE-A8E8-BF11DA5AC20D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
+            landmarkName = "-showBankConfrimAlert:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C782982-5BB8-47E9-948E-59847CB1F310"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
+            landmarkName = "-showBankConfrimAlert:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0C782982-5BB8-47E9-948E-59847CB1F310 - bd27109022e6f30a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__48-[PMAddBankViewController showBankConfrimAlert:]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "567"
+                  endingLineNumber = "567"
+                  offsetFromSymbolStart = "1127">
+               </Location>
+               <Location
+                  uuid = "0C782982-5BB8-47E9-948E-59847CB1F310 - bd27109022e6f30a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__48-[PMAddBankViewController showBankConfrimAlert:]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wenfeng/Desktop/bxl/PresiMex/PresiMex/PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "567"
+                  endingLineNumber = "567"
+                  offsetFromSymbolStart = "2222">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

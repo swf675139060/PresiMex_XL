@@ -262,75 +262,34 @@
                 
                 [weakself.timer invalidate];
                 weakself.timer = nil;
-                //已还款
-                if ([weakself.repaymentType integerValue] == 1) {
-                    //全款
-                    
-                    RepaymentSuccessfulAlert * alert = [[RepaymentSuccessfulAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.model.hang btnTitel:@""];
-                    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
-                    [AlertView show];
-                    WF_WEAKSELF(weakself);
-                    [alert setClickBtnBlock:^(NSInteger indx) {
-                        [AlertView dismiss];
-//                        if (indx == 0) {
-                            //返回
-                            [weakself.navigationController popViewControllerAnimated:YES];
-//                        } else {
-//                            //重新借
-//
-//                            // 更新 UI
-//                            HomeDetailsVC * vc = [[HomeDetailsVC alloc] init];
-//                            [weakself.navigationController pushViewController:vc animated:YES];
-//                            NSMutableArray *vcArray = weakself.navigationController.childViewControllers.mutableCopy;
-//
-//                            NSInteger coordinateVCIndex = [vcArray indexOfObject:weakself];
-//                            if (coordinateVCIndex == NSNotFound || vcArray.count <= 2) {
-//                                return;
-//                            }
-//                            for (NSInteger i = vcArray.count - 2; i > 0; i--) {
-//                                [vcArray removeObjectAtIndex:i];
-//                            }
-//
-//                            [weakself.navigationController setViewControllers:vcArray];
-//
-//                        }
-                    }];
-                    
-                } else {
-                    //展期
-                    
-                    ExtendedSuccessfullyAlart * alert = [[ExtendedSuccessfullyAlart alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.model.hang btnTitel:@""];
-                    
-                    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
-                    [AlertView show];
-                    WF_WEAKSELF(weakself);
-                    [alert setClickBtnBlock:^{
-                        [AlertView dismiss];
-                        
-                        [weakself.navigationController popViewControllerAnimated:YES];
-                        
-                        //展期：重新借
-                        
-//                        // 更新 UI
-//                        HomeDetailsVC * vc = [[HomeDetailsVC alloc] init];
-//                        [weakself.navigationController pushViewController:vc animated:YES];
-//                        NSMutableArray *vcArray = weakself.navigationController.childViewControllers.mutableCopy;
-//
-//                        NSInteger coordinateVCIndex = [vcArray indexOfObject:weakself];
-//                        if (coordinateVCIndex == NSNotFound || vcArray.count <= 2) {
-//                            return;
-//                        }
-//                        for (NSInteger i = vcArray.count - 2; i > 0; i--) {
-//                            [vcArray removeObjectAtIndex:i];
-//                        }
-//
-//                        [weakself.navigationController setViewControllers:vcArray];
-                        
-                    }];
-                    
-                }
+                //已还款)
+                //全款
                 
-            } else {
+                RepaymentSuccessfulAlert * alert = [[RepaymentSuccessfulAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.model.hang btnTitel:@""];
+                WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+                [AlertView show];
+                WF_WEAKSELF(weakself);
+                [alert setClickBtnBlock:^(NSInteger indx) {
+                    [AlertView dismiss];
+                    [weakself.navigationController popViewControllerAnimated:YES];
+                    
+                }];
+                
+            } else if([model.small integerValue] == 30){
+                //展期
+                [weakself.timer invalidate];
+                weakself.timer = nil;
+                ExtendedSuccessfullyAlart * alert = [[ExtendedSuccessfullyAlart alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.model.hang btnTitel:@""];
+                
+                WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+                [AlertView show];
+                WF_WEAKSELF(weakself);
+                [alert setClickBtnBlock:^{
+                    [AlertView dismiss];
+                    
+                    [weakself.navigationController popViewControllerAnimated:YES];
+                   
+                }];
                 
             }
             
