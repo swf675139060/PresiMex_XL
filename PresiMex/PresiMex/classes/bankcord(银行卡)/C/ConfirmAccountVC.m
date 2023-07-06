@@ -176,30 +176,30 @@
 
 
 //获取优惠卷
--(void)GETCouponUrl{
-    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
-//    pars[@"eg"] = [NSString stringWithFormat:@"%ld",self.eg];
-//    pars[@"patricia"] = @"100";
-    WF_WEAKSELF(weakself);
-    [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
-        
-        if ([responseObject[@"retail"] intValue]==200) {
-            NSDictionary * shame = responseObject[@"shame"];
-            
-            
-        }else{
-            
-        }
-        
-        [weakself.tableView.mj_footer endRefreshing];
-        
-        
-    } failure:^(NSError * _Nonnull error) {
-        
-        [weakself.tableView.mj_footer endRefreshing];
-        
-    }];
-}
+//-(void)GETCouponUrl{
+//    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+////    pars[@"eg"] = [NSString stringWithFormat:@"%ld",self.eg];
+////    pars[@"patricia"] = @"100";
+//    WF_WEAKSELF(weakself);
+//    [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
+//        
+//        if ([responseObject[@"retail"] intValue]==200) {
+//            NSDictionary * shame = responseObject[@"shame"];
+//            
+//            
+//        }else{
+//            
+//        }
+//        
+//        [weakself.tableView.mj_footer endRefreshing];
+//        
+//        
+//    } failure:^(NSError * _Nonnull error) {
+//        
+//        [weakself.tableView.mj_footer endRefreshing];
+//        
+//    }];
+//}
 
 
 //获取用户当前绑定账户信息

@@ -28,6 +28,37 @@
 
 @implementation PMEmergencyContactViewController
 
+-(void)leftItemAction{
+    [self shoWYouHuiAlert:@[]];
+}
+
+//arr:优惠卷数组
+-(void)shoWYouHuiAlert:(NSArray *)arr{
+    
+    
+    CGFloat biLi = WF_ScreenWidth/360;
+    
+    YouHuiAlert * alert = [[YouHuiAlert alloc] initWithFrame:CGRectMake(0, 0, biLi * 320, biLi * 400) withArr:arr] ;
+ 
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^(NSInteger indx) {
+        [AlertView dismiss];
+        if (indx == 0) {
+            NSArray *viewControllers = weakself.navigationController.viewControllers;
+            for (UIViewController *viewController in viewControllers) {
+                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+                    [weakself.navigationController popToViewController:viewController animated:YES];
+                    break;
+                }
+            }
+        } else {
+            
+        }
+    }];
+}
 
 
 -(void)modelWithData{
@@ -185,16 +216,31 @@
         [arr addObject:dataModel.title];
     }
     
+    
+//    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:model.title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+//        strongify(self);
+//        PMEmergencyContactModel * model = self.dataArray[indxP];
+//        model.indx = indx;
+//
+//        [self.tableView reloadData];
+//
+//    }];
+//    [alert show] ;
+    
     weakify(self);
-    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:model.title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+    PoPBottomView * BottomView = [PoPBottomView new];
+    BottomView.titles = arr;
+    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    [popView showWithTitileStr:@""];
+    
+    BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
         strongify(self);
+        
         PMEmergencyContactModel * model = self.dataArray[indxP];
         model.indx = indx;
-       
         [self.tableView reloadData];
-
-    }];
-    [alert show] ;
+        [popView dismiss];
+    };
 }
 
 
@@ -269,6 +315,10 @@
         [self showTip:@"Seleccione un contacto."];
         return;
     }else if([model1.telephone isEqualToString:model0.telephone]){
+        //紧急联系人不能为同一个
+        [self showTip:@"Los contactos de emergencia no pueden ser los mismos."];
+        return;
+    }else if(model1.indx == model0.indx){
         //紧急联系人不能为同一个
         [self showTip:@"Los contactos de emergencia no pueden ser los mismos."];
         return;

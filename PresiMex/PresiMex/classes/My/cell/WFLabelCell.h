@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(strong, nonatomic) UIView * BGView;
 @property(strong, nonatomic) UILabel * label;
+@property(strong, nonatomic) UIView * bottomLine;
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 

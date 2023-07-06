@@ -25,7 +25,7 @@
 @property (nonatomic)UIImageView *imageView;
 @property (nonatomic)UIImage *image;
 @property (nonatomic)UILabel*tipsLabel;
-@property (nonatomic)UIImageView *maskImagView;
+@property (nonatomic)UIView *maskImagView;
 @property (nonatomic)BOOL canCa;
 @property (nonatomic)UIButton *leftButton;
 @property (nonatomic)UIButton *rightButton;
@@ -49,21 +49,54 @@
 - (void)customUI{
     
     
-    UIImageView*img=[UIImageView new];
-    img.image=[UIImage imageNamed:@"icon_dotted_frame"];
-    img.frame=self.view.frame;
-    [self.view addSubview:img];
-    img.userInteractionEnabled=YES;
-    _maskImagView=img;
+//    UIImageView*img=[UIImageView new];
+//    img.image=[UIImage imageNamed:@"icon_dotted_frame"];
+//    img.frame=self.view.frame;
+//    [self.view addSubview:img];
+//    img.userInteractionEnabled=YES;
+//    _maskImagView=img;
+    
+    // 创建一个 UIView 来实现半透明效果
+    UIView *transparentView = [[UIView alloc] initWithFrame:self.view.bounds];
+    transparentView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    [self.view addSubview:transparentView];
+    _maskImagView=transparentView;
+    // 创建一个 CAShapeLayer 来绘制中间的全透明区域
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    CGFloat screenWidth = CGRectGetWidth(self.view.bounds);
+    CGFloat screenHeight = CGRectGetHeight(self.view.bounds);
+    CGFloat cardWidth = screenWidth - 105;
+    CGFloat cardHeight = screenHeight - 240;
+    CGFloat cardX = (screenWidth - cardWidth) / 2;
+    CGFloat cardY = (screenHeight - cardHeight) / 2;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, screenWidth, screenHeight)];
+    
+    
+    // 创建带有圆角的矩形路径
+    CGFloat cornerRadius = 10.0;
+    UIBezierPath *cardPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(cardX, cardY, cardWidth, cardHeight) byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+    [path appendPath:cardPath];
+    
+    [path setUsesEvenOddFillRule:YES];
+    maskLayer.path = path.CGPath;
+    maskLayer.fillRule = kCAFillRuleEvenOdd;
+    maskLayer.fillColor = [UIColor blackColor].CGColor;
+    maskLayer.opacity = 0.5;
+    transparentView.layer.mask = maskLayer;
+    
+    
+    
+    
     
     _PhotoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _PhotoButton.frame = CGRectMake(45, WF_ScreenHeight-60, WF_ScreenWidth-90, 40);
+    _PhotoButton.frame = CGRectMake(45, WF_ScreenHeight-80, 60, 60);
+    _PhotoButton.jk_centerX = self.view.jk_centerX;
     UIImage *imgBtn=[UIImage imageNamed:@"icon_photo_take"];
     [_PhotoButton setImage:imgBtn forState: UIControlStateNormal];
     [_PhotoButton setImage:imgBtn forState:UIControlStateNormal];
     _PhotoButton.imageView.contentMode=UIViewContentModeScaleAspectFit;
     [_PhotoButton addTarget:self action:@selector(shutterCamera) forControlEvents:UIControlEventTouchUpInside];
-    [img addSubview:_PhotoButton];
+    [transparentView addSubview:_PhotoButton];
     
  
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -71,25 +104,25 @@
     [closeButton setImage:[UIImage imageNamed:@"icon_close_white"] forState: UIControlStateNormal];
     closeButton.imageView.contentMode=UIViewContentModeScaleAspectFit;
     [closeButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
-    [img addSubview:closeButton];
+    [transparentView addSubview:closeButton];
     
-    CGFloat space=(WF_ScreenWidth-214)/2;
+    CGFloat space=(WF_ScreenWidth-210)/2;
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(space,WF_ScreenHeight-55 ,92, 40);
+    leftButton.frame = CGRectMake(space,WF_ScreenHeight-90 ,60, 60);
     [leftButton setImage:[UIImage imageNamed:@"icon_photo_cancel"] forState: UIControlStateNormal];
     leftButton.imageView.contentMode=UIViewContentModeScaleAspectFit;
     [leftButton addTarget:self action:@selector(reTakePhoto) forControlEvents:UIControlEventTouchUpInside];
-    [img addSubview:leftButton];
+    [transparentView addSubview:leftButton];
     _leftButton=leftButton;
    
     
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.frame = CGRectMake(leftButton.swf_right+30,WF_ScreenHeight-55, 92, 40);
+    rightButton.frame = CGRectMake(leftButton.swf_right+90,WF_ScreenHeight-90, 60, 60);
    
     [rightButton setImage:[UIImage imageNamed:@"icon_photo_confirm"] forState: UIControlStateNormal];
     rightButton.imageView.contentMode=UIViewContentModeScaleAspectFit;
     [rightButton addTarget:self action:@selector(finishPicking) forControlEvents:UIControlEventTouchUpInside];
-    [img addSubview:rightButton];
+    [transparentView addSubview:rightButton];
     _rightButton=rightButton;
     _rightButton.hidden=YES;
     _leftButton.hidden=YES;
@@ -97,13 +130,13 @@
     _tipsLabel = [[UILabel alloc] init];
     _tipsLabel.frame = CGRectMake(400, 50,400, 30);
     CGPoint center = self.view.center;
-    center.x += 170;
+    center.x = 21.5 + 15;
     _tipsLabel.center = center;
     _tipsLabel.text = @"Tome una foto de su indentificacion dentro del marco";
     _tipsLabel.textColor = [UIColor whiteColor];
     _tipsLabel.textAlignment = NSTextAlignmentCenter;
     _tipsLabel.font = [UIFont systemFontOfSize:13.0f];
-    [img addSubview:_tipsLabel];
+    [transparentView addSubview:_tipsLabel];
     _tipsLabel.transform = CGAffineTransformMakeRotation(M_PI/2);
     
 
@@ -138,7 +171,15 @@
     
     //使用self.session，初始化预览层，self.session负责驱动input进行信息的采集，layer负责把图像渲染显示
     self.previewLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:self.session];
-    self.previewLayer.frame = CGRectMake(0, 0, WF_ScreenHeight, WF_ScreenHeight);
+    
+    
+//    CGFloat screenWidth = CGRectGetWidth(self.view.bounds);
+//    CGFloat screenHeight = CGRectGetHeight(self.view.bounds);
+//    CGFloat cardWidth = screenWidth - 105;
+//    CGFloat cardHeight = screenHeight - 240;
+//    CGFloat cardX = (screenWidth - cardWidth) / 2;
+//    CGFloat cardY = (screenHeight - cardHeight) / 2;
+    self.previewLayer.frame = CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight);
     self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.view.layer addSublayer:self.previewLayer];
     

@@ -198,7 +198,7 @@
 
 
 -(void)dealloc{
-    [self.label2.scrollView removeObserver:self forKeyPath:@"contentSize"];
+//    [self.label2.scrollView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 @end

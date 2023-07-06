@@ -8,9 +8,9 @@
 #import "PMPhoneNumberView.h"
 #import "PMVeriCodeViewController.h"
 #import "PMProblemViewController.h"
+#import "KeFuAlert.h"
 
 @interface PMPhoneNumberView ()<UITextFieldDelegate>
-@property (nonatomic ,strong)UITextField *phoneTextField;
 @end
 
 @implementation PMPhoneNumberView
@@ -103,15 +103,20 @@
 
 -(void)textFieldTextChange:(UITextField *)textField{
     
-    if ([_phoneTextField.text length] >=10) {
-       _phoneTextField.text = [_phoneTextField.text substringToIndex:10];
-        [self pushVerVc];
+    if ([_phoneTextField.text length] >=11) {
+       _phoneTextField.text = [_phoneTextField.text substringToIndex:11];
+//        [self pushVerVc];
+        
     }
+    if (self.TextChangeBlock) {
+        self.TextChangeBlock(_phoneTextField.text);
+    }
+    
       
   
 }
 -(void)pushVerVc{
-    if (_phoneTextField.text.length==10) {
+    if (_phoneTextField.text.length) {
         PMVeriCodeViewController *Vc=[PMVeriCodeViewController new];
         Vc.phone=_phoneTextField.text;
         [self.viewController.navigationController pushViewController:Vc animated:YES];
@@ -119,8 +124,15 @@
 }
 -(void)clickProduct{
     
-    PMProblemViewController* vc = [[PMProblemViewController alloc]init];
-    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [self.viewController.navigationController  presentViewController:vc animated:NO completion:nil];
+    KeFuAlert * alert = [[KeFuAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 217)] ;
+    alert.type = 1;
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    
+    [AlertView setClickBGDismiss:YES];
+    [AlertView show];
+//
+//    PMProblemViewController* vc = [[PMProblemViewController alloc]init];
+//    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    [self.viewController.navigationController  presentViewController:vc animated:NO completion:nil];
 }
 @end

@@ -61,8 +61,9 @@
 
 -(void)creatSubView{
     [self.contentView addSubview:self.BGView];
-    
     [self.BGView addSubview:self.label];
+    [self.BGView addSubview:self.bottomLine];
+    
     UIEdgeInsets padding = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.BGView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).with.insets(padding);
@@ -74,6 +75,12 @@
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.BGView).with.insets(LBPadding);
         
+    }];
+    
+    [self.bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.left.equalTo(@(0));
+        make.bottom.equalTo(@(0));
+        make.height.equalTo(@(0.5));
     }];
     
 }
@@ -93,7 +100,14 @@
     return _label;
 }
 
-
+-(UIView *)bottomLine{
+    if(_bottomLine == nil){
+        _bottomLine = [[UIView alloc] init];
+        _bottomLine.backgroundColor = [UIColor jk_colorWithHexString:@"#DDDDDD"];
+        _bottomLine.hidden = YES;
+    }
+    return _bottomLine;
+}
 
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding{
     [self.BGView mas_updateConstraints:^(MASConstraintMaker *make) {

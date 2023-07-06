@@ -29,8 +29,8 @@
 #define WF_BottomSafeAreaHeight (WF_TabBarHeight - 49)
 
 //以宽375/高812为标准的适配宽高
-#define WF_FixWidth(width) WF_ScreenWidth/375.0f*width
-#define WF_FixHeight(height) WF_ScreenHeight/812.0*height
+#define WF_BiLi(width) WF_ScreenWidth/360*width
+//#define WF_FixHeight(height) WF_ScreenHeight/812.0*height
 
 #pragma mark - Weak Strong self
 #define WF_WEAKSELF(weakself) __weak typeof(self) weakself = self;
@@ -95,6 +95,11 @@ _Pragma("clang diagnostic pop")
 #import "JKPickerViewAppearance.h"
 #import "NSString+BarCode.h"
 #import "WFWebViewController.h"
+#import "SLFCommentsPopView.h"
+#import "PoPBottomView.h"
+#import "YouHuiAlert.h"
+#import "PMCertificationCoreViewController.h"
+
 
 #import <JKCategories/JKCategories.h>
 #import <Masonry/Masonry.h>

@@ -22,7 +22,7 @@
 @implementation HomeDetailView
 - (void)buildSubViews{
     [super buildSubViews];
-    self.agree = YES;
+//    self.agree = YES;
     self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
     [self addSubview:self.tableView];
     
@@ -111,7 +111,7 @@
         
         if(self.bankModel){
             if ([self.bankModel.diameter integerValue] == 1) {
-                [cell.rightLabel setText:@"BANK" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:14]];
+                [cell.rightLabel setText:@"Tarjeta de débito" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:14]];
             } else {
                 [cell.rightLabel setText:@"CLABE" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:14]];
             }
@@ -201,10 +201,17 @@
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         WF_WEAKSELF(weakself);
         [cell setClickBtnBlock:^{
-            if(weakself.clickNextBlock){
-                [weakself removeFromSuperview];
-                weakself.clickNextBlock(YES);
+            if (weakself.agree) {
+                if(weakself.clickNextBlock){
+                    [weakself removeFromSuperview];
+                    weakself.clickNextBlock(YES);
+                }
+                
+            } else {
+                [weakself showTip:@"Acepte la política de privacidad. "];
             }
+            
+            
         }];
         
         [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor,(id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];

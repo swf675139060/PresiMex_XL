@@ -106,37 +106,40 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    //    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    OrderModel * model;
     if (self.indx  == 0) {
-        
-        OrderModel * model = self.leftArr[indexPath.row];
-        
-        if([model.lexus integerValue] == 50){
-            OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
-            vc.repayId = model.prairie;
-            vc.beOverdue = NO;
-            
-            [self.navigationController pushViewController:vc animated:YES];
-        }else if ([model.lexus integerValue] == 90){
-            OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
-            vc.repayId = model.prairie;
-            vc.beOverdue = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }else if ([model.lexus integerValue] == 60 || [model.lexus integerValue] == 30){
-            //橘黄色:银行帐户错误，请修改并重试
-            ConfirmAccountVC * VC = [[ConfirmAccountVC alloc] init];
-//            VC.bankModel = bankModel;
-            VC.orderModel = model;
-            VC.reLoan = YES;
-//            WF_WEAKSELF(weakself);
-//            VC.clickConfirmBlock = ^(bankcardModel * _Nonnull bankModel) {
-//                [weakself GETUserOder:0];
-//                [weakself GETUserOder:1];
-//            };
-            [self.navigationController pushViewController:VC animated:YES];
-            
-        }
+        model = self.leftArr[indexPath.row];
+    }else{
+        model = self.rightArr[indexPath.row];
     }
+    
+    if([model.lexus integerValue] == 50){
+        OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
+        vc.repayId = model.prairie;
+        vc.beOverdue = NO;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([model.lexus integerValue] == 90){
+        OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
+        vc.repayId = model.prairie;
+        vc.beOverdue = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([model.lexus integerValue] == 60){
+        //橘黄色:银行帐户错误，请修改并重试
+        ConfirmAccountVC * VC = [[ConfirmAccountVC alloc] init];
+        //            VC.bankModel = bankModel;
+        VC.orderModel = model;
+        VC.reLoan = YES;
+        //            WF_WEAKSELF(weakself);
+        //            VC.clickConfirmBlock = ^(bankcardModel * _Nonnull bankModel) {
+        //                [weakself GETUserOder:0];
+        //                [weakself GETUserOder:1];
+        //            };
+        [self.navigationController pushViewController:VC animated:YES];
+        
+    }
+    //    }
     
 }
 

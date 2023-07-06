@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.agree = YES;
+//    self.agree = YES;
     self.backBtn.hidden = YES;
     [self.tempView addSubview:self.webView];
     [self.tempView addSubview:self.tableViewBottom];

@@ -137,8 +137,7 @@
     
     if(indexPath.row == 0){
         //评分
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APPID&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+        [[PMConfigManager sharedInstance] gotoStore];
 
     }else if (indexPath.row == 1){
         // 隐私协议

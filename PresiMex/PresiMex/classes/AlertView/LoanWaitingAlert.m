@@ -8,13 +8,16 @@
 #import "LoanWaitingAlert.h"
 #import "WFStarCell.h"
 
-#import "WFImageCell.h"
+#import "WFGifImageCell.h"
 #import "WFBtnCell.h"
 #import "WFLabelCell.h"
 
 @interface LoanWaitingAlert()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
+
+
+@property (nonatomic, strong) UIButton *closeBtn;
 
 @property (nonatomic, assign) NSInteger type;
 @end
@@ -34,13 +37,33 @@
 -(void)buildSubViews1{
     
     [self addSubview:self.tableView];
-    
+    self.tableView.layer.cornerRadius = 15;
+    self.tableView.layer.masksToBounds = YES;
+    if (self.type == 1) {
+        [self addSubview:self.closeBtn];
+    }
+   
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.bottom.right.equalTo(self);
+        make.left.top.right.equalTo(self);
+        if (self.type == 1) {
+            make.bottom.equalTo(@(-45));
+        }else{
+            make.bottom.equalTo(self);
+        }
     }];
     
-    [self upDataFrame];
+    if (self.type == 1) {
+        [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.tableView.mas_bottom).offset(10);
+            make.centerX.equalTo(self.tableView);
+            make.width.height.equalTo(@(35));
+        }];
+    }
     
+    
+    
+    [self upDataFrame];
+//
 }
 
 
@@ -63,10 +86,11 @@
 {
     
     if (indexPath.row == 0) {
-        WFImageCell * cell = [WFImageCell cellWithTableView:tableView];
-        cell.imgV.image = [UIImage imageNamed:@""];
+        
+        WFGifImageCell * cell = [WFGifImageCell cellWithTableView:tableView];
+       
         cell.bottomLine.hidden = YES;
-        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(25, 27.5, 26, 27.5) height:24];
+        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(25, 27.5, 26, 27.5) height:25];
         return cell;
     }else if (indexPath.row == 1){
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
@@ -91,7 +115,10 @@
                 
             }else if (indexPath.row == 3){
                 WFStarCell * cell = [WFStarCell cellWithTableView:tableView];
-                
+                WF_WEAKSELF(weakself);
+                [cell setClickStoreBlock:^(NSInteger storeCount) {
+                    weakself.storeCount = storeCount;
+                }];
                 return cell;
             }else{
                 WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
@@ -147,6 +174,15 @@
     
     return _tableView;
 }
+
+-(UIButton *)closeBtn{
+    if(_closeBtn == nil){
+        _closeBtn = [[UIButton alloc] init];
+        [_closeBtn setImage:[UIImage imageNamed:@"guanbi"] forState:UIControlStateNormal];
+        [_closeBtn addTarget:self action:@selector(ClickCloseBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _closeBtn;
+}
     
 
 -(void)layoutSubviews{
@@ -157,8 +193,12 @@
 -(void)upDataFrame{
     dispatch_async(dispatch_get_main_queue(), ^{
 
-        CGFloat height = self.tableView.contentSize.height;
-       
+        CGFloat height = 0;
+        if (self.type == 1) {
+            height = self.tableView.contentSize.height + 45;
+        }else{
+            height = self.tableView.contentSize.height;
+        }
         if (self.jk_height != height){
             self.jk_height = height;
 
@@ -168,4 +208,10 @@
 
 }
 
+
+-(void)ClickCloseBtn{
+    if (self.clickCloseBtnBlock) {
+        self.clickCloseBtnBlock();
+    }
+}
 @end

@@ -1,34 +1,34 @@
+////
+////  JKPickerView.h
+////  OPESO
+////
+////  Created by 撒旦二哈 on 2021/10/22.
+////
 //
-//  JKPickerView.h
-//  OPESO
+//#import <UIKit/UIKit.h>
+//NS_ASSUME_NONNULL_BEGIN
 //
-//  Created by 撒旦二哈 on 2021/10/22.
+//@class JKPickerView;
 //
-
-#import <UIKit/UIKit.h>
-NS_ASSUME_NONNULL_BEGIN
-
-@class JKPickerView;
-
-@protocol JKPickerViewDelegate <NSObject>
-
-@optional
-
-- (void)datePicker:(JKPickerView *)datePicker didSelectedDate:(NSString *)title row:(NSInteger)row;
-
-@end
-
-
-@interface JKPickerView : UIPickerView<UIPickerViewDelegate, UIPickerViewDataSource>
-
-@property (weak, nonatomic) id<JKPickerViewDelegate> dvDelegate;
-
-/**
- 快速构造
-@return 返回的实列
- */
--(instancetype)initWithDataPickerWithArr:(NSArray*)data;
-
-@end
-
-NS_ASSUME_NONNULL_END
+//@protocol JKPickerViewDelegate <NSObject>
+//
+//@optional
+//
+//- (void)datePicker:(JKPickerView *)datePicker didSelectedDate:(NSString *)title row:(NSInteger)row;
+//
+//@end
+//
+//
+//@interface JKPickerView : UIPickerView<UIPickerViewDelegate, UIPickerViewDataSource>
+//
+//@property (weak, nonatomic) id<JKPickerViewDelegate> dvDelegate;
+//
+///**
+// 快速构造
+//@return 返回的实列
+// */
+//-(instancetype)initWithDataPickerWithArr:(NSArray*)data;
+//
+//@end
+//
+//NS_ASSUME_NONNULL_END

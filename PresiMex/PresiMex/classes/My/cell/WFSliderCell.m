@@ -58,7 +58,9 @@
         _slider.minimumTrackTintColor = [UIColor whiteColor];
         [_slider setThumbImage:[UIImage imageNamed:@"Track"] forState:UIControlStateNormal];
         [_slider setThumbImage:[UIImage imageNamed:@"Track"] forState:UIControlStateHighlighted];
-        [_slider addTarget:self action:@selector(sliderEventValueChanged:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_slider addTarget:self action:@selector(sliderEventValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [_slider addTarget:self action:@selector(sliderEventValueEnd:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _slider;
@@ -81,7 +83,17 @@
 
 -(void)sliderEventValueChanged:(UISlider *)slider{
     if(self.sliderChangeBlock){
-        self.sliderChangeBlock(slider.value);
+        
+        float value = roundf(slider.value / 100) * 100;
+        self.sliderChangeBlock(value);
+    }
+}
+
+-(void)sliderEventValueEnd:(UISlider *)slider{
+    if(self.sliderEndBlock){
+        
+        float value = roundf(slider.value / 100) * 100;
+        self.sliderEndBlock(value);
     }
 }
 

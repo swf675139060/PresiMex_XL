@@ -20,6 +20,37 @@
 
 @implementation PMQuestionnaireViewController
 
+-(void)leftItemAction{
+    [self shoWYouHuiAlert:@[]];
+}
+
+//arr:优惠卷数组
+-(void)shoWYouHuiAlert:(NSArray *)arr{
+    
+    
+    CGFloat biLi = WF_ScreenWidth/360;
+    
+    YouHuiAlert * alert = [[YouHuiAlert alloc] initWithFrame:CGRectMake(0, 0, biLi * 320, biLi * 400) withArr:arr] ;
+ 
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^(NSInteger indx) {
+        [AlertView dismiss];
+        if (indx == 0) {
+            NSArray *viewControllers = weakself.navigationController.viewControllers;
+            for (UIViewController *viewController in viewControllers) {
+                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+                    [weakself.navigationController popToViewController:viewController animated:YES];
+                    break;
+                }
+            }
+        } else {
+            
+        }
+    }];
+}
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
@@ -178,17 +209,33 @@
     if (!arr.count) {
         return;
     }
-    weakify(self) __block id weakself=self;
-    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct, NSInteger indx) {
-        strongify(self);
-        NSString*content=responseObjct;
-        [self resetDataWithContent:content withKey:model.ID];
-        self.parma[model.ID]=model.datas[indx][@"broken"];
-        
-    }];
+    PoPBottomView * BottomView = [PoPBottomView new];
+    
+    BottomView.titles = arr;
+    WF_WEAKSELF(weakself);
    
-    [alert show] ;
-  
+    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    
+    [popView showWithTitileStr:@""];
+    
+    BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
+        
+        NSString*content=responseObjct;
+        [weakself resetDataWithContent:content withKey:model.ID];
+        weakself.parma[model.ID]=model.datas[indx][@"broken"];
+        [popView dismiss];
+    };
+    
+//    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct, NSInteger indx) {
+//        strongify(self);
+//        NSString*content=responseObjct;
+//        [self resetDataWithContent:content withKey:model.ID];
+//        self.parma[model.ID]=model.datas[indx][@"broken"];
+//
+//    }];
+//
+//    [alert show] ;
+//
     
 }
 

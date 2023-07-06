@@ -11,6 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMTextField : UITextField
 
+
+@property (nonatomic, assign) NSInteger  maxCount; 
+
 @property (nonatomic, copy) void(^endEditingHandler) (NSString *text); /**< 输入框结束编辑回调*/
 
 @end

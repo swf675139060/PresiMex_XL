@@ -89,7 +89,7 @@
         _logoIcon = [UIImageView new];
         _logoIcon.layer.cornerRadius =38;
         _logoIcon.layer.masksToBounds = YES;
-        _logoIcon.image = DefaultAvatar;
+        _logoIcon.image = [UIImage imageNamed:@"logo"];
         
        
     }

@@ -91,7 +91,7 @@
     
     if ([self.rightImage isEqualToString:@"bai_kefu"]) {
         KeFuAlert * alert = [[KeFuAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 217)] ;
-        
+        alert.type = 1;
         WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
         [AlertView setClickBGDismiss:YES];
         [AlertView show];

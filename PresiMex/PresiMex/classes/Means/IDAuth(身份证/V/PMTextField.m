@@ -21,6 +21,7 @@
     if (self) {
         
         self.delegate = self;
+        [self addTarget:self action:@selector(textFieldTextChange:) forControlEvents:UIControlEventEditingChanged];
     }
     return self;
 }
@@ -35,6 +36,18 @@
         self.endEditingHandler(text);
     }
    
+}
+
+-(void)textFieldTextChange:(UITextField *)textField{
+    
+    if (self.maxCount != 0) {
+        if ([self.text length] >= self.maxCount) {
+            self.text = [self.text substringToIndex:self.maxCount];
+        }
+    }
+    
+      
+  
 }
 
 

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(copy, nonatomic)void(^sliderChangeBlock)(NSInteger number);
 
+@property(copy, nonatomic)void(^sliderEndBlock)(NSInteger number);
+
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
 

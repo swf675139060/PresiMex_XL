@@ -208,8 +208,12 @@
         self.cardName.text = [NSString stringWithFormat:@"BANK %@",model.marshall];
      
         self.numberLB.text = model.diploma;
-        
-        self.contentLB.text = @"Tarjeta de bito";
+        if ([model.diameter integerValue] == 1) {
+            
+            self.contentLB.text = @"Tarjeta de débito";
+        } else {
+            self.contentLB.text = @"CLABE";
+        }
     }
     
 }

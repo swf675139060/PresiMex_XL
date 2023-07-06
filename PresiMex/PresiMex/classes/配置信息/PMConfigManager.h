@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
+-(void)gotoStore;
+
 -(void)getConfigModelBlock:(void (^)(PMConfigModel *model)) ConfigModellock;
 @end
 

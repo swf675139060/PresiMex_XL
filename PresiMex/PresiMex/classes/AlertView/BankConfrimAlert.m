@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
+@property (nonatomic, assign) NSInteger type; 
+
 @end
 @implementation BankConfrimAlert
 
@@ -22,6 +24,7 @@
 - (instancetype)initWithFrame:(CGRect)frame withType:(NSInteger)type{
     self = [super initWithFrame:frame];
     if (self) {
+        self.type = type;
         [self buildSubViews1];
     }
     return self;
@@ -68,13 +71,22 @@
         return cell;
     }else if (indexPath.row == 2){
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView identifier:@"2"];
-        NSString * text = [NSString stringWithFormat:@"El monto de la transacción:$ %@",self.money];
-        NSString * subText = [NSString stringWithFormat:@"$ %@",self.money];
-        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:text attributes: @{NSFontAttributeName:B_FONT_REGULAR(14),NSForegroundColorAttributeName: BColor_Hex(@"#7C7C7C", 1)}];
-        NSRange range=[text rangeOfString:subText];
-        [attStr addAttributes:@{NSFontAttributeName:B_FONT_REGULAR(18),NSForegroundColorAttributeName: BColor_Hex(@"#FC7500", 1)} range:range];
+        if (self.type == 1) {
+            
+            NSString * text = @"";
+            cell.label.attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+        } else {
+            
+            NSString * text = [NSString stringWithFormat:@"El monto de la transacción:$ %@",self.money];
+            NSString * subText = [NSString stringWithFormat:@"$ %@",self.money];
+            NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:text attributes: @{NSFontAttributeName:B_FONT_REGULAR(14),NSForegroundColorAttributeName: BColor_Hex(@"#7C7C7C", 1)}];
+            NSRange range=[text rangeOfString:subText];
+            [attStr addAttributes:@{NSFontAttributeName:B_FONT_REGULAR(18),NSForegroundColorAttributeName: BColor_Hex(@"#FC7500", 1)} range:range];
+            
+            cell.label.attributedText = attStr;
+        }
+       
         
-        cell.label.attributedText = attStr;
         cell.label.textAlignment = NSTextAlignmentCenter;
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(19, 23, 0, 23)];

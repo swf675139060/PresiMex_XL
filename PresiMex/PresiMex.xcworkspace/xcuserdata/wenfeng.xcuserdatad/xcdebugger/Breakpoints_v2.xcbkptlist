@@ -26,10 +26,10 @@
             filePath = "PresiMex/classes/My/MyVC/C/MyViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "-GETUserAuthInfo"
-            landmarkType = "7">
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "MyViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,8 +90,8 @@
             filePath = "PresiMex/classes/Home/HomeVC/C/HomeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "657"
-            endingLineNumber = "657"
+            startingLineNumber = "691"
+            endingLineNumber = "691"
             landmarkName = "-GETProductList"
             landmarkType = "7">
          </BreakpointContent>
@@ -182,8 +182,8 @@
             filePath = "PresiMex/classes/My/Cupo&#x301;n(&#x4f18;&#x60e0;&#x5377;)/C/CuponVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "-GETCouponUrl"
             landmarkType = "7">
          </BreakpointContent>
@@ -294,8 +294,8 @@
             filePath = "PresiMex/classes/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "526"
-            endingLineNumber = "526"
+            startingLineNumber = "589"
+            endingLineNumber = "589"
             landmarkName = "-GETMerchantPass:"
             landmarkType = "7">
          </BreakpointContent>
@@ -310,9 +310,9 @@
             filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "470"
-            endingLineNumber = "470"
-            landmarkName = "-submitPhoto:withType:withSelType:"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
+            landmarkName = "-POSTORCAUTH"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -326,8 +326,8 @@
             filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "573"
-            endingLineNumber = "573"
+            startingLineNumber = "604"
+            endingLineNumber = "604"
             landmarkName = "-POSTLIFEQuery:img:"
             landmarkType = "7">
          </BreakpointContent>
@@ -342,9 +342,9 @@
             filePath = "PresiMex/classes/Means/IDAuth(&#x8eab;&#x4efd;&#x8bc1;/C/PMIDAuthViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "539"
-            endingLineNumber = "539"
-            landmarkName = "-POSTOcrKYC"
+            startingLineNumber = "570"
+            endingLineNumber = "570"
+            landmarkName = "-POSTLIFEQuery:img:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -358,8 +358,8 @@
             filePath = "PresiMex/classes/Means/Basic(&#x4fe1;&#x606f;/C/PMBasicViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "531"
-            endingLineNumber = "531"
+            startingLineNumber = "594"
+            endingLineNumber = "594"
             landmarkName = "-POSTUserBaseMeans"
             landmarkType = "7">
          </BreakpointContent>
@@ -374,8 +374,8 @@
             filePath = "PresiMex/classes/Means/Emer(&#x8054;&#x7cfb;&#x4eba;&#xff09;/C/PMEmergencyContactViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "-POSTContactsInfo"
             landmarkType = "7">
          </BreakpointContent>
@@ -390,105 +390,9 @@
             filePath = "PresiMex/classes/Means/Emer(&#x8054;&#x7cfb;&#x4eba;&#xff09;/C/PMEmergencyContactViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
             landmarkName = "-POSTContactsInfo"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2CA6A3FA-F37A-4666-8E4A-401AF495030C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
-            landmarkName = "-GETBindUserAccount"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C982D9E1-545E-47CD-8BD1-9425D27E9BDB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "646"
-            endingLineNumber = "646"
-            landmarkName = "-POSTBankResetCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "59F1B922-B3E4-49C6-954D-7BCDFA2E3D3F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "532"
-            endingLineNumber = "532"
-            landmarkName = "-clickSubmitBtn"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "11CBB187-C2A7-41C5-A15F-BA43979D1A03"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "572"
-            endingLineNumber = "572"
-            landmarkName = "-clickSubmitBtn"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D7FEA02D-F040-4393-973B-DE07D32AB342"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "576"
-            endingLineNumber = "576"
-            landmarkName = "-clickSubmitBtn"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F7F21445-4C3D-4DC9-A82C-53F3E3B854BF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
-            landmarkName = "-GETLoanDetail"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -502,57 +406,9 @@
             filePath = "PresiMex/classes/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "470"
-            endingLineNumber = "470"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "-GETLoanDetail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A881C6E5-6E98-418F-9646-AAF3AF10CF46"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
-            landmarkName = "-GETRepayBillDetail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "155A02E4-E2E3-4648-9356-A717D7E33689"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
-            landmarkName = "-GETRepayBillDetail"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EF88044D-FFC1-4F57-9F59-059F8BB60B3C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/order(&#x8ba2;&#x5355;)/Repayment(&#x8fd8;&#x6b3e;&#x8be6;&#x60c5;)/C/OrderDetailsVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "499"
-            endingLineNumber = "499"
-            landmarkName = "-GETRepayBillDetail"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -591,22 +447,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "509A086E-6734-48AE-A995-D420A11ED780"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
-            landmarkName = "-showBankConfrimAlert"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "716BF828-E03D-49AD-9C83-4A1C197BBC0F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -617,6 +457,150 @@
             startingLineNumber = "250"
             endingLineNumber = "250"
             landmarkName = "-GETFeedbackType"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12894580-3E33-40BE-A8CB-9A5A04C8C448"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Basic(&#x4fe1;&#x606f;/C/PMBasicViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "-clickSubmitBtn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD375E0C-CFA3-45A4-ADC8-8F113C158998"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Basic(&#x4fe1;&#x606f;/C/PMBasicViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "-clickSubmitBtn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C30C2FF-00BA-4E61-8CE1-E0407F80B522"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "522"
+            endingLineNumber = "522"
+            landmarkName = "-showBankConfrimAlert:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E57A4F3-045A-4808-AC47-5256D6EE0C57"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Home/homeDetails/V/HomeDetailView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD5B70D9-4FD5-457B-BD9F-9B3E38E727C4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Home/homeDetails/V/HomeDetailView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0680D958-5435-49DB-A3AD-07BFCA862BF1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "713"
+            endingLineNumber = "713"
+            landmarkName = "-clickSubmitBtn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86DEE9AE-366E-48C1-95A5-0BEDDE3BB256"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
+            landmarkName = "-clickSubmitBtn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F34C77B4-99AB-42DB-9CB5-1898F30BE2FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "710"
+            endingLineNumber = "710"
+            landmarkName = "-clickSubmitBtn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF3966A1-1A7C-41CA-A981-B8B01D0443F4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Bank_u/C/PMAddBankViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "732"
+            endingLineNumber = "732"
+            landmarkName = "-clickSubmitBtn"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

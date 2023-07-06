@@ -15,9 +15,13 @@
 
 #import "bankcardModel.h"
 #import "AuthWaitingAlert.h"
+#import "AuthWaitingStoreAlert.h"
 #import "AuthSuccessfuiAlert.h"
 #import "BankConfrimAlert.h"
 #import "OrderVC.h"
+#import "YouHuiAlert.h"
+#import "PMCertificationCoreViewController.h"
+
 
 @interface PMAddBankViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -32,6 +36,7 @@
 
 @property (nonatomic, strong) WFCustomAlertView *  AlertView;//base
 @property (nonatomic, strong) AuthWaitingAlert * waitingAlert;
+@property (nonatomic, strong) AuthWaitingStoreAlert * waitingStoreAlert;
 
 
 @property (nonatomic, strong) NSTimer *timer;
@@ -43,12 +48,22 @@
 
 @property (nonatomic, assign) BOOL isSendCode;//是否发送验证码
 
+//@property (nonatomic, strong)dataArr
+
 
 @end
 
 @implementation PMAddBankViewController
 
-
+-(void)leftItemAction{
+//    [self GETCouponUrl];
+    if (self.VCType == 0) {
+        [self shoWYouHuiAlert:@[]];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -145,16 +160,35 @@
             [weakself.tableView reloadData];
         };
         return cell;
-    } else if (indexPath.row==1 || indexPath.row==2) {
+    } else if (indexPath.row==1) {
         PMQuestionModel *model=self.dataArray[indexPath.row];
         PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
-        [cell setCellWithModel:model];
+        [cell setCellWithModel:model maxCount:18];
         WF_WEAKSELF(weakself);
         [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text) {
             
             weakself.bankModel.diploma = text;
             model.content = text;
         }];
+        
+        return cell;
+    } else if (indexPath.row==2) {
+        PMQuestionModel *model=self.dataArray[indexPath.row];
+        PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
+       
+        WF_WEAKSELF(weakself);
+        [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text) {
+            
+            weakself.bankModel.diploma = text;
+            model.content = text;
+        }];
+        
+        if ([weakself.bankModel.diameter integerValue] == 1) {
+            [cell setCellWithModel:model maxCount:16];
+        } else {
+            [cell setCellWithModel:model maxCount:18];
+        }
+        
         
         return cell;
     }else{
@@ -274,6 +308,39 @@
     self.tableView.tableFooterView=footer;
 }
 
+//arr:优惠卷数组
+-(void)shoWYouHuiAlert:(NSArray *)arr{
+    
+    
+    CGFloat biLi = WF_ScreenWidth/360;
+    
+    YouHuiAlert * alert = [[YouHuiAlert alloc] initWithFrame:CGRectMake(0, 0, biLi * 320, biLi * 400) withArr:arr] ;
+ 
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^(NSInteger indx) {
+        [AlertView dismiss];
+        if (indx == 0) {
+            NSArray *viewControllers = weakself.navigationController.viewControllers;
+            for (UIViewController *viewController in viewControllers) {
+                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+                    [weakself.navigationController popToViewController:viewController animated:YES];
+                    break;
+                }
+            }
+        } else {
+            
+//            [weakself POSTCouponGetUrl];
+        }
+    }];
+//
+//    PMProblemViewController* vc = [[PMProblemViewController alloc]init];
+//    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    [self.viewController.navigationController  presentViewController:vc animated:NO completion:nil];
+}
+
 //添加银行卡成功倒计时
 -(void)startTimer{
     // 在需要开启定时器的方法中调用下面的代码
@@ -285,6 +352,7 @@
     self.count--;
     
     [self.waitingAlert uptime:self.count];
+    [self.waitingStoreAlert uptime:self.count];
     NSLog(@"定时器触发，当前执行次数：%ld", self.count);
     if (self.count <= 0) {
         [self.timer invalidate];
@@ -292,7 +360,6 @@
         NSLog(@"定时器已停止。");
         [self.AlertView dismiss];
         [self showAuthSuccessful];
-        [self POSTCouponGetUrl];
     }
 }
 
@@ -332,10 +399,38 @@
 }
 
 -(void)showAuthWaiting{
-    self.waitingAlert = [[AuthWaitingAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 180 + 45 ) withConttent:@"10"];
+    WF_WEAKSELF(weakself);
+    [[PMConfigManager sharedInstance] getConfigModelBlock:^(PMConfigModel * _Nonnull model) {
+        if ([model.medline integerValue] == 1) {
+            
+            weakself.waitingStoreAlert = [[AuthWaitingStoreAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 324 )];
+            
+            weakself.AlertView = [[WFCustomAlertView alloc] initWithContentView:weakself.waitingStoreAlert];
+            [weakself.waitingStoreAlert setClickBtnBlock:^{
+                if (weakself.waitingStoreAlert.storeCount == 5) {
+                    
+                    [[PMConfigManager sharedInstance] gotoStore];
+                    weakself.CodeCount = 0;
+                    
+                    [weakself.timer invalidate];
+                    weakself.timer = nil;
+                    NSLog(@"定时器已停止。");
+                    [weakself.AlertView dismiss];
+                    [weakself showAuthSuccessful];
+                    [weakself POSTCouponGetUrl];
+                }
+            }];
+            
+            [weakself.AlertView show];
+        } else {
+            
+            weakself.waitingAlert = [[AuthWaitingAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 180 + 45 ) withConttent:@"10"];
+            
+            weakself.AlertView = [[WFCustomAlertView alloc] initWithContentView:weakself.waitingAlert];
+            [weakself.AlertView show];
+        }
+    }];
     
-    self.AlertView = [[WFCustomAlertView alloc] initWithContentView:self.waitingAlert];
-    [self.AlertView show];
     
     
     
@@ -362,8 +457,32 @@
         [arr addObject:dataModel.marshall];
     }
     
+//    weakify(self);
+//    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"Banco" withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+//        strongify(self);
+//
+//        bankcardModel * banckModel  = self.bankList[indx];
+//
+//        PMQuestionModel * model = self.dataArray[1];
+//        model.content = banckModel.marshall;
+//        model.ID = banckModel.framework;
+//
+//
+//        self.bankModel.marshall = banckModel.marshall;
+//        self.bankModel.framework = banckModel.framework;
+//        [self.tableView reloadData];
+//
+//    }];
+//    [alert show] ;
+    
+    
     weakify(self);
-    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"Banco" withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+    PoPBottomView * BottomView = [PoPBottomView new];
+    BottomView.titles = arr;
+    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    [popView showWithTitileStr:@""];
+    
+    BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
         strongify(self);
         
         bankcardModel * banckModel  = self.bankList[indx];
@@ -376,15 +495,14 @@
         self.bankModel.marshall = banckModel.marshall;
         self.bankModel.framework = banckModel.framework;
         [self.tableView reloadData];
-
-    }];
-    [alert show] ;
+        [popView dismiss];
+    };
 }
 
 
 //确认借款弹出框
--(void)showBankConfrimAlert{
-    BankConfrimAlert * alert = [[BankConfrimAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 40, 396) withType:0] ;
+-(void)showBankConfrimAlert:(NSInteger)type{
+    BankConfrimAlert * alert = [[BankConfrimAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 40, 396) withType:type] ;
     alert.bankModel = self.bankModel;
     alert.money = self.orderModel.barbie;
     
@@ -392,28 +510,60 @@
     [AlertView show];
     WF_WEAKSELF(weakself);
     [alert setClickBtnBlock:^(NSInteger indx) {
-        if (indx == 0) {
-            //返回修改
+        
+        if (weakself.VCType == 0) {
             [AlertView dismiss];
-            
-            //修改成功返回
-            if(weakself.changeBlock){
-                weakself.changeBlock(weakself.bankModel);
-            }
-            for (UIViewController *temp in self.navigationController.viewControllers) {
+            //添加银行卡确认弹出
+            if (indx == 0) {
                 
-                if ([temp isKindOfClass:[OrderVC class]]) {
+            } else {
+                
+                NSMutableDictionary *pars1=[NSMutableDictionary dictionary];
+                pars1[@"diameter"] = weakself.bankModel.diameter;
+                pars1[@"framework"] = weakself.bankModel.framework;
+                pars1[@"occasion"] = weakself.bankModel.diploma;
+                [weakself show];
+                [PMBaseHttp postJson:POST_Bank_Info_Submmit parameters:pars1 success:^(id  _Nonnull responseObject) {
+                    [weakself dismiss];
+                    if ([responseObject[@"retail"] intValue]==200) {
+                        [weakself showAuthWaiting];
+                        [weakself startTimer];
+                        
+                    }else{
+                        [weakself showTip:responseObject[@"entire"]];//（对）
+                    }
                     
-                    [weakself.navigationController popToViewController:temp animated:YES];
-                }
-                
+                } failure:^(NSError * _Nonnull error) {
+                    [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+                    [weakself dismiss];
+                    
+                }];
             }
         } else {
-            //确认重新提交
-            [weakself PostOderFailReset];
-            [AlertView dismiss];
-            
+            if (indx == 0) {
+                //返回修改
+                [AlertView dismiss];
+                
+                //修改成功返回
+                if(weakself.changeBlock){
+                    weakself.changeBlock(weakself.bankModel);
+                }
+                for (UIViewController *temp in self.navigationController.viewControllers) {
+                    
+                    if ([temp isKindOfClass:[OrderVC class]]) {
+                        
+                        [weakself.navigationController popToViewController:temp animated:YES];
+                    }
+                    
+                }
+            } else {
+                //确认重新提交
+                [weakself PostOderFailReset];
+                [AlertView dismiss];
+                
+            }
         }
+        
     }];
 }
 //12003 - 手工发起重新放款操作，后端将失败订单处理为待重新放款状态
@@ -549,17 +699,18 @@
         pars1[@"chance"] = self.codeNumber;
     }
     
-    [self show];
     WF_WEAKSELF(weakself);
     NSString * url;
     if (self.VCType == 1) {
+        
+        [self show];
         url = POST_Reset_Bank_Info;
         [PMBaseHttp PUTJson:url parameters:pars1 success:^(id  _Nonnull responseObject) {
             [weakself dismiss];
             if ([responseObject[@"retail"] intValue]==200) {
                 if (weakself.reLoan) {
                     // 重新借款 弹出窗
-                    [weakself showBankConfrimAlert];
+                    [weakself showBankConfrimAlert:0];
                 }else{
                     //修改成功返回
                     if(weakself.changeBlock){
@@ -578,22 +729,8 @@
             
         }];
     } else {
-        url = POST_Bank_Info_Submmit;
-        [PMBaseHttp postJson:url parameters:pars1 success:^(id  _Nonnull responseObject) {
-            [weakself dismiss];
-            if ([responseObject[@"retail"] intValue]==200) {
-                [weakself showAuthWaiting];
-                [weakself startTimer];
-                
-            }else{
-                [weakself showTip:responseObject[@"entire"]];//（对）
-            }
-            
-        } failure:^(NSError * _Nonnull error) {
-            [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
-            [weakself dismiss];
-            
-        }];
+        [self showBankConfrimAlert:1];
+    
     }
     
   
@@ -611,7 +748,7 @@
     [PMBaseHttp postJson:POST_Coupon_Get_Url parameters:pars1 success:^(id  _Nonnull responseObject) {
         [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
-            NSLog(@"验证码发送成功");
+            
         }else{
             [weakself showTip:responseObject[@"entire"]];//（对）
         }
@@ -663,6 +800,58 @@
     
     
 }
+
+
+
+//20001 - 用户获取优惠券
+//-(void)GETCouponUrl{
+//    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+//    pars[@"eg"] = [NSString stringWithFormat:@"%d",1];
+//    pars[@"patricia"] = @"3";
+//    WF_WEAKSELF(weakself);
+//    [self show];
+//    [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
+//        [weakself dismiss];
+//        if ([responseObject[@"retail"] intValue]==200) {
+//            NSArray * dataList = responseObject[@"shame"][@"approaches"];
+//
+//            NSArray * cuponModelArr = [CuponModel mj_objectArrayWithKeyValuesArray:dataList];
+//            if (cuponModelArr.count) {
+//                [weakself shoWYouHuiAlert:cuponModelArr];
+//            }else{
+//                NSArray *viewControllers = weakself.navigationController.viewControllers;
+//                for (UIViewController *viewController in viewControllers) {
+//                    if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+//                        [weakself.navigationController popToViewController:viewController animated:YES];
+//                        break;
+//                    }
+//                }
+//            }
+//        }else{
+//
+//                [weakself showTip:responseObject[@"entire"]];//（对）
+//        }
+//
+//        [weakself.tableView.mj_footer endRefreshing];
+//
+//
+//    } failure:^(NSError * _Nonnull error) {
+//        [weakself dismiss];
+//
+//        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+//        [weakself.tableView.mj_footer endRefreshing];
+//
+//    }];
+//
+//}
+
+//
+//-(NSMutableArray *)dataArr{
+//    if(_dataArr == nil){
+//        _dataArr = [NSMutableArray array];
+//    }
+//    return _dataArr;
+//}
 -(bankcardModel *)bankModel{
     if(_bankModel == nil){
         _bankModel = [bankcardModel new];

@@ -30,6 +30,37 @@
 
 @implementation PMBasicViewController
 
+-(void)leftItemAction{
+    [self shoWYouHuiAlert:@[]];
+}
+
+//arr:优惠卷数组
+-(void)shoWYouHuiAlert:(NSArray *)arr{
+    
+    
+    CGFloat biLi = WF_ScreenWidth/360;
+    
+    YouHuiAlert * alert = [[YouHuiAlert alloc] initWithFrame:CGRectMake(0, 0, biLi * 320, biLi * 400) withArr:arr] ;
+ 
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^(NSInteger indx) {
+        [AlertView dismiss];
+        if (indx == 0) {
+            NSArray *viewControllers = weakself.navigationController.viewControllers;
+            for (UIViewController *viewController in viewControllers) {
+                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+                    [weakself.navigationController popToViewController:viewController animated:YES];
+                    break;
+                }
+            }
+        } else {
+            
+        }
+    }];
+}
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
@@ -229,14 +260,20 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.dataArray.count;
+    PMQuestionModel *model8=self.dataArray[7];
+    if(model8.indx == 0 || model8.indx == 1 || model8.indx == 2 ){
+        return self.dataArray.count;
+    }else{
+        return 8;
+    }
+        
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     PMQuestionModel *model=self.dataArray[indexPath.row];
     PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
-    [cell setCellWithModel:model];
+    [cell setCellWithModel:model maxCount:1000];
     
     [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text) {
         model.content = text;
@@ -362,17 +399,32 @@
         [arr addObject:dataModel.title];
     }
     
+//    weakify(self);
+//    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:model.title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+//        strongify(self);
+//        PMQuestionModel * model = self.dataArray[indxP];
+//        model.indx = indx;
+//       
+//        
+//        [self.tableView reloadData];
+//
+//    }];
+//    [alert show] ;
+    
+    
     weakify(self);
-    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:model.title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+    PoPBottomView * BottomView = [PoPBottomView new];
+    BottomView.titles = arr;
+    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    [popView showWithTitileStr:@""];
+    
+    BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
         strongify(self);
         PMQuestionModel * model = self.dataArray[indxP];
         model.indx = indx;
-       
-        
         [self.tableView reloadData];
-
-    }];
-    [alert show] ;
+        [popView dismiss];
+    };
 }
 #pragma mark - 年-月
 - (void)showYearMonth{
@@ -396,9 +448,16 @@
 
 
 -(void)clickSubmitBtn{
+    NSInteger arrCount = 8;
     
-    
-    for (PMQuestionModel *model in self.dataArray) {
+    PMQuestionModel *model8=self.dataArray[7];
+    if(model8.indx == 0 || model8.indx == 1 || model8.indx == 2 ){
+        arrCount = self.dataArray.count;
+    }else{
+        arrCount = 8;
+    }
+    for (int i = 0; i < arrCount; i++) {
+        PMQuestionModel *model=self.dataArray[i];
         if (model.REQUIRED) {
             if (model.isHave) {
                 if (model.indx >= 0) {
@@ -420,8 +479,9 @@
         } else {
             continue;
         }
-        
     }
+    
+ 
     
     
     [self POSTUserBaseMeans];
@@ -463,54 +523,57 @@
     PMQuestionModel * model8 = self.dataArray[7];
     BasicDataModel * dataModel8 = model8.contentArr[model8.indx];
     pars[@"browsers"] = [NSNumber numberWithLong:dataModel8.ID];//工作状态
-    
-    PMQuestionModel * model9 = self.dataArray[8];
-    BasicDataModel * dataModel9 = model9.contentArr[model9.indx];
-    pars[@"pays"] = [NSNumber numberWithLong:dataModel9.ID];//行业
-    
-    PMQuestionModel * model10 = self.dataArray[9];
-    BasicDataModel * dataModel10 = model10.contentArr[model10.indx];
-    pars[@"transcription"] = [NSNumber numberWithLong:dataModel10.ID];//月收入(比索)
-    
-    
-    PMQuestionModel * model11 = self.dataArray[10];
-    BasicDataModel * dataModel11 = model11.contentArr[model11.indx];
-    pars[@"fda"] = [NSNumber numberWithLong:dataModel11.ID];//工资类型:
-    
-    PMQuestionModel * model12 = self.dataArray[11];
-    BasicDataModel * dataModel12 = model12.contentArr[model12.indx];
-    pars[@"today"] = [NSNumber numberWithLong:dataModel12.ID];//    发薪日1
-    
-    PMQuestionModel * model13 = self.dataArray[12];
-    if (model13.indx >= 0) {
-        BasicDataModel * dataModel13 = model13.contentArr[model13.indx];
-        pars[@"wires"] = [NSNumber numberWithLong:dataModel13.ID];//    发薪日2
-    }
-    
-    PMQuestionModel * model14 = self.dataArray[13];
-    if (model14.content && model14.content >= 0) {
-        pars[@"speaker"] = model14.content;//    公司名称,选填
-    }
-    
-    PMQuestionModel * model15 = self.dataArray[14];
-    if (model15.content && model15.content >= 0) {
-        pars[@"airline"] = model15.content;//     公司电话,选填
-    }
-    
-    
-    PMQuestionModel * model16 = self.dataArray[15];
-    BasicDataModel * dataModel16 = model16.contentArr[model16.indx];
-    pars[@"head"] = [NSNumber numberWithLong:dataModel16.ID];//公司所在的城市
-    
-    
-    PMQuestionModel * model17 = self.dataArray[16];
-    if (model17.content && model17.content >= 0) {
-        pars[@"dosage"] = model17.content;// 公司所在的区
-    }
-    
-    PMQuestionModel * model18 = self.dataArray[17];
-    if (model18.content && model18.content >= 0) {
-        pars[@"lies"] = model18.content;// 公司详细地址
+   
+    if(model8.indx == 0 || model8.indx == 1 || model8.indx == 2 ){
+        PMQuestionModel * model9 = self.dataArray[8];
+        BasicDataModel * dataModel9 = model9.contentArr[model9.indx];
+        pars[@"pays"] = [NSNumber numberWithLong:dataModel9.ID];//行业
+        
+        PMQuestionModel * model10 = self.dataArray[9];
+        BasicDataModel * dataModel10 = model10.contentArr[model10.indx];
+        pars[@"transcription"] = [NSNumber numberWithLong:dataModel10.ID];//月收入(比索)
+        
+        
+        PMQuestionModel * model11 = self.dataArray[10];
+        BasicDataModel * dataModel11 = model11.contentArr[model11.indx];
+        pars[@"fda"] = [NSNumber numberWithLong:dataModel11.ID];//工资类型:
+        
+        PMQuestionModel * model12 = self.dataArray[11];
+        BasicDataModel * dataModel12 = model12.contentArr[model12.indx];
+        pars[@"today"] = [NSNumber numberWithLong:dataModel12.ID];//    发薪日1
+        
+        PMQuestionModel * model13 = self.dataArray[12];
+        if (model13.indx >= 0) {
+            BasicDataModel * dataModel13 = model13.contentArr[model13.indx];
+            pars[@"wires"] = [NSNumber numberWithLong:dataModel13.ID];//    发薪日2
+        }
+        
+        PMQuestionModel * model14 = self.dataArray[13];
+        if (model14.content && model14.content >= 0) {
+            pars[@"speaker"] = model14.content;//    公司名称,选填
+        }
+        
+        PMQuestionModel * model15 = self.dataArray[14];
+        if (model15.content && model15.content >= 0) {
+            pars[@"airline"] = model15.content;//     公司电话,选填
+        }
+        
+        
+        PMQuestionModel * model16 = self.dataArray[15];
+        BasicDataModel * dataModel16 = model16.contentArr[model16.indx];
+        pars[@"head"] = [NSNumber numberWithLong:dataModel16.ID];//公司所在的城市
+        
+        
+        PMQuestionModel * model17 = self.dataArray[16];
+        if (model17.content && model17.content >= 0) {
+            pars[@"dosage"] = model17.content;// 公司所在的区
+        }
+        
+        PMQuestionModel * model18 = self.dataArray[17];
+        if (model18.content && model18.content >= 0) {
+            pars[@"lies"] = model18.content;// 公司详细地址
+        }
+        
     }
     
     

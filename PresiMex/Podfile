@@ -16,6 +16,7 @@ target 'PresiMex' do
   pod 'ZZCircleProgress'
   pod 'IQKeyboardManager'
   pod 'RollingNotice' #轮播广告
+  
 
 #  pod 'DZNEmptyDataSet'  
   pod 'AppsFlyerFramework'

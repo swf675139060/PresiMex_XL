@@ -6,11 +6,11 @@
 //
 
 #import "AuthWaitingAlert.h"
-
+#import "FLAnimatedImage.h"
 #import "WFLabelCell.h"
 @interface AuthWaitingAlert()<UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic)UIImageView * imgV;
+@property (strong, nonatomic) FLAnimatedImageView * imgV;
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
 @property (nonatomic, strong) NSString *Conttent;
@@ -98,8 +98,7 @@
 
 -(UIImageView *)imgV{
     if(_imgV == nil){
-        _imgV = [[UIImageView alloc]init];
-        _imgV.image = [UIImage imageNamed:@""];
+        _imgV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
         _imgV.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _imgV;

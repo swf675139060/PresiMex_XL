@@ -58,7 +58,7 @@ static inline BOOL IsEmpty(id thing){
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 60;//30.0;
+    manager.requestSerializer.timeoutInterval = 8;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
 //    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     //[manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
@@ -197,7 +197,7 @@ static inline BOOL IsEmpty(id thing){
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 60;//30.0;
+    manager.requestSerializer.timeoutInterval = 8;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -284,7 +284,7 @@ static inline BOOL IsEmpty(id thing){
    // manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 60;//30.0;
+    manager.requestSerializer.timeoutInterval = 8;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -341,7 +341,7 @@ static inline BOOL IsEmpty(id thing){
    // manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 60;//30.0;
+    manager.requestSerializer.timeoutInterval = 8;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -396,7 +396,7 @@ static inline BOOL IsEmpty(id thing){
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 60;//15.0;
+    manager.requestSerializer.timeoutInterval = 8;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -601,7 +601,7 @@ static inline BOOL IsEmpty(id thing){
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 60;//15.0;
+    manager.requestSerializer.timeoutInterval = 8;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"81f39018d78533c158665aa7945c6a95" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];

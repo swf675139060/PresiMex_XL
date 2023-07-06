@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
--(void)setCellWithModel:(PMQuestionModel*)model;
+-(void)setCellWithModel:(PMQuestionModel*)model maxCount:(NSInteger)maxCount;
 
 
 

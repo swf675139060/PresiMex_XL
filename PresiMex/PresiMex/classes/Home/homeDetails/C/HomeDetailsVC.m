@@ -195,7 +195,7 @@
             [cell upBtnsFrameWithEdgeInsets:UIEdgeInsetsMake(12.5, 15, 0, 15)];
             if(self.bankModel){
                 if ([self.bankModel.diameter integerValue] == 1) {
-                    [cell.leftBtn setTitle:@"BANK" forState:UIControlStateNormal];
+                    [cell.leftBtn setTitle:@"Tarjeta de débito" forState:UIControlStateNormal];
                 } else {
                     [cell.leftBtn setTitle:@"CLABE" forState:UIControlStateNormal];
                 }

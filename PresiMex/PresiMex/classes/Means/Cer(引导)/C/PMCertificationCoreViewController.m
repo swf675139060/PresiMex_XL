@@ -34,8 +34,12 @@
     self.navTitleLabel.text=@"Autenticación";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
-    [self requestUserState];
    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self requestUserState];
 }
 - (void)modelWithData{
     
@@ -51,12 +55,12 @@
     [self.dataArray addObject:model2];
     
     PMCerModel *model3 = [PMCerModel new];
-    model3.title     = @"Cuenta bancaria";
+    model3.title     = @"Contactos de emergen";
     model3.iconName=@"cer_icon_3";
     [self.dataArray addObject:model3];
     
     PMCerModel *model4 = [[PMCerModel alloc] init];
-    model4.title     =@"Cuenta bancar ia";
+    model4.title     =@"Cuenta bancaria";
     model4.iconName=@"cer_icon_4";
     [self.dataArray addObject:model4];
  

@@ -80,9 +80,10 @@
 
 }
 
--(void)setCellWithModel:(PMQuestionModel*)model{
+-(void)setCellWithModel:(PMQuestionModel*)model maxCount:(NSInteger)maxCount{
     _model=model;
     _titleLabel.text=model.title;
+    _contentTF.maxCount = maxCount;
     if (model.isHave) {
         _contentTF.userInteractionEnabled = NO;
         _arrowImageView.hidden=NO;

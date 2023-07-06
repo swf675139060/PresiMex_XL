@@ -11,6 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMVeriCodeViewController : WFBaseViewController
 @property (nonatomic ,strong)NSString *phone;
+
+- (void)updateTime:(NSInteger)time;
+
+@property(copy, nonatomic)void(^clickResend)(void);
 @end
 
 NS_ASSUME_NONNULL_END

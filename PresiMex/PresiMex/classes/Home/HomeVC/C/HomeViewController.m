@@ -28,6 +28,7 @@
 #import "PMLoginViewController.h" //登录页面
 #import "ConfirmAccountVC.h"
 #import "PMCertificationCoreViewController.h"
+#import "FLAnimatedImage.h"
 
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -56,6 +57,8 @@
     self.selectIndx = 0;
     self.navBarView.hidden = YES;
     [self.view addSubview:self.notiView];
+    
+    
     
 //        [self showTopLabelBottmBtnAlert:@"sdfasdfasdf"];
 //    [self POSTCouponGetUrl];
@@ -237,6 +240,12 @@
             [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 24) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
             WF_WEAKSELF(weakself);
             cell.sliderChangeBlock = ^(NSInteger number) {
+                weakself.changeValue = number;
+                
+                NSIndexPath * IndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+                [weakself.tableView reloadRowsAtIndexPaths:@[IndexPath] withRowAnimation:UITableViewRowAnimationNone];
+            };
+            cell.sliderEndBlock = ^(NSInteger number) {
                 weakself.changeValue = number;
                 
                 NSIndexPath * IndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
@@ -479,7 +488,24 @@
     
     WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
     [AlertView show];
+    WF_WEAKSELF(weakself);
     [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+        
+        [weakself GETUserAuthInfo];
+        
+        
+        if (alert.storeCount == 5) {
+            [[PMConfigManager sharedInstance] gotoStore];
+        } else {
+            //
+            
+            OrderVC *vc = [[OrderVC alloc] init];
+            [weakself.navigationController pushViewController:vc animated:YES];
+            
+        }
+    }];
+    [alert setClickCloseBtnBlock:^{
         [AlertView dismiss];
     }];
 }
@@ -542,6 +568,9 @@
             if (weakself.changeValue == 0) {
                 weakself.changeValue = [model.monster integerValue];
             }
+            if (weakself.changeValue > [model.monster integerValue]){
+                weakself.changeValue  = [model.monster integerValue];
+            }
             [weakself upDataSubview];
             
             if ([weakself.authModel.shop integerValue] == 20) {
@@ -551,12 +580,15 @@
             
         }else{
             
+            [weakself showTip:responseObject[@"entire"]];//（对）
+            [weakself upDataSubview];
             weakself.authModel = nil;
             [weakself.tableView reloadData];
         }
         
     } failure:^(NSError * _Nonnull error) {
-        
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        [weakself upDataSubview];
     }];
 }
 
@@ -631,6 +663,8 @@
         [self.NoAuthView.tableView reloadData];
         [self.tableView removeFromSuperview];
     }
+ 
+
 }
 
 
@@ -665,7 +699,7 @@
 }
 
 
-//借款申请
+//24002 借款申请
 -(void)POSTLoanApply{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
 
@@ -689,11 +723,13 @@
         if ([responseObject[@"retail"] intValue]==200) {
 //            NSDictionary * shame = responseObject[@"shame"];
 
-            [weakself GetUserOderStatus];
+//            [weakself GetUserOderStatus];
+            [weakself getConfigModel];
             
 
         }else{
-            [weakself showTip:responseObject[@"entire"]];//（对）
+            [weakself showLoanFailAlert];
+//            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
     } failure:^(NSError * _Nonnull error) {

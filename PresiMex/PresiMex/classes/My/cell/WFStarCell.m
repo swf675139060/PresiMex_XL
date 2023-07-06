@@ -46,11 +46,14 @@
 -(XHStarRateView *)starV{
     if(_starV == nil){
         CGFloat width = 152 + 28*2;
+        WF_WEAKSELF(weakself);
         _starV = [[XHStarRateView alloc] initWithFrame:CGRectMake((WF_ScreenWidth - 60 -width)/2 , 17, width, 28) numberOfStars:5 rateStyle:WholeStar isAnination:YES finish:^(CGFloat currentScore) {
             NSLog(@"4----  %f",currentScore);
-            
+            if(weakself.clickStoreBlock){
+                weakself.clickStoreBlock(currentScore);
+            }
         }];
-        [_starV setCurrentScore:4];
+        [_starV setCurrentScore:5];
     }
     return _starV;
 }

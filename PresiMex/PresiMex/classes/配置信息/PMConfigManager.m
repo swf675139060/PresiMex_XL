@@ -25,6 +25,10 @@
     return instance;
 }
 
+-(void)gotoStore{
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APPID&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+}
 
 -(void)getConfigModelBlock:(void (^)(PMConfigModel *model)) ConfigModellock{
     if (self.model) {

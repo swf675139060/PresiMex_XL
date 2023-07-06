@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
+@property(copy, nonatomic)void(^clickStoreBlock)(NSInteger storeCount);
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,8 +11,6 @@
 
 @interface PMVeriCodeView ()
 @property (nonatomic ,strong)UILabel *timeLabel;
-@property (nonatomic ,assign) int index;
-@property (nonatomic ,strong) NSTimer *timeTimer;
 @end
 
 @implementation PMVeriCodeView
@@ -149,37 +147,25 @@
        
     };
     
-    self.index = 60;
-    _timeTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:_timeTimer forMode:NSDefaultRunLoopMode];
-    [_timeTimer fire];
+  
     
 }
+-(void)resendVioceCode{
+    if( self.click){
+        self.click();
+    }
+}
 
-
-- (void)updateTime:(NSTimer *)time
+- (void)updateTime:(NSInteger )time
 {
     
     
-    self.index--;
-    if (self.index>0) {
-        _timeLabel.text=[NSString stringWithFormat:@"%dS",self.index];
+    if (time>0) {
+        _timeLabel.text=[NSString stringWithFormat:@"%dS",time];
     }else{
-        [self.timeTimer invalidate];
-        self.timeTimer = nil;
         _timeLabel.text=@"";
     }
     
 }
 
--(void)resendVioceCode{
-    self.index = 60;
-    _timeTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:_timeTimer forMode:NSDefaultRunLoopMode];
-    [_timeTimer fire];
-    
-    if (self.click) {
-        self.click();
-    }
-}
 @end

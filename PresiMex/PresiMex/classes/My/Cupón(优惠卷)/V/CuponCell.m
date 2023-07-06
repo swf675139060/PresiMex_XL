@@ -85,7 +85,7 @@
     }];
     
     [self.timeLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.BGView).offset(biLi* 80);
+        make.top.equalTo(self.contentLB.mas_bottom).offset(biLi* 5);
         make.left.equalTo(@(biLi*130));
         make.width.lessThanOrEqualTo(@(biLi*150));
         
@@ -174,15 +174,16 @@
     }
 }
 
--(void)updataWithModel:(id)model indx:(NSInteger)indx;{
+-(void)updataWithModel:(CuponModel *)model indx:(NSInteger)indx;{
     self.indx = indx;
-    self.numberLB.text = @"$50";
+    self.numberLB.text = [NSString stringWithFormat:@"$ %@",model.readers];
     
-    self.titleLB.text = @"biaotoXXXXXXXX";
+    self.titleLB.text = model.rev;
     
-    self.contentLB.text = @"neirongXXXXXXXX";
+    self.contentLB.text = model.nu;
     
-    self.timeLB.text = @"shijianXXXXXXXX";
+    self.timeLB.text = [NSString stringWithFormat:@"Válido hasta el : %@",model.ruby];
+    
     
 }
 @end

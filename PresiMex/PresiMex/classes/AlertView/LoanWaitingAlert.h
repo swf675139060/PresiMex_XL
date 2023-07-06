@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (copy, nonatomic)void(^clickBtnBlock)(void);
+
+@property (copy, nonatomic)void(^clickCloseBtnBlock)(void);
+
+@property (assign, nonatomic) NSInteger storeCount;;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -20,6 +20,7 @@
 
 #import "RepayModel.h"
 #import "PayTypeModel.h"
+#import "CuponModel.h"
 @interface OrderDetailsVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
@@ -37,6 +38,11 @@
 @property (nonatomic, assign) NSInteger PayIndx;//支付方式索引
 
 
+@property (nonatomic, strong) NSArray *cuponArr;//优惠卷数组
+
+
+@property (nonatomic, assign) NSInteger cuponIndx;//优惠卷索引
+
 @property (nonatomic, strong) NSString *rated;//优惠卷id
 
 
@@ -50,6 +56,7 @@
     [super viewDidLoad];
     self.navTitleLabel.text = @"Reembolso";
    
+    self.cuponIndx = -1;
     [self.tempView addSubview:self.topView];
     WF_WEAKSELF(weakself);
     [self.topView setClickLeftBtnBlock:^{
@@ -80,6 +87,7 @@
 }
 
 
+
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -107,9 +115,13 @@
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 7.5, 15)];
         [cell.leftLabel setText:@"Principal:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
         if (self.indx == 0) {
-            [cell.rightLabel setText:self.leftModel.lower TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            if(self.leftModel){
+                [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.leftModel.lower] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            }
         } else {
-            [cell.rightLabel setText:self.rightModel.lower TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            if(self.rightModel){
+                [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.rightModel.lower] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            }
         }
         return cell;
     }else if (indexPath.row == 2) {
@@ -143,9 +155,19 @@
         [cell.leftBtn setText:@"Cargo por mora:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
         
         if (self.indx == 0) {
-            [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",self.leftModel.fifteen] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+            if (self.leftModel) {
+                [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",self.leftModel.fifteen] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+            } else {
+                [cell.centerBtn setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+            }
         } else {
-            [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",self.rightModel.fifteen] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+            if (self.rightModel) {
+                
+                [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",self.rightModel.fifteen] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+            }else{
+                
+                [cell.centerBtn setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+            }
         }
         [cell.rightBtn setImage:[UIImage imageNamed:@"tixingtishi"] forState:UIControlStateNormal];
         [cell.rightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
@@ -193,8 +215,16 @@
             [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) height:46.5-7.5];
 
             [cell.leftBtn setText:@"cupón:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
-            [cell.centerBtn setText:[NSString stringWithFormat:@"$%@",self.leftModel.shortly] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
-            [cell.rightBtn setImage:[UIImage imageNamed:@"tixingtishi"] forState:UIControlStateNormal];
+            
+            if (self.cuponIndx >= 0) {
+                CuponModel * cuModel = self.cuponArr[self.cuponIndx];
+                
+                [cell.centerBtn setText:[NSString stringWithFormat:@"$ %@",cuModel.readers] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+            } else {
+                
+                [cell.centerBtn setText:@"Por favor seleccione" TextColor:BColor_Hex(@"#CCCCCC", 1) Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+            }
+            [cell.rightBtn setImage:[UIImage imageNamed:@"Fill"] forState:UIControlStateNormal];
             [cell.rightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
             UIEdgeInsets  padding  = UIEdgeInsetsMake(14.5, 15, 7.5, 0);
             
@@ -238,7 +268,11 @@
             WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
             [cell.leftLabel setText:@"Pagado:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-            [cell.rightLabel setText:self.leftModel.gang TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            if(self.leftModel){
+                [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.leftModel.gang] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            }else{
+                [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            }
             return cell;
         }else{
             WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
@@ -256,7 +290,13 @@
                 WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
                 [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
                 [cell.leftLabel setText:@"Cantidad reducida:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:self.leftModel.shortly TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                if (self.leftModel) {
+                    
+                    [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.leftModel.shortly] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                } else {
+                    
+                    [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                }
                 [cell upLineFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
                 return cell;
             }
@@ -286,7 +326,12 @@
             WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
             [cell.leftLabel setText:@"Pago en total:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-            [cell.rightLabel setText:self.leftModel.tt TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            if (self.leftModel) {
+                [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.leftModel.tt] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            } else {
+                
+                [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+            }
             return cell;
         } else {
             //展期需支付账单
@@ -299,7 +344,13 @@
             }else{
                 
                 [cell.leftLabel setText:@"Pago en total:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:self.rightModel.qty TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                if (self.rightModel) {
+                    
+                    [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.rightModel.qty] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                } else {
+                    
+                    [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                }
             }
             return cell;
         }
@@ -424,17 +475,29 @@
 
 -(void)sutupAlertView:(NSString*)title withArr:(NSArray*)arr{
     [self.view endEditing:YES];
-    weakify(self)
+//    weakify(self)
     
     
-    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+//    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:title withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+//        strongify(self);
+//        self.PayIndx = indx;
+//        [self.tableView reloadData];
+//
+//    }];
+//    [alert show] ;
+    weakify(self);
+    PoPBottomView * BottomView = [PoPBottomView new];
+    BottomView.titles = arr;
+    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    [popView showWithTitileStr:@""];
+    
+    BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
         strongify(self);
+        
         self.PayIndx = indx;
         [self.tableView reloadData];
-
-    }];
-    [self.view endEditing:YES];
-    [alert show] ;
+        [popView dismiss];
+    };
 }
 
 
@@ -533,32 +596,72 @@
 //获取优惠卷
 -(void)GETCouponUrl{
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
-    pars[@"eg"] = @"1";
-    pars[@"patricia"] = @"30";
-    pars[@"prairie"] = self.leftModel.prairie;
-    
+    pars[@"eg"] = [NSString stringWithFormat:@"%d",1];
+    pars[@"patricia"] = @"100";
+    pars[@"prairie"] = self.repayId;
     WF_WEAKSELF(weakself);
+    [self show];
     [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
-        
+        [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
-            NSDictionary * shame = responseObject[@"shame"][@"approaches"];
-            
+            NSArray * dataList = responseObject[@"shame"][@"approaches"];
+            if (dataList.count) {
+                weakself.cuponArr = [CuponModel mj_objectArrayWithKeyValuesArray:dataList];
+                [weakself sutupAlertView];
+            }
             
         }else{
-            
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-        [weakself.tableView.mj_footer endRefreshing];
+//        [weakself.tableView.mj_footer endRefreshing];
         
         
     } failure:^(NSError * _Nonnull error) {
         
+            [weakself dismiss];
         [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
-        [weakself.tableView.mj_footer endRefreshing];
+//        [weakself.tableView.mj_footer endRefreshing];
         
     }];
+    
 }
 
+//优惠卷弹出框选择
+-(void)sutupAlertView{
+    [self.view endEditing:YES];
+    
+    
+    NSMutableArray * arr = [NSMutableArray array];
+    
+    for (CuponModel * dataModel in  self.cuponArr) {
+        [arr addObject:dataModel.readers];
+    }
+    
+//    weakify(self);
+//    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+//        strongify(self);
+//        self.cuponIndx = indx;
+//
+//        [self.tableView reloadData];
+//
+//    }];
+//    [alert show] ;
+    
+    weakify(self);
+    PoPBottomView * BottomView = [PoPBottomView new];
+    BottomView.titles = arr;
+    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    [popView showWithTitileStr:@""];
+    
+    BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
+        strongify(self);
+        self.cuponIndx = indx;
+        
+        [self.tableView reloadData];
+        [popView dismiss];
+    };
+}
 
 
 @end

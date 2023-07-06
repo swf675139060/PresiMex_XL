@@ -7,8 +7,9 @@
 
 #import "CuponVC.h"
 #import "CuponCell.h"
+#import "CuponModel.h"
 
-@interface CuponVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface CuponVC ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
 
@@ -46,7 +47,7 @@
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return self.dataArr.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -58,7 +59,7 @@
     
     CuponCell * cell = [CuponCell cellWithTableView:tableView];
     
-    [cell updataWithModel:@"" indx:indexPath.row];
+    [cell updataWithModel:self.dataArr[indexPath.row] indx:indexPath.row];
     
     cell.clickUseBlock = ^(NSInteger indx) {
         
@@ -77,7 +78,23 @@
     
 }
 
+#pragma mark - DZNEmptyDataSetSource
+// 返回图片
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
+    return [UIImage imageNamed:@"wuYouhui"];
+}
 
+// 返回标题文字
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"Aún no hay cupones";
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:14.0f], NSForegroundColorAttributeName: BColor_Hex(@"#1B1200", 1)};
+    return [[NSAttributedString alloc] initWithString:text attributes:attribute];
+}
+
+// 标题文字与详情文字的距离
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 20;
+}
 -(void)clickBtn{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -93,6 +110,10 @@
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        _tableView.emptyDataSetSource= self;
+
+        _tableView.emptyDataSetDelegate= self;
     }
     
     return _tableView;
@@ -107,12 +128,15 @@
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
         
-        if ([responseObject[@"retaxil"] intValue]==200) {
-            NSDictionary * shame = responseObject[@"shame"];
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSArray * dataList = responseObject[@"shame"][@"approaches"];
             
+            weakself.dataArr = [CuponModel mj_objectArrayWithKeyValuesArray:dataList];
+            [weakself.tableView reloadData];
             
         }else{
             
+                [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
         [weakself.tableView.mj_footer endRefreshing];
@@ -120,9 +144,11 @@
         
     } failure:^(NSError * _Nonnull error) {
         
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself.tableView.mj_footer endRefreshing];
         
     }];
+    
 }
 
 

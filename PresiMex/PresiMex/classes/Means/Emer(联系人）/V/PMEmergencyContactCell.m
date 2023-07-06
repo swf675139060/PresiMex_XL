@@ -138,7 +138,7 @@
     _phoneContentTF.textColor = BColor_Hex(@"#1B1200",1);
     _phoneContentTF.textAlignment = NSTextAlignmentLeft;
     _phoneContentTF.delegate = self;
-    [_phoneContentTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+//    [_phoneContentTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     _phoneContentTF.frame=CGRectMake(_pTitleLabel.swf_right+20, 12.5, WF_ScreenWidth-30-45-20-45, 20);
     _phoneContentTF.tag=2;
     _phoneContentTF.keyboardType = UIKeyboardTypeNumberPad;
@@ -191,6 +191,11 @@
         if (textField.tag==0) {
             self.guanXiClickBlock([self.model.type integerValue]);
             
+          return NO;
+        }else{
+            if (self.tongXunLUClickBlock) {
+                self.tongXunLUClickBlock([self.model.type integerValue]);
+            }
           return NO;
         }
     }

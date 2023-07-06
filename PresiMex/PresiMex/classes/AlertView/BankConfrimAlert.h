@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) bankcardModel * bankModel;
 
 @property(strong, nonatomic) NSString * money;
-//type 没用
+//type 0:有下面的金钱的cell 1 没有下面金钱cell
 - (instancetype)initWithFrame:(CGRect)frame withType:(NSInteger)type;
 
 @property (copy, nonatomic)void(^clickBtnBlock)(NSInteger indx);
