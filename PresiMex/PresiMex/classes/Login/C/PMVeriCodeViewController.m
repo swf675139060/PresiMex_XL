@@ -173,7 +173,7 @@
     pars[@"myanmar"]=code;//验证码
     pars[@"witch"]=@"fireBase";
     pars[@"lp"]=@1;
-
+    WF_WEAKSELF(weakself);
     [PMBaseHttp postJson:Post_Sms_Code_Ver parameters:pars success:^(id  _Nonnull responseObject) {
         
         if ([responseObject[@"retail"] intValue]==200) {
@@ -183,12 +183,34 @@
             [PMAccountTool saveAccount:user];
             [self.navigationController popToRootViewControllerAnimated:YES];
             NSLog(@"user==%@",[PMAccountTool account].token);
+            
+            [self sutupAlertView];
+        } else{
+            [weakself dismiss];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
     } failure:^(NSError * _Nonnull error) {
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         
     }];
 
 }
+
+-(void)sutupAlertView{
+
+    weakify(self);
+   AccesoPermisosView * BottomView = [AccesoPermisosView new];
+   
+    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    [popView showWithTitileStr:@""];
+    [popView clickBGHiden:NO];
+    BottomView.selectBlock = ^{
+        strongify(self);
+        [popView dismiss];
+    };
+}
+
 
 @end

@@ -220,6 +220,8 @@
 		FBE5D8E22A487AC80074FAC2 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE5D8DE2A487AC80074FAC2 /* FLAnimatedImage.m */; };
 		FBE5D8E32A487AC80074FAC2 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE5D8DF2A487AC80074FAC2 /* FLAnimatedImageView.m */; };
 		FBE5D8E52A487B630074FAC2 /* loadingGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = FBE5D8E42A487B630074FAC2 /* loadingGif.gif */; };
+		FBED3B572A5916CD00EB5771 /* AccesoPermisosView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBED3B562A5916CD00EB5771 /* AccesoPermisosView.m */; };
+		FBED3B5B2A593D3D00EB5771 /* PrivateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FBED3B592A593D3D00EB5771 /* PrivateInfo.m */; };
 		FBF1D8A92A49C566007AF3AB /* WFGifImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF1D8A82A49C566007AF3AB /* WFGifImageCell.m */; };
 /* End PBXBuildFile section */
 
@@ -648,6 +650,10 @@
 		FBE5D8E02A487AC80074FAC2 /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
 		FBE5D8E12A487AC80074FAC2 /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
 		FBE5D8E42A487B630074FAC2 /* loadingGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loadingGif.gif; sourceTree = "<group>"; };
+		FBED3B552A5916CD00EB5771 /* AccesoPermisosView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccesoPermisosView.h; sourceTree = "<group>"; };
+		FBED3B562A5916CD00EB5771 /* AccesoPermisosView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccesoPermisosView.m; sourceTree = "<group>"; };
+		FBED3B592A593D3D00EB5771 /* PrivateInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateInfo.m; sourceTree = "<group>"; };
+		FBED3B5A2A593D3D00EB5771 /* PrivateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateInfo.h; sourceTree = "<group>"; };
 		FBF1D8A72A49C566007AF3AB /* WFGifImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFGifImageCell.h; sourceTree = "<group>"; };
 		FBF1D8A82A49C566007AF3AB /* WFGifImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFGifImageCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1595,6 +1601,7 @@
 		FBAACBEE2A4521E800463FC1 /* 配置信息 */ = {
 			isa = PBXGroup;
 			children = (
+				FBED3B582A593D1F00EB5771 /* private */,
 				FBAACBEF2A45221900463FC1 /* PMConfigManager.h */,
 				FBAACBF02A45221900463FC1 /* PMConfigManager.m */,
 				FBAACBF22A45232800463FC1 /* PMConfigModel.h */,
@@ -1976,6 +1983,8 @@
 				FBDC90D72A4C69A80067811A /* SLFCommentsPopView.m */,
 				FBDC90DA2A4C6C300067811A /* PoPBottomView.h */,
 				FBDC90DB2A4C6C300067811A /* PoPBottomView.m */,
+				FBED3B552A5916CD00EB5771 /* AccesoPermisosView.h */,
+				FBED3B562A5916CD00EB5771 /* AccesoPermisosView.m */,
 			);
 			path = PopView;
 			sourceTree = "<group>";
@@ -2026,6 +2035,15 @@
 				FBE5D8E12A487AC80074FAC2 /* FLAnimatedImageView.h */,
 			);
 			path = FLAnimatedImage;
+			sourceTree = "<group>";
+		};
+		FBED3B582A593D1F00EB5771 /* private */ = {
+			isa = PBXGroup;
+			children = (
+				FBED3B5A2A593D3D00EB5771 /* PrivateInfo.h */,
+				FBED3B592A593D3D00EB5771 /* PrivateInfo.m */,
+			);
+			path = private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2326,6 +2344,7 @@
 				FB9129F32A503A4C00502697 /* YouHuiAlertCell.m in Sources */,
 				A4D6F12A2A25B1DE006B4BA6 /* PMQuestionViewCell.m in Sources */,
 				FB2ABD502A356DAD00B7073D /* RepayModel.m in Sources */,
+				FBED3B5B2A593D3D00EB5771 /* PrivateInfo.m in Sources */,
 				FBD4B2CE2A3EDD5800E136D5 /* LNDetector.mm in Sources */,
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
 				FBAAA7742A2E258800BCBA57 /* OrderDetailsVC.m in Sources */,
@@ -2390,6 +2409,7 @@
 				A4DD5E652A21FFE400451413 /* CRSecrectImageView.m in Sources */,
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
+				FBED3B572A5916CD00EB5771 /* AccesoPermisosView.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
 				FBB47BB62A47223500B059B5 /* AllFailAlert.m in Sources */,
 				FB107B572A3D8BA10099C52B /* bankcardCell.m in Sources */,
@@ -2634,7 +2654,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 753ZV46XP8;
+				DEVELOPMENT_TEAM = 53Q62TM72V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PresiMex/Lib/liveSDK",
@@ -2643,8 +2663,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Dengan mengakses buku kontak, tujuannya untuk membantu kami memberikan layanan yang lebih baik kepada Anda. Kami menggunakan data untuk evaluasi pengguna secara sistematis dan tidak akan menyebarluaskan data ke yang lain.  Ini hanya digunakan untuk evaluasi pengguna dan data akan segera dihapus setelah diverifikasi";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -2655,7 +2677,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.prsi.PresiMex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wenfeng.shen.PresiMex4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2675,7 +2697,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 753ZV46XP8;
+				DEVELOPMENT_TEAM = 53Q62TM72V;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PresiMex/Lib/liveSDK",
@@ -2684,8 +2706,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Dengan mengakses buku kontak, tujuannya untuk membantu kami memberikan layanan yang lebih baik kepada Anda. Kami menggunakan data untuk evaluasi pengguna secara sistematis dan tidak akan menyebarluaskan data ke yang lain.  Ini hanya digunakan untuk evaluasi pengguna dan data akan segera dihapus setelah diverifikasi";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -2696,7 +2720,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.prsi.PresiMex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wenfeng.shen.PresiMex4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

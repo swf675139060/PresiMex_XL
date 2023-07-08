@@ -23,7 +23,7 @@
 
 
 @property (nonatomic, assign) NSInteger curentIndx;//通讯录
-
+@property (nonatomic, strong) SLFCommentsPopView * popView;//关系pop
 @end
 
 @implementation PMEmergencyContactViewController
@@ -47,13 +47,14 @@
     [alert setClickBtnBlock:^(NSInteger indx) {
         [AlertView dismiss];
         if (indx == 0) {
-            NSArray *viewControllers = weakself.navigationController.viewControllers;
-            for (UIViewController *viewController in viewControllers) {
-                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
-                    [weakself.navigationController popToViewController:viewController animated:YES];
-                    break;
-                }
-            }
+            [weakself.navigationController popViewControllerAnimated:YES];
+//            NSArray *viewControllers = weakself.navigationController.viewControllers;
+//            for (UIViewController *viewController in viewControllers) {
+//                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+//                    [weakself.navigationController popToViewController:viewController animated:YES];
+//                    break;
+//                }
+//            }
         } else {
             
         }
@@ -227,10 +228,15 @@
 //    }];
 //    [alert show] ;
     
+    if(self.popView.superview){
+        return;;
+    }
+    
     weakify(self);
     PoPBottomView * BottomView = [PoPBottomView new];
     BottomView.titles = arr;
     SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    self.popView = popView;
     [popView showWithTitileStr:@""];
     
     BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {

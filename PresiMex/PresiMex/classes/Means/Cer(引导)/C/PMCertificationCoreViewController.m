@@ -272,10 +272,14 @@
         }
 
 //        用户当前状态 10:注册完成, 20:问卷调查完成 30:kyc完成, 40:基本信息完成, 50:联系人完成,60:账户完成, 70:授信中, 71:授信通过, 72:授信拒绝 80:交易验证, 81:交易验证部分通过, 82:交易验证拒绝 83:交易验证通过, 84:放款失败需要处理'
-
-
+        else{
+            [weakself showTip:responseObject[@"entire"]];//（对）
+        }
+        
     } failure:^(NSError * _Nonnull error) {
         [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 @end

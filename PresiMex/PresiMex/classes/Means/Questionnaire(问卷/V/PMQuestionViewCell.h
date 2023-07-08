@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(CGFloat)cellWithHight:(PMQuestionModel*)model;
 
 -(void)setCellWithModel1:(PMQuesModel*)model;
+
+-(void)setCellWithModel1Wenjuan:(PMQuesModel*)model index:(NSInteger)indx;
 +(CGFloat)cellWithHight1:(PMQuesModel*)model;
 @end
 

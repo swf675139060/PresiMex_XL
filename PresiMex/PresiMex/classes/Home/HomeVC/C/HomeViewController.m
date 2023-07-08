@@ -487,6 +487,7 @@
     LoanWaitingAlert * alert = [[LoanWaitingAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withType:type] ;
     
     WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView setClickBGDismiss:NO];
     [AlertView show];
     WF_WEAKSELF(weakself);
     [alert setClickBtnBlock:^{
@@ -506,6 +507,7 @@
         }
     }];
     [alert setClickCloseBtnBlock:^{
+        [weakself GETUserAuthInfo];
         [AlertView dismiss];
     }];
 }
@@ -689,11 +691,12 @@
 //            [SLFToast showWithContent:responseObject[@"entire"] afterDelay:2];
             weakself.homeModel = nil;
             [weakself.tableView reloadData];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-        
-
     } failure:^(NSError * _Nonnull error) {
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         
     }];
 }

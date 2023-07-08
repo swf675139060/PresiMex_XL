@@ -46,6 +46,10 @@
         }
     }
     
+    if (self.changeHandler) {
+        self.changeHandler(textField.text);
+    }
+    
       
   
 }

@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void(^endEditingHandler) (NSString *text); /**< 输入框结束编辑回调*/
 
+
+@property (nonatomic, copy) void(^changeHandler) (NSString *text); /***/
+
 @end
 
 NS_ASSUME_NONNULL_END

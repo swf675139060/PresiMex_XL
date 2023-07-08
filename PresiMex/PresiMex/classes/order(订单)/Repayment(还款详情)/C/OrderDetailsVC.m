@@ -526,11 +526,13 @@
             [weakself.tableView reloadData];
         }else{
             [weakself dismiss];
-            [weakself.view showTipC:responseObject[@"msg"]];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
     } failure:^(NSError * _Nonnull error) {
         [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 
@@ -553,13 +555,13 @@
             [weakself.tableView reloadData];
             
         }else{
-            [weakself.view showTipC:responseObject[@"msg"]];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
-        
-        
         
     } failure:^(NSError * _Nonnull error) {
         [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 
@@ -579,14 +581,13 @@
             [weakself.tableView reloadData];
             
         }else{
-            [weakself.view showTipC:responseObject[@"msg"]];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-        
-        
     } failure:^(NSError * _Nonnull error) {
-        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 
@@ -614,14 +615,9 @@
             [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-//        [weakself.tableView.mj_footer endRefreshing];
-        
-        
     } failure:^(NSError * _Nonnull error) {
-        
-            [weakself dismiss];
+        [weakself dismiss];
         [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
-//        [weakself.tableView.mj_footer endRefreshing];
         
     }];
     

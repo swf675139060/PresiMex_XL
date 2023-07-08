@@ -7,13 +7,11 @@
 
 #import "PMBasicViewCell.h"
 
-#import "PMTextField.h"
 #import "BasicDataModel.h"
 
 @interface PMBasicViewCell ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UILabel   *titleLabel;
-@property (nonatomic, strong) PMTextField *contentTF;
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UIImageView *arrowImageView;
 @property (nonatomic, strong) PMQuestionModel*model;
@@ -70,6 +68,17 @@
         }
     };
     
+    _contentTF.changeHandler = ^(NSString * _Nonnull text) {
+        strongify(self)
+        if (self.endInputBlock) {
+            
+            self.contentTF.textColor = BColor_Hex(@"#1B1200", 1);
+            self.bgView.layer.borderColor=BColor_Hex(@"#CCCCCC", 1).CGColor;
+            
+            self.endInputBlock(self.titleLabel.text, text);
+        }
+    };
+    
     UIImageView*arrowImageView = [[UIImageView alloc] init];
     arrowImageView.contentMode=UIViewContentModeScaleAspectFit;
     [bgView addSubview:arrowImageView];
@@ -84,6 +93,13 @@
     _model=model;
     _titleLabel.text=model.title;
     _contentTF.maxCount = maxCount;
+    if (model.isColor == YES) {
+        _contentTF.textColor = BColor_Hex(@"#FF0000", 1);
+        self.bgView.layer.borderColor=BColor_Hex(@"#FF0000", 1).CGColor;
+    } else {
+        _contentTF.textColor = BColor_Hex(@"#1B1200", 1);
+        self.bgView.layer.borderColor=BColor_Hex(@"#CCCCCC", 1).CGColor;
+    }
     if (model.isHave) {
         _contentTF.userInteractionEnabled = NO;
         _arrowImageView.hidden=NO;

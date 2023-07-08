@@ -299,14 +299,13 @@
             
         }else{
             [weakself showAlertWidth:NO];
-        }
-        
-        
-        
-    } failure:^(NSError * _Nonnull error) {
-         [weakself dismiss];
-        [weakself showAlertWidth:NO];
-    }];
+       }
+       
+   } failure:^(NSError * _Nonnull error) {
+       [weakself dismiss];
+       [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+       
+   }];
 }
 
 

@@ -23,6 +23,9 @@
 - (void)showToView:(UIView *)view titileStr:(NSString *)title;
 
 - (void)showWithTitileStr:(NSString *)title;
+
+- (void)clickBGHiden:(BOOL)hiden;
+
 /// 关闭
 - (void)dismiss;
 

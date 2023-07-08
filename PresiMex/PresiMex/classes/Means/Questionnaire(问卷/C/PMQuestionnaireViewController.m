@@ -39,13 +39,14 @@
     [alert setClickBtnBlock:^(NSInteger indx) {
         [AlertView dismiss];
         if (indx == 0) {
-            NSArray *viewControllers = weakself.navigationController.viewControllers;
-            for (UIViewController *viewController in viewControllers) {
-                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
-                    [weakself.navigationController popToViewController:viewController animated:YES];
-                    break;
-                }
-            }
+            [weakself.navigationController popViewControllerAnimated:YES];
+//            NSArray *viewControllers = weakself.navigationController.viewControllers;
+//            for (UIViewController *viewController in viewControllers) {
+//                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+//                    [weakself.navigationController popToViewController:viewController animated:YES];
+//                    break;
+//                }
+//            }
         } else {
             
         }
@@ -131,7 +132,7 @@
     PMQuesModel *model=self.dataArray[indexPath.row];
     PMQuestionViewCell *cell=[PMQuestionViewCell cellWithTableView:tableView];
    
-    [cell setCellWithModel1:model];
+    [cell setCellWithModel1Wenjuan:model index:indexPath.row + 1];
       return cell;
 
 }
@@ -262,6 +263,7 @@
     
     [self show];
     NSMutableDictionary*param=[NSMutableDictionary new];
+    WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_Investigate_Info parameters:param success:^(id  _Nonnull responseObject) {
         [self dismiss];
         
@@ -275,6 +277,8 @@
         [self.tableView reloadData];
     } failure:^(NSError * _Nonnull error) {
         [self dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
     
 
@@ -286,13 +290,20 @@
     
 
     [self show];
+    WF_WEAKSELF(weakself);
     [PMBaseHttp postJson:POST_Investigate_Info parameters:self.parma success:^(id  _Nonnull responseObject) {
         [self dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             [self pushIdVc];
+        } else{
+            [weakself dismiss];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
+        
     } failure:^(NSError * _Nonnull error) {
-        [self dismiss];
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 -(void)pushIdVc{

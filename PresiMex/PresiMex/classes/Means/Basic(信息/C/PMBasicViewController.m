@@ -49,13 +49,14 @@
     [alert setClickBtnBlock:^(NSInteger indx) {
         [AlertView dismiss];
         if (indx == 0) {
-            NSArray *viewControllers = weakself.navigationController.viewControllers;
-            for (UIViewController *viewController in viewControllers) {
-                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
-                    [weakself.navigationController popToViewController:viewController animated:YES];
-                    break;
-                }
-            }
+            [weakself.navigationController popViewControllerAnimated:YES];
+//            NSArray *viewControllers = weakself.navigationController.viewControllers;
+//            for (UIViewController *viewController in viewControllers) {
+//                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+//                    [weakself.navigationController popToViewController:viewController animated:YES];
+//                    break;
+//                }
+//            }
         } else {
             
         }
@@ -73,6 +74,19 @@
     self.navTitleLabel.text=@"Información del personal";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
+    
+    // 创建日期组件
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setYear:1995];
+    [components setMonth:1];
+    [components setDay:1];
+
+    // 创建日历对象并指定日历类型
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+
+    // 从日期组件和日历对象创建NSDate对象
+    NSDate *date = [calendar dateFromComponents:components];
+    self.date = date;
     
     if(!self.userID){
         [self requestImagPic];
@@ -276,8 +290,10 @@
     [cell setCellWithModel:model maxCount:1000];
     
     [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text) {
+        model.isColor = NO;
         model.content = text;
     }];
+    
     return cell;
     
 }
@@ -422,6 +438,7 @@
         strongify(self);
         PMQuestionModel * model = self.dataArray[indxP];
         model.indx = indx;
+        model.isColor = NO;
         [self.tableView reloadData];
         [popView dismiss];
     };
@@ -458,6 +475,7 @@
     }
     for (int i = 0; i < arrCount; i++) {
         PMQuestionModel *model=self.dataArray[i];
+        
         if (model.REQUIRED) {
             if (model.isHave) {
                 if (model.indx >= 0) {
@@ -465,14 +483,34 @@
                 }else if (model.content && model.content.length){
                     continue;
                 }else{
+                    model.isColor = YES;
                     [self showTip:@"Verifique los campos obligatorios."];
+                    [self.tableView reloadData];
                     return;
                 }
             } else {
                 if (model.content && model.content.length) {
-                    continue;
+                    if (i == 2) {
+                        //邮箱
+                        if ([self isValidEmail:model.content]) {
+                            continue;
+                        } else {
+                            model.isColor = YES;
+                            [self showTip:@"Por favor, introduzca el buzón correcto."];
+                            [self.tableView reloadData];
+                            PMBasicViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+                            [cell.contentTF becomeFirstResponder];
+                            
+                            return;
+                        }
+                    } else {
+                        continue;
+                    }
+                    
                 } else {
+                    model.isColor = YES;
                     [self showTip:@"Verifique los campos obligatorios."];
+                    [self.tableView reloadData];
                     return;
                 }
             }
@@ -488,7 +526,19 @@
     
    
 }
-
+- (BOOL)isValidEmail:(NSString *)email {
+    // 定义邮箱格式的正则表达式
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}";
+    
+    // 创建正则表达式对象
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:emailRegex options:NSRegularExpressionCaseInsensitive error:nil];
+    
+    // 在邮箱字符串中查找符合正则表达式的字符串
+    NSTextCheckingResult *match = [regex firstMatchInString:email options:0 range:NSMakeRange(0, [email length])];
+    
+    // 如果找到符合正则表达式的字符串，则返回YES，否则返回NO
+    return (match != nil);
+}
 
 -(void)POSTUserBaseMeans{
 
@@ -603,7 +653,7 @@
     
     [self show];
     NSMutableDictionary*dict=[NSMutableDictionary new];
-    
+    WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_OCR_USER_INFO parameters:dict success:^(id  _Nonnull responseObject) {
         [self dismiss];
         if ([responseObject[@"retail"]intValue]==200) {
@@ -618,13 +668,15 @@
                 model2.content=self.userID;
             }
             [self.tableView reloadData];
-        } else {
-            
+        } else{
+            [weakself dismiss];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
-        NSLog(@"%@",responseObject);
+        
     } failure:^(NSError * _Nonnull error) {
-        [self dismiss];
-        NSLog(@"%@",error);
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 

@@ -103,13 +103,14 @@
             [PMAccountTool saveAccount:nil];
             [self.navigationController popViewControllerAnimated:YES];
             
-        }else{
-//            [SLFToast showWithContent:responseObject[@"msg"] afterDelay:2];
+        } else{
+            [weakself dismiss];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-        
-        
     } failure:^(NSError * _Nonnull error) {
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         
     }];
 }

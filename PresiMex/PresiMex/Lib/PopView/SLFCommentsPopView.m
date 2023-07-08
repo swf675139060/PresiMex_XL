@@ -24,6 +24,8 @@
 //向下拖拽最后时刻的位移
 @property (nonatomic, assign) CGFloat lastDrapDistance;
 
+@property (nonatomic, assign) BOOL ClickBGHiden;
+
 
 @end
 
@@ -40,6 +42,7 @@
 - (instancetype)initWithFrame:(CGRect)frame commentBackView:(UIView *)contentView  contentViewNeedScroView:(BOOL)needScroView {
     self = [super initWithFrame:frame];
     if (self) {
+        self.ClickBGHiden = YES;
         self.isDragScrollView = NO;
         self.lastDrapDistance = 0.0;
         self.frame = frame;
@@ -54,6 +57,9 @@
     return self;
 }
 
+- (void)clickBGHiden:(BOOL)hiden{
+    self.ClickBGHiden  = hiden;
+}
 -(void)addSubviewWithContainer:(UIView *)contentView  contentViewNeedScroView:(BOOL)needScroView {
     self.contentView = contentView;
     UIView *container = [[UIView alloc] init];
@@ -172,9 +178,9 @@
 
 
     //添加拖拽手势
-    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    [self.container addGestureRecognizer:self.panGestureRecognizer];
-    self.panGestureRecognizer.delegate = self;
+//    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+//    [self.container addGestureRecognizer:self.panGestureRecognizer];
+//    self.panGestureRecognizer.delegate = self;
 }
 
 
@@ -344,10 +350,13 @@
 //点击手势
 - (void)handleGuesture:(UITapGestureRecognizer *)sender {
 
-    CGPoint point = [sender locationInView:_container];
-    if(![_container.layer containsPoint:point] && sender.view == self) {
-        [self dismiss];
-        return;
+    if(self.ClickBGHiden == YES){
+        
+        CGPoint point = [sender locationInView:_container];
+        if(![_container.layer containsPoint:point] && sender.view == self) {
+            [self dismiss];
+            return;
+        }
     }
 }
 

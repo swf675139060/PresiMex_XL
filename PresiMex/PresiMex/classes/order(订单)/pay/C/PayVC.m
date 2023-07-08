@@ -237,13 +237,13 @@
             [weakself initNSTimer];
             
         }else{
-            
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-        
-        
     } failure:^(NSError * _Nonnull error) {
-        [weakself.view dismiss];
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 
@@ -294,13 +294,13 @@
             }
             
         }else{
-            
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-        
-        
     } failure:^(NSError * _Nonnull error) {
-        [weakself.view dismiss];
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 

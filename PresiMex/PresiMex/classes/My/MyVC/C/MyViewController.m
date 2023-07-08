@@ -270,11 +270,14 @@
             weakself.model = nil;
             [weakself.headerView updataHeaderViewWithModel:weakself.model];
             [weakself.tableView reloadData];
+        
+            [weakself dismiss];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
         
-        
-        
     } failure:^(NSError * _Nonnull error) {
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         
     }];
 }

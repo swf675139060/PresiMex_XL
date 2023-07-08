@@ -51,10 +51,12 @@
                 }
                 
             }else{
-                
+//                [weakself showTip:responseObject[@"entire"]];//（对）
             }
             
         } failure:^(NSError * _Nonnull error) {
+//            [weakself dismiss];
+//            [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
             
         }];
         

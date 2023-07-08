@@ -62,13 +62,14 @@
     [alert setClickBtnBlock:^(NSInteger indx) {
         [AlertView dismiss];
         if (indx == 0) {
-            NSArray *viewControllers = weakself.navigationController.viewControllers;
-            for (UIViewController *viewController in viewControllers) {
-                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
-                    [weakself.navigationController popToViewController:viewController animated:YES];
-                    break;
-                }
-            }
+            [weakself.navigationController popViewControllerAnimated:YES];
+//            NSArray *viewControllers = weakself.navigationController.viewControllers;
+//            for (UIViewController *viewController in viewControllers) {
+//                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+//                    [weakself.navigationController popToViewController:viewController animated:YES];
+//                    break;
+//                }
+//            }
         } else {
             
         }
@@ -408,7 +409,7 @@
     
     [self show];
     NSMutableDictionary*dict=[NSMutableDictionary new];
-    
+    WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_OCR_USER_INFO parameters:dict success:^(id  _Nonnull responseObject) {
         [self dismiss];
         if ([responseObject[@"retail"]intValue]==200) {
@@ -431,13 +432,15 @@
             self.userID = model.cartoon;
             [self.dataArray replaceObjectAtIndex:4 withObject:model5];
             [self.tableView reloadData];
-        } else {
-            
+        }  else{
+            [weakself dismiss];
+            [weakself showTip:responseObject[@"entire"]];//（对）
         }
-        NSLog(@"%@",responseObject);
+        
     } failure:^(NSError * _Nonnull error) {
-        [self dismiss];
-        NSLog(@"%@",error);
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
     }];
 }
 

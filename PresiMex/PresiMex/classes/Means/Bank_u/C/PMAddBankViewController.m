@@ -323,13 +323,15 @@
     [alert setClickBtnBlock:^(NSInteger indx) {
         [AlertView dismiss];
         if (indx == 0) {
-            NSArray *viewControllers = weakself.navigationController.viewControllers;
-            for (UIViewController *viewController in viewControllers) {
-                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
-                    [weakself.navigationController popToViewController:viewController animated:YES];
-                    break;
-                }
-            }
+            [weakself.navigationController popViewControllerAnimated:YES];
+            
+//            NSArray *viewControllers = weakself.navigationController.viewControllers;
+//            for (UIViewController *viewController in viewControllers) {
+//                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+//                    [weakself.navigationController popToViewController:viewController animated:YES];
+//                    break;
+//                }
+//            }
         } else {
             
 //            [weakself POSTCouponGetUrl];
@@ -500,7 +502,7 @@
 }
 
 
-//确认借款弹出框
+//确认借款弹出框 type 0:有下面的金钱的cell 1 没有下面金钱cell
 -(void)showBankConfrimAlert:(NSInteger)type{
     BankConfrimAlert * alert = [[BankConfrimAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 40, 396) withType:type] ;
     alert.bankModel = self.bankModel;
@@ -639,9 +641,11 @@
         [weakself GETBankList];
 
     } failure:^(NSError * _Nonnull error) {
-
+        
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself GETBankList];
     }];
+    
 }
 
 
@@ -710,16 +714,16 @@
         [PMBaseHttp PUTJson:url parameters:pars1 success:^(id  _Nonnull responseObject) {
             [weakself dismiss];
             if ([responseObject[@"retail"] intValue]==200) {
-                if (weakself.reLoan) {
-                    // 重新借款 弹出窗
-                    [weakself showBankConfrimAlert:0];
-                }else{
+//                if (weakself.reLoan) {
+//                    // 重新借款 弹出窗
+//                    [weakself showBankConfrimAlert:0];
+//                }else{
                     //修改成功返回
                     if(weakself.changeBlock){
                         weakself.changeBlock(weakself.bankModel);
                     }
                     [weakself.navigationController popViewControllerAnimated:YES];
-                }
+//                }
                 
             }else{
                 [weakself showTip:responseObject[@"entire"]];//（对）
