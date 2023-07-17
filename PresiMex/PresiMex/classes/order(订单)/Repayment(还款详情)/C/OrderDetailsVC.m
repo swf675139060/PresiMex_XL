@@ -320,7 +320,7 @@
         }
         
         
-    }else if (indexPath.row == 8) {
+    }else if (indexPath.row == 8){
         if (self.indx == 0) {
             //本次需支付账单
             WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
@@ -329,35 +329,114 @@
             if (self.leftModel) {
                 [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.leftModel.tt] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
             } else {
-                
+
                 [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
             }
             return cell;
         } else {
-            //展期需支付账单
-            WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
-            [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
+            //逾期费
+            WFThreeBtnCell * cell = [WFThreeBtnCell cellWithTableView:tableView];
+            [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0) height:46.5-7.5];
             if(self.beOverdue == YES){
                 
-                [cell.leftLabel setText:@"Cuentas pendientes durante la prórroga:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
-                [cell.rightLabel setText:self.rightModel.qty TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
-            }else{
+                [cell.leftBtn setText:@"Cuentas pendientes durante la prórroga:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
                 
-                [cell.leftLabel setText:@"Pago en total:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
+                [cell.centerBtn setText:self.rightModel.qty TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+
+            }else{
+                [cell.leftBtn setText:@"Pago en total:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+
                 if (self.rightModel) {
                     
-                    [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.rightModel.qty] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                    [cell.centerBtn setText:self.rightModel.qty TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+
                 } else {
+
                     
-                    [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+                    [cell.centerBtn setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+
                 }
             }
+            
+            [cell.rightBtn setImage:[UIImage imageNamed:@"tixingtishi"] forState:UIControlStateNormal];
+            [cell.rightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
+            UIEdgeInsets  padding  = UIEdgeInsetsMake(14.5, 15, 7.5, 0);
+            [cell.leftBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(@(padding.left));
+                make.top.equalTo(@(padding.top));
+                make.bottom.equalTo(@(-padding.bottom));
+
+            }];
+            
+            [cell.rightBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(@(-padding.right));
+                make.centerY.equalTo(cell.leftBtn);
+                make.width.equalTo(@(45));
+
+            }];
+            [cell.centerBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+              
+                make.centerY.equalTo(cell.leftBtn);
+                make.right.equalTo(cell.rightBtn.mas_left);
+
+            }];
+            
+            [cell setClickBtnBlock:^(NSInteger index) {
+                if(index == 2){
+                    
+                    ThreeLabelAlert * alert = [[ThreeLabelAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 200) withType:self.beOverdue];
+                    
+                    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+                    [AlertView setClickBGDismiss:YES];
+                    [AlertView show];
+                 
+                }
+            }];
+            
+            
             return cell;
         }
-       
-        
-        
-    }else if (indexPath.row == 9) {
+      
+    }
+//    {
+//        if (self.indx == 0) {
+//            //本次需支付账单
+//            WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
+//            [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
+//            [cell.leftLabel setText:@"Pago en total:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
+//            if (self.leftModel) {
+//                [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.leftModel.tt] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+//            } else {
+//
+//                [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+//            }
+//            return cell;
+//        } else {
+//            //展期需支付账单
+//            WFLeftRightLabelCell * cell = [WFLeftRightLabelCell cellWithTableView:tableView];
+//            [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 14.5, 15)];
+//            if(self.beOverdue == YES){
+//
+//                [cell.leftLabel setText:@"Cuentas pendientes durante la prórroga:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
+//                [cell.rightLabel setText:self.rightModel.qty TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+//            }else{
+//
+//                [cell.leftLabel setText:@"Pago en total:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13]];
+//                if (self.rightModel) {
+//
+//                    [cell.rightLabel setText:[NSString stringWithFormat:@"$ %@",self.rightModel.qty] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+//                } else {
+//
+//                    [cell.rightLabel setText:@"" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont boldSystemFontOfSize:13]];
+//                }
+//            }
+//            return cell;
+//        }
+//
+//
+//
+//    }
+    else if (indexPath.row == 9) {
         //分割线
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView identifier:@"line"];
         cell.label.text = @"";

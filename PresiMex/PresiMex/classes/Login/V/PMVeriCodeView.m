@@ -35,7 +35,7 @@
     UILabel *desLabel = [[UILabel alloc] init];
     desLabel.frame = CGRectMake(15,titleLabel.swf_bottom+20,200,31);
     [self addSubview:desLabel];
-    desLabel.text=@"Bienvenido a PresiMe";
+    desLabel.text=@"Bienvenido a PresiMex";
     desLabel.font=B_FONT_MEDIUM(18);
     desLabel.textColor=BColor_Hex(@"#FC7500", 1);
     desLabel.textAlignment = NSTextAlignmentLeft;

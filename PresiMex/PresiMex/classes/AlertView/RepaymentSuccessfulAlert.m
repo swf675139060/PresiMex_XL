@@ -25,7 +25,7 @@
 - (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle{
     self = [super initWithFrame:frame];
     if (self) {
-        self.Conttent = [NSString stringWithFormat:@"Felicitaciones, en %@  has liquidado tu deuda con éxito, Puedes solicitar en este producto inmediatamente.",Conttent];
+        self.Conttent = [NSString stringWithFormat:@"Enhorabuena, has completado exitosamente el pago de tu deuda en %@. Ahora puedes proceder a solicitar este producto de forma inmediata.",Conttent];
         
         
         

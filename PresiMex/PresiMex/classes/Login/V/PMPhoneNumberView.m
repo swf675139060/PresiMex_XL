@@ -103,8 +103,8 @@
 
 -(void)textFieldTextChange:(UITextField *)textField{
     
-    if ([_phoneTextField.text length] >=11) {
-       _phoneTextField.text = [_phoneTextField.text substringToIndex:11];
+    if ([_phoneTextField.text length] >=15) {
+       _phoneTextField.text = [_phoneTextField.text substringToIndex:15];
 //        [self pushVerVc];
         
     }

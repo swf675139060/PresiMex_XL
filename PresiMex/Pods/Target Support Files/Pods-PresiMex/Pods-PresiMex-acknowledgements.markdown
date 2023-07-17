@@ -28,11 +28,6 @@ THE SOFTWARE.
 
 Copyright 2018 AppsFlyer Ltd. All rights reserved.
 
-## Bugly
-
-Copyright (C) 2017 Tencent Bugly, Inc. All rights reserved.
-
-
 ## Firebase
 
 

@@ -27,7 +27,7 @@
 - (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle{
     self = [super initWithFrame:frame];
     if (self) {
-        self.Conttent = [NSString stringWithFormat:@"Felicitaciones, en  %@ su solicitud se ha extendido con éxito,  Puede ir a Mis préstamos para ver los detalles del nuevo pedido.",Conttent] ;
+        self.Conttent = [NSString stringWithFormat:@"¡Felicidades! Se ha aprobado exitosamente una extensión para su solicitud en %@. Puede consultar los detalles del nuevo pedido en Mi Factura.",Conttent];
         
         self.btnTitle = @"OK";
         [self buildSubViews1];

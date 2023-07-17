@@ -24,7 +24,7 @@ target 'PresiMex' do
   pod 'FirebaseCore'
 
   pod 'Firebase/Messaging'
-  pod 'Bugly'
+#  pod 'Bugly'
 
 #  pod 'IQKeyboardManager', '~>6.5.11'
  

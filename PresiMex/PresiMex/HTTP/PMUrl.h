@@ -9,7 +9,9 @@
 #define PMUrl_h
 
 
-#define API_URL  @"https://test-api.presimex.mx"
+//#define API_URL  @"https://test-api.presimex.mx"
+//#define API_URL  @"https://test-api.cashimex.mx"
+#define API_URL  @"https://test-gateway.presimex.mx/"
 
 
 
@@ -19,13 +21,13 @@
  */
 
 //AF信息上传
-#define  Post_AF_Info @"/api/user/mount/licence"
+#define  Post_AF_Info @"/gateway/biz/mount/licence"
 
 //获取用户当前状态
-#define  Get_User_Status  @"/api/user/mount/observer"
+#define  Get_User_Status  @"/gateway/biz/mount/observer"
 
 //设备信息汇报
-#define  Post_Device_Info @"/api/user/mount/random"
+#define  Post_Device_Info @"/gateway/biz/mount/random"
 
 
 /*
@@ -33,13 +35,13 @@
  */
 
 //用户退出
-#define  Get_User_LogOut  @"/api/user/repeated/cultures"//w
+#define  Get_User_LogOut  @"/gateway/biz/repeated/cultures"//w
 
 //登录注册短信(发送)
-#define  Post_Sms_Code @"/api/user/repeated/malaysia" //w
+#define  Post_Sms_Code @"/gateway/biz/repeated/malaysia" //w
 
 //登录注册短信(验证)
-#define  Post_Sms_Code_Ver  @"/api/user/repeated/fears" //w
+#define  Post_Sms_Code_Ver  @"/gateway/biz/repeated/fears" //w
 
 
 /*
@@ -47,13 +49,13 @@
  */
 
 //失败订单处理为待重新放款
-#define  Post_Oder_Fail_Reset  @"/api/user/fp/football"
+#define  Post_Oder_Fail_Reset  @"/gateway/biz/fp/football"
 
 //用户当前订单概况
-#define  Get_User_Oder_Status  @"/api/user/fp/lexus"
+#define  Get_User_Oder_Status  @"/gateway/biz/fp/lexus"
 
 //获取该批次订单
-#define  Get_User_Oder  @"/api/user/fp/coordinates"
+#define  Get_User_Oder  @"/gateway/biz/fp/coordinates"
 
 
 
@@ -63,15 +65,15 @@
  */
 
 //APP配置选择
-#define  GET_APP_Cofig @"/api/user/actor/breach"
+#define  GET_APP_Cofig @"/gateway/biz/actor/breach"
 
 //获取APP开屏图片
-#define GET_APP_Lauch_Image @"/api/user/actor/nn"
+#define GET_APP_Lauch_Image @"/gateway/biz/actor/nn"
 //轮播信息
-#define  GET_App_Banner  @"/api/user/actor/trackback"
+#define  GET_App_Banner  @"/gateway/biz/actor/trackback"
 
 //配置信息合并(获取人工客服信息)
-#define  GET_CS_Info  @"/api/user/actor/pain"
+#define  GET_CS_Info  @"/gateway/biz/actor/pain"
 
 
 
@@ -81,24 +83,24 @@
 
 
 //Ocr回显接口(类型合并+活体照+字段)
-#define  GET_OCR_USER_INFO  @"/api/user/often/controlling"
+#define  GET_OCR_USER_INFO  @"/gateway/biz/often/controlling"
 
 
 //开始进行活体(调用生成记录即可不需要参数)
-#define  POST_ORC_AUTH  @"/api/user/often/hammer"
+#define  POST_ORC_AUTH  @"/gateway/biz/often/hammer"
 
 
 //15006 - 活体配置选择
-#define  GET_often_charged  @"/api/user/often/charged"
+#define  GET_often_charged  @"/gateway/biz/often/charged"
 
 //活体照上传,提交KYC
-#define  POST_Ocr_KYC  @"/api/user/often/slot"
+#define  POST_Ocr_KYC  @"/gateway/biz/often/slot"
 
 //活体结果查询
-#define   POST_LIFE_Query  @"/api/user/often/different"
+#define   POST_LIFE_Query  @"/gateway/biz/often/different"
 
 //证件照调用ocr
-#define  POST_Orc_Image_File  @"/api/user/often/aggressive/britannica"
+#define  POST_Orc_Image_File  @"/gateway/biz/often/aggressive/britannica"
 
 
 
@@ -108,7 +110,7 @@
 
 
 //版本升级检查
-#define  GET_APP_Version_Update  @"/api/user/activation"
+#define  GET_APP_Version_Update  @"/gateway/biz/activation"
 
 
 
@@ -117,10 +119,10 @@
  */
 
 //反馈信息提交
-#define  POST_Feedback_Info  @"/api/user/won/robots"
+#define  POST_Feedback_Info  @"/gateway/biz/won/robots"
 
 //获取所有反馈类型
-#define  GET_Feedback_Type @"/api/user/won/emacs"
+#define  GET_Feedback_Type @"/gateway/biz/won/emacs"
 
 
 /*
@@ -128,7 +130,7 @@
  */
 
 //基本信息getByCode
-#define  GET_Sys_Cofig  @"/api/user/petite/psychological"
+#define  GET_Sys_Cofig  @"/gateway/biz/petite/psychological"
 
 
 /*
@@ -136,7 +138,7 @@
  */
 
 //获取用户订单接口
-#define  GET_User_Oder @"/api/user/fp/cuisine"
+#define  GET_User_Oder @"/gateway/biz/fp/cuisine"
 
 
 /*
@@ -144,7 +146,7 @@
  */
 
 //图片上传
-#define  POST_Image_File @"/api/user/counsel/attendance"
+#define  POST_Image_File @"/gateway/biz/counsel/attendance"
 
 
 /*
@@ -152,10 +154,10 @@
  */
 
 //用户获取优惠券
-#define  GET_Coupon_Url  @"/api/user/incidents/ieee"
+#define  GET_Coupon_Url  @"/gateway/biz/incidents/ieee"
 
 //用户认证完成领取优惠券
-#define   POST_Coupon_Get_Url @"/api/user/incidents/introduced/laundry/describing"
+#define   POST_Coupon_Get_Url @"/gateway/biz/incidents/introduced/laundry/describing"
 
 
 
@@ -164,10 +166,10 @@
  */
 
 //获取用户授信信息
-#define  GET_User_Auth_Info  @"/api/user/hampton/hanging" //W
+#define  GET_User_Auth_Info  @"/gateway/biz/hampton/hanging" //W
 
 //重新发送授信队列
-#define  POST_AUTH_RESEND  @"/api/user/hampton/brisbane"
+#define  POST_AUTH_RESEND  @"/gateway/biz/hampton/brisbane"
 
 
 /*
@@ -175,9 +177,9 @@
  */
 
 //调查问卷提交
-#define  POST_Ask_Info  @"/api/user/fighter"
+#define  POST_Ask_Info  @"/gateway/biz/fighter"
 //调查问卷查询
-#define   GET_Ask_Query  @"/api/user/fighter"
+#define   GET_Ask_Query  @"/gateway/biz/fighter"
 
 
 /*
@@ -185,19 +187,19 @@
  */
 
 //查询还款/展期结果
-#define  GET_Repay_Bill  @"/api/user/defines/velocity/%@"
+#define  GET_Repay_Bill  @"/gateway/biz/defines/velocity/%@"
 
 //获取借款详情
-#define  GET_Loan_Detail  @"/api/user/defines/labor/grenada/"
+#define  GET_Loan_Detail  @"/gateway/biz/defines/labor/grenada/"
 
 //获取商户对应支持通道
-#define  GET_Merchant_Pass  @"/api/user/defines/subcommittee"
+#define  GET_Merchant_Pass  @"/gateway/biz/defines/subcommittee"
 
 //获取展期详情
-#define  GET_Repay_Bill_Detail @"/api/user/defines/package/grenada/%@"
+#define  GET_Repay_Bill_Detail @"/gateway/biz/defines/package/grenada/%@"
 
 //获取还款页面信息
-#define  GET_Repay_Vc_Info  @"/api/user/defines/lecture/%@/%@"
+#define  GET_Repay_Vc_Info  @"/gateway/biz/defines/lecture/%@/%@"
 
 
 /*
@@ -205,10 +207,10 @@
  */
 
 //产品列表
-#define  GET_Product_List  @"/api/user/earl/suggesting/%ld"
+#define  GET_Product_List  @"/gateway/biz/earl/suggesting/%ld"
 
 //借款申请
-#define  POST_Loan_Apply @"/api/user/earl/tions"
+#define  POST_Loan_Apply @"/gateway/biz/earl/tions"
 
 
 /*
@@ -216,20 +218,20 @@
  */
 
 //获取支持银行列表
-#define   GET_Bank_List  @"/api/user/comp/insects"
+#define   GET_Bank_List  @"/gateway/biz/comp/insects"
 
 //获取用户当前绑定账户信息
-#define  GET_Bind_User_Account  @"/api/user/comp/actively"
+#define  GET_Bind_User_Account  @"/gateway/biz/comp/actively"
 
 //银行卡修改(文档是put)
-#define  POST_Reset_Bank_Info @"/api/user/comp/protect"
+#define  POST_Reset_Bank_Info @"/gateway/biz/comp/protect"
 
 
 //银行卡修改短信发送
-#define  POST_Bank_Reset_Code  @"/api/user/comp/malaysia"
+#define  POST_Bank_Reset_Code  @"/gateway/biz/comp/malaysia"
 
 //银行或者clabe信息提交
-#define  POST_Bank_Info_Submmit @"/api/user/comp/dg"
+#define  POST_Bank_Info_Submmit @"/gateway/biz/comp/dg"
 
 
 
@@ -238,9 +240,9 @@
  */
 
 //保存用户基本信息
-#define   POST_User_Base_Means @"/api/user/wealth/beyond"
+#define   POST_User_Base_Means @"/gateway/biz/wealth/beyond"
 //用户基本信息回显
-#define  GET_User_Means  @"/api/user/wealth/had"
+#define  GET_User_Means  @"/gateway/biz/wealth/had"
 
 
 /*
@@ -248,10 +250,10 @@
  */
 
 //用户联系人上传
-#define  POST_Contacts_Info  @"/api/user/coverage/prisoners"
+#define  POST_Contacts_Info  @"/gateway/biz/coverage/prisoners"
 
 //用户联系人回显
-#define  GET_Contacts_Info   @"/api/user/coverage"
+#define  GET_Contacts_Info   @"/gateway/biz/coverage"
 
 
 
@@ -260,11 +262,11 @@
  */
 
 //调查问卷提交
-#define  POST_Investigate_Info   @"/api/user/fighter" //w
+#define  POST_Investigate_Info   @"/gateway/biz/fighter" //w
 
 
 //调查问卷提交
-#define  GET_Investigate_Info   @"/api/user/fighter" //w
+#define  GET_Investigate_Info   @"/gateway/biz/fighter" //w
 
 
 

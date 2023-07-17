@@ -493,7 +493,7 @@
         self.LoginTOPBG.hidden = NO;
         self.LoginLeftBtn.hidden = NO;
         self.LoginRightBtn.hidden = NO;
-        self.LoginTOPLeftLB.text = [NSString stringWithFormat:@"Límite de créditol: %@",model.foto];
+        self.LoginTOPLeftLB.text = [NSString stringWithFormat:@"Límite de crédito: %@",model.foto];
         self.LoginTOPRightLB.text = [NSString stringWithFormat:@"Crédito utilizado: %@",model.antibody];
         
         

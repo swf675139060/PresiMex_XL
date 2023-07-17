@@ -42,8 +42,8 @@
     if (indexPath.row == 0){
         WFSetCell * cell = [WFSetCell cellWithTableView:tableView];
         [cell.typeLabel setText:@"Versión actual" TextColor:[UIColor jk_colorWithHexString:@"#333333"] Font:[UIFont boldSystemFontOfSize:14]];
-        [cell.valueLabel setText:@"V1.0" TextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"] Font:[UIFont boldSystemFontOfSize:12]];
-        [cell updata:@"jurassic_version" type:@"Versión actual" value:@"V1.0"];
+        [cell.valueLabel setText:@"" TextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"] Font:[UIFont boldSystemFontOfSize:12]];
+        [cell updata:@"jurassic_version" type:@"Versión actual" value:@""];
         return cell;
     }else{
         WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];

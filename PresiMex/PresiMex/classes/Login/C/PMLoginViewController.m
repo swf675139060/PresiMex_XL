@@ -90,7 +90,7 @@
 
 -(void)clickSubmitBtn{
     
-    if (self.phoneView.phoneTextField.text.length == 10) {
+    if (self.phoneView.phoneTextField.text.length >= 10) {
         self.CodeViewController.phone=self.phoneView.phoneTextField.text;
         [self.navigationController pushViewController:self.CodeViewController animated:YES];
         
