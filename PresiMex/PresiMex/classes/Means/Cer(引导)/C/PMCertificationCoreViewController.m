@@ -34,7 +34,10 @@
     self.navTitleLabel.text=@"Autenticación";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
-   
+    
+    //信息认证主页
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_info_auth content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

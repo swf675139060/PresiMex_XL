@@ -11,7 +11,7 @@
 
 //#define API_URL  @"https://test-api.presimex.mx"
 //#define API_URL  @"https://test-api.cashimex.mx"
-#define API_URL  @"https://test-gateway.presimex.mx/"
+#define API_URL  @"https://test-gateway.presimex.mx"
 
 
 
@@ -268,7 +268,18 @@
 //调查问卷提交
 #define  GET_Investigate_Info   @"/gateway/biz/fighter" //w
 
+/*
+  打点
+ */
 
+//获取埋点配置
+#define  GET_DOT_j1vka   @"/gateway/mt/ncj2njad/j1vka" //w
+
+//埋点数据存库接口
+#define  POST_DOT_nxjs3kl   @"/gateway/mt/j1vka/nxjs3kl" //w
+
+//崩溃信息日志上报
+#define  POST_bengKui   @"/gateway/mt/ad4nakdn/j1vka" //w
 
 //测试环境域名: test-h5-ios.presimex.mx
 //正式环境域名: h5-ios.presimex.mx

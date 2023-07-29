@@ -43,7 +43,9 @@
     [self.tempView addSubview:self.tableView];
     self.navTitleLabel.text = @"Comentario";
     [self GETFeedbackType];
-    
+    //反馈页面
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_feedback content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 
 
@@ -114,7 +116,7 @@
         [cell updataWithImages:self.images];
         WF_WEAKSELF(weakself);
         cell.selectImageBlock = ^{
-            [weakself selectImage];
+            [weakself getImageQuanXian];
         };
         cell.imageDeleteBlock = ^(NSInteger deleteIndx) {
             [weakself.images removeObjectAtIndex:deleteIndx];
@@ -168,6 +170,30 @@
     return _tableView;
 }
 
+-(void)getImageQuanXian{
+    PHAuthorizationStatus status = [PrivateInfo PhotoStatus];
+    if (status == AVAuthorizationStatusNotDetermined) {
+        [PrivateInfo requestPhotoAuthor];
+    } else if (status == AVAuthorizationStatusDenied) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Es necesario acceder a sus fotos" message:@"Abra los permisos de la foto para usar la foto." preferredStyle:UIAlertControllerStyleAlert];
+
+        // 添加操作按钮
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancelación" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancelAction];
+
+        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Configuración" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // 打开应用程序设置
+            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            [[UIApplication sharedApplication] openURL:settingsURL options:@{} completionHandler:nil];
+        }];
+        [alertController addAction:settingsAction];
+
+        // 显示弹框
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        [self selectImage];
+    }
+}
 
 
 - (void)selectImage {

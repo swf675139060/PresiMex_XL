@@ -200,7 +200,12 @@ typedef NS_ENUM(NSInteger, CRBoxTextChangeType) {
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    
+    if (!self.beginTime) {
+        self.beginTime = [PMACQInfoModel GetTimestampString];
+    }
     _ifNeedBeginEdit = YES;
+    
     
     if (self.ifClearAllInBeginEditing && self.textValue.length == self.codeLength) {
         [self clearAll];
@@ -215,6 +220,10 @@ typedef NS_ENUM(NSInteger, CRBoxTextChangeType) {
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    
+    NSString * endtime = [PMACQInfoModel GetTimestampString];
+    self.duration = [endtime doubleValue]  - [self.beginTime doubleValue];
+    
     _ifNeedBeginEdit = NO;
     
     if (self.textEditStatusChangeblock) {

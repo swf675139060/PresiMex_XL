@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addRightBarButtonWithImag:@"bai_kefu"];
+    
+    //客服主页
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_assistance content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 
 

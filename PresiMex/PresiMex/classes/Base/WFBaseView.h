@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WFBaseView : UIView
 
 
+@property (nonatomic ,strong)NSString *beginTime;
+@property (nonatomic ,assign)NSInteger duration;
+
 
 - (void)buildSubViews;
 

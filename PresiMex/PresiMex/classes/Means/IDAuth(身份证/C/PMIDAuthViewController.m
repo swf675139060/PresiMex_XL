@@ -90,6 +90,11 @@
     //[self tableView];
     [self requestImagPic];
     [self GETOftenCharged];
+    
+    
+    //身份信息认证页
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_identity_auth content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 - (void)modelWithData{
     
@@ -171,13 +176,22 @@
         [cell setCellWithModel:model];
      
         WF_WEAKSELF(weakself);
+        weakify(cell);
         [cell setEndEditingHandler:^(NSString * _Nonnull title, NSString * _Nonnull text) {
+            strongify(cell);
             if (indexPath.row == 3) {
                 //名字
                 weakself.userName = text;
+                
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_identity_auth_name content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
             } else {
                 //号码
                 weakself.userID = text;
+                
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_identity_auth_id_number content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                
             }
         }];
         return cell;
@@ -200,10 +214,47 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-   
+    [self getShouJiQuanXian:indexPath.row];
     
-    [self showPhotoTipAlert:indexPath.row];
+    if (indexPath.row == 0) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_identity_auth_front_card_photo content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    } else if (indexPath.row == 1) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_identity_auth_back_card_photo content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    } else if (indexPath.row == 2) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_identity_auth_living content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    }
     
+    
+}
+
+
+
+-(void)getShouJiQuanXian:(NSInteger)indx{
+    AVAuthorizationStatus status = [PrivateInfo MediaStatus];
+    if (status == AVAuthorizationStatusNotDetermined) {
+        [PrivateInfo requestMediaStatusAuthor];
+    } else if (status == AVAuthorizationStatusDenied) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Necesita acceder a su cámara" message:@"Abra los permisos de la Cámara para usar la Cámara." preferredStyle:UIAlertControllerStyleAlert];
+
+        // 添加操作按钮
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancelación" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancelAction];
+
+        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Configuración" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // 打开应用程序设置
+            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            [[UIApplication sharedApplication] openURL:settingsURL options:@{} completionHandler:nil];
+        }];
+        [alertController addAction:settingsAction];
+
+        // 显示弹框
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        [self showPhotoTipAlert:indx];
+    }
 }
 
 
@@ -378,7 +429,7 @@
 //跳转活体认证界面
 - (void)pushLNDetectViewController:(NSString *)userID {
     LNDetectViewController *vc = [[LNDetectViewController alloc] initWithNibName:@"LNDetectViewController" bundle:nil];
-    vc.userID = @"testios1";//TODO
+    vc.userID = [PMAccountTool account].customer_user_id;//TODO
     [self.navigationController pushViewController:vc animated:NO];
     vc.delegate = self;
 }

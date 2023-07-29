@@ -41,6 +41,10 @@
     
     [self GETCouponUrl];
     
+    //优惠券页面
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_coupon content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    
 }
 
 

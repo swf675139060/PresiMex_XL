@@ -35,6 +35,10 @@
     if (self.endEditingHandler) {
         self.endEditingHandler(text);
     }
+    
+    
+    NSString * endtime = [PMACQInfoModel GetTimestampString];
+    self.duration = [endtime doubleValue]  - [self.beginTime doubleValue];
    
 }
 
@@ -53,6 +57,13 @@
       
   
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    if (!self.beginTime) {
+        self.beginTime = [PMACQInfoModel GetTimestampString];
+    }
+}
+
 
 
 @end

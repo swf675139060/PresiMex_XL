@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-@property (nonatomic, copy) void(^endInputBlock) (NSString *title, NSString *text);
+@property (nonatomic, copy) void(^endInputBlock) (NSString *title, NSString *text,BOOL end);
 
 
 @end

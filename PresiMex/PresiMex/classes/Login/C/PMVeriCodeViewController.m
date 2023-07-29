@@ -185,6 +185,10 @@
             NSLog(@"user==%@",[PMAccountTool account].token);
             
             [self sutupAlertView];
+            
+            //登录成功首页
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_login_succ content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+             [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         } else{
             [weakself dismiss];
             [weakself showTip:responseObject[@"entire"]];//（对）
@@ -194,6 +198,21 @@
         [weakself dismiss];
         [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         
+    }];
+    
+    //验证码输入
+    PMACQInfoModel * phoneInfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_login_otp_code content:code beginTime:self.phoneView.beginTime Duration:self.phoneView.duration];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: phoneInfoModel];
+    
+    
+    //登陆Dev
+    PMDeviceModel * model =[PMDeviceModel sharedInstance];
+    
+    PMLocationManager * LocationManager  = [PMLocationManager sharedInstance];
+    __weak typeof(model) weakModel = model;
+    [LocationManager creatLocation:^(BOOL isLocation) {
+        [weakModel GetDate];
+        [[PMDotManager sharedInstance] POSTDotDevType:10 value:weakModel];
     }];
 
 }

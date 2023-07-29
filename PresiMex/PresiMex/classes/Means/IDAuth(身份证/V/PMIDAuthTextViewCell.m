@@ -7,14 +7,12 @@
 
 #import "PMIDAuthTextViewCell.h"
 
-#import "PMTextField.h"
 
 
 
 @interface PMIDAuthTextViewCell ()
 
 @property (nonatomic, strong) UILabel   *titleLabel;
-@property (nonatomic, strong) PMTextField *contentTF;
 @property (nonatomic, strong) UIView *bgView;
 
 @end

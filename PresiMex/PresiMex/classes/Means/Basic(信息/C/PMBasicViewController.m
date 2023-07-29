@@ -91,6 +91,10 @@
     if(!self.userID){
         [self requestImagPic];
     }
+    
+    //基本信息认证页
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_base_auth content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
    
 }
 - (void)modelWithData{
@@ -289,9 +293,38 @@
     PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
     [cell setCellWithModel:model maxCount:1000];
     
-    [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text) {
+    weakify(cell);
+    [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text, BOOL end) {
+        strongify(cell);
         model.isColor = NO;
         model.content = text;
+        
+        if (end) {
+            if (indexPath.row == 1) {
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_curp content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
+            } else if (indexPath.row == 2) {
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_email content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
+            } else if (indexPath.row == 13) {
+                
+                    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_company_name content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            } else if (indexPath.row == 14) {
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_company_number content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            }else if (indexPath.row == 16) {
+                
+                    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_work_district content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            } else if (indexPath.row == 17) {
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_work_detail_address content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            }
+        }
+        
     }];
     
     return cell;
@@ -307,40 +340,63 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_gender content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
     } else if (indexPath.row == 1) {
         
     } else if (indexPath.row == 2) {
         
     } else if (indexPath.row == 3) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_marry_state content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 4) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_children_num content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 5) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_education content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 6) {
         [self showYearMonth];
-//        [self sutupAlertViewWithIndx:indexPath.row];
+        [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_birth content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 7) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_job_state content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 8) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_industry content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 9) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_month_income content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 10) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_salary_type content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 11) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_salary_day1 content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 12) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_salary_day1 content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 13) {
         
@@ -348,6 +404,9 @@
         
     } else if (indexPath.row == 15) {
         [self sutupAlertViewWithIndx:indexPath.row];
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_work_city content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
     } else if (indexPath.row == 16) {
         
@@ -441,7 +500,86 @@
         model.isColor = NO;
         [self.tableView reloadData];
         [popView dismiss];
+        [self Dot:indx];
     };
+}
+
+
+-(void)Dot:(NSInteger)indx{
+    
+    NSString * content = @"";
+    PMQuestionModel *model=self.dataArray[indx];
+    if (model.isHave) {
+        if (model.indx >= 0) {
+            BasicDataModel *  DataModel = model.contentArr[model.indx];
+            content = DataModel.title;
+        }else if (model.content && model.content.length){
+            content =model.content;
+        }else{
+            content = @"";
+        }
+    } else {
+        content=model.content;
+    }
+   
+    
+    
+    if (indx == 0) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_gender content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    } else if (indx == 1) {
+        
+    } else if (indx == 2) {
+        
+    } else if (indx == 3) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_marry_state content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 4) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_children_num content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 5) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_education content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 6) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_birth content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 7) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_job_state content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 8) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_industry content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 9) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_month_income content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 10) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_salary_type content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 11) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_salary_day1 content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 12) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_salary_day1 content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (indx == 13) {
+        
+    } else if (indx == 14) {
+        
+    } else if (indx == 15) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_work_city content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    }
 }
 #pragma mark - 年-月
 - (void)showYearMonth{

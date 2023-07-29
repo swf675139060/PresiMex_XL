@@ -43,11 +43,17 @@
         weakself.indx = 0;
         [weakself.tableView reloadData];
         
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bill_no_repay_order content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
         
     }];
     [self.topView setClickRightBtnBlock:^{
         weakself.indx = 1;
         [weakself.tableView reloadData];
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bill_repay_order content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
     }];
     [self.tempView addSubview:self.tableView];
     self.navTitleLabel.text = @"Lista de facturas";
@@ -58,6 +64,9 @@
     
     
     [self GETUserOder:1];
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_bill content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -123,11 +132,19 @@
         vc.beOverdue = NO;
         
         [self.navigationController pushViewController:vc animated:YES];
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bill_to_repay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+         [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
     }else if ([model.lexus integerValue] == 90){
         OrderDetailsVC * vc = [[OrderDetailsVC alloc] init];
         vc.repayId = model.prairie;
         vc.beOverdue = YES;
         [self.navigationController pushViewController:vc animated:YES];
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bill_to_repay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+         [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
     }else if ([model.lexus integerValue] == 60){
         //橘黄色:银行帐户错误，请修改并重试
         ConfirmAccountVC * VC = [[ConfirmAccountVC alloc] init];
@@ -141,6 +158,10 @@
         //            };
         [self.navigationController pushViewController:VC animated:YES];
         
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bill_draw_money_again content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+         [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
     }
     //    }
     

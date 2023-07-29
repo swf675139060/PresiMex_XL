@@ -64,7 +64,7 @@
     _contentTF.endEditingHandler = ^(NSString * _Nonnull text) {
         strongify(self)
         if (self.endInputBlock) {
-            self.endInputBlock(self.titleLabel.text, text);
+            self.endInputBlock(self.titleLabel.text, text,YES);
         }
     };
     
@@ -75,7 +75,7 @@
             self.contentTF.textColor = BColor_Hex(@"#1B1200", 1);
             self.bgView.layer.borderColor=BColor_Hex(@"#CCCCCC", 1).CGColor;
             
-            self.endInputBlock(self.titleLabel.text, text);
+            self.endInputBlock(self.titleLabel.text, text,NO);
         }
     };
     

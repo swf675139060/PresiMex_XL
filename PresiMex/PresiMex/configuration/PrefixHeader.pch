@@ -117,6 +117,12 @@ _Pragma("clang diagnostic pop")
 #import "PMConfigManager.h"
 #import "PrivateInfo.h"
 #import "AccesoPermisosView.h"
+#import "PMDotManager.h"
+#import "PMLocationManager.h"
+#import "PMACQModel.h"
+#import "PMACQManager.h"
+#import "PMPageKey.h"
+
 //#import <IQk>
 //#import <IQKeyboardManager/IQKeyboardManager.h>
 

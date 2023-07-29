@@ -73,6 +73,10 @@
     [self GETBindUserAccount];
 //    [self showAuthWaiting];
 //    [self startTimer];
+    
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_bank content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    
 }
 - (void)modelWithData{
     self.bankModel.diameter = @"1";
@@ -152,10 +156,16 @@
                 model3.title     = @"Cuenta (Tarjeta de débito de 16 dígitos)";
                 
                 weakself.bankModel.diameter = @"1";
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bank_bank_account content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
             } else {
                 PMQuestionModel *model3 = weakself.dataArray[2];
                 model3.title     = @"Cuenta (CLABE de 18 dígitos)";
                 weakself.bankModel.diameter = @"2";
+                
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bank_clabe content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                
             }
             [weakself.tableView reloadData];
         };
@@ -165,10 +175,12 @@
         PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
         [cell setCellWithModel:model maxCount:18];
         WF_WEAKSELF(weakself);
-        [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text) {
+        [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text,BOOL end) {
             
             weakself.bankModel.diploma = text;
             model.content = text;
+            
+           
         }];
         
         return cell;
@@ -177,10 +189,18 @@
         PMBasicViewCell *cell=[PMBasicViewCell cellWithTableView:tableView];
        
         WF_WEAKSELF(weakself);
-        [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text) {
-            
+        
+        weakify(cell);
+        [cell setEndInputBlock:^(NSString * _Nonnull title, NSString * _Nonnull text,BOOL end) {
+            strongify(cell);
             weakself.bankModel.diploma = text;
             model.content = text;
+            
+            if (end) {
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_bank_account content:text beginTime:cell.contentTF.beginTime Duration:cell.contentTF.duration];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            }
+           
         }];
         
         if ([weakself.bankModel.diameter integerValue] == 1) {
@@ -341,6 +361,10 @@
 //    PMProblemViewController* vc = [[PMProblemViewController alloc]init];
 //    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
 //    [self.viewController.navigationController  presentViewController:vc animated:NO completion:nil];
+    
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_exit_retention content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+      [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
 }
 
 //添加银行卡成功倒计时
@@ -434,6 +458,8 @@
     }];
     
     
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_auth_wait content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
     
     
 }
@@ -447,6 +473,9 @@
         [AlertView dismiss];
         [weakself.navigationController popToRootViewControllerAnimated:YES];
     }];
+    
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_auth_pass content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 
 -(void)sutupAlertViewWithIndx:(NSInteger)indxP{
@@ -498,6 +527,10 @@
         self.bankModel.framework = banckModel.framework;
         [self.tableView reloadData];
         [popView dismiss];
+        
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_bank_bank_name content:model.content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+           [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
     };
 }
 

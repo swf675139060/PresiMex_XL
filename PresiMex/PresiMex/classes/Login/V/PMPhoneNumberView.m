@@ -101,6 +101,16 @@
 }
 #pragma mark - UITextField 监听变化
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    if (!self.beginTime) {
+        self.beginTime = [PMACQInfoModel GetTimestampString];
+    }
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    NSString * endtime = [PMACQInfoModel GetTimestampString];
+    self.duration = [endtime doubleValue]  - [self.beginTime doubleValue];
+}
+
 -(void)textFieldTextChange:(UITextField *)textField{
     
     if ([_phoneTextField.text length] >=15) {

@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMTextField : UITextField
 
+@property (nonatomic ,strong)NSString *beginTime;
+@property (nonatomic ,assign)NSInteger duration;
 
 @property (nonatomic, assign) NSInteger  maxCount; 
 

@@ -36,6 +36,12 @@
         [weakself startTime];
     }];
     [self setupSubviews];
+    
+    
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_login content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    
+    
 }
 
 
@@ -100,6 +106,14 @@
             [self.CodeViewController updateTime:self.index];
             [self startTime];
         }
+        
+        //注册手机号输入
+        PMACQInfoModel * phoneInfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_login_reg_phone content:self.phoneView.phoneTextField.text beginTime:self.phoneView.beginTime Duration:self.phoneView.duration];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: phoneInfoModel];
+        
+        //登录按钮
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_login_login content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
        
     }
     

@@ -94,6 +94,10 @@
     self.navTitleLabel.text=@"Información del personal";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
+    
+    //紧急联系人认证页
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_emer_contract content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 
 - (UITableView *)tableView{
@@ -143,7 +147,9 @@
     };
     cell.tongXunLUClickBlock = ^(NSInteger type) {
         weakself.curentIndx = type;
-        [weakself selectPersonContactPickerVc];
+        [weakself getTongXunLuQuanxian];
+        
+
     };
     return cell;
     
@@ -241,15 +247,56 @@
     
     BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
         strongify(self);
-        
         PMEmergencyContactModel * model = self.dataArray[indxP];
         model.indx = indx;
         [self.tableView reloadData];
         [popView dismiss];
+        
+        NSString * content = @"";
+        if (model.indx >= 0) {
+            BasicDataModel *  DataModel = model.contentArr[model.indx];
+            content = DataModel.title;
+        }else if (model.relation && model.relation.length){
+            content =model.relation;
+        }else{
+            content = @"";
+        }
+        if (indxP == 0) {
+            
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_emer_contract_relation1 content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        } else {
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_emer_contract_relation2 content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        }
     };
 }
 
+//通讯录权限
+-(void)getTongXunLuQuanxian{
+    CNAuthorizationStatus status = [PrivateInfo contactAuthorStatus];
+    if (status == AVAuthorizationStatusNotDetermined) {
+        [PrivateInfo requestContactAuthor];
+    } else if (status == AVAuthorizationStatusDenied) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Necesita acceder a su libreta de direcciones" message:@"Abra los permisos de la libreta de direcciones para usar la libreta de direcciones." preferredStyle:UIAlertControllerStyleAlert];
 
+        // 添加操作按钮
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancelación" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancelAction];
+
+        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Configuración" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // 打开应用程序设置
+            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            [[UIApplication sharedApplication] openURL:settingsURL options:@{} completionHandler:nil];
+        }];
+        [alertController addAction:settingsAction];
+
+        // 显示弹框
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        [self selectPersonContactPickerVc];
+    }
+}
 
 #pragma mark - 先弹出联系人控制器
 -(void)selectPersonContactPickerVc{
@@ -275,15 +322,26 @@
     phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@"(" withString:@""];
     phoneStr = [phoneStr stringByReplacingOccurrencesOfString:@")" withString:@""];
+    
+    
+    PMEmergencyContactModel * model = self.dataArray[self.curentIndx];
     if(phoneStr && phoneStr.length){
         
-        PMEmergencyContactModel * model = self.dataArray[self.curentIndx];
         model.telephone = phoneStr;
     }else{
         
-        PMEmergencyContactModel * model = self.dataArray[self.curentIndx];
         model.telephone = @"";
     }
+    if (self.curentIndx == 0) {
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_emer_contract_number1 content:model.telephone beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    } else {
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_emer_contract_number2 content:model.telephone beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    }
+    
     [self.tableView reloadData];
     
     
@@ -356,9 +414,14 @@
         [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             
+            // 联系人上传后(这个type 仅供 contact埋点用)
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:@"" content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ40Withvalue: InfoModel];
             
             PMAddBankViewController*vc=[PMAddBankViewController new];
             [weakself.navigationController pushViewController:vc animated:YES];
+            
+            
             
         }else{
             [weakself showTip:responseObject[@"entire"]];//（对）

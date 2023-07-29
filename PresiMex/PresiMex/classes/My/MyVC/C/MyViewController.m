@@ -53,6 +53,7 @@
         if (![PMAccountTool isLogin]) {
             [weakself pushLoginVc];
             
+            
         }else{
 //            if([weakself.model.shop integerValue] == 20){
 //
@@ -73,6 +74,8 @@
         [weakself.navigationController pushViewController:vc animated:YES];
     };
     
+   
+    
 }
 
 //- (UIStatusBarStyle)preferredStatusBarStyle
@@ -89,6 +92,10 @@
     }else{
         [self.headerView updataHeaderViewWithModel:self.model];
         [self.tableView reloadData];
+        
+        //我的未登录 页面
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_mine_no_login content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
     }
 }
 
@@ -161,6 +168,12 @@
             WFWebViewController * vc = [[WFWebViewController alloc] init];
             vc.urlString = H5_weAre;
             [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        
+        //关于我们页
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_about_us content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 //        SobreVC * vc = [SobreVC new];
 //        [self.navigationController pushViewController:vc animated:YES];
         
@@ -168,6 +181,11 @@
         //设置
         AjustesVC * vc = [AjustesVC new];
         [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        //设置页 
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_setting content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
     }
 
     
@@ -245,6 +263,10 @@
     
     PMLoginViewController*Vc=[PMLoginViewController new];
     [self.navigationController pushViewController:Vc animated:YES];
+    
+    //待登录按钮点击
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_mine_wait_to_login content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 
 
@@ -263,6 +285,16 @@
             weakself.model = model;
             [weakself.headerView updataHeaderViewWithModel:weakself.model];
             [weakself.tableView reloadData];
+            
+            if ([model.shop intValue] == 20) {
+                //我的授信成功 页面
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_mine_credit_succ content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            } else {
+                //我的登录未验证完成 页面
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_mine_login_no_auth content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            }
             
         }else{
             
@@ -284,5 +316,9 @@
 -(void)pushCerVc{
     PMCertificationCoreViewController*vc=[PMCertificationCoreViewController new];
     [self.navigationController pushViewController:vc animated:YES];
+    //待认证按钮点击
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_mine_wait_to_auth content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
 }
 @end

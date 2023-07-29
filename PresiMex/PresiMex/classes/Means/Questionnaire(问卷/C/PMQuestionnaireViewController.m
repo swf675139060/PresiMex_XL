@@ -40,13 +40,6 @@
         [AlertView dismiss];
         if (indx == 0) {
             [weakself.navigationController popViewControllerAnimated:YES];
-//            NSArray *viewControllers = weakself.navigationController.viewControllers;
-//            for (UIViewController *viewController in viewControllers) {
-//                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
-//                    [weakself.navigationController popToViewController:viewController animated:YES];
-//                    break;
-//                }
-//            }
         } else {
             
         }
@@ -227,16 +220,32 @@
         [popView dismiss];
     };
     
-//    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct, NSInteger indx) {
-//        strongify(self);
-//        NSString*content=responseObjct;
-//        [self resetDataWithContent:content withKey:model.ID];
-//        self.parma[model.ID]=model.datas[indx][@"broken"];
-//
-//    }];
-//
-//    [alert show] ;
-//
+    if (row == 0) {
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_survey_half_year_overdue content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (row == 1) {
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_survey_max_overdue_day content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (row == 2) {
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_survey_loan_amount content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (row == 3) {
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_survey_loan_times content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    } else if (row == 4) {
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_survey_now_loan_counts content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    }
     
 }
 

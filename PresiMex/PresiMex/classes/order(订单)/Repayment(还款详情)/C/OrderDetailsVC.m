@@ -67,7 +67,14 @@
             
             [weakself.tableView reloadData];
         }
-        
+        if (weakself.beOverdue) {
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_repayment_detail_overdue_all_pay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+              [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        } else {
+            
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_repayment_detail_normal_all_pay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                  [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        }
         
     }];
     [self.topView setClickRightBtnBlock:^{
@@ -78,11 +85,31 @@
             
             [weakself.tableView reloadData];
         }
+        
+        if (weakself.beOverdue) {
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_repayment_detail_overdue_ext_pay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+              [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        } else {
+            
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_repayment_detail_normal_ext_pay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                  [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        }
     }];
         
     [self.tempView addSubview:self.tableView];
     
     [self GETLoanDetail];
+    
+
+    if (self.beOverdue) {
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_repayment_detail_overdue_all_pay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+          [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    } else {
+        
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_repayment_detail_normal_all_pay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+              [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    }
+
     
 }
 

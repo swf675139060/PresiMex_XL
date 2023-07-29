@@ -34,6 +34,16 @@
         [self GETBindUserAccount];
     }
     
+    if (self.reLoan) {
+        
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_account_info content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    } else {
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_account_confirm content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    }
 }
 
 
@@ -103,6 +113,16 @@
                         
                         [weakself.navigationController popViewControllerAnimated:YES];
                     }
+                    
+                    if (self.reLoan) {
+                        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_account_info_confirm content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                    } else {
+                        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_account_confirm_confirm content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                    }
+                    
+                    
                 }
             } else {
                 PMAddBankViewController * VC = [[PMAddBankViewController alloc] init];
@@ -115,6 +135,15 @@
                     [weakself.tableView reloadData];
                 }];
                 [weakself.navigationController pushViewController:VC animated:YES];
+                
+                if (self.reLoan) {
+                    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_account_info_modify content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                }else{
+                    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_account_confirm_modify content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                }
+                
             }
             
         }];

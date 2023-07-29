@@ -7,8 +7,6 @@
 
 #import "PMVeriCodeView.h"
 
-#import "CRBoxInputView.h"
-
 @interface PMVeriCodeView ()
 @property (nonatomic ,strong)UILabel *timeLabel;
 @end
@@ -109,6 +107,7 @@
     boxInputView.boxFlowLayout.itemSize = CGSizeMake(50, 50);
     boxInputView.customCellProperty = cellProperty;
     [boxInputView loadAndPrepareViewWithBeginEdit:YES];
+    self.boxInputView = boxInputView;
     [self addSubview:boxInputView];
     [boxInputView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(10);
@@ -135,9 +134,13 @@
     [desLabel2 addGestureRecognizer:tap];
 
     weakify(self)
+    weakify(boxInputView)
     boxInputView.textDidChangeblock = ^(NSString *text, BOOL isFinished) {
         strongify(self);
+        strongify(boxInputView);
         NSLog(@"text:%@", text);
+        self.beginTime = boxInputView.beginTime;
+        self.duration = boxInputView.duration;
         if (text.length == 4) {
             if( self.codeTag){
                 self.codeTag(text);

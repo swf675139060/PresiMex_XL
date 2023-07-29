@@ -32,6 +32,9 @@ typedef void(^TextEditStatusChangeblock)(CRTextEditStatus editStatus);
 
 @interface CRBoxInputView : UIView
 
+@property (nonatomic ,strong)NSString *beginTime;
+@property (nonatomic ,assign)NSInteger duration;
+
 /**
  是否需要光标
  ifNeedCursor

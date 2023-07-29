@@ -36,6 +36,11 @@
 //        [weakself removeFromSuperview];
     }];
     
+    
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_loan_detail content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+
+    
 }
 
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
@@ -90,6 +95,9 @@
             
             if(weakself.clickBankBlock){
                 weakself.clickBankBlock(weakself.bankModel);
+                
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_loan_detail_change_bank_account content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
             }
         }];
 
@@ -191,6 +199,11 @@
             if (indx == 0) {
                 weakself.agree = !weakself.agree;
                 [weakself.tableView reloadData];
+                
+                if (weakself.agree) {
+                    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_pay_type_confirm content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                }
             }
         }];
         return cell;
@@ -211,6 +224,9 @@
                 [weakself showTip:@"Acepte la política de privacidad. "];
             }
             
+            
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_loan_detail_confirm content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
             
         }];
         

@@ -78,6 +78,10 @@
     if([PMAccountTool isLogin]){
         //获取授信
         [self GETUserAuthInfo];
+        
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_product content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+         [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
     }else{
         
         [self.view addSubview:self.NoAuthView];
@@ -160,6 +164,8 @@
             }
             [weakself.tableView reloadData];
             
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_product_detail content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         }];
         
         return headerView;
@@ -251,6 +257,9 @@
                 NSIndexPath * IndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
                 [weakself.tableView reloadRowsAtIndexPaths:@[IndexPath] withRowAnimation:UITableViewRowAnimationNone];
                 [weakself GETProductList];
+                
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_product_amount_slide content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
             };
             return cell;
             
@@ -261,7 +270,9 @@
             [cell upBtnsFrameWithInsets:UIEdgeInsetsMake(10, 15, 0, 15)];
             [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 25) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
             
-            [cell.centerBtn setText:@"Plazo de validez del límite" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+//            [cell.centerBtn setText:@"Plazo de validez del límite" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+            
+            [cell.centerBtn setText:@"" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
            
             
             if([self.authModel.monster doubleValue] >= [self.authModel.clear doubleValue]){
@@ -282,7 +293,8 @@
         }else if (indexPath.row == 5){
             WFLabelCell * cell  = [WFLabelCell cellWithTableView:tableView];
             cell.label.textAlignment = NSTextAlignmentCenter;
-            [cell.label setText:@"2d, 12h, 30m,12s" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11]];
+//            [cell.label setText:@"2d, 12h, 30m,12s" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11]];
+            [cell.label setText:@"" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11]];
             
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(5, 15, 8.5, 15)];
             
@@ -403,7 +415,12 @@
                 [weakself.detailView setClickNextBlock:^(BOOL success) {
                     [weakself POSTLoanApply];
                     
+                    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_product_apply_submit content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
                 }];
+                
+                
+                
             }];
             [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
         
@@ -498,11 +515,18 @@
         
         if (alert.storeCount == 5) {
             [[PMConfigManager sharedInstance] gotoStore];
+            
+            
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_loan_processing_to_score_5star content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         } else {
             //
             
             OrderVC *vc = [[OrderVC alloc] init];
             [weakself.navigationController pushViewController:vc animated:YES];
+            
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_loan_processing_to_score_no5star content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
             
         }
     }];
@@ -510,6 +534,11 @@
         [weakself GETUserAuthInfo];
         [AlertView dismiss];
     }];
+    
+    
+    
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_loan_processing content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 
 //借款失败
@@ -645,6 +674,8 @@
             //不显示引导页（审核中）
         }
     }];
+    
+
 }
 
 

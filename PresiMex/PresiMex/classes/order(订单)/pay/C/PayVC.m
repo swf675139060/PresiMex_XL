@@ -275,6 +275,9 @@
                     
                 }];
                 
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_all_repay_succ content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                 [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                
             } else if([model.small integerValue] == 30){
                 //展期
                 [weakself.timer invalidate];
@@ -290,6 +293,9 @@
                     [weakself.navigationController popViewControllerAnimated:YES];
                    
                 }];
+                
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_extension_repay_succ content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                 [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
                 
             }
             

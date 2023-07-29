@@ -63,6 +63,16 @@
 		A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */; };
 		A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */; };
 		A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2D2A3085C500389B67 /* YYClassInfo.m */; };
+		DBB0E1D12A6CE30A0028AEFF /* PMDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */; };
+		DBB0E1D32A6CE8150028AEFF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0E1D22A6CE8150028AEFF /* CoreTelephony.framework */; };
+		DBB0E1D52A6D25540028AEFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0E1D42A6D25540028AEFF /* CoreLocation.framework */; };
+		DBB0E1D82A6D3C560028AEFF /* PMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1D72A6D3C560028AEFF /* PMLocationManager.m */; };
+		DBB0E1DB2A6D4B500028AEFF /* PMACQModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1DA2A6D4B500028AEFF /* PMACQModel.m */; };
+		DBB0E1DE2A6D4E500028AEFF /* PMACQManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1DD2A6D4E500028AEFF /* PMACQManager.m */; };
+		DBB0E1E12A6D57A00028AEFF /* PMPageKey.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1E02A6D57A00028AEFF /* PMPageKey.m */; };
+		DBB795B92A7369EA00A59DC8 /* AESEnrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB795B82A7369EA00A59DC8 /* AESEnrypt.m */; };
+		DBB8087B2A6BF06C0014589C /* PMDotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087A2A6BF06C0014589C /* PMDotManager.m */; };
+		DBB8087E2A6BF3C90014589C /* PMDotConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */; };
 		FB06D0B12A4574FC00272F5A /* LoanFailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */; };
 		FB06D0B42A4589E900272F5A /* HomeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B32A4589E900272F5A /* HomeDetailView.m */; };
 		FB06D0B72A4593C400272F5A /* PrivacyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B62A4593C400272F5A /* PrivacyVC.m */; };
@@ -357,6 +367,26 @@
 		A4F49D2D2A3085C500389B67 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
 		A4F49D2E2A3085C500389B67 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DBA9CBED2A6E7C89004CE8E8 /* PresiMex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PresiMex.entitlements; sourceTree = "<group>"; };
+		DBB0E1CF2A6CE30A0028AEFF /* PMDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDeviceModel.h; sourceTree = "<group>"; };
+		DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDeviceModel.m; sourceTree = "<group>"; };
+		DBB0E1D22A6CE8150028AEFF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		DBB0E1D42A6D25540028AEFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DBB0E1D62A6D3C560028AEFF /* PMLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMLocationManager.h; sourceTree = "<group>"; };
+		DBB0E1D72A6D3C560028AEFF /* PMLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMLocationManager.m; sourceTree = "<group>"; };
+		DBB0E1D92A6D4B500028AEFF /* PMACQModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMACQModel.h; sourceTree = "<group>"; };
+		DBB0E1DA2A6D4B500028AEFF /* PMACQModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMACQModel.m; sourceTree = "<group>"; };
+		DBB0E1DC2A6D4E500028AEFF /* PMACQManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMACQManager.h; sourceTree = "<group>"; };
+		DBB0E1DD2A6D4E500028AEFF /* PMACQManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMACQManager.m; sourceTree = "<group>"; };
+		DBB0E1DF2A6D57A00028AEFF /* PMPageKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPageKey.h; sourceTree = "<group>"; };
+		DBB0E1E02A6D57A00028AEFF /* PMPageKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPageKey.m; sourceTree = "<group>"; };
+		DBB795B72A7369E900A59DC8 /* AESEnrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESEnrypt.h; sourceTree = "<group>"; };
+		DBB795B82A7369EA00A59DC8 /* AESEnrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESEnrypt.m; sourceTree = "<group>"; };
+		DBB808792A6BF06C0014589C /* PMDotManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDotManager.h; sourceTree = "<group>"; };
+		DBB8087A2A6BF06C0014589C /* PMDotManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDotManager.m; sourceTree = "<group>"; };
+		DBB8087C2A6BF3C90014589C /* PMDotConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDotConfigModel.h; sourceTree = "<group>"; };
+		DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDotConfigModel.m; sourceTree = "<group>"; };
+		DBB8087F2A6C1B750014589C /* libSystem.B.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem.B.tbd; path = usr/lib/libSystem.B.tbd; sourceTree = SDKROOT; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB06D0AF2A4574FC00272F5A /* LoanFailAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanFailAlert.h; sourceTree = "<group>"; };
 		FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanFailAlert.m; sourceTree = "<group>"; };
@@ -667,6 +697,8 @@
 				FBD4B2DE2A3EDD5800E136D5 /* openmp.framework in Frameworks */,
 				270A261DD59BA1810A7E8F9C /* Pods_PresiMex.framework in Frameworks */,
 				FBD4B2DF2A3EDD5800E136D5 /* opencv2.framework in Frameworks */,
+				DBB0E1D52A6D25540028AEFF /* CoreLocation.framework in Frameworks */,
+				DBB0E1D32A6CE8150028AEFF /* CoreTelephony.framework in Frameworks */,
 				FBD4B2DD2A3EDD5800E136D5 /* glslang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1120,11 +1152,45 @@
 		CAA89AF56AFF80302B4105DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBB0E1D42A6D25540028AEFF /* CoreLocation.framework */,
+				DBB0E1D22A6CE8150028AEFF /* CoreTelephony.framework */,
+				DBB8087F2A6C1B750014589C /* libSystem.B.tbd */,
 				42A4827404A572A6581BBF4C /* Pods_PresiMex.framework */,
 				E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */,
 				9D785D976022D5FC480A06BF /* Pods_PresiMexTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DBB795B62A7369D900A59DC8 /* AES */ = {
+			isa = PBXGroup;
+			children = (
+				DBB795B72A7369E900A59DC8 /* AESEnrypt.h */,
+				DBB795B82A7369EA00A59DC8 /* AESEnrypt.m */,
+			);
+			path = AES;
+			sourceTree = "<group>";
+		};
+		DBB808782A6BF00E0014589C /* 打点 */ = {
+			isa = PBXGroup;
+			children = (
+				DBB795B62A7369D900A59DC8 /* AES */,
+				DBB808792A6BF06C0014589C /* PMDotManager.h */,
+				DBB8087A2A6BF06C0014589C /* PMDotManager.m */,
+				DBB8087C2A6BF3C90014589C /* PMDotConfigModel.h */,
+				DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */,
+				DBB0E1CF2A6CE30A0028AEFF /* PMDeviceModel.h */,
+				DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */,
+				DBB0E1D92A6D4B500028AEFF /* PMACQModel.h */,
+				DBB0E1DA2A6D4B500028AEFF /* PMACQModel.m */,
+				DBB0E1DC2A6D4E500028AEFF /* PMACQManager.h */,
+				DBB0E1DD2A6D4E500028AEFF /* PMACQManager.m */,
+				DBB0E1D62A6D3C560028AEFF /* PMLocationManager.h */,
+				DBB0E1D72A6D3C560028AEFF /* PMLocationManager.m */,
+				DBB0E1DF2A6D57A00028AEFF /* PMPageKey.h */,
+				DBB0E1E02A6D57A00028AEFF /* PMPageKey.m */,
+			);
+			path = "打点";
 			sourceTree = "<group>";
 		};
 		FB107B4E2A3D89030099C52B /* bankcord(银行卡) */ = {
@@ -1253,6 +1319,7 @@
 		FB8AF2EE2A0882F2006C5887 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				DBB808782A6BF00E0014589C /* 打点 */,
 				FB7BC8722A2AF336000BB3ED /* AlertView */,
 				FBAACBEE2A4521E800463FC1 /* 配置信息 */,
 				FB939F382A22118C00599A86 /* order(订单) */,
@@ -1526,6 +1593,7 @@
 		FB976D372A05124600B1C0A3 /* PresiMex */ = {
 			isa = PBXGroup;
 			children = (
+				DBA9CBED2A6E7C89004CE8E8 /* PresiMex.entitlements */,
 				FBE5D8E42A487B630074FAC2 /* loadingGif.gif */,
 				A4DD5E362A21FF7B00451413 /* Lib */,
 				A4DD5E232A21BAD600451413 /* HTTP */,
@@ -2330,6 +2398,8 @@
 				A40B4CB42A2C6F07001B11F0 /* PMCertificationCoreViewController.m in Sources */,
 				FBC27AD42A341CE9001D04F1 /* ThreeLabelAlert.m in Sources */,
 				FB06D0B12A4574FC00272F5A /* LoanFailAlert.m in Sources */,
+				DBB8087E2A6BF3C90014589C /* PMDotConfigModel.m in Sources */,
+				DBB0E1DB2A6D4B500028AEFF /* PMACQModel.m in Sources */,
 				A4D6F1232A25B081006B4BA6 /* PMQuestionnaireViewController.m in Sources */,
 				FBB47BAF2A4703C200B059B5 /* KeFuVC.m in Sources */,
 				FBC5290B2A1863E1004B7721 /* WFBaseView.m in Sources */,
@@ -2342,11 +2412,13 @@
 				FB1C73A72A23247800194925 /* PMNotiView.m in Sources */,
 				A40B4C9F2A2B2CEC001B11F0 /* PMEmergencyContactViewController.m in Sources */,
 				FB9129F32A503A4C00502697 /* YouHuiAlertCell.m in Sources */,
+				DBB0E1D82A6D3C560028AEFF /* PMLocationManager.m in Sources */,
 				A4D6F12A2A25B1DE006B4BA6 /* PMQuestionViewCell.m in Sources */,
 				FB2ABD502A356DAD00B7073D /* RepayModel.m in Sources */,
 				FBED3B5B2A593D3D00EB5771 /* PrivateInfo.m in Sources */,
 				FBD4B2CE2A3EDD5800E136D5 /* LNDetector.mm in Sources */,
 				A4DD5E682A21FFE400451413 /* CRLineView.m in Sources */,
+				DBB0E1E12A6D57A00028AEFF /* PMPageKey.m in Sources */,
 				FBAAA7742A2E258800BCBA57 /* OrderDetailsVC.m in Sources */,
 				A4D6F12E2A25B364006B4BA6 /* PMQuestionModel.m in Sources */,
 				FB7BC8702A2AED7B000BB3ED /* WFCustomAlertView.m in Sources */,
@@ -2364,6 +2436,7 @@
 				FB7BC8752A2AF380000BB3ED /* FeedBackAlert.m in Sources */,
 				A43475DF2A3DE254002A4E17 /* TRCustomAlert.m in Sources */,
 				FB2ABD562A35D00E00B7073D /* PayModel.m in Sources */,
+				DBB8087B2A6BF06C0014589C /* PMDotManager.m in Sources */,
 				FB939F172A21BC1A00599A86 /* SobreVC.m in Sources */,
 				FBB47BB32A4718E300B059B5 /* PhotoTipAlert.m in Sources */,
 				A400BCEE2A25F0C1006CABB2 /* PMIDAuthViewController.m in Sources */,
@@ -2396,6 +2469,7 @@
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8E58C52A409FA400ABF355 /* BasicDataModel.m in Sources */,
+				DBB795B92A7369EA00A59DC8 /* AESEnrypt.m in Sources */,
 				FBB47BAC2A46E13100B059B5 /* BankConfrimAlert.m in Sources */,
 				FBBE46672A41E7CE0049C6F6 /* NSDate+CXCategory.m in Sources */,
 				FB06D0B42A4589E900272F5A /* HomeDetailView.m in Sources */,
@@ -2406,6 +2480,7 @@
 				FBCA72362A0A6B7B00A10D4E /* HomeViewController.m in Sources */,
 				FBC2A8742A1A16550010D7F8 /* ProblemaCell.m in Sources */,
 				A40B4C932A2B0E5F001B11F0 /* PMTextField.m in Sources */,
+				DBB0E1DE2A6D4E500028AEFF /* PMACQManager.m in Sources */,
 				A4DD5E652A21FFE400451413 /* CRSecrectImageView.m in Sources */,
 				FBC2A8772A1A22530010D7F8 /* WFTextViewCell.m in Sources */,
 				FBC2A8672A19C96D0010D7F8 /* WFFieldCell.m in Sources */,
@@ -2455,6 +2530,7 @@
 				FB9E5AB52A3B4F3F00E1D38E /* topLabelBottmBtnAlert.m in Sources */,
 				A4DD5E672A21FFE400451413 /* CRBoxInputCellProperty.m in Sources */,
 				A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */,
+				DBB0E1D12A6CE30A0028AEFF /* PMDeviceModel.m in Sources */,
 				FBE0ECBC2A443163005BF303 /* AuthWaitingAlert.m in Sources */,
 				FBC09FD92A2C686C00259622 /* PMHomeModel.m in Sources */,
 				FBC27ACD2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m in Sources */,
@@ -2651,10 +2727,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PresiMex/PresiMex.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = 753ZV46XP8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PresiMex/Lib/liveSDK",
@@ -2677,7 +2754,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wenfeng.shen.PresiMex4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prsi.PresiMex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2694,10 +2771,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PresiMex/PresiMex.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 53Q62TM72V;
+				DEVELOPMENT_TEAM = 753ZV46XP8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PresiMex/Lib/liveSDK",
@@ -2720,7 +2798,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wenfeng.shen.PresiMex4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prsi.PresiMex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

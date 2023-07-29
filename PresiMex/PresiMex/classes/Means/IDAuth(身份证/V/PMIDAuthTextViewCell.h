@@ -7,10 +7,12 @@
 
 #import "WFBaseViewCell.h"
 #import "PMIDAuthModel.h"
+#import "PMTextField.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PMIDAuthTextViewCell : WFBaseViewCell
 
+@property (nonatomic, strong) PMTextField *contentTF;
 
 -(void)setCellWithModel:(PMIDAuthModel*)model;
 @property (nonatomic, copy) void(^endEditingHandler) (NSString *title, NSString *text);
