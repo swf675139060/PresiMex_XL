@@ -80,7 +80,7 @@
     }else if (indexPath.row == 1){
         WFLabelCell * cell  = [WFLabelCell cellWithTableView:tableView identifier:@"1"];
         cell.label.textAlignment = NSTextAlignmentLeft;
-        [cell.label setText:@"Completa la autenticación para obtener su límite máximo hasta $30,000." TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:13]];
+        [cell.label setText:@"Al finalizar la verificación, podrá acceder a un crédito de hasta $30,000." TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:13]];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(5.5, 15, 16, 15)];
       
         return cell;
@@ -150,7 +150,7 @@
         
     }else if (indexPath.row == 6){
         HomeDayCell * cell = [HomeDayCell cellWithTableView:tableView];
-        cell.leftItem.topLabel.text = @"Ciclo de préstamo";
+        cell.leftItem.topLabel.text = @"Plazo";
         cell.leftItem.bottomLabel.text = @"91días - 210días";
         cell.rightItem.topLabel.text = @"Tasa de interés";
         cell.rightItem.bottomLabel.text = @"0.05%/día";
@@ -160,9 +160,9 @@
         
         
         if([PMAccountTool isLogin]){
-            [cell.btn setTitle:@"Ir a autenticación" forState:UIControlStateNormal];
+            [cell.btn setTitle:@"Autenticar" forState:UIControlStateNormal];
         }else{
-            [cell.btn setTitle:@"Acceder" forState:UIControlStateNormal];
+            [cell.btn setTitle:@"Iniciar Sesión" forState:UIControlStateNormal];
         }
         cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

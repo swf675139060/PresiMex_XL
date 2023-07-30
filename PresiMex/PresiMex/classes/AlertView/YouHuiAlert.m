@@ -66,7 +66,7 @@
     
     if (indexPath.row == 0) {
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = @"Si cierra sesión ahora, el sistema retirará su cupón";
+        cell.label.text = @"Si se desconecta ahora, el sistema eliminará su cupón.";
         cell.label.textAlignment = NSTextAlignmentCenter;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#0B0B0B"];
         cell.label.font = [UIFont boldSystemFontOfSize:16];
@@ -99,7 +99,7 @@
         cell.leftBtn.layer.borderWidth = 0.5;
         
         
-        [cell.rightBtn setTitle:@"Confirmar" forState:UIControlStateNormal];
+        [cell.rightBtn setTitle:@"Quedarse" forState:UIControlStateNormal];
         [cell.rightBtn setTitleColor:[UIColor jk_colorWithHexString:@"#C56F04"]  forState:UIControlStateNormal];
         cell.rightBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
         cell.rightBtn.layer.cornerRadius = 13;

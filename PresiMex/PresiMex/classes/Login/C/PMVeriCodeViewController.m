@@ -10,6 +10,7 @@
 #import "PMVeriCodeView.h"
 #import "PMProblemViewController.h"
 #import "KeFuAlert.h"
+#import "topLabelBottmBtnAlert.h"
 
 @interface PMVeriCodeViewController ()
 
@@ -21,6 +22,9 @@
 @property (nonatomic ,assign) int type;
 
 @property (nonatomic,strong) UIButton *btn;
+
+
+@property (nonatomic ,assign) NSInteger requestCount;
 @end
 
 @implementation PMVeriCodeViewController
@@ -114,7 +118,8 @@
     
     UILabel *btLabel = [[UILabel alloc] init];
     btLabel.frame = CGRectMake(6,11,WF_ScreenWidth-30 - 12,75 -22);
-    btLabel.text=@"1. Por favor, obtenga el OTP cuando tenga una buena conexión a Internet. \n2. Si no ha recibido el código, revise primero la carpeta de spam.";
+    btLabel.text=@"1. Por favor obtenga el OTP solo con una conexión a internet estable.\n2. Si el código no llega, compruebe primero su buzón de spam.";
+    
     btLabel.textColor=BColor_Hex(@"#FFB602", 1);
     btLabel.font=B_FONT_REGULAR(11);
     btLabel.textAlignment = NSTextAlignmentLeft;
@@ -138,6 +143,12 @@
     
 }
 -(void)requestGetVeriCode:(NSInteger)type{
+    self.requestCount++;
+    if (self.requestCount == 3) {
+        [self showOTPAlert:type];
+        return;
+    }
+    
     NSMutableDictionary *pars=[NSMutableDictionary dictionary];
     pars[@"schedules"]=self.phone;//手机号
     if (type==2) {//null或者1:短信验证码2:语音验证码
@@ -145,10 +156,35 @@
     } else {
         pars[@"monroe"]=@"1";
     }
+    WF_WEAKSELF(weakself);
     [PMBaseHttp post:Post_Sms_Code parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself dismiss];
+        if ([responseObject[@"retail"] intValue]==200) {
+            [weakself showTip:@"El Código de verificación fue enviado con éxito."];
+        }else{
+            [weakself showTip:responseObject[@"entire"]];//（对）
+        }
         
     } failure:^(NSError * _Nonnull error) {
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        [weakself dismiss];
         
+        
+    }];
+}
+
+//
+-(void)showOTPAlert:(NSInteger)type{
+    topLabelBottmBtnAlert * alert = [[topLabelBottmBtnAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60,220) withConttent:@"1. Por favor obtenga el OTP solo con una conexión a internet estable. \n2. Si el código no llega, compruebe primero su buzón de spam." btnTitel:@"OK"] ;
+    [alert setOPTtype];
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^{
+        [weakself requestGetVeriCode:type];
+        
+        [AlertView dismiss];
     }];
 }
 
@@ -189,6 +225,9 @@
             //登录成功首页
             PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_login_succ content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
              [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            
+            
+            [[AppsFlyerLib shared]  logEvent: @"af_complete_registration" withValues:nil];
         } else{
             [weakself dismiss];
             [weakself showTip:responseObject[@"entire"]];//（对）

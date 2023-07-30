@@ -13,7 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle;
 
+
 @property (copy, nonatomic)void(^clickBtnBlock)(void);
+//设置成发送验证码三次的样式
+-(void)setOPTtype;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ThreeLabelAlert : WFBaseView
 
-//type 0: 逾期费说明气泡浮窗 1:展（分）期费说明气泡浮窗
+//type 0: 逾期费说明气泡浮窗 1:展（分）期费说明气泡浮窗 2
 - (instancetype)initWithFrame:(CGRect)frame withType:(NSInteger)type;
 
 @property (copy, nonatomic)void(^clickBtnBlock)(void);

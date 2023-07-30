@@ -17,6 +17,10 @@
 @property (nonatomic, strong) NSString *btnTitle;
 
 
+@property (nonatomic, assign) BOOL isOTP;
+
+
+
 
 @end
 @implementation topLabelBottmBtnAlert
@@ -63,8 +67,15 @@
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
         cell.label.text = self.Conttent;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
-        cell.label.font = [UIFont boldSystemFontOfSize:20];
-        cell.label.textAlignment = NSTextAlignmentCenter;
+        if (_isOTP) {
+            
+            cell.label.font = [UIFont boldSystemFontOfSize:11];
+            cell.label.textAlignment = NSTextAlignmentLeft;
+        } else {
+            
+            cell.label.font = [UIFont boldSystemFontOfSize:20];
+            cell.label.textAlignment = NSTextAlignmentCenter;
+        }
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(39.5, 25, 33, 25)];
         return cell;
@@ -124,7 +135,12 @@
     });
 
 }
-    
+//设置成发送验证码三次的样式
+-(void)setOPTtype{
+    self.isOTP = YES;
+    [self.tableView reloadData];
+    [self upDataFrame];
+}
     
 
 @end

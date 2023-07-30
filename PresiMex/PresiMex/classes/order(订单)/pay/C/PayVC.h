@@ -26,6 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
+@property(strong, nonatomic) NSString * nu;//产品命
+
+
 @end
 
 NS_ASSUME_NONNULL_END

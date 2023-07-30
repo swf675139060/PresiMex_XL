@@ -69,7 +69,7 @@
 
         WFLeftRightBtnCell * cell = [WFLeftRightBtnCell cellWithTableView:tableView];
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(30, 32, 20, 32) height:50];
-        [cell.leftBtn setTitle:@"Confirmar" forState:UIControlStateNormal];
+        [cell.leftBtn setTitle:@"Quedarse" forState:UIControlStateNormal];
         [cell.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#CCCCCC"]  forState:UIControlStateNormal];
         cell.leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
         cell.leftBtn.layer.cornerRadius = 13;

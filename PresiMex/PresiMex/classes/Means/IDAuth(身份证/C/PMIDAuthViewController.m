@@ -43,9 +43,9 @@
 
 @implementation PMIDAuthViewController
 
--(void)leftItemAction{
-    [self shoWYouHuiAlert:@[]];
-}
+//-(void)leftItemAction{
+//    [self shoWYouHuiAlert:@[]];
+//}
 
 //arr:优惠卷数组
 -(void)shoWYouHuiAlert:(NSArray *)arr{
@@ -83,7 +83,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLabel.text=@"Autenticación de identidad";
+    self.navTitleLabel.text=@"Autenticación";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
     [self getCamearAuthSeletsAlert];
@@ -284,15 +284,15 @@
     
     NSString *content;
     if (type==0) {
-        content = @"El sistema no pudo reconocer el frente de la tarjeta de identificación, tome otra foto.";
+        content = @"El sistema no logró identificar el anverso de su tarjeta de identificación, por favor, haga otra foto.";
     } else if (type==1) {
-        content = @"Falló el reconocimiento del sistema en el reverso de la tarjeta de identificación, tome otra foto.";
+        content = @"El sistema no pudo identificar el reverso de la tarjeta de identificación, por favor, tome otra foto.";
     }else if (type==2) {
         content = @"La comparación en vivo falló, inténtalo de nuevo.";
     }else{
         
     }
-    AllFailAlert * alert = [[AllFailAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 210) withTitle:@"Asegúrese de tener suficiente luz en el entorno, sin obstrucciones ni sobreexposiciones." content:content];
+    AllFailAlert * alert = [[AllFailAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 210) withTitle:@"Garantice un entorno bien iluminado, sin obstrucciones ni sobreexposiciones." content:content];
     WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
     [AlertView show];
     WF_WEAKSELF(weakself);
@@ -319,7 +319,7 @@
     
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.numberOfLines = 0;
-    tipLabel.text=@"Consejo: asegúrese de que todas las imágenes de los documentos se tomen con claridad y sean las más recientes para obtener el préstamo al instante.";
+    tipLabel.text=@"Sugerencia: Para obtener un préstamo al instante, asegúrese de que las fotografías de los documentos sean claras y estén actualizadas.";
     [headerView addSubview:tipLabel];
     tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
     tipLabel.textAlignment = NSTextAlignmentLeft;
@@ -353,6 +353,9 @@
     
     PMBasicViewController*Vc=[PMBasicViewController new];
     [self.navigationController pushViewController:Vc animated:YES];
+    
+    [[AppsFlyerLib shared]  logEvent: @"af_action_03" withValues:nil];
+
 }
 
 -(void)selectPhoto{

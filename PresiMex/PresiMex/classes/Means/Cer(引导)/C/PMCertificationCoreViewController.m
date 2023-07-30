@@ -28,6 +28,32 @@
 @end
 
 @implementation PMCertificationCoreViewController
+-(void)leftItemAction{
+    [self shoWYouHuiAlert:@[]];
+}
+
+//arr:优惠卷数组
+-(void)shoWYouHuiAlert:(NSArray *)arr{
+    
+    
+    CGFloat biLi = WF_ScreenWidth/360;
+    
+    YouHuiAlert * alert = [[YouHuiAlert alloc] initWithFrame:CGRectMake(0, 0, biLi * 320, biLi * 400) withArr:arr] ;
+ 
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^(NSInteger indx) {
+        [AlertView dismiss];
+        if (indx == 0) {
+            [weakself.navigationController popViewControllerAnimated:YES];
+        } else {
+            
+        }
+    }];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +64,9 @@
     //信息认证主页
     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_info_auth content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
      [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    
+    
+    [[AppsFlyerLib shared]  logEvent: @"af_action_01" withValues:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -48,12 +77,12 @@
     
     _dataArray=[NSMutableArray new];
     PMCerModel *model1 = [[PMCerModel alloc] init];
-    model1.title     = @"Autenticación de identidad";
+    model1.title     = @"Autenticación";
     model1.iconName=@"cer_icon_1";
     [self.dataArray addObject:model1];
     
     PMCerModel *model2 = [[PMCerModel alloc] init];
-    model2.title     = @"Información personal";
+    model2.title     = @"Cuestionario";
     model2.iconName=@"cer_icon_2";
     [self.dataArray addObject:model2];
     
@@ -180,7 +209,7 @@
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.frame = CGRectMake(15,10,WF_ScreenWidth,30);
     tipLabel.numberOfLines = 0;
-    tipLabel.text=@"Información básica";
+    tipLabel.text=@"Información";
     [headerView addSubview:tipLabel];
     tipLabel.textColor=BColor_Hex(@"#1B1200", 1);
     tipLabel.textAlignment = NSTextAlignmentLeft;
@@ -196,7 +225,7 @@
     UIButton* submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     submitBtn.tag=1;
     submitBtn.frame = CGRectMake(15,25,WF_ScreenWidth-30,50);
-    [submitBtn setTitle:@"Iniciar autenticación" forState:UIControlStateNormal];
+    [submitBtn setTitle:@"Comenzar la autenticación" forState:UIControlStateNormal];
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [submitBtn addTarget:self action:@selector(clickSubmitBtn) forControlEvents:UIControlEventTouchUpInside];
     submitBtn.layer.cornerRadius=13;
@@ -211,7 +240,7 @@
     
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.numberOfLines = 0;
-    tipLabel.text=@"Su línea de crédito esta estrechamente relacionada con la autenticidad de la información que ingrese, asegúrese de que sea precisa.";
+    tipLabel.text=@"La exactitud de la información que proporciona tiene un impacto directo en su línea de crédito, asegúrese de que sea precisa.";
     [tipBg addSubview:tipLabel];
     tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
     tipLabel.textAlignment = NSTextAlignmentLeft;

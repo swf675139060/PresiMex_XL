@@ -112,7 +112,7 @@
         } else if (self.type == 1) {
             cell.label.text = @"Coloque la tarjeta de identificación en un lugar plano.";
         }else{
-            cell.label.text = @"Por favor, mantenga su rostro sin obstrucciones frente a la pantalla.";
+            cell.label.text = @"Asegúrese de que su rostro esté enmarcado correctamente en la cámara y que la iluminación sea adecuada.";
         }
         cell.label.textAlignment = NSTextAlignmentLeft;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];

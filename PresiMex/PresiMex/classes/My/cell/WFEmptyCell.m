@@ -38,4 +38,13 @@
     }
     return _BGView;
 }
+
+
+-(void)updateFrameWithHeight:(CGFloat)height{
+    UIEdgeInsets padding = UIEdgeInsetsMake(0, 0, 0, 0);
+    [self.BGView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).with.insets(padding);
+        make.height.equalTo(@(height));
+    }];
+}
 @end

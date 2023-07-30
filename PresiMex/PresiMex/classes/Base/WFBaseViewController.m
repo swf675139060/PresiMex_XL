@@ -100,6 +100,14 @@
     }
     
 }
+
+-(void)showKeFuAlert{
+    KeFuAlert * alert = [[KeFuAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 217)] ;
+    alert.type = 1;
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView setClickBGDismiss:YES];
+    [AlertView show];
+}
 -(void)show{
     
     [self dismiss];

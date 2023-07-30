@@ -438,7 +438,7 @@
         
         self.userIcon.image = DefaultAvatar;
         self.userName.text = @"PresiMex . ";
-        self.cartera.text = @"su propia cartera";
+        self.cartera.text = @"su cartera instante";
         self.SubNubmer.text = @"XXXXXXXXXX";
         
         [self.moneyLB mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -453,7 +453,7 @@
         
         self.noLoginBG.hidden = NO;
         self.noLoginTitleLB.text = @"Iniciar sesión";
-        self.noLoginSubLB.text = @"Inicie sesión para obtener su monto máximo.";
+        self.noLoginSubLB.text = @"Acceda a su cuenta para conocer su monto máximo.";
         [self.noLoginBtn setTitle:@"Ir" forState:UIControlStateNormal];
         
         self.LoginTOPBG.hidden = YES;
@@ -476,7 +476,7 @@
         
         self.userIcon.image = DefaultAvatar;
         self.userName.text = @"PresiMex . ";
-        self.cartera.text = @"su propia cartera";
+        self.cartera.text = @"su cartera instante";
         self.SubNubmer.text = userModel.tel;
         
         [self.moneyLB mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -513,7 +513,7 @@
         
         self.userIcon.image = DefaultAvatar;
         self.userName.text = @"PresiMex . ";
-        self.cartera.text = @"su propia cartera";
+        self.cartera.text = @"su cartera instante";
         self.SubNubmer.text = userModel.tel;
         
         [self.moneyLB mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -528,7 +528,7 @@
         
         self.noLoginBG.hidden = NO;
         self.noLoginTitleLB.text = @"Autenticación";
-        self.noLoginSubLB.text = @"Proceda a autenticar su identidad para obtenerel monto máximo.";
+        self.noLoginSubLB.text = @"Avance con la autenticación de su identidad para acceder al monto máximo.";
         [self.noLoginBtn setTitle:@"Ir" forState:UIControlStateNormal];
         
         self.LoginTOPBG.hidden = YES;

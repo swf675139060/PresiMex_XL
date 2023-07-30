@@ -23,12 +23,12 @@
     //首页
     HomeViewController *homeVC = [[HomeViewController alloc] init];
     WFNavigationController *homeNVC = [[WFNavigationController alloc] initWithRootViewController:homeVC];
-    homeNVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Préstamo" image:[[UIImage imageNamed:@"tabbar_home_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabbar_home"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    homeNVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Inicio" image:[[UIImage imageNamed:@"tabbar_home_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabbar_home"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
     //我的
     MyViewController *userVC = [[MyViewController alloc] init];
     WFNavigationController *userNVC = [[WFNavigationController alloc] initWithRootViewController:userVC];
-    userNVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@" Mi perfil" image:[[UIImage imageNamed:@"tabbar_user_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabbar_user"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    userNVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Mi Página" image:[[UIImage imageNamed:@"tabbar_user_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabbar_user"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     self.viewControllers = @[homeNVC ,userNVC];
     
     if (@available(iOS 13.0, *)) {

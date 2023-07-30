@@ -29,6 +29,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.type = type;
+        self.storeCount = 5;
         [self buildSubViews1];
     }
     return self;
@@ -94,7 +95,7 @@
         return cell;
     }else if (indexPath.row == 1){
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = @"Su solicitud ha sido enviada. Estamos procesándola con rapidez. Tan pronto como se complete el proceso, le notificaremos. ";
+        cell.label.text = @"Hemos recibido su solicitud. Estamos procesándola de manera ágil. Tan pronto como se complete el proceso, le informaremos.";
         cell.label.textAlignment = NSTextAlignmentCenter;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
         cell.label.font = [UIFont systemFontOfSize:11];

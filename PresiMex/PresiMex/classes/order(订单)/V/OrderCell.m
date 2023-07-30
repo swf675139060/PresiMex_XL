@@ -299,7 +299,7 @@
     
     [_moneyStr setText:@"Monto del préstamo" TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont systemFontOfSize:11]];
     [_moneynumber setText:model.barbie TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont boldSystemFontOfSize:20]];
-    [_dateSre setText:@"Monto del préstamo" TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont systemFontOfSize:11]];
+    [_dateSre setText:@"Día de vencimiento" TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont systemFontOfSize:11]];
     [_dateNumber setText:model.cook TextColor:[UIColor jk_colorWithHexString:@"#1B1200"] Font:[UIFont boldSystemFontOfSize:20]];
     [self.PagarBtn setTitle:@"Reembolsado" forState:UIControlStateNormal];
     [self.stateLB setText:@"" TextColor:[UIColor jk_colorWithHexString:@"#7C7C7C"] Font:[UIFont systemFontOfSize:11]];

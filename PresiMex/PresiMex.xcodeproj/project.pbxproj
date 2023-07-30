@@ -63,6 +63,7 @@
 		A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D222A30763C00389B67 /* JKPickerViewAppearance.m */; };
 		A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */; };
 		A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2D2A3085C500389B67 /* YYClassInfo.m */; };
+		DB1F3D552A750CC0007FBCCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB1F3D542A750CC0007FBCCA /* GoogleService-Info.plist */; };
 		DBB0E1D12A6CE30A0028AEFF /* PMDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */; };
 		DBB0E1D32A6CE8150028AEFF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0E1D22A6CE8150028AEFF /* CoreTelephony.framework */; };
 		DBB0E1D52A6D25540028AEFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0E1D42A6D25540028AEFF /* CoreLocation.framework */; };
@@ -367,6 +368,7 @@
 		A4F49D2D2A3085C500389B67 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
 		A4F49D2E2A3085C500389B67 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DB1F3D542A750CC0007FBCCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DBA9CBED2A6E7C89004CE8E8 /* PresiMex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PresiMex.entitlements; sourceTree = "<group>"; };
 		DBB0E1CF2A6CE30A0028AEFF /* PMDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDeviceModel.h; sourceTree = "<group>"; };
 		DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDeviceModel.m; sourceTree = "<group>"; };
@@ -1603,6 +1605,7 @@
 				FB8AF2EE2A0882F2006C5887 /* classes */,
 				FB976D382A05124600B1C0A3 /* AppDelegate.h */,
 				FB976D392A05124600B1C0A3 /* AppDelegate.m */,
+				DB1F3D542A750CC0007FBCCA /* GoogleService-Info.plist */,
 				FB976D442A05124900B1C0A3 /* Assets.xcassets */,
 				FB976D462A05124900B1C0A3 /* LaunchScreen.storyboard */,
 				FB976D492A05124900B1C0A3 /* Info.plist */,
@@ -2238,6 +2241,7 @@
 				FBD4B2B92A3EDD5800E136D5 /* action_blink.mp3 in Resources */,
 				FBD4B2C92A3EDD5800E136D5 /* ENet_sim-opt.param in Resources */,
 				FBD4B2C12A3EDD5800E136D5 /* detection_success_in.mp3 in Resources */,
+				DB1F3D552A750CC0007FBCCA /* GoogleService-Info.plist in Resources */,
 				FBD4B2BE2A3EDD5800E136D5 /* test2.jpg in Resources */,
 				FBD4B2BB2A3EDD5800E136D5 /* yaw.gif in Resources */,
 				FBD4B2C42A3EDD5800E136D5 /* mouth.gif in Resources */,

@@ -47,6 +47,7 @@
 //        self.navTitleLabel.text = @"OXXO Cash";
 //    }
     [self GETRepayVcInfo];
+    
 }
 
 
@@ -265,13 +266,18 @@
                 //已还款)
                 //全款
                 
-                RepaymentSuccessfulAlert * alert = [[RepaymentSuccessfulAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.model.hang btnTitel:@""];
+                RepaymentSuccessfulAlert * alert = [[RepaymentSuccessfulAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.nu btnTitel:@""];
                 WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
                 [AlertView show];
                 WF_WEAKSELF(weakself);
                 [alert setClickBtnBlock:^(NSInteger indx) {
                     [AlertView dismiss];
-                    [weakself.navigationController popViewControllerAnimated:YES];
+                    
+                    [weakself.tabBarController setSelectedIndex:0];
+                    
+                    [weakself.navigationController popToRootViewControllerAnimated:NO];
+                    
+                    
                     
                 }];
                 
@@ -282,7 +288,7 @@
                 //展期
                 [weakself.timer invalidate];
                 weakself.timer = nil;
-                ExtendedSuccessfullyAlart * alert = [[ExtendedSuccessfullyAlart alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.model.hang btnTitel:@""];
+                ExtendedSuccessfullyAlart * alert = [[ExtendedSuccessfullyAlart alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 147 + 20 + 190) withConttent:weakself.nu btnTitel:@""];
                 
                 WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
                 [AlertView show];
@@ -290,7 +296,7 @@
                 [alert setClickBtnBlock:^{
                     [AlertView dismiss];
                     
-                    [weakself.navigationController popViewControllerAnimated:YES];
+                    [weakself.navigationController popToRootViewControllerAnimated:YES];
                    
                 }];
                 

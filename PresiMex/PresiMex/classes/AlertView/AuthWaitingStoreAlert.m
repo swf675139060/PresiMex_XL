@@ -9,6 +9,7 @@
 #import "WFStarCell.h"
 #import "WFImageCell.h"
 #import "WFGifImageCell.h"
+#import "WFEmptyCell.h"
 
 #import "WFBtnCell.h"
 #import "WFLabelCell.h"
@@ -20,14 +21,19 @@
 
 @property (nonatomic, strong) NSString *time;
 
+
+@property (nonatomic, assign) BOOL isHiddenStore;
+
 @end
 @implementation AuthWaitingStoreAlert
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.isHiddenStore = NO;
         [self buildSubViews1];
         self.time = @"10";
+        self.storeCount = 5;
     }
     return self;
 }
@@ -52,9 +58,7 @@
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        return 5;
- 
-    
+    return 5;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -72,7 +76,7 @@
         return cell;
     }else if (indexPath.row == 1){
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = [NSString stringWithFormat:@"Hemos recibido su información y el sistema está evaluando su límite. Esto debería tomar %@ segundos.",self.time];
+        cell.label.text = [NSString stringWithFormat:@"Su información ha sido recibida y está siendo procesada por el sistema para establecer su límite. Esto debería llevar %@ segundos.",self.time];
         cell.label.textAlignment = NSTextAlignmentCenter;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
         cell.label.font = [UIFont systemFontOfSize:11];
@@ -90,26 +94,41 @@
         return cell;
         
     }else if (indexPath.row == 3){
-        WFStarCell * cell = [WFStarCell cellWithTableView:tableView];
-        WF_WEAKSELF(weakself);
-        [cell setClickStoreBlock:^(NSInteger storeCount) {
-            weakself.storeCount = storeCount;
-        }];
-        return cell;
+        
+        if (self.isHiddenStore) {
+            WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
+            [cell updateFrameWithHeight:0.5];
+            return cell;
+        } else {
+            WFStarCell * cell = [WFStarCell cellWithTableView:tableView];
+            WF_WEAKSELF(weakself);
+            [cell setClickStoreBlock:^(NSInteger storeCount) {
+                weakself.storeCount = storeCount;
+            }];
+            return cell;
+        }
+        
     }else{
-        WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
-        [cell.btn setTitle:@"OK" forState:UIControlStateNormal];
-        cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
-        [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        WF_WEAKSELF(weakself);
-        [cell setClickBtnBlock:^{
-            if(weakself.clickBtnBlock){
-                weakself.clickBtnBlock();
-            }
-        }];
-        [cell.btn addLinearGradientwithSize:CGSizeMake(self.jk_width - 50, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
-        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(25, 25, 30, 25) height:50];
-        return cell;
+        if (self.isHiddenStore) {
+            WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
+            [cell updateFrameWithHeight:10];
+            return cell;
+        } else {
+            WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
+            [cell.btn setTitle:@"OK" forState:UIControlStateNormal];
+            cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
+            [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            WF_WEAKSELF(weakself);
+            [cell setClickBtnBlock:^{
+                if(weakself.clickBtnBlock){
+                    weakself.clickBtnBlock();
+                }
+            }];
+            [cell.btn addLinearGradientwithSize:CGSizeMake(self.jk_width - 50, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
+            [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(25, 25, 30, 25) height:50];
+            return cell;
+        }
+        
     }
     
 }
@@ -132,6 +151,14 @@
     return _tableView;
 }
     
+
+
+// 隐藏星星
+-(void)hiddenStore{
+    self.isHiddenStore = YES;
+    [self.tableView reloadData];
+    [self upDataFrame];
+}
 
 -(void)layoutSubviews{
     [self upDataFrame];

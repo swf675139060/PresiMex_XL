@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) UIView * BGView;
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
+
+-(void)updateFrameWithHeight:(CGFloat)height;
+
 @end
 
 NS_ASSUME_NONNULL_END

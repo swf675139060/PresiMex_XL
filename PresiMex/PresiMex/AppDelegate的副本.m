@@ -19,6 +19,7 @@
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate,FIRMessagingDelegate>
 
+
 @end
 
 @implementation AppDelegate
@@ -29,7 +30,6 @@
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     [self getCrashLog];
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     
@@ -39,7 +39,7 @@
         self.window.rootViewController = [[PrivacyVC alloc] init];
 //        self.window.rootViewController = [[DKGuideViewController alloc] init];
     }
-    [self initLiveSDK];
+//    [self initLiveSDK];
     [self.window makeKeyAndVisible];
     
     
@@ -103,8 +103,13 @@
         [[AppsFlyerLib shared]  logEvent: @"ios_pesoOnline_Luch" withValues:nil];
         // 谷歌推送相关
         [self setUpFirebaseConfigure];
+    
+    
+//    NSArray * aa = @[];
+//    NSString * bb = aa[4];
     return YES;
 }
+
 
 
 
@@ -145,45 +150,6 @@ void uncaughtExceptionHandler(NSException *exception) {
     [defaults removeObjectForKey:@"crashDic"];
 }
 
-
-
-
--(void)initLiveSDK{
-    
-//    [LNDetector setAppName:@"sdkTest_App" partnerCode:@"sdkTest" partnerKey:@"iGTtb2nkljVR08lYbEkv"];
-
-}
-
-
-// Start the AppsFlyer SDK
-- (void)sendLaunch:(UIApplication *)application {
-    [[AppsFlyerLib shared] start];
-}
--(void)applicationDidBecomeActive:(UIApplication *)application{
-    
-    [[AppsFlyerLib shared] start];
-}
-
-
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
-   
-    return YES;
-}
--(void)requestIDFA {
-    if (@available(iOS 14, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-            NSLog(@"%lu",(unsigned long)status);
-            if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
-             
-            }else{
-                
-            }
-        }];
-    } else {
-        // Fallback on earlier versions
-    }
-}
 
 
 

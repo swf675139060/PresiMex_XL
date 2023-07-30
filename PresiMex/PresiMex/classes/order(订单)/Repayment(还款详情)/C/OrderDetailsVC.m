@@ -21,6 +21,9 @@
 #import "RepayModel.h"
 #import "PayTypeModel.h"
 #import "CuponModel.h"
+
+#import "topLabelBottmBtnAlert.h"
+
 @interface OrderDetailsVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
@@ -86,6 +89,10 @@
             [weakself.tableView reloadData];
         }
         
+        
+        // 展示展期弹框
+        [weakself showTopLabelBottmBtnAlert:@"Le sugerimos que realice el pago completo para obtener una cantidad mayor. En caso de dificultades financieras reales, puede optar por solicitar una prórroga."];
+        
         if (weakself.beOverdue) {
             PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_repayment_detail_overdue_ext_pay content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
               [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
@@ -114,6 +121,16 @@
 }
 
 
+//通用弹框
+-(void)showTopLabelBottmBtnAlert:(NSString *)content{
+    topLabelBottmBtnAlert * alert = [[topLabelBottmBtnAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60,220) withConttent:content btnTitel:@"OK"] ;
+    
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+    }];
+}
 
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -222,7 +239,7 @@
         [cell setClickBtnBlock:^(NSInteger index) {
             if(index == 2){
                 
-                ThreeLabelAlert * alert = [[ThreeLabelAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 200) withType:self.beOverdue];
+                ThreeLabelAlert * alert = [[ThreeLabelAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 200) withType:0];
                 
                 WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
                 [AlertView setClickBGDismiss:YES];
@@ -411,7 +428,7 @@
             [cell setClickBtnBlock:^(NSInteger index) {
                 if(index == 2){
                     
-                    ThreeLabelAlert * alert = [[ThreeLabelAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 200) withType:self.beOverdue];
+                    ThreeLabelAlert * alert = [[ThreeLabelAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 200) withType:1];
                     
                     WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
                     [AlertView setClickBGDismiss:YES];
@@ -515,6 +532,7 @@
             
             PayTypeModel * payModel = weakself.payModelArr[weakself.PayIndx];
             vc.fraction = payModel.fraction;
+            vc.nu = weakself.leftModel.nu;
             if (weakself.indx == 0) {
                 
                 vc.repayId = weakself.leftModel.prairie;

@@ -25,7 +25,7 @@
 - (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent btnTitel:(NSString *)btnTitle{
     self = [super initWithFrame:frame];
     if (self) {
-        self.Conttent = [NSString stringWithFormat:@"Ya tiene un monto de préstamo aprobado. Ahora puede regresar a la página principal para solicitar su préstamo."] ;
+        self.Conttent = [NSString stringWithFormat:@"Se ha aprobado una cantidad para su préstamo. Ahora puede volver a la página de inicio para hacer su solicitud."] ;
         
         self.btnTitle = @"OK";
         [self buildSubViews1];

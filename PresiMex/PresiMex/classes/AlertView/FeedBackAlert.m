@@ -38,9 +38,9 @@
 -(void)buildSubViews1{
     
     if (self.type == 1) {
-        self.titleArr = @[@"Envio exitoso",@"Comentarios recibidosnos pondremos en contacto consigo pronto.",@"OK"];
+        self.titleArr = @[@"Exitoso",@"Hemos recibido sus comentarios y nos comunicaremos con usted pronto.",@"OK"];
     } else {
-        self.titleArr = @[@"Envio fallido",@"Error al enviar comentarios, intentelo de nuevo.",@"OK"];
+        self.titleArr = @[@"Fallido",@"Hubo un error al enviar sus comentarios, por favor inténtelo de nuevo.",@"OK"];
     }
     [self addSubview:self.tableView];
     

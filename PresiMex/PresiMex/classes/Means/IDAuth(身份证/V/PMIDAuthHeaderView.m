@@ -67,16 +67,30 @@
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.frame = CGRectMake(typeLabel.swf_right+15,pgBgV.swf_bottom+16,270,15);
     [self addSubview:tipLabel];
-    tipLabel.text=@"Puede obtener los cupones después de la autenticación";
+    tipLabel.text=@"Tras la autenticación, podrá acceder a los cupones.";
     tipLabel.font=B_FONT_REGULAR(10);
     tipLabel.textColor=BColor_Hex(@"#7C7C7C", 1);
     tipLabel.textAlignment = NSTextAlignmentLeft;
     
-    UIImageView*imageView = [[UIImageView alloc] init];
-    imageView.contentMode=UIViewContentModeScaleAspectFit;
-    [self addSubview:imageView];
-    imageView.frame=CGRectMake(WF_ScreenWidth-15-18.5,18.5,21,27.5);
-    imageView.image=[UIImage imageNamed:@"cer_icon"];
-    imageView.swf_centerY=tipLabel.swf_centerY;
+    
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(WF_ScreenWidth-15-21,18.5,21,27.5)];
+    [btn setImage:[UIImage imageNamed:@"cer_icon"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(btnEvent) forControlEvents:UIControlEventTouchUpInside];
+    btn.swf_centerY=tipLabel.swf_centerY;
+    [self addSubview:btn];
+    
+//    UIImageView*imageView = [[UIImageView alloc] init];
+//    imageView.contentMode=UIViewContentModeScaleAspectFit;
+//    [self addSubview:imageView];
+//    imageView.frame=CGRectMake(WF_ScreenWidth-15-18.5,18.5,21,27.5);
+//    imageView.image=[UIImage imageNamed:@"cer_icon"];
+//    imageView.swf_centerY=tipLabel.swf_centerY;
+    
+}
+
+-(void)btnEvent{
+    if (self.btnEventBlcok) {
+        self.btnEventBlcok();
+    }
 }
 @end

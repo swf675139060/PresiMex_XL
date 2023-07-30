@@ -28,9 +28,9 @@
 
 @implementation PMEmergencyContactViewController
 
--(void)leftItemAction{
-    [self shoWYouHuiAlert:@[]];
-}
+//-(void)leftItemAction{
+//    [self shoWYouHuiAlert:@[]];
+//}
 
 //arr:优惠卷数组
 -(void)shoWYouHuiAlert:(NSArray *)arr{
@@ -91,7 +91,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLabel.text=@"Información del personal";
+    self.navTitleLabel.text=@"Información personal";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
     
@@ -247,10 +247,31 @@
     
     BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
         strongify(self);
+        NSInteger orthIndx = 0;
+        
+        if(indxP == 0){
+           PMEmergencyContactModel * model = self.dataArray[1];
+          orthIndx = model.indx;
+            
+        }else{
+            PMEmergencyContactModel * model = self.dataArray[0];
+            orthIndx = model.indx;
+        }
+        
+        if(orthIndx == indx){
+            //紧急联系人不能为同一个
+            [self showTip:@"Los contactos de emergencia no pueden ser los mismos."];
+            [popView dismiss];
+            return;
+        }
+        
+        
         PMEmergencyContactModel * model = self.dataArray[indxP];
         model.indx = indx;
         [self.tableView reloadData];
         [popView dismiss];
+        
+        
         
         NSString * content = @"";
         if (model.indx >= 0) {
@@ -269,8 +290,12 @@
             PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_emer_contract_relation2 content:content beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
             [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         }
+        
+        
     };
 }
+
+
 
 //通讯录权限
 -(void)getTongXunLuQuanxian{
@@ -421,6 +446,7 @@
             PMAddBankViewController*vc=[PMAddBankViewController new];
             [weakself.navigationController pushViewController:vc animated:YES];
             
+            [[AppsFlyerLib shared]  logEvent: @"af_action_05" withValues:nil];
             
             
         }else{

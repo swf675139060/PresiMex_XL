@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PMIDAuthHeaderView : WFBaseView
 
 -(instancetype)initViewWithType:(NSInteger)type;
+
+@property(copy, nonatomic)void(^btnEventBlcok)(void);
 @end
 
 NS_ASSUME_NONNULL_END

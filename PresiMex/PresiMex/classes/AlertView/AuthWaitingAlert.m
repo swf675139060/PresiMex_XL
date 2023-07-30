@@ -25,7 +25,9 @@
 - (instancetype)initWithFrame:(CGRect)frame withConttent:(NSString *)Conttent{
     self = [super initWithFrame:frame];
     if (self) {
-        self.Conttent = [NSString stringWithFormat:@"Hemos recibido su información y el sistema está evaluando su límite. Esto debería tomar %@  segundos.",Conttent] ;
+        self.Conttent = [NSString stringWithFormat:@"Su información ha sido recibida y está siendo procesada por el sistema para establecer su límite. Esto debería llevar %@ segundos.",Conttent] ;
+        
+        
         self.time  = Conttent;
         [self buildSubViews1];
     }
@@ -34,7 +36,7 @@
 
 -(void)uptime:(NSInteger)time{
     self.time  = [NSString stringWithFormat:@"%ld",time];
-    self.Conttent = [NSString stringWithFormat:@"Hemos recibido su información y el sistema está evaluando su límite. Esto debería tomar %ld  segundos.",time] ;
+    self.Conttent = [NSString stringWithFormat:@"Su información ha sido recibida y está siendo procesada por el sistema para establecer su límite. Esto debería llevar %@ segundos.",time] ;
     [self.tableView reloadData];
 }
 

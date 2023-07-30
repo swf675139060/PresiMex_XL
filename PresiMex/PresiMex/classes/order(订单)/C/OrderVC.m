@@ -182,7 +182,7 @@
 }
 
 // 返回详情文字
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView { NSString *text = @"Todavía no tiene ninguna factura para procesar. Vaya a la página de préstamo y elija su producto.";
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView { NSString *text = @"Aún no hay facturas pendientes de procesar. Por favor, diríjase a la página de préstamo y seleccione el producto que desea.";
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
     paragraph.alignment = NSTextAlignmentCenter;

@@ -225,7 +225,7 @@
             return cell;
         }else{
             WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
-            [cell.btn setTitle:@"Confirmar" forState:UIControlStateNormal];
+            [cell.btn setTitle:@"Quedarse" forState:UIControlStateNormal];
             cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
             [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             WF_WEAKSELF(weakself);

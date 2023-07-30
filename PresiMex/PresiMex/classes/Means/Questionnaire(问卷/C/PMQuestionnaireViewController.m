@@ -20,9 +20,9 @@
 
 @implementation PMQuestionnaireViewController
 
--(void)leftItemAction{
-    [self shoWYouHuiAlert:@[]];
-}
+//-(void)leftItemAction{
+//    [self shoWYouHuiAlert:@[]];
+//}
 
 //arr:优惠卷数组
 -(void)shoWYouHuiAlert:(NSArray *)arr{
@@ -158,7 +158,7 @@
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
     tipLabel.numberOfLines = 0;
-    tipLabel.text=@"Por favor, complete el cuestionario con información veraz. Esto aumentará la cantidad que podrá obtener.";
+    tipLabel.text=@"Proporcionar información real ayuda a obtener un límite más alto.";
     [header addSubview:tipLabel];
     tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
     tipLabel.textAlignment = NSTextAlignmentLeft;
@@ -304,6 +304,8 @@
         [self dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             [self pushIdVc];
+            
+            [[AppsFlyerLib shared]  logEvent: @"af_action_02" withValues:nil];
         } else{
             [weakself dismiss];
             [weakself showTip:responseObject[@"entire"]];//（对）

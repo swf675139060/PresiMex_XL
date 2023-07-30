@@ -39,14 +39,14 @@
     if (self.type == 1) {
         self.titleArr = @[
             @"Tarifa de prórroga",
-            @"La tarifa de prórroga es igual a la tarifa de servicio de préstamo original más la tarifa de vencimiento, si corresponde. ",
-            @"La prórroga solo debe solicitarse en situaciones de dificultades financieras reales cuando no se puede pagar el préstamo en su totalidad. Se recomienda pagar el préstamo en su totalidad si tiene suficientes fondos disponibles."];
+            @"La tarifa para la extensión es la suma de la tarifa original del servicio de préstamo y la tarifa de vencimiento, en caso de que se aplique.",
+            @"Puede recurrir a la extensión en casos de verdaderas dificultades financieras que le impidan pagar el préstamo en su totalidad. Si cuenta con los fondos suficientes, aconsejamos que liquide el préstamo por completo."];
     } else {
         self.titleArr = @[
             @"Cargo por mora",
                           
-            @"La tasa de cargo por vencimiento es de una cierta proporción diaria y se aplica después de que el plazo del préstamo ha vencido.",
-            @"Para evitar mayores problemas financieros, es importante que pague su préstamo a tiempo. Si tiene dificultades financieras, puede considerar solicitar una prórroga."];
+            @"La tasa por mora se aplica diariamente a un determinado porcentaje, y entra en vigor una vez que el plazo del préstamo ha expirado.",
+            @"Para prevenir complicaciones económicas adicionales, es crucial que realice los pagos puntualmente. Si enfrenta aprietos financieros, solicitar una extensión puede ser útil."];
     }
     [self addSubview:self.tableView];
     

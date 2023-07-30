@@ -194,11 +194,17 @@
             [cell.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#1B1200"]  forState:UIControlStateNormal];
             cell.leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:20];
             [cell.rightBtn setImage:[UIImage imageNamed:@"kefu"] forState:UIControlStateNormal];
+            WF_WEAKSELF(weakself);
+            cell.clickBtnBlock = ^(NSInteger indx) {
+                if (indx == 1) {
+                    [weakself showKeFuAlert];
+                }
+            };
             return cell;
         }else if (indexPath.row == 1){
             WFLabelCell * cell  = [WFLabelCell cornerCellWithTableView:tableView];
             cell.label.textAlignment = NSTextAlignmentLeft;
-            [cell.label setText:@"Opciones Recomendadas" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:13]];
+            [cell.label setText:@"Monto total de préstamos" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:13]];
             [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) maskedCorners: kCALayerMinXMinYCorner | kCALayerMinXMinYCorner cornerRadius:15];
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(10, 15, 5, 15)];
             [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 33) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner cornerRadius:15];
@@ -311,7 +317,7 @@
         }else if (indexPath.row == 7){
             WFLabelCell * cell  = [WFLabelCell cellWithTableView:tableView];
             cell.label.textAlignment = NSTextAlignmentCenter;
-            [cell.label setText:@"Tu crédito no es insuficiente. Mejora tu puntuación al realizar el pago." TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:13]];
+            [cell.label setText:@"Actualmente no existen productos que coincidan." TextColor:BColor_Hex(@"#7C7C7C", 1) Font:[UIFont systemFontOfSize:13]];
             
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(15.5, 66, 20, 66)];
             [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -320,7 +326,7 @@
             return cell;
         } else if (indexPath.row == 8){
             WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
-            [cell.btn setTitle:@"Ver mis pedidos" forState:UIControlStateNormal];
+            [cell.btn setTitle:@"Ir a Mi Factura" forState:UIControlStateNormal];
             cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
             [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             WF_WEAKSELF(weakself);
@@ -431,9 +437,9 @@
             cell.label.textAlignment = NSTextAlignmentCenter;
             cell.label.textColor = [UIColor jk_colorWithHexString:@"#999999"];
             cell.label.font = [UIFont systemFontOfSize:12];
-            NSString * String = @"El monto real está sujeto a la sum de las\n\"Opciones Recomendadas\"";
+            NSString * String = @"El monto real está determinado por la suma del\n\"Monto total de préstamos\"";
             
-            NSString * subString0 = @"Opciones Recomendadas";
+            NSString * subString0 = @"Monto total de préstamos";
           
             NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:String];
             [attributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName: BColor_Hex(@"#1B1200", 1)} range:[String rangeOfString:subString0]];

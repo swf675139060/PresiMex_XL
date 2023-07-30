@@ -55,15 +55,15 @@
 
 @implementation PMAddBankViewController
 
--(void)leftItemAction{
-//    [self GETCouponUrl];
-    if (self.VCType == 0) {
-        [self shoWYouHuiAlert:@[]];
-    } else {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-}
+//-(void)leftItemAction{
+////    [self GETCouponUrl];
+//    if (self.VCType == 0) {
+//        [self shoWYouHuiAlert:@[]];
+//    } else {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -276,11 +276,15 @@
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 165)];
         headerView.backgroundColor=[UIColor whiteColor];
         PMIDAuthHeaderView *header = [[PMIDAuthHeaderView alloc] initViewWithType:4];
+        WF_WEAKSELF(weakself);
+        header.btnEventBlcok = ^{
+            [weakself POSTCouponGetUrl];
+        };
         [headerView addSubview:header];
         UILabel *tipLabel = [[UILabel alloc] init];
         tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
         tipLabel.numberOfLines = 0;
-        tipLabel.text=@"Consejo: asegúrese de que todas las imágenes de los documentos se tomen con claridad y sean las más recientes para obtener el préstamo al instante.";
+        tipLabel.text=@"Verifique la precisión de la información bancaria y confirme que la cuenta es de su propiedad. Si la solicitud falla o el préstamo se ingresa en una cuenta diferente, el usuario asumirá las consecuencias correspondientes.";
         [headerView addSubview:tipLabel];
         tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
         tipLabel.textAlignment = NSTextAlignmentLeft;
@@ -296,7 +300,7 @@
         UILabel *tipLabel = [[UILabel alloc] init];
         tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
         tipLabel.numberOfLines = 0;
-        tipLabel.text=@"Consejo: asegúrese de que todas las imágenes de los documentos se tomen con claridad y sean las más recientes para obtener el préstamo al instante.";
+        tipLabel.text=@"Verifique la precisión de la información bancaria y confirme que la cuenta es de su propiedad. Si la solicitud falla o el préstamo se ingresa en una cuenta diferente, el usuario asumirá las consecuencias correspondientes.";
         [headerView addSubview:tipLabel];
         tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
         tipLabel.textAlignment = NSTextAlignmentLeft;
@@ -344,24 +348,11 @@
         [AlertView dismiss];
         if (indx == 0) {
             [weakself.navigationController popViewControllerAnimated:YES];
-            
-//            NSArray *viewControllers = weakself.navigationController.viewControllers;
-//            for (UIViewController *viewController in viewControllers) {
-//                if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
-//                    [weakself.navigationController popToViewController:viewController animated:YES];
-//                    break;
-//                }
-//            }
+
         } else {
             
-//            [weakself POSTCouponGetUrl];
         }
     }];
-//
-//    PMProblemViewController* vc = [[PMProblemViewController alloc]init];
-//    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-//    [self.viewController.navigationController  presentViewController:vc animated:NO completion:nil];
-    
     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_exit_retention content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
       [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 
@@ -443,7 +434,9 @@
                     NSLog(@"定时器已停止。");
                     [weakself.AlertView dismiss];
                     [weakself showAuthSuccessful];
-                    [weakself POSTCouponGetUrl];
+//                    [weakself POSTCouponGetUrl];
+                }else{
+                    [weakself.waitingStoreAlert hiddenStore];
                 }
             }];
             
@@ -457,6 +450,8 @@
         }
     }];
     
+    
+    [[AppsFlyerLib shared]  logEvent: @"af_action_06" withValues:nil];
     
     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_auth_wait content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
@@ -474,6 +469,9 @@
         [weakself.navigationController popToRootViewControllerAnimated:YES];
     }];
     
+    
+    
+    [[AppsFlyerLib shared]  logEvent: @"af_action_07" withValues:nil];
     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_auth_pass content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
@@ -564,6 +562,10 @@
                     if ([responseObject[@"retail"] intValue]==200) {
                         [weakself showAuthWaiting];
                         [weakself startTimer];
+                        
+                        
+                        
+                        
                         
                     }else{
                         [weakself showTip:responseObject[@"entire"]];//（对）
@@ -787,7 +789,7 @@
     [PMBaseHttp postJson:POST_Coupon_Get_Url parameters:pars1 success:^(id  _Nonnull responseObject) {
         [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
-            
+            [weakself showTip:@"Cupón recibido con éxito."];
         }else{
             [weakself showTip:responseObject[@"entire"]];//（对）
         }
@@ -812,7 +814,7 @@
     [PMBaseHttp post:POST_Bank_Reset_Code parameters:pars1 success:^(id  _Nonnull responseObject) {
         [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
-            ;
+            [weakself showTip:@"El Código de verificación fue enviado con éxito."];
             PMBankVerCodeCell * cell = [weakself.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
             cell.btn.userInteractionEnabled = NO;
             

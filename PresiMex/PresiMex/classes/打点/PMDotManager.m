@@ -90,7 +90,7 @@
 //    [ACQManager creatACQModel40];
     [ACQManager.ACQModel40.value addObject:InfoModel];
     ACQManager.ACQModel40.create_time = [PMACQManager GetTimestampString];
-    [self POSTDotType:40 value:[ACQManager.ACQModel40.value mj_JSONObject]];
+    [self POSTDotType:40 value:[ACQManager.ACQModel40 mj_JSONObject]];
 }
 
 -(void)POSTDotACQ50Withvalue:(PMACQInfoModel *)InfoModel{
@@ -114,7 +114,7 @@
 //    [ACQManager creatACQModel60];
     [ACQManager.ACQModel60.value addObject:InfoModel];
     ACQManager.ACQModel60.create_time = [PMACQManager GetTimestampString];
-    [self POSTDotType:60 value:[ACQManager.ACQModel60.value mj_JSONObject]];
+    [self POSTDotType:60 value:[ACQManager.ACQModel60 mj_JSONObject]];
 }
 
 //埋点数据存库接口

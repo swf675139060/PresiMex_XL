@@ -46,7 +46,7 @@
     desLabel1.adjustsFontSizeToFitWidth=YES;
     desLabel1.textColor=BColor_Hex(@"#7C7C7C", 1);
     [self addSubview:desLabel1];
-    desLabel1.text=@"Ingrese su número para obtener hasta $30,000  de crédito.";
+    desLabel1.text=@"Inicie sesión para acceder a un crédito de hasta $30,000.";
     desLabel1.textAlignment = NSTextAlignmentLeft;
 
  

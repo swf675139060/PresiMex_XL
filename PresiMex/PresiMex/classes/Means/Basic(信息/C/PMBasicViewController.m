@@ -30,9 +30,9 @@
 
 @implementation PMBasicViewController
 
--(void)leftItemAction{
-    [self shoWYouHuiAlert:@[]];
-}
+//-(void)leftItemAction{
+//    [self shoWYouHuiAlert:@[]];
+//}
 
 //arr:优惠卷数组
 -(void)shoWYouHuiAlert:(NSArray *)arr{
@@ -71,7 +71,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLabel.text=@"Información del personal";
+    self.navTitleLabel.text=@"Información personal";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
     
@@ -363,7 +363,7 @@
         
     } else if (indexPath.row == 6) {
         [self showYearMonth];
-        [self sutupAlertViewWithIndx:indexPath.row];
+//        [self sutupAlertViewWithIndx:indexPath.row];
         PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_base_auth_birth content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
         [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
         
@@ -773,6 +773,7 @@
             PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
             [weakself.navigationController pushViewController:vc animated:YES];
             
+            [[AppsFlyerLib shared]  logEvent: @"af_action_04" withValues:nil];
         }else{
             [weakself showTip:responseObject[@"entire"]];//（对）
         }

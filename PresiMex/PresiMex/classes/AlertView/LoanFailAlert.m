@@ -61,7 +61,7 @@
         return cell;
     }else if (indexPath.row == 1){
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = @"Se agotó la cuota diaria del producto que solicitó. Puede intentar solicitar otros productos.";
+        cell.label.text = @"La cuota diaria del producto que ha solicitado se ha agotado. Puede intentar solicitar otros productos.";
         cell.label.textAlignment = NSTextAlignmentLeft;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
         cell.label.font = [UIFont systemFontOfSize:11];
