@@ -64,6 +64,7 @@
 		A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */; };
 		A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2D2A3085C500389B67 /* YYClassInfo.m */; };
 		DB1F3D552A750CC0007FBCCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB1F3D542A750CC0007FBCCA /* GoogleService-Info.plist */; };
+		DB9C46EF2A77BE13009C5638 /* AESCGMEnrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9C46EE2A77BE13009C5638 /* AESCGMEnrypt.m */; };
 		DBB0E1D12A6CE30A0028AEFF /* PMDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */; };
 		DBB0E1D32A6CE8150028AEFF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0E1D22A6CE8150028AEFF /* CoreTelephony.framework */; };
 		DBB0E1D52A6D25540028AEFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0E1D42A6D25540028AEFF /* CoreLocation.framework */; };
@@ -71,7 +72,7 @@
 		DBB0E1DB2A6D4B500028AEFF /* PMACQModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1DA2A6D4B500028AEFF /* PMACQModel.m */; };
 		DBB0E1DE2A6D4E500028AEFF /* PMACQManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1DD2A6D4E500028AEFF /* PMACQManager.m */; };
 		DBB0E1E12A6D57A00028AEFF /* PMPageKey.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1E02A6D57A00028AEFF /* PMPageKey.m */; };
-		DBB795B92A7369EA00A59DC8 /* AESEnrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB795B82A7369EA00A59DC8 /* AESEnrypt.m */; };
+		DBB28EE12A77E489004F7103 /* LogOutAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB28EE02A77E489004F7103 /* LogOutAlert.m */; };
 		DBB8087B2A6BF06C0014589C /* PMDotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087A2A6BF06C0014589C /* PMDotManager.m */; };
 		DBB8087E2A6BF3C90014589C /* PMDotConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */; };
 		FB06D0B12A4574FC00272F5A /* LoanFailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */; };
@@ -369,6 +370,8 @@
 		A4F49D2E2A3085C500389B67 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DB1F3D542A750CC0007FBCCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB9C46ED2A77BE0D009C5638 /* AESCGMEnrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESCGMEnrypt.h; sourceTree = "<group>"; };
+		DB9C46EE2A77BE13009C5638 /* AESCGMEnrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCGMEnrypt.m; sourceTree = "<group>"; };
 		DBA9CBED2A6E7C89004CE8E8 /* PresiMex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PresiMex.entitlements; sourceTree = "<group>"; };
 		DBB0E1CF2A6CE30A0028AEFF /* PMDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDeviceModel.h; sourceTree = "<group>"; };
 		DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDeviceModel.m; sourceTree = "<group>"; };
@@ -382,8 +385,8 @@
 		DBB0E1DD2A6D4E500028AEFF /* PMACQManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMACQManager.m; sourceTree = "<group>"; };
 		DBB0E1DF2A6D57A00028AEFF /* PMPageKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPageKey.h; sourceTree = "<group>"; };
 		DBB0E1E02A6D57A00028AEFF /* PMPageKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPageKey.m; sourceTree = "<group>"; };
-		DBB795B72A7369E900A59DC8 /* AESEnrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESEnrypt.h; sourceTree = "<group>"; };
-		DBB795B82A7369EA00A59DC8 /* AESEnrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESEnrypt.m; sourceTree = "<group>"; };
+		DBB28EDF2A77E489004F7103 /* LogOutAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogOutAlert.h; sourceTree = "<group>"; };
+		DBB28EE02A77E489004F7103 /* LogOutAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogOutAlert.m; sourceTree = "<group>"; };
 		DBB808792A6BF06C0014589C /* PMDotManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDotManager.h; sourceTree = "<group>"; };
 		DBB8087A2A6BF06C0014589C /* PMDotManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDotManager.m; sourceTree = "<group>"; };
 		DBB8087C2A6BF3C90014589C /* PMDotConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDotConfigModel.h; sourceTree = "<group>"; };
@@ -1167,8 +1170,8 @@
 		DBB795B62A7369D900A59DC8 /* AES */ = {
 			isa = PBXGroup;
 			children = (
-				DBB795B72A7369E900A59DC8 /* AESEnrypt.h */,
-				DBB795B82A7369EA00A59DC8 /* AESEnrypt.m */,
+				DB9C46EE2A77BE13009C5638 /* AESCGMEnrypt.m */,
+				DB9C46ED2A77BE0D009C5638 /* AESCGMEnrypt.h */,
 			);
 			path = AES;
 			sourceTree = "<group>";
@@ -1310,6 +1313,8 @@
 				FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */,
 				FBB47BAA2A46E13100B059B5 /* BankConfrimAlert.h */,
 				FBB47BAB2A46E13100B059B5 /* BankConfrimAlert.m */,
+				DBB28EDF2A77E489004F7103 /* LogOutAlert.h */,
+				DBB28EE02A77E489004F7103 /* LogOutAlert.m */,
 				FBB47BB12A4718E300B059B5 /* PhotoTipAlert.h */,
 				FBB47BB22A4718E300B059B5 /* PhotoTipAlert.m */,
 				FBB47BB42A47223500B059B5 /* AllFailAlert.h */,
@@ -2473,7 +2478,6 @@
 				FBC529152A18FD0B004B7721 /* UIView+LinearGradient.m in Sources */,
 				FB8AF3212A088AC5006C5887 /* SLFPlaceHolderTextView.m in Sources */,
 				FB8E58C52A409FA400ABF355 /* BasicDataModel.m in Sources */,
-				DBB795B92A7369EA00A59DC8 /* AESEnrypt.m in Sources */,
 				FBB47BAC2A46E13100B059B5 /* BankConfrimAlert.m in Sources */,
 				FBBE46672A41E7CE0049C6F6 /* NSDate+CXCategory.m in Sources */,
 				FB06D0B42A4589E900272F5A /* HomeDetailView.m in Sources */,
@@ -2491,6 +2495,7 @@
 				FBED3B572A5916CD00EB5771 /* AccesoPermisosView.m in Sources */,
 				FB976D4B2A05124900B1C0A3 /* main.m in Sources */,
 				FBB47BB62A47223500B059B5 /* AllFailAlert.m in Sources */,
+				DB9C46EF2A77BE13009C5638 /* AESCGMEnrypt.m in Sources */,
 				FB107B572A3D8BA10099C52B /* bankcardCell.m in Sources */,
 				FB2ABD532A358E1D00B7073D /* PayTypeModel.m in Sources */,
 				A40B4CB72A2C706B001B11F0 /* PMCerViewCell.m in Sources */,
@@ -2528,6 +2533,7 @@
 				A4DD5E622A21FFE400451413 /* CRBoxInputCell.m in Sources */,
 				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				FBD4B2D92A3EDD5800E136D5 /* LNLogger.m in Sources */,
+				DBB28EE12A77E489004F7103 /* LogOutAlert.m in Sources */,
 				FB06D0B72A4593C400272F5A /* PrivacyVC.m in Sources */,
 				A4DD5E352A21EA0600451413 /* PMLoginHeaderView.m in Sources */,
 				FB7BC86A2A2AE576000BB3ED /* UIView+WhenTappedBlocks.m in Sources */,

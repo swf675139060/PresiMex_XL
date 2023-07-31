@@ -342,10 +342,12 @@
         [self.PagarBtn setTitle:@"Desembolso" forState:UIControlStateNormal];
         self.stateLB.text = @"Espere pacientemente";
     }else if ([model.lexus integerValue] == 0 || [model.lexus integerValue] == 10){
-        //橘黄色:耐心等待/正在审查中
-        self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#FC7500"] colorWithAlphaComponent:0.1];
-        [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#FC7500"]];
-        self.stateLB.textColor = [UIColor jk_colorWithHexString:@"#FC7500"];
+        //灰色:耐心等待/正在审查中
+        [_userName setTextColor:[UIColor jk_colorWithHexString:@"#1B1200"]];
+    
+        self.topBGview.backgroundColor = [[UIColor jk_colorWithHexString:@"#F5F5F5"] colorWithAlphaComponent:0.1];
+        [self.PagarBtn setBackgroundColor:[UIColor jk_colorWithHexString:@"#CCCCCC"]];
+        self.stateLB.textColor = [UIColor jk_colorWithHexString:@"#7C7C7C"];
         
         [self.PagarBtn setTitle:@"Bajo revisión" forState:UIControlStateNormal];
         self.stateLB.text = @"Espere pacientemente";

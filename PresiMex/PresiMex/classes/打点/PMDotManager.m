@@ -8,7 +8,7 @@
 #import "PMDotManager.h"
 #import "PMDotConfigModel.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import "AESEnrypt.h"
+#import "AESCGMEnrypt.h"
 
 @interface PMDotManager()
 @property(strong, nonatomic) PMDotConfigModel * configModel;
@@ -87,41 +87,35 @@
 
 -(void)POSTDotACQ40Withvalue:(PMACQInfoModel *)InfoModel{
     PMACQManager * ACQManager= [PMACQManager sharedInstance];
-//    [ACQManager creatACQModel40];
     [ACQManager.ACQModel40.value addObject:InfoModel];
     ACQManager.ACQModel40.create_time = [PMACQManager GetTimestampString];
-    [self POSTDotType:40 value:[ACQManager.ACQModel40 mj_JSONObject]];
+    [self POSTDotType:40 value:[PMACQInfoModel mj_keyValuesArrayWithObjectArray:ACQManager.ACQModel40.value]];
+    [ACQManager.ACQModel40.value removeAllObjects];
 }
 
 -(void)POSTDotACQ50Withvalue:(PMACQInfoModel *)InfoModel{
     
     PMACQManager * ACQManager= [PMACQManager sharedInstance];
-//    [ACQManager creatACQModel50];
     [ACQManager.ACQModel50.value addObject:InfoModel];
-//    if (self.configModel) {
-//        if (ACQManager.ACQModel50.value.count >= [self.configModel.cogsqqv intValue]) {
-//            ACQManager.ACQModel50.create_time = [PMACQManager GetTimestampString];
-//
-            [self POSTDotType:50 value:[ACQManager.ACQModel50 mj_keyValues]];
-//        }
-//    }
+    
+    [self POSTDotType:50 value:[PMACQInfoModel mj_keyValuesArrayWithObjectArray:ACQManager.ACQModel50.value]];
     
 }
 
 -(void)POSTDotACQ60Withvalue:(PMACQInfoModel *)InfoModel{
     
     PMACQManager * ACQManager= [PMACQManager sharedInstance];
-//    [ACQManager creatACQModel60];
     [ACQManager.ACQModel60.value addObject:InfoModel];
     ACQManager.ACQModel60.create_time = [PMACQManager GetTimestampString];
-    [self POSTDotType:60 value:[ACQManager.ACQModel60 mj_JSONObject]];
+    [self POSTDotType:60 value:[PMACQInfoModel mj_keyValuesArrayWithObjectArray:ACQManager.ACQModel60.value]];
+    [ACQManager.ACQModel60.value removeAllObjects];
 }
 
 //埋点数据存库接口
 
 //type 10用户注册 20打开app客户端 30用户登录 40联系人上传后 50acq客户端缓存满20条 60用户点击申请借款后 70间隔1小时
 
--(void)POSTDotType:(NSInteger)type value:(NSDictionary *)valueDic{
+-(void)POSTDotType:(NSInteger)type value:(id )valueDic{
     //未登陆不打点
     if (![PMAccountTool isLogin]){
         return;
@@ -132,12 +126,12 @@
         if (type == 50) {
             
             PMACQManager * ACQManager= [PMACQManager sharedInstance];
-//            if (ACQManager.ACQModel50.value.count >= [ConfigModel.cogsqqv intValue]) {
+            if (ACQManager.ACQModel50.value.count >= [ConfigModel.cogsqqv intValue]) {
                 ACQManager.ACQModel50.create_time = [PMACQManager GetTimestampString];
-                
-//            }else{
-//                return;
-//            }
+                [ACQManager.ACQModel50.value removeAllObjects];
+            }else{
+                return;
+            }
         }
         
         NSMutableDictionary *pars=[NSMutableDictionary dictionary];
@@ -185,7 +179,7 @@
  
 }
 
--(NSString *)dicToBase64:(NSDictionary*)dic{
+-(NSString *)dicToBase64:(id)dic{
     //0.dic ->jsonData
     NSError *error = nil;
     
@@ -198,8 +192,7 @@
     NSString* jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     //1jsonString ->AES/GCM/NoPadding
-    NSString * Base64 = [AESEnrypt AES128Encrypt:jsonString gkey:self.configModel.cnmwd];
-    
+    NSString * Base64 =[AESCGMEnrypt encryptAESCBC:jsonString withKey:self.configModel.cnmwd];
     return Base64;
 //    NSData *iv = [@"0000000000000000" dataUsingEncoding:NSUTF8StringEncoding];
 //    NSData *keydata = [self.configModel.cnmwd dataUsingEncoding:NSUTF8StringEncoding];

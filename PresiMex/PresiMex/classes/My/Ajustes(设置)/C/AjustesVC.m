@@ -8,6 +8,7 @@
 #import "AjustesVC.h"
 #import "WFSetCell.h"
 #import "WFBtnCell.h"
+#import "LogOutAlert.h"
 
 @interface AjustesVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -52,7 +53,7 @@
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         WF_WEAKSELF(weakself);
         [cell setClickBtnBlock:^{
-            [weakself GetUserLogOut];
+            [weakself showLogOutAlert];
         }];
         
         [cell.btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor,(id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
@@ -70,6 +71,23 @@
 //    [tableView deselectRowAtIndexPath:indexPath animated:true];
     
     
+}
+
+// 弹出框
+-(void)showLogOutAlert{
+ 
+    LogOutAlert * alert = [[LogOutAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 210) withType:0];
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^(NSInteger indx) {
+        
+        [AlertView dismiss];
+        if (indx == 0) {
+        } else {
+            [weakself GetUserLogOut];
+        }
+    }];
 }
 
 -(void)clickBtn{

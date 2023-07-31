@@ -58,8 +58,8 @@
             filePath = "PresiMex/classes/&#x6253;&#x70b9;/PMDotManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-POSTDotType:value:"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,8 +202,8 @@
             filePath = "PresiMex/classes/&#x6253;&#x70b9;/PMDotManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "-POSTDotCrashDic:"
             landmarkType = "7">
          </BreakpointContent>
@@ -285,6 +285,38 @@
             startingLineNumber = "446"
             endingLineNumber = "446"
             landmarkName = "-showAuthWaiting"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "659A2F46-E356-4BDA-AA02-A6C9B515BFC7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x6253;&#x70b9;/PMDotManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "-POSTDotType:value:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "829C4B80-0878-44DF-87DA-B5E9B9930C28"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x6253;&#x70b9;/PMDotManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-POSTDotType:value:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
