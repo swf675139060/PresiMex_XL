@@ -49,9 +49,13 @@
         if (indx == 0) {
             [weakself.navigationController popViewControllerAnimated:YES];
         } else {
-            
+            [weakself clickSubmitBtn];
         }
     }];
+    
+    
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_exit_retention content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+      [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 }
 
 
@@ -87,7 +91,7 @@
     [self.dataArray addObject:model2];
     
     PMCerModel *model3 = [PMCerModel new];
-    model3.title     = @"Contactos de emergen";
+    model3.title     = @"Contactos de emergencia";
     model3.iconName=@"cer_icon_3";
     [self.dataArray addObject:model3];
     

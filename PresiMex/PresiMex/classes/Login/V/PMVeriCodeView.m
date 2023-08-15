@@ -117,7 +117,9 @@
     }];
     
     UILabel *desLabel2 = [[UILabel alloc] init];
+    desLabel2.hidden = YES;
     [self addSubview:desLabel2];
+    self.desLabel2 = desLabel2;
     desLabel2.textAlignment=NSTextAlignmentCenter;
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:@"¿No ha recibido el código? Intente con un código de voz."attributes: @{NSFontAttributeName:B_FONT_REGULAR(11),NSForegroundColorAttributeName: BColor_Hex(@"#7C7C7C", 1)}];
     NSRange range=[[attStr string]rangeOfString:@"Intente con un código de voz."];

@@ -19,10 +19,13 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <sys/utsname.h>
 #import <mach/mach.h>
-
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
 
 #import <SystemConfiguration/SCNetworkReachability.h>
 
+#import <dlfcn.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 typedef NS_ENUM(NSUInteger, NetworkType) {
     NetworkTypeNone,  // 无网络连接
     NetworkTypeWifi,  // Wifi网络
@@ -63,14 +66,15 @@ typedef NS_ENUM(NSUInteger, NetworkType) {
 
 
 -(void)GetDate{
-    
+
     self.batteryPct = [self getBatteryLevel];//电池百分比
     self.batteryState = [self getBatteryState];//ios系统字段，电池充电状态
     self.currentSystemTime = [NSString stringWithFormat:@"%ld",(long)[self getCurrentTime]];//设备当前时间
     self.elapsedRealTime= [NSString stringWithFormat:@"%.0f",[self getUptimeMillis]];//，开机时间到现在的毫秒数（包括睡眠时间）
     self.isUsingProxyPort = [NSString stringWithFormat:@"%d",[self isUsingProxy]];//，是否使用代理
     self.isUsingVpn = [NSString stringWithFormat:@"%d",[self isUsingVPN]];//是否使用vpn
-//    self.mac;//设备物理地址
+//    self.mac = [self getUUID];//设备物理地址
+    self.uuid = [self getUUID];
     self.networkOperatorName =[self getCarrierName];//网络运营商名称
     self.networkType =[self getNetworkType];//网络类型 2G、3G、4G、5G、wifi、other、none
     self.phoneType =  [self getPhoneType];//表示用于传输语音呼叫的无线电的类型
@@ -94,32 +98,35 @@ typedef NS_ENUM(NSUInteger, NetworkType) {
     self.wiredMemory = [self getWiredMemory];//ios系统字段，保留内存
     self.usedMemory = [self getUsedMemory];//ios系统字段，已用内存
     self.keyboard = [self getKeyboardType];//连接到设备的键盘种类
-    self.lastBootTime = [self getLastActiveTime];//最后一次启动时间
+    self.lastBootTime = [self getLastBootTime];//最后一次启动时间
     self.rootJailbreak = [NSString stringWithFormat:@"%d",[self isJailbroken]];//是否root
     self.simulator = [NSString stringWithFormat:@"%d",[self isSimulator]];//是否为模拟器
-//    self.dbmClass = [self dbmClass];//ios系统字段，手机信号强度
+    self.dbmClass = [NSString stringWithFormat:@"%d",[self getSignalStrength]];//ios系统字段，手机信号强度
     self.createTime = [self getCaptureTime];//抓取时间
+    self.downloadFiles = [self getDownloadedFilesCountAsString];
     self.osType = @"ios";//设备系统类型 android/ios
     self.osVersion = [self getOSVersion];//设备系统版本
     self.longitude = [PMLocationManager sharedInstance].longitude;//经度
     self.latitude = [PMLocationManager sharedInstance].latitude;//纬度
     self.battery = [self getBatteryLevel];//电量（剩余电量百分比）
 //    self. self.登陆，用户登录长期有效的就可以取最后一次退出app的时间）
+    self.lastLoginTime = [self getFirstLoginTimeString];
+    self.picCount = [self getPhotoCountAsString];
     self.memory = [self getTotalMemory];//内存大小2.75 G/200 MB/20123 KB（值与ramTotalSize一样）
     self.storage = [self getTotalStorage];//存储空间总大小
     self.unuseStorage = [self getFreeStorage];//未使用的存储空间总大小
     self.wifi =  [self isWifi];//是否wifi
-    self.wifiName = [self getWifiName];//wifi名称
+//    self.wifiName = [self getWifiName];//wifi名称
     self.resolution = [self getScreenResolution];//屏幕分辨率
     self.idfv = [self getIDFV];//ios系统idfv
-    self.idfa = [self getIDFA];//ios系统idfaget
-//    self.* audio;//ios系统字段，音频文件个数
-//    self. self.用版本号对应的技术编码，CFBundleVersionBundle
+    [self getIDFA];//ios系统idfaget
+    self.audio = [self getAudioFileCountAsString];//ios系统字段，音频文件个数
+    self.shortVersionString = [self CFBundleIdentifier]; //self.用版本号对应的技术编码，CFBundleVersionBundle
     self.version = [self getOSVersion];//ios系统字段，APP版本，CFBundleShortVersionString
     self.bundleId = [self getBundleID];//ios系统字段，包名
     self.appName = [self getAppName];//ios系统字段，app名称
     self.developmentRegion = [self getDevelopmentLanguage];//ios系统字段，开发语言
-//    self.* video;//ios系统字段，视频文件个数
+    self.video = [self getVideoFileCountAsString];//ios系统字段，视频文件个数
     self.gpsAddressStreet = [PMLocationManager sharedInstance].gpsAddressStreet;//ios系统字段，GPS地址街道
     self.gpsAddressProvince = [PMLocationManager sharedInstance].gpsAddressProvince;//ios系统字段，GPS地址省份
     self.gpsAddressCity = [PMLocationManager sharedInstance].gpsAddressCity;//ios系统字段，GPS地址城市
@@ -127,18 +134,218 @@ typedef NS_ENUM(NSUInteger, NetworkType) {
     self.activeProcessorCount = @"1";//活跃进程数量
     self.processorCount = [NSString stringWithFormat:@"%@",[self getProcessCount]];//进程数量
     self.physicalMemory = [self getPhysicalMemory];//物理内存
-//    self.* processIdentifier;//进程ID
+    self.processIdentifier = [self getProcessIdentifierAsString];//进程ID
     self.hostName = [self getHostName];//主机名称
-//    self.* environment;//运行环境
-//    self.* arguments;//运行参数
+    self.environment = [self getRuntimeEnvironment];//运行环境
+    self.arguments = [self getRuntimeArgumentsAsString];//运行参数
     self.globallyUniqueString = [self getUUID];//全局唯一ID
     self.operatingSystemVersionString = [self getOperatingSystemVersionString];//操作系统字符串
     self.systemUptime = [self getSystemUptime];//系统开机时间
     self.thermalState = [self getThermalState];//热状态
     self.lowPowerModeEnabled = [self getLowPowerMode];//是否开启低电量模式
-    
+
 }
 
+//-(void)GG{
+//    if(@available(iOS13.0, *)) {
+//
+//            NSArray *arr = [UIApplication sharedApplication].connectedScenes.allObjects;
+//
+//            UIWindowScene*scene = arr.firstObject;
+//
+//            UIStatusBarManager*statusBarManager = scene.statusBarManager;
+//
+//            id statusBar =nil;
+//
+//            if([statusBarManagerrespondsToSelector:@selector(createLocalStatusBar)]) {
+//
+//                UIView*localStatusBar = [statusBarManagerperformSelector:@selector(createLocalStatusBar)];
+//
+//                if([localStatusBarrespondsToSelector:@selector(statusBar)]) {
+//
+//                    statusBar = [localStatusBarperformSelector:@selector(statusBar)];
+//
+//                }
+//
+//            }
+//
+//            if(statusBar) {
+//
+//                idcurrentData = [[statusBarvalueForKeyPath:@"_statusBar"]valueForKeyPath:@"currentData"];
+//
+//                idcellularEntry = [currentDatavalueForKeyPath:@"cellularEntry"];           if([cellularEntryisKindOfClass:NSClassFromString(@"_UIStatusBarDataIntegerEntry")]) {
+//
+//                    signalStrength = [[cellularEntryvalueForKey:@"displayValue"]intValue];
+//
+//                }
+//
+//            }
+//
+//        }
+//
+//
+//
+//    iOS13以下系统获取信号强度
+//        UIApplication *app = [UIApplication sharedApplication];
+//
+//        NSArray*subviews = [[[appvalueForKey:@"statusBar"]valueForKey:@"foregroundView"]subviews];
+//
+//        NSString*dataNetworkItemView =nil;
+//
+//        for(idsubviewinsubviews) {
+//
+//            if([subview isKindOfClass:[NSClassFromString(@"UIStatusBarSignalStrengthItemView") class]])
+//
+//            {
+//
+//                dataNetworkItemView = subview;
+//
+//                break;
+//
+//            }
+//
+//        }
+//
+//        NSIntegersignalStrength = [[dataNetworkItemViewvalueForKey:@"signalStrengthRaw"]intValue];
+//
+//        NSString*signalStrengthStr = [NSStringstringWithFormat:@"%lddBm",(long)signalStrength];
+//
+//    作者：花式写法
+//    链接：https://www.jianshu.com/p/cfecd2cb2e05
+//    来源：简书
+//    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//}
+- (NSString *)getRuntimeArgumentsAsString {
+    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+    NSArray<NSString *> *arguments = processInfo.arguments;
+    NSString *argumentsString = [arguments componentsJoinedByString:@" "];
+    return argumentsString;
+}
+- (NSString *)getRuntimeEnvironment {
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    NSString *deviceModel = currentDevice.model;
+    NSString *systemName = currentDevice.systemName;
+    NSString *systemVersion = currentDevice.systemVersion;
+    
+    NSString *environment = [NSString stringWithFormat:@"Device: %@, OS: %@ %@", deviceModel, systemName, systemVersion];
+    return environment;
+}
+- (NSString *)getProcessIdentifierAsString {
+    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+    NSInteger processIdentifier = processInfo.processIdentifier;
+    NSString *processIdentifierString = [NSString stringWithFormat:@"%ld", (long)processIdentifier];
+    return processIdentifierString;
+}
+
+- (NSString *)getVideoFileCountAsString {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *documentsURL = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+    
+    NSArray *videoFileExtensions = @[@"mp4", @"mov", @"avi", @"mkv"];
+    NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtURL:documentsURL
+                                          includingPropertiesForKeys:@[NSURLIsDirectoryKey]
+                                                             options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                        errorHandler:nil];
+    
+    NSInteger videoFileCount = 0;
+    for (NSURL *fileURL in enumerator) {
+        NSString *fileExtension = fileURL.pathExtension.lowercaseString;
+        if ([videoFileExtensions containsObject:fileExtension]) {
+            videoFileCount++;
+        }
+    }
+    
+    NSString *countString = [NSString stringWithFormat:@"%ld", (long)videoFileCount];
+    return countString;
+}
+-(NSString *)CFBundleIdentifier{
+   NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appId = [infoDictionary objectForKey:@"CFBundleIdentifier"];
+    return appId;
+}
+- (NSString *)getAudioFileCountAsString {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *documentsURL = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+
+    NSArray *audioFileExtensions = @[@"mp3", @"m4a", @"wav", @"aac"];
+    NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtURL:documentsURL
+                                          includingPropertiesForKeys:@[NSURLIsDirectoryKey]
+                                                             options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                        errorHandler:nil];
+
+    NSInteger audioFileCount = 0;
+    for (NSURL *fileURL in enumerator) {
+        NSString *fileExtension = fileURL.pathExtension.lowercaseString;
+        if ([audioFileExtensions containsObject:fileExtension]) {
+            audioFileCount++;
+        }
+    }
+
+    NSString *countString = [NSString stringWithFormat:@"%ld", (long)audioFileCount];
+    return countString;
+}
+
+- (NSString *)getPhotoCountAsString {
+    
+    if (![self canUserLibrary]) {
+        return @"0";
+    } else {
+        PHFetchResult *fetchResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:nil];
+        NSInteger photoCount = fetchResult.count;
+        NSString *countString = [NSString stringWithFormat:@"%ld", (long)photoCount];
+        return countString;
+    }
+    
+
+}
+#pragma mark - 检查相册权限
+-(BOOL)canUserLibrary{
+    PHAuthorizationStatus authStatus = [PHPhotoLibrary authorizationStatus];
+    if (@available(iOS 14, *)) {
+        if ((authStatus == PHAuthorizationStatusAuthorized)|(authStatus == PHAuthorizationStatusLimited)) {
+            return YES;
+        }else{
+            return NO;
+        }
+    } else {
+        if (authStatus == PHAuthorizationStatusAuthorized) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
+}
+
+- (NSString *)getFirstLoginTimeString {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDate *firstLoginTime = [userDefaults objectForKey:@"FirstLoginTime"];
+    if(!firstLoginTime){
+        firstLoginTime = [NSDate new];
+    }
+    
+    return [NSString stringWithFormat:@"%f",firstLoginTime.timeIntervalSince1970];
+    
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//        NSString *firstLoginTimeString = [dateFormatter stringFromDate:firstLoginTime];
+//        return firstLoginTimeString;
+ 
+}
+- (NSString *)getDownloadedFilesCountAsString {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *downloadDirectory = [NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES) firstObject];
+    
+    NSError *error;
+    NSArray *files = [fileManager contentsOfDirectoryAtPath:downloadDirectory error:&error];
+    
+    if (error) {
+        NSLog(@"Error accessing download directory: %@", error.localizedDescription);
+        return @"0";
+    }
+    
+    NSString *countString = [NSString stringWithFormat:@"%lu", (unsigned long)files.count];
+    return countString;
+}
 // 获取电池充电状态
 - (NSString *)getBatteryState {
     UIDevice *device = [UIDevice currentDevice];
@@ -176,6 +383,114 @@ typedef NS_ENUM(NSUInteger, NetworkType) {
     return usingVPN;
 }
 
+
+/*
+ * 获取设备物理地址
+ */
+//- (nullable NSString *)getMacAddress {
+//    res_9_init();
+//    int len;
+//    //get currnet ip address
+//    NSString *ip = [self currentIPAddressOf:IOS_WIFI];
+//    if(ip == nil) {
+//        fprintf(stderr, "could not get current IP address of en0\n");
+//        return DUMMY_MAC_ADDR;
+//    }//end if
+//
+//    //set port and destination
+//    _res.nsaddr_list[0].sin_family = AF_INET;
+//    _res.nsaddr_list[0].sin_port = htons(MDNS_PORT);
+//    _res.nsaddr_list[0].sin_addr.s_addr = [self IPv4Pton:ip];
+//    _res.nscount = 1;
+//
+//    unsigned char response[NS_PACKETSZ];
+//
+//
+//    //send mdns query
+//    if((len = res_9_query(QUERY_NAME, ns_c_in, ns_t_ptr, response, sizeof(response))) < 0) {
+//
+//        fprintf(stderr, "res_search(): %s\n", hstrerror(h_errno));
+//        return DUMMY_MAC_ADDR;
+//    }//end if
+//
+//    //parse mdns message
+//    ns_msg handle;
+//    if(ns_initparse(response, len, &handle) < 0) {
+//        fprintf(stderr, "ns_initparse(): %s\n", hstrerror(h_errno));
+//        return DUMMY_MAC_ADDR;
+//    }//end if
+//
+//    //get answer length
+//    len = ns_msg_count(handle, ns_s_an);
+//    if(len < 0) {
+//        fprintf(stderr, "ns_msg_count return zero\n");
+//        return DUMMY_MAC_ADDR;
+//    }//end if
+//
+//    //try to get mac address from data
+//    NSString *macAddress = nil;
+//    for(int i = 0 ; i < len ; i++) {
+//        ns_rr rr;
+//        ns_parserr(&handle, ns_s_an, 0, &rr);
+//
+//        if(ns_rr_class(rr) == ns_c_in &&
+//           ns_rr_type(rr) == ns_t_ptr &&
+//           !strcmp(ns_rr_name(rr), QUERY_NAME)) {
+//            char *ptr = (char *)(ns_rr_rdata(rr) + 1);
+//            int l = (int)strcspn(ptr, "@");
+//
+//            char *tmp = calloc(l + 1, sizeof(char));
+//            if(!tmp) {
+//                perror("calloc()");
+//                continue;
+//            }//end if
+//            memcpy(tmp, ptr, l);
+//            macAddress = [NSString stringWithUTF8String:tmp];
+//            free(tmp);
+//        }//end if
+//    }//end for each
+//    macAddress = macAddress ? macAddress : DUMMY_MAC_ADDR;
+//    return macAddress;
+//}//end getMacAddressFromMDNS
+
+
+
+//- (nonnull NSString *)currentIPAddressOf: (nonnull NSString *)device {
+//    struct ifaddrs *addrs;
+//    NSString *ipAddress = nil;
+//
+//    if(getifaddrs(&addrs) != 0) {
+//        return nil;
+//    }//end if
+//
+//    //get ipv4 address
+//    for(struct ifaddrs *addr = addrs ; addr ; addr = addr->ifa_next) {
+//        if(!strcmp(addr->ifa_name, [device UTF8String])) {
+//            if(addr->ifa_addr) {
+//                struct sockaddr_in *in_addr = (struct sockaddr_in *)addr->ifa_addr;
+//                if(in_addr->sin_family == AF_INET) {
+//                    ipAddress = [self IPv4Ntop:in_addr->sin_addr.s_addr];
+//                    break;
+//                }//end if
+//            }//end if
+//        }//end if
+//    }//end for
+//
+//    freeifaddrs(addrs);
+//    return ipAddress;
+//}//end currentIPAddressOf:
+//
+//- (nullable NSString *)IPv4Ntop: (in_addr_t)addr {
+//    char buffer[INET_ADDRSTRLEN] = {0};
+//    return inet_ntop(AF_INET, &addr, buffer, sizeof(buffer)) ?
+//    [NSString stringWithUTF8String:buffer] : nil;
+//}//end IPv4Ntop:
+//
+//- (in_addr_t)IPv4Pton: (nonnull NSString *)IPAddr {
+//    in_addr_t network = INADDR_NONE;
+//    return inet_pton(AF_INET, [IPAddr UTF8String], &network) == 1 ?
+//    network : INADDR_NONE;
+//}//end IPv4Pton:
 
 // 获取网络运营商名称
 - (NSString *)getCarrierName {
@@ -292,117 +607,97 @@ static NSString * notReachable = @"none";
 }
 
 
-
-//- (NSString *)currentNetworkType {
-//    NetworkType networkType = NetworkTypeNone;  // 默认无网络连接
-//
-//    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-//    if (@available(iOS 12.0, *)) {
-//        NSString *currentRadioAccessTechnology = nil;
-//        NSDictionary *radioTechDict = networkInfo.serviceCurrentRadioAccessTechnology;
-//        if (radioTechDict) {
-//            currentRadioAccessTechnology = radioTechDict.allValues.firstObject;
-//        }
-//        if (currentRadioAccessTechnology) {
-//            if ([currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyGPRS] ||
-//                [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyEdge] ||
-//                [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyCDMA1x]) {
-//                networkType = NetworkType2G;
-//            } else if ([currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyWCDMA] ||
-//                       [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyHSDPA] ||
-//                       [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyHSUPA] ||
-//                       [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyCDMAEVDORev0] ||
-//                       [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyCDMAEVDORevA] ||
-//                       [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyCDMAEVDORevB] ||
-//                       [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyeHRPD]) {
-//                networkType = NetworkType3G;
-//            } else if ([currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyLTE]) {
-//                if (@available(iOS 14.1, *)) {
-//                    if ([currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyNRNSA] ||
-//                        [currentRadioAccessTechnology isEqualToString:CTRadioAccessTechnologyNR]) {
-//                        networkType = NetworkType5G;
-//                    } else {
-//                        networkType = NetworkType4G;
-//                    }
-//                } else {
-//                    networkType = NetworkType4G;
-//                }
-//            }
-//        }
-//    } else {
-//        // Fallback on earlier versions
-//    }
-//
-//    if (networkType == NetworkTypeNone) {
-//        AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
-//        __block BOOL isWifiConnected = NO;  // 使用__block修饰符
-//
-//        __weak typeof(reachabilityManager) weakManager = reachabilityManager;  // 避免引起循环引用
-//
-//        [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//            switch (status) {
-//                case AFNetworkReachabilityStatusReachableViaWiFi:
-//                    isWifiConnected = YES;
-//                    break;
-//                default:
-//                    break;
-//            }
-//
-//            __strong typeof(weakManager) strongManager = weakManager;  // 避免引起循环引用
-//            [strongManager stopMonitoring];  // 停止监视网络状态
-//        }];
-//
-//        [reachabilityManager startMonitoring];  // 开始监视网络状态
-//
-//        if (isWifiConnected) {
-//            networkType = NetworkTypeWifi;
-//        } else {
-//            networkType = NetworkTypeOther;
-//        }
-//    }
-//
-//    NSString *networkTypeString = @"";
-//    switch (networkType) {
-//        case NetworkTypeNone:
-//            networkTypeString = @"none";
-//            break;
-//        case NetworkTypeWifi:
-//            networkTypeString = @"Wifi";
-//            break;
-//        case NetworkType2G:
-//            networkTypeString = @"2G";
-//            break;
-//        case NetworkType3G:
-//            networkTypeString = @"3G";
-//            break;
-//        case NetworkType4G:
-//            networkTypeString = @"4G";
-//            break;
-//        case NetworkType5G:
-//            networkTypeString = @"5G";
-//            break;
-//        case NetworkTypeOther:
-//        default:
-//            networkTypeString = @"other";
-//            break;
-//    }
-//
-//    return networkTypeString;
-//}
-
 // 获取设备电话类型的常量
 - (NSString *)getPhoneType {
-    NSString *phoneType = [[UIDevice currentDevice] model];
-    return phoneType;
+    
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
+    if ([platform isEqualToString:@"iPhone1,1"]) return @"iPhone 2G";
+    if ([platform isEqualToString:@"iPhone1,2"]) return @"iPhone 3G";
+    if ([platform isEqualToString:@"iPhone2,1"]) return @"iPhone 3GS";
+    if ([platform isEqualToString:@"iPhone3,1"]) return @"iPhone 4";
+    if ([platform isEqualToString:@"iPhone3,2"]) return @"iPhone 4";
+    if ([platform isEqualToString:@"iPhone3,3"]) return @"iPhone 4";
+    if ([platform isEqualToString:@"iPhone4,1"]) return @"iPhone 4S";
+    if ([platform isEqualToString:@"iPhone5,1"]) return @"iPhone 5";
+    if ([platform isEqualToString:@"iPhone5,2"]) return @"iPhone 5";
+    if ([platform isEqualToString:@"iPhone5,3"]) return @"iPhone 5c";
+    if ([platform isEqualToString:@"iPhone5,4"]) return @"iPhone 5c";
+    if ([platform isEqualToString:@"iPhone6,1"]) return @"iPhone 5s";
+    if ([platform isEqualToString:@"iPhone6,2"]) return @"iPhone 5s";
+    if ([platform isEqualToString:@"iPhone7,1"]) return @"iPhone 6 Plus";
+    if ([platform isEqualToString:@"iPhone7,2"]) return @"iPhone 6";
+    if ([platform isEqualToString:@"iPhone8,1"]) return @"iPhone 6s";
+    if ([platform isEqualToString:@"iPhone8,2"]) return @"iPhone 6s Plus";
+    if ([platform isEqualToString:@"iPhone8,4"]) return @"iPhone SE";
+    if ([platform isEqualToString:@"iPhone9,1"]) return @"iPhone 7";
+    if ([platform isEqualToString:@"iPhone9,2"]) return @"iPhone 7 Plus";
+    if([platform isEqualToString:@"iPhone10,1"]) return @"iPhone 8";
+    if([platform isEqualToString:@"iPhone10,4"]) return @"iPhone 8";
+    if([platform isEqualToString:@"iPhone10,2"]) return @"iPhone 8 Plus";
+    if([platform isEqualToString:@"iPhone10,5"]) return @"iPhone 8 Plus";
+    if([platform isEqualToString:@"iPhone10,3"]) return @"iPhone X";
+    if([platform isEqualToString:@"iPhone10,6"]) return @"iPhone X";
+    if ([platform isEqualToString:@"iPhone11,8"]) return @"iPhone XR";
+    if ([platform isEqualToString:@"iPhone11,2"]) return @"iPhone XS";
+    if ([platform isEqualToString:@"iPhone11,6"]) return @"iPhone XS Max";
+    if ([platform isEqualToString:@"iPhone11,4"]) return @"iPhone XS Max";
+    if ([platform isEqualToString:@"iPhone12,1"]) return @"iPhone 11";
+    if ([platform isEqualToString:@"iPhone12,3"]) return @"iPhone 11 Pro";
+    if ([platform isEqualToString:@"iPhone12,5"]) return @"iPhone 11 Pro Max";
+    if ([platform isEqualToString:@"iPhone12,8"]) return @"iPhone SE(2nd generation)";
+    if ([platform isEqualToString:@"iPhone13,1"]) return @"iPhone 12 mini";
+    if ([platform isEqualToString:@"iPhone13,2"]) return @"iPhone 12";
+    if ([platform isEqualToString:@"iPhone13,3"]) return @"iPhone 12 Pro";
+    if ([platform isEqualToString:@"iPhone13,4"]) return @"iPhone 12 Pro Max";
+    if ([platform isEqualToString:@"iPod1,1"]) return @"iPod Touch 1G";
+    if ([platform isEqualToString:@"iPod2,1"]) return @"iPod Touch 2G";
+    if ([platform isEqualToString:@"iPod3,1"]) return @"iPod Touch 3G";
+    if ([platform isEqualToString:@"iPod4,1"]) return @"iPod Touch 4G";
+    if ([platform isEqualToString:@"iPod5,1"]) return @"iPod Touch 5G";
+    if ([platform isEqualToString:@"iPad1,1"]) return @"iPad 1G";
+    if ([platform isEqualToString:@"iPad2,1"]) return @"iPad 2";
+    if ([platform isEqualToString:@"iPad2,2"]) return @"iPad 2";
+    if ([platform isEqualToString:@"iPad2,3"]) return @"iPad 2";
+    if ([platform isEqualToString:@"iPad2,4"]) return @"iPad 2";
+    if ([platform isEqualToString:@"iPad2,5"]) return @"iPad Mini 1G";
+    if ([platform isEqualToString:@"iPad2,6"]) return @"iPad Mini 1G";
+    if ([platform isEqualToString:@"iPad2,7"]) return @"iPad Mini 1G";
+    if ([platform isEqualToString:@"iPad3,1"]) return @"iPad 3";
+    if ([platform isEqualToString:@"iPad3,2"]) return @"iPad 3";
+    if ([platform isEqualToString:@"iPad3,3"]) return @"iPad 3";
+    if ([platform isEqualToString:@"iPad3,4"]) return @"iPad 4";
+    if ([platform isEqualToString:@"iPad3,5"]) return @"iPad 4";
+    if ([platform isEqualToString:@"iPad3,6"]) return @"iPad 4";
+    if ([platform isEqualToString:@"iPad4,1"]) return @"iPad Air";
+    if ([platform isEqualToString:@"iPad4,2"]) return @"iPad Air";
+    if ([platform isEqualToString:@"iPad4,3"]) return @"iPad Air";
+    if ([platform isEqualToString:@"iPad4,4"]) return @"iPad Mini 2G";
+    if ([platform isEqualToString:@"iPad4,5"]) return @"iPad Mini 2G";
+    if ([platform isEqualToString:@"iPad4,6"]) return @"iPad Mini 2G";
+    if ([platform isEqualToString:@"i386"]) return @"iPhone Simulator";
+    if ([platform isEqualToString:@"x86_64"]) return @"iPhone Simulator";
+    return platform;
 }
 
 
 // 获取运营商无线接入技术
 - (NSString *)getWirelessTechnology {
-    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-    NSString *currentRadioAccessTechnology = networkInfo.currentRadioAccessTechnology;
+    
+    if (@available(iOS 12.0, *)) {
+        NSDictionary *dict = [[[CTTelephonyNetworkInfo alloc] init] serviceCurrentRadioAccessTechnology];
+        NSString * scratString = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding];
+        return scratString;
+    } else {
+        CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
+        NSString *currentRadioAccessTechnology = networkInfo.currentRadioAccessTechnology;
+        return currentRadioAccessTechnology;
+    }
+    
 
-    return currentRadioAccessTechnology;
+
+    
 }
 
 // 获取是否允许VIP
@@ -426,19 +721,20 @@ static NSString * notReachable = @"none";
     return mnc;
 }
 
+- (NSString *)getWifiMacAddress {
+    NSArray *ifs = CFBridgingRelease(CNCopySupportedInterfaces());
+    id info = nil;
+    for (NSString *ifname in ifs) {
+        info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((CFStringRef) ifname);
+        if (info && [info count]) {break;
+            
+        }
+        
+    }
+    NSDictionary *dic = (NSDictionary *)info;NSString *bssid = [dic objectForKey:@"BSSID"];
+    return bssid;
+}
 
-//- (NSString *)getWifiMacAddress {
-//    CWInterface *wifiInterface = [CWWiFiClient sharedWiFiClient].interface;
-//    NSString *macAddress = wifiInterface.hardwareAddress;
-//
-//    if (macAddress) {
-//        // 获取到了MAC地址
-//        return macAddress;
-//    } else {
-//        // 没有获取到MAC地址
-//        return nil;
-//    }
-//}
 
 
 -(CGFloat )getscreenHeight {
@@ -578,16 +874,15 @@ static NSString * notReachable = @"none";
     return [NSString stringWithFormat:@"%ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"AppleKeyboardsExpanded"]];
 }
 
-//+ (NSString *)getLastBootTime {
-//    struct timeval boottime;
-//    size_t len = sizeof(boottime);
-//    int mib[2] = {CTL_KERN, KERN_BOOTTIME};
-//    if (sysctl(mib, 2, &boottime, &len, NULL, 0) != -1) {
-//        time_t bsec = boottime.tv_sec;
-//        return [NSString stringWithFormat:@"%s", ctime(&bsec)];
-//    }
-//    return @"error";
-//}
+- (NSString *)getLastBootTime {
+    NSProcessInfo *info = [NSProcessInfo processInfo];
+        
+        NSTimeInterval timer_ = info.systemUptime;//开机多久
+        NSDate *currentDate = [NSDate new];
+        NSDate *startTime = [currentDate dateByAddingTimeInterval:(timer_)];
+        NSTimeInterval convertStartTimeToSecond = [startTime timeIntervalSince1970];//上次开机时间
+    return  [NSString stringWithFormat:@"%f",convertStartTimeToSecond];
+}
 
 - (BOOL)isJailbroken {
     NSArray *jailbreakApps = @[@"Cydia", @"SBSettings", @"WinterBoard"];
@@ -608,17 +903,23 @@ static NSString * notReachable = @"none";
 }
 
 
-//+ (NSString *)getSignalStrength {
-//    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-//    CTCarrier *carrier = [networkInfo subscriberCellularProvider];
-//    NSString *signalStrength = @"error";
-//    if (carrier != nil) {
-//        NSArray *bars = @[@"0", @"1", @"2", @"3", @"4"];
-//        int signalBars = (int)[bars indexOfObject:networkInfo.serviceCurrentRadioAccessTechnology.signalStrength];
-//        signalStrength = [NSString stringWithFormat:@"%d", signalBars];
-//    }
-//    return signalStrength;
-//}
+//获取网络信号强度（dBm）
+- (int)getSignalStrength{
+    int signalStrength = 0;
+      
+      void *libHandle = dlopen("/System/Library/Frameworks/CoreTelephony.framework/CoreTelephony", RTLD_LAZY);
+      if (libHandle) {
+          int (*CTGetSignalStrength)(void);
+          CTGetSignalStrength = (int (*)(void))dlsym(libHandle, "CTGetSignalStrength");
+          if (CTGetSignalStrength) {
+              signalStrength = CTGetSignalStrength();
+          }
+          dlclose(libHandle);
+      }
+      
+      return signalStrength;
+}
+
 
 - (NSString *)getCaptureTime {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -673,51 +974,40 @@ static NSString * notReachable = @"none";
 - (NSString *)getPhysicalMemory {
     NSProcessInfo *processInfo = [NSProcessInfo processInfo];
     unsigned long long physicalMemory = processInfo.physicalMemory;
-    return [NSByteCountFormatter stringFromByteCount:physicalMemory countStyle:NSByteCountFormatterCountStyleMemory];
+    NSString *memoryString = [NSString stringWithFormat:@"%llu", physicalMemory * 8];
+    return memoryString;
+//    return [NSByteCountFormatter stringFromByteCount:physicalMemory countStyle:NSByteCountFormatterCountStyleMemory];
 }
 
 - (NSString *)getTotalStorage {
     NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
     NSNumber *totalSize = [fileAttributes objectForKey:NSFileSystemSize];
-    return [NSByteCountFormatter stringFromByteCount:totalSize.longLongValue countStyle:NSByteCountFormatterCountStyleBinary];
+    NSString *totalSizeString = [NSString stringWithFormat:@"%llu", [totalSize longLongValue]* 8];
+       return totalSizeString;
+//    return [NSByteCountFormatter stringFromByteCount:totalSize.longLongValue countStyle:NSByteCountFormatterCountStyleBinary];
 }
 
 - (NSString *)getFreeStorage {
     NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
     NSNumber *freeSize = [fileAttributes objectForKey:NSFileSystemFreeSize];
-    return [NSByteCountFormatter stringFromByteCount:freeSize.longLongValue countStyle:NSByteCountFormatterCountStyleBinary];
+    
+    NSString *freeSizeString = [NSString stringWithFormat:@"%llu", [freeSize longLongValue]* 8];
+       return freeSizeString;
+//    return [NSByteCountFormatter stringFromByteCount:freeSize.longLongValue countStyle:NSByteCountFormatterCountStyleBinary];
 }
 
-- (NSString *)getWifiName {
-    NSString *wifiName = @"";
-    NSArray *ifs = (__bridge_transfer NSArray *)CNCopySupportedInterfaces();
-    for (NSString *ifnam in ifs) {
-        NSDictionary *info = (__bridge_transfer NSDictionary *)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
-        if (info[@"SSID"]) {
-            wifiName = info[@"SSID"];
-        }
-    }
-    return wifiName;
-    
-//    NSString *ssid = @"";
-//    NSArray *ifs = (__bridge   id)CNCopySupportedInterfaces();
-//
-//    for (NSString *ifname in ifs) {
-//
-//        NSDictionary *info = (__bridge id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifname);
-//
-//        if (info[@"SSIDD"])
-//
-//         {
-//
-//            ssid = info[@"SSID"];
-//
-//        }
-//
-//    }
-//
-//    return ssid;
-}
+//- (NSString *)getWifiName{
+//    NSString *ssid = nil;
+//      NSArray *interfaceNames = CFBridgingRelease(CNCopySupportedInterfaces());
+//      for (NSString *interfaceName in interfaceNames) {
+//          NSDictionary *networkInfo = CFBridgingRelease(CNCopyCurrentNetworkInfo((__bridge CFStringRef)interfaceName));
+//          if (networkInfo[@"SSID"]) {
+//              ssid = networkInfo[@"SSID"];
+//              break;
+//          }
+//      }
+//      return ssid;
+//}
 
 
 
@@ -759,31 +1049,80 @@ static NSString * notReachable = @"none";
 
 
 - (NSString * )isWifi {
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    BOOL isWiFiEnabled = [AFNetworkReachabilityManager sharedManager].reachableViaWiFi;
+    
+    NSArray * supports =  (__bridge_transfer id)CNCopySupportedInterfaces();
+    
+    id SSID = nil;//WiFi标示
+
+    id info = nil;
+    
+    BOOL isWiFiEnabled = NO;
+    for(NSString * idf in supports){
+        info =  (__bridge_transfer id)CNCopyCurrentNetworkInfo((CFStringRef)idf);
+        if (info&&[info count]) {
+            isWiFiEnabled = YES;
+            break;
+        }
+        
+    }
+    
+    SSID = [info objectForKey:@"SSID"];
+    if(SSID){
+        self.wifiName = SSID;
+    }
+    
     return [NSString stringWithFormat:@"%d",isWiFiEnabled];
-  
+    
 }
 
 
-
-- (NSString * )getScreenResolution {
-    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
-    CGFloat scale = [[UIScreen mainScreen] scale];
-    
-    return [NSString stringWithFormat:@"%.0f", scale];
+//
+//- (NSString * )getScreenResolution {
+//    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+//    CGFloat scale = [[UIScreen mainScreen] scale];
+//
+//    return [NSString stringWithFormat:@"%.0f", scale];
+//}
+- (NSString *)getScreenResolution {
+    UIScreen *mainScreen = [UIScreen mainScreen];
+    CGFloat scale = mainScreen.scale;
+    CGRect bounds = mainScreen.bounds;
+    CGSize size = CGSizeMake(bounds.size.width * scale, bounds.size.height * scale);
+    NSString *resolution = [NSString stringWithFormat:@"%.0f x %.0f", size.width, size.height];
+    return resolution;
 }
 
 - (NSString *)getIDFV {
     return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
 
-- (NSString *)getIDFA {
-    NSString *idfa = @"";
-    if ([ASIdentifierManager sharedManager].isAdvertisingTrackingEnabled) {
-        idfa = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
-    }
-    return idfa;
+- (void )getIDFA {
+    
+    NSString *idfa = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
+    self.idfa = idfa;
+//    NSString *idfa = @"";
+//    if (@available(iOS 14, *)) {
+//        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+//            if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
+//                // 用户已授权访问IDFA
+//                NSString * idfa1111 = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
+//
+//                NSLog(@"IDFA: %@", idfa1111);
+//                self.idfa = idfa1111;
+//
+//            }else {
+//                // 此时用户点击拒绝则无法读取
+//                NSString *idfa = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
+//                self.idfa = idfa;
+//            }
+//        }];
+//    } else {
+//        // 在iOS 14之前的版本可以直接访问IDFA
+//        idfa = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
+//
+//        self.idfa = idfa;
+//        NSLog(@"IDFA: %@", idfa);
+//    }
 }
 
 - (NSNumber *)getAudioFileCount {
@@ -808,11 +1147,14 @@ static NSString * notReachable = @"none";
 }
 
 - (NSString *)getAppName {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appName = [infoDictionary objectForKey:@"CFBundleName"];
+    return appName;
 }
 
 - (NSString *)getDevelopmentLanguage {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDevelopmentRegion"];
+    
 }
 
 - (NSNumber *)getVideoFileCount {

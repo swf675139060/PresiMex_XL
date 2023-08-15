@@ -438,6 +438,40 @@
         
     }
     
+    if ([model.lexus integerValue] == 31 || [model.lexus integerValue] == 100 || [model.lexus integerValue] == 60 || [model.lexus integerValue] == 20 || [model.lexus integerValue] == 40 || [model.lexus integerValue] == 0 || [model.lexus integerValue] == 10) {
+        // 中
+        [self.moneyStr mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.centerBGView).offset(19);
+            make.centerX.equalTo(@(0));
+            
+        }];
+        
+        [self.moneynumber mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.moneyStr.mas_bottom).offset(10);
+            make.centerX.equalTo(@(0));
+            
+        }];
+        self.moneynumber.textAlignment = NSTextAlignmentCenter;
+        self.dateSre.hidden = YES;
+        self.dateNumber.hidden = YES;
+    } else {
+        [self.moneyStr mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.centerBGView).offset(19);
+            make.left.equalTo(@(15));
+            
+        }];
+        
+        [self.moneynumber mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.moneyStr.mas_bottom).offset(10);
+            make.left.equalTo(@(15));
+            
+        }];
+        self.moneynumber.textAlignment = NSTextAlignmentLeft;
+        self.dateSre.hidden = NO;
+        self.dateNumber.hidden = NO;
+        
+    }
+    
     
     
 }

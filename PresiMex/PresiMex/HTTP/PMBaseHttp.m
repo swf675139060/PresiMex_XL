@@ -108,9 +108,9 @@ static inline BOOL IsEmpty(id thing){
     //        if ([PSAccountTool account]) {
     //            parms[@"token"]=[PSAccountTool account].token;
     //        }
-    NSLog(@"url===%@\n parms==%@",url,parameter);
+//    NSLog(@"url===%@\n parms==%@",url,parameter);
     
-    //   NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
+       NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
     
     //NSString*josn=[parms toJSONString];
     return [manager GET:url parameters:parameter headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -298,6 +298,9 @@ static inline BOOL IsEmpty(id thing){
     deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
     [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"GATEWAY_DEVICE_ID"];
    [manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
+    if ([URLString isEqual:POST_DOT_nxjs3kl]) {
+        [manager.requestSerializer setValue:@"ios"  forHTTPHeaderField:@"GATEWAY_OS_TYPE"];
+    }
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
@@ -484,7 +487,7 @@ static inline BOOL IsEmpty(id thing){
 
 #pragma mark - 上传照片
 //+ (void)uploadImgs:(NSArray *)images parameter:(NSDictionary *)parameter success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure{
-//    
+//
 //    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 //    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
 //    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -508,7 +511,7 @@ static inline BOOL IsEmpty(id thing){
 //        NSLog(@"token= %@",[PMAccountTool account].token);
 //        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
 //    }
-//   
+//
 //    manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
 //    manager.securityPolicy.allowInvalidCertificates = YES;
 //    [manager.securityPolicy setValidatesDomainName:NO];
@@ -517,20 +520,20 @@ static inline BOOL IsEmpty(id thing){
 //   NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
 //    [manager POST:url parameters:nil headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 //
-//        
+//
 //        int i = 0;
 //        for (UIImage *image in images) {
 //            NSData *imageData = UIImageJPEGRepresentation(image, 0.3);//进行图片压缩
-//            
+//
 //             // 使用日期生成图片名称
 //             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 //             formatter.dateFormat = @"yyyyMMddHHmmss";
 //            NSString *fileName = [NSString stringWithFormat:@"%@%d.png",[formatter stringFromDate:[NSDate date]],i++];
-//            
+//
 //            // 任意的二进制数据MIMEType application/octet-stream
 //            [formData appendPartWithFileData:imageData name:@"img" fileName:fileName mimeType:@"image/png"];
 //        }
-//        
+//
 //    } progress:^(NSProgress * _Nonnull uploadProgress) {
 //
 //        NSLog(@"上传进度  %lf",1.0 *uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
@@ -571,18 +574,18 @@ static inline BOOL IsEmpty(id thing){
         return nil;
 
     }
-    NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-    NSString* decodeStr = [[NSString alloc] initWithData:jsonData encoding:gbkEncoding];
-    if (!decodeStr)
-    {
-       
-        decodeStr = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
-       
-    }
-
-   NSData *jsonDa=[decodeStr dataUsingEncoding:NSUTF8StringEncoding];
+//    NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+//    NSString* decodeStr = [[NSString alloc] initWithData:jsonData encoding:gbkEncoding];
+//    if (!decodeStr)
+//    {
+//
+//        decodeStr = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
+//
+//    }
+//
+//   NSData *jsonDa=[decodeStr dataUsingEncoding:NSUTF8StringEncoding];
    //转码之后再转utf8解析
-   NSDictionary *requestDic = [NSJSONSerialization JSONObjectWithData:jsonDa options:NSJSONReadingMutableContainers error:nil];
+   NSDictionary *requestDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
 
     if (![requestDic isKindOfClass:[NSDictionary class]]) {
 

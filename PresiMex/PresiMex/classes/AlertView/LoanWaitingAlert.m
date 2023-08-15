@@ -40,9 +40,9 @@
     [self addSubview:self.tableView];
     self.tableView.layer.cornerRadius = 15;
     self.tableView.layer.masksToBounds = YES;
-    if (self.type == 1) {
-        [self addSubview:self.closeBtn];
-    }
+//    if (self.type == 1) {
+//        [self addSubview:self.closeBtn];
+//    }
    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.equalTo(self);
@@ -53,13 +53,13 @@
         }
     }];
     
-    if (self.type == 1) {
-        [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.tableView.mas_bottom).offset(10);
-            make.centerX.equalTo(self.tableView);
-            make.width.height.equalTo(@(35));
-        }];
-    }
+//    if (self.type == 1) {
+//        [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(self.tableView.mas_bottom).offset(10);
+//            make.centerX.equalTo(self.tableView);
+//            make.width.height.equalTo(@(35));
+//        }];
+//    }
     
     
     
@@ -95,8 +95,16 @@
         return cell;
     }else if (indexPath.row == 1){
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = @"Hemos recibido su solicitud. Estamos procesándola de manera ágil. Tan pronto como se complete el proceso, le informaremos.";
-        cell.label.textAlignment = NSTextAlignmentCenter;
+        
+        if (self.type == 1) {
+            cell.label.textAlignment = NSTextAlignmentCenter;
+            cell.label.text = @"Hemos recibido su solicitud. Estamos procesándola de manera ágil. Tan pronto como se complete el proceso, le informaremos.";
+        } else {
+            cell.label.textAlignment = NSTextAlignmentLeft;
+            cell.label.text = @"Hemos recibido su solicitud y la estamos procesando rápidamente. Visite MI FACTURA para ver el estado de sus demás pedidos.";
+        }
+        
+        
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
         cell.label.font = [UIFont systemFontOfSize:11];
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -179,8 +187,8 @@
 -(UIButton *)closeBtn{
     if(_closeBtn == nil){
         _closeBtn = [[UIButton alloc] init];
-        [_closeBtn setImage:[UIImage imageNamed:@"guanbi"] forState:UIControlStateNormal];
-        [_closeBtn addTarget:self action:@selector(ClickCloseBtn) forControlEvents:UIControlEventTouchUpInside];
+//        [_closeBtn setImage:[UIImage imageNamed:@"guanbi"] forState:UIControlStateNormal];
+//        [_closeBtn addTarget:self action:@selector(ClickCloseBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeBtn;
 }

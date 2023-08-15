@@ -20,9 +20,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong,nonatomic)NSString * gpsAddressProvince;//ios系统字段，GPS地址省份
 @property(strong,nonatomic)NSString * gpsAddressCity;//ios系统字段，GPS地址城市
 
+@property(strong,nonatomic)void(^changeBlcok)(BOOL change);
+
 
 + (PMLocationManager *)sharedInstance;
--(void)creatLocation:(void (^)(BOOL isLocation)) LocationBlock;
+
+//定位完成/失败
+@property (nonatomic, assign)BOOL haveLocation;
+//是否发送过
+@property (nonatomic, assign)BOOL haveSend;
+-(void)creatShowAlert:(BOOL)show LocationBlock:(void (^)(BOOL isLocation)) LocationBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

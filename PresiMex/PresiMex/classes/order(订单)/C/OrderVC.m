@@ -12,6 +12,7 @@
 #import "OrderDetailsVC.h"
 #import "ConfirmAccountVC.h"
 #import "HomeDetailView.h"
+#import "DKRefreshNormalHeader.h"
 
 @interface OrderVC ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
@@ -41,7 +42,8 @@
     WF_WEAKSELF(weakself);
     [self.topView setClickLeftBtnBlock:^{
         weakself.indx = 0;
-        [weakself.tableView reloadData];
+        [weakself.view show];
+        [weakself GETUserOder:0];
         
         PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bill_no_repay_order content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
         [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
@@ -50,7 +52,8 @@
     }];
     [self.topView setClickRightBtnBlock:^{
         weakself.indx = 1;
-        [weakself.tableView reloadData];
+        [weakself.view show];
+        [weakself GETUserOder:1];
         
         PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_bill_repay_order content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
         [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
@@ -63,7 +66,7 @@
     [self GETUserOder:0];
     
     
-    [self GETUserOder:1];
+//    [self GETUserOder:1];
     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_bill content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
 
@@ -108,6 +111,7 @@
 
     cell.clickUseBlock = ^(NSInteger indx) {
 
+        
     };
     
     return cell;
@@ -176,7 +180,7 @@
 
 // 返回标题文字
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Oportunidades";
+    NSString *text = @"¡Ups!";
     NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:14.0f], NSForegroundColorAttributeName: BColor_Hex(@"#1B1200", 1)};
     return [[NSAttributedString alloc] initWithString:text attributes:attribute];
 }
@@ -306,6 +310,10 @@
         _tableView.emptyDataSetSource= self;
 
         _tableView.emptyDataSetDelegate= self;
+//        WF_WEAKSELF(weakself);
+//        _tableView.mj_header = [DKRefreshNormalHeader headerWithRefreshingBlock:^{
+//            [weakself GETUserOder:weakself.indx];
+//        }];
     }
     
     return _tableView;
@@ -345,11 +353,11 @@
     }
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_User_Oder parameters:pars success:^(id  _Nonnull responseObject) {
-        
+        [weakself.tableView.mj_header endRefreshing];
         weakself.requestCount += 1;
-        if(self.requestCount >= 2){
+//        if(self.requestCount >= 2){
             [weakself.view dismiss];
-        }
+//        }
         if ([responseObject[@"retail"] intValue]==200) {
             NSArray * pledge = responseObject[@"shame"][@"pledge"];
             NSArray *modelArr = [OrderModel mj_objectArrayWithKeyValuesArray:pledge];
@@ -370,7 +378,7 @@
         
         
     } failure:^(NSError * _Nonnull error) {
-        
+        [weakself.tableView.mj_header endRefreshing];
         [weakself.view dismiss];
     }];
 }

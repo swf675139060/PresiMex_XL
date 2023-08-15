@@ -231,7 +231,7 @@
 {
     if (!_titles) {
         _titles = @[@"Calificar",
-                    @"Acuerdo de privacida",
+                    @"Acuerdo de privacidad",
                     @"Comentario",
                     @"Asistencia",
                     @"Sobre nosotros",

@@ -88,6 +88,14 @@
     //[self modelWithData];
     [self requestQuestInfo];
     self.parma=[NSMutableDictionary new];
+    
+    
+    
+    //问卷调查页
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_survey content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+    
+    
 }
 - (UITableView *)tableView{
     if (!_tableView) {
@@ -154,9 +162,7 @@
     
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 60)];
     header.backgroundColor=BColor_Hex(@"#FFB602", 0.06);
-    
     UILabel *tipLabel = [[UILabel alloc] init];
-    tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
     tipLabel.numberOfLines = 0;
     tipLabel.text=@"Proporcionar información real ayuda a obtener un límite más alto.";
     [header addSubview:tipLabel];
@@ -164,8 +170,7 @@
     tipLabel.textAlignment = NSTextAlignmentLeft;
     tipLabel.font=B_FONT_REGULAR(11);
     CGSize size=[UILabel sizeWithText:tipLabel.text fontSize:11 andMaxsize:WF_ScreenWidth-30];
-    tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth-30,size.height);
-    
+    tipLabel.frame = CGRectMake(15,(60 - size.height)/2,WF_ScreenWidth-30,size.height);
     self.tableView.tableHeaderView=header;
 }
 -(void)setupFootView{
@@ -296,7 +301,11 @@
 
 -(void)submitQuest{
     
-    
+    if ([self.parma allKeys].count < self.dataArray.count) {
+        
+        [self showTip:@"Verifique los campos obligatorios."];
+        return;
+    }
 
     [self show];
     WF_WEAKSELF(weakself);

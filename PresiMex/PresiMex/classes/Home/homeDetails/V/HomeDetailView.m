@@ -204,12 +204,20 @@
                     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_pay_type_confirm content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
                     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
                 }
+            }else{
+                
+                WFWebViewController * vc = [[WFWebViewController alloc] init];
+                vc.urlString = H5_loan;
+                [self.jk_navigationController pushViewController:vc animated:YES];
+                
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_pay_type content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                 [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
             }
         }];
         return cell;
     }else{
         WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
-        [cell.btn setTitle:@"Quedarse" forState:UIControlStateNormal];
+        [cell.btn setTitle:@"Confirmar" forState:UIControlStateNormal];
         cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         WF_WEAKSELF(weakself);

@@ -103,6 +103,7 @@
 -(UIImageView *)BGView{
     if(_BGView == nil){
         _BGView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cuponBG"]];
+        _BGView.userInteractionEnabled = YES;
     }
     return _BGView;
 }

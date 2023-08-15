@@ -44,8 +44,8 @@
     [self.contentView addSubview:_titleLabel];
     _titleLabel.font =B_FONT_REGULAR(12);
     _titleLabel.textColor =BColor_Hex(@"#1B1200",1);
-    _titleLabel.text=@"Relación";
-    _titleLabel.frame=CGRectMake(15, 20,50, 20);
+    _titleLabel.text=@"Método de pago";
+    _titleLabel.frame=CGRectMake(15, 20,100, 20);
     _titleLabel.textAlignment=NSTextAlignmentLeft;
     
     UIButton*priaBtn = [UIButton buttonWithType:UIButtonTypeCustom];

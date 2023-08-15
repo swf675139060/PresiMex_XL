@@ -50,7 +50,6 @@
 //arr:优惠卷数组
 -(void)shoWYouHuiAlert:(NSArray *)arr{
     
-    
     CGFloat biLi = WF_ScreenWidth/360;
     
     YouHuiAlert * alert = [[YouHuiAlert alloc] initWithFrame:CGRectMake(0, 0, biLi * 320, biLi * 400) withArr:arr] ;
@@ -333,7 +332,7 @@
 -(void)setupFootView{
     
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 110)];
-    footer.backgroundColor=[UIColor whiteColor];
+    footer.backgroundColor=[UIColor clearColor];
     
     UIButton* submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     submitBtn.tag=1;
@@ -486,6 +485,11 @@
             self.userID = model.cartoon;
             [self.dataArray replaceObjectAtIndex:4 withObject:model5];
             [self.tableView reloadData];
+            
+            PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_identity_auth_name content:self.userName beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+            PMACQInfoModel * InfoModelID = [[PMACQInfoModel alloc] initWithIdName:acq02_identity_auth_id_number content:self.userID beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+            [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModelID];
         }  else{
             [weakself dismiss];
             [weakself showTip:responseObject[@"entire"]];//（对）
@@ -534,6 +538,12 @@
                 model5.cartoon=model.cartoon;
                 self.userID = model.cartoon;
                 [self.dataArray replaceObjectAtIndex:4 withObject:model5];
+                
+                
+                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_identity_auth_name content:self.userName beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+                PMACQInfoModel * InfoModelID = [[PMACQInfoModel alloc] initWithIdName:acq02_identity_auth_id_number content:self.userID beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+                [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModelID];
             } else {
                 PMIDAuthModel*model2=weakself.dataArray[1];
                 model2.silent=model.silent;

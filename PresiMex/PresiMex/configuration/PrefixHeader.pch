@@ -99,6 +99,7 @@ _Pragma("clang diagnostic pop")
 #import "PoPBottomView.h"
 #import "YouHuiAlert.h"
 #import "PMCertificationCoreViewController.h"
+#import "PMQuestionnaireViewController.h"
 
 
 #import <JKCategories/JKCategories.h>
@@ -123,6 +124,7 @@ _Pragma("clang diagnostic pop")
 #import "PMACQModel.h"
 #import "PMACQManager.h"
 #import "PMPageKey.h"
+#import "AppDelegate.h"
 
 //#import <IQk>
 //#import <IQKeyboardManager/IQKeyboardManager.h>

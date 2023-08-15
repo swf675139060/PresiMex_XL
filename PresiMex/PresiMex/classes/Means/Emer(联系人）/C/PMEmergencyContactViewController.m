@@ -29,7 +29,18 @@
 @implementation PMEmergencyContactViewController
 
 //-(void)leftItemAction{
-//    [self shoWYouHuiAlert:@[]];
+//    
+//    NSArray *viewControllers = self.navigationController.viewControllers;
+//    for (UIViewController *viewController in viewControllers) {
+//        if ([viewController isKindOfClass:[PMQuestionnaireViewController class]]) {
+//            [self.navigationController popToViewController:viewController animated:YES];
+//            break;
+//        } else if ([viewController isKindOfClass:[PMCertificationCoreViewController class]]) {
+//            [self.navigationController popToViewController:viewController animated:YES];
+//            break;
+//        }
+//    }
+////    [self shoWYouHuiAlert:@[]];
 //}
 
 //arr:优惠卷数组
@@ -175,21 +186,21 @@
 }
 -(void)setupHeadView{
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 165)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 80)];
     headerView.backgroundColor=[UIColor whiteColor];
     PMIDAuthHeaderView *header = [[PMIDAuthHeaderView alloc] initViewWithType:3];
     [headerView addSubview:header];
     
-    UILabel *tipLabel = [[UILabel alloc] init];
-    tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
-    tipLabel.numberOfLines = 0;
-    tipLabel.text=@"Consejo: asegúrese de que todas las imágenes de los documentos se tomen con claridad y sean las más recientes para obtener el préstamo al instante.";
-    [headerView addSubview:tipLabel];
-    tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
-    tipLabel.textAlignment = NSTextAlignmentLeft;
-    tipLabel.font=B_FONT_REGULAR(11);
-    CGSize size=[UILabel sizeWithText:tipLabel.text fontSize:11 andMaxsize:WF_ScreenWidth-30];
-    tipLabel.frame = CGRectMake(15,header.swf_bottom+12,WF_ScreenWidth-30,size.height);
+//    UILabel *tipLabel = [[UILabel alloc] init];
+//    tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
+//    tipLabel.numberOfLines = 0;
+//    tipLabel.text=@"Consejo: asegúrese de que todas las imágenes de los documentos se tomen con claridad y sean las más recientes para obtener el préstamo al instante.";
+//    [headerView addSubview:tipLabel];
+//    tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
+//    tipLabel.textAlignment = NSTextAlignmentLeft;
+//    tipLabel.font=B_FONT_REGULAR(11);
+//    CGSize size=[UILabel sizeWithText:tipLabel.text fontSize:11 andMaxsize:WF_ScreenWidth-30];
+//    tipLabel.frame = CGRectMake(15,header.swf_bottom+12,WF_ScreenWidth-30,size.height);
     self.tableView.tableHeaderView=headerView;
     
 }
@@ -299,28 +310,29 @@
 
 //通讯录权限
 -(void)getTongXunLuQuanxian{
-    CNAuthorizationStatus status = [PrivateInfo contactAuthorStatus];
-    if (status == AVAuthorizationStatusNotDetermined) {
-        [PrivateInfo requestContactAuthor];
-    } else if (status == AVAuthorizationStatusDenied) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Necesita acceder a su libreta de direcciones" message:@"Abra los permisos de la libreta de direcciones para usar la libreta de direcciones." preferredStyle:UIAlertControllerStyleAlert];
-
-        // 添加操作按钮
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancelación" style:UIAlertActionStyleCancel handler:nil];
-        [alertController addAction:cancelAction];
-
-        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Configuración" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            // 打开应用程序设置
-            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-            [[UIApplication sharedApplication] openURL:settingsURL options:@{} completionHandler:nil];
-        }];
-        [alertController addAction:settingsAction];
-
-        // 显示弹框
-        [self presentViewController:alertController animated:YES completion:nil];
-    }else{
-        [self selectPersonContactPickerVc];
-    }
+//    CNAuthorizationStatus status = [PrivateInfo contactAuthorStatus];
+//    if (status == AVAuthorizationStatusNotDetermined) {
+//        [PrivateInfo requestContactAuthor];
+//    } else if (status == AVAuthorizationStatusDenied) {
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Necesita acceder a su libreta de direcciones" message:@"Abra los permisos de la libreta de direcciones para usar la libreta de direcciones." preferredStyle:UIAlertControllerStyleAlert];
+//
+//        // 添加操作按钮
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancelación" style:UIAlertActionStyleCancel handler:nil];
+//        [alertController addAction:cancelAction];
+//
+//        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Configuración" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            // 打开应用程序设置
+//            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+//            [[UIApplication sharedApplication] openURL:settingsURL options:@{} completionHandler:nil];
+//        }];
+//        [alertController addAction:settingsAction];
+//
+//        // 显示弹框
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }else{
+//        [self selectPersonContactPickerVc];
+//    }
+    [self selectPersonContactPickerVc];
 }
 
 #pragma mark - 先弹出联系人控制器

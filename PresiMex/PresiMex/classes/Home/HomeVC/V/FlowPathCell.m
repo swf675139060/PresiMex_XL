@@ -133,7 +133,7 @@
 -(UIImageView *)centerV1{
     if (_centerV1 == nil) {
         _centerV1 = [[UIImageView alloc] init];
-        _centerV1.image = [UIImage imageNamed:@""];
+        _centerV1.image = [UIImage imageNamed:@"xiangyou"];
         _centerV1.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _centerV1;
@@ -142,7 +142,7 @@
 -(UIImageView *)centerV2{
     if (_centerV2 == nil) {
         _centerV2 = [[UIImageView alloc] init];
-        _centerV2.image = [UIImage imageNamed:@""];
+        _centerV2.image = [UIImage imageNamed:@"xiangyou"];
         _centerV2.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _centerV2;

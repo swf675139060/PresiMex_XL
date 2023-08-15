@@ -10,6 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AccesoPermisosView : WFBaseView
+
+@property (nonatomic,copy) NSString *urlString; /**< 加载链接 */
+@property (nonatomic,strong) WKWebView *webView; /**< webView */
 @property(strong, nonatomic)NSArray * titles;
 
 @property(copy, nonatomic)void(^selectBlock)(void);

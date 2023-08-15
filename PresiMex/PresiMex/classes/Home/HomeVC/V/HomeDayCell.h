@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HomeDayCellItem : WFBaseView
 
 
+
+@property (nonatomic, strong) UIImageView *bgImageView;
 @property(strong, nonatomic) UILabel * topLabel;
 @property(strong, nonatomic) UILabel * bottomLabel;
 

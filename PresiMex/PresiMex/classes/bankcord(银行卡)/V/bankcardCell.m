@@ -182,7 +182,7 @@
         _numberLB = [[UILabel alloc] init];
         _numberLB.adjustsFontSizeToFitWidth = YES;
         _numberLB.numberOfLines = 1;
-        _numberLB.textAlignment = NSTextAlignmentCenter;
+        _numberLB.textAlignment = NSTextAlignmentLeft;
         [_numberLB setText:@"" TextColor:[UIColor jk_colorWithHexString:@"#FFFFFF"] Font:[UIFont boldSystemFontOfSize:21]];
         
     }
@@ -207,7 +207,15 @@
         
         self.cardName.text = [NSString stringWithFormat:@"BANK %@",model.marshall];
      
-        self.numberLB.text = model.diploma;
+        
+        // 将银行卡号码转换为格式化字符串
+        NSMutableString *formattedBankCardNumber = [NSMutableString stringWithString:model.diploma];
+        [formattedBankCardNumber insertString:@" " atIndex:4];
+        [formattedBankCardNumber insertString:@" " atIndex:9];
+        [formattedBankCardNumber insertString:@" " atIndex:14];
+
+        // 设置UILabel的文本为格式化的银行卡号码
+        self.numberLB.text = formattedBankCardNumber;
         if ([model.diameter integerValue] == 1) {
             
             self.contentLB.text = @"Tarjeta de débito";

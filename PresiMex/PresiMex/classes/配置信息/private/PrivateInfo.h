@@ -40,9 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 定位授权状态
 + (CLAuthorizationStatus )LocationStatus;
 
-/// 请求照定位授权
+/// 请求定位授权状态
 + (void)requestLocationAuthor;
 
+
++ (void)requestIDFA;
 
 
 ///// 上传隐私数据

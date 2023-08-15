@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,strong)NSString *phone;
 
 - (void)updateTime:(NSInteger)time;
-
+-(void)requestGetVeriCode:(NSInteger)type;
 @property(copy, nonatomic)void(^clickResend)(void);
 @end
 

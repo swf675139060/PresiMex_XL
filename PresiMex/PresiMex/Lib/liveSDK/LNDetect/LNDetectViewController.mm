@@ -386,8 +386,11 @@ typedef enum LNSoundType: NSUInteger {
                     LivenessSuccessResult *result = new LivenessSuccessResult();
                     result->livenessId = self.livenessID;
                     result->livenessBitmapBase64Str = best;
-                    NSData *bestImgData = [[NSData alloc] initWithBase64EncodedString:best options:0];
-                    result->livenessBitmap = [[UIImage alloc]initWithData:bestImgData];
+                    if (best) {
+                        NSData *bestImgData = [[NSData alloc] initWithBase64EncodedString:best options:0];
+                        
+                        result->livenessBitmap = [[UIImage alloc]initWithData:bestImgData];
+                    }
                     [strongSelf.delegate detectSuccess:result];
                 } else {
                     LivenessFailResult *result = new LivenessFailResult();

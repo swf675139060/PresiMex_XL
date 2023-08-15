@@ -15,18 +15,31 @@
 #import "WFImageCell.h"
 #import "HomeDayCell.h"
 #import "FlowPathCell.h"
+#import "KeFuAlert.h"
 
 #import "PMCertificationCoreViewController.h"
 
 @interface HomeNoAuthView ()<UITableViewDelegate,UITableViewDataSource>
 
 
+@property (nonatomic, strong) UIImageView *bgImageView;
 @end
 
 @implementation HomeNoAuthView
 
 -(void)buildSubViews{
     [self addSubview:self.tableView];
+    self.tableView.backgroundView = self.bgImageView;
+}
+
+-(void)addBgImageView{
+    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self);
+//        make.top.equalTo(self).offset(-88);
+        make.bottom.equalTo(cell.contentView);
+        
+    }];
 }
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 
@@ -76,6 +89,12 @@
         [cell.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#1B1200"]  forState:UIControlStateNormal];
         cell.leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:20];
         [cell.rightBtn setImage:[UIImage imageNamed:@"kefu"] forState:UIControlStateNormal];
+        WF_WEAKSELF(weakself);
+        cell.clickBtnBlock = ^(NSInteger indx) {
+            if (indx == 1) {
+                [weakself showKeFuAlert];
+            }
+        };
         return cell;
     }else if (indexPath.row == 1){
         WFLabelCell * cell  = [WFLabelCell cellWithTableView:tableView identifier:@"1"];
@@ -122,9 +141,9 @@
         cell.slider.value = 30000;
         
         [cell.slider trackRectForBounds:CGRectMake(0, 0, WF_ScreenWidth - 30, 8)];
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
-        [cell upSliderFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) height:21];
-        [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 24) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
+        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) height:25];
+        [cell upSliderFrameWithInsets:UIEdgeInsetsMake(8, 15, 0, 15) height:16];
+        [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 25) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
         WF_WEAKSELF(weakself);
         cell.sliderChangeBlock = ^(NSInteger number) {
 //            weakself.changeValue = number;
@@ -192,6 +211,13 @@
 }
 
 
+-(void)showKeFuAlert{
+    KeFuAlert * alert = [[KeFuAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 217)] ;
+    alert.type = 1;
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView setClickBGDismiss:YES];
+    [AlertView show];
+}
 
 #pragma mark -- init
 - (UITableView *)tableView
@@ -207,6 +233,15 @@
     }
     
     return _tableView;
+}
+
+-(UIImageView *)bgImageView{
+    if (_bgImageView == nil) {
+        _bgImageView = [[UIImageView alloc] init];
+        _bgImageView.image = [UIImage imageNamed:@"homeBG"];
+        _bgImageView.contentMode = UIViewContentModeScaleToFill;
+    }
+    return _bgImageView;
 }
 
 

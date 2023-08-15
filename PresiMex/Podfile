@@ -13,9 +13,11 @@ target 'PresiMex' do
   pod 'AFNetworking','~>4.0.0'
   pod 'MJRefresh'
   pod 'MJExtension'
-  pod 'ZZCircleProgress'
+#  pod 'ZZCircleProgress'
   pod 'IQKeyboardManager'
-  pod 'RollingNotice' #轮播广告
+#  pod 'RollingNotice' #轮播广告
+#  pod 'MarqueeLabel'
+#  pod 'JhtMarquee'
   
 
 #  pod 'DZNEmptyDataSet'  

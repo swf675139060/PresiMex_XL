@@ -118,6 +118,7 @@
     [PMBaseHttp get:Get_User_LogOut parameters:pars success:^(id  _Nonnull responseObject) {
         
         if ([responseObject[@"retail"] intValue]==200) {
+            [weakself saveFirstLoginTime];
             [PMAccountTool saveAccount:nil];
             [self.navigationController popViewControllerAnimated:YES];
             
@@ -131,5 +132,17 @@
         [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         
     }];
+}
+
+- (void)saveFirstLoginTime {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDate *firstLoginTime = [userDefaults objectForKey:@"FirstLoginTime"];
+    
+    if (firstLoginTime == nil) {
+        // 第一次登录
+        NSDate *currentDate = [NSDate date];
+        [userDefaults setObject:currentDate forKey:@"FirstLoginTime"];
+        [userDefaults synchronize];
+    }
 }
 @end

@@ -64,7 +64,11 @@
 		A4F49D2F2A3085C500389B67 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2C2A3085C500389B67 /* NSObject+YYModel.m */; };
 		A4F49D302A3085C500389B67 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F49D2D2A3085C500389B67 /* YYClassInfo.m */; };
 		DB1F3D552A750CC0007FBCCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB1F3D542A750CC0007FBCCA /* GoogleService-Info.plist */; };
+		DB74AEDB2A7E523200C0AC14 /* DKRefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DB74AED92A7E523200C0AC14 /* DKRefreshNormalHeader.m */; };
+		DB74AEDC2A7E523200C0AC14 /* DKRefreshNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB74AEDA2A7E523200C0AC14 /* DKRefreshNormalFooter.m */; };
+		DB74AEE02A7F7D0C00C0AC14 /* UUMarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB74AEDF2A7F7D0C00C0AC14 /* UUMarqueeView.m */; };
 		DB9C46EF2A77BE13009C5638 /* AESCGMEnrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9C46EE2A77BE13009C5638 /* AESCGMEnrypt.m */; };
+		DBAA4BF32A7AA24B00015B08 /* PresiMex_GIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = DBAA4BF22A7AA24B00015B08 /* PresiMex_GIF.gif */; };
 		DBB0E1D12A6CE30A0028AEFF /* PMDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */; };
 		DBB0E1D32A6CE8150028AEFF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0E1D22A6CE8150028AEFF /* CoreTelephony.framework */; };
 		DBB0E1D52A6D25540028AEFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0E1D42A6D25540028AEFF /* CoreLocation.framework */; };
@@ -75,6 +79,8 @@
 		DBB28EE12A77E489004F7103 /* LogOutAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB28EE02A77E489004F7103 /* LogOutAlert.m */; };
 		DBB8087B2A6BF06C0014589C /* PMDotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087A2A6BF06C0014589C /* PMDotManager.m */; };
 		DBB8087E2A6BF3C90014589C /* PMDotConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */; };
+		DBE7E7E42A885239006EA0BC /* JKLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE7E7E22A885238006EA0BC /* JKLocationManager.m */; };
+		DBF6556E2A8269430035103F /* WFSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6556D2A8269430035103F /* WFSlider.m */; };
 		FB06D0B12A4574FC00272F5A /* LoanFailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */; };
 		FB06D0B42A4589E900272F5A /* HomeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B32A4589E900272F5A /* HomeDetailView.m */; };
 		FB06D0B72A4593C400272F5A /* PrivacyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B62A4593C400272F5A /* PrivacyVC.m */; };
@@ -130,7 +136,6 @@
 		FBAACBF82A452E7900463FC1 /* XHStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAACBF62A452E7800463FC1 /* XHStarRateView.m */; };
 		FBAACBFB2A4532B200463FC1 /* LoanWaitingAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAACBFA2A4532B200463FC1 /* LoanWaitingAlert.m */; };
 		FBAACBFE2A4537D800463FC1 /* WFStarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAACBFD2A4537D800463FC1 /* WFStarCell.m */; };
-		FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039592A2B431900E5CD80 /* DemoCell2.m */; };
 		FBB0395F2A2B50C900E5CD80 /* PMAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */; };
 		FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039612A2B800100E5CD80 /* KeFuAlert.m */; };
 		FBB039652A2B822400E5CD80 /* WFLeftImageTwolabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB039642A2B822400E5CD80 /* WFLeftImageTwolabelCell.m */; };
@@ -370,9 +375,16 @@
 		A4F49D2E2A3085C500389B67 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresiMex-PresiMexUITests.release.xcconfig"; path = "Target Support Files/Pods-PresiMex-PresiMexUITests/Pods-PresiMex-PresiMexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DB1F3D542A750CC0007FBCCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB74AED72A7E523200C0AC14 /* DKRefreshNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKRefreshNormalFooter.h; sourceTree = "<group>"; };
+		DB74AED82A7E523200C0AC14 /* DKRefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKRefreshNormalHeader.h; sourceTree = "<group>"; };
+		DB74AED92A7E523200C0AC14 /* DKRefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKRefreshNormalHeader.m; sourceTree = "<group>"; };
+		DB74AEDA2A7E523200C0AC14 /* DKRefreshNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKRefreshNormalFooter.m; sourceTree = "<group>"; };
+		DB74AEDE2A7F7D0C00C0AC14 /* UUMarqueeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUMarqueeView.h; sourceTree = "<group>"; };
+		DB74AEDF2A7F7D0C00C0AC14 /* UUMarqueeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUMarqueeView.m; sourceTree = "<group>"; };
 		DB9C46ED2A77BE0D009C5638 /* AESCGMEnrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESCGMEnrypt.h; sourceTree = "<group>"; };
 		DB9C46EE2A77BE13009C5638 /* AESCGMEnrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCGMEnrypt.m; sourceTree = "<group>"; };
 		DBA9CBED2A6E7C89004CE8E8 /* PresiMex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PresiMex.entitlements; sourceTree = "<group>"; };
+		DBAA4BF22A7AA24B00015B08 /* PresiMex_GIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PresiMex_GIF.gif; sourceTree = "<group>"; };
 		DBB0E1CF2A6CE30A0028AEFF /* PMDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDeviceModel.h; sourceTree = "<group>"; };
 		DBB0E1D02A6CE30A0028AEFF /* PMDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDeviceModel.m; sourceTree = "<group>"; };
 		DBB0E1D22A6CE8150028AEFF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -392,6 +404,10 @@
 		DBB8087C2A6BF3C90014589C /* PMDotConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDotConfigModel.h; sourceTree = "<group>"; };
 		DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDotConfigModel.m; sourceTree = "<group>"; };
 		DBB8087F2A6C1B750014589C /* libSystem.B.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem.B.tbd; path = usr/lib/libSystem.B.tbd; sourceTree = SDKROOT; };
+		DBE7E7E22A885238006EA0BC /* JKLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLocationManager.m; sourceTree = "<group>"; };
+		DBE7E7E32A885239006EA0BC /* JKLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLocationManager.h; sourceTree = "<group>"; };
+		DBF6556C2A8269430035103F /* WFSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFSlider.h; sourceTree = "<group>"; };
+		DBF6556D2A8269430035103F /* WFSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFSlider.m; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB06D0AF2A4574FC00272F5A /* LoanFailAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanFailAlert.h; sourceTree = "<group>"; };
 		FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanFailAlert.m; sourceTree = "<group>"; };
@@ -502,8 +518,6 @@
 		FBAACBFA2A4532B200463FC1 /* LoanWaitingAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanWaitingAlert.m; sourceTree = "<group>"; };
 		FBAACBFC2A4537D800463FC1 /* WFStarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFStarCell.h; sourceTree = "<group>"; };
 		FBAACBFD2A4537D800463FC1 /* WFStarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFStarCell.m; sourceTree = "<group>"; };
-		FBB039582A2B431900E5CD80 /* DemoCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCell2.h; sourceTree = "<group>"; };
-		FBB039592A2B431900E5CD80 /* DemoCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCell2.m; sourceTree = "<group>"; };
 		FBB0395D2A2B50C900E5CD80 /* PMAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMAuthModel.h; sourceTree = "<group>"; };
 		FBB0395E2A2B50C900E5CD80 /* PMAuthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMAuthModel.m; sourceTree = "<group>"; };
 		FBB039602A2B800100E5CD80 /* KeFuAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeFuAlert.h; sourceTree = "<group>"; };
@@ -1083,6 +1097,8 @@
 		A4DD5E362A21FF7B00451413 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				DB74AEDD2A7F7D0C00C0AC14 /* UUMarqueeView */,
+				DB74AED62A7E523200C0AC14 /* Refresh */,
 				FBDC90D62A4C69A80067811A /* PopView */,
 				FBE5D8DD2A487AC80074FAC2 /* FLAnimatedImage */,
 				FBAACBF52A452E6700463FC1 /* star */,
@@ -1167,6 +1183,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DB74AED62A7E523200C0AC14 /* Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				DB74AED72A7E523200C0AC14 /* DKRefreshNormalFooter.h */,
+				DB74AED82A7E523200C0AC14 /* DKRefreshNormalHeader.h */,
+				DB74AED92A7E523200C0AC14 /* DKRefreshNormalHeader.m */,
+				DB74AEDA2A7E523200C0AC14 /* DKRefreshNormalFooter.m */,
+			);
+			path = Refresh;
+			sourceTree = "<group>";
+		};
+		DB74AEDD2A7F7D0C00C0AC14 /* UUMarqueeView */ = {
+			isa = PBXGroup;
+			children = (
+				DB74AEDE2A7F7D0C00C0AC14 /* UUMarqueeView.h */,
+				DB74AEDF2A7F7D0C00C0AC14 /* UUMarqueeView.m */,
+			);
+			path = UUMarqueeView;
+			sourceTree = "<group>";
+		};
 		DBB795B62A7369D900A59DC8 /* AES */ = {
 			isa = PBXGroup;
 			children = (
@@ -1190,8 +1226,6 @@
 				DBB0E1DA2A6D4B500028AEFF /* PMACQModel.m */,
 				DBB0E1DC2A6D4E500028AEFF /* PMACQManager.h */,
 				DBB0E1DD2A6D4E500028AEFF /* PMACQManager.m */,
-				DBB0E1D62A6D3C560028AEFF /* PMLocationManager.h */,
-				DBB0E1D72A6D3C560028AEFF /* PMLocationManager.m */,
 				DBB0E1DF2A6D57A00028AEFF /* PMPageKey.h */,
 				DBB0E1E02A6D57A00028AEFF /* PMPageKey.m */,
 			);
@@ -1261,8 +1295,6 @@
 				FBC27AD62A342BB3001D04F1 /* HomeNoAuthView.m */,
 				FB1C73A52A23247800194925 /* PMNotiView.h */,
 				FB1C73A62A23247800194925 /* PMNotiView.m */,
-				FBB039582A2B431900E5CD80 /* DemoCell2.h */,
-				FBB039592A2B431900E5CD80 /* DemoCell2.m */,
 				FBD58C1D2A26016D00644C77 /* HomeSectionView.h */,
 				FBD58C1E2A26016D00644C77 /* HomeSectionView.m */,
 				FBC27AD82A3435A2001D04F1 /* HomeDayCell.h */,
@@ -1602,6 +1634,7 @@
 			children = (
 				DBA9CBED2A6E7C89004CE8E8 /* PresiMex.entitlements */,
 				FBE5D8E42A487B630074FAC2 /* loadingGif.gif */,
+				DBAA4BF22A7AA24B00015B08 /* PresiMex_GIF.gif */,
 				A4DD5E362A21FF7B00451413 /* Lib */,
 				A4DD5E232A21BAD600451413 /* HTTP */,
 				FB8AF3242A088C2F006C5887 /* Category */,
@@ -1822,6 +1855,8 @@
 				FBC27ACF2A341299001D04F1 /* WFTopBtnBottomTwoLabelCell.m */,
 				FBAACBFC2A4537D800463FC1 /* WFStarCell.h */,
 				FBAACBFD2A4537D800463FC1 /* WFStarCell.m */,
+				DBF6556C2A8269430035103F /* WFSlider.h */,
+				DBF6556D2A8269430035103F /* WFSlider.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -2116,6 +2151,10 @@
 		FBED3B582A593D1F00EB5771 /* private */ = {
 			isa = PBXGroup;
 			children = (
+				DBB0E1D62A6D3C560028AEFF /* PMLocationManager.h */,
+				DBB0E1D72A6D3C560028AEFF /* PMLocationManager.m */,
+				DBE7E7E32A885239006EA0BC /* JKLocationManager.h */,
+				DBE7E7E22A885238006EA0BC /* JKLocationManager.m */,
 				FBED3B5A2A593D3D00EB5771 /* PrivateInfo.h */,
 				FBED3B592A593D3D00EB5771 /* PrivateInfo.m */,
 			);
@@ -2253,6 +2292,7 @@
 				FBE5D8E52A487B630074FAC2 /* loadingGif.gif in Resources */,
 				FBD4B2C52A3EDD5800E136D5 /* detect2.param in Resources */,
 				FB976D452A05124900B1C0A3 /* Assets.xcassets in Resources */,
+				DBAA4BF32A7AA24B00015B08 /* PresiMex_GIF.gif in Resources */,
 				FBD4B2C32A3EDD5800E136D5 /* action_open_mouth_in.mp3 in Resources */,
 				FBD4B2C02A3EDD5800E136D5 /* action_turn_head_in.mp3 in Resources */,
 				FBD4B2C72A3EDD5800E136D5 /* detect1.bin in Resources */,
@@ -2432,6 +2472,7 @@
 				A4D6F12E2A25B364006B4BA6 /* PMQuestionModel.m in Sources */,
 				FB7BC8702A2AED7B000BB3ED /* WFCustomAlertView.m in Sources */,
 				FBE5D8E32A487AC80074FAC2 /* FLAnimatedImageView.m in Sources */,
+				DBE7E7E42A885239006EA0BC /* JKLocationManager.m in Sources */,
 				FBC27ADD2A3443A2001D04F1 /* FlowPathCell.m in Sources */,
 				FBD4B2D62A3EDD5800E136D5 /* AFURLRequestSerialization.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
@@ -2464,6 +2505,7 @@
 				FBE5D8DC2A486B4B0074FAC2 /* CuponModel.m in Sources */,
 				FBC27AED2A34AD20001D04F1 /* UIScrollView+EmptyDataSet.m in Sources */,
 				A4F49D242A30763C00389B67 /* JKPickerViewAppearance.m in Sources */,
+				DB74AEDC2A7E523200C0AC14 /* DKRefreshNormalFooter.m in Sources */,
 				A4DD5E662A21FFE400451413 /* CRBoxTextView.m in Sources */,
 				A400BCFA2A25F404006CABB2 /* PMIDAuthHeaderView.m in Sources */,
 				FBAACBF12A45221900463FC1 /* PMConfigManager.m in Sources */,
@@ -2501,6 +2543,7 @@
 				A40B4CB72A2C706B001B11F0 /* PMCerViewCell.m in Sources */,
 				FBC238812A2646090079FBF2 /* HomeDetailsVC.m in Sources */,
 				FBAACBF82A452E7900463FC1 /* XHStarRateView.m in Sources */,
+				DB74AEDB2A7E523200C0AC14 /* DKRefreshNormalHeader.m in Sources */,
 				A40B4C992A2B1FF9001B11F0 /* PMEmergencyContactModel.m in Sources */,
 				FB939F2A2A21EA8900599A86 /* UILabel+WFTextSizeColor.m in Sources */,
 				A40B4C902A2B0CE9001B11F0 /* PMIDAuthTextViewCell.m in Sources */,
@@ -2516,7 +2559,6 @@
 				FB9E5AB82A3B512000E1D38E /* RepaymentSuccessfulAlert.m in Sources */,
 				FBDE5EE42A22DC29007834AB /* PMOrderTopView.m in Sources */,
 				A400BCF42A25F11E006CABB2 /* PMIDAuthViewCell.m in Sources */,
-				FBB0395A2A2B431900E5CD80 /* DemoCell2.m in Sources */,
 				FBD4B2D42A3EDD5800E136D5 /* AFHTTPSessionManager.m in Sources */,
 				FBD4B2D02A3EDD5800E136D5 /* ELCameraBaseCapture.m in Sources */,
 				FB107B5D2A3DAA520099C52B /* NSString+BarCode.m in Sources */,
@@ -2529,6 +2571,7 @@
 				FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */,
 				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,
 				A40B4C9C2A2B2154001B11F0 /* PMEmergencyContactCell.m in Sources */,
+				DBF6556E2A8269430035103F /* WFSlider.m in Sources */,
 				FBAACBFE2A4537D800463FC1 /* WFStarCell.m in Sources */,
 				A4DD5E622A21FFE400451413 /* CRBoxInputCell.m in Sources */,
 				A4DD5E1F2A21A9F100451413 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
@@ -2546,6 +2589,7 @@
 				FBC27ACD2A340DE2001D04F1 /* WFTopImageBottomTwoLabelCell.m in Sources */,
 				FBD4B2DA2A3EDD5800E136D5 /* BlinkPoints.m in Sources */,
 				FBD4B2DC2A3EDD5800E136D5 /* Scrfd.mm in Sources */,
+				DB74AEE02A7F7D0C00C0AC14 /* UUMarqueeView.m in Sources */,
 				A4DD5E712A22209600451413 /* PMVeriCodeViewController.m in Sources */,
 				A40B4CAE2A2C4D6F001B11F0 /* UIButton+ImageTitleSpacing.m in Sources */,
 				FBC2A8682A19C96D0010D7F8 /* WFBtnCell.m in Sources */,
@@ -2749,11 +2793,12 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Subir fotos y permitir que nuestro sistema evalúe su solicitud de manera adecuada.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Dengan mengakses buku kontak, tujuannya untuk membantu kami memberikan layanan yang lebih baik kepada Anda. Kami menggunakan data untuk evaluasi pengguna secara sistematis dan tidak akan menyebarluaskan data ke yang lain.  Ini hanya digunakan untuk evaluasi pengguna dan data akan segera dihapus setelah diverifikasi";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Facilitar el ingreso de su dirección y mejora la seguridad de su cuenta mediante la información de su ubicación.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Facilitar el ingreso de su dirección y mejora la seguridad de su cuenta mediante la información de su ubicación.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = " Subir fotos y enviar comentarios.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Facilitar el seguimiento de datos y asegurar la seguridad del servicio.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -2793,11 +2838,12 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/PresiMex/configuration/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PresiMex/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Subir fotos y permitir que nuestro sistema evalúe su solicitud de manera adecuada.";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Dengan mengakses buku kontak, tujuannya untuk membantu kami memberikan layanan yang lebih baik kepada Anda. Kami menggunakan data untuk evaluasi pengguna secara sistematis dan tidak akan menyebarluaskan data ke yang lain.  Ini hanya digunakan untuk evaluasi pengguna dan data akan segera dihapus setelah diverifikasi";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "PesoOnline  Use user location information for loan approval";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "PesoOnline Access your camera for setting avatars, uploading authentication data, and code scanning services";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Facilitar el ingreso de su dirección y mejora la seguridad de su cuenta mediante la información de su ubicación.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Facilitar el ingreso de su dirección y mejora la seguridad de su cuenta mediante la información de su ubicación.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = " Subir fotos y enviar comentarios.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Facilitar el seguimiento de datos y asegurar la seguridad del servicio.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

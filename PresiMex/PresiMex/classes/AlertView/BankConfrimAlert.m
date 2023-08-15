@@ -61,7 +61,7 @@
         cell.label.text = @"Por favor, confirme los detalles de su cuenta.";
         cell.label.textAlignment = NSTextAlignmentCenter;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
-        cell.label.font = [UIFont boldSystemFontOfSize:11];
+        cell.label.font = [UIFont boldSystemFontOfSize:14];
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(21.5, 54, 0, 54)];
         return cell;
@@ -104,7 +104,7 @@
         cell.leftBtn.layer.borderColor = BColor_Hex(@"#CCCCCC", 1).CGColor;
         
         
-        [cell.rightBtn setText:@"Quedarse" TextColor:BColor_Hex(@"#FFFFFF", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
+        [cell.rightBtn setText:@"Confirmar" TextColor:BColor_Hex(@"#FFFFFF", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
         
         [cell.rightBtn addLinearGradientwithSize:CGSizeMake((WF_ScreenWidth - 79)/2, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
         

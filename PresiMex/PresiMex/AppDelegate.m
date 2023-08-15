@@ -43,20 +43,26 @@
     [self.window makeKeyAndVisible];
     
     
-    //打开app客户端
-    PMDeviceModel * model =[PMDeviceModel sharedInstance];
     
-    PMLocationManager * LocationManager  = [PMLocationManager sharedInstance];
-    __weak typeof(model) weakModel = model;
-    [LocationManager creatLocation:^(BOOL isLocation) {
-        [weakModel GetDate];
-        [[PMDotManager sharedInstance] POSTDotDevType:20 value:weakModel];
-    }];
+    if([PMAccountTool isLogin]){
+        //打开app客户端
+        PMDeviceModel * model =[PMDeviceModel sharedInstance];
+        
+        PMLocationManager * LocationManager  = [PMLocationManager sharedInstance];
+        __weak typeof(model) weakModel = model;
+        [LocationManager creatShowAlert:NO LocationBlock:^(BOOL isLocation) {
+            [weakModel GetDate];
+            [[PMDotManager sharedInstance] POSTDotDevType:20 value:weakModel];
+        }];
+        
+        
+        //APP启动页
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_app_start content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+        [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+        
+    }
     
     
-    //APP启动页
-    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_app_start content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
-    [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
     
     if ([FIRApp defaultApp] == nil) {
         [FIRApp configure];
@@ -69,23 +75,23 @@
     /* Uncomment the following line to see AppsFlyer debug logs */
     [AppsFlyerLib shared].isDebug = true;
     [[AppsFlyerLib shared] logEvent: @"ios_pesoOnline_home" withValues:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-         selector:@selector(sendLaunch:)
-         name:UIApplicationDidBecomeActiveNotification
-         object:nil];
-        if (@available(iOS 10, *)) {
-            UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-            center.delegate = self;
-            [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            }];
-        }
-    
-        else {
-            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge categories:nil];
-            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        }
-    
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//         selector:@selector(sendLaunch:)
+//         name:UIApplicationDidBecomeActiveNotification
+//         object:nil];
+//        if (@available(iOS 10, *)) {
+//            UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//            center.delegate = self;
+//            [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+//            }];
+//        }
+//
+//        else {
+//            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge categories:nil];
+//            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//        }
+//
+//        [[UIApplication sharedApplication] registerForRemoteNotifications];
         [[AppsFlyerLib shared]  logEvent: AFEventAddToWishlist withValues: @{
             AFEventParamPrice: @20,
             AFEventParamContentId: @"123456"
@@ -102,7 +108,7 @@
         }];
         [[AppsFlyerLib shared]  logEvent: @"ios_pesoOnline_Luch" withValues:nil];
         // 谷歌推送相关
-        [self setUpFirebaseConfigure];
+//        [self setUpFirebaseConfigure];
     return YES;
 }
 
@@ -188,27 +194,46 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 
 - (void)setUpFirebaseConfigure {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+     selector:@selector(sendLaunch:)
+     name:UIApplicationDidBecomeActiveNotification
+     object:nil];
+    if (@available(iOS 10, *)) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        }];
+    }
+
+    else {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    
     // 初始化配置
     //[FIRApp configure];
 //    [FIRMessaging messaging].delegate = self;
    
     // 注册接受远程通知
-    if (@available(iOS 10.0, *)) {
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-       
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionCarPlay) completionHandler:^(BOOL granted, NSError *_Nullable error) {
-            if (!error) {
-                NSLog(@"request authorization succeeded!");
-            }
-        }];
-    } else {
-        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
+//    if (@available(iOS 10.0, *)) {
+//        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//        center.delegate = self;
+//
+//        [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionCarPlay) completionHandler:^(BOOL granted, NSError *_Nullable error) {
+//            if (!error) {
+//                NSLog(@"request authorization succeeded!");
+//            }
+//        }];
+//    } else {
+//        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//    }
+//    [[UIApplication sharedApplication] registerForRemoteNotifications];
     
 }
 

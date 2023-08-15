@@ -86,11 +86,16 @@
 @implementation HomeDayCellItem
 
 -(void)buildSubViews{
-    self.backgroundColor = BColor_Hex(@"#FFB602", 0.15);
+//    self.backgroundColor = BColor_Hex(@"#FFB602", 0.15);
     self.layer.cornerRadius = 5;
     self.layer.masksToBounds = YES;
+    [self addSubview:self.bgImageView];
     [self addSubview:self.topLabel];
     [self addSubview:self.bottomLabel];
+    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self);
+        
+    }];
     [self.topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(@(7.5));
         make.centerX.equalTo(@(0));
@@ -106,6 +111,16 @@
     }];
     
 }
+
+-(UIImageView *)bgImageView{
+    if (_bgImageView == nil) {
+        _bgImageView = [[UIImageView alloc] init];
+        _bgImageView.image = [UIImage imageNamed:@"homesubBG"];
+        _bgImageView.contentMode = UIViewContentModeScaleToFill;
+    }
+    return _bgImageView;
+}
+
 
 -(UILabel *)topLabel{
     if(_topLabel == nil){

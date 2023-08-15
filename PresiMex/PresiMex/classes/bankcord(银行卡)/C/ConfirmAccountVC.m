@@ -11,6 +11,7 @@
 #import "PMAddBankViewController.h"
 #import "PMAddBankViewController.h"
 #import "BankConfrimAlert.h"
+#import "LoanWaitingAlert.h"
 
 @interface ConfirmAccountVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -26,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tempView addSubview:self.tableView];
-    self.navTitleLabel.text = @"Confirmacion de cuen";
+    self.navTitleLabel.text = @"Confirmacion de cuenta";
     
 //    [self GETCouponUrl];
     
@@ -69,7 +70,7 @@
 
         WFLeftRightBtnCell * cell = [WFLeftRightBtnCell cellWithTableView:tableView];
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(30, 32, 20, 32) height:50];
-        [cell.leftBtn setTitle:@"Quedarse" forState:UIControlStateNormal];
+        [cell.leftBtn setTitle:@"Confirmar" forState:UIControlStateNormal];
         [cell.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#CCCCCC"]  forState:UIControlStateNormal];
         cell.leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
         cell.leftBtn.layer.cornerRadius = 13;
@@ -133,6 +134,10 @@
                 [VC setChangeBlock:^(bankcardModel * _Nonnull bankModel) {
                     weakself.bankModel = bankModel;
                     [weakself.tableView reloadData];
+                    
+                    if (weakself.clickConfirmBlock) {
+                        weakself.clickConfirmBlock(bankModel);
+                    }
                 }];
                 [weakself.navigationController pushViewController:VC animated:YES];
                 
@@ -164,7 +169,7 @@
 -(void)showBankConfrimAlert{
     BankConfrimAlert * alert = [[BankConfrimAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 40, 396) withType:0] ;
     alert.bankModel = self.bankModel;
-    alert.money = self.orderModel.barbie;
+    alert.money = self.orderModel.unexpected;
     
     WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
     [AlertView show];
@@ -271,7 +276,9 @@
     [PMBaseHttp post:Post_Oder_Fail_Reset parameters:pars success:^(id  _Nonnull responseObject) {
         [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
-            [weakself.navigationController popViewControllerAnimated:YES];
+            
+            [weakself showLoanWaitingAlert];
+//            [weakself.navigationController popViewControllerAnimated:YES];
         }else{
             [weakself showTip:responseObject[@"entire"]];//（对）
         }
@@ -283,5 +290,36 @@
         
     }];
 }
+
+//放款处理中弹框
+-(void)showLoanWaitingAlert{
+    LoanWaitingAlert * alert = [[LoanWaitingAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60, 235) withType:0] ;
+    
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView setClickBGDismiss:NO];
+    [AlertView show];
+    WF_WEAKSELF(weakself);
+    [alert setClickBtnBlock:^{
+        [AlertView dismiss];
+        
+//        for (UIViewController *temp in self.navigationController.viewControllers) {
+//            
+//            if ([temp isKindOfClass:[OrderVC class]]) {
+//                
+//                [weakself.navigationController popToViewController:temp animated:YES];
+//            }
+//            
+//        }
+        
+        [weakself.navigationController popViewControllerAnimated:YES];
+        
+        
+    }];
+    [alert setClickCloseBtnBlock:^{
+        [AlertView dismiss];
+    }];
+    
+}
+
 
 @end

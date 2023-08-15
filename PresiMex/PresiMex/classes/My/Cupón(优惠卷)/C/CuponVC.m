@@ -8,6 +8,7 @@
 #import "CuponVC.h"
 #import "CuponCell.h"
 #import "CuponModel.h"
+#import "OrderVC.h"//  订单
 
 @interface CuponVC ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
@@ -25,21 +26,19 @@
 
 @implementation CuponVC
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear: animated];
+    
+    [self GETCouponUrl];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tempView addSubview:self.tableView];
     self.eg = 1;
     
-    WF_WEAKSELF(weakself);
-//    self.tableView.mj_footer =  [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//        weakself.eg += 1;
-//        [weakself GETCouponUrl];
-//    }];
     self.navTitleLabel.text = @"Cupón";
     
-    [self GETCouponUrl];
     
     //优惠券页面
     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_coupon content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
@@ -64,9 +63,13 @@
     CuponCell * cell = [CuponCell cellWithTableView:tableView];
     
     [cell updataWithModel:self.dataArr[indexPath.row] indx:indexPath.row];
-    
+    WF_WEAKSELF(weakself);
     cell.clickUseBlock = ^(NSInteger indx) {
+        OrderVC *vc = [[OrderVC alloc] init];
+        [weakself.navigationController pushViewController:vc animated:YES];
         
+        PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_coupon_coupon_use content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+         [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
     };
     
     return cell;
@@ -130,8 +133,9 @@
     pars[@"eg"] = [NSString stringWithFormat:@"%ld",self.eg];
     pars[@"patricia"] = @"100";
     WF_WEAKSELF(weakself);
+    [self show];
     [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
-        
+        [weakself dismiss];
         if ([responseObject[@"retail"] intValue]==200) {
             NSArray * dataList = responseObject[@"shame"][@"approaches"];
             
@@ -147,7 +151,7 @@
         
         
     } failure:^(NSError * _Nonnull error) {
-        
+        [weakself dismiss];
         [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
         [weakself.tableView.mj_footer endRefreshing];
         

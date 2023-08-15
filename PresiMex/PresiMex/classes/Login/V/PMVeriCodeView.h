@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong) CRBoxInputView *boxInputView;
 
+@property (nonatomic , strong) UILabel *desLabel2;
+
+
 @property (nonatomic , copy) void(^codeTag)(NSString *code);
 
 - (void)updateTime:(NSInteger)time;

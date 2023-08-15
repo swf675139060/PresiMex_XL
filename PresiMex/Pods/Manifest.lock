@@ -212,7 +212,6 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
-  - RollingNotice (1.1.1)
   - SDWebImage (5.9.5):
     - SDWebImage/Core (= 5.9.5)
   - SDWebImage/Core (5.9.5)
@@ -229,7 +228,6 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.2.0)
   - MJExtension
   - MJRefresh
-  - RollingNotice
   - SDWebImage (~> 5.9.5)
   - ZZCircleProgress
 
@@ -252,7 +250,6 @@ SPEC REPOS:
     - MJRefresh
     - nanopb
     - PromisesObjC
-    - RollingNotice
     - SDWebImage
     - ZZCircleProgress
 
@@ -274,10 +271,9 @@ SPEC CHECKSUMS:
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
-  RollingNotice: 1f14ea9d0157a7178bbfcae27bb7a4876f41b935
   SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: 03a381b8f550b163360a2f3a6ee5a92293edd59a
+PODFILE CHECKSUM: d2c0ab110587ee4a855b5ecbfae9159281458260
 
 COCOAPODS: 1.12.1

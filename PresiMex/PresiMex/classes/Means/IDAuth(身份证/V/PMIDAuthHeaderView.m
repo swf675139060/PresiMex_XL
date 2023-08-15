@@ -6,6 +6,7 @@
 //
 
 #import "PMIDAuthHeaderView.h"
+#import "FLAnimatedImage.h"
 
 @implementation PMIDAuthHeaderView
 
@@ -72,12 +73,31 @@
     tipLabel.textColor=BColor_Hex(@"#7C7C7C", 1);
     tipLabel.textAlignment = NSTextAlignmentLeft;
     
-    
-    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(WF_ScreenWidth-15-21,18.5,21,27.5)];
-    [btn setImage:[UIImage imageNamed:@"cer_icon"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnEvent) forControlEvents:UIControlEventTouchUpInside];
-    btn.swf_centerY=tipLabel.swf_centerY;
-    [self addSubview:btn];
+    if (type==4) {
+        FLAnimatedImageView *ImageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake(WF_ScreenWidth-20-21,35,31,27.5)];
+        ImageView.contentMode = UIViewContentModeScaleAspectFill;
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PresiMex_GIF" ofType:@"gif"];
+        // 创建 FLAnimatedImage 对象
+        FLAnimatedImage *animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfFile:filePath]];
+//         animatedImage.loopCount = 1;
+        ImageView.userInteractionEnabled = YES;
+        ImageView.animatedImage = animatedImage;
+        [self addSubview:ImageView];
+        
+        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(WF_ScreenWidth-15-21,18.5,21,27.5)];
+
+        [btn sd_imageURLForState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnEvent) forControlEvents:UIControlEventTouchUpInside];
+        btn.swf_centerY=tipLabel.swf_centerY;
+        [self addSubview:btn];
+    }else{
+        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(WF_ScreenWidth-15-21,18.5,21,27.5)];
+        [btn setImage:[UIImage imageNamed:@"cer_icon"] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnEvent) forControlEvents:UIControlEventTouchUpInside];
+        btn.swf_centerY=tipLabel.swf_centerY;
+        [self addSubview:btn];
+    }
+   
     
 //    UIImageView*imageView = [[UIImageView alloc] init];
 //    imageView.contentMode=UIViewContentModeScaleAspectFit;

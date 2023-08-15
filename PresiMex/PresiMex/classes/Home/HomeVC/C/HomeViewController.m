@@ -30,10 +30,15 @@
 #import "PMCertificationCoreViewController.h"
 #import "FLAnimatedImage.h"
 
+
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
+
+@property (nonatomic, strong) UIImageView *bgImageView;
+@property (nonatomic, strong) UIImageView *bgImageViewtop;
+
 @property (nonatomic, strong) HomeNoAuthView *NoAuthView; /**< 列表*/
 
 
@@ -56,10 +61,14 @@
     [super viewDidLoad];
     self.selectIndx = 0;
     self.navBarView.hidden = YES;
+    [self.view addSubview:self.bgImageView];
     [self.view addSubview:self.notiView];
+    [self.view addSubview:self.bgImageViewtop];
     
-    
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleNotification:)
+                                                 name:@"dengLuChengGong"
+                                               object:nil];
 //        [self showTopLabelBottmBtnAlert:@"sdfasdfasdf"];
 //    [self POSTCouponGetUrl];
 //    [self showLoanWaitingAlertType:1];
@@ -74,7 +83,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self GETAppBanner];
-    
+    self.changeValue = 0;
     if([PMAccountTool isLogin]){
         //获取授信
         [self GETUserAuthInfo];
@@ -87,6 +96,8 @@
         [self.view addSubview:self.NoAuthView];
         [self.NoAuthView.tableView reloadData];
         [self.tableView removeFromSuperview];
+        
+        [self.NoAuthView addBgImageView];
     }
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
@@ -247,9 +258,10 @@
             }
             cell.slider.value = self.changeValue;
             [cell.slider trackRectForBounds:CGRectMake(0, 0, WF_ScreenWidth - 30, 8)];
-            [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
-            [cell upSliderFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) height:21];
-            [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 24) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
+            [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15) height:25];
+            [cell upSliderFrameWithInsets:UIEdgeInsetsMake(8, 15, 0, 15) height:16];
+            [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 25) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
+//            cell.BGView.backgroundColor = [UIColor redColor];
             WF_WEAKSELF(weakself);
             cell.sliderChangeBlock = ^(NSInteger number) {
                 weakself.changeValue = number;
@@ -302,10 +314,10 @@
 //            [cell.label setText:@"2d, 12h, 30m,12s" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11]];
             [cell.label setText:@"" TextColor:[UIColor whiteColor] Font:[UIFont systemFontOfSize:11]];
             
-            [cell upLabelFrameWithInsets:UIEdgeInsetsMake(5, 15, 8.5, 15)];
+            [cell upLabelFrameWithInsets:UIEdgeInsetsMake(5, 15, 5, 15)];
             
-            [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 0, 15)];
-            [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 23.5) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
+            [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 15, 20, 15)];
+            [cell.BGView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth-30, 20) maskedCorners:kCALayerMinXMinYCorner cornerRadius:0.1];
             return cell;
         }else if (indexPath.row == 6){
             WFImageCell * cell = [WFImageCell cellWithTableView:tableView];
@@ -419,6 +431,7 @@
                 }];
                 // 提交借款
                 [weakself.detailView setClickNextBlock:^(BOOL success) {
+                    weakself.changeValue = 0;
                     [weakself POSTLoanApply];
                     
                     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_product_apply_submit content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
@@ -469,10 +482,11 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.notiView.swf_bottom, WF_ScreenWidth, WF_ScreenHeight - self.notiView.swf_bottom - WF_TabBarHeight) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor  = [UIColor whiteColor];
+        _tableView.backgroundColor  = [UIColor clearColor];
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        _tableView.backgroundView = self.bgImageView;
     }
     
     return _tableView;
@@ -504,6 +518,27 @@
         _notiView = [[PMNotiView alloc] initWithFrame:CGRectMake(0, WF_StatusBarHeight + 15, WF_ScreenWidth, 33)];
     }
     return _notiView;
+}
+
+
+-(UIImageView *)bgImageViewtop{
+    if (_bgImageViewtop == nil) {
+        _bgImageViewtop = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_StatusBarHeight + 15)];
+//        _bgImageViewtop.backgroundColor = [UIColor yellowColor];
+        _bgImageViewtop.image = [UIImage imageNamed:@"homeBG"];
+        _bgImageViewtop.contentMode = UIViewContentModeScaleToFill;
+    }
+    return _bgImageViewtop;
+}
+
+-(UIImageView *)bgImageView{
+    if (_bgImageView == nil) {
+        _bgImageView = [[UIImageView alloc] init];
+//        _bgImageView.backgroundColor = [UIColor yellowColor];
+        _bgImageView.image = [UIImage imageNamed:@"homeBG"];
+        _bgImageView.contentMode = UIViewContentModeScaleToFill;
+    }
+    return _bgImageView;
 }
 
 -(void)showLoanWaitingAlertType:(NSInteger)type{
@@ -560,6 +595,12 @@
 
 //通用错误弹框
 -(void)showTopLabelBottmBtnAlert:(NSString *)content{
+    if ([PMConfigManager sharedInstance].showTost) {
+        return;
+    }
+    
+    [PMConfigManager sharedInstance].showTost = YES;
+    
     topLabelBottmBtnAlert * alert = [[topLabelBottmBtnAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60,190) withConttent:content btnTitel:@"OK"] ;
     
     WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
@@ -579,7 +620,7 @@
     WF_WEAKSELF(weakself);
     [PMBaseHttp get:GET_App_Banner parameters:pars success:^(id  _Nonnull responseObject) {
         if ([responseObject[@"retail"] intValue]==200) {
-            [weakself.notiView setNotList:responseObject[@"trackback"]];
+            [weakself.notiView setNotList:responseObject[@"shame"][@"trackback"]];
         }else{
             [weakself.notiView setNotList:@[]];
         }
@@ -621,6 +662,7 @@
             [weakself upDataSubview];
             weakself.authModel = nil;
             [weakself.tableView reloadData];
+           
         }
         
     } failure:^(NSError * _Nonnull error) {
@@ -695,12 +737,22 @@
         [self.NoAuthView removeFromSuperview];
         [self.tableView reloadData];
         [self GETProductList];
+        
+        UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+        [self.bgImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.right.equalTo(self.view);
+            make.bottom.equalTo(cell.contentView);
+            
+        }];
     } else {
         if (!self.NoAuthView.superview) {
             [self.view addSubview:self.NoAuthView];
+            
         }
         [self.NoAuthView.tableView reloadData];
         [self.tableView removeFromSuperview];
+        
+        [self.NoAuthView addBgImageView];
     }
  
 
@@ -814,4 +866,59 @@
     PMCertificationCoreViewController*vc=[PMCertificationCoreViewController new];
     [self.navigationController pushViewController:vc animated:YES];
 }
+// 实现通知处理方法
+- (void)handleNotification:(NSNotification *)notification {
+    // 处理通知
+    [self sutupAlertView];
+}
+//登陆成功显示用户权限提示
+-(void)sutupAlertView{
+
+    weakify(self);
+   AccesoPermisosView * BottomView = [AccesoPermisosView new];
+   
+    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+    [popView showWithTitileStr:@""];
+    [popView clickBGHiden:NO];
+    
+    BottomView.selectBlock = ^{
+        strongify(self);
+        [popView dismiss];
+        [self showALLAuthor];
+    };
+}
+
+-(void)showALLAuthor{
+    
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, 1 *NSEC_PER_SEC); //设置时间2秒
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        
+//        [PrivateInfo requestContactAuthor];
+        AppDelegate * delegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        [delegate setUpFirebaseConfigure];
+        [PrivateInfo requestPhotoAuthor];
+        [PrivateInfo requestMediaStatusAuthor];
+        
+            //登陆Dev
+            PMDeviceModel * model =[PMDeviceModel sharedInstance];
+
+            PMLocationManager * LocationManager  = [PMLocationManager sharedInstance];
+            LocationManager.haveSend = NO;
+            __weak typeof(model) weakModel = model;
+            [LocationManager creatShowAlert:YES LocationBlock:^(BOOL isLocation) {
+                    [weakModel GetDate];
+                    [[PMDotManager sharedInstance] POSTDotDevType:30 value:weakModel];
+            }];
+        
+        [PrivateInfo requestIDFA];
+
+     });
+    
+}
+
+
+
+
+
 @end

@@ -9,6 +9,7 @@
 #import "WFLabelCell.h"
 #import "WFBtnCell.h"
 
+
 @interface AccesoPermisosView()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/
@@ -21,141 +22,100 @@
     _titles = titles;
     [self.tableView reloadData];
     
-    CGFloat height = MIN(112- 19 + (titles.count/2 - 1) * 85 + 90 + WF_BottomSafeAreaHeight, WF_ScreenHeight - WF_NavigationHeight);
-    self.frame = CGRectMake(0, 0, WF_ScreenWidth, height);
 }
 
 -(void)buildSubViews{
-    NSArray * titles = @[
-        @"Acceso a permisos",
-        @"Para que pueda disfrutar de nuestros servicios de alta calidad,obtendremos los siguientes permisos de su teléfono móvil.",
-        @"Permisos de ubicació",//定位
-        @"Para que pueda disfrutar de nuestro servicio de alta calidad,obtendremos los siguientes permisos de su teléfono móvil.",
-        @"Permisos fotográficos",//照片
-        @"Configurar información y fotos de avatares",
-        @"Permisos de la Cámara",//相机
-        @"Configurar información y fotos de avatares",
-        @"Permisos de libreta de direcciones",//通讯录
-        @"Al acceder a la libreta de direcciones, el objetivo es ayudarnos a ofrecerle un mejor servicio."
-    ];
-    self.titles = titles;
     
+    self.urlString = H5_permission;
+    CGFloat height = MIN(500, WF_ScreenHeight - WF_NavigationHeight);
     
+    self.frame = CGRectMake(0, 0, WF_ScreenWidth, height);
+    [self addSubview:self.webView];
     [self addSubview:self.tableView];
     
+    //加载
+    [self loadRequest];
+    
     [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.bottom.right.equalTo(self);
+        make.left.bottom.right.equalTo(self);
+        make.top.equalTo(self.webView.mas_bottom);
     }];
+
 }
 
 
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.titles.count  + 1;
+    return 1;
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 44;
-//}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 0) {
-        return 40;
-    } else if (indexPath.row == 1) {
-        return 15 + 38;
-    } else if (indexPath.row == 2) {
-        return 19 + 18;
-    }else if (indexPath.row == 3) {
-        return 10 + 38;
-    } else if (indexPath.row == 4) {
-        return 19 + 18;
-    }else if (indexPath.row == 5) {
-        return 10 + 38;
-    }else if (indexPath.row == 6) {
-        return 19 + 18;
-    }else if (indexPath.row == 7) {
-        return 10 + 38;
-    }else if (indexPath.row == 8) {
-        return 19 + 18;
-    }else if (indexPath.row == 9) {
-        return 10 + 38;
-    }else{
-        return 90;
-    }
-    
+    return 90;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-   
-    cell.label.textAlignment = NSTextAlignmentLeft;
-    cell.label.adjustsFontSizeToFitWidth = YES;
-    if (indexPath.row == 0) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(22, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:18]];
-    } else if (indexPath.row == 1) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(15, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:12]];
-    } else if (indexPath.row == 2) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(19, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:18]];
-    }else if (indexPath.row == 3) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(10, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:12]];
-    } else if (indexPath.row == 4) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(19, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:18]];
-    }else if (indexPath.row == 5) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(10, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:12]];
-    }else if (indexPath.row == 6) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(19, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:18]];
-    }else if (indexPath.row == 7) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(10, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:12]];
-    }else if (indexPath.row == 8) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(19, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#1B1200", 1) Font:[UIFont boldSystemFontOfSize:18]];
-    }else if (indexPath.row == 9) {
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(10, 13, 0, 13)];
-        [cell.label setText:self.titles[indexPath.row] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:12]];
-    }else if (indexPath.row == 10) {
-        WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
-        [cell.btn setTitle:@"OK" forState:UIControlStateNormal];
-        cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
-        [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        WF_WEAKSELF(weakself);
-        [cell setClickBtnBlock:^{
-            [PrivateInfo requestContactAuthor];
-            [PrivateInfo requestPhotoAuthor];
-            [PrivateInfo requestMediaStatusAuthor];
-            [PrivateInfo requestLocationAuthor];
-            
-            if(weakself.selectBlock){
-                weakself.selectBlock();
-            }
-        }];
-        [cell.btn addLinearGradientwithSize:CGSizeMake(self.jk_width - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
-        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(15, 15, 25, 15) height:50];
-        return cell;
-    }
-    
-    
-    cell.bottomLine.hidden = YES;
+    WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
+    [cell.btn setTitle:@"OK" forState:UIControlStateNormal];
+    cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    WF_WEAKSELF(weakself);
+    [cell setClickBtnBlock:^{
+        if(weakself.selectBlock){
+            weakself.selectBlock();
+        }
+    }];
+    [cell.btn addLinearGradientwithSize:CGSizeMake(self.jk_width - 30, 50) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
+    [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(15, 15, 25, 15) height:50];
     return cell;
-   
-    
+
     
 }
 
 
 
 #pragma mark -- init
+
+
+/// 加载请求
+- (void)loadRequest
+{
+    if (!self.urlString || self.urlString.length == 0) return;
+
+    NSURL *url = [NSURL URLWithString:[self.urlString stringByAddingPercentEscapesUsingEncoding:kCFStringEncodingUTF8]];
+        
+    if (url) {
+        [_webView loadRequest:[NSURLRequest requestWithURL:url]];
+    }
+}
+
+#pragma mark--懒加载
+-(WKWebView*)webView
+{
+    if (!_webView) {
+
+        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+        WKPreferences *preferences = [[WKPreferences alloc] init];
+        preferences.javaScriptCanOpenWindowsAutomatically = YES;
+        config.selectionGranularity = YES;
+        config.allowsInlineMediaPlayback = YES;
+        config.preferences = preferences;
+        
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, self.jk_height - 90) configuration:config];
+
+        self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        if (@available(iOS 13.0, *)) self.webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+        
+    }
+    return _webView;
+}
+
+
 - (UITableView *)tableView
 {
     if (!_tableView) {

@@ -44,8 +44,6 @@
             PMDotConfigModel * ConfigModel = [PMDotConfigModel mj_objectWithKeyValues:responseObject[@"dtsaw"]];
             weakself.configModel = ConfigModel;
             configModelBlock(ConfigModel);
-            
-
         }else{
             
         }
@@ -142,9 +140,9 @@
         }
         //埋点类型
         if (type == 10 || type == 20  || type == 30 ) {
-           [pars setObject:@"dev，loc" forKey:@"lkvjhs"];
+           [pars setObject:@"devIos" forKey:@"lkvjhs"];
         } else {
-            [pars setObject:@"acq" forKey:@"lkvjhs"];
+            [pars setObject:@"acqIos" forKey:@"lkvjhs"];
         }
         //App产品标识
         [pars setObject:@"com.prsi.PresiMex" forKey:@"dsdqlwa"];

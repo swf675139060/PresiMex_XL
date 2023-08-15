@@ -32,22 +32,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSubviews];
-    [self requestGetVeriCode:1];
 }
 
 - (void)updateTime:(NSInteger)time{
     _index = time;
-//    [self.phoneView updateTime:time];
-    if(time == 60){
-    }
+
     
     if (time>0) {
         [self.btn setBackgroundColor:BColor_Hex(@"#CCCCCC", 1)];
         [self.btn setTitle:[NSString stringWithFormat:@"%ldS",time] forState:UIControlStateNormal];
         [_btn deletaLinearGradient];
+        self.phoneView.desLabel2.hidden = YES;
     }else{
         [_btn addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth - 30, 50) withColors:@[(id)[UIColor jk_colorWithHexString:@"#FFB602"].CGColor,(id)[UIColor jk_colorWithHexString:@"#FC7500"].CGColor] startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner | kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:13];
         [self.btn setTitle:@"Resend" forState:UIControlStateNormal];
+        
+        self.phoneView.desLabel2.hidden = NO;
     }
 }
 -(void)setupSubviews{
@@ -208,6 +208,7 @@
     pars[@"schedules"]=self.phone;//手机号
     pars[@"myanmar"]=code;//验证码
     pars[@"witch"]=@"fireBase";
+    pars[@"registerClientType"]=@"2";
     pars[@"lp"]=@1;
     WF_WEAKSELF(weakself);
     [PMBaseHttp postJson:Post_Sms_Code_Ver parameters:pars success:^(id  _Nonnull responseObject) {
@@ -220,7 +221,6 @@
             [self.navigationController popToRootViewControllerAnimated:YES];
             NSLog(@"user==%@",[PMAccountTool account].token);
             
-            [self sutupAlertView];
             
             //登录成功首页
             PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_login_succ content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
@@ -228,6 +228,25 @@
             
             
             [[AppsFlyerLib shared]  logEvent: @"af_complete_registration" withValues:nil];
+            
+            
+//            //登陆Dev
+//            PMDeviceModel * model =[PMDeviceModel sharedInstance];
+//            
+//            PMLocationManager * LocationManager  = [PMLocationManager sharedInstance];
+//            __weak typeof(model) weakModel = model;
+//            [LocationManager creatLocation:^(BOOL isLocation) {
+//                [weakModel GetDate];
+//                [[PMDotManager sharedInstance] POSTDotDevType:30 value:weakModel];
+//            }];
+            
+            // 定义通知的名称
+            NSString *notificationName = @"dengLuChengGong";
+            // 创建通知对象
+            NSNotification *notification = [NSNotification notificationWithName:notificationName object:nil];
+            // 发送通知广播
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            
         } else{
             [weakself dismiss];
             [weakself showTip:responseObject[@"entire"]];//（对）
@@ -243,32 +262,11 @@
     PMACQInfoModel * phoneInfoModel = [[PMACQInfoModel alloc] initWithIdName:acq02_login_otp_code content:code beginTime:self.phoneView.beginTime Duration:self.phoneView.duration];
     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: phoneInfoModel];
     
-    
-    //登陆Dev
-    PMDeviceModel * model =[PMDeviceModel sharedInstance];
-    
-    PMLocationManager * LocationManager  = [PMLocationManager sharedInstance];
-    __weak typeof(model) weakModel = model;
-    [LocationManager creatLocation:^(BOOL isLocation) {
-        [weakModel GetDate];
-        [[PMDotManager sharedInstance] POSTDotDevType:10 value:weakModel];
-    }];
+
 
 }
 
--(void)sutupAlertView{
 
-    weakify(self);
-   AccesoPermisosView * BottomView = [AccesoPermisosView new];
-   
-    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
-    [popView showWithTitileStr:@""];
-    [popView clickBGHiden:NO];
-    BottomView.selectBlock = ^{
-        strongify(self);
-        [popView dismiss];
-    };
-}
 
 
 @end

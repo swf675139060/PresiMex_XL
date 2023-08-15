@@ -326,7 +326,7 @@
     }else if (indexPath.row == 7) {
         
         if(self.indx == 0){
-            if (self.beOverdue == YES) {
+            if (self.beOverdue == YES || [self.leftModel.shortly integerValue] == 0) {
                 WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
                 return cell;
             } else {

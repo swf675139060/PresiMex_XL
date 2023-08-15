@@ -7,7 +7,8 @@
 
 #import "PrivateInfo.h"
 //#import "DKDes.h"
-
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
+#import <AdSupport/AdSupport.h>
 @implementation PrivateInfo
 
 /// 通讯录授权状态
@@ -41,7 +42,7 @@
 + (void)requestPhotoAuthor
 {
     PHAuthorizationStatus photoStatus = [PHPhotoLibrary authorizationStatus];
-    if (photoStatus == PHAuthorizationStatusNotDetermined) {
+//    if (photoStatus == PHAuthorizationStatusNotDetermined) {
         // 尚未请求照片访问权限，需要请求权限
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
             if (status == PHAuthorizationStatusAuthorized) {
@@ -50,7 +51,7 @@
                 // 用户拒绝了访问权限请求，需要提示用户并且提供设置选项
             }
         }];
-    }
+//    }
 }
 
 /// 照相机授权状态
@@ -65,7 +66,7 @@
 {
     
     AVAuthorizationStatus cameraStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if (cameraStatus == AVAuthorizationStatusNotDetermined) {
+//    if (cameraStatus == AVAuthorizationStatusNotDetermined) {
         // 尚未请求摄像机访问权限，需要请求权限
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             if (granted) {
@@ -74,7 +75,7 @@
                 // 用户拒绝了访问权限请求，需要提示用户并且提供设置选项
             }
         }];
-    }
+//    }
 }
 
 /// 定位授权状态
@@ -83,17 +84,30 @@
     return locationStatus;
 }
 
-/// 请求照定位授权
+/// 请求定位授权
 + (void)requestLocationAuthor{
     CLAuthorizationStatus locationStatus = [CLLocationManager authorizationStatus];
     if (locationStatus == kCLAuthorizationStatusNotDetermined) {
         // 尚未请求定位访问权限，需要请求权限
         CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-        if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [locationManager requestWhenInUseAuthorization];
-        }
+        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [locationManager requestWhenInUseAuthorization];
+            }
+//        });
+        
     }
 }
+
++ (void)requestIDFA{
+    if (@available(iOS 14, *)) {
+        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+           
+        }];
+    }
+}
+
 
 /// 上传隐私数据
 /// @param success 成功回调
