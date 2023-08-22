@@ -65,7 +65,7 @@
         WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
         cell.label.text = @"Seleccione su tipo de problema:";
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#0B0B0B"];
-        cell.label.font = [UIFont systemFontOfSize:14];
+        cell.label.font = [UIFont boldSystemFontOfSize:14];
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(15, 15, 6, 15)];
         return cell;
     }else if(indexPath.row == 1){
@@ -101,7 +101,7 @@
         NSString * subString1 = @"(5 al máximo)";
         
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:String];
-        [attributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} range:[String rangeOfString:subString0]];
+        [attributedString addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13]} range:[String rangeOfString:subString0]];
         [attributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]} range:[String rangeOfString:subString1]];
         cell.label.attributedText = attributedString;
         cell.label.textColor = [UIColor jk_colorWithHexString:@"#333333"];
@@ -173,7 +173,9 @@
 -(void)getImageQuanXian{
     PHAuthorizationStatus status = [PrivateInfo PhotoStatus];
     if (status == AVAuthorizationStatusNotDetermined) {
-        [PrivateInfo requestPhotoAuthor];
+        [PrivateInfo requestPhotoAuthor:^(PHAuthorizationStatus status) {
+            
+        }];
     } else if (status == AVAuthorizationStatusDenied) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Es necesario acceder a sus fotos" message:@"Abra los permisos de la foto para usar la foto." preferredStyle:UIAlertControllerStyleAlert];
 

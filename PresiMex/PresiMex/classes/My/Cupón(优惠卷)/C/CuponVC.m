@@ -65,8 +65,16 @@
     [cell updataWithModel:self.dataArr[indexPath.row] indx:indexPath.row];
     WF_WEAKSELF(weakself);
     cell.clickUseBlock = ^(NSInteger indx) {
-        OrderVC *vc = [[OrderVC alloc] init];
-        [weakself.navigationController pushViewController:vc animated:YES];
+        
+        if (weakself.slectCuponBlock) {
+            CuponModel * model = self.dataArr[indexPath.row];
+            weakself.slectCuponBlock(model.rated,model.readers);
+            [weakself.navigationController popViewControllerAnimated:YES];
+        } else {
+            
+            OrderVC *vc = [[OrderVC alloc] init];
+            [weakself.navigationController pushViewController:vc animated:YES];
+        }
         
         PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq03_coupon_coupon_use content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
          [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];

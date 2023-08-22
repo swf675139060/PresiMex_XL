@@ -301,6 +301,11 @@ typedef NS_ENUM(NSUInteger, NetworkType) {
 #pragma mark - 检查相册权限
 -(BOOL)canUserLibrary{
     PHAuthorizationStatus authStatus = [PHPhotoLibrary authorizationStatus];
+    if (authStatus == PHAuthorizationStatusNotDetermined) {
+        return NO;
+    }else{
+        return YES;
+    }
     if (@available(iOS 14, *)) {
         if ((authStatus == PHAuthorizationStatusAuthorized)|(authStatus == PHAuthorizationStatusLimited)) {
             return YES;

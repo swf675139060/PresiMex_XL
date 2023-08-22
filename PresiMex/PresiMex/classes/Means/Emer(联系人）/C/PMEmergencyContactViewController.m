@@ -105,6 +105,7 @@
     self.navTitleLabel.text=@"Información personal";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
+    [self GETContactsInfo];
     
     //紧急联系人认证页
     PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_emer_contract content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
@@ -154,7 +155,7 @@
     };
     
     cell.guanXiClickBlock = ^(NSInteger type) {
-        [weakself sutupAlertViewWithIndx:type];
+        [weakself sutupAlertViewWithIndx:indexPath.row];
     };
     cell.tongXunLUClickBlock = ^(NSInteger type) {
         weakself.curentIndx = type;
@@ -428,6 +429,63 @@
     [self POSTContactsInfo];
 }
 
+
+-(void)GETContactsInfo{
+    
+    [self show];
+    NSMutableDictionary*dict=[NSMutableDictionary new];
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_Contacts_Info parameters:dict success:^(id  _Nonnull responseObject) {
+        [self dismiss];
+        if ([responseObject[@"retail"]intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            NSArray * pledge = shame[@"pledge"];
+            
+            for (int i = 0; i < pledge.count; i++) {
+                NSDictionary * dic = pledge[i];
+                PMEmergencyContactModel * model = self.dataArray[i];
+                for (int j = 0; j < model.contentArr.count; j++) {
+                    BasicDataModel *  DataModel = model.contentArr[j];
+                    if (DataModel.ID == [dic[@"univ"] intValue]) {
+                        model.indx = j;
+                    }
+                }
+                model.telephone = dic[@"schedules"];
+                model.type = [NSString stringWithFormat:@"%@",dic[@"univ"]];
+            }
+            
+        
+            [self.tableView reloadData];
+        } else{
+            [weakself dismiss];
+            [weakself showTip:responseObject[@"entire"]];//（对）
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
+    }];
+}
+
+-(void)setDataWithKey:(NSString *)key value:(NSString *)value{
+    
+//    for (PMEmergencyContactModel * model in self.dataArray) {
+////
+//        if ([model.ID isEqualToString:key]) {
+//            model.content = value;
+//            for (int i = 0; i < model.contentArr.count; i++) {
+//                BasicDataModel *  DataModel = model.contentArr[i];
+//                if (DataModel.ID == [value integerValue]) {
+//                    model.indx = i;
+//                    break;
+//                }
+//            }
+//
+//        }
+//    }
+    
+}
 -(void)POSTContactsInfo{
 
     
@@ -441,7 +499,7 @@
     NSMutableDictionary *pars2=[NSMutableDictionary dictionary];
     PMEmergencyContactModel * model2 = self.dataArray[1];
     BasicDataModel * dataModel2 = model2.contentArr[model2.indx];
-    pars2[@"rental"] = [NSNumber numberWithLong:dataModel2.ID];//性别:
+    pars2[@"univ"] = [NSNumber numberWithLong:dataModel2.ID];//性别:
     pars2[@"schedules"] = model2.telephone;//联系方式
    
     

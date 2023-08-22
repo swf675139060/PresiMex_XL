@@ -266,23 +266,60 @@
         
     }else if(self.currentState == 20) {
         
-        PMIDAuthViewController*Vc=[PMIDAuthViewController new];
-        [self.navigationController pushViewController:Vc animated:YES];
+        PMQuestionnaireViewController * VC1 =[[PMQuestionnaireViewController alloc] init];
+        PMIDAuthViewController*VC2=[PMIDAuthViewController new];
+        NSMutableArray *  viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        [viewControllers addObjectsFromArray:@[VC1, VC2]];
+        [self.navigationController setViewControllers:viewControllers animated:YES];
+//        [self.navigationController pushViewController:Vc animated:YES];
 
     }else if(self.currentState == 30) {
 
-        PMBasicViewController*Vc=[PMBasicViewController new];
-        [self.navigationController pushViewController:Vc animated:YES];
+        PMQuestionnaireViewController * VC1 =[[PMQuestionnaireViewController alloc] init];
+        PMIDAuthViewController*VC2=[PMIDAuthViewController new];
+        
+        PMBasicViewController*VC3=[PMBasicViewController new];
+        
+        NSMutableArray *  viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        [viewControllers addObjectsFromArray:@[VC1, VC2,VC3]];
+        [self.navigationController setViewControllers:viewControllers animated:YES];
     }else if(self.currentState == 40) {
-        PMEmergencyContactViewController*vc=[PMEmergencyContactViewController new];
-        [self.navigationController pushViewController:vc animated:YES];
+        
+        PMQuestionnaireViewController * VC1 =[[PMQuestionnaireViewController alloc] init];
+        PMIDAuthViewController*VC2=[PMIDAuthViewController new];
+        
+        PMBasicViewController*VC3=[PMBasicViewController new];
+        PMEmergencyContactViewController*VC4=[PMEmergencyContactViewController new];
+        
+        NSMutableArray *  viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        [viewControllers addObjectsFromArray:@[VC1, VC2,VC3,VC4]];
+        [self.navigationController setViewControllers:viewControllers animated:YES];
      
     }else if(self.currentState == 50) {
-        PMAddBankViewController*vc=[PMAddBankViewController new];
-        [self.navigationController pushViewController:vc animated:YES];
-     
-    }else if(self.currentState == 60 ) {
+        PMQuestionnaireViewController * VC1 =[[PMQuestionnaireViewController alloc] init];
+        PMIDAuthViewController*VC2=[PMIDAuthViewController new];
         
+        PMBasicViewController*VC3=[PMBasicViewController new];
+        PMEmergencyContactViewController*VC4=[PMEmergencyContactViewController new];
+        
+        PMAddBankViewController*VC5=[PMAddBankViewController new];
+        
+        NSMutableArray *  viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        [viewControllers addObjectsFromArray:@[VC1, VC2,VC3,VC4,VC5]];
+        [self.navigationController setViewControllers:viewControllers animated:YES];
+    }else if(self.currentState == 60 ) {
+        PMQuestionnaireViewController * VC1 =[[PMQuestionnaireViewController alloc] init];
+        PMIDAuthViewController*VC2=[PMIDAuthViewController new];
+        
+        PMBasicViewController*VC3=[PMBasicViewController new];
+        PMEmergencyContactViewController*VC4=[PMEmergencyContactViewController new];
+        
+        PMAddBankViewController*VC5=[PMAddBankViewController new];
+        
+        NSMutableArray *  viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        [viewControllers addObjectsFromArray:@[VC1, VC2,VC3,VC4,VC5]];
+//        NSArray *viewControllers = @[self, VC1, VC2,VC3,VC4,VC5];
+        [self.navigationController setViewControllers:viewControllers animated:YES];
     }else{
     }
     

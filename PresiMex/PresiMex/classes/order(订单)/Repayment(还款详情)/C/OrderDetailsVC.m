@@ -17,6 +17,7 @@
 
 #import "ThreeLabelAlert.h"
 #import "PayVC.h"
+#import "CuponVC.h"
 
 #import "RepayModel.h"
 #import "PayTypeModel.h"
@@ -41,12 +42,13 @@
 @property (nonatomic, assign) NSInteger PayIndx;//支付方式索引
 
 
-@property (nonatomic, strong) NSArray *cuponArr;//优惠卷数组
+//@property (nonatomic, strong) NSArray *cuponArr;//优惠卷数组
 
 
-@property (nonatomic, assign) NSInteger cuponIndx;//优惠卷索引
+//@property (nonatomic, assign) NSInteger cuponIndx;//优惠卷索引
 
 @property (nonatomic, strong) NSString *rated;//优惠卷id
+@property (nonatomic, strong) NSString *ratedStr;//优惠卷额度
 
 
 
@@ -59,7 +61,7 @@
     [super viewDidLoad];
     self.navTitleLabel.text = @"Reembolso";
    
-    self.cuponIndx = -1;
+//    self.cuponIndx = -1;
     [self.tempView addSubview:self.topView];
     WF_WEAKSELF(weakself);
     [self.topView setClickLeftBtnBlock:^{
@@ -124,7 +126,7 @@
 //通用弹框
 -(void)showTopLabelBottmBtnAlert:(NSString *)content{
     topLabelBottmBtnAlert * alert = [[topLabelBottmBtnAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60,220) withConttent:content btnTitel:@"OK"] ;
-    
+    [alert setOPTtype];
     WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
     [AlertView show];
     [alert setClickBtnBlock:^{
@@ -260,10 +262,10 @@
 
             [cell.leftBtn setText:@"cupón:" TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:13] forState:UIControlStateNormal];
             
-            if (self.cuponIndx >= 0) {
-                CuponModel * cuModel = self.cuponArr[self.cuponIndx];
+            if (self.ratedStr) {
+//                CuponModel * cuModel = self.cuponArr[self.cuponIndx];
                 
-                [cell.centerBtn setText:[NSString stringWithFormat:@"$ %@",cuModel.readers] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
+                [cell.centerBtn setText:[NSString stringWithFormat:@"%@",self.ratedStr] TextColor:BColor_Hex(@"#333333", 1) Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
             } else {
                 
                 [cell.centerBtn setText:@"Por favor seleccione" TextColor:BColor_Hex(@"#CCCCCC", 1) Font:[UIFont systemFontOfSize:11] forState:UIControlStateNormal];
@@ -276,7 +278,8 @@
             [cell setClickBtnBlock:^(NSInteger index) {
                 if(index == 2){
                    //跳转优惠卷列表
-                    [weakself GETCouponUrl];
+//                    [weakself GETCouponUrl];
+                    [weakself sutupAlertView];
                  
                 }
             }];
@@ -719,68 +722,67 @@
 
 
 //获取优惠卷
--(void)GETCouponUrl{
-    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
-    pars[@"eg"] = [NSString stringWithFormat:@"%d",1];
-    pars[@"patricia"] = @"100";
-    pars[@"prairie"] = self.repayId;
-    WF_WEAKSELF(weakself);
-    [self show];
-    [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
-        [weakself dismiss];
-        if ([responseObject[@"retail"] intValue]==200) {
-            NSArray * dataList = responseObject[@"shame"][@"approaches"];
-            if (dataList.count) {
-                weakself.cuponArr = [CuponModel mj_objectArrayWithKeyValuesArray:dataList];
-                [weakself sutupAlertView];
-            }
-            
-        }else{
-            [weakself showTip:responseObject[@"entire"]];//（对）
-        }
-        
-    } failure:^(NSError * _Nonnull error) {
-        [weakself dismiss];
-        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
-        
-    }];
-    
-}
+//-(void)GETCouponUrl{
+//    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+//    pars[@"eg"] = [NSString stringWithFormat:@"%d",1];
+//    pars[@"patricia"] = @"100";
+//    pars[@"prairie"] = self.repayId;
+//    WF_WEAKSELF(weakself);
+//    [self show];
+//    [PMBaseHttp get:GET_Coupon_Url parameters:pars success:^(id  _Nonnull responseObject) {
+//        [weakself dismiss];
+//        if ([responseObject[@"retail"] intValue]==200) {
+//            NSArray * dataList = responseObject[@"shame"][@"approaches"];
+//            if (dataList.count) {
+//                weakself.cuponArr = [CuponModel mj_objectArrayWithKeyValuesArray:dataList];
+//                [weakself sutupAlertView];
+//            }
+//
+//        }else{
+//            [weakself showTip:responseObject[@"entire"]];//（对）
+//        }
+//
+//    } failure:^(NSError * _Nonnull error) {
+//        [weakself dismiss];
+//        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+//
+//    }];
+//
+//}
 
 //优惠卷弹出框选择
 -(void)sutupAlertView{
     [self.view endEditing:YES];
     
+    CuponVC *vc = [[CuponVC alloc] init];
+    WF_WEAKSELF(weakself);
+    vc.slectCuponBlock = ^(NSString * _Nonnull ratedID, NSString * _Nonnull ratedStr) {
+        weakself.rated = ratedID;
+        weakself.ratedStr = ratedStr;
+        [weakself.tableView reloadData];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
     
-    NSMutableArray * arr = [NSMutableArray array];
     
-    for (CuponModel * dataModel in  self.cuponArr) {
-        [arr addObject:dataModel.readers];
-    }
-    
+//    NSMutableArray * arr = [NSMutableArray array];
+//
+//    for (CuponModel * dataModel in  self.cuponArr) {
+//        [arr addObject:dataModel.readers];
+//    }
+//
 //    weakify(self);
-//    JKPickerViewAppearance *alert=[[JKPickerViewAppearance alloc] initWithPickerViewTilte:@"" withData:arr pickerCompleteBlock:^(id  _Nonnull responseObjct,NSInteger indx) {
+//    PoPBottomView * BottomView = [PoPBottomView new];
+//    BottomView.titles = arr;
+//    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
+//    [popView showWithTitileStr:@""];
+//
+//    BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
 //        strongify(self);
 //        self.cuponIndx = indx;
 //
 //        [self.tableView reloadData];
-//
-//    }];
-//    [alert show] ;
-    
-    weakify(self);
-    PoPBottomView * BottomView = [PoPBottomView new];
-    BottomView.titles = arr;
-    SLFCommentsPopView * popView = [SLFCommentsPopView commentsPopViewWithFrame:CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight) contentView:BottomView contentViewNeedScroView:NO];
-    [popView showWithTitileStr:@""];
-    
-    BottomView.selectBlock = ^(NSString * _Nonnull responseObjct, NSInteger indx) {
-        strongify(self);
-        self.cuponIndx = indx;
-        
-        [self.tableView reloadData];
-        [popView dismiss];
-    };
+//        [popView dismiss];
+//    };
 }
 
 

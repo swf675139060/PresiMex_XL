@@ -55,6 +55,7 @@
         [btn setTitle:Problems[i][@"greene"] forState:UIControlStateNormal];
         btn.layer.cornerRadius = 20;
         btn.layer.masksToBounds = YES;
+        btn.titleLabel.font = [UIFont systemFontOfSize:12];
         btn.layer.borderWidth = 0.5;
         btn.layer.borderColor = [UIColor jk_colorWithHexString:@"#7C7C7C"].CGColor;
         btn.tag = i;

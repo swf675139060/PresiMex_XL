@@ -79,7 +79,6 @@
 		DBB28EE12A77E489004F7103 /* LogOutAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB28EE02A77E489004F7103 /* LogOutAlert.m */; };
 		DBB8087B2A6BF06C0014589C /* PMDotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087A2A6BF06C0014589C /* PMDotManager.m */; };
 		DBB8087E2A6BF3C90014589C /* PMDotConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */; };
-		DBE7E7E42A885239006EA0BC /* JKLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE7E7E22A885238006EA0BC /* JKLocationManager.m */; };
 		DBF6556E2A8269430035103F /* WFSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6556D2A8269430035103F /* WFSlider.m */; };
 		FB06D0B12A4574FC00272F5A /* LoanFailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */; };
 		FB06D0B42A4589E900272F5A /* HomeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B32A4589E900272F5A /* HomeDetailView.m */; };
@@ -404,8 +403,6 @@
 		DBB8087C2A6BF3C90014589C /* PMDotConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDotConfigModel.h; sourceTree = "<group>"; };
 		DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDotConfigModel.m; sourceTree = "<group>"; };
 		DBB8087F2A6C1B750014589C /* libSystem.B.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem.B.tbd; path = usr/lib/libSystem.B.tbd; sourceTree = SDKROOT; };
-		DBE7E7E22A885238006EA0BC /* JKLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLocationManager.m; sourceTree = "<group>"; };
-		DBE7E7E32A885239006EA0BC /* JKLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLocationManager.h; sourceTree = "<group>"; };
 		DBF6556C2A8269430035103F /* WFSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFSlider.h; sourceTree = "<group>"; };
 		DBF6556D2A8269430035103F /* WFSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFSlider.m; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2153,8 +2150,6 @@
 			children = (
 				DBB0E1D62A6D3C560028AEFF /* PMLocationManager.h */,
 				DBB0E1D72A6D3C560028AEFF /* PMLocationManager.m */,
-				DBE7E7E32A885239006EA0BC /* JKLocationManager.h */,
-				DBE7E7E22A885238006EA0BC /* JKLocationManager.m */,
 				FBED3B5A2A593D3D00EB5771 /* PrivateInfo.h */,
 				FBED3B592A593D3D00EB5771 /* PrivateInfo.m */,
 			);
@@ -2230,7 +2225,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				CLASSPREFIX = PM;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					FB976D342A05124600B1C0A3 = {
 						CreatedOnToolsVersion = 14.1;
@@ -2472,7 +2467,6 @@
 				A4D6F12E2A25B364006B4BA6 /* PMQuestionModel.m in Sources */,
 				FB7BC8702A2AED7B000BB3ED /* WFCustomAlertView.m in Sources */,
 				FBE5D8E32A487AC80074FAC2 /* FLAnimatedImageView.m in Sources */,
-				DBE7E7E42A885239006EA0BC /* JKLocationManager.m in Sources */,
 				FBC27ADD2A3443A2001D04F1 /* FlowPathCell.m in Sources */,
 				FBD4B2D62A3EDD5800E136D5 /* AFURLRequestSerialization.m in Sources */,
 				FBC2A8692A19C96D0010D7F8 /* WFLabelCell.m in Sources */,
@@ -2779,6 +2773,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 066AA4523A32C5E7EBD31D9D /* Pods-PresiMex.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PresiMex/PresiMex.entitlements;
@@ -2803,7 +2798,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2824,6 +2819,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7BBC813EC55337913FF95F63 /* Pods-PresiMex.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PresiMex/PresiMex.entitlements;
@@ -2848,7 +2844,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2907,6 +2903,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E044828DFC8E6613C3D4562 /* Pods-PresiMex-PresiMexUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 53Q62TM72V;
@@ -2924,6 +2921,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ACEC6A380A52F308EA6A6009 /* Pods-PresiMex-PresiMexUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 53Q62TM72V;

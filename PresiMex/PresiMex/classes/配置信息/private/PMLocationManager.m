@@ -12,6 +12,7 @@
 //定位完成/失败
 @property (nonatomic, copy)void(^LocationBlock)(BOOL isLocation);
 
+@property (nonatomic, strong) NSTimer *timer;
 
 
 @end
@@ -25,6 +26,9 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
+        
+        sharedInstance.locationManager =[[CLLocationManager alloc] init];
+        sharedInstance.locationManager.delegate = sharedInstance;
     });
     return sharedInstance;
 }
@@ -42,14 +46,15 @@
     
      CLAuthorizationStatus status = [PrivateInfo LocationStatus];
     if (show) {
-        self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         [self.locationManager requestWhenInUseAuthorization];
         [self.locationManager startUpdatingLocation];
+        
+//        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(queryStatus) userInfo:nil repeats:YES];
     } else {
         
         if (status == AVAuthorizationStatusAuthorized || status == kCLAuthorizationStatusAuthorizedWhenInUse ||status == kCLAuthorizationStatusAuthorizedAlways) {
-            self.locationManager = [[CLLocationManager alloc] init];
+//            self.locationManager = [[CLLocationManager alloc] init];
             self.locationManager.delegate = self;
             [self.locationManager requestWhenInUseAuthorization];
             [self.locationManager startUpdatingLocation];
@@ -134,7 +139,16 @@
 }
 
 
-
+- (void)queryStatus {
+//    // 在这里执行查询状态的操作
+//    CLAuthorizationStatus locationStatus = [CLLocationManager authorizationStatus];
+//     if (locationStatus != kCLAuthorizationStatusNotDetermined) {
+//         self.locationManager.delegate = self;
+//         [self.locationManager startUpdatingLocation];
+//         [self.timer invalidate];
+//         self.timer = nil;
+//     }
+}
 
 /**
  *  授权状态发生改变时调用
@@ -203,10 +217,88 @@
             }
             break;
         }
-        default:
+        default:{
+            
+            if (self.changeBlcok) {
+                self.changeBlcok(YES);
+            }
             break;
+        }
     }
 }
+
+//- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager{
+//    CLAuthorizationStatus locationStatus = [CLLocationManager authorizationStatus];
+//    switch (locationStatus) {
+//            // 用户还未决定
+//        case kCLAuthorizationStatusNotDetermined:
+//        {
+//            NSLog(@"用户还未决定");
+//            break;
+//        }
+//            // 问受限
+//        case kCLAuthorizationStatusRestricted:
+//        {
+//            NSLog(@"访问受限");
+//            [self.locationManager stopUpdatingLocation];
+//            self.LocationBlock(YES);
+//            if (self.changeBlcok) {
+//                self.changeBlcok(YES);
+//            }
+//            break;
+//        }
+//            // 定位关闭时和对此APP授权为never时调用
+//        case kCLAuthorizationStatusDenied:
+//        {
+//            // 定位是否可用（是否支持定位或者定位是否开启）
+//            if([CLLocationManager locationServicesEnabled])
+//            {
+//                NSLog(@"定位开启，但被拒");
+//            }else
+//            {
+//                NSLog(@"定位关闭，不可用");
+//            }
+//            NSLog(@"被拒");
+//
+//            [self.locationManager stopUpdatingLocation];
+//            self.LocationBlock(YES);
+//            if (self.changeBlcok) {
+//                self.changeBlcok(YES);
+//            }
+//            break;
+//        }
+//            // 获取前后台定位授权
+//        case kCLAuthorizationStatusAuthorizedAlways:
+//            //        case kCLAuthorizationStatusAuthorized: // 失效，不建议使用
+//        {
+//            NSLog(@"获取前后台定位授权");
+//            [self.locationManager startUpdatingLocation];
+//            if (self.changeBlcok) {
+//                self.changeBlcok(YES);
+//            }
+//            break;
+//        }
+//            // 获得前台定位授权
+//        case kCLAuthorizationStatusAuthorizedWhenInUse:
+//        {
+//            NSLog(@"获得前台定位授权");
+//            [self.locationManager startUpdatingLocation];
+//            if (self.changeBlcok) {
+//                self.changeBlcok(YES);
+//            }
+//            break;
+//        }
+//        default:{
+//
+//            if (self.changeBlcok) {
+//                self.changeBlcok(YES);
+//            }
+//            break;
+//        }
+//    }
+//
+//
+//}
 
 // 定位失败
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -219,5 +311,13 @@
             self.LocationBlock(YES);
         }
     });
+}
+
+-(CLLocationManager *)locationManager{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+    }
+    return _locationManager;
 }
 @end

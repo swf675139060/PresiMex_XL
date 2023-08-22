@@ -15,8 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (copy, nonatomic)void(^clickBtnBlock)(void);
-//设置成发送验证码三次的样式
+//设置成发送验证码三次的样式/展期
 -(void)setOPTtype;
+
+-(void)setFont:(UIFont *)font;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -234,7 +234,9 @@
 -(void)getShouJiQuanXian:(NSInteger)indx{
     AVAuthorizationStatus status = [PrivateInfo MediaStatus];
     if (status == AVAuthorizationStatusNotDetermined) {
-        [PrivateInfo requestMediaStatusAuthor];
+        [PrivateInfo requestMediaStatusAuthor:^(BOOL status) {
+            
+        }];
     } else if (status == AVAuthorizationStatusDenied) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Necesita acceder a su cámara" message:@"Abra los permisos de la Cámara para usar la Cámara." preferredStyle:UIAlertControllerStyleAlert];
 

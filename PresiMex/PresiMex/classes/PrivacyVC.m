@@ -376,7 +376,7 @@
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:Text attributes: @{NSFontAttributeName:B_FONT_REGULAR(11),NSForegroundColorAttributeName: BColor_Hex(@"#A8A8A8", 1)}];
         
         NSRange range=[Text rangeOfString:@"Acuerdo de privacidad"];
-        [attStr addAttributes:@{NSForegroundColorAttributeName: BColor_Hex(@"#008DFC", 1)} range:range];
+        [attStr addAttributes:@{NSForegroundColorAttributeName: BColor_Hex(@"#A8A8A8", 1)} range:range];
         [cell.rightBtn setAttributedTitle:attStr forState:UIControlStateNormal];
         
         [cell.leftBtn mas_remakeConstraints:^(MASConstraintMaker *make) {

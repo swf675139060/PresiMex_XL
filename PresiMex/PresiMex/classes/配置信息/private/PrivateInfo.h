@@ -21,20 +21,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// 通讯录授权状态
 + (CNAuthorizationStatus )contactAuthorStatus;
 
-/// 请求通讯录权限
-+ (void)requestContactAuthor;
+// 请求通讯录权限
+//+ (void)requestContactAuthor;
 
 /// 照片授权状态
 + (PHAuthorizationStatus )PhotoStatus;
 
 /// 请求照片授权
-+ (void)requestPhotoAuthor;
++ (void)requestPhotoAuthor:(void (^)(PHAuthorizationStatus status)) statusBlock;
 
 /// 照相机授权状态
 + (AVAuthorizationStatus )MediaStatus;
 
 /// 请求照相机授权
-+ (void)requestMediaStatusAuthor;
++ (void)requestMediaStatusAuthor:(void (^)(BOOL status)) statusBlock;
 
 
 /// 定位授权状态
@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)requestLocationAuthor;
 
 
-+ (void)requestIDFA;
++ (void)requestIDFA:(void (^)(BOOL status)) statusBlock;
 
 
 ///// 上传隐私数据

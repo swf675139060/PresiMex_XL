@@ -285,6 +285,23 @@
             NSArray*arr=responseObject[@"shame"][@"pledge"];
             NSArray *datas =[NSArray yy_modelArrayWithClass:[PMQuesModel class] json:arr];
             [self.dataArray addObjectsFromArray:datas];
+            
+            for (PMQuesModel * model in self.dataArray) {
+                for (NSDictionary * dic  in model.datas) {
+                    if ([dic[@"choose"] intValue] == 1) {
+                        model.content = dic[@"bulgaria"];
+                        self.parma[model.ID]=dic[@"broken"];
+                        break;
+                    }
+                }
+            }
+            
+            [self.tableView reloadData];
+            
+//            [weakself resetDataWithContent:content withKey:model.ID];
+//            weakself.parma[model.ID]=model.datas[indx][@"broken"];
+            
+            
         } else {
             [self showTip:responseObject[@"entire"]];
         }

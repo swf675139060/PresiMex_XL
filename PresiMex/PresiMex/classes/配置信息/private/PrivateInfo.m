@@ -39,19 +39,22 @@
 }
 
 /// 请求照片授权
-+ (void)requestPhotoAuthor
++ (void)requestPhotoAuthor:(void (^)(PHAuthorizationStatus status)) statusBlock;
 {
     PHAuthorizationStatus photoStatus = [PHPhotoLibrary authorizationStatus];
-//    if (photoStatus == PHAuthorizationStatusNotDetermined) {
+    if (photoStatus == PHAuthorizationStatusNotDetermined) {
         // 尚未请求照片访问权限，需要请求权限
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            statusBlock(status);
             if (status == PHAuthorizationStatusAuthorized) {
                 // 用户已经授权访问照片，可以执行访问操作
             } else {
                 // 用户拒绝了访问权限请求，需要提示用户并且提供设置选项
             }
         }];
-//    }
+    }else{
+        statusBlock(photoStatus);
+    }
 }
 
 /// 照相机授权状态
@@ -62,20 +65,23 @@
 }
 
 /// 请求照相机授权
-+ (void)requestMediaStatusAuthor
++ (void)requestMediaStatusAuthor:(void (^)(BOOL status)) statusBlock;
 {
     
     AVAuthorizationStatus cameraStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-//    if (cameraStatus == AVAuthorizationStatusNotDetermined) {
+    if (cameraStatus == AVAuthorizationStatusNotDetermined) {
         // 尚未请求摄像机访问权限，需要请求权限
         [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            statusBlock(granted);
             if (granted) {
                 // 用户已经授权访问摄像机，可以执行访问操作
             } else {
                 // 用户拒绝了访问权限请求，需要提示用户并且提供设置选项
             }
         }];
-//    }
+    }else{
+        statusBlock(cameraStatus);
+    }
 }
 
 /// 定位授权状态
@@ -100,12 +106,29 @@
     }
 }
 
-+ (void)requestIDFA{
-    if (@available(iOS 14, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-           
-        }];
-    }
++ (void)requestIDFA:(void (^)(BOOL status)) statusBlock{
+    
+    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, 1 *NSEC_PER_SEC); //设置时间2秒
+    dispatch_after(time, dispatch_get_main_queue(), ^{
+        if (@available(iOS 14, *)) {
+            [ATTrackingManager autoContentAccessingProxy];
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                if(status == ATTrackingManagerAuthorizationStatusNotDetermined){
+                    
+                }else{
+                    if (statusBlock) {
+                       statusBlock(status);
+                    }
+                }
+            }];
+        }else{
+            if (statusBlock) {
+               statusBlock(0);
+                
+            }
+        }
+    });
+    
 }
 
 

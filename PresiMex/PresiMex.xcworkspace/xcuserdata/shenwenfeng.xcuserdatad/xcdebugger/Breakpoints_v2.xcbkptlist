@@ -14,8 +14,8 @@
             filePath = "PresiMex/classes/&#x6253;&#x70b9;/PMDeviceModel.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1009"
-            endingLineNumber = "1009"
+            startingLineNumber = "1014"
+            endingLineNumber = "1014"
             landmarkName = "PMDeviceModel"
             landmarkType = "3">
          </BreakpointContent>
@@ -46,89 +46,595 @@
             filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-locationManager:didChangeAuthorizationStatus:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9030AB22-178E-46D7-B5E3-E8FFC56BDFB3 - 446925ff224f02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMLocationManager locationManager:didChangeAuthorizationStatus:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/private/PMLocationManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
+                  offsetFromSymbolStart = "640">
+               </Location>
+               <Location
+                  uuid = "9030AB22-178E-46D7-B5E3-E8FFC56BDFB3 - 446925ff224f02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMLocationManager locationManager:didChangeAuthorizationStatus:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/private/PMLocationManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
+                  offsetFromSymbolStart = "600">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "DA62BAB2-4728-45FE-AAB5-60C2D47B0217"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FAF872C3-A8CE-4586-9F72-E99EB230A28D"
+            uuid = "275C5F1A-132E-48F0-94D3-A2B9561BB9C5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
+            filePath = "PresiMex/classes/Means/Basic(&#x4fe1;&#x606f;/C/PMBasicViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
+            startingLineNumber = "849"
+            endingLineNumber = "849"
+            landmarkName = "-GETUserMeans"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "275C5F1A-132E-48F0-94D3-A2B9561BB9C5 - 5c8b2b200ff75685"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMBasicViewController setDataWithKey:value:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Basic(%E4%BF%A1%E6%81%AF/C/PMBasicViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "849"
+                  endingLineNumber = "849"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "275C5F1A-132E-48F0-94D3-A2B9561BB9C5 - 2d5b98fb1bc86a61"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[PMBasicViewController GETUserMeans]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Basic(%E4%BF%A1%E6%81%AF/C/PMBasicViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "849"
+                  endingLineNumber = "849"
+                  offsetFromSymbolStart = "2700">
+               </Location>
+               <Location
+                  uuid = "275C5F1A-132E-48F0-94D3-A2B9561BB9C5 - 2d5b98fb1bc86a61"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[PMBasicViewController GETUserMeans]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Basic(%E4%BF%A1%E6%81%AF/C/PMBasicViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "849"
+                  endingLineNumber = "849"
+                  offsetFromSymbolStart = "2564">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDA3454D-E514-436A-AF8A-AE9C59531A6E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Basic(&#x4fe1;&#x606f;/C/PMBasicViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "855"
+            endingLineNumber = "855"
+            landmarkName = "-GETUserMeans"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CDA3454D-E514-436A-AF8A-AE9C59531A6E - 5c8b2b200ff75094"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMBasicViewController setDataWithKey:value:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Basic(%E4%BF%A1%E6%81%AF/C/PMBasicViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "864"
+                  endingLineNumber = "864"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "CDA3454D-E514-436A-AF8A-AE9C59531A6E - 6723a78920c4d903"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[PMBasicViewController GETUserMeans]_block_invoke.154"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Basic(%E4%BF%A1%E6%81%AF/C/PMBasicViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "855"
+                  endingLineNumber = "855"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A43E40C-34D6-47FD-8711-AAF6120DB560"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Emer(&#x8054;&#x7cfb;&#x4eba;&#xff09;/C/PMEmergencyContactViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
+            landmarkName = "-GETContactsInfo"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5A43E40C-34D6-47FD-8711-AAF6120DB560 - 6e8d52b696565676"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__51-[PMEmergencyContactViewController GETContactsInfo]_block_invoke.82"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Emer(%E8%81%94%E7%B3%BB%E4%BA%BA%EF%BC%89/C/PMEmergencyContactViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "462"
+                  endingLineNumber = "462"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "5A43E40C-34D6-47FD-8711-AAF6120DB560 - ad7a6d68342c0daa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__51-[PMEmergencyContactViewController GETContactsInfo]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Emer(%E8%81%94%E7%B3%BB%E4%BA%BA%EF%BC%89/C/PMEmergencyContactViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "461"
+                  endingLineNumber = "461"
+                  offsetFromSymbolStart = "988">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8A3D8B2-B502-4FEB-9A0E-11B0AD726954"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/Means/Emer(&#x8054;&#x7cfb;&#x4eba;&#xff09;/C/PMEmergencyContactViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
+            landmarkName = "-GETContactsInfo"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D8A3D8B2-B502-4FEB-9A0E-11B0AD726954 - 97aa9376c80369b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMEmergencyContactViewController setDataWithKey:value:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Emer(%E8%81%94%E7%B3%BB%E4%BA%BA%EF%BC%89/C/PMEmergencyContactViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "482"
+                  endingLineNumber = "482"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "D8A3D8B2-B502-4FEB-9A0E-11B0AD726954 - 6e8d52b696565615"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__51-[PMEmergencyContactViewController GETContactsInfo]_block_invoke.82"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Emer(%E8%81%94%E7%B3%BB%E4%BA%BA%EF%BC%89/C/PMEmergencyContactViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "465"
+                  endingLineNumber = "465"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "D8A3D8B2-B502-4FEB-9A0E-11B0AD726954 - 6e8d52b696565594"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__51-[PMEmergencyContactViewController GETContactsInfo]_block_invoke.81"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/Means/Emer(%E8%81%94%E7%B3%BB%E4%BA%BA%EF%BC%89/C/PMEmergencyContactViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "465"
+                  endingLineNumber = "465"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EEBAD279-71CD-4A93-B906-5A91F4BE113E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PrivateInfo.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "+requestContactAuthor"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "119C6763-8CC9-464F-95F6-776EE2C6C7B6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "-creatShowAlert:LocationBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8D7C63C8-7B7B-46EB-8B18-92E361758154"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "-getStreetForLocation:completionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "53F62381-20B4-47D6-B648-04FDC5053E22"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PresiMex/classes/Home/HomeVC/C/HomeViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "911"
-            endingLineNumber = "911"
-            landmarkName = "-showALLAuthor"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5DB7E681-C4E9-435E-8BDA-58A96BDA61D9"
+            uuid = "0CB553C7-0B69-47C5-AB65-8E2C6DD7C801"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PresiMex/AppDelegate.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "-setUpFirebaseConfigure:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0CB553C7-0B69-47C5-AB65-8E2C6DD7C801 - 60fb34812b1861d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AppDelegate setUpFirebaseConfigure:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/AppDelegate.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "444">
+               </Location>
+               <Location
+                  uuid = "0CB553C7-0B69-47C5-AB65-8E2C6DD7C801 - 60fb34812b1861b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AppDelegate setUpFirebaseConfigure:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/AppDelegate.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "428">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F4BF1E9-BB99-47F1-876B-821679F978DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PrivateInfo.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "+requestIDFA:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A894856-3BA3-4A82-9A8E-22B9307D44E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4A894856-3BA3-4A82-9A8E-22B9307D44E5 - 446925ff224d9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMLocationManager locationManager:didChangeAuthorizationStatus:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/private/PMLocationManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "888">
+               </Location>
+               <Location
+                  uuid = "4A894856-3BA3-4A82-9A8E-22B9307D44E5 - 446925ff224d9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMLocationManager locationManager:didChangeAuthorizationStatus:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/private/PMLocationManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "216"
+                  endingLineNumber = "216"
+                  offsetFromSymbolStart = "844">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17EAFDB0-57D1-430E-B198-13B22A175864"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "17EAFDB0-57D1-430E-B198-13B22A175864 - 446925ff224ad4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMLocationManager locationManager:didChangeAuthorizationStatus:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/private/PMLocationManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "948">
+               </Location>
+               <Location
+                  uuid = "17EAFDB0-57D1-430E-B198-13B22A175864 - 446925ff224ad4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMLocationManager locationManager:didChangeAuthorizationStatus:]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/private/PMLocationManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "900">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CCA55727-0F86-456C-9E98-FFD838093E05"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "PMLocationManager"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F4FC2C81-9625-4412-823A-19E6F8059F71"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "PMLocationManager"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EDA0EEFE-4F2D-4B47-A6A7-30E0C4B6FECB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/JKLocationManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2DE1DB00-64FD-47D3-A884-C3ADC06ECA38"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "-locationManager"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2DE1DB00-64FD-47D3-A884-C3ADC06ECA38 - eb1077f8ebd24005"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMLocationManager locationManager]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/private/PMLocationManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "319"
+                  endingLineNumber = "319"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "2DE1DB00-64FD-47D3-A884-C3ADC06ECA38 - eb1077f8ebd24005"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMLocationManager locationManager]"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/private/PMLocationManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "319"
+                  endingLineNumber = "319"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "945C48B9-DB9A-40E5-B617-59791CF2921D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x914d;&#x7f6e;&#x4fe1;&#x606f;/private/PMLocationManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF998337-7B72-4B38-9DB8-2A377813F91E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/&#x6253;&#x70b9;/PMDeviceModel.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "-getPhotoCountAsString"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9336C23B-1664-49A3-9CB6-BDB738D0940D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PresiMex/classes/order(&#x8ba2;&#x5355;)/pay/C/PayVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "-GETRepayBill"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

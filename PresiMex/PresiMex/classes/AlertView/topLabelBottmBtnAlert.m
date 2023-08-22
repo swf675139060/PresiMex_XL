@@ -20,6 +20,9 @@
 @property (nonatomic, assign) BOOL isOTP;
 
 
+@property (nonatomic, strong) UIFont *font;
+
+
 
 
 @end
@@ -72,8 +75,13 @@
             cell.label.font = [UIFont boldSystemFontOfSize:11];
             cell.label.textAlignment = NSTextAlignmentLeft;
         } else {
-            
-            cell.label.font = [UIFont boldSystemFontOfSize:20];
+            if (self.font) {
+                
+                cell.label.font = self.font;
+            }else{
+                
+                cell.label.font = [UIFont boldSystemFontOfSize:20];
+            }
             cell.label.textAlignment = NSTextAlignmentCenter;
         }
         [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -143,4 +151,9 @@
 }
     
 
+-(void)setFont:(UIFont *)font{
+    _font = font;
+    [self.tableView reloadData];
+    [self upDataFrame];
+}
 @end

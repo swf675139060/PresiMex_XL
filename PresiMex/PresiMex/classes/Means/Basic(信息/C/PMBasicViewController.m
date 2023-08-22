@@ -85,6 +85,7 @@
     self.navTitleLabel.text=@"Información personal";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
+    [self GETUserMeans];
     
     // 创建日期组件
     NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -119,6 +120,7 @@
     model1.type=0;
     model1.isHave=YES;
     model1.isColor=NO;
+    model1.ID = @"rental";
     model1.contentArr =  dataModel.Género;
     [self.dataArray addObject:model1];
     
@@ -127,6 +129,7 @@
     model2.type=1;
     model2.isHave=NO;
     model2.isColor=NO;
+    model2.ID = @"cartoon";
     if(self.userID){
         model2.content=self.userID;
     }
@@ -137,6 +140,7 @@
     model3.type=2;
     model3.isHave=NO;
     model3.isColor=NO;
+    model3.ID = @"kenny";
     [self.dataArray addObject:model3];
     
     PMQuestionModel *model4 = [[PMQuestionModel alloc] init];
@@ -144,6 +148,7 @@
     model4.type=3;
     model4.isHave=YES;
     model4.isColor=NO;
+    model4.ID = @"profits";
     model4.contentArr =  dataModel.EstadoCivil;
     [self.dataArray addObject:model4];
     
@@ -152,6 +157,7 @@
     model5.type=4;
     model5.isHave=YES;
     model5.isColor=NO;
+    model5.ID = @"payable";
     model5.contentArr =  dataModel.NumeroDeNiños;
     [self.dataArray addObject:model5];
     
@@ -160,6 +166,7 @@
     model6.type=5;
     model6.isHave=YES;
     model6.isColor=NO;
+    model6.ID = @"emerging";
     model6.contentArr =  dataModel.AntecedenteEducacionales;
     [self.dataArray addObject:model6];
     
@@ -168,6 +175,7 @@
     model7.type=6;
     model7.isHave=YES;
     model7.isColor=NO;
+    model7.ID = @"pod";
 //    model7.contentArr =  dataModel.Fec;
     [self.dataArray addObject:model7];
     
@@ -176,6 +184,7 @@
     model8.type=7;
     model8.isHave=YES;
     model8.isColor=NO;
+    model8.ID = @"browsers";
     model8.contentArr =  dataModel.EstadoDeTrabajo;
     [self.dataArray addObject:model8];
     
@@ -184,6 +193,7 @@
     model9.type=8;
     model9.isHave=YES;
     model9.isColor=NO;
+    model9.ID = @"pays";
     model9.contentArr =  dataModel.Industria;
     [self.dataArray addObject:model9];
     
@@ -192,6 +202,7 @@
     model10.type=9;
     model10.isHave=YES;
     model10.isColor=NO;
+    model10.ID = @"transcription";
     model10.contentArr =  dataModel.IngresoMensual;
     [self.dataArray addObject:model10];
     
@@ -200,6 +211,7 @@
     model11.type=10;
     model11.isHave=YES;
     model11.isColor=NO;
+    model11.ID = @"fda";
     model11.contentArr =  dataModel.TipoDeSalario;
     [self.dataArray addObject:model11];
     
@@ -208,6 +220,7 @@
     model12.type=11;
     model12.isHave=YES;
     model12.isColor=NO;
+    model12.ID = @"today";
     model12.contentArr =  dataModel.DíaDePago1;
     [self.dataArray addObject:model12];
     
@@ -217,6 +230,7 @@
     model13.isHave=YES;
     model13.isColor=NO;
     model13.REQUIRED = NO;
+    model13.ID = @"wires";
     model13.contentArr =  dataModel.DíaDePago2;
     [self.dataArray addObject:model13];
     
@@ -226,6 +240,7 @@
     model14.isHave=NO;
     model14.isColor=NO;
     model14.REQUIRED = NO;
+    model14.ID = @"speaker";
     [self.dataArray addObject:model14];
     
     PMQuestionModel *model15 = [[PMQuestionModel alloc] init];
@@ -234,6 +249,7 @@
     model15.isHave=NO;
     model15.isColor=NO;
     model15.REQUIRED = NO;
+    model15.ID = @"airline";
     [self.dataArray addObject:model15];
     
     PMQuestionModel *model16 = [[PMQuestionModel alloc] init];
@@ -241,7 +257,8 @@
     model16.type=15;
     model16.isHave=YES;
     model16.isColor=NO;
-    model16.contentArr =  dataModel.EstadoDeTrabajo;
+    model16.ID = @"head";
+    model16.contentArr =  dataModel.CiudadDonde;
     [self.dataArray addObject:model16];
     
     PMQuestionModel *model17 = [[PMQuestionModel alloc] init];
@@ -249,6 +266,7 @@
     model17.type=16;
     model17.isHave=NO;
     model17.isColor=NO;
+    model17.ID = @"dosage";
     [self.dataArray addObject:model17];
     
     PMQuestionModel *model18 = [[PMQuestionModel alloc] init];
@@ -256,6 +274,7 @@
     model18.type=17;
     model18.isHave=NO;
     model18.isColor=NO;
+    model18.ID = @"lies";
     [self.dataArray addObject:model18];
     
  
@@ -489,7 +508,7 @@
         model.isColor = NO;
         [self.tableView reloadData];
         [popView dismiss];
-        [self Dot:indx];
+        [self Dot:indxP];
     };
 }
 
@@ -776,6 +795,106 @@
     
 }
 
+
+
+-(void)GETUserMeans{
+    
+    [self show];
+    NSMutableDictionary*dict=[NSMutableDictionary new];
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_User_Means parameters:dict success:^(id  _Nonnull responseObject) {
+        [self dismiss];
+        if ([responseObject[@"retail"]intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+           
+            
+            [self setDataWithKey:@"airline" value:[NSString stringWithFormat:@"%@",shame[@"airline"]]];
+            [self setDataWithKey:@"browsers" value:[NSString stringWithFormat:@"%@",shame[@"browsers"]]];
+//            [self setDataWithKey:@"cartoon" value:[NSString stringWithFormat:@"%@",shame[@"cartoon"]]];
+            
+            [self setDataWithKey:@"dosage" value:[NSString stringWithFormat:@"%@",shame[@"dosage"]]];
+            [self setDataWithKey:@"emerging" value:[NSString stringWithFormat:@"%@",shame[@"emerging"]]];
+            [self setDataWithKey:@"fda" value:[NSString stringWithFormat:@"%@",shame[@"fda"]]];
+            [self setDataWithKey:@"head" value:[NSString stringWithFormat:@"%@",shame[@"head"]]];
+            [self setDataWithKey:@"kenny" value:[NSString stringWithFormat:@"%@",shame[@"kenny"]]];
+            
+            [self setDataWithKey:@"lies" value:[NSString stringWithFormat:@"%@",shame[@"lies"]]];
+            
+            [self setDataWithKey:@"payable" value:[NSString stringWithFormat:@"%@",shame[@"payable"]]];
+            [self setDataWithKey:@"pays" value:[NSString stringWithFormat:@"%@",shame[@"pays"]]];
+            
+            [self setDataWithKey:@"pod" value:[NSString stringWithFormat:@"%@",shame[@"pod"]]];
+            
+            
+            [self setDataWithKey:@"profits" value:[NSString stringWithFormat:@"%@",shame[@"profits"]]];
+            
+            [self setDataWithKey:@"rental" value:[NSString stringWithFormat:@"%@",shame[@"rental"]]];
+            
+            [self setDataWithKey:@"speaker" value:[NSString stringWithFormat:@"%@",shame[@"speaker"]]];
+            
+            
+            [self setDataWithKey:@"today" value:[NSString stringWithFormat:@"%@",shame[@"today"]]];
+            
+            [self setDataWithKey:@"transcription" value:[NSString stringWithFormat:@"%@",shame[@"transcription"]]];
+            
+            [self setDataWithKey:@"wires" value:[NSString stringWithFormat:@"%@",shame[@"wires"]]];
+//            PMQuestionModel *model2 = self.dataArray[1];
+//
+//            self.userID = model.cartoon;
+//            if(self.userID){
+//                model2.content=self.userID;
+//            }
+            [self.tableView reloadData];
+        } else{
+            [weakself dismiss];
+            [weakself showTip:responseObject[@"entire"]];//（对）
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
+    }];
+}
+
+
+-(void)setDataWithKey:(NSString *)key value:(NSString *)value{
+    
+    for (PMQuestionModel * model in self.dataArray) {
+//
+        if ([model.ID isEqualToString:key]) {
+            if ([key isEqualToString:@"pod"]) {
+                model.content = value;
+            }
+            if (model.isHave) {
+                for (int i = 0; i < model.contentArr.count; i++) {
+                    BasicDataModel *  DataModel = model.contentArr[i];
+                    if (DataModel.ID == [value integerValue]) {
+                        model.indx = i;
+                        break;
+                    }
+                }
+            }else{
+                model.content = value;
+            }
+        }
+//        if (model.isHave) {
+//            if (model.indx >= 0) {
+//                BasicDataModel *  DataModel = model.contentArr[model.indx];
+//                _contentTF.text = DataModel.title;
+//            }else if (model.content && model.content.length){
+//                _contentTF.text =model.content;
+//            }else{
+//                _contentTF.text = @"";
+//            }
+//        } else {
+//            _contentTF.text=model.content;
+//            _contentTF.userInteractionEnabled = YES;
+//            _arrowImageView.hidden=YES;
+//        }
+    }
+    
+}
 
 //15002 - Ocr回显接口(类型合并+活体照+字段)
 -(void)requestImagPic{

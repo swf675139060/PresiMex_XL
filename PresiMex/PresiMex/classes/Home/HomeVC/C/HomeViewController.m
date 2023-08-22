@@ -896,22 +896,39 @@
 //        [PrivateInfo requestContactAuthor];
         AppDelegate * delegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        [delegate setUpFirebaseConfigure];
-        [PrivateInfo requestPhotoAuthor];
-        [PrivateInfo requestMediaStatusAuthor];
-        
-            //登陆Dev
-            PMDeviceModel * model =[PMDeviceModel sharedInstance];
+        [delegate setUpFirebaseConfigure:^(BOOL status) {
+            //照片
+            [PrivateInfo requestPhotoAuthor:^(PHAuthorizationStatus status) {
+                //相机
+                [PrivateInfo requestMediaStatusAuthor:^(BOOL status) {
+                    //IDFA
+                    [PrivateInfo requestIDFA:^(BOOL status) {
+                        //登陆Dev
+                        
+                        dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, 1 *NSEC_PER_SEC); //设置时间2秒
+                        dispatch_after(time, dispatch_get_main_queue(), ^{
+                            
+                            PMDeviceModel * model =[PMDeviceModel sharedInstance];
 
-            PMLocationManager * LocationManager  = [PMLocationManager sharedInstance];
-            LocationManager.haveSend = NO;
-            __weak typeof(model) weakModel = model;
-            [LocationManager creatShowAlert:YES LocationBlock:^(BOOL isLocation) {
-                    [weakModel GetDate];
-                    [[PMDotManager sharedInstance] POSTDotDevType:30 value:weakModel];
+                            PMLocationManager * LocationManager  = [PMLocationManager sharedInstance];
+                            LocationManager.haveSend = NO;
+                            __weak typeof(model) weakModel = model;
+                            [LocationManager creatShowAlert:YES LocationBlock:^(BOOL isLocation) {
+                                    [weakModel GetDate];
+                                    [[PMDotManager sharedInstance] POSTDotDevType:30 value:weakModel];
+                                
+                            }];
+                        });
+                    }];
+                }];
             }];
+        }];
         
-        [PrivateInfo requestIDFA];
+        
+        
+           
+        
+        
 
      });
     

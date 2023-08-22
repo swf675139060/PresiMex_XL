@@ -193,7 +193,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 
 
-- (void)setUpFirebaseConfigure {
+- (void)setUpFirebaseConfigure:(void (^)(BOOL status)) statusBlock{
     [[NSNotificationCenter defaultCenter] addObserver:self
      selector:@selector(sendLaunch:)
      name:UIApplicationDidBecomeActiveNotification
@@ -202,12 +202,18 @@ void uncaughtExceptionHandler(NSException *exception) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         center.delegate = self;
         [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (statusBlock) {
+                statusBlock(granted);
+            }
         }];
     }
 
     else {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        if (statusBlock) {
+            statusBlock(YES);
+        }
     }
 
     [[UIApplication sharedApplication] registerForRemoteNotifications];
