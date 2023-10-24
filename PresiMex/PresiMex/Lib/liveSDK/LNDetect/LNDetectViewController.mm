@@ -410,11 +410,11 @@ typedef enum LNSoundType: NSUInteger {
     [self.activityIndicatorView setHidden:YES];
     self.muteSound = NO;
     NSString *lang = [[NSLocale preferredLanguages] firstObject];
-    if ([lang hasPrefix:@"zh"]) {
+//    if ([lang hasPrefix:@"zh"]) {
         self.language = 1;
-    } else {
-        self.language = 2;
-    }
+//    } else {
+//        self.language = 2;
+//    }
     [self.voiceButton setTitle:nil forState:UIControlStateNormal];
     [self.voiceButton addTarget:self action:@selector(voiceButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     _detector = [[LNDetector alloc] initWithDelegate:self userID:self.userID livenessID:self.livenessID];

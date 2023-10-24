@@ -10,6 +10,7 @@
 #import "WFLeftRightLabelCell.h"
 #import "WFBtnCell.h"
 #import "ConfirmAccountVC.h"
+#import "WFjieKuanXieYiVC.h"
 
 @interface HomeDetailView()<UITableViewDelegate,UITableViewDataSource>
 
@@ -205,13 +206,11 @@
                     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
                 }
             }else{
+//                WFjieKuanXieYiVC * vc = [WFjieKuanXieYiVC new];
+//                vc.productCodes = self.homeModel.pledge;
+//                [self.jk_navigationController pushViewController:vc animated:YES];[]
+                [weakself GETUserLoanAgreement];
                 
-                WFWebViewController * vc = [[WFWebViewController alloc] init];
-                vc.urlString = H5_loan;
-                [self.jk_navigationController pushViewController:vc animated:YES];
-                
-                PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_pay_type content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
-                 [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
             }
         }];
         return cell;
@@ -308,6 +307,40 @@
     }];
 }
 
+
+// 获取协议
+-(void)GETUserLoanAgreement{
+    NSMutableArray * duringArr = [NSMutableArray array];
+    for (PMHomeProductModel * model in self.homeModel.pledge) {
+        [duringArr addObject:model.demanding];
+    }
+    
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    [pars setValue:[duringArr componentsJoinedByString:@","] forKey:@"productCodes"];
+    WF_WEAKSELF(weakself);
+    [self show];
+    [PMBaseHttp getHtml:GET_User_LoanAgreement parameters:pars success:^(id  _Nonnull responseObject) {
+        [weakself dismiss];
+        [weakself goXieYi:responseObject];
+    } failure:^(NSError * _Nonnull error) {
+        [weakself dismiss];
+        [weakself showTip:@"Por favor, inténtelo de nuevo más tarde"];
+        
+    }];
+}
+
+
+-(void)goXieYi:(NSData *)data{
+    NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    WFjieKuanXieYiVC * vc = [[WFjieKuanXieYiVC alloc] init];
+    vc.htmlString = htmlString;
+    
+    [self.jk_navigationController pushViewController:vc animated:YES];
+
+    PMACQInfoModel * InfoModel = [[PMACQInfoModel alloc] initWithIdName:acq01_pay_type content:@"" beginTime:[PMACQInfoModel GetTimestampString] Duration:0];
+     [[PMDotManager sharedInstance] POSTDotACQ50Withvalue: InfoModel];
+}
 ////借款申请
 //-(void)POSTLoanApply{
 //    NSMutableDictionary *pars=[NSMutableDictionary dictionary];

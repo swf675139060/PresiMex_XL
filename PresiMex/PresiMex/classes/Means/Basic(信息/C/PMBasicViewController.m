@@ -442,7 +442,7 @@
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.frame = CGRectMake(15,12,WF_ScreenWidth,36);
     tipLabel.numberOfLines = 0;
-    tipLabel.text=@"Consejo: asegúrese de que todas las imágenes de los documentos se tomen con claridad y sean las más recientes para obtener el préstamo al instante.";
+    tipLabel.text=@"Tras la autenticación, podrá acceder a los cupones.";
     [headerView addSubview:tipLabel];
     tipLabel.textColor=BColor_Hex(@"#FFB602", 1);
     tipLabel.textAlignment = NSTextAlignmentLeft;

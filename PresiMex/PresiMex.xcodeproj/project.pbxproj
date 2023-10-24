@@ -79,6 +79,8 @@
 		DBB28EE12A77E489004F7103 /* LogOutAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB28EE02A77E489004F7103 /* LogOutAlert.m */; };
 		DBB8087B2A6BF06C0014589C /* PMDotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087A2A6BF06C0014589C /* PMDotManager.m */; };
 		DBB8087E2A6BF3C90014589C /* PMDotConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */; };
+		DBBE01C02ADD5DA30045322A /* WFjieKuanXieYiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBE01BF2ADD5DA30045322A /* WFjieKuanXieYiVC.m */; };
+		DBE158592AE243890082E7ED /* glslang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE158582AE243890082E7ED /* glslang.framework */; };
 		DBF6556E2A8269430035103F /* WFSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF6556D2A8269430035103F /* WFSlider.m */; };
 		FB06D0B12A4574FC00272F5A /* LoanFailAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B02A4574FC00272F5A /* LoanFailAlert.m */; };
 		FB06D0B42A4589E900272F5A /* HomeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB06D0B32A4589E900272F5A /* HomeDetailView.m */; };
@@ -217,7 +219,6 @@
 		FBD4B2DA2A3EDD5800E136D5 /* BlinkPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD4B2AB2A3EDD5800E136D5 /* BlinkPoints.m */; };
 		FBD4B2DB2A3EDD5800E136D5 /* LNBlockingQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD4B2AC2A3EDD5800E136D5 /* LNBlockingQueue.m */; };
 		FBD4B2DC2A3EDD5800E136D5 /* Scrfd.mm in Sources */ = {isa = PBXBuildFile; fileRef = FBD4B2AD2A3EDD5800E136D5 /* Scrfd.mm */; };
-		FBD4B2DD2A3EDD5800E136D5 /* glslang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD4B2AE2A3EDD5800E136D5 /* glslang.framework */; };
 		FBD4B2DE2A3EDD5800E136D5 /* openmp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD4B2AF2A3EDD5800E136D5 /* openmp.framework */; };
 		FBD4B2DF2A3EDD5800E136D5 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD4B2B02A3EDD5800E136D5 /* opencv2.framework */; };
 		FBD4B2E02A3EDD5800E136D5 /* ncnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD4B2B12A3EDD5800E136D5 /* ncnn.framework */; };
@@ -403,6 +404,9 @@
 		DBB8087C2A6BF3C90014589C /* PMDotConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDotConfigModel.h; sourceTree = "<group>"; };
 		DBB8087D2A6BF3C90014589C /* PMDotConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDotConfigModel.m; sourceTree = "<group>"; };
 		DBB8087F2A6C1B750014589C /* libSystem.B.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libSystem.B.tbd; path = usr/lib/libSystem.B.tbd; sourceTree = SDKROOT; };
+		DBBE01BE2ADD5DA30045322A /* WFjieKuanXieYiVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFjieKuanXieYiVC.h; sourceTree = "<group>"; };
+		DBBE01BF2ADD5DA30045322A /* WFjieKuanXieYiVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFjieKuanXieYiVC.m; sourceTree = "<group>"; };
+		DBE158582AE243890082E7ED /* glslang.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = glslang.framework; sourceTree = "<group>"; };
 		DBF6556C2A8269430035103F /* WFSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFSlider.h; sourceTree = "<group>"; };
 		DBF6556D2A8269430035103F /* WFSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFSlider.m; sourceTree = "<group>"; };
 		E27E9EBA4B787D8C451ADFF2 /* Pods_PresiMex_PresiMexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PresiMex_PresiMexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -663,7 +667,6 @@
 		FBD4B2AB2A3EDD5800E136D5 /* BlinkPoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlinkPoints.m; sourceTree = "<group>"; };
 		FBD4B2AC2A3EDD5800E136D5 /* LNBlockingQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNBlockingQueue.m; sourceTree = "<group>"; };
 		FBD4B2AD2A3EDD5800E136D5 /* Scrfd.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Scrfd.mm; sourceTree = "<group>"; };
-		FBD4B2AE2A3EDD5800E136D5 /* glslang.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = glslang.framework; sourceTree = "<group>"; };
 		FBD4B2AF2A3EDD5800E136D5 /* openmp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = openmp.framework; sourceTree = "<group>"; };
 		FBD4B2B02A3EDD5800E136D5 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		FBD4B2B12A3EDD5800E136D5 /* ncnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ncnn.framework; sourceTree = "<group>"; };
@@ -710,12 +713,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBD4B2E02A3EDD5800E136D5 /* ncnn.framework in Frameworks */,
+				DBE158592AE243890082E7ED /* glslang.framework in Frameworks */,
 				FBD4B2DE2A3EDD5800E136D5 /* openmp.framework in Frameworks */,
 				270A261DD59BA1810A7E8F9C /* Pods_PresiMex.framework in Frameworks */,
 				FBD4B2DF2A3EDD5800E136D5 /* opencv2.framework in Frameworks */,
 				DBB0E1D52A6D25540028AEFF /* CoreLocation.framework in Frameworks */,
 				DBB0E1D32A6CE8150028AEFF /* CoreTelephony.framework in Frameworks */,
-				FBD4B2DD2A3EDD5800E136D5 /* glslang.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1368,6 +1371,8 @@
 				FB8AF32F2A091EC6006C5887 /* Base */,
 				FB06D0B52A4593C400272F5A /* PrivacyVC.h */,
 				FB06D0B62A4593C400272F5A /* PrivacyVC.m */,
+				DBBE01BE2ADD5DA30045322A /* WFjieKuanXieYiVC.h */,
+				DBBE01BF2ADD5DA30045322A /* WFjieKuanXieYiVC.m */,
 			);
 			path = classes;
 			sourceTree = "<group>";
@@ -1953,7 +1958,7 @@
 			isa = PBXGroup;
 			children = (
 				FBD4B2632A3EDD5800E136D5 /* LNDetect */,
-				FBD4B2AE2A3EDD5800E136D5 /* glslang.framework */,
+				DBE158582AE243890082E7ED /* glslang.framework */,
 				FBD4B2AF2A3EDD5800E136D5 /* openmp.framework */,
 				FBD4B2B02A3EDD5800E136D5 /* opencv2.framework */,
 				FBD4B2B12A3EDD5800E136D5 /* ncnn.framework */,
@@ -2562,6 +2567,7 @@
 				FBD4B2CC2A3EDD5800E136D5 /* UIImage+Animated.m in Sources */,
 				A4B36C892A35EF1D00A18C80 /* PHImageFacePickerController.m in Sources */,
 				FB939F412A2213AD00599A86 /* OrderCell.m in Sources */,
+				DBBE01C02ADD5DA30045322A /* WFjieKuanXieYiVC.m in Sources */,
 				FBB039622A2B800100E5CD80 /* KeFuAlert.m in Sources */,
 				A4DD5E6B2A22040100451413 /* PMPhoneNumberView.m in Sources */,
 				A40B4C9C2A2B2154001B11F0 /* PMEmergencyContactCell.m in Sources */,
@@ -2804,6 +2810,73 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AppsFlyerLib\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreInternal\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseMessaging\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"JKCategories\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"MapKit\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"ZZCircleProgress\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
+					"-ld_classic",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prsi.PresiMex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2850,6 +2923,73 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AppsFlyerLib\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreInternal\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseMessaging\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"JKCategories\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"MapKit\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"ZZCircleProgress\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
+					"-ld_classic",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prsi.PresiMex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

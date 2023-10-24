@@ -64,7 +64,7 @@
     [self.view addSubview:self.bgImageView];
     [self.view addSubview:self.notiView];
     [self.view addSubview:self.bgImageViewtop];
-    
+    [self GETAPPVersionUpdate];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleNotification:)
                                                  name:@"dengLuChengGong"
@@ -227,7 +227,12 @@
         }else if (indexPath.row == 2){
             WFLabelCell * cell  = [WFLabelCell cellWithTableView:tableView identifier:@"22"];
             cell.label.textAlignment = NSTextAlignmentCenter;
-            [cell.label setText:[NSString stringWithFormat:@"%ld",self.changeValue] TextColor:[UIColor whiteColor] Font:[UIFont boldSystemFontOfSize:25]];
+            
+            NSNumberFormatter *moneyFormatter = [[NSNumberFormatter alloc] init];
+            moneyFormatter.positiveFormat = @"###,##0";
+            NSString *formatString = [moneyFormatter stringFromNumber:@(self.changeValue)];
+            [cell.label setText:formatString TextColor:[UIColor whiteColor] Font:[UIFont boldSystemFontOfSize:25]];
+//            [cell.label setText:[NSString stringWithFormat:@"%ld",self.changeValue] TextColor:[UIColor whiteColor] Font:[UIFont boldSystemFontOfSize:25]];
             
             [cell upLabelFrameWithInsets:UIEdgeInsetsMake(2, 15, 5, 15)];
             
@@ -241,7 +246,7 @@
         }else if (indexPath.row == 3){
             WFSliderCell * cell  = [WFSliderCell cellWithTableView:tableView];
             
-            
+            cell.social = [self.authModel.social integerValue];
             if(self.homeModel){
                 //剩余额度大于最小额度
                 if([self.authModel.monster doubleValue] >= [self.authModel.clear doubleValue]){
@@ -415,6 +420,7 @@
             [cell setClickBtnBlock:^{
 //                weakself.view.bounds
                 weakself.detailView = [[HomeDetailView alloc] initWithFrame: CGRectMake(0, 0, WF_ScreenWidth, WF_ScreenHeight - WF_TabBarHeight)];
+                weakself.detailView.homeModel = self.homeModel;
 //                UIWindow *window = [UIApplication sharedApplication].keyWindow;
                 [self.view addSubview:weakself.detailView ];
                 // 点击修改银行卡
@@ -605,8 +611,12 @@
     
     WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
     [AlertView show];
+    WF_WEAKSELF(weakself);
     [alert setClickBtnBlock:^{
+        
         [AlertView dismiss];
+        OrderVC *vc = [[OrderVC alloc] init];
+        [weakself.navigationController pushViewController:vc animated:YES];
     }];
 }
 
@@ -790,6 +800,62 @@
     }];
 }
 
+
+//获取升级版本
+-(void)GETAPPVersionUpdate{
+//    self.changeValu、 = 3000;
+  
+    NSMutableDictionary *pars=[NSMutableDictionary dictionary];
+  
+    WF_WEAKSELF(weakself);
+    [PMBaseHttp get:GET_APP_Version_Update parameters:pars success:^(id  _Nonnull responseObject) {
+        
+        if ([responseObject[@"retail"] intValue]==200) {
+            NSDictionary * shame = responseObject[@"shame"];
+            [[NSUserDefaults standardUserDefaults] setObject:shame forKey:@"diving"];
+            
+            NSInteger diving = [shame[@"diving"] integerValue];
+            
+            NSString * content = shame[@"limitation"];
+            
+            [weakself showAPPUpdateAlert:content diving:diving];
+            
+//
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSDictionary * shame = [[NSUserDefaults standardUserDefaults] objectForKey:@"diving"];
+        if (shame) {
+            
+            NSInteger diving = [shame[@"diving"] integerValue];
+            
+            NSString * content = shame[@"limitation"];
+            [weakself showAPPUpdateAlert:content diving:diving];
+        }
+        
+        
+    }];
+}
+
+
+//app升级弹窗
+-(void)showAPPUpdateAlert:(NSString *)content diving:(NSInteger )diving{
+    if (diving == 10) {
+        return;
+    }
+    topLabelBottmBtnAlert * alert = [[topLabelBottmBtnAlert alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth - 60,190) withConttent:content btnTitel:@"OK"] ;
+    [alert setOPTtype];
+    
+    WFCustomAlertView *  AlertView = [[WFCustomAlertView alloc] initWithContentView:alert];
+    [AlertView show];
+    [alert setClickBtnBlock:^{
+        if (diving == 20) {
+            [AlertView dismiss];
+        } else {
+            [[PMConfigManager sharedInstance] openAppStoreForAppWithID:@""];
+        }
+    }];
+}
 
 //24002 借款申请
 -(void)POSTLoanApply{

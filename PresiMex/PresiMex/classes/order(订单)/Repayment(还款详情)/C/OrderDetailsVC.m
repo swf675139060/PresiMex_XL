@@ -595,6 +595,7 @@
 -(PMOrderTopView *)topView{
     if(_topView == nil){
         _topView = [[PMOrderTopView alloc] initWithFrame:CGRectMake(0, 0, WF_ScreenWidth, 70)];
+        _topView.details = YES;
         [_topView selectIndx:0];
     }
     return _topView;

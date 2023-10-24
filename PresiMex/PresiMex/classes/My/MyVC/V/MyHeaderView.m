@@ -437,7 +437,7 @@
         [self.topBgView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth, self.jk_height - 40) withColors:colors startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:50];
         
         self.userIcon.image = DefaultAvatar;
-        self.userName.text = @"PresiMex . ";
+        self.userName.text = @"PresiMex, ";
         self.cartera.text = @"su cartera instante";
         self.SubNubmer.text = @"XXXXXXXXXX";
         
@@ -447,7 +447,7 @@
             make.top.equalTo(self.topBgView).offset(131 + WF_StatusBarHeight);
         }];
         self.moneyBottonLB.hidden = NO;
-        self.moneyLB.text = @"$30,000";
+        self.moneyLB.text = @"$30000";
         self.moneyTOPLB.text = @"Hasta";
         self.moneyBottonLB.text = @"Sin monto";
         
@@ -475,7 +475,7 @@
         [self.topBgView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth, self.jk_height - 40) withColors:colors startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:50];
         
         self.userIcon.image = DefaultAvatar;
-        self.userName.text = @"PresiMex . ";
+        self.userName.text = @"PresiMex, ";
         self.cartera.text = @"su cartera instante";
         self.SubNubmer.text = userModel.tel;
         
@@ -512,7 +512,7 @@
         [self.topBgView addLinearGradientwithSize:CGSizeMake(WF_ScreenWidth, self.jk_height - 40) withColors:colors startPoint:CGPointMake(0, 0) endPoint:CGPointMake(1, 0) maskedCorners:kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner cornerRadius:50];
         
         self.userIcon.image = DefaultAvatar;
-        self.userName.text = @"PresiMex . ";
+        self.userName.text = @"PresiMex, ";
         self.cartera.text = @"su cartera instante";
         self.SubNubmer.text = userModel.tel;
         

@@ -41,6 +41,12 @@
     
 }
 
+-(void)setDetails:(BOOL)details{
+    _details = details;
+    [_leftBtn setTitle:@"Pago completo" forState:UIControlStateNormal];
+    [_rightBtn setTitle:@"Pago de prórroga" forState:UIControlStateNormal];
+    
+}
 -(UIButton *)leftBtn{
     if(_leftBtn == nil){
         _leftBtn = [[UIButton alloc] init];

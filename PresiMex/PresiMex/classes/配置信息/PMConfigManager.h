@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(assign, nonatomic) BOOL showTost;
 
 -(void)gotoStore;
-
+- (void)openAppStoreForAppWithID:(NSString *)appID;
 -(void)getConfigModelBlock:(void (^)(PMConfigModel *model)) ConfigModellock;
 @end
 

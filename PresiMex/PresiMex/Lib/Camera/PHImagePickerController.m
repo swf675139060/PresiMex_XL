@@ -147,6 +147,16 @@
     //使用AVMediaTypeVideo 指明self.device代表视频，默认使用后置摄像头进行初始化
     self.device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
+    NSError *error = nil;
+    if ([self.device isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+        if ([self.device lockForConfiguration:&error]) {
+            [self.device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
+            [self.device unlockForConfiguration];
+        } else {
+            NSLog(@"Error configuring autofocus: %@", error);
+        }
+    }
+
     //使用设备初始化输入
     self.input = [[AVCaptureDeviceInput alloc]initWithDevice:self.device error:nil];
     

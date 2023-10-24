@@ -102,7 +102,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navTitleLabel.text=@"Información personal";
+    self.navTitleLabel.text=@"Contacto de emergencia";
     [self addRightBarButtonWithImag:@"bai_kefu"];
     [self modelWithData];
     [self GETContactsInfo];

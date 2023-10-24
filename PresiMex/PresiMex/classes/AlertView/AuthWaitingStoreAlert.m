@@ -84,14 +84,20 @@
         [cell upLabelFrameWithInsets:UIEdgeInsetsMake(0, 23, 0, 23)];
         return cell;
     }else if (indexPath.row == 2) {
-        WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
-        cell.label.text = @"Por favor, califique nuestra aplicación.";
-        cell.label.textColor = [UIColor jk_colorWithHexString:@"#0B0B0B"];
-        cell.label.textAlignment = NSTextAlignmentCenter;
-        cell.label.font = [UIFont boldSystemFontOfSize:13];
-        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [cell upLabelFrameWithInsets:UIEdgeInsetsMake(5, 23, 0, 23)];
-        return cell;
+        if (self.isHiddenStore) {
+            WFEmptyCell * cell = [WFEmptyCell cellWithTableView:tableView];
+            [cell updateFrameWithHeight:30];
+            return cell;
+        } else {
+            WFLabelCell * cell = [WFLabelCell cellWithTableView:tableView];
+            cell.label.text = @"Por favor, califique nuestra aplicación.";
+            cell.label.textColor = [UIColor jk_colorWithHexString:@"#0B0B0B"];
+            cell.label.textAlignment = NSTextAlignmentCenter;
+            cell.label.font = [UIFont boldSystemFontOfSize:13];
+            [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+            [cell upLabelFrameWithInsets:UIEdgeInsetsMake(5, 23, 0, 23)];
+            return cell;
+        }
         
     }else if (indexPath.row == 3){
         

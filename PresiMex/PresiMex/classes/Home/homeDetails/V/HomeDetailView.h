@@ -7,12 +7,14 @@
 
 #import "WFBaseView.h"
 #import "bankcardModel.h"
+#import "PMHomeModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeDetailView : WFBaseView
 
 
+@property (nonatomic,strong) PMHomeModel * homeModel;//产品信息
 @property (nonatomic, strong) bankcardModel * bankModel;//当前绑定的model
 
 @property (nonatomic, strong) UITableView *tableView; /**< 列表*/

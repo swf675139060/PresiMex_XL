@@ -65,6 +65,7 @@
     
    
     self.phoneView=[[PMVeriCodeView alloc]initWithFrame:CGRectMake(15, WF_NavigationHeight+10+76+25, WF_ScreenWidth-30, 325)];
+    self.phoneView.phone = self.phone;
     [_scrollViewView addSubview:self.phoneView];
     weakify(self)
     self.phoneView.codeTag = ^(NSString * _Nonnull code) {

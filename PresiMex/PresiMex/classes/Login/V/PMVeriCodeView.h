@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMVeriCodeView : WFBaseView
 
+@property (nonatomic , strong) NSString *phone;
+
 @property (nonatomic , strong) CRBoxInputView *boxInputView;
 
 @property (nonatomic , strong) UILabel *desLabel2;

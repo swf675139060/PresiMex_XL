@@ -48,7 +48,7 @@
         return cell;
     }else{
         WFBtnCell * cell = [WFBtnCell cellWithTableView:tableView];
-        [cell.btn setTitle:@"Próximo paso" forState:UIControlStateNormal];
+        [cell.btn setTitle:@"Cerrar sesión" forState:UIControlStateNormal];
         cell.btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [cell.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         WF_WEAKSELF(weakself);

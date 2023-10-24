@@ -9,6 +9,8 @@
 
 @interface PMVeriCodeView ()
 @property (nonatomic ,strong)UILabel *timeLabel;
+
+@property (nonatomic ,strong)UILabel *desLabel1;
 @end
 
 @implementation PMVeriCodeView
@@ -39,8 +41,9 @@
     desLabel.textAlignment = NSTextAlignmentLeft;
    
     UILabel *desLabel1 = [[UILabel alloc] init];
+    self.desLabel1 = desLabel1;
     desLabel1.font=B_FONT_REGULAR(11);
-    desLabel1.text=@"El código de verificación ha sido enviado a su móvil con los últimos cuatro dígitos 6789.";
+    desLabel1.text=[NSString stringWithFormat:@"El código de verificación ha sido enviado a su móvil con los últimos cuatro dígitos."];
     desLabel1.textAlignment = NSTextAlignmentLeft;
     desLabel1.textColor=BColor_Hex(@"#7C7C7C", 1);
     desLabel1.numberOfLines=0;
@@ -154,6 +157,11 @@
     
   
     
+}
+
+-(void)setPhone:(NSString *)phone{
+    _phone = phone;
+    self.desLabel1.text=[NSString stringWithFormat:@"El código de verificación ha sido enviado a su móvil con los últimos cuatro dígitos %@.",[self.phone substringFromIndex:[self.phone length] - 4]];
 }
 -(void)resendVioceCode{
     if( self.click){

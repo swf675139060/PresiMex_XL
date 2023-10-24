@@ -7,6 +7,7 @@
 
 #import "PMBaseHttp.h"
 #import "MD5Utils.h"
+#import <JKCategories/JKCategories.h>
 
 @implementation PMBaseHttp
 
@@ -58,7 +59,7 @@ static inline BOOL IsEmpty(id thing){
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     //manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 8;//30.0;
+    manager.requestSerializer.timeoutInterval = 30;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
 //    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     //[manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
@@ -191,6 +192,114 @@ static inline BOOL IsEmpty(id thing){
     
 }
 
++ (NSURLSessionDataTask*)getHtml:(NSString *)urlString parameters:(id)parameter success:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    
+    if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
+        NSError *error = [NSError errorWithDomain:@"CustomeErrorDomain" code:0001 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"网络连接失败，请检查网络设置", NSLocalizedDescriptionKey, nil]];
+        if (failure) {
+            failure(error);
+        }
+        return nil;
+    }
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+    //manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 30;//30.0;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+//    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    //[manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
+    
+//    81f39018d78533c158665aa7945c6a95
+    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
+    if ([PMAccountTool isLogin]) {
+        NSLog(@"token= %@",[PMAccountTool account].token);
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
+    }
+    NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    vers = [vers stringByReplacingOccurrencesOfString:@"." withString:@""];
+    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"GATEWAY_VERSION"];
+    NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
+    deviceID=[deviceID stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
+    [manager.requestSerializer setValue:[MD5Utils md5ContentWithOrigin:deviceID] forHTTPHeaderField:@"GATEWAY_DEVICE_ID"];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=utf8" forHTTPHeaderField:@"Content-Type"];
+    AFSecurityPolicy * securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    manager.securityPolicy = securityPolicy;
+    
+    NSString *urlEpt=[NSString stringWithFormat:@"%@%@",API_URL,urlString];
+    NSString *url = [urlEpt stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet  URLQueryAllowedCharacterSet]];
+    
+    
+       NSLog(@"----url---\n%@\n----header---\n%@\n----parms---\n%@",url,manager.requestSerializer.HTTPRequestHeaders,parameter);
+    
+    //NSString*josn=[parms toJSONString];
+    return [manager GET:url parameters:parameter headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+      
+//       NSDictionary*dict=[self dictionaryForJsonData:responseObject];
+//        NSLog(@"url===%@\nget_responseObject=%@",url,dict);
+//        if (!IsEmpty(responseObject)) {
+//            if(dict[@"code"] && [dict[@"code"] intValue]==401)
+//            [PMAccountTool logOut];
+//        }
+
+        
+        if (success) {
+            success(responseObject);
+        }
+     
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            NSString *msg = @"";
+            if ([error.domain isEqualToString:AFURLResponseSerializationErrorDomain]) {
+                id response = [NSJSONSerialization JSONObjectWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] options:0 error:nil];
+                NSLog(@"%@",response);
+                msg = [NSString stringWithFormat:@"%@",response[@"msg"]] ?: @"";
+                if ([msg containsString:@"Invalid access"]) {
+                    NSLog(@"token失效");
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"tokenError" object:nil userInfo:nil];
+                    failure(nil);
+                    return;
+                }else {
+                    failure(error);
+                    return;
+                }
+            }
+            
+            NSString *errDes = @"网络或服务器异常";
+            switch (error.code) {
+                case -1001:
+                    errDes = @"请求超时";
+                    break;
+                case 404:
+                    errDes = @"没有数据";
+                    break;
+                case 500:
+                    errDes = @"服务器错误";
+                    break;
+                case -1017:
+                    errDes = @"数据解析错误";
+                    break;
+                case 401:
+                    errDes = msg;
+                    break;
+                default:
+                    break;
+            }
+            error = [NSError errorWithDomain:@"CustomeErrorDomain" code:error.code userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@ (%@)", errDes, @(error.code)], NSLocalizedDescriptionKey, nil]];
+            failure(error);
+        }
+    }];
+    
+}
+
 
 + (NSURLSessionDataTask*)post:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure
 {
@@ -200,7 +309,7 @@ static inline BOOL IsEmpty(id thing){
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 8;//30.0;
+    manager.requestSerializer.timeoutInterval = 30;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -288,7 +397,7 @@ static inline BOOL IsEmpty(id thing){
    // manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 8;//30.0;
+    manager.requestSerializer.timeoutInterval = 30;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -349,7 +458,7 @@ static inline BOOL IsEmpty(id thing){
    // manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 8;//30.0;
+    manager.requestSerializer.timeoutInterval = 30;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -405,7 +514,7 @@ static inline BOOL IsEmpty(id thing){
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 8;//15.0;
+    manager.requestSerializer.timeoutInterval = 30;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -444,8 +553,8 @@ static inline BOOL IsEmpty(id thing){
     [manager POST:url parameters:nil headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
 
-        
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.3);//进行图片压缩
+        NSData *imageData = [UIImage jk_compressImage:image toMaxLength:1024*1024 maxWidth:image.size.width];
+//        NSData *imageData = UIImageJPEGRepresentation(image, 0.3);//进行图片压缩
         
          // 使用日期生成图片名称
          NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -611,7 +720,7 @@ static inline BOOL IsEmpty(id thing){
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    manager.requestSerializer.timeoutInterval = 8;//15.0;
+    manager.requestSerializer.timeoutInterval = 30;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];

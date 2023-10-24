@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *urlString; /**< 加载链接 */
 
 
+@property (nonatomic,assign) BOOL haveHeader; 
+
+
 @end
 
 NS_ASSUME_NONNULL_END

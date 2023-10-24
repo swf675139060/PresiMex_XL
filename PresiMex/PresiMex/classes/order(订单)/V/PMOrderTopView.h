@@ -11,6 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMOrderTopView : WFBaseView
 
+
+
+@property(assign, nonatomic) BOOL details;
 @property(strong, nonatomic) void(^clickLeftBtnBlock)(void);
 
 @property(strong, nonatomic) void(^clickRightBtnBlock)(void);

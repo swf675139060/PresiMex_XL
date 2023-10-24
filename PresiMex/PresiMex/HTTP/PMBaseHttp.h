@@ -28,6 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
                         success:(void (^)(id responseObject))success
                         failure:(void (^)(NSError *error))failure;
 
++ (NSURLSessionDataTask*)getHtml:(NSString *)URLString
+                     parameters:(id)parameters
+                        success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure;
+
 
 /**
  *

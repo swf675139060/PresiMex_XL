@@ -100,10 +100,14 @@
     }];
 }
 
+-(void)setSocial:(NSInteger )social{
+    _social = social;
+}
+
 -(void)sliderEventValueChanged:(UISlider *)slider{
     if(self.sliderChangeBlock){
         
-        float value = roundf(slider.value / 100) * 100;
+        float value = roundf(slider.value / self.social) * self.social;
         self.sliderChangeBlock(value);
     }
 }
@@ -111,7 +115,7 @@
 -(void)sliderEventValueEnd:(UISlider *)slider{
     if(self.sliderEndBlock){
         
-        float value = roundf(slider.value / 100) * 100;
+        float value = roundf(slider.value / self.social) * self.social;
         self.sliderEndBlock(value);
     }
 }

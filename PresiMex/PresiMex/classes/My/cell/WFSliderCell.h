@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) UIView * BGView;
 @property(strong, nonatomic) WFSlider * slider;
 @property(strong, nonatomic) UIView * sliderBG;
+@property(assign, nonatomic) NSInteger social;
 
 
 @property(copy, nonatomic)void(^sliderChangeBlock)(NSInteger number);
@@ -28,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)upBGFrameWithInsets:(UIEdgeInsets )padding height:(CGFloat)height;
 
 -(void)upSliderFrameWithInsets:(UIEdgeInsets )padding height:(CGFloat)height;
-
+-(void)setSocial:(NSInteger )social;
 -(void)setSliderValue:(CGFloat )sliderValue;
 
 @end

@@ -6,8 +6,9 @@
 //
 
 #import "PMConfigManager.h"
+#import <StoreKit/StoreKit.h>
 
-@interface PMConfigManager()
+@interface PMConfigManager()<SKStoreProductViewControllerDelegate>
 
 @property(strong, nonatomic)PMConfigModel * model;
 
@@ -26,8 +27,34 @@
 }
 
 -(void)gotoStore{
+//    [SKStoreReviewController requestReview];
+    NSString *reviewURL = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@?action=write-review", @""];
+       NSURL *url = [NSURL URLWithString:reviewURL];
+       [[UIApplication sharedApplication] openURL:url];
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APPID&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=APPID&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"]];
+}
+
+- (void)openAppStoreForAppWithID:(NSString *)appID {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1018221712"]];
+//    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+//    storeViewController.delegate = self;
+//
+//    NSDictionary *parameters = @{ SKStoreProductParameterITunesItemIdentifier : @"67887" };
+//    [storeViewController loadProductWithParameters:parameters completionBlock:^(BOOL result, NSError *error) {
+//        if (result) {
+//
+//            UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+//            [[keyWindow jk_currentViewController] presentViewController:storeViewController animated:YES completion:nil];
+//        } else {
+//            NSLog(@"Error loading product details: %@", error);
+//        }
+//    }];
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)getConfigModelBlock:(void (^)(PMConfigModel *model)) ConfigModellock{

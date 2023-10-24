@@ -6,6 +6,7 @@
 //
 
 #import "WFWebViewController.h"
+#import "MD5Utils.h"
 
 @interface WFWebViewController ()<WKNavigationDelegate,WKUIDelegate>
 
@@ -258,6 +259,7 @@
 
     NSURL *url = [NSURL URLWithString:[self.urlString stringByAddingPercentEscapesUsingEncoding:kCFStringEncodingUTF8]];
         
+    
     if (url) {
         [_webView loadRequest:[NSURLRequest requestWithURL:url]];
     }

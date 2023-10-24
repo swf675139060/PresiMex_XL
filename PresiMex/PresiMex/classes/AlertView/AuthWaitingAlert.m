@@ -8,6 +8,7 @@
 #import "AuthWaitingAlert.h"
 #import "FLAnimatedImage.h"
 #import "WFLabelCell.h"
+#import "WFGifImageCell.h"
 @interface AuthWaitingAlert()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) FLAnimatedImageView * imgV;
@@ -36,7 +37,7 @@
 
 -(void)uptime:(NSInteger)time{
     self.time  = [NSString stringWithFormat:@"%ld",time];
-    self.Conttent = [NSString stringWithFormat:@"Su información ha sido recibida y está siendo procesada por el sistema para establecer su límite. Esto debería llevar %@ segundos.",time] ;
+    self.Conttent = [NSString stringWithFormat:@"Su información ha sido recibida y está siendo procesada por el sistema para establecer su límite. Esto debería llevar %ld segundos.",(long)time] ;
     [self.tableView reloadData];
 }
 
@@ -67,7 +68,7 @@
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -76,21 +77,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        WFGifImageCell * cell = [WFGifImageCell cellWithTableView:tableView];
+       
+        cell.bottomLine.hidden = YES;
+        [cell updateFrameWithEdgeInsets:UIEdgeInsetsMake(25, 27.5, 26, 27.5) height:25];
+        return cell;
+    }else{
+        WFLabelCell * cell = [WFLabelCell cornerCellWithTableView:tableView];
+    //    cell.label.text = self.Conttent;
+        cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
+        cell.label.font = [UIFont boldSystemFontOfSize:11];
+        cell.label.textAlignment = NSTextAlignmentCenter;
+        NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:self.Conttent attributes: @{NSFontAttributeName:B_FONT_REGULAR(11),NSForegroundColorAttributeName: BColor_Hex(@"#1B1200", 1)}];
+        NSRange range=[[attStr string]rangeOfString:self.time];
+        [attStr addAttributes:@{NSForegroundColorAttributeName: BColor_Hex(@"#FC7500", 1),NSFontAttributeName:B_FONT_REGULAR(14)} range:range];
+        
+        cell.label.attributedText = attStr;
+        
+        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [cell upBGFrameWithInsets:UIEdgeInsetsMake(0, 25, 45, 25) maskedCorners: kCALayerMinXMinYCorner| kCALayerMaxXMinYCorner cornerRadius:0.1];
+        return cell;
+    }
     
-    WFLabelCell * cell = [WFLabelCell cornerCellWithTableView:tableView];
-//    cell.label.text = self.Conttent;
-    cell.label.textColor = [UIColor jk_colorWithHexString:@"#1B1200"];
-    cell.label.font = [UIFont boldSystemFontOfSize:11];
-    cell.label.textAlignment = NSTextAlignmentCenter;
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:self.Conttent attributes: @{NSFontAttributeName:B_FONT_REGULAR(11),NSForegroundColorAttributeName: BColor_Hex(@"#1B1200", 1)}];
-    NSRange range=[[attStr string]rangeOfString:self.time];
-    [attStr addAttributes:@{NSForegroundColorAttributeName: BColor_Hex(@"#FC7500", 1),NSFontAttributeName:B_FONT_REGULAR(14)} range:range];
-    
-    cell.label.attributedText = attStr;
-    [cell upLabelFrameWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
-    [cell upBGFrameWithInsets:UIEdgeInsetsMake(75, 25, 45, 25) maskedCorners: kCALayerMinXMinYCorner| kCALayerMaxXMinYCorner cornerRadius:0.1];
-    return cell;
     
 }
 
