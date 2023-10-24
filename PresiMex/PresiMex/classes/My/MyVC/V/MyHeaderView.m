@@ -522,7 +522,8 @@
             make.top.equalTo(self.topBgView).offset(131 + WF_StatusBarHeight);
         }];
         self.moneyBottonLB.hidden = NO;
-        self.moneyLB.text = [NSString stringWithFormat:@"$%@",model.researcher];
+//        self.moneyLB.text = [NSString stringWithFormat:@"$%@",model.researcher];
+        self.moneyLB.text = [NSString stringWithFormat:@"$%@",@"30,000"];
         self.moneyTOPLB.text = @"Hasta";
         self.moneyBottonLB.text = @"Sin monto";
         

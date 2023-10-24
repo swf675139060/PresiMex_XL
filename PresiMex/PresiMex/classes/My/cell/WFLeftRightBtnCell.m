@@ -9,6 +9,19 @@
 
 @implementation WFLeftRightBtnCell
 
++(instancetype)cellWithTableView:(UITableView *)tableView ID:(NSInteger)ID{
+    NSString *ID0 = [NSString stringWithFormat:@"WFLeftRightBtnCell%ld",ID];
+    WFLeftRightBtnCell *cell = [tableView dequeueReusableCellWithIdentifier:ID0];
+    if (cell == nil) {
+        cell = [[WFLeftRightBtnCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID0];
+        
+        [cell makeView];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+ 
+}
 
 +(instancetype)cellWithTableView:(UITableView *)tableView{
     NSString *ID = @"WFLeftRightBtnCell";

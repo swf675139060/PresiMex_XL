@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
++(instancetype)cellWithTableView:(UITableView *)tableView ID:(NSInteger)ID;
 
 
 /// 更新背景编剧

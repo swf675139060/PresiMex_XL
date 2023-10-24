@@ -28,6 +28,10 @@
 @property (nonatomic, strong) liveSetModel *LiveSetModel;
 
 @property (nonatomic, strong) LiveStartModel *LiveSTModel;
+
+
+@property (nonatomic, strong) PMIDAuthModel *AuthModel;
+
 //
 @property (nonatomic, strong) NSString *userName;
 
@@ -468,23 +472,28 @@
     [PMBaseHttp get:GET_OCR_USER_INFO parameters:dict success:^(id  _Nonnull responseObject) {
         [self dismiss];
         if ([responseObject[@"retail"]intValue]==200) {
-            PMIDAuthModel*model=[PMIDAuthModel yy_modelWithDictionary:responseObject[@"shame"]];
+            
+            weakself.AuthModel=[PMIDAuthModel yy_modelWithDictionary:responseObject[@"shame"]];
+            
+            weakself.LiveSTModel = [[LiveStartModel alloc] init];
+            weakself.LiveSTModel.shaw = weakself.AuthModel.thanks;
+            
             PMIDAuthModel*model1=self.dataArray[0];
-            model1.held=model.held;
+            model1.held=weakself.AuthModel.held;
             [self.dataArray replaceObjectAtIndex:0 withObject:model1];
             PMIDAuthModel*model2=self.dataArray[1];
-            model2.silent=model.silent;
+            model2.silent=weakself.AuthModel.silent;
             [self.dataArray replaceObjectAtIndex:1 withObject:model2];
             PMIDAuthModel*model3=self.dataArray[2];
-            model3.acoustic=model.acoustic;
+            model3.acoustic=weakself.AuthModel.acoustic;
             [self.dataArray replaceObjectAtIndex:2 withObject:model3];
             PMIDAuthModel*model4=self.dataArray[3];
-            model4.davis=model.davis;
-            self.userName = model.davis;
+            model4.davis=weakself.AuthModel.davis;
+            self.userName = weakself.AuthModel.davis;
             [self.dataArray replaceObjectAtIndex:3 withObject:model4];
             PMIDAuthModel*model5=self.dataArray[4];
-            model5.cartoon=model.cartoon;
-            self.userID = model.cartoon;
+            model5.cartoon=weakself.AuthModel.cartoon;
+            self.userID = weakself.AuthModel.cartoon;
             [self.dataArray replaceObjectAtIndex:4 withObject:model5];
             [self.tableView reloadData];
             

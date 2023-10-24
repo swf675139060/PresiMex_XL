@@ -199,12 +199,13 @@
 {
     if(indexPath.section == 0){
         if(indexPath.row == 0){
-            WFLeftRightBtnCell * cell = [WFLeftRightBtnCell cellWithTableView:tableView];
+            WFLeftRightBtnCell * cell = [WFLeftRightBtnCell cellWithTableView:tableView ID:indexPath.row];
             [cell upBtnsFrameWithEdgeInsets:UIEdgeInsetsMake(15, 16, 13.5, 16)];
             [cell.leftBtn setTitle:@"Bienvenido a PresiMex" forState:UIControlStateNormal];
             [cell.leftBtn setTitleColor:[UIColor jk_colorWithHexString:@"#1B1200"]  forState:UIControlStateNormal];
             cell.leftBtn.titleLabel.font = [UIFont boldSystemFontOfSize:20];
             [cell.rightBtn setImage:[UIImage imageNamed:@"kefu"] forState:UIControlStateNormal];
+            
             WF_WEAKSELF(weakself);
             cell.clickBtnBlock = ^(NSInteger indx) {
                 if (indx == 1) {
