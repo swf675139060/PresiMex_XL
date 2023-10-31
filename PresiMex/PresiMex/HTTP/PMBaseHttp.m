@@ -65,7 +65,7 @@ static inline BOOL IsEmpty(id thing){
     //[manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
     
 //    81f39018d78533c158665aa7945c6a95
-    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
+    [manager.requestSerializer setValue:@"28343f5f360bf199987448d0dc46388d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
@@ -214,7 +214,7 @@ static inline BOOL IsEmpty(id thing){
     //[manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
     
 //    81f39018d78533c158665aa7945c6a95
-    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
+    [manager.requestSerializer setValue:@"28343f5f360bf199987448d0dc46388d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@", [PMAccountTool account].token] forHTTPHeaderField:@"Authentication"];
@@ -311,7 +311,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 30;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
+    [manager.requestSerializer setValue:@"28343f5f360bf199987448d0dc46388d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     vers = [vers stringByReplacingOccurrencesOfString:@"." withString:@""];
     [manager.requestSerializer setValue:vers forHTTPHeaderField:@"GATEWAY_VERSION"];
@@ -399,7 +399,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 30;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
+    [manager.requestSerializer setValue:@"28343f5f360bf199987448d0dc46388d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     vers = [vers stringByReplacingOccurrencesOfString:@"." withString:@""];
     [manager.requestSerializer setValue:vers forHTTPHeaderField:@"GATEWAY_VERSION"];
@@ -460,7 +460,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 30;//30.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
+    [manager.requestSerializer setValue:@"28343f5f360bf199987448d0dc46388d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     vers = [vers stringByReplacingOccurrencesOfString:@"." withString:@""];
     [manager.requestSerializer setValue:vers forHTTPHeaderField:@"GATEWAY_VERSION"];
@@ -516,7 +516,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 30;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
+    [manager.requestSerializer setValue:@"28343f5f360bf199987448d0dc46388d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     vers = [vers stringByReplacingOccurrencesOfString:@"." withString:@""];
     [manager.requestSerializer setValue:vers forHTTPHeaderField:@"GATEWAY_VERSION"];
@@ -608,7 +608,7 @@ static inline BOOL IsEmpty(id thing){
 //    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
 //    manager.requestSerializer.timeoutInterval = 60;//15.0;
 //    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-//    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
+//    [manager.requestSerializer setValue:@"28343f5f360bf199987448d0dc46388d" forHTTPHeaderField:@"LOAN_HEAD_APP_ID"];
 //    NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 //    [manager.requestSerializer setValue:vers forHTTPHeaderField:@"LOAN_HEAD_VERSION"];
 //    NSString*deviceID=[[NSString alloc] initWithString:[UIDevice currentDevice].identifierForVendor.UUIDString];
@@ -722,7 +722,7 @@ static inline BOOL IsEmpty(id thing){
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 30;//15.0;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    [manager.requestSerializer setValue:@"816b0f88549e3a54e45dfbaaadc3fd6d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
+    [manager.requestSerializer setValue:@"28343f5f360bf199987448d0dc46388d" forHTTPHeaderField:@"GATEWAY_APP_CODE"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", @"text/html", @"multipart/form-data",@"application/octet-stream", nil];
     NSString *vers=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     vers = [vers stringByReplacingOccurrencesOfString:@"." withString:@""];

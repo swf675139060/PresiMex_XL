@@ -11,8 +11,8 @@
 
 //#define API_URL  @"https://test-api.presimex.mx"
 //#define API_URL  @"https://test-api.cashimex.mx"
-#define API_URL  @"https://test-gateway.presimex.mx"
-//#define API_URL  @"https://gateway.presimex.mx"
+//#define API_URL  @"https://test-gateway.presimex.mx"
+#define API_URL  @"https://gateway.presimex.mx"
 
 
 

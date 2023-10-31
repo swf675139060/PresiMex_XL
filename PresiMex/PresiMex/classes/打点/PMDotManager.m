@@ -153,6 +153,7 @@
         
         //数据上报类型
         [pars setObject:[NSString stringWithFormat:@"%ld",type] forKey:@"ldj2dua"];
+        [pars setObject:@"ios" forKey:@"clientType"];
         
         WF_WEAKSELF(weakself);
         [PMBaseHttp postJson:POST_DOT_nxjs3kl parameters:pars success:^(id  _Nonnull responseObject) {
