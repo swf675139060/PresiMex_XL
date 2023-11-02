@@ -409,6 +409,7 @@ static inline BOOL IsEmpty(id thing){
    [manager.requestSerializer setValue:@"application/json;charset=UTF-8"  forHTTPHeaderField:@"Content-Type"];
     if ([URLString isEqual:POST_DOT_nxjs3kl]) {
         [manager.requestSerializer setValue:@"ios"  forHTTPHeaderField:@"GATEWAY_OS_TYPE"];
+        [manager.requestSerializer setValue:@"ios"  forHTTPHeaderField:@"clientType"];
     }
     if ([PMAccountTool isLogin]) {
         NSLog(@"token= %@",[PMAccountTool account].token);
