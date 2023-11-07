@@ -28,7 +28,7 @@
 
 -(void)gotoStore{
 //    [SKStoreReviewController requestReview];
-    NSString *reviewURL = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@?action=write-review", @""];
+    NSString *reviewURL = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@?action=write-review", @"6471468507"];
        NSURL *url = [NSURL URLWithString:reviewURL];
        [[UIApplication sharedApplication] openURL:url];
     
@@ -37,7 +37,7 @@
 
 - (void)openAppStoreForAppWithID:(NSString *)appID {
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1018221712"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id6471468507"]];
 //    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
 //    storeViewController.delegate = self;
 //

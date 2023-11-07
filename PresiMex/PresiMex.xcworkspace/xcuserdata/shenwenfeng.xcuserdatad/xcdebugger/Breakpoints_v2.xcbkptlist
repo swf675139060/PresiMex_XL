@@ -897,8 +897,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "PMConfigManager"
-            landmarkType = "3">
+            landmarkName = "-productViewControllerDidFinish:"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "8FED95C9-8393-4F38-B1B3-1BC6F60A5B5C - db3340dee1f58f73"
@@ -1341,6 +1341,21 @@
                   endingLineNumber = "560"
                   offsetFromSymbolStart = "148">
                </Location>
+               <Location
+                  uuid = "813C20B4-E7EE-44F7-8313-3483DDAE9EA3 - 672db7c62ec9ede1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55+[PMBaseHttp uploadImg:parameter:type:success:failure:]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/HTTP/PMBaseHttp.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "561"
+                  endingLineNumber = "561"
+                  offsetFromSymbolStart = "134">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1686,6 +1701,36 @@
                   startingLineNumber = "161"
                   endingLineNumber = "161"
                   offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "94BC8620-830B-48B7-9340-831CFD1DC8CA - 7451da4cc1f41c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[PMDotManager POSTDotType:value:]_block_invoke"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E6%89%93%E7%82%B9/PMDotManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "1176">
+               </Location>
+               <Location
+                  uuid = "94BC8620-830B-48B7-9340-831CFD1DC8CA - 8cb2136d5f5bdd35"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[PMDotManager POSTDotType:value:]_block_invoke_2"
+                  moduleName = "PresiMex"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shenwenfeng/Desktop/PM/PresiMex/PresiMex/PresiMex/classes/%E6%89%93%E7%82%B9/PMDotManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
+                  offsetFromSymbolStart = "41">
                </Location>
             </Locations>
          </BreakpointContent>

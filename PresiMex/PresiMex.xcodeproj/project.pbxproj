@@ -2786,7 +2786,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 753ZV46XP8;
+				DEVELOPMENT_TEAM = NQ28H28LJ6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PresiMex/Lib/liveSDK",
@@ -2877,7 +2877,7 @@
 					"\"UserNotifications\"",
 					"-ld_classic",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.prsi.PresiMex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.presimex.PresiMex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2899,7 +2899,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 753ZV46XP8;
+				DEVELOPMENT_TEAM = NQ28H28LJ6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PresiMex/Lib/liveSDK",
@@ -2990,7 +2990,7 @@
 					"\"UserNotifications\"",
 					"-ld_classic",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.prsi.PresiMex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.presimex.PresiMex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

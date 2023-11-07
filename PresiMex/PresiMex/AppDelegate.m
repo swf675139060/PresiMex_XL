@@ -71,7 +71,7 @@
     // Override point for customization after application launch.
     /** APPSFLYER INIT **/
     [AppsFlyerLib shared].appsFlyerDevKey = @"wYBVFjnrp84FxAUNLLzbz";
-    [AppsFlyerLib shared].appleAppID = @"1615372217";
+    [AppsFlyerLib shared].appleAppID = @"6471468507";
     /* Uncomment the following line to see AppsFlyer debug logs */
     [AppsFlyerLib shared].isDebug = true;
     [[AppsFlyerLib shared] logEvent: @"ios_pesoOnline_home" withValues:nil];
